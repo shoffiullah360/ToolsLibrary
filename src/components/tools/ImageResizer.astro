@@ -1,0 +1,3380 @@
+---
+interface Props {
+  initialWidth?: number;
+  initialHeight?: number;
+  initialUnit?: 'px' | 'inch' | 'cm' | 'mm' | '%';
+  targetSizeKB?: number;
+  initialFormat?: 'auto' | 'jpg' | 'png' | 'webp' | 'avif' | 'pdf' | 'ico';
+}
+
+const {
+  initialWidth,
+  initialHeight,
+  initialUnit = 'px',
+  targetSizeKB,
+  initialFormat = 'jpg'
+} = Astro.props;
+---
+
+<div
+  id="image-resizer-root"
+  class="w-full max-w-6xl mx-auto"
+  data-initial-width={initialWidth || ''}
+  data-initial-height={initialHeight || ''}
+  data-initial-unit={initialUnit}
+  data-target-size-kb={targetSizeKB || ''}
+  data-initial-format={initialFormat}
+>
+  <!-- INITIAL STATE: Minimalist Drag & Drop Zone -->
+  <div id="dropzone-view" class="transition-all duration-300">
+    <div
+      id="dropzone"
+      class="relative group rounded-3xl border-2 border-dashed border-slate-300 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-400 bg-white/70 dark:bg-slate-900/50 backdrop-blur-sm px-6 py-8 sm:px-10 sm:py-9 text-center cursor-pointer transition-all duration-200 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-0.5"
+    >
+      <input
+        type="file"
+        id="imageInput"
+        class="hidden"
+        accept="image/jpeg,image/png,image/webp,image/gif,image/heic,.heic,.heif,image/bmp"
+        multiple
+      />
+
+      <div class="max-w-lg mx-auto flex flex-col items-center">
+        <!-- Batch Queue Pill -->
+        <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50 mb-3 shadow-2xs">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m-15 0a2.246 2.246 0 00-.75.128m16.5 0c-.235-.083-.487-.128-.75-.128m-15 0A2.25 2.25 0 003 12v6.75A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V12a2.25 2.25 0 00-1.5-2.122" />
+          </svg>
+          <span>Batch Queue: Up to 15 Images</span>
+        </div>
+
+        <!-- Minimalist Icon -->
+        <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-200 shadow-sm border border-blue-100 dark:border-blue-900/50">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+          </svg>
+        </div>
+
+        <!-- Headline & CTA -->
+        <h3 class="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white tracking-tight">
+          Upload your images (up to 15)
+        </h3>
+        <p class="mt-1 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+          Supports JPG, PNG, WebP, AVIF, PDF & ICO. Paste from clipboard (<kbd class="px-1.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">Ctrl+V</kbd>)
+        </p>
+
+        <!-- Primary Action Button -->
+        <div class="mt-4 flex items-center justify-center">
+          <button
+            type="button"
+            id="selectBtn"
+            class="px-6 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-medium text-xs sm:text-sm transition-all shadow-md hover:shadow-lg active:scale-95 cursor-pointer"
+          >
+            Select Images (1–15)
+          </button>
+        </div>
+
+        <!-- Privacy & Security Note -->
+        <div class="mt-5 pt-3.5 border-t border-slate-200/70 dark:border-slate-800/80 w-full flex items-center justify-center">
+          <div class="inline-flex items-center justify-center gap-1.5 font-medium text-emerald-600 dark:text-emerald-400 text-xs whitespace-nowrap">
+            <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+            </svg>
+            <span>Images never leave your browser (100% Client-Side)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVE STATE: Two-Column Studio Layout -->
+  <div id="editor-view" class="hidden">
+    <!-- Top Thumbnail Strip (Batch Queue Up to 15 Images) -->
+    <div class="mb-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm p-3.5 shadow-xs">
+      <div class="flex items-center justify-between mb-2.5 px-1">
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+            Upload your images (<span id="queue-counter" class="font-mono font-bold text-blue-600 dark:text-blue-400">1/15</span>)
+          </span>
+          <span class="hidden sm:inline-block text-[11px] text-slate-400 font-normal">
+            • Click any card to edit image
+          </span>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button
+            type="button"
+            id="clear-all-btn"
+            class="text-xs text-rose-500 hover:text-rose-600 dark:hover:text-rose-400 font-medium transition cursor-pointer"
+          >
+            Clear All
+          </button>
+        </div>
+      </div>
+
+      <!-- Horizontal Scrollable Thumbnail Strip -->
+      <div id="queue-strip" class="flex items-center gap-2.5 overflow-x-auto pb-1.5 pt-0.5 px-0.5 no-scrollbar scroll-smooth">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+
+    <!-- Active Image Details Bar -->
+    <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-semibold">
+          IMG
+        </span>
+        <div class="min-w-0">
+          <p id="source-filename" class="text-sm font-semibold text-slate-800 dark:text-slate-200 truncate max-w-[220px] sm:max-w-md">
+            image.jpg
+          </p>
+          <p id="source-specs" class="text-xs text-slate-500 dark:text-slate-400 font-mono">
+            Original: 1920 × 1080 px • 2.4 MB
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button
+          type="button"
+          id="upload-another-btn"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition cursor-pointer"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+          </svg>
+          Add Images
+        </button>
+      </div>
+    </div>
+
+    <!-- 2-Column Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+      
+      <!-- LEFT COLUMN: Canvas Preview + Transform Bar (7 Cols) -->
+      <div class="lg:col-span-7 flex flex-col gap-4">
+        <div id="preview-canvas-container" class="relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900/90 overflow-hidden min-h-[380px] sm:min-h-[440px] flex items-center justify-center p-4 shadow-sm group select-none">
+          
+          <!-- Transparent checkerboard background -->
+          <div class="absolute inset-0 opacity-40 dark:opacity-20 pointer-events-none" style="background-image: linear-gradient(45deg, #cbd5e1 25%, transparent 25%), linear-gradient(-45deg, #cbd5e1 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #cbd5e1 75%), linear-gradient(-45deg, transparent 75%, #cbd5e1 75%); background-size: 16px 16px; background-position: 0 0, 0 8px, 8px -8px, -8px 0;"></div>
+
+          <!-- Real Preview Canvas -->
+          <canvas
+            id="preview-canvas"
+            class="max-w-full max-h-[420px] object-contain rounded-lg shadow-md transition-transform relative z-10"
+          ></canvas>
+
+          <!-- Status Overlays -->
+          <div class="absolute top-3 left-3 z-20 flex items-center gap-1.5 pointer-events-none">
+            <span id="preview-dim-pill" class="px-2.5 py-1 rounded-full text-xs font-mono font-medium bg-slate-900/80 text-white backdrop-blur-md shadow-sm">
+              1920 × 1080 px
+            </span>
+          </div>
+
+          <div class="absolute top-3 right-3 z-20 flex items-center gap-1.5 pointer-events-none">
+            <span id="preview-size-pill" class="px-2.5 py-1 rounded-full text-xs font-mono font-medium bg-blue-600/90 text-white backdrop-blur-md shadow-sm">
+              Est. ~150 KB
+            </span>
+            <span id="preview-savings-pill" class="hidden px-2 py-1 rounded-full text-xs font-mono font-bold bg-emerald-600 text-white shadow-sm">
+              -60%
+            </span>
+          </div>
+
+          <!-- Processing Indicator -->
+          <div id="canvas-loading" class="hidden absolute inset-0 z-30 bg-slate-900/40 backdrop-blur-[2px] flex items-center justify-center">
+            <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900/90 text-white text-xs font-medium shadow-lg">
+              <svg class="animate-spin h-4 w-4 text-blue-400" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+              </svg>
+              <span id="canvas-loading-text">Processing Canvas...</span>
+            </div>
+          </div>
+
+          <!-- Inline Crop Interactive Overlay -->
+          <div
+            id="inline-crop-overlay"
+            class="hidden absolute inset-0 z-25 overflow-hidden select-none pointer-events-auto touch-none"
+          >
+            <!-- Inline Floating Action Pill -->
+            <div
+              id="inline-crop-actions"
+              class="absolute top-3 inset-x-0 mx-auto w-fit z-30 flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 dark:bg-slate-800/95 text-white backdrop-blur-md shadow-xl border border-slate-700/60 transition pointer-events-auto"
+            >
+              <span class="text-xs font-semibold text-slate-300 pr-1 flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 3.75V16.5a2.25 2.25 0 002.25 2.25h12.75M3.75 7.5H16.5a2.25 2.25 0 012.25 2.25v12.75" />
+                </svg>
+                <span>Crop</span>
+              </span>
+              <div class="h-3.5 w-px bg-slate-700"></div>
+              <button
+                type="button"
+                id="inline-crop-cancel-btn"
+                class="px-2.5 py-1 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-700/80 transition cursor-pointer active:scale-95"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                id="inline-crop-apply-btn"
+                class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white shadow transition flex items-center gap-1 cursor-pointer active:scale-95"
+              >
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                <span>Apply Crop</span>
+              </button>
+            </div>
+
+            <!-- Draggable & Resizable Crop Box -->
+            <div
+              id="inline-crop-box"
+              class="absolute border-2 border-emerald-400 bg-emerald-500/10 shadow-[0_0_0_9999px_rgba(15,23,42,0.6)] cursor-move touch-none"
+              style="top: 0px; left: 0px; width: 100px; height: 100px;"
+            >
+              <!-- Dimensions badge (positioned inside bottom of box) -->
+              <div
+                id="inline-crop-dim-tag"
+                class="absolute bottom-2 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded bg-slate-900/85 text-white font-mono text-[10px] whitespace-nowrap shadow pointer-events-none backdrop-blur-sm"
+              >
+                0 × 0 px
+              </div>
+
+              <!-- 4 Corner Handles -->
+              <div class="crop-handle absolute -top-2 -left-2 w-4 h-4 bg-white border-2 border-emerald-500 rounded-sm cursor-nwse-resize shadow-md" data-handle="nw"></div>
+              <div class="crop-handle absolute -top-2 -right-2 w-4 h-4 bg-white border-2 border-emerald-500 rounded-sm cursor-nesw-resize shadow-md" data-handle="ne"></div>
+              <div class="crop-handle absolute -bottom-2 -right-2 w-4 h-4 bg-white border-2 border-emerald-500 rounded-sm cursor-nwse-resize shadow-md" data-handle="se"></div>
+              <div class="crop-handle absolute -bottom-2 -left-2 w-4 h-4 bg-white border-2 border-emerald-500 rounded-sm cursor-nesw-resize shadow-md" data-handle="sw"></div>
+
+              <!-- 4 Edge Midpoint Handles -->
+              <div class="crop-handle absolute -top-1.5 left-1/2 -translate-x-1/2 w-5 h-2.5 bg-white border-2 border-emerald-500 rounded-sm cursor-ns-resize shadow-md" data-handle="n"></div>
+              <div class="crop-handle absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-5 h-2.5 bg-white border-2 border-emerald-500 rounded-sm cursor-ns-resize shadow-md" data-handle="s"></div>
+              <div class="crop-handle absolute top-1/2 -left-1.5 -translate-y-1/2 w-2.5 h-5 bg-white border-2 border-emerald-500 rounded-sm cursor-ew-resize shadow-md" data-handle="w"></div>
+              <div class="crop-handle absolute top-1/2 -right-1.5 -translate-y-1/2 w-2.5 h-5 bg-white border-2 border-emerald-500 rounded-sm cursor-ew-resize shadow-md" data-handle="e"></div>
+
+              <!-- Rule-of-thirds grid -->
+              <div class="absolute inset-0 pointer-events-none grid grid-cols-3 grid-rows-3 opacity-25">
+                <div class="border-r border-b border-white"></div>
+                <div class="border-r border-b border-white"></div>
+                <div class="border-b border-white"></div>
+                <div class="border-r border-b border-white"></div>
+                <div class="border-r border-b border-white"></div>
+                <div class="border-b border-white"></div>
+                <div class="border-r border-white"></div>
+                <div class="border-r border-white"></div>
+                <div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inline Transform Toolbar -->
+        <div class="flex items-center justify-between px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm text-xs">
+          <div class="flex items-center gap-1.5 sm:gap-2">
+            <span class="text-slate-400 font-medium mr-1 hidden sm:inline">Transform:</span>
+            
+            <!-- Rotate 90° Button -->
+            <button
+              type="button"
+              id="rotate-btn"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition cursor-pointer active:scale-95"
+              title="Rotate 90 degrees clockwise"
+            >
+              <svg class="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+              </svg>
+              <span>Rotate 90°</span>
+            </button>
+
+            <!-- Crop Button -->
+            <button
+              type="button"
+              id="crop-btn"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition cursor-pointer active:scale-95"
+              title="Crop image"
+            >
+              <svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 3.75V16.5a2.25 2.25 0 002.25 2.25h12.75M3.75 7.5H16.5a2.25 2.25 0 012.25 2.25v12.75" />
+              </svg>
+              <span>Crop</span>
+            </button>
+
+            <!-- Flip Horizontal Button -->
+            <button
+              type="button"
+              id="flip-h-btn"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition cursor-pointer active:scale-95"
+              title="Flip Horizontally"
+            >
+              <svg class="w-4 h-4 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+              </svg>
+              <span>Flip Horizontal</span>
+            </button>
+          </div>
+
+          <!-- Reset Orientation Button -->
+          <button
+            type="button"
+            id="reset-transforms-btn"
+            class="text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 transition cursor-pointer font-medium text-xs px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-1.5 active:scale-95"
+            title="Reset transformations to original orientation"
+          >
+            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            <span>Reset Orientation</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Settings Card (Tabs) + Download Action (5 Cols) -->
+      <div class="lg:col-span-5 flex flex-col gap-4">
+        
+        <!-- Tabbed Settings Card -->
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 sm:p-6 shadow-sm">
+          
+          <!-- Segmented Tabs Header -->
+          <div class="flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-xl mb-5">
+            <button
+              type="button"
+              id="tab-btn-resize"
+              class="flex-1 py-2 text-xs font-semibold rounded-lg transition-all duration-200 cursor-pointer bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm"
+            >
+              1. Resize Settings
+            </button>
+            <button
+              type="button"
+              id="tab-btn-export"
+              class="flex-1 py-2 text-xs font-semibold rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
+            >
+              2. Export Settings
+            </button>
+          </div>
+
+          <!-- TAB 1: RESIZE SETTINGS -->
+          <div id="tab-pane-resize" class="space-y-5">
+            
+            <!-- Unit Selector -->
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <label class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                  Unit & Scale
+                </label>
+                <!-- DPI Toggle for Print/Passport -->
+                <div class="flex items-center gap-1.5 text-xs">
+                  <span class="text-slate-400">DPI:</span>
+                  <button
+                    type="button"
+                    id="dpi-toggle-btn"
+                    class="px-2 py-0.5 rounded text-[11px] font-mono font-medium border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:border-blue-500 transition cursor-pointer"
+                    title="Toggle standard 96 DPI screen vs 300 DPI high-res print"
+                  >
+                    <span id="dpi-val">96 DPI</span> (Screen)
+                  </button>
+                </div>
+              </div>
+
+              <!-- Segmented Unit Pills [PX, INCH, CM, MM, %] -->
+              <div class="grid grid-cols-5 gap-1 p-1 bg-slate-100 dark:bg-slate-800/80 rounded-xl text-center">
+                <button type="button" class="unit-pill py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-xs" data-unit="px">PX</button>
+                <button type="button" class="unit-pill py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer text-slate-600 dark:text-slate-300 hover:text-slate-900" data-unit="inch">INCH</button>
+                <button type="button" class="unit-pill py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer text-slate-600 dark:text-slate-300 hover:text-slate-900" data-unit="cm">CM</button>
+                <button type="button" class="unit-pill py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer text-slate-600 dark:text-slate-300 hover:text-slate-900" data-unit="mm">MM</button>
+                <button type="button" class="unit-pill py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer text-slate-600 dark:text-slate-300 hover:text-slate-900" data-unit="%">%</button>
+              </div>
+            </div>
+
+            <!-- Dimension Inputs & Aspect Ratio Lock -->
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <label class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                  Dimensions
+                </label>
+                <span class="text-xs text-slate-400 font-mono">Live Sync</span>
+              </div>
+
+              <div class="flex items-center gap-2">
+                <!-- Width Input -->
+                <div class="flex-1 relative">
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 text-xs font-semibold">
+                    W
+                  </div>
+                  <input
+                    type="number"
+                    id="input-width"
+                    step="any"
+                    min="1"
+                    class="w-full pl-8 pr-10 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 text-slate-900 dark:text-white font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition"
+                    placeholder="Width"
+                  />
+                  <span class="active-unit-label absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400 text-xs uppercase font-mono">
+                    px
+                  </span>
+                </div>
+
+                <!-- Aspect Ratio Lock Button -->
+                <button
+                  type="button"
+                  id="lock-aspect-btn"
+                  class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 hover:border-blue-400 transition cursor-pointer"
+                  title="Aspect Ratio Locked (Click to unlock)"
+                >
+                  <svg id="lock-icon-locked" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                  </svg>
+                  <svg id="lock-icon-unlocked" class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5V6.75a4.5 4.5 0 119 0v3.75M3.75 21.75h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H3.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                  </svg>
+                </button>
+
+                <!-- Height Input -->
+                <div class="flex-1 relative">
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 text-xs font-semibold">
+                    H
+                  </div>
+                  <input
+                    type="number"
+                    id="input-height"
+                    step="any"
+                    min="1"
+                    class="w-full pl-8 pr-10 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 text-slate-900 dark:text-white font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 transition"
+                    placeholder="Height"
+                  />
+                  <span class="active-unit-label absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-400 text-xs uppercase font-mono">
+                    px
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Resize Mode (Fit vs Fill vs Stretch) -->
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
+                Resize Mode
+              </label>
+              <div class="grid grid-cols-3 gap-2">
+                <label class="mode-option relative flex flex-col items-center p-2.5 rounded-xl border border-blue-500 bg-blue-50/50 dark:bg-blue-950/20 text-center cursor-pointer transition">
+                  <input type="radio" name="resize-mode" value="fit" checked class="sr-only" />
+                  <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">Fit</span>
+                  <span class="text-[10px] text-slate-400 mt-0.5">Keep bounds</span>
+                </label>
+                <label class="mode-option relative flex flex-col items-center p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-slate-300 text-center cursor-pointer transition">
+                  <input type="radio" name="resize-mode" value="fill" class="sr-only" />
+                  <span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Fill & Crop</span>
+                  <span class="text-[10px] text-slate-400 mt-0.5">No borders</span>
+                </label>
+                <label class="mode-option relative flex flex-col items-center p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-slate-300 text-center cursor-pointer transition">
+                  <input type="radio" name="resize-mode" value="stretch" class="sr-only" />
+                  <span class="text-xs font-semibold text-slate-700 dark:text-slate-300">Stretch</span>
+                  <span class="text-[10px] text-slate-400 mt-0.5">Exact ratio</span>
+                </label>
+              </div>
+              <p id="mode-hint" class="text-[11px] text-slate-400 mt-1.5 leading-tight">
+                Keep ratio with clean bounds
+              </p>
+
+              <!-- Canvas Padding Background Selector (Visible in 'Fit' mode) -->
+              <div id="fit-bg-controls" class="mt-3 p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/50 transition-all">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300 flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.444-.444 1.154-.444 1.598 0l2.879 2.879c.444.444.444 1.154 0 1.598l-7.357 7.357" />
+                    </svg>
+                    Canvas Padding Fill
+                  </span>
+                  <span id="fit-bg-status-label" class="text-[10px] font-mono text-slate-500 dark:text-slate-400">Transparent</span>
+                </div>
+
+                <div class="grid grid-cols-5 gap-1.5">
+                  <!-- Transparent (Default) -->
+                  <button
+                    type="button"
+                    class="fit-bg-btn active relative flex flex-col items-center justify-center p-2 rounded-lg border text-center transition cursor-pointer text-xs font-medium border-blue-500 bg-blue-50/80 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 shadow-2xs ring-1 ring-blue-500/20"
+                    data-fit-bg="transparent"
+                    title="Transparent Canvas (Alpha Channel / Checkerboard)"
+                  >
+                    <div class="w-4 h-4 rounded border border-slate-300 dark:border-slate-600 mb-1 flex items-center justify-center overflow-hidden" style="background-image: linear-gradient(45deg, #94a3b8 25%, transparent 25%), linear-gradient(-45deg, #94a3b8 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #94a3b8 75%), linear-gradient(-45deg, transparent 75%, #94a3b8 75%); background-size: 6px 6px;"></div>
+                    <span class="text-[10px] leading-tight truncate max-w-full">Clear</span>
+                  </button>
+
+                  <!-- Blur -->
+                  <button
+                    type="button"
+                    class="fit-bg-btn relative flex flex-col items-center justify-center p-2 rounded-lg border text-center transition cursor-pointer text-xs font-medium border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300"
+                    data-fit-bg="blur"
+                    title="Blurred Image Background (blur 20px)"
+                  >
+                    <div class="w-4 h-4 rounded mb-1 bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 blur-[1px]"></div>
+                    <span class="text-[10px] leading-tight truncate max-w-full">Blur</span>
+                  </button>
+
+                  <!-- White -->
+                  <button
+                    type="button"
+                    class="fit-bg-btn relative flex flex-col items-center justify-center p-2 rounded-lg border text-center transition cursor-pointer text-xs font-medium border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300"
+                    data-fit-bg="white"
+                    title="Solid White Background"
+                  >
+                    <div class="w-4 h-4 rounded border border-slate-300 dark:border-slate-600 bg-white mb-1 shadow-2xs"></div>
+                    <span class="text-[10px] leading-tight truncate max-w-full">White</span>
+                  </button>
+
+                  <!-- Black -->
+                  <button
+                    type="button"
+                    class="fit-bg-btn relative flex flex-col items-center justify-center p-2 rounded-lg border text-center transition cursor-pointer text-xs font-medium border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300"
+                    data-fit-bg="black"
+                    title="Solid Black Background"
+                  >
+                    <div class="w-4 h-4 rounded border border-slate-600 dark:border-slate-500 bg-slate-900 mb-1 shadow-2xs"></div>
+                    <span class="text-[10px] leading-tight truncate max-w-full">Black</span>
+                  </button>
+
+                  <!-- Custom Color -->
+                  <div
+                    id="fit-bg-custom-container"
+                    class="fit-bg-btn relative flex flex-col items-center justify-center p-2 rounded-lg border text-center transition cursor-pointer text-xs font-medium border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300"
+                    data-fit-bg="custom"
+                    title="Custom Solid Color"
+                  >
+                    <div class="w-4 h-4 rounded border border-slate-300 dark:border-slate-600 mb-1 shadow-2xs relative flex items-center justify-center overflow-hidden">
+                      <span id="fit-custom-color-preview" class="w-full h-full block bg-[#3b82f6]"></span>
+                      <input
+                        type="color"
+                        id="fit-custom-color-input"
+                        value="#3b82f6"
+                        class="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
+                        title="Choose custom padding color"
+                      />
+                    </div>
+                    <span class="text-[10px] leading-tight truncate max-w-full">Custom</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Presets -->
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
+                Quick Presets
+              </label>
+              <div class="flex flex-wrap gap-1.5">
+                <button type="button" class="preset-btn px-2.5 py-1 rounded-lg text-xs font-medium border border-slate-200 dark:border-slate-700 hover:border-blue-500 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition cursor-pointer" data-preset-scale="0.5">50%</button>
+                <button type="button" class="preset-btn px-2.5 py-1 rounded-lg text-xs font-medium border border-slate-200 dark:border-slate-700 hover:border-blue-500 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition cursor-pointer" data-preset-scale="0.25">25%</button>
+                <button type="button" class="preset-btn px-2.5 py-1 rounded-lg text-xs font-medium border border-slate-200 dark:border-slate-700 hover:border-blue-500 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition cursor-pointer" data-preset-w="1920" data-preset-h="1080">FHD (1080p)</button>
+                <button type="button" class="preset-btn px-2.5 py-1 rounded-lg text-xs font-medium border border-slate-200 dark:border-slate-700 hover:border-blue-500 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition cursor-pointer" data-preset-w="1080" data-preset-h="1080">1:1 Square</button>
+                <button type="button" class="preset-btn px-2.5 py-1 rounded-lg text-xs font-medium border border-slate-200 dark:border-slate-700 hover:border-blue-500 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition cursor-pointer" data-preset-passport="35x45">Passport (35×45mm)</button>
+                <button type="button" class="preset-btn px-2.5 py-1 rounded-lg text-xs font-medium border border-slate-200 dark:border-slate-700 hover:border-blue-500 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 transition cursor-pointer" data-preset-unit="inch" data-preset-inch-val="2">US Visa (2×2")</button>
+              </div>
+
+              <!-- Social Media & Platform Presets Dropdown -->
+              <div class="relative mt-2">
+                <select
+                  id="social-preset-select"
+                  aria-label="Social Platform Preset"
+                  class="w-full px-3 py-2 text-xs font-medium rounded-xl border appearance-none transition cursor-pointer pr-8 bg-white text-slate-900 border-slate-200 hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700 dark:hover:border-slate-600"
+                >
+                  <option value="" selected disabled>Social Platform Preset</option>
+                  <optgroup label="Facebook">
+                    <option value="820x360">Cover / Page Banner (820x360)</option>
+                    <option value="1200x630">Feed Post Landscape (1200x630)</option>
+                    <option value="1080x1080">Feed Post Square (1080x1080)</option>
+                    <option value="1080x1350">Feed Post Portrait (1080x1350)</option>
+                    <option value="320x320">Profile / DP (320x320)</option>
+                    <option value="1080x1920">Story (1080x1920)</option>
+                    <option value="1920x1005">Event Cover (1920x1005)</option>
+                    <option value="1640x856">Group Cover (1640x856)</option>
+                  </optgroup>
+                  <optgroup label="Instagram">
+                    <option value="1080x1080">Square Post (1080x1080)</option>
+                    <option value="1080x1350">Portrait Post (1080x1350)</option>
+                    <option value="1080x566">Landscape Post (1080x566)</option>
+                    <option value="1080x1920">Story / Reel (1080x1920)</option>
+                    <option value="320x320">Profile Photo (320x320)</option>
+                  </optgroup>
+                  <optgroup label="YouTube">
+                    <option value="2560x1440">Channel Banner (2560x1440)</option>
+                    <option value="1280x720">Video Thumbnail (1280x720)</option>
+                    <option value="1080x1920">Shorts Video (1080x1920)</option>
+                    <option value="800x800">Profile Avatar (800x800)</option>
+                    <option value="150x150">Corner Watermark (150x150)</option>
+                  </optgroup>
+                  <optgroup label="TikTok">
+                    <option value="1080x1920">Video / Story (1080x1920)</option>
+                    <option value="200x200">Profile Photo (200x200)</option>
+                    <option value="800x800">Shop Product (800x800)</option>
+                    <option value="1920x1080">Landscape Video (1920x1080)</option>
+                  </optgroup>
+                  <optgroup label="LinkedIn">
+                    <option value="1200x627">Feed Post (1200x627)</option>
+                    <option value="400x400">Profile Photo (400x400)</option>
+                    <option value="1584x396">Cover / Banner (1584x396)</option>
+                    <option value="1128x376">Company Banner (1128x376)</option>
+                    <option value="1280x720">Article Cover (1280x720)</option>
+                  </optgroup>
+                  <optgroup label="X (Twitter)">
+                    <option value="1500x500">Header / Banner (1500x500)</option>
+                    <option value="1200x675">Post Photo (1200x675)</option>
+                    <option value="400x400">Profile Picture (400x400)</option>
+                    <option value="1200x628">Card Image (1200x628)</option>
+                  </optgroup>
+                  <optgroup label="Pinterest">
+                    <option value="1000x1500">Standard Pin (1000x1500)</option>
+                    <option value="1000x1000">Square Pin (1000x1000)</option>
+                    <option value="1080x1920">Idea Pin (1080x1920)</option>
+                    <option value="1000x2100">Long Infographic (1000x2100)</option>
+                  </optgroup>
+                  <optgroup label="WhatsApp">
+                    <option value="800x800">Profile / DP (800x800)</option>
+                    <option value="1080x1920">Status (1080x1920)</option>
+                    <option value="500x500">Group Icon (500x500)</option>
+                    <option value="1640x856">Business Cover (1640x856)</option>
+                    <option value="512x512">Sticker Canvas (512x512)</option>
+                  </optgroup>
+                  <optgroup label="Tumblr">
+                    <option value="3000x1055">Header Banner (3000x1055)</option>
+                    <option value="1280x1280">Photo Post (1280x1280)</option>
+                  </optgroup>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-slate-400">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- TAB 2: EXPORT SETTINGS -->
+          <div id="tab-pane-export" class="space-y-5 hidden">
+            
+            <!-- Format Selector -->
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <label class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                  Target Format
+                </label>
+                <span id="format-badge-preview" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 uppercase">
+                  JPG
+                </span>
+              </div>
+
+              <!-- Main Formats + "More" Dropdown -->
+              <div class="grid grid-cols-4 gap-1.5">
+                <button type="button" class="format-pill py-2 rounded-xl text-xs font-semibold border border-slate-200 dark:border-slate-700 hover:border-blue-500 text-slate-700 dark:text-slate-300 transition cursor-pointer" data-format="auto">Auto</button>
+                <button type="button" class="format-pill py-2 rounded-xl text-xs font-semibold border-2 border-blue-500 bg-blue-50/50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400 transition cursor-pointer" data-format="jpg">JPG</button>
+                <button type="button" class="format-pill py-2 rounded-xl text-xs font-semibold border border-slate-200 dark:border-slate-700 hover:border-blue-500 text-slate-700 dark:text-slate-300 transition cursor-pointer" data-format="png">PNG</button>
+                <button type="button" class="format-pill py-2 rounded-xl text-xs font-semibold border border-slate-200 dark:border-slate-700 hover:border-blue-500 text-slate-700 dark:text-slate-300 transition cursor-pointer" data-format="webp">WebP</button>
+              </div>
+
+              <!-- Secondary Formats Dropdown -->
+              <div class="relative mt-2">
+                <button
+                  type="button"
+                  id="more-format-btn"
+                  class="w-full flex items-center justify-between px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"
+                  aria-expanded="false"
+                >
+                  <span id="more-format-label">More Formats (AVIF, PDF, ICO...)</span>
+                  <svg id="more-format-arrow" class="w-3.5 h-3.5 text-slate-400 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                  </svg>
+                </button>
+
+                <div
+                  id="more-format-menu"
+                  class="hidden absolute left-0 right-0 top-full mt-1.5 z-40 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-xl overflow-hidden divide-y divide-slate-100 dark:divide-slate-700/60"
+                >
+                  <button type="button" class="more-format-option w-full text-left px-3.5 py-2.5 text-xs font-semibold hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-600 dark:hover:text-blue-400 text-slate-700 dark:text-slate-200 flex items-center transition cursor-pointer" data-more-format="avif">
+                    AVIF
+                  </button>
+                  <button type="button" class="more-format-option w-full text-left px-3.5 py-2.5 text-xs font-semibold hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-600 dark:hover:text-blue-400 text-slate-700 dark:text-slate-200 flex items-center transition cursor-pointer" data-more-format="pdf">
+                    PDF
+                  </button>
+                  <button type="button" class="more-format-option w-full text-left px-3.5 py-2.5 text-xs font-semibold hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-600 dark:hover:text-blue-400 text-slate-700 dark:text-slate-200 flex items-center transition cursor-pointer" data-more-format="ico">
+                    ICO
+                  </button>
+                </div>
+              </div>
+
+              <p id="format-info-text" class="text-[11px] text-slate-400 mt-2 leading-tight">
+                Standard photo compression with configurable quality.
+              </p>
+            </div>
+
+            <!-- Target File Size / Compression Precision -->
+            <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40 p-3.5">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="enable-target-size"
+                    class="w-4 h-4 rounded text-blue-600 focus:ring-blue-500 border-slate-300 dark:border-slate-700 cursor-pointer"
+                  />
+                  <label for="enable-target-size" class="text-xs font-semibold text-slate-800 dark:text-slate-200 cursor-pointer">
+                    Target Max File Size
+                  </label>
+                </div>
+                <span class="text-[11px] font-mono text-blue-600 dark:text-blue-400 font-medium">Precision Compression</span>
+              </div>
+
+              <div id="target-size-controls" class="opacity-50 pointer-events-none transition-opacity mt-3">
+                <div class="flex items-center gap-2">
+                  <div class="flex-1 relative">
+                    <input
+                      type="number"
+                      id="input-target-size"
+                      step="1"
+                      min="1"
+                      class="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+                      placeholder="50"
+                    />
+                  </div>
+
+                  <!-- Unit switch [KB / MB] -->
+                  <div class="flex p-0.5 bg-slate-200 dark:bg-slate-700 rounded-lg text-xs font-medium">
+                    <button type="button" id="size-unit-kb" class="px-2.5 py-1.5 rounded-md bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold cursor-pointer shadow-xs">KB</button>
+                    <button type="button" id="size-unit-mb" class="px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 cursor-pointer">MB</button>
+                  </div>
+                </div>
+
+                <!-- Smart Tip Badge for PNG + Target KB -->
+                <div id="pngSizeTip" class="hidden mt-2 text-xs flex items-center justify-between p-2 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400">
+                  <span>💡 <strong>Tip:</strong> PNG downscales dimensions to reach small KB limits. Switch to WebP or JPG for sharper text.</span>
+                  <div class="flex gap-1.5 ml-2 shrink-0">
+                    <button type="button" id="switchToWebpBtn" class="px-2 py-0.5 text-xs font-semibold rounded bg-amber-500/20 hover:bg-amber-500/30 transition cursor-pointer">WebP</button>
+                    <button type="button" id="switchToJpgBtn" class="px-2 py-0.5 text-xs font-semibold rounded bg-amber-500/20 hover:bg-amber-500/30 transition cursor-pointer">JPG</button>
+                  </div>
+                </div>
+
+                <!-- Smart Target KB Expansion / Matching Card -->
+                <div id="target-upscale-container" class="hidden mt-2.5 p-3 rounded-xl bg-blue-50/80 dark:bg-blue-950/40 border border-blue-200/80 dark:border-blue-900/60 text-xs transition-all">
+                  <div class="flex items-start justify-between gap-2">
+                    <div class="flex-1">
+                      <div class="flex items-center gap-1.5 font-medium text-slate-800 dark:text-slate-200">
+                        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse shrink-0"></span>
+                        <span id="target-upscale-msg">Image is currently under target limit.</span>
+                      </div>
+                      <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-snug">
+                        Proportionally inflate resolution with high-quality smoothing until your photo matches ~90%–100% of target size.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="mt-2.5 flex items-center justify-between gap-2 pt-2 border-t border-blue-100 dark:border-blue-900/40">
+                    <label class="inline-flex items-center gap-1.5 cursor-pointer text-[11px] text-slate-600 dark:text-slate-400 select-none">
+                      <input type="checkbox" id="auto-upscale-toggle" class="w-3.5 h-3.5 rounded text-blue-600 focus:ring-blue-500 border-slate-300 dark:border-slate-700 cursor-pointer" />
+                      <span>Auto-match target size</span>
+                    </label>
+                    <button
+                      type="button"
+                      id="boost-upscale-btn"
+                      class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-semibold text-xs transition-all shadow-xs flex items-center gap-1 cursor-pointer shrink-0 active:scale-95"
+                    >
+                      <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                      </svg>
+                      <span id="boost-upscale-btn-text">Boost to ~50KB</span>
+                    </button>
+                  </div>
+                </div>
+
+                <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+                  Dynamic client-side binary search will compress quality to stay strictly within this limit.
+                </p>
+              </div>
+            </div>
+
+            <!-- Quality Slider (Enabled when target size is not active) -->
+            <div id="quality-slider-container">
+              <div class="flex items-center justify-between mb-2">
+                <label class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                  Image Quality
+                </label>
+                <span id="quality-val-display" class="text-xs font-mono font-semibold text-blue-600 dark:text-blue-400">
+                  92% (High)
+                </span>
+              </div>
+
+              <input
+                type="range"
+                id="quality-slider"
+                min="1"
+                max="100"
+                value="92"
+                class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-600"
+              />
+              <div class="flex justify-between text-[10px] text-slate-400 mt-1 font-mono">
+                <span>1% (Smallest)</span>
+                <span>80%</span>
+                <span>100% (Lossless/Max)</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Download Action Card -->
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm space-y-3">
+          <button
+            type="button"
+            id="download-btn"
+            class="w-full py-3.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.25">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+            <span id="download-btn-label">Download Resized Image</span>
+          </button>
+
+          <!-- Batch Download All (ZIP) Button -->
+          <button
+            type="button"
+            id="batch-download-btn"
+            class="hidden w-full py-3 px-4 rounded-xl border-2 border-blue-600 dark:border-blue-500 bg-blue-50/80 dark:bg-blue-950/40 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 font-semibold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0l-3-3m3 3l3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+            </svg>
+            <span id="batch-download-label">Download All (ZIP)</span>
+          </button>
+
+          <div class="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 px-1 font-mono">
+            <span id="summary-meta-res">1920 × 1080 px</span>
+            <span id="summary-meta-format">FORMAT: JPG</span>
+            <span id="summary-meta-size">SIZE: ~150 KB</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+</div>
+
+<script>
+  import JSZip from 'jszip';
+
+  // Queue Item Interface
+  interface QueueItem {
+    id: string;
+    file: File;
+    name: string;
+    size: number;
+    mimeType: string;
+    img: HTMLImageElement;
+    width: number;
+    height: number;
+    rotation: number;
+    flipH: boolean;
+    targetW: number;
+    targetH: number;
+    thumbDataUrl: string;
+    fitBg?: 'transparent' | 'blur' | 'white' | 'black' | 'custom';
+    fitCustomColor?: string;
+  }
+
+  type SupportedFormat = 'auto' | 'jpg' | 'png' | 'webp' | 'avif' | 'pdf' | 'ico';
+
+  function initImageResizer() {
+    const rootEl = document.getElementById('image-resizer-root') as HTMLElement | null;
+    if (!rootEl) return;
+
+    if (rootEl.dataset.initialized === 'true') return;
+    rootEl.dataset.initialized = 'true';
+
+    const root: HTMLElement = rootEl;
+
+    // Elements
+    const fileInputEl = (document.getElementById('imageInput') || document.getElementById('file-input')) as HTMLInputElement | null;
+    const dropAreaEl = (document.getElementById('dropzone') || document.getElementById('drop-area')) as HTMLElement | null;
+    const browseBtnEl = (document.getElementById('selectBtn') || document.getElementById('browse-btn')) as HTMLButtonElement | null;
+    const dropzoneViewEl = document.getElementById('dropzone-view') as HTMLElement | null;
+    const editorViewEl = document.getElementById('editor-view') as HTMLElement | null;
+    const previewCanvasContainerEl = document.getElementById('preview-canvas-container') as HTMLElement | null;
+    const previewCanvasEl = document.getElementById('preview-canvas') as HTMLCanvasElement | null;
+    const canvasCtxEl = previewCanvasEl?.getContext('2d') ?? null;
+
+    if (!fileInputEl || !dropAreaEl || !browseBtnEl || !dropzoneViewEl || !editorViewEl || !previewCanvasContainerEl || !previewCanvasEl || !canvasCtxEl) {
+      return;
+    }
+
+    const fileInput: HTMLInputElement = fileInputEl;
+    const dropArea: HTMLElement = dropAreaEl;
+    const browseBtn: HTMLButtonElement = browseBtnEl;
+    const dropzoneView: HTMLElement = dropzoneViewEl;
+    const editorView: HTMLElement = editorViewEl;
+    const previewCanvasContainer: HTMLElement = previewCanvasContainerEl;
+    const previewCanvas: HTMLCanvasElement = previewCanvasEl;
+    const canvasCtx: CanvasRenderingContext2D = canvasCtxEl;
+
+    // Top Bar Elements
+    const queueCounter = document.getElementById('queue-counter') as HTMLElement | null;
+    const clearAllBtn = document.getElementById('clear-all-btn') as HTMLButtonElement | null;
+    const queueStrip = document.getElementById('queue-strip') as HTMLElement | null;
+    const sourceFilename = document.getElementById('source-filename') as HTMLElement | null;
+    const sourceSpecs = document.getElementById('source-specs') as HTMLElement | null;
+    const uploadAnotherBtn = document.getElementById('upload-another-btn') as HTMLButtonElement | null;
+
+    // Canvas Overlays
+    const previewDimPill = document.getElementById('preview-dim-pill') as HTMLElement | null;
+    const previewSizePill = document.getElementById('preview-size-pill') as HTMLElement | null;
+    const previewSavingsPill = document.getElementById('preview-savings-pill') as HTMLElement | null;
+    const canvasLoading = document.getElementById('canvas-loading') as HTMLElement | null;
+    const canvasLoadingText = document.getElementById('canvas-loading-text') as HTMLElement | null;
+
+    // Inline Crop Overlay
+    const inlineCropOverlay = document.getElementById('inline-crop-overlay') as HTMLElement | null;
+    const inlineCropBox = document.getElementById('inline-crop-box') as HTMLElement | null;
+    const inlineCropDimTag = document.getElementById('inline-crop-dim-tag') as HTMLElement | null;
+    const inlineCropApplyBtn = document.getElementById('inline-crop-apply-btn') as HTMLButtonElement | null;
+    const inlineCropCancelBtn = document.getElementById('inline-crop-cancel-btn') as HTMLButtonElement | null;
+
+    // Transform Bar
+    const rotateBtn = document.getElementById('rotate-btn') as HTMLButtonElement | null;
+    const cropBtn = document.getElementById('crop-btn') as HTMLButtonElement | null;
+    const flipHBtn = document.getElementById('flip-h-btn') as HTMLButtonElement | null;
+    const resetTransformsBtn = document.getElementById('reset-transforms-btn') as HTMLButtonElement | null;
+    const downloadBtn = document.getElementById('download-btn') as HTMLButtonElement | null;
+    const downloadBtnLabel = document.getElementById('download-btn-label') as HTMLElement | null;
+    const batchDownloadBtn = document.getElementById('batch-download-btn') as HTMLButtonElement | null;
+    const batchDownloadLabel = document.getElementById('batch-download-label') as HTMLElement | null;
+
+    // Tabs
+    const tabBtnResize = document.getElementById('tab-btn-resize') as HTMLButtonElement | null;
+    const tabBtnExport = document.getElementById('tab-btn-export') as HTMLButtonElement | null;
+    const tabPaneResize = document.getElementById('tab-pane-resize') as HTMLElement | null;
+    const tabPaneExport = document.getElementById('tab-pane-export') as HTMLElement | null;
+
+    // Resize Controls
+    const inputWidth = document.getElementById('input-width') as HTMLInputElement | null;
+    const inputHeight = document.getElementById('input-height') as HTMLInputElement | null;
+    const lockAspectBtn = document.getElementById('lock-aspect-btn') as HTMLButtonElement | null;
+    const lockIconLocked = document.getElementById('lock-icon-locked') as SVGElement | null;
+    const lockIconUnlocked = document.getElementById('lock-icon-unlocked') as SVGElement | null;
+    const unitButtons = root.querySelectorAll<HTMLButtonElement>('.unit-pill');
+    const activeUnitLabels = root.querySelectorAll<HTMLElement>('.active-unit-label');
+    const dpiToggleBtn = document.getElementById('dpi-toggle-btn') as HTMLButtonElement | null;
+    const dpiValDisplay = document.getElementById('dpi-val') as HTMLElement | null;
+    const resizeModeRadios = root.querySelectorAll<HTMLInputElement>('input[name="resize-mode"]');
+    const modeHint = document.getElementById('mode-hint') as HTMLElement | null;
+    const presetButtons = root.querySelectorAll<HTMLButtonElement>('.preset-btn');
+    const socialPresetSelect = document.getElementById('social-preset-select') as HTMLSelectElement | null;
+
+    // Canvas Background Controls
+    const fitBgControls = document.getElementById('fit-bg-controls') as HTMLElement | null;
+    const fitBgStatusLabel = document.getElementById('fit-bg-status-label') as HTMLElement | null;
+    const fitBgButtons = root.querySelectorAll<HTMLElement>('.fit-bg-btn');
+    const fitCustomColorInput = document.getElementById('fit-custom-color-input') as HTMLInputElement | null;
+    const fitCustomColorPreview = document.getElementById('fit-custom-color-preview') as HTMLElement | null;
+
+    // Export Controls
+    const formatButtons = root.querySelectorAll<HTMLButtonElement>('.format-pill');
+    const formatInfoText = document.getElementById('format-info-text') as HTMLElement | null;
+    const formatBadgePreview = document.getElementById('format-badge-preview') as HTMLElement | null;
+    const moreFormatBtn = document.getElementById('more-format-btn') as HTMLButtonElement | null;
+    const moreFormatLabel = document.getElementById('more-format-label') as HTMLElement | null;
+    const moreFormatArrow = document.getElementById('more-format-arrow') as HTMLElement | null;
+    const moreFormatMenu = document.getElementById('more-format-menu') as HTMLElement | null;
+    const moreFormatOptions = root.querySelectorAll<HTMLButtonElement>('.more-format-option');
+    const enableTargetSize = document.getElementById('enable-target-size') as HTMLInputElement | null;
+    const targetSizeControls = document.getElementById('target-size-controls') as HTMLElement | null;
+    const inputTargetSize = document.getElementById('input-target-size') as HTMLInputElement | null;
+    const sizeUnitKbBtn = document.getElementById('size-unit-kb') as HTMLButtonElement | null;
+    const sizeUnitMbBtn = document.getElementById('size-unit-mb') as HTMLButtonElement | null;
+    const pngSizeTip = document.getElementById('pngSizeTip') as HTMLElement | null;
+    const switchToWebpBtn = document.getElementById('switchToWebpBtn') as HTMLButtonElement | null;
+    const switchToJpgBtn = document.getElementById('switchToJpgBtn') as HTMLButtonElement | null;
+    const targetUpscaleContainer = document.getElementById('target-upscale-container') as HTMLElement | null;
+    const targetUpscaleMsg = document.getElementById('target-upscale-msg') as HTMLElement | null;
+    const boostUpscaleBtn = document.getElementById('boost-upscale-btn') as HTMLButtonElement | null;
+    const boostUpscaleBtnText = document.getElementById('boost-upscale-btn-text') as HTMLElement | null;
+    const autoUpscaleToggle = document.getElementById('auto-upscale-toggle') as HTMLInputElement | null;
+    const qualitySlider = document.getElementById('quality-slider') as HTMLInputElement | null;
+    const qualityValDisplay = document.getElementById('quality-val-display') as HTMLElement | null;
+    const qualitySliderContainer = document.getElementById('quality-slider-container') as HTMLElement | null;
+
+    // Summary Meta
+    const summaryMetaRes = document.getElementById('summary-meta-res') as HTMLElement | null;
+    const summaryMetaFormat = document.getElementById('summary-meta-format') as HTMLElement | null;
+    const summaryMetaSize = document.getElementById('summary-meta-size') as HTMLElement | null;
+
+    // Queue State
+    const MAX_QUEUE_SIZE = 15;
+    const imageQueue: QueueItem[] = [];
+    let activeQueueIndex = 0;
+
+    // Active Item State
+    let originalImage: HTMLImageElement | null = null;
+    let originalFile: File | null = null;
+    let originalWidth = 0;
+    let originalHeight = 0;
+    let originalSizeBytes = 0;
+    let originalMimeType = 'image/jpeg';
+
+    // Active Transformations
+    let rotation = 0;
+    let flipH = false;
+    let isCropModeActive = false;
+    let inlineCropRect = { x: 0, y: 0, w: 100, h: 100 };
+    let inlineCropDragState: {
+      action: 'move' | 'nw' | 'ne' | 'se' | 'sw' | 'n' | 's' | 'w' | 'e';
+      startX: number;
+      startY: number;
+      rectStart: { x: number; y: number; w: number; h: number };
+    } | null = null;
+
+
+    // Dimension State
+    let activeUnit: 'px' | 'inch' | 'cm' | 'mm' | '%' = 'px';
+    let dpi = 96;
+    let isAspectLocked = true;
+    let resizeMode: 'fit' | 'fill' | 'stretch' = 'fit';
+    let fitBg: 'transparent' | 'blur' | 'white' | 'black' | 'custom' = 'transparent';
+    let fitCustomColor = '#3b82f6';
+    let targetPxW = 0;
+    let targetPxH = 0;
+
+    // Export State
+    let exportFormat: SupportedFormat = 'auto';
+    let isTargetSizeActive = false;
+    let targetSizeValue = 50;
+    let targetSizeUnit: 'KB' | 'MB' = 'KB';
+    let quality = 0.92;
+    let autoUpscaleActive = false;
+    let isUpscaling = false;
+    let lastAutoUpscaleTime = 0;
+
+    // Debounce & Cache
+    let renderDebounceTimer: number | null = null;
+    let lastBlob: Blob | null = null;
+
+    // Format Bytes
+    function formatBytes(bytes: number, decimals = 1): string {
+      if (bytes === 0) return '0 Bytes';
+      const k = 1024;
+      const dm = decimals < 0 ? 0 : decimals;
+      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+    }
+
+    // Unit Conversion
+    function getEffectiveSourceWidth(): number {
+      const w = originalWidth || originalImage?.naturalWidth || imageQueue[activeQueueIndex]?.width || 1;
+      const h = originalHeight || originalImage?.naturalHeight || imageQueue[activeQueueIndex]?.height || 1;
+      return (rotation === 90 || rotation === 270) ? h : w;
+    }
+
+    function getEffectiveSourceHeight(): number {
+      const w = originalWidth || originalImage?.naturalWidth || imageQueue[activeQueueIndex]?.width || 1;
+      const h = originalHeight || originalImage?.naturalHeight || imageQueue[activeQueueIndex]?.height || 1;
+      return (rotation === 90 || rotation === 270) ? w : h;
+    }
+
+    function convertFromPx(px: number, unit: 'px' | 'inch' | 'cm' | 'mm' | '%', originalRef: number): number {
+      if (unit === 'px') return Math.round(px);
+      if (unit === 'inch') return parseFloat((px / dpi).toFixed(2));
+      if (unit === 'cm') return parseFloat((px / (dpi / 2.54)).toFixed(2));
+      if (unit === 'mm') return parseFloat((px / (dpi / 25.4)).toFixed(1));
+      if (unit === '%') return parseFloat(((px / (originalRef || 1)) * 100).toFixed(1));
+      return px;
+    }
+
+    function convertToPx(val: number, unit: 'px' | 'inch' | 'cm' | 'mm' | '%', originalRef: number): number {
+      if (unit === 'px') return Math.round(val);
+      if (unit === 'inch') return Math.round(val * dpi);
+      if (unit === 'cm') return Math.round(val * (dpi / 2.54));
+      if (unit === 'mm') return Math.round(val * (dpi / 25.4));
+      if (unit === '%') return Math.round((val / 100) * originalRef);
+      return Math.round(val);
+    }
+
+    function syncInputsFromPx() {
+      const srcW = getEffectiveSourceWidth();
+      const srcH = getEffectiveSourceHeight();
+
+      // Fallback check: Never let targetPxW/targetPxH remain 0 or NaN
+      if (!targetPxW || isNaN(targetPxW) || targetPxW <= 0) {
+        targetPxW = (imageQueue[activeQueueIndex]?.targetW && imageQueue[activeQueueIndex].targetW > 0)
+          ? imageQueue[activeQueueIndex].targetW
+          : srcW;
+      }
+      if (!targetPxH || isNaN(targetPxH) || targetPxH <= 0) {
+        targetPxH = (imageQueue[activeQueueIndex]?.targetH && imageQueue[activeQueueIndex].targetH > 0)
+          ? imageQueue[activeQueueIndex].targetH
+          : srcH;
+      }
+
+      const dispW = convertFromPx(targetPxW, activeUnit, srcW);
+      const dispH = convertFromPx(targetPxH, activeUnit, srcH);
+
+      if (inputWidth) {
+        inputWidth.value = (dispW > 0 ? dispW : convertFromPx(srcW, activeUnit, srcW)).toString();
+      }
+      if (inputHeight) {
+        inputHeight.value = (dispH > 0 ? dispH : convertFromPx(srcH, activeUnit, srcH)).toString();
+      }
+    }
+
+    function updateLockUI() {
+      if (!lockIconLocked || !lockIconUnlocked || !lockAspectBtn) return;
+      if (isAspectLocked) {
+        lockIconLocked.classList.remove('hidden');
+        lockIconUnlocked.classList.add('hidden');
+        lockAspectBtn.classList.add('bg-blue-50', 'dark:bg-blue-950/40', 'text-blue-600', 'dark:text-blue-400');
+        lockAspectBtn.classList.remove('text-slate-400');
+        lockAspectBtn.title = 'Aspect Ratio Locked (Click to unlock)';
+      } else {
+        lockIconLocked.classList.add('hidden');
+        lockIconUnlocked.classList.remove('hidden');
+        lockAspectBtn.classList.remove('bg-blue-50', 'dark:bg-blue-950/40', 'text-blue-600', 'dark:text-blue-400');
+        lockAspectBtn.classList.add('text-slate-400');
+        lockAspectBtn.title = 'Aspect Ratio Unlocked (Click to lock)';
+      }
+    }
+
+    function updateUnitUI() {
+      unitButtons.forEach(btn => {
+        if (btn.dataset.unit === activeUnit) {
+          btn.className = 'unit-pill py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-xs';
+        } else {
+          btn.className = 'unit-pill py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer text-slate-600 dark:text-slate-300 hover:text-slate-900';
+        }
+      });
+
+      activeUnitLabels.forEach(el => {
+        el.textContent = activeUnit;
+      });
+    }
+
+    function changeUnit(newUnit: 'px' | 'inch' | 'cm' | 'mm' | '%') {
+      if (activeUnit === newUnit) return;
+      activeUnit = newUnit;
+      updateUnitUI();
+      syncInputsFromPx();
+    }
+
+    function updateResizeModeUI() {
+      const modeOptions = root.querySelectorAll('.mode-option');
+      modeOptions.forEach(opt => {
+        const radio = opt.querySelector('input') as HTMLInputElement;
+        const textSpan = opt.querySelector('span:first-of-type') as HTMLElement;
+        if (radio && radio.value === resizeMode) {
+          opt.className = 'mode-option relative flex flex-col items-center p-2.5 rounded-xl border border-blue-500 bg-blue-50/50 dark:bg-blue-950/20 text-center cursor-pointer transition';
+          if (textSpan) textSpan.className = 'text-xs font-semibold text-blue-600 dark:text-blue-400';
+          radio.checked = true;
+        } else {
+          opt.className = 'mode-option relative flex flex-col items-center p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-slate-300 text-center cursor-pointer transition';
+          if (textSpan) textSpan.className = 'text-xs font-semibold text-slate-700 dark:text-slate-300';
+        }
+      });
+
+      if (modeHint) {
+        if (resizeMode === 'fit') {
+          modeHint.textContent = 'Keep ratio with clean bounds';
+        } else if (resizeMode === 'fill') {
+          modeHint.textContent = 'Fill target area & crop edges';
+        } else {
+          modeHint.textContent = 'Force exact dimensions';
+        }
+      }
+
+      if (fitBgControls) {
+        if (resizeMode === 'fit') {
+          fitBgControls.classList.remove('hidden');
+        } else {
+          fitBgControls.classList.add('hidden');
+        }
+      }
+    }
+
+    function setFitBg(mode: 'transparent' | 'blur' | 'white' | 'black' | 'custom', color?: string) {
+      fitBg = mode;
+      if (color) fitCustomColor = color;
+      if (mode === 'transparent' && exportFormat === 'jpg') {
+        setFormat('png');
+      }
+      updateFitBgUI();
+    }
+
+    function updateFitBgUI() {
+      fitBgButtons.forEach(btn => {
+        const bg = btn.getAttribute('data-fit-bg');
+        if (bg === fitBg) {
+          btn.className = 'fit-bg-btn active relative flex flex-col items-center justify-center p-2 rounded-lg border text-center transition cursor-pointer text-xs font-medium border-blue-500 bg-blue-50/80 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 shadow-2xs ring-1 ring-blue-500/20';
+        } else {
+          btn.className = 'fit-bg-btn relative flex flex-col items-center justify-center p-2 rounded-lg border text-center transition cursor-pointer text-xs font-medium border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300';
+        }
+      });
+
+      if (fitCustomColorPreview) {
+        fitCustomColorPreview.style.backgroundColor = fitCustomColor;
+      }
+      if (fitCustomColorInput) {
+        fitCustomColorInput.value = fitCustomColor;
+      }
+
+      if (fitBgStatusLabel) {
+        if (fitBg === 'transparent') fitBgStatusLabel.textContent = 'Transparent';
+        else if (fitBg === 'blur') fitBgStatusLabel.textContent = 'Blur (20px)';
+        else if (fitBg === 'white') fitBgStatusLabel.textContent = 'White';
+        else if (fitBg === 'black') fitBgStatusLabel.textContent = 'Black';
+        else if (fitBg === 'custom') fitBgStatusLabel.textContent = `Custom (${fitCustomColor.toUpperCase()})`;
+      }
+    }
+
+    // PDF Blob Generation
+    function createPdfBlob(jpegBytes: Uint8Array, widthPx: number, heightPx: number, pdfDpi = 96): Blob {
+      const ptW = Math.round(((widthPx * 72) / pdfDpi) * 100) / 100;
+      const ptH = Math.round(((heightPx * 72) / pdfDpi) * 100) / 100;
+
+      const enc = new TextEncoder();
+      const parts: (Uint8Array | string)[] = [];
+      const offsets: number[] = [0];
+      let currentOffset = 0;
+
+      function writeString(str: string) {
+        const b = enc.encode(str);
+        parts.push(b);
+        currentOffset += b.length;
+      }
+
+      function writeBytes(b: Uint8Array) {
+        parts.push(b);
+        currentOffset += b.length;
+      }
+
+      writeString("%PDF-1.4\n%\xE2\xE3\xCF\xD3\n");
+
+      // Obj 1: Catalog
+      offsets.push(currentOffset);
+      writeString("1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n");
+
+      // Obj 2: Pages
+      offsets.push(currentOffset);
+      writeString("2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n");
+
+      // Obj 3: Page
+      offsets.push(currentOffset);
+      writeString(
+        `3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${ptW} ${ptH}] /Contents 4 0 R /Resources << /ProcSet [/PDF /ImageC] /XObject << /Im1 5 0 R >> >> >>\nendobj\n`
+      );
+
+      // Obj 4: Content Stream
+      const contentStream = `q\n${ptW} 0 0 ${ptH} 0 0 cm\n/Im1 Do\nQ\n`;
+      const contentBytes = enc.encode(contentStream);
+      offsets.push(currentOffset);
+      writeString(`4 0 obj\n<< /Length ${contentBytes.length} >>\nstream\n`);
+      writeBytes(contentBytes);
+      writeString("endstream\nendobj\n");
+
+      // Obj 5: Image XObject
+      offsets.push(currentOffset);
+      writeString(
+        `5 0 obj\n<< /Type /XObject /Subtype /Image /Width ${widthPx} /Height ${heightPx} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${jpegBytes.length} >>\nstream\n`
+      );
+      writeBytes(jpegBytes);
+      writeString("\nendstream\nendobj\n");
+
+      // xref
+      const xrefOffset = currentOffset;
+      writeString("xref\n0 6\n0000000000 65535 f \r\n");
+      for (let i = 1; i <= 5; i++) {
+        const offStr = String(offsets[i]).padStart(10, '0');
+        writeString(`${offStr} 00000 n \r\n`);
+      }
+
+      writeString(`trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF\n`);
+
+      return new Blob(parts as unknown as BlobPart[], { type: 'application/pdf' });
+    }
+
+    // ICO Blob Generation
+    async function createIcoBlob(sourceCanvas: HTMLCanvasElement): Promise<Blob> {
+      const sizes = [16, 32, 48];
+      const images: { width: number; height: number; bytes: Uint8Array }[] = [];
+
+      for (const size of sizes) {
+        const off = document.createElement('canvas');
+        off.width = size;
+        off.height = size;
+        const ctx = off.getContext('2d');
+        if (!ctx) continue;
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(sourceCanvas, 0, 0, size, size);
+
+        const b = await new Promise<Blob | null>((res) => off.toBlob(res, 'image/png'));
+        if (!b) continue;
+        const buf = await b.arrayBuffer();
+        images.push({
+          width: size,
+          height: size,
+          bytes: new Uint8Array(buf),
+        });
+      }
+
+      const numImages = images.length;
+      const headerSize = 6;
+      const entrySize = 16;
+      const offset = headerSize + entrySize * numImages;
+
+      const totalSize = offset + images.reduce((acc, img) => acc + img.bytes.length, 0);
+      const buffer = new Uint8Array(totalSize);
+      const view = new DataView(buffer.buffer);
+
+      view.setUint16(0, 0, true);
+      view.setUint16(2, 1, true);
+      view.setUint16(4, numImages, true);
+
+      let entryOffset = headerSize;
+      let dataOffset = offset;
+
+      for (const img of images) {
+        view.setUint8(entryOffset + 0, img.width === 256 ? 0 : img.width);
+        view.setUint8(entryOffset + 1, img.height === 256 ? 0 : img.height);
+        view.setUint8(entryOffset + 2, 0);
+        view.setUint8(entryOffset + 3, 0);
+        view.setUint16(entryOffset + 4, 1, true);
+        view.setUint16(entryOffset + 6, 32, true);
+        view.setUint32(entryOffset + 8, img.bytes.length, true);
+        view.setUint32(entryOffset + 12, dataOffset, true);
+
+        buffer.set(img.bytes, dataOffset);
+
+        entryOffset += entrySize;
+        dataOffset += img.bytes.length;
+      }
+
+      return new Blob([buffer], { type: 'image/x-icon' });
+    }
+
+    function setFormat(format: SupportedFormat) {
+      exportFormat = format;
+
+      const isMoreFormat = ['avif', 'pdf', 'ico'].includes(format);
+
+      formatButtons.forEach(btn => {
+        if (btn.dataset.format === format) {
+          btn.className = 'format-pill py-2 rounded-xl text-xs font-semibold border-2 border-blue-500 bg-blue-50/50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400 transition cursor-pointer';
+        } else {
+          btn.className = 'format-pill py-2 rounded-xl text-xs font-semibold border border-slate-200 dark:border-slate-700 hover:border-blue-500 text-slate-700 dark:text-slate-300 transition cursor-pointer';
+        }
+      });
+
+      if (moreFormatLabel) {
+        if (isMoreFormat) {
+          const names: Record<string, string> = { avif: 'AVIF (Selected)', pdf: 'PDF (Selected)', ico: 'ICO (Selected)' };
+          moreFormatLabel.textContent = names[format] || 'More Formats';
+        } else {
+          moreFormatLabel.textContent = 'More Formats (AVIF, PDF, ICO...)';
+        }
+      }
+
+      if (formatBadgePreview) {
+        formatBadgePreview.textContent = format.toUpperCase();
+      }
+
+      if (formatInfoText) {
+        if (format === 'auto') {
+          formatInfoText.textContent = 'Preserves the original uploaded file format.';
+        } else if (format === 'jpg') {
+          formatInfoText.textContent = 'Standard photo compression with quality controls.';
+        } else if (format === 'png') {
+          formatInfoText.textContent = 'Lossless with transparent alpha background support.';
+        } else if (format === 'webp') {
+          formatInfoText.textContent = 'High-efficiency modern web standard (smaller than JPG/PNG).';
+        } else if (format === 'avif') {
+          formatInfoText.textContent = 'Maximum compression efficiency for next-gen browsers.';
+        } else if (format === 'pdf') {
+          formatInfoText.textContent = 'Embeds high-resolution image into a printable PDF page.';
+        } else if (format === 'ico') {
+          formatInfoText.textContent = 'Multi-resolution Windows icon & website favicon.';
+        }
+      }
+      updatePngSizeTip();
+    }
+
+    function updatePngSizeTip() {
+      const isPng = exportFormat === 'png' || (exportFormat === 'auto' && getTargetMimeType() === 'image/png');
+      const shouldShow = isTargetSizeActive && isPng;
+      if (pngSizeTip) {
+        if (shouldShow) {
+          pngSizeTip.classList.remove('hidden');
+        } else {
+          pngSizeTip.classList.add('hidden');
+        }
+      }
+    }
+
+    function updateTargetSizeControlsUI() {
+      if (!targetSizeControls || !qualitySliderContainer) return;
+      if (isTargetSizeActive) {
+        targetSizeControls.classList.remove('opacity-50', 'pointer-events-none');
+        qualitySliderContainer.classList.add('opacity-40', 'pointer-events-none');
+        if (lastBlob) {
+          updateUpscaleUI(lastBlob.size);
+        }
+      } else {
+        targetSizeControls.classList.add('opacity-50', 'pointer-events-none');
+        qualitySliderContainer.classList.remove('opacity-40', 'pointer-events-none');
+        if (targetUpscaleContainer) {
+          targetUpscaleContainer.classList.add('hidden');
+        }
+      }
+      updatePngSizeTip();
+    }
+
+    function switchTab(tab: 'resize' | 'export') {
+      if (tab === 'resize') {
+        tabPaneResize?.classList.remove('hidden');
+        tabPaneExport?.classList.add('hidden');
+        tabBtnResize?.classList.add('bg-white', 'dark:bg-slate-700', 'text-slate-900', 'dark:text-white', 'shadow-sm');
+        tabBtnResize?.classList.remove('text-slate-500', 'dark:text-slate-400');
+        tabBtnExport?.classList.remove('bg-white', 'dark:bg-slate-700', 'text-slate-900', 'dark:text-white', 'shadow-sm');
+        tabBtnExport?.classList.add('text-slate-500', 'dark:text-slate-400');
+      } else {
+        tabPaneResize?.classList.add('hidden');
+        tabPaneExport?.classList.remove('hidden');
+        tabBtnExport?.classList.add('bg-white', 'dark:bg-slate-700', 'text-slate-900', 'dark:text-white', 'shadow-sm');
+        tabBtnExport?.classList.remove('text-slate-500', 'dark:text-slate-400');
+        tabBtnResize?.classList.remove('bg-white', 'dark:bg-slate-700', 'text-slate-900', 'dark:text-white', 'shadow-sm');
+        tabBtnResize?.classList.add('text-slate-500', 'dark:text-slate-400');
+      }
+    }
+
+    function getTargetMimeType(): string {
+      if (exportFormat === 'auto') {
+        if (fitBg === 'transparent' && resizeMode === 'fit') {
+          if (originalMimeType === 'image/png' || originalMimeType === 'image/webp' || originalMimeType === 'image/avif') {
+            return originalMimeType;
+          }
+          return 'image/png';
+        }
+        return originalMimeType || 'image/jpeg';
+      }
+      if (exportFormat === 'jpg') return 'image/jpeg';
+      if (exportFormat === 'png') return 'image/png';
+      if (exportFormat === 'webp') return 'image/webp';
+      if (exportFormat === 'avif') return 'image/avif';
+      return 'image/jpeg';
+    }
+
+    function getExtensionForFormat(fmt: SupportedFormat, blobType: string): string {
+      if (fmt === 'jpg') return 'jpg';
+      if (fmt === 'png') return 'png';
+      if (fmt === 'webp') return 'webp';
+      if (fmt === 'avif') return blobType === 'image/avif' ? 'avif' : 'webp';
+      if (fmt === 'pdf') return 'pdf';
+      if (fmt === 'ico') return 'ico';
+      const m = getTargetMimeType();
+      return m === 'image/png' ? 'png' : m === 'image/webp' ? 'webp' : 'jpg';
+    }
+
+    async function binarySearchQuality(mime: string, targetBytes: number, canvas: HTMLCanvasElement = previewCanvas!): Promise<Blob> {
+      if (!canvas) {
+        return new Blob([], { type: mime });
+      }
+
+      // 1. STRICT PNG DIMENSION DOWNSCALING (UNDER TARGET KB)
+      // Browsers ignore quality parameter for PNG (lossless), so we iteratively downscale canvas dimensions
+      if (mime === 'image/png') {
+        const origBlob = await new Promise<Blob | null>((res) => canvas.toBlob(res, 'image/png'));
+        if (origBlob && origBlob.size <= targetBytes) {
+          return origBlob;
+        }
+
+        let bestBlob: Blob | null = origBlob;
+        const pngScaleFactors = [0.95, 0.85, 0.70, 0.55, 0.40, 0.25, 0.18, 0.12, 0.08, 0.05];
+
+        for (const scale of pngScaleFactors) {
+          const sW = Math.max(1, Math.round(canvas.width * scale));
+          const sH = Math.max(1, Math.round(canvas.height * scale));
+          const scaledCanvas = document.createElement('canvas');
+          scaledCanvas.width = sW;
+          scaledCanvas.height = sH;
+          const sCtx = scaledCanvas.getContext('2d');
+          if (!sCtx) continue;
+          sCtx.imageSmoothingEnabled = true;
+          sCtx.imageSmoothingQuality = 'high';
+          sCtx.drawImage(canvas, 0, 0, sW, sH);
+
+          const curBlob = await new Promise<Blob | null>((res) => scaledCanvas.toBlob(res, 'image/png'));
+          if (curBlob) {
+            bestBlob = curBlob;
+            if (curBlob.size <= targetBytes) {
+              return curBlob;
+            }
+          }
+        }
+
+        // Further downscale if still exceeding for micro target limits
+        let extraScale = 0.04;
+        while (extraScale > 0.005) {
+          const sW = Math.max(1, Math.round(canvas.width * extraScale));
+          const sH = Math.max(1, Math.round(canvas.height * extraScale));
+          const scaledCanvas = document.createElement('canvas');
+          scaledCanvas.width = sW;
+          scaledCanvas.height = sH;
+          const sCtx = scaledCanvas.getContext('2d');
+          if (!sCtx) break;
+          sCtx.imageSmoothingEnabled = true;
+          sCtx.imageSmoothingQuality = 'high';
+          sCtx.drawImage(canvas, 0, 0, sW, sH);
+
+          const curBlob = await new Promise<Blob | null>((res) => scaledCanvas.toBlob(res, 'image/png'));
+          if (curBlob) {
+            bestBlob = curBlob;
+            if (curBlob.size <= targetBytes) {
+              return curBlob;
+            }
+          }
+          extraScale *= 0.6;
+        }
+
+        return bestBlob || origBlob || new Blob([], { type: 'image/png' });
+      }
+
+      // 2. JPG / WebP / AVIF: Binary search on quality, and proportionally scale down dimensions if still exceeding
+      const maxQBlob = await new Promise<Blob | null>((res) => canvas.toBlob(res, mime, 1.0));
+      if (maxQBlob && maxQBlob.size <= targetBytes) {
+        return maxQBlob;
+      }
+
+      const minQ = 0.02;
+      const minQBlob = await new Promise<Blob | null>((res) => canvas.toBlob(res, mime, minQ));
+
+      if (minQBlob && minQBlob.size <= targetBytes) {
+        let low = minQ;
+        let high = 1.0;
+        let bestBlob: Blob = minQBlob;
+
+        for (let step = 0; step < 8; step++) {
+          const mid = (low + high) / 2;
+          const b = await new Promise<Blob | null>((res) => canvas.toBlob(res, mime, mid));
+          if (!b) break;
+
+          if (b.size <= targetBytes) {
+            bestBlob = b;
+            low = mid;
+          } else {
+            high = mid;
+          }
+        }
+        return bestBlob;
+      }
+
+      // Still exceeding at lowest quality: proportionally scale down canvas dimensions
+      let bestScaledBlob: Blob | null = minQBlob;
+      const lossyScales = [0.90, 0.80, 0.70, 0.60, 0.50, 0.40, 0.30, 0.20, 0.10, 0.05];
+
+      for (const scale of lossyScales) {
+        const sW = Math.max(1, Math.round(canvas.width * scale));
+        const sH = Math.max(1, Math.round(canvas.height * scale));
+        const scaledCanvas = document.createElement('canvas');
+        scaledCanvas.width = sW;
+        scaledCanvas.height = sH;
+        const sCtx = scaledCanvas.getContext('2d');
+        if (!sCtx) continue;
+        sCtx.imageSmoothingEnabled = true;
+        sCtx.imageSmoothingQuality = 'high';
+        sCtx.drawImage(canvas, 0, 0, sW, sH);
+
+        const testBlob = await new Promise<Blob | null>((res) => scaledCanvas.toBlob(res, mime, 0.05));
+        if (testBlob) {
+          bestScaledBlob = testBlob;
+          if (testBlob.size <= targetBytes) {
+            // Found canvas dimensions that can fit under targetBytes!
+            // Run binary search on quality to maximize visual sharpness
+            let sLow = 0.05;
+            let sHigh = 0.95;
+            let sBest: Blob = testBlob;
+
+            for (let step = 0; step < 6; step++) {
+              const mid = (sLow + sHigh) / 2;
+              const b = await new Promise<Blob | null>((res) => scaledCanvas.toBlob(res, mime, mid));
+              if (!b) break;
+              if (b.size <= targetBytes) {
+                sBest = b;
+                sLow = mid;
+              } else {
+                sHigh = mid;
+              }
+            }
+            return sBest;
+          }
+        }
+      }
+
+      return bestScaledBlob || minQBlob || maxQBlob || new Blob([], { type: mime });
+    }
+
+    async function computeExportBlob() {
+      if (!originalImage || !previewCanvas) return;
+
+      const mimeType = getTargetMimeType();
+      let formatLabel = exportFormat.toUpperCase();
+      if (exportFormat === 'auto') {
+        formatLabel = mimeType === 'image/png' ? 'PNG' : mimeType === 'image/webp' ? 'WEBP' : 'JPG';
+      }
+      if (summaryMetaFormat) summaryMetaFormat.textContent = `FORMAT: ${formatLabel}`;
+
+      let canvasToExport: HTMLCanvasElement = previewCanvas;
+      const formatSupportsAlpha = exportFormat === 'png' || 
+                                  exportFormat === 'webp' || 
+                                  exportFormat === 'avif' || 
+                                  exportFormat === 'ico' ||
+                                  (exportFormat === 'auto' && (mimeType === 'image/png' || mimeType === 'image/webp' || mimeType === 'image/avif'));
+
+      if (fitBg === 'transparent' && resizeMode === 'fit') {
+        if (!formatSupportsAlpha) {
+          // Format cannot physically represent transparency (e.g. JPG or PDF)
+          const tempCanvas = document.createElement('canvas');
+          tempCanvas.width = previewCanvas.width;
+          tempCanvas.height = previewCanvas.height;
+          const tempCtx = tempCanvas.getContext('2d');
+          if (tempCtx) {
+            tempCtx.fillStyle = '#ffffff';
+            tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+            tempCtx.drawImage(previewCanvas, 0, 0);
+            canvasToExport = tempCanvas;
+          }
+        } else {
+          // Format supports transparency: strictly keep canvasToExport as previewCanvas without solid fill
+          canvasToExport = previewCanvas;
+        }
+      }
+
+      let blob: Blob | null = null;
+
+      if (exportFormat === 'pdf') {
+        let jpegBytes: Uint8Array | null = null;
+        if (isTargetSizeActive) {
+          const targetBytes = (targetSizeUnit === 'MB' ? targetSizeValue * 1024 * 1024 : targetSizeValue * 1024);
+          const jpegTarget = Math.max(1024, targetBytes - 700);
+          const jpegBlob = await binarySearchQuality('image/jpeg', jpegTarget, canvasToExport);
+          jpegBytes = new Uint8Array(await jpegBlob.arrayBuffer());
+        } else {
+          const jpegBlob = await new Promise<Blob | null>((resolve) => {
+            canvasToExport.toBlob((b) => resolve(b), 'image/jpeg', quality);
+          });
+          if (jpegBlob) {
+            jpegBytes = new Uint8Array(await jpegBlob.arrayBuffer());
+          }
+        }
+        if (jpegBytes) {
+          blob = createPdfBlob(jpegBytes, canvasToExport.width, canvasToExport.height, dpi);
+        }
+      } else if (exportFormat === 'ico') {
+        blob = await createIcoBlob(canvasToExport);
+      } else if (exportFormat === 'avif') {
+        if (isTargetSizeActive) {
+          const targetBytes = (targetSizeUnit === 'MB' ? targetSizeValue * 1024 * 1024 : targetSizeValue * 1024);
+          blob = await binarySearchQuality('image/avif', targetBytes, canvasToExport);
+        } else {
+          blob = await new Promise<Blob | null>((resolve) => {
+            canvasToExport.toBlob((b) => resolve(b), 'image/avif', quality);
+          });
+        }
+        if (!blob || blob.size === 0) {
+          blob = await new Promise<Blob | null>((resolve) => {
+            canvasToExport.toBlob((b) => resolve(b), 'image/webp', quality);
+          });
+        }
+      } else {
+        if (isTargetSizeActive) {
+          const targetBytes = (targetSizeUnit === 'MB' ? targetSizeValue * 1024 * 1024 : targetSizeValue * 1024);
+          blob = await binarySearchQuality(mimeType, targetBytes, canvasToExport);
+        } else {
+          blob = await new Promise<Blob | null>((resolve) => {
+            canvasToExport.toBlob((b) => resolve(b), mimeType, quality);
+          });
+        }
+      }
+
+      lastBlob = blob;
+
+      if (blob) {
+        const estText = `Est. ~${formatBytes(blob.size)}`;
+        if (previewSizePill) previewSizePill.textContent = estText;
+        if (summaryMetaSize) summaryMetaSize.textContent = `SIZE: ${formatBytes(blob.size)}`;
+
+        if (originalSizeBytes > 0 && previewSavingsPill) {
+          const diff = originalSizeBytes - blob.size;
+          const pct = Math.round((diff / originalSizeBytes) * 100);
+          if (pct > 0) {
+            previewSavingsPill.textContent = `-${pct}%`;
+            previewSavingsPill.classList.remove('hidden');
+          } else if (pct < 0) {
+            previewSavingsPill.textContent = `+${Math.abs(pct)}%`;
+            previewSavingsPill.classList.remove('hidden');
+          } else {
+            previewSavingsPill.classList.add('hidden');
+          }
+        }
+
+        updateUpscaleUI(blob.size);
+      }
+    }
+
+    function updateUpscaleUI(currentSize: number) {
+      if (!targetUpscaleContainer || !targetUpscaleMsg || !boostUpscaleBtnText) return;
+
+      if (!isTargetSizeActive) {
+        targetUpscaleContainer.classList.add('hidden');
+        return;
+      }
+
+      const targetBytes = (targetSizeUnit === 'MB' ? targetSizeValue * 1024 * 1024 : targetSizeValue * 1024);
+      const targetStr = `${targetSizeValue} ${targetSizeUnit}`;
+
+      // Show upscale suggestion when current blob size is less than 90% of target
+      if (currentSize < 0.90 * targetBytes) {
+        const currentStr = formatBytes(currentSize);
+        targetUpscaleMsg.innerHTML = `Image is currently <strong class="text-blue-600 dark:text-blue-400 font-mono">${currentStr}</strong> (under ${targetStr} limit).`;
+        boostUpscaleBtnText.textContent = `Boost to ~${targetStr}`;
+        targetUpscaleContainer.classList.remove('hidden');
+
+        // Auto-match if active and not already upscaling
+        const now = Date.now();
+        if (autoUpscaleActive && !isUpscaling && now - lastAutoUpscaleTime > 700) {
+          lastAutoUpscaleTime = now;
+          upscaleCanvasToTargetKB();
+        }
+      } else {
+        targetUpscaleContainer.classList.add('hidden');
+      }
+    }
+
+    async function upscaleCanvasToTargetKB(): Promise<boolean> {
+      if (!originalImage || isUpscaling || !isTargetSizeActive) return false;
+
+      const targetBytes = (targetSizeUnit === 'MB' ? targetSizeValue * 1024 * 1024 : targetSizeValue * 1024);
+      if (targetBytes <= 0) return false;
+
+      const effSrcW = getEffectiveSourceWidth();
+      const effSrcH = getEffectiveSourceHeight();
+      if (effSrcW <= 0 || effSrcH <= 0) return false;
+
+      const baseW = targetPxW > 0 ? targetPxW : effSrcW;
+      const baseH = targetPxH > 0 ? targetPxH : effSrcH;
+      const ratio = baseH / baseW;
+
+      isUpscaling = true;
+      if (boostUpscaleBtnText) boostUpscaleBtnText.textContent = 'Matching...';
+      if (boostUpscaleBtn) boostUpscaleBtn.disabled = true;
+
+      try {
+        const mimeType = getTargetMimeType();
+
+        // Prepare oriented base buffer
+        const buffer = document.createElement('canvas');
+        buffer.width = effSrcW;
+        buffer.height = effSrcH;
+        const bCtx = buffer.getContext('2d');
+        if (!bCtx) return false;
+
+        bCtx.save();
+        bCtx.translate(effSrcW / 2, effSrcH / 2);
+        bCtx.rotate((rotation * Math.PI) / 180);
+        if (flipH) bCtx.scale(-1, 1);
+        bCtx.drawImage(originalImage, -originalWidth / 2, -originalHeight / 2);
+        bCtx.restore();
+
+        let currentSize = lastBlob ? lastBlob.size : 0;
+        if (currentSize === 0) {
+          const testCanvas = document.createElement('canvas');
+          testCanvas.width = baseW;
+          testCanvas.height = baseH;
+          const tCtx = testCanvas.getContext('2d');
+          if (tCtx) {
+            tCtx.imageSmoothingEnabled = true;
+            tCtx.imageSmoothingQuality = 'high';
+            tCtx.drawImage(buffer, 0, 0, baseW, baseH);
+            const b = await new Promise<Blob | null>((res) => testCanvas.toBlob(res, mimeType, 0.95));
+            if (b) currentSize = b.size;
+          }
+        }
+
+        if (currentSize >= 0.90 * targetBytes) {
+          return true;
+        }
+
+        // Proportional step-by-step resolution upscale
+        const areaMultiplier = targetBytes / Math.max(1024, currentSize);
+        const estScale = Math.max(1.1, Math.sqrt(areaMultiplier));
+
+        let lowScale = 1.0;
+        let highScale = Math.min(10.0, Math.max(2.0, estScale * 1.5));
+        let bestW = baseW;
+        let bestH = baseH;
+
+        const maxSteps = 8;
+        for (let i = 0; i < maxSteps; i++) {
+          const midScale = (lowScale + highScale) / 2;
+          const testW = Math.max(1, Math.round(baseW * midScale));
+          const testH = Math.max(1, Math.round(baseW * midScale * ratio));
+
+          if (testW * testH > 36000000) {
+            highScale = midScale;
+            continue;
+          }
+
+          const offCanvas = document.createElement('canvas');
+          offCanvas.width = testW;
+          offCanvas.height = testH;
+          const offCtx = offCanvas.getContext('2d');
+          if (!offCtx) break;
+
+          offCtx.imageSmoothingEnabled = true;
+          offCtx.imageSmoothingQuality = 'high';
+          offCtx.drawImage(buffer, 0, 0, testW, testH);
+
+          const stepBlob = await new Promise<Blob | null>((res) => {
+            if (mimeType === 'image/png') {
+              offCanvas.toBlob(res, 'image/png');
+            } else {
+              offCanvas.toBlob(res, mimeType, 0.92);
+            }
+          });
+
+          if (!stepBlob) break;
+
+          const size = stepBlob.size;
+
+          if (size >= 0.90 * targetBytes && size <= targetBytes) {
+            bestW = testW;
+            bestH = testH;
+            break;
+          }
+
+          if (size < targetBytes) {
+            bestW = testW;
+            bestH = testH;
+            lowScale = midScale;
+          } else {
+            highScale = midScale;
+          }
+        }
+
+        if (bestW > 0 && bestH > 0 && (bestW !== targetPxW || bestH !== targetPxH)) {
+          targetPxW = bestW;
+          targetPxH = bestH;
+
+          if (imageQueue[activeQueueIndex]) {
+            imageQueue[activeQueueIndex].targetW = targetPxW;
+            imageQueue[activeQueueIndex].targetH = targetPxH;
+          }
+
+          syncInputsFromPx();
+          await renderCanvas();
+          return true;
+        }
+
+        return false;
+      } finally {
+        isUpscaling = false;
+        if (boostUpscaleBtnText) {
+          const targetStr = `${targetSizeValue} ${targetSizeUnit}`;
+          boostUpscaleBtnText.textContent = `Boost to ~${targetStr}`;
+        }
+        if (boostUpscaleBtn) {
+          boostUpscaleBtn.disabled = false;
+        }
+      }
+    }
+
+    async function renderCanvas() {
+      if (!originalImage || !previewCanvas || !canvasCtx) return;
+
+      // Ensure original image dimensions are valid before drawing
+      let natW = originalImage.naturalWidth || originalWidth;
+      let natH = originalImage.naturalHeight || originalHeight;
+
+      if (natW <= 0 || natH <= 0) {
+        try {
+          if ('decode' in originalImage) {
+            await originalImage.decode();
+          }
+          natW = originalImage.naturalWidth || originalWidth;
+          natH = originalImage.naturalHeight || originalHeight;
+        } catch {
+          // ignore
+        }
+      }
+
+      // If still invalid, fallback to active item dimensions or abort before corrupting canvas
+      if (natW <= 0 || natH <= 0) {
+        const currentItem = imageQueue[activeQueueIndex];
+        if (currentItem && currentItem.width > 0 && currentItem.height > 0) {
+          natW = currentItem.width;
+          natH = currentItem.height;
+        } else {
+          return;
+        }
+      }
+
+      originalWidth = natW;
+      originalHeight = natH;
+
+      const effSrcW = getEffectiveSourceWidth();
+      const effSrcH = getEffectiveSourceHeight();
+
+      // Fallback check: Never allow 0 or NaN target dimensions
+      if (!targetPxW || isNaN(targetPxW) || targetPxW <= 0) {
+        targetPxW = effSrcW;
+      }
+      if (!targetPxH || isNaN(targetPxH) || targetPxH <= 0) {
+        targetPxH = effSrcH;
+      }
+
+      const targetW = Math.max(1, Math.round(targetPxW));
+      const targetH = Math.max(1, Math.round(targetPxH));
+
+      previewCanvas.width = targetW;
+      previewCanvas.height = targetH;
+
+      if (previewDimPill) previewDimPill.textContent = `${targetW} × ${targetH} px`;
+      if (summaryMetaRes) summaryMetaRes.textContent = `${targetW} × ${targetH} px`;
+
+      // Step 1: Render oriented image to offscreen buffer
+      const buffer = document.createElement('canvas');
+      buffer.width = effSrcW;
+      buffer.height = effSrcH;
+      const bCtx = buffer.getContext('2d');
+      if (!bCtx) return;
+
+      bCtx.save();
+      bCtx.translate(effSrcW / 2, effSrcH / 2);
+      bCtx.rotate((rotation * Math.PI) / 180);
+      if (flipH) {
+        bCtx.scale(-1, 1);
+      }
+      bCtx.drawImage(originalImage, -originalWidth / 2, -originalHeight / 2);
+      bCtx.restore();
+
+      // Step 2: Draw onto preview canvas
+      canvasCtx.clearRect(0, 0, targetW, targetH);
+
+      if (resizeMode === 'fit') {
+        const scale = Math.min(targetW / effSrcW, targetH / effSrcH);
+        const drawW = effSrcW * scale;
+        const drawH = effSrcH * scale;
+        const dx = (targetW - drawW) / 2;
+        const dy = (targetH - drawH) / 2;
+
+        if (fitBg === 'blur') {
+          canvasCtx.save();
+          const bgScale = Math.max(targetW / effSrcW, targetH / effSrcH) * 1.12;
+          const bgW = effSrcW * bgScale;
+          const bgH = effSrcH * bgScale;
+          const bgX = (targetW - bgW) / 2;
+          const bgY = (targetH - bgH) / 2;
+          canvasCtx.filter = 'blur(20px)';
+          canvasCtx.drawImage(buffer, bgX, bgY, bgW, bgH);
+          canvasCtx.restore();
+        } else if (fitBg === 'white') {
+          canvasCtx.fillStyle = '#ffffff';
+          canvasCtx.fillRect(0, 0, targetW, targetH);
+        } else if (fitBg === 'black') {
+          canvasCtx.fillStyle = '#000000';
+          canvasCtx.fillRect(0, 0, targetW, targetH);
+        } else if (fitBg === 'custom') {
+          canvasCtx.fillStyle = fitCustomColor || '#3b82f6';
+          canvasCtx.fillRect(0, 0, targetW, targetH);
+        }
+        // When fitBg === 'transparent', canvasCtx.clearRect already cleared the canvas to pure transparent!
+
+        canvasCtx.imageSmoothingEnabled = true;
+        canvasCtx.imageSmoothingQuality = 'high';
+        canvasCtx.drawImage(buffer, dx, dy, drawW, drawH);
+      } else if (resizeMode === 'fill') {
+        const scale = Math.max(targetW / effSrcW, targetH / effSrcH);
+        const drawW = effSrcW * scale;
+        const drawH = effSrcH * scale;
+        const dx = (targetW - drawW) / 2;
+        const dy = (targetH - drawH) / 2;
+
+        canvasCtx.imageSmoothingEnabled = true;
+        canvasCtx.imageSmoothingQuality = 'high';
+        canvasCtx.drawImage(buffer, dx, dy, drawW, drawH);
+      } else {
+        canvasCtx.imageSmoothingEnabled = true;
+        canvasCtx.imageSmoothingQuality = 'high';
+        canvasCtx.drawImage(buffer, 0, 0, targetW, targetH);
+      }
+
+      await computeExportBlob();
+    }
+
+    function triggerRender() {
+      if (renderDebounceTimer !== null) {
+        window.clearTimeout(renderDebounceTimer);
+      }
+      renderDebounceTimer = window.setTimeout(() => {
+        renderCanvas();
+      }, 50);
+    }
+
+    function handleWidthInput() {
+      if (!inputWidth) return;
+      const val = parseFloat(inputWidth.value);
+      if (isNaN(val) || val <= 0) return;
+
+      if (socialPresetSelect) socialPresetSelect.value = '';
+
+      const srcW = getEffectiveSourceWidth();
+      const srcH = getEffectiveSourceHeight();
+      const newPxW = convertToPx(val, activeUnit, srcW);
+
+      if (isAspectLocked && srcW > 0) {
+        const ratio = srcH / srcW;
+        targetPxW = newPxW;
+        targetPxH = Math.max(1, Math.round(newPxW * ratio));
+        const dispH = convertFromPx(targetPxH, activeUnit, srcH);
+        if (inputHeight) inputHeight.value = dispH.toString();
+      } else {
+        targetPxW = newPxW;
+      }
+
+      if (imageQueue[activeQueueIndex]) {
+        if (targetPxW > 0 && !isNaN(targetPxW)) {
+          imageQueue[activeQueueIndex].targetW = targetPxW;
+        }
+        if (targetPxH > 0 && !isNaN(targetPxH)) {
+          imageQueue[activeQueueIndex].targetH = targetPxH;
+        }
+      }
+
+      triggerRender();
+    }
+
+    function handleHeightInput() {
+      if (!inputHeight) return;
+      const val = parseFloat(inputHeight.value);
+      if (isNaN(val) || val <= 0) return;
+
+      if (socialPresetSelect) socialPresetSelect.value = '';
+
+      const srcW = getEffectiveSourceWidth();
+      const srcH = getEffectiveSourceHeight();
+      const newPxH = convertToPx(val, activeUnit, srcH);
+
+      if (isAspectLocked && srcH > 0) {
+        const ratio = srcW / srcH;
+        targetPxH = newPxH;
+        targetPxW = Math.max(1, Math.round(newPxH * ratio));
+        const dispW = convertFromPx(targetPxW, activeUnit, srcW);
+        if (inputWidth) inputWidth.value = dispW.toString();
+      } else {
+        targetPxH = newPxH;
+      }
+
+      if (imageQueue[activeQueueIndex]) {
+        if (targetPxW > 0 && !isNaN(targetPxW)) {
+          imageQueue[activeQueueIndex].targetW = targetPxW;
+        }
+        if (targetPxH > 0 && !isNaN(targetPxH)) {
+          imageQueue[activeQueueIndex].targetH = targetPxH;
+        }
+      }
+
+      triggerRender();
+    }
+
+    // Queue Strip UI Rendering
+    function updateQueueUI() {
+      const count = imageQueue.length;
+      if (queueCounter) {
+        queueCounter.textContent = `${count}/${MAX_QUEUE_SIZE}`;
+      }
+
+      if (count > 1) {
+        batchDownloadBtn?.classList.remove('hidden');
+        if (batchDownloadLabel) {
+          batchDownloadLabel.textContent = `Download All as ZIP (${count} Images)`;
+        }
+        if (downloadBtnLabel) {
+          downloadBtnLabel.textContent = 'Download Current Image';
+        }
+      } else {
+        batchDownloadBtn?.classList.add('hidden');
+        if (downloadBtnLabel) {
+          downloadBtnLabel.textContent = 'Download Resized Image';
+        }
+      }
+    }
+
+    function renderQueueStrip() {
+      if (!queueStrip) return;
+      queueStrip.innerHTML = '';
+
+      imageQueue.forEach((item, index) => {
+        const isActive = index === activeQueueIndex;
+
+        const card = document.createElement('div');
+        card.className = isActive
+          ? 'relative group flex items-center gap-3 p-2.5 rounded-xl border-2 border-blue-500 bg-blue-50/70 dark:bg-blue-950/40 shrink-0 min-w-[200px] max-w-[220px] transition-all cursor-pointer shadow-xs'
+          : 'relative group flex items-center gap-3 p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-slate-300 dark:hover:border-slate-700 shrink-0 min-w-[200px] max-w-[220px] transition-all cursor-pointer shadow-2xs';
+
+        // Thumbnail image
+        const imgEl = document.createElement('img');
+        imgEl.src = item.thumbDataUrl;
+        imgEl.className = 'w-11 h-11 rounded-lg object-cover bg-slate-100 dark:bg-slate-800 shrink-0 border border-slate-200/80 dark:border-slate-700/80';
+        imgEl.alt = item.name;
+
+        // Meta Info
+        const metaDiv = document.createElement('div');
+        metaDiv.className = 'min-w-0 flex-1';
+
+        const nameP = document.createElement('p');
+        nameP.className = 'text-xs font-semibold text-slate-800 dark:text-slate-200 truncate';
+        nameP.textContent = item.name;
+
+        const dimP = document.createElement('p');
+        dimP.className = 'text-[10px] text-slate-500 dark:text-slate-400 font-mono mt-0.5';
+        dimP.textContent = `${item.targetW || item.width} × ${item.targetH || item.height} px`;
+
+        const sizeP = document.createElement('p');
+        sizeP.className = 'text-[10px] text-slate-400 dark:text-slate-500 font-mono';
+        sizeP.textContent = formatBytes(item.size);
+
+        metaDiv.appendChild(nameP);
+        metaDiv.appendChild(dimP);
+        metaDiv.appendChild(sizeP);
+
+        // Remove Button
+        const removeBtn = document.createElement('button');
+        removeBtn.type = 'button';
+        removeBtn.className = 'absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-rose-500 hover:bg-rose-600 text-white flex items-center justify-center text-[10px] font-bold shadow-sm transition-transform hover:scale-110 cursor-pointer opacity-90 group-hover:opacity-100';
+        removeBtn.title = 'Remove this image from queue';
+        removeBtn.innerHTML = '&times;';
+        removeBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          removeQueueItem(index);
+        });
+
+        card.appendChild(imgEl);
+        card.appendChild(metaDiv);
+        card.appendChild(removeBtn);
+
+        card.addEventListener('click', () => {
+          selectQueueItem(index);
+        });
+
+        queueStrip.appendChild(card);
+      });
+
+      // Append "+ Add Image" Card if < 15
+      if (imageQueue.length < MAX_QUEUE_SIZE) {
+        const addCard = document.createElement('button');
+        addCard.type = 'button';
+        addCard.className = 'flex flex-col items-center justify-center min-w-[120px] h-[64px] rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 hover:border-blue-500 hover:bg-blue-50/30 dark:hover:bg-blue-950/20 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all cursor-pointer shrink-0';
+        addCard.innerHTML = `
+          <div class="flex items-center gap-1.5 text-xs font-semibold">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+            <span>Add Image</span>
+          </div>
+          <span class="text-[10px] text-slate-400 font-mono mt-0.5">(${imageQueue.length}/${MAX_QUEUE_SIZE})</span>
+        `;
+        addCard.addEventListener('click', () => {
+          fileInput?.click();
+        });
+        queueStrip.appendChild(addCard);
+      }
+
+      updateQueueUI();
+    }
+
+    async function selectQueueItem(index: number) {
+      if (!imageQueue[index]) return;
+      closeInlineCrop();
+
+      // Save current edits back to active item only if dimensions are valid (> 0)
+      if (imageQueue[activeQueueIndex]) {
+        imageQueue[activeQueueIndex].rotation = rotation;
+        imageQueue[activeQueueIndex].flipH = flipH;
+        imageQueue[activeQueueIndex].fitBg = fitBg;
+        imageQueue[activeQueueIndex].fitCustomColor = fitCustomColor;
+        if (targetPxW > 0 && !isNaN(targetPxW)) {
+          imageQueue[activeQueueIndex].targetW = targetPxW;
+        }
+        if (targetPxH > 0 && !isNaN(targetPxH)) {
+          imageQueue[activeQueueIndex].targetH = targetPxH;
+        }
+      }
+
+      activeQueueIndex = index;
+      const item = imageQueue[index];
+
+      // Asynchronous safety: Ensure item.img is decoded and natural dimensions exist
+      if (item.img.naturalWidth === 0 || item.img.naturalHeight === 0) {
+        try {
+          if ('decode' in item.img) {
+            await item.img.decode();
+          }
+        } catch {
+          // ignore error
+        }
+      }
+
+      // Safe width / height recovery
+      const realW = Math.max(1, item.img.naturalWidth || item.width || 1);
+      const realH = Math.max(1, item.img.naturalHeight || item.height || 1);
+      item.width = realW;
+      item.height = realH;
+
+      originalImage = item.img;
+      originalFile = item.file;
+      originalWidth = realW;
+      originalHeight = realH;
+      originalSizeBytes = item.size;
+      originalMimeType = item.mimeType;
+      rotation = item.rotation;
+      flipH = item.flipH;
+      fitBg = item.fitBg || 'transparent';
+      fitCustomColor = item.fitCustomColor || '#3b82f6';
+      updateFitBgUI();
+
+      const isSideways = (rotation === 90 || rotation === 270);
+      const effW = isSideways ? realH : realW;
+      const effH = isSideways ? realW : realH;
+
+      // Fallback check: Never let targetPxW/targetPxH remain 0 or NaN
+      if (!item.targetW || isNaN(item.targetW) || item.targetW <= 0) {
+        item.targetW = effW;
+      }
+      if (!item.targetH || isNaN(item.targetH) || item.targetH <= 0) {
+        item.targetH = effH;
+      }
+
+      targetPxW = item.targetW;
+      targetPxH = item.targetH;
+
+      if (sourceFilename) sourceFilename.textContent = item.name;
+      if (sourceSpecs) {
+        sourceSpecs.textContent = `Original: ${originalWidth} × ${originalHeight} px • ${formatBytes(item.size)}`;
+      }
+
+      syncInputsFromPx();
+      renderQueueStrip();
+      await renderCanvas();
+    }
+
+    async function removeQueueItem(index: number) {
+      closeInlineCrop();
+      imageQueue.splice(index, 1);
+
+      if (imageQueue.length === 0) {
+        resetToDropzone();
+        return;
+      }
+
+      if (activeQueueIndex >= imageQueue.length) {
+        activeQueueIndex = imageQueue.length - 1;
+      } else if (index < activeQueueIndex) {
+        activeQueueIndex = Math.max(0, activeQueueIndex - 1);
+      }
+
+      await selectQueueItem(activeQueueIndex);
+    }
+
+    function resetToDropzone() {
+      closeInlineCrop();
+      imageQueue.length = 0;
+      activeQueueIndex = 0;
+      originalImage = null;
+      originalFile = null;
+      fileInput.value = '';
+      lastBlob = null;
+      setFitBg('transparent');
+      if (socialPresetSelect) socialPresetSelect.value = '';
+      editorView.classList.add('hidden');
+      dropzoneView.classList.remove('hidden');
+    }
+
+    function loadImageSafely(src: string): Promise<HTMLImageElement> {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+
+        const finalize = async () => {
+          try {
+            if ('decode' in img) {
+              await img.decode();
+            }
+          } catch (decodeErr) {
+            console.warn('img.decode() warning, proceeding with loaded image:', decodeErr);
+          }
+
+          if (img.naturalWidth > 0 && img.naturalHeight > 0) {
+            resolve(img);
+          } else {
+            let attempts = 0;
+            const interval = setInterval(() => {
+              attempts++;
+              if (img.naturalWidth > 0 && img.naturalHeight > 0) {
+                clearInterval(interval);
+                resolve(img);
+              } else if (attempts >= 10) {
+                clearInterval(interval);
+                if (img.width > 0 && img.height > 0) {
+                  resolve(img);
+                } else {
+                  reject(new Error('Image failed to report natural dimensions'));
+                }
+              }
+            }, 30);
+          }
+        };
+
+        img.onload = () => {
+          finalize();
+        };
+
+        img.onerror = (err) => {
+          reject(err);
+        };
+
+        img.src = src;
+
+        if (img.complete && img.naturalWidth > 0 && img.naturalHeight > 0) {
+          finalize();
+        }
+      });
+    }
+
+    async function createQueueItem(file: File): Promise<QueueItem> {
+      const dataUrl = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          if (typeof e.target?.result === 'string') {
+            resolve(e.target.result);
+          } else {
+            reject(new Error('Failed reading file to data URL'));
+          }
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+
+      const img = await loadImageSafely(dataUrl);
+      const w = Math.max(1, img.naturalWidth || img.width || 1);
+      const h = Math.max(1, img.naturalHeight || img.height || 1);
+
+      // Generate thumbnail
+      const thumbCanvas = document.createElement('canvas');
+      const maxDim = 88;
+      const scale = Math.min(maxDim / w, maxDim / h, 1);
+      thumbCanvas.width = Math.max(1, Math.round(w * scale));
+      thumbCanvas.height = Math.max(1, Math.round(h * scale));
+      const tctx = thumbCanvas.getContext('2d');
+      if (tctx) {
+        tctx.drawImage(img, 0, 0, thumbCanvas.width, thumbCanvas.height);
+      }
+      const thumbDataUrl = thumbCanvas.toDataURL('image/jpeg', 0.7);
+
+      // Initial target dimensions
+      const initialW = parseFloat(root.dataset.initialWidth || '');
+      const initialH = parseFloat(root.dataset.initialHeight || '');
+      let targetW = w;
+      let targetH = h;
+      if (!isNaN(initialW) && initialW > 0) {
+        targetW = convertToPx(initialW, activeUnit, w);
+        if (!isNaN(initialH) && initialH > 0) {
+          targetH = convertToPx(initialH, activeUnit, h);
+        } else {
+          targetH = Math.max(1, Math.round((targetW * h) / w));
+        }
+      }
+
+      return {
+        id: 'img_' + Math.random().toString(36).slice(2, 9),
+        file,
+        name: file.name,
+        size: file.size,
+        mimeType: file.type || 'image/jpeg',
+        img,
+        width: w,
+        height: h,
+        rotation: 0,
+        flipH: false,
+        targetW: Math.max(1, targetW),
+        targetH: Math.max(1, targetH),
+        thumbDataUrl,
+        fitBg: 'transparent',
+        fitCustomColor: '#3b82f6'
+      };
+    }
+
+    async function loadFiles(files: FileList | File[]) {
+      const fileList = Array.from(files).filter(f => f.type.startsWith('image/') || f.name.match(/\.(heic|heif|bmp)$/i));
+      if (fileList.length === 0) return;
+
+      const remainingCapacity = MAX_QUEUE_SIZE - imageQueue.length;
+      if (remainingCapacity <= 0) {
+        alert(`Maximum limit of ${MAX_QUEUE_SIZE} images reached.`);
+        return;
+      }
+
+      const filesToProcess = fileList.slice(0, remainingCapacity);
+      if (fileList.length > remainingCapacity) {
+        alert(`Adding first ${remainingCapacity} images. (Limit: ${MAX_QUEUE_SIZE} images total)`);
+      }
+
+      if (canvasLoading) {
+        if (canvasLoadingText) canvasLoadingText.textContent = 'Loading image queue...';
+        canvasLoading.classList.remove('hidden');
+      }
+
+      const isFirstLoad = imageQueue.length === 0;
+      const startIndex = imageQueue.length;
+      for (const file of filesToProcess) {
+        try {
+          const item = await createQueueItem(file);
+          imageQueue.push(item);
+        } catch (e) {
+          console.error('Failed decoding file', file.name, e);
+        }
+      }
+
+      if (canvasLoading) {
+        canvasLoading.classList.add('hidden');
+        if (canvasLoadingText) canvasLoadingText.textContent = 'Processing Canvas...';
+      }
+
+      if (imageQueue.length > 0) {
+        dropzoneView.classList.add('hidden');
+        editorView.classList.remove('hidden');
+        if (isFirstLoad && imageQueue[0]) {
+          if (imageQueue[0].mimeType === 'image/png') {
+            setFormat('png');
+          } else if (imageQueue[0].mimeType === 'image/webp') {
+            setFormat('webp');
+          }
+        }
+        await selectQueueItem(startIndex < imageQueue.length ? startIndex : 0);
+      }
+    }
+
+    async function downloadResizedImage() {
+      if (renderDebounceTimer !== null) {
+        window.clearTimeout(renderDebounceTimer);
+        renderDebounceTimer = null;
+      }
+      await renderCanvas();
+      if (!lastBlob) {
+        await computeExportBlob();
+      }
+      if (!lastBlob) return;
+
+      const ext = getExtensionForFormat(exportFormat, lastBlob.type);
+      const origName = originalFile ? originalFile.name.replace(/\.[^/.]+$/, '') : 'image';
+      const safeW = targetPxW > 0 ? targetPxW : getEffectiveSourceWidth();
+      const safeH = targetPxH > 0 ? targetPxH : getEffectiveSourceHeight();
+      const filename = `${origName}-${safeW}x${safeH}.${ext}`;
+
+      const url = URL.createObjectURL(lastBlob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // Render single item for batch ZIP export
+    async function renderItemToBlob(item: QueueItem): Promise<Blob | null> {
+      if (item.img.naturalWidth === 0 || item.img.naturalHeight === 0) {
+        try {
+          if ('decode' in item.img) {
+            await item.img.decode();
+          }
+        } catch {
+          // ignore
+        }
+      }
+      const realW = Math.max(1, item.img.naturalWidth || item.width || 1);
+      const realH = Math.max(1, item.img.naturalHeight || item.height || 1);
+      item.width = realW;
+      item.height = realH;
+
+      const effW = (item.rotation === 90 || item.rotation === 270) ? realH : realW;
+      const effH = (item.rotation === 90 || item.rotation === 270) ? realW : realH;
+
+      const targetW = Math.max(1, Math.round(item.targetW && item.targetW > 0 ? item.targetW : effW));
+      const targetH = Math.max(1, Math.round(item.targetH && item.targetH > 0 ? item.targetH : effH));
+
+      const offCanvas = document.createElement('canvas');
+      offCanvas.width = targetW;
+      offCanvas.height = targetH;
+      const ctx = offCanvas.getContext('2d');
+      if (!ctx) return null;
+
+      const buffer = document.createElement('canvas');
+      buffer.width = effW;
+      buffer.height = effH;
+      const bCtx = buffer.getContext('2d');
+      if (!bCtx) return null;
+
+      bCtx.save();
+      bCtx.translate(effW / 2, effH / 2);
+      bCtx.rotate((item.rotation * Math.PI) / 180);
+      if (item.flipH) bCtx.scale(-1, 1);
+      bCtx.drawImage(item.img, -realW / 2, -realH / 2);
+      bCtx.restore();
+
+      ctx.clearRect(0, 0, targetW, targetH);
+
+      const effectiveFitBg = item.fitBg || fitBg || 'transparent';
+      const effectiveCustomColor = item.fitCustomColor || fitCustomColor || '#3b82f6';
+
+      if (resizeMode === 'fit') {
+        const scale = Math.min(targetW / effW, targetH / effH);
+        const drawW = effW * scale;
+        const drawH = effH * scale;
+        const dx = (targetW - drawW) / 2;
+        const dy = (targetH - drawH) / 2;
+
+        if (effectiveFitBg === 'blur') {
+          ctx.save();
+          const bgScale = Math.max(targetW / effW, targetH / effH) * 1.12;
+          const bgW = effW * bgScale;
+          const bgH = effH * bgScale;
+          const bgX = (targetW - bgW) / 2;
+          const bgY = (targetH - bgH) / 2;
+          ctx.filter = 'blur(20px)';
+          ctx.drawImage(buffer, bgX, bgY, bgW, bgH);
+          ctx.restore();
+        } else if (effectiveFitBg === 'white') {
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, targetW, targetH);
+        } else if (effectiveFitBg === 'black') {
+          ctx.fillStyle = '#000000';
+          ctx.fillRect(0, 0, targetW, targetH);
+        } else if (effectiveFitBg === 'custom') {
+          ctx.fillStyle = effectiveCustomColor;
+          ctx.fillRect(0, 0, targetW, targetH);
+        } else {
+          // Transparent (Clear): Only fill with white if target format cannot physically support transparency (JPG or PDF)
+          const itemMime = exportFormat === 'auto' ? (item.mimeType || 'image/jpeg') : getTargetMimeType();
+          const itemSupportsAlpha = exportFormat === 'png' || exportFormat === 'webp' || exportFormat === 'avif' || exportFormat === 'ico' || (exportFormat === 'auto' && (itemMime === 'image/png' || itemMime === 'image/webp' || itemMime === 'image/avif'));
+          if (!itemSupportsAlpha) {
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, targetW, targetH);
+          }
+        }
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(buffer, dx, dy, drawW, drawH);
+      } else if (resizeMode === 'fill') {
+        const scale = Math.max(targetW / effW, targetH / effH);
+        const drawW = effW * scale;
+        const drawH = effH * scale;
+        const dx = (targetW - drawW) / 2;
+        const dy = (targetH - drawH) / 2;
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(buffer, dx, dy, drawW, drawH);
+      } else {
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(buffer, 0, 0, targetW, targetH);
+      }
+
+      // Convert to blob
+      let mime = getTargetMimeType();
+      if (exportFormat === 'auto') {
+        mime = item.mimeType || 'image/jpeg';
+        if (effectiveFitBg === 'transparent' && resizeMode === 'fit' && (item.mimeType === 'image/jpeg' || !item.mimeType)) {
+          mime = 'image/png';
+        }
+      }
+
+      if (isTargetSizeActive) {
+        const targetBytes = (targetSizeUnit === 'MB' ? targetSizeValue * 1024 * 1024 : targetSizeValue * 1024);
+        if (exportFormat === 'pdf') {
+          const jpegTarget = Math.max(1024, targetBytes - 700);
+          const jBlob = await binarySearchQuality('image/jpeg', jpegTarget, offCanvas);
+          const jBytes = new Uint8Array(await jBlob.arrayBuffer());
+          return createPdfBlob(jBytes, targetW, targetH, dpi);
+        } else if (exportFormat === 'ico') {
+          return createIcoBlob(offCanvas);
+        }
+        return binarySearchQuality(mime, targetBytes, offCanvas);
+      }
+
+      if (exportFormat === 'pdf') {
+        const jBlob = await new Promise<Blob | null>((res) => offCanvas.toBlob(res, 'image/jpeg', quality));
+        if (jBlob) {
+          const jBytes = new Uint8Array(await jBlob.arrayBuffer());
+          return createPdfBlob(jBytes, targetW, targetH, dpi);
+        }
+      } else if (exportFormat === 'ico') {
+        return createIcoBlob(offCanvas);
+      }
+
+      return new Promise<Blob | null>((resolve) => {
+        offCanvas.toBlob(resolve, mime, quality);
+      });
+    }
+
+    // Download All ZIP
+    async function downloadAllZip() {
+      if (imageQueue.length === 0) return;
+
+      if (imageQueue[activeQueueIndex]) {
+        imageQueue[activeQueueIndex].rotation = rotation;
+        imageQueue[activeQueueIndex].flipH = flipH;
+        if (targetPxW > 0 && !isNaN(targetPxW)) {
+          imageQueue[activeQueueIndex].targetW = targetPxW;
+        }
+        if (targetPxH > 0 && !isNaN(targetPxH)) {
+          imageQueue[activeQueueIndex].targetH = targetPxH;
+        }
+      }
+
+      if (batchDownloadBtn) batchDownloadBtn.disabled = true;
+      const originalLabel = batchDownloadLabel ? batchDownloadLabel.textContent : '';
+
+      try {
+        const zip = new JSZip();
+
+        for (let i = 0; i < imageQueue.length; i++) {
+          const item = imageQueue[i];
+          if (batchDownloadLabel) {
+            batchDownloadLabel.textContent = `Exporting ${i + 1}/${imageQueue.length}...`;
+          }
+
+          const blob = await renderItemToBlob(item);
+          if (blob) {
+            const ext = getExtensionForFormat(exportFormat, blob.type);
+            const baseName = item.name.replace(/\.[^/.]+$/, '');
+            const filename = `${baseName}-${item.targetW || item.width}x${item.targetH || item.height}.${ext}`;
+            zip.file(filename, blob);
+          }
+        }
+
+        if (batchDownloadLabel) {
+          batchDownloadLabel.textContent = 'Generating ZIP bundle...';
+        }
+
+        const zipBlob = await zip.generateAsync({ type: 'blob' });
+        const url = URL.createObjectURL(zipBlob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `resized-images-bundle-${Date.now()}.zip`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      } catch (err) {
+        console.error('Batch ZIP failed', err);
+        alert('Failed to generate ZIP. Please try downloading images individually.');
+      } finally {
+        if (batchDownloadBtn) batchDownloadBtn.disabled = false;
+        if (batchDownloadLabel && originalLabel) {
+          batchDownloadLabel.textContent = originalLabel;
+        }
+      }
+    }
+
+    // ==========================================
+    // INLINE TRANSFORM & CROP CONTROLLERS
+    // ==========================================
+    function getCanvasContainerBounds() {
+      if (!previewCanvas || !previewCanvasContainer) return null;
+      const cRect = previewCanvas.getBoundingClientRect();
+      const contRect = previewCanvasContainer.getBoundingClientRect();
+      const minX = cRect.left - contRect.left;
+      const minY = cRect.top - contRect.top;
+      const w = cRect.width;
+      const h = cRect.height;
+      return {
+        minX,
+        minY,
+        maxX: minX + w,
+        maxY: minY + h,
+        w,
+        h,
+        scaleX: previewCanvas.width / (w || 1),
+        scaleY: previewCanvas.height / (h || 1),
+      };
+    }
+
+    function updateInlineCropUI() {
+      if (!inlineCropBox || !inlineCropOverlay) return;
+      const bounds = getCanvasContainerBounds();
+      if (!bounds || bounds.w <= 0 || bounds.h <= 0) return;
+
+      const minSize = 24;
+      inlineCropRect.w = Math.max(minSize, Math.min(inlineCropRect.w, bounds.w));
+      inlineCropRect.h = Math.max(minSize, Math.min(inlineCropRect.h, bounds.h));
+      inlineCropRect.x = Math.max(bounds.minX, Math.min(inlineCropRect.x, bounds.maxX - inlineCropRect.w));
+      inlineCropRect.y = Math.max(bounds.minY, Math.min(inlineCropRect.y, bounds.maxY - inlineCropRect.h));
+
+      inlineCropBox.style.left = `${inlineCropRect.x}px`;
+      inlineCropBox.style.top = `${inlineCropRect.y}px`;
+      inlineCropBox.style.width = `${inlineCropRect.w}px`;
+      inlineCropBox.style.height = `${inlineCropRect.h}px`;
+
+      if (inlineCropDimTag) {
+        const pxW = Math.max(1, Math.round(inlineCropRect.w * bounds.scaleX));
+        const pxH = Math.max(1, Math.round(inlineCropRect.h * bounds.scaleY));
+        inlineCropDimTag.textContent = `${pxW} × ${pxH} px`;
+      }
+    }
+
+    function startInlineCrop() {
+      if (!originalImage || !previewCanvas || !inlineCropOverlay) return;
+      const bounds = getCanvasContainerBounds();
+      if (!bounds || bounds.w <= 0 || bounds.h <= 0) return;
+
+      isCropModeActive = true;
+      inlineCropOverlay.classList.remove('hidden');
+
+      if (cropBtn) {
+        cropBtn.classList.add('bg-emerald-500/15', 'text-emerald-600', 'dark:text-emerald-400', 'ring-1', 'ring-emerald-500/30');
+      }
+
+      // Initial crop box centered at 80% of canvas rendered dimensions
+      const initW = Math.max(40, Math.round(bounds.w * 0.8));
+      const initH = Math.max(40, Math.round(bounds.h * 0.8));
+      const initX = Math.round(bounds.minX + (bounds.w - initW) / 2);
+      const initY = Math.round(bounds.minY + (bounds.h - initH) / 2);
+
+      inlineCropRect = { x: initX, y: initY, w: initW, h: initH };
+      updateInlineCropUI();
+    }
+
+    function closeInlineCrop() {
+      isCropModeActive = false;
+      inlineCropDragState = null;
+      if (inlineCropOverlay) {
+        inlineCropOverlay.classList.add('hidden');
+      }
+      if (cropBtn) {
+        cropBtn.classList.remove('bg-emerald-500/15', 'text-emerald-600', 'dark:text-emerald-400', 'ring-1', 'ring-emerald-500/30');
+      }
+    }
+
+    async function applyInlineCrop() {
+      if (!isCropModeActive || !originalImage || !previewCanvas) {
+        closeInlineCrop();
+        return;
+      }
+
+      const bounds = getCanvasContainerBounds();
+      if (!bounds || bounds.w <= 0 || bounds.h <= 0) {
+        closeInlineCrop();
+        return;
+      }
+
+      // Calculate pixel coordinates on current previewCanvas
+      const cropPxX = Math.max(0, Math.round((inlineCropRect.x - bounds.minX) * bounds.scaleX));
+      const cropPxY = Math.max(0, Math.round((inlineCropRect.y - bounds.minY) * bounds.scaleY));
+      const cropPxW = Math.max(1, Math.min(previewCanvas.width - cropPxX, Math.round(inlineCropRect.w * bounds.scaleX)));
+      const cropPxH = Math.max(1, Math.min(previewCanvas.height - cropPxY, Math.round(inlineCropRect.h * bounds.scaleY)));
+
+      if (cropPxW <= 1 || cropPxH <= 1) {
+        closeInlineCrop();
+        return;
+      }
+
+      const cropCanvas = document.createElement('canvas');
+      cropCanvas.width = cropPxW;
+      cropCanvas.height = cropPxH;
+      const cCtx = cropCanvas.getContext('2d');
+      if (!cCtx) {
+        closeInlineCrop();
+        return;
+      }
+
+      cCtx.drawImage(previewCanvas, cropPxX, cropPxY, cropPxW, cropPxH, 0, 0, cropPxW, cropPxH);
+      const croppedDataUrl = cropCanvas.toDataURL(originalMimeType || 'image/png');
+
+      try {
+        const newImg = await loadImageSafely(croppedDataUrl);
+        originalImage = newImg;
+        originalWidth = cropPxW;
+        originalHeight = cropPxH;
+        rotation = 0;
+        flipH = false;
+        targetPxW = cropPxW;
+        targetPxH = cropPxH;
+
+        if (imageQueue[activeQueueIndex]) {
+          imageQueue[activeQueueIndex].img = newImg;
+          imageQueue[activeQueueIndex].width = cropPxW;
+          imageQueue[activeQueueIndex].height = cropPxH;
+          imageQueue[activeQueueIndex].rotation = 0;
+          imageQueue[activeQueueIndex].flipH = false;
+          imageQueue[activeQueueIndex].targetW = cropPxW;
+          imageQueue[activeQueueIndex].targetH = cropPxH;
+          imageQueue[activeQueueIndex].thumbDataUrl = croppedDataUrl;
+        }
+
+        if (sourceSpecs) {
+          sourceSpecs.textContent = `Original: ${cropPxW} × ${cropPxH} px • ${formatBytes(originalSizeBytes)}`;
+        }
+
+        syncInputsFromPx();
+        renderQueueStrip();
+        await renderCanvas();
+      } catch (err) {
+        console.error('Failed to apply crop', err);
+      } finally {
+        closeInlineCrop();
+      }
+    }
+
+    if (inlineCropOverlay && inlineCropBox) {
+      inlineCropBox.addEventListener('pointerdown', (e: PointerEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const target = e.target as HTMLElement;
+        const handle = target.dataset.handle as any;
+        const action = handle || 'move';
+
+        inlineCropDragState = {
+          action,
+          startX: e.clientX,
+          startY: e.clientY,
+          rectStart: { ...inlineCropRect }
+        };
+
+        inlineCropOverlay.setPointerCapture(e.pointerId);
+      });
+
+      inlineCropOverlay.addEventListener('pointermove', (e: PointerEvent) => {
+        if (!inlineCropDragState) return;
+        const bounds = getCanvasContainerBounds();
+        if (!bounds) return;
+
+        const dx = e.clientX - inlineCropDragState.startX;
+        const dy = e.clientY - inlineCropDragState.startY;
+        const s = inlineCropDragState.rectStart;
+        const minSize = 24;
+
+        if (inlineCropDragState.action === 'move') {
+          inlineCropRect.x = Math.max(bounds.minX, Math.min(s.x + dx, bounds.maxX - s.w));
+          inlineCropRect.y = Math.max(bounds.minY, Math.min(s.y + dy, bounds.maxY - s.h));
+        } else {
+          let newX = s.x;
+          let newY = s.y;
+          let newW = s.w;
+          let newH = s.h;
+
+          // Horizontal adjustments
+          if (inlineCropDragState.action.includes('e')) {
+            newW = Math.max(minSize, Math.min(s.w + dx, bounds.maxX - s.x));
+          } else if (inlineCropDragState.action.includes('w')) {
+            const clampedX = Math.max(bounds.minX, Math.min(s.x + dx, s.x + s.w - minSize));
+            newW = s.w + (s.x - clampedX);
+            newX = clampedX;
+          }
+
+          // Vertical adjustments
+          if (inlineCropDragState.action.includes('s')) {
+            newH = Math.max(minSize, Math.min(s.h + dy, bounds.maxY - s.y));
+          } else if (inlineCropDragState.action.includes('n')) {
+            const clampedY = Math.max(bounds.minY, Math.min(s.y + dy, s.y + s.h - minSize));
+            newH = s.h + (s.y - clampedY);
+            newY = clampedY;
+          }
+
+          inlineCropRect.x = newX;
+          inlineCropRect.y = newY;
+          inlineCropRect.w = newW;
+          inlineCropRect.h = newH;
+        }
+
+        updateInlineCropUI();
+      });
+
+      const endCropDrag = (e: PointerEvent) => {
+        if (inlineCropDragState) {
+          try {
+            inlineCropOverlay.releasePointerCapture(e.pointerId);
+          } catch {}
+          inlineCropDragState = null;
+        }
+      };
+
+      inlineCropOverlay.addEventListener('pointerup', endCropDrag);
+      inlineCropOverlay.addEventListener('pointercancel', endCropDrag);
+    }
+
+    function rotateClockwise() {
+      if (!originalImage) return;
+      if (isCropModeActive) closeInlineCrop();
+      rotation = (rotation + 90) % 360;
+
+      // Swap target dimensions on 90°/270° orientation change
+      const temp = targetPxW;
+      targetPxW = targetPxH;
+      targetPxH = temp;
+
+      if (imageQueue[activeQueueIndex]) {
+        imageQueue[activeQueueIndex].rotation = rotation;
+        imageQueue[activeQueueIndex].targetW = targetPxW;
+        imageQueue[activeQueueIndex].targetH = targetPxH;
+      }
+
+      syncInputsFromPx();
+      renderQueueStrip();
+      triggerRender();
+    }
+
+    function flipHorizontal() {
+      if (!originalImage) return;
+      if (isCropModeActive) closeInlineCrop();
+      flipH = !flipH;
+
+      if (imageQueue[activeQueueIndex]) {
+        imageQueue[activeQueueIndex].flipH = flipH;
+      }
+
+      renderQueueStrip();
+      triggerRender();
+    }
+
+    rotateBtn?.addEventListener('click', rotateClockwise);
+    cropBtn?.addEventListener('click', () => {
+      if (isCropModeActive) {
+        closeInlineCrop();
+      } else {
+        startInlineCrop();
+      }
+    });
+    flipHBtn?.addEventListener('click', flipHorizontal);
+    inlineCropApplyBtn?.addEventListener('click', applyInlineCrop);
+    inlineCropCancelBtn?.addEventListener('click', closeInlineCrop);
+
+    window.addEventListener('resize', () => {
+      if (isCropModeActive) {
+        updateInlineCropUI();
+      }
+    });
+
+    // Initial Props - Strictly default to Fit mode and Transparent padding
+    resizeMode = 'fit';
+    updateResizeModeUI();
+    setFitBg('transparent');
+
+    const initialUnitProp = root.dataset.initialUnit as any;
+    if (initialUnitProp && ['px', 'inch', 'cm', 'mm', '%'].includes(initialUnitProp)) {
+      activeUnit = initialUnitProp;
+      if (['inch', 'cm', 'mm'].includes(initialUnitProp)) {
+        dpi = 300;
+        if (dpiValDisplay) dpiValDisplay.textContent = '300 DPI';
+        if (dpiToggleBtn) dpiToggleBtn.title = 'Switch to 96 DPI (Web/Screen)';
+      }
+      updateUnitUI();
+    }
+
+    const initialFormatProp = root.dataset.initialFormat as any;
+    if (initialFormatProp && ['auto', 'jpg', 'png', 'webp', 'avif', 'pdf', 'ico'].includes(initialFormatProp)) {
+      setFormat(initialFormatProp);
+    }
+
+    const targetSizeKBProp = parseFloat(root.dataset.targetSizeKb || '');
+    if (!isNaN(targetSizeKBProp) && targetSizeKBProp > 0) {
+      isTargetSizeActive = true;
+      if (enableTargetSize) enableTargetSize.checked = true;
+      targetSizeValue = targetSizeKBProp;
+      if (inputTargetSize) inputTargetSize.value = targetSizeKBProp.toString();
+      updateTargetSizeControlsUI();
+    }
+
+    // Global Event Listeners
+    browseBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const input = (document.getElementById('imageInput') || fileInput) as HTMLInputElement | null;
+      input?.click();
+    });
+
+    dropArea.addEventListener('click', (e) => {
+      if (e.target === browseBtn || browseBtn.contains(e.target as Node)) {
+        return;
+      }
+      const input = (document.getElementById('imageInput') || fileInput) as HTMLInputElement | null;
+      input?.click();
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      const target = e.target as HTMLInputElement;
+      if (target.files && target.files.length > 0) {
+        loadFiles(target.files);
+        fileInput.value = '';
+      }
+    });
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropArea.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropArea.classList.add('border-blue-500', 'scale-[1.01]');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropArea.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropArea.classList.remove('border-blue-500', 'scale-[1.01]');
+      });
+    });
+
+    dropArea.addEventListener('drop', (e) => {
+      if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        loadFiles(e.dataTransfer.files);
+      }
+    });
+
+    window.addEventListener('paste', (e) => {
+      if (e.clipboardData && e.clipboardData.files && e.clipboardData.files.length > 0) {
+        loadFiles(e.clipboardData.files);
+      }
+    });
+
+    uploadAnotherBtn?.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    clearAllBtn?.addEventListener('click', () => {
+      if (confirm('Clear all images from the queue?')) {
+        resetToDropzone();
+      }
+    });
+
+    tabBtnResize?.addEventListener('click', () => switchTab('resize'));
+    tabBtnExport?.addEventListener('click', () => switchTab('export'));
+
+    unitButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const unit = btn.dataset.unit as 'px' | 'inch' | 'cm' | 'mm' | '%';
+        changeUnit(unit);
+      });
+    });
+
+    dpiToggleBtn?.addEventListener('click', () => {
+      dpi = dpi === 96 ? 300 : 96;
+      if (dpiValDisplay) dpiValDisplay.textContent = `${dpi} DPI`;
+      dpiToggleBtn.title = dpi === 300 ? 'Switch to 96 DPI (Web/Screen)' : 'Switch to 300 DPI (High-res Print)';
+      syncInputsFromPx();
+      triggerRender();
+    });
+
+    lockAspectBtn?.addEventListener('click', () => {
+      isAspectLocked = !isAspectLocked;
+      updateLockUI();
+    });
+
+    inputWidth?.addEventListener('input', () => handleWidthInput());
+    inputHeight?.addEventListener('input', () => handleHeightInput());
+
+    resizeModeRadios.forEach(radio => {
+      radio.addEventListener('change', (e) => {
+        const target = e.target as HTMLInputElement;
+        resizeMode = target.value as any;
+        updateResizeModeUI();
+        triggerRender();
+      });
+    });
+
+    presetButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (socialPresetSelect) socialPresetSelect.value = '';
+
+        if (btn.dataset.presetPassport === '35x45') {
+          changeUnit('mm');
+          dpi = 300;
+          if (dpiValDisplay) dpiValDisplay.textContent = '300 DPI';
+          if (dpiToggleBtn) dpiToggleBtn.title = 'Switch to 96 DPI (Web/Screen)';
+          targetPxW = Math.round(35 * (300 / 25.4)); // ~413 px
+          targetPxH = Math.round(45 * (300 / 25.4)); // ~531 px
+          if (inputWidth) inputWidth.value = '35';
+          if (inputHeight) inputHeight.value = '45';
+        } else if (btn.dataset.presetScale) {
+          const scale = parseFloat(btn.dataset.presetScale);
+          targetPxW = Math.round(getEffectiveSourceWidth() * scale);
+          targetPxH = Math.round(getEffectiveSourceHeight() * scale);
+        } else if (btn.dataset.presetUnit === 'inch' && btn.dataset.presetInchVal) {
+          changeUnit('inch');
+          const inches = parseFloat(btn.dataset.presetInchVal);
+          dpi = 300;
+          if (dpiValDisplay) dpiValDisplay.textContent = '300 DPI';
+          if (dpiToggleBtn) dpiToggleBtn.title = 'Switch to 96 DPI (Web/Screen)';
+          targetPxW = Math.round(inches * 300);
+          targetPxH = Math.round(inches * 300);
+          if (inputWidth) inputWidth.value = inches.toString();
+          if (inputHeight) inputHeight.value = inches.toString();
+        } else if (btn.dataset.presetW && btn.dataset.presetH) {
+          changeUnit('px');
+          targetPxW = parseInt(btn.dataset.presetW, 10);
+          targetPxH = parseInt(btn.dataset.presetH, 10);
+        }
+        if (imageQueue[activeQueueIndex]) {
+          imageQueue[activeQueueIndex].targetW = targetPxW;
+          imageQueue[activeQueueIndex].targetH = targetPxH;
+          imageQueue[activeQueueIndex].fitBg = 'transparent';
+        }
+        syncInputsFromPx();
+
+        // Keep Aspect Ratio lock active
+        isAspectLocked = true;
+        updateLockUI();
+
+        // Switch Resize Mode to Fit (Keep bounds) to keep entire image 100% visible without cropping
+        resizeMode = 'fit';
+        updateResizeModeUI();
+
+        // Set Padding Background strictly to Transparent by default
+        setFitBg('transparent');
+
+        if (renderDebounceTimer !== null) {
+          window.clearTimeout(renderDebounceTimer);
+          renderDebounceTimer = null;
+        }
+        renderCanvas();
+      });
+    });
+
+    socialPresetSelect?.addEventListener('change', () => {
+      const val = socialPresetSelect.value;
+      if (!val) return;
+
+      const [wStr, hStr] = val.split('x');
+      const w = parseInt(wStr, 10);
+      const h = parseInt(hStr, 10);
+
+      if (!isNaN(w) && !isNaN(h) && w > 0 && h > 0) {
+        // 1. Force Unit to PX
+        changeUnit('px');
+
+        // 2. Populate target Width & Height values into input fields
+        targetPxW = w;
+        targetPxH = h;
+        if (imageQueue[activeQueueIndex]) {
+          imageQueue[activeQueueIndex].targetW = targetPxW;
+          imageQueue[activeQueueIndex].targetH = targetPxH;
+          imageQueue[activeQueueIndex].fitBg = 'transparent';
+        }
+        syncInputsFromPx();
+
+        // 3. Keep Aspect Ratio lock active
+        isAspectLocked = true;
+        updateLockUI();
+
+        // 4. Switch Resize Mode to Fit (Keep bounds) to prevent clipping/cropping
+        resizeMode = 'fit';
+        updateResizeModeUI();
+
+        // 5. Set Padding Background strictly to Transparent by default
+        setFitBg('transparent');
+
+        // 6. Trigger instant canvas re-render and recalculate estimated file size badge
+        if (renderDebounceTimer !== null) {
+          window.clearTimeout(renderDebounceTimer);
+          renderDebounceTimer = null;
+        }
+        renderCanvas();
+      }
+    });
+
+    // Fit Background Fill Selector Listeners
+    fitBgButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const mode = btn.dataset.fitBg as 'transparent' | 'blur' | 'white' | 'black' | 'custom';
+        if (!mode) return;
+        setFitBg(mode);
+        if (imageQueue[activeQueueIndex]) {
+          imageQueue[activeQueueIndex].fitBg = mode;
+        }
+        if (mode === 'transparent' && exportFormat === 'jpg') {
+          setFormat('png');
+        }
+        triggerRender();
+      });
+    });
+
+    fitCustomColorInput?.addEventListener('input', (e) => {
+      const newColor = (e.target as HTMLInputElement).value;
+      setFitBg('custom', newColor);
+      if (imageQueue[activeQueueIndex]) {
+        imageQueue[activeQueueIndex].fitBg = 'custom';
+        imageQueue[activeQueueIndex].fitCustomColor = newColor;
+      }
+      triggerRender();
+    });
+
+    fitCustomColorInput?.addEventListener('change', (e) => {
+      const newColor = (e.target as HTMLInputElement).value;
+      setFitBg('custom', newColor);
+      if (imageQueue[activeQueueIndex]) {
+        imageQueue[activeQueueIndex].fitBg = 'custom';
+        imageQueue[activeQueueIndex].fitCustomColor = newColor;
+      }
+      triggerRender();
+    });
+
+    resetTransformsBtn?.addEventListener('click', () => {
+      closeInlineCrop();
+      rotation = 0;
+      flipH = false;
+      targetPxW = originalWidth;
+      targetPxH = originalHeight;
+      if (socialPresetSelect) socialPresetSelect.value = '';
+      setFitBg('transparent');
+      if (imageQueue[activeQueueIndex]) {
+        imageQueue[activeQueueIndex].rotation = 0;
+        imageQueue[activeQueueIndex].flipH = false;
+        imageQueue[activeQueueIndex].targetW = originalWidth;
+        imageQueue[activeQueueIndex].targetH = originalHeight;
+        imageQueue[activeQueueIndex].fitBg = 'transparent';
+      }
+      syncInputsFromPx();
+      renderQueueStrip();
+      triggerRender();
+    });
+
+    formatButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const fmt = btn.dataset.format as any;
+        setFormat(fmt);
+        if (moreFormatMenu) moreFormatMenu.classList.add('hidden');
+        if (moreFormatArrow) moreFormatArrow.classList.remove('rotate-180');
+        if (moreFormatBtn) moreFormatBtn.setAttribute('aria-expanded', 'false');
+        triggerRender();
+      });
+    });
+
+    if (moreFormatBtn && moreFormatMenu && moreFormatArrow) {
+      moreFormatBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isHidden = moreFormatMenu.classList.contains('hidden');
+        if (isHidden) {
+          moreFormatMenu.classList.remove('hidden');
+          moreFormatArrow.classList.add('rotate-180');
+          moreFormatBtn.setAttribute('aria-expanded', 'true');
+        } else {
+          moreFormatMenu.classList.add('hidden');
+          moreFormatArrow.classList.remove('rotate-180');
+          moreFormatBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      moreFormatOptions.forEach(opt => {
+        opt.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const fmt = opt.dataset.moreFormat as SupportedFormat;
+          setFormat(fmt);
+          moreFormatMenu.classList.add('hidden');
+          moreFormatArrow.classList.remove('rotate-180');
+          moreFormatBtn.setAttribute('aria-expanded', 'false');
+          triggerRender();
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!moreFormatMenu.contains(e.target as Node) && !moreFormatBtn.contains(e.target as Node)) {
+          moreFormatMenu.classList.add('hidden');
+          moreFormatArrow.classList.remove('rotate-180');
+          moreFormatBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    enableTargetSize?.addEventListener('change', () => {
+      isTargetSizeActive = enableTargetSize.checked;
+      updateTargetSizeControlsUI();
+      triggerRender();
+    });
+
+    boostUpscaleBtn?.addEventListener('click', () => {
+      upscaleCanvasToTargetKB();
+    });
+
+    autoUpscaleToggle?.addEventListener('change', () => {
+      if (autoUpscaleToggle) {
+        autoUpscaleActive = autoUpscaleToggle.checked;
+        if (autoUpscaleActive && lastBlob) {
+          upscaleCanvasToTargetKB();
+        }
+      }
+    });
+
+    inputTargetSize?.addEventListener('input', () => {
+      if (!inputTargetSize) return;
+      const val = parseFloat(inputTargetSize.value);
+      if (!isNaN(val) && val > 0) {
+        targetSizeValue = val;
+        triggerRender();
+      }
+    });
+
+    sizeUnitKbBtn?.addEventListener('click', () => {
+      targetSizeUnit = 'KB';
+      if (sizeUnitKbBtn && sizeUnitMbBtn) {
+        sizeUnitKbBtn.className = 'px-2.5 py-1.5 rounded-md bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold cursor-pointer shadow-xs';
+        sizeUnitMbBtn.className = 'px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 cursor-pointer';
+      }
+      triggerRender();
+    });
+
+    sizeUnitMbBtn?.addEventListener('click', () => {
+      targetSizeUnit = 'MB';
+      if (sizeUnitKbBtn && sizeUnitMbBtn) {
+        sizeUnitMbBtn.className = 'px-2.5 py-1.5 rounded-md bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold cursor-pointer shadow-xs';
+        sizeUnitKbBtn.className = 'px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 cursor-pointer';
+      }
+      triggerRender();
+    });
+
+    switchToWebpBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setFormat('webp');
+      triggerRender();
+    });
+
+    switchToJpgBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setFormat('jpg');
+      triggerRender();
+    });
+
+    qualitySlider?.addEventListener('input', () => {
+      if (!qualitySlider) return;
+      const val = parseInt(qualitySlider.value, 10);
+      quality = val / 100;
+      if (qualityValDisplay) {
+        qualityValDisplay.textContent = `${val}% ${val >= 90 ? '(High)' : val >= 70 ? '(Good)' : '(Compact)'}`;
+      }
+      triggerRender();
+    });
+
+    downloadBtn?.addEventListener('click', () => downloadResizedImage());
+    batchDownloadBtn?.addEventListener('click', () => downloadAllZip());
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initImageResizer);
+  } else {
+    initImageResizer();
+  }
+  document.addEventListener('astro:page-load', initImageResizer);
+</script>

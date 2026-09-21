@@ -1,0 +1,494 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ImageResizer from '../components/tools/ImageResizer.astro';
+import pagesData from '../data/resizer-pages.json';
+
+export async function getStaticPaths() {
+  return pagesData.map((page) => ({
+    params: { slug: page.slug },
+    props: { page }
+  }));
+}
+
+const { page } = Astro.props;
+
+const canonicalUrl = `https://omnitools.dev/${page.slug}`;
+const relatedPages = pagesData.filter((p) => p.slug !== page.slug);
+
+// Social platform configuration & sibling detection
+const platformNames: Record<string, string> = {
+  facebook: 'Facebook',
+  instagram: 'Instagram',
+  youtube: 'YouTube',
+  tiktok: 'TikTok',
+  linkedin: 'LinkedIn',
+  twitter: 'X (Twitter)',
+  pinterest: 'Pinterest',
+  whatsapp: 'WhatsApp',
+  tumblr: 'Tumblr'
+};
+
+const isSocial = Boolean(page.platform && page.platform in platformNames);
+const platformName = page.platform ? (platformNames[page.platform] || '') : '';
+const platformSiblings = page.platform ? pagesData.filter((p) => p.platform === page.platform) : [];
+
+// JSON-LD Schemas
+const jsonLdWebPage = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": page.title,
+  "description": page.metaDescription,
+  "url": canonicalUrl
+};
+
+const jsonLdFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": page.faq.map((f) => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.a
+    }
+  }))
+};
+---
+
+<Layout
+  title={page.title}
+  description={page.metaDescription}
+  canonicalUrl={canonicalUrl}
+>
+  <Fragment slot="head">
+    <!-- Structured Data Schemas -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdWebPage)} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdFaq)} />
+  </Fragment>
+
+  <!-- Hero Header Section -->
+  <section class="relative pt-8 pb-6 sm:pt-12 sm:pb-8 overflow-hidden">
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-5 flex justify-center">
+        <ol class="inline-flex items-center space-x-1.5 md:space-x-2 text-xs font-medium text-slate-500 dark:text-slate-400">
+          <li class="inline-flex items-center">
+            <a href="/" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
+          </li>
+          <li>
+            <div class="flex items-center">
+              <svg class="w-3 h-3 text-slate-400 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <a href="/tools/image-resizer" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Tools</a>
+            </div>
+          </li>
+          <li aria-current="page">
+            <div class="flex items-center">
+              <svg class="w-3 h-3 text-slate-400 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="text-slate-900 dark:text-white font-semibold truncate max-w-[200px] sm:max-w-none">{page.badge}</span>
+            </div>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 mb-4 shadow-2xs">
+        <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
+        <span>{page.badge}</span>
+      </div>
+
+      <!-- H1 Headline -->
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
+        {page.h1}
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="mt-3 sm:mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        {page.subtitle}
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive Studio Container with Pre-configured Tool -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">
+    <ImageResizer
+      initialWidth={page.defaultSettings.width ?? undefined}
+      initialHeight={page.defaultSettings.height ?? undefined}
+      initialUnit={page.defaultSettings.unit?.toLowerCase() as any}
+      targetSizeKB={page.defaultSettings.targetKB ?? undefined}
+    />
+  </section>
+
+  <!-- Pre-configuration Inline Script -->
+  <script is:inline define:vars={{ defaultSettings: page.defaultSettings }}>
+    function applyDefaultSettings() {
+      if (!defaultSettings) return;
+
+      // 1. Target KB
+      if (defaultSettings.targetKB) {
+        const enableTargetSize = document.getElementById('enable-target-size');
+        const inputTargetSize = document.getElementById('input-target-size');
+        const sizeUnitKbBtn = document.getElementById('size-unit-kb');
+
+        if (enableTargetSize && !enableTargetSize.checked) {
+          enableTargetSize.checked = true;
+          enableTargetSize.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+        if (inputTargetSize) {
+          inputTargetSize.value = defaultSettings.targetKB.toString();
+          inputTargetSize.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+        if (sizeUnitKbBtn) {
+          sizeUnitKbBtn.click();
+        }
+      }
+
+      // 2. Unit & DPI
+      if (defaultSettings.unit) {
+        const unitVal = defaultSettings.unit.toLowerCase();
+        const unitBtn = document.querySelector(`.unit-pill[data-unit="${unitVal}"]`);
+        if (unitBtn) {
+          unitBtn.click();
+        }
+        if (['mm', 'cm', 'inch'].includes(unitVal)) {
+          const dpiToggleBtn = document.getElementById('dpi-toggle-btn');
+          const dpiVal = document.getElementById('dpi-val');
+          if (dpiToggleBtn && dpiVal && !dpiVal.textContent.includes('300')) {
+            dpiToggleBtn.click();
+          }
+        }
+      }
+
+      // 3. Width & Height
+      if (defaultSettings.width !== null && defaultSettings.width !== undefined) {
+        const inputWidth = document.getElementById('input-width');
+        if (inputWidth) {
+          inputWidth.value = defaultSettings.width.toString();
+          inputWidth.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+      }
+      if (defaultSettings.height !== null && defaultSettings.height !== undefined) {
+        const inputHeight = document.getElementById('input-height');
+        if (inputHeight) {
+          inputHeight.value = defaultSettings.height.toString();
+          inputHeight.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+      }
+
+      // 4. Resize Mode - Strictly default to 'Fit' (Keep bounds) to prevent cropping
+      let modeVal = 'fit';
+      if (defaultSettings.mode === 'Stretch' || defaultSettings.mode === 'stretch') {
+        modeVal = 'stretch';
+      }
+      const modeRadio = document.querySelector(`input[name="resize-mode"][value="${modeVal}"]`);
+      if (modeRadio) {
+        modeRadio.checked = true;
+        modeRadio.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+
+      // 5. Padding - Strictly default to 'Clear' (Transparent)
+      const padVal = (defaultSettings.padding && defaultSettings.padding.toLowerCase() !== 'transparent')
+        ? defaultSettings.padding.toLowerCase()
+        : 'transparent';
+      const padBtn = document.querySelector(`.fit-bg-btn[data-fit-bg="${padVal}"]`) || document.querySelector('.fit-bg-btn[data-fit-bg="transparent"]');
+      if (padBtn) {
+        padBtn.click();
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', applyDefaultSettings);
+    } else {
+      applyDefaultSettings();
+    }
+    document.addEventListener('astro:page-load', applyDefaultSettings);
+  </script>
+
+  <!-- 3-Step Guide Section -->
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-14 sm:py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          How to Resize Images in 3 Simple Steps
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          Fast, effortless, and private. Process high-resolution photos in your browser with zero cloud uploads.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Step 1 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs relative">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-blue-100 dark:border-blue-900/50">
+            01
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Upload or Drop Image
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Drag and drop your file into the workspace, select from your device, or paste directly with <kbd class="px-1.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">Ctrl+V</kbd>.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs relative">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-blue-100 dark:border-blue-900/50">
+            02
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Verified Preset Applied
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            This tool is pre-calibrated for <strong>{page.badge}</strong> ({page.defaultSettings.width ? `${page.defaultSettings.width} × ${page.defaultSettings.height} ${page.defaultSettings.unit || 'px'}` : (page.defaultSettings.targetKB ? `Target ${page.defaultSettings.targetKB} KB` : 'Auto Fit')}). Lock ratios, switch units, or tune DPI as needed.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs relative">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-blue-100 dark:border-blue-900/50">
+            03
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Export & Download
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Select JPG, PNG, WebP, or AVIF. Target exact file sizes or adjust quality, and download your processed image instantaneously.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Smart Sibling Grid / Popular Formats Section -->
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/60 py-14 sm:py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {isSocial ? (
+        <div>
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-8">
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+                All Official {platformName} Image Sizes & Ratios
+              </h2>
+              <p class="text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1">
+                Switch to other verified dimensions for {platformName} in one click.
+              </p>
+            </div>
+            <a
+              href="/tools/image-resizer"
+              class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors inline-flex items-center gap-1 shrink-0"
+            >
+              All Resizer Tools
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {platformSiblings.map((sib) => {
+              const isCurrent = sib.slug === page.slug;
+              return (
+                <div
+                  class={`group relative p-5 rounded-2xl border transition-all flex flex-col justify-between ${
+                    isCurrent
+                      ? 'border-blue-500 bg-blue-50/40 dark:bg-blue-950/30 ring-2 ring-blue-500/20 shadow-xs'
+                      : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-500/50 hover:shadow-md'
+                  }`}
+                >
+                  <div>
+                    <div class="flex items-center justify-between gap-2 mb-2.5">
+                      <span class="inline-block text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300">
+                        {sib.badge}
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded-md font-mono text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                        {sib.defaultSettings.width} × {sib.defaultSettings.height} px
+                      </span>
+                    </div>
+                    <h3 class="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 leading-snug">
+                      {sib.title}
+                    </h3>
+                  </div>
+                  <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs">
+                    {isCurrent ? (
+                      <span class="font-semibold text-blue-600 dark:text-blue-400 flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                        Current Preset
+                      </span>
+                    ) : (
+                      <a
+                        href={`/${sib.slug}`}
+                        class="font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 inline-flex items-center gap-1 after:absolute after:inset-0"
+                      >
+                        Resize this format &rarr;
+                      </a>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ) : (
+        <div>
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-8">
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+                Other Popular Sizes & Formats
+              </h2>
+              <p class="text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1">
+                Jump to other pre-configured photo dimensions, official requirements, and social media ratios.
+              </p>
+            </div>
+            <a
+              href="/tools/image-resizer"
+              class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors inline-flex items-center gap-1 shrink-0"
+            >
+              All Resizer Tools
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {relatedPages.slice(0, 24).map((rel) => {
+              const dimText = rel.defaultSettings.width && rel.defaultSettings.height
+                ? `${rel.defaultSettings.width} × ${rel.defaultSettings.height} ${rel.defaultSettings.unit || 'px'}`
+                : (rel.defaultSettings.targetKB ? `Target ${rel.defaultSettings.targetKB} KB` : 'Preset');
+              return (
+                <a
+                  href={`/${rel.slug}`}
+                  class="group relative p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-500/50 hover:shadow-md transition-all flex flex-col justify-between"
+                >
+                  <div>
+                    <div class="flex items-center justify-between gap-2 mb-2.5">
+                      <span class="inline-block text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50">
+                        {rel.badge}
+                      </span>
+                      <span class="inline-flex items-center px-2 py-0.5 rounded-md font-mono text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                        {dimText}
+                      </span>
+                    </div>
+                    <h3 class="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 leading-snug">
+                      {rel.title}
+                    </h3>
+                  </div>
+                  <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs">
+                    <span class="font-semibold text-blue-600 dark:text-blue-400 inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                      Resize now &rarr;
+                    </span>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-14 sm:py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-9">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Why Choose Our {page.badge} Tool?
+        </h2>
+        <p class="text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-2 max-w-xl mx-auto">
+          Engineered with precision client-side algorithms for instantaneous processing, zero cloud uploads, and maximum fidelity.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {page.features.map((feature) => (
+          <div class="flex items-start gap-3.5 p-4 sm:p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xs">
+            <div class="w-6 h-6 rounded-lg bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+            </div>
+            <span class="text-sm font-medium text-slate-700 dark:text-slate-300 leading-snug">{feature}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Accordion Section -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 border-t border-slate-200 dark:border-slate-800">
+    <div class="text-center mb-9">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+        Frequently Asked Questions
+      </h2>
+      <p class="text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-2">
+        Everything you need to know about {page.badge}.
+      </p>
+    </div>
+
+    <div class="space-y-3.5">
+      {page.faq.map((item) => (
+        <details class="group rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 transition-all open:ring-1 open:ring-blue-500/20 shadow-2xs">
+          <summary class="flex items-center justify-between font-semibold text-sm sm:text-base text-slate-900 dark:text-white cursor-pointer select-none">
+            <span>{item.q}</span>
+            <span class="ml-4 flex items-center justify-center w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 group-open:rotate-180 transition-transform duration-200 shrink-0">
+              <svg class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+              </svg>
+            </span>
+          </summary>
+          <p class="mt-3.5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            {item.a}
+          </p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- Other Presets for Social Pages -->
+  {isSocial && (
+    <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-14 sm:py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-8">
+          <div>
+            <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Other Popular Resizer Presets
+            </h2>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+              Explore official passport photos, target KB compressors, and other platform dimensions.
+            </p>
+          </div>
+          <a
+            href="/tools/image-resizer"
+            class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors inline-flex items-center gap-1"
+          >
+            All Resizer Tools &rarr;
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5">
+          {relatedPages.filter((p) => p.platform !== page.platform).slice(0, 16).map((rel) => (
+            <a
+              href={`/${rel.slug}`}
+              class="group p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-500/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all flex flex-col justify-between shadow-2xs"
+            >
+              <div>
+                <span class="inline-block text-[11px] font-mono font-medium text-blue-600 dark:text-blue-400 mb-1">
+                  {rel.badge}
+                </span>
+                <h3 class="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-1">
+                  {rel.h1}
+                </h3>
+              </div>
+              <span class="text-[11px] text-slate-400 dark:text-slate-500 mt-2.5 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                Resize now &rarr;
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</Layout>

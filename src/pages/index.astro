@@ -1,0 +1,456 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ToolCard from '../components/ToolCard.astro';
+import ToolIcon from '../components/ToolIcon.astro';
+import { TOOLS, CATEGORIES, QUICK_FILTERS } from '../data/tools';
+
+const imageTools = TOOLS.filter((t) => t.category === 'Image Tools');
+const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
+---
+
+<Layout
+  title="OmniTools — 38 Free Client-Side Developer & Image Tools"
+  description="All-in-one free programmatic utility suite. Resize photos, compress images, inspect social media specs, format JSON, decode JWTs, convert Unix timestamps, and test regex with 100% in-browser privacy."
+>
+  <!-- Hero Section -->
+  <section class="relative pt-16 pb-20 md:pt-24 md:pb-28 overflow-hidden">
+    <!-- Vercel Subtle Mesh Gradient Backdrop -->
+    <div class="hero-mesh-bg" aria-hidden="true"></div>
+
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      
+      <!-- Main Headline with Vercel tracking -->
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.08] max-w-4xl mx-auto">
+        Every Developer & Image Tool You Need.
+        <span class="block mt-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-300 dark:to-purple-400 bg-clip-text text-transparent">
+          Zero Latency. 100% Private.
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="mt-5 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        Crop, compress, convert, format JSON, decode tokens, and scale social media assets directly on your CPU. Your files and data never touch our servers.
+      </p>
+
+      <!-- Instant Live Search Bar -->
+      <div class="mt-10 max-w-2xl mx-auto">
+        <div class="relative flex items-center shadow-lg rounded-2xl bg-white dark:bg-slate-800/95 border border-slate-200 dark:border-slate-700 p-2 transition-all focus-within:border-blue-500 dark:focus-within:border-blue-400 focus-within:ring-4 focus-within:ring-blue-500/10">
+          <div class="pl-3 text-slate-400">
+            <ToolIcon name="search" class="w-5 h-5" />
+          </div>
+          <input
+            type="text"
+            id="main-search-input"
+            placeholder="Search all 38 tools (e.g. 'compress', 'json', 'youtube', 'base64', 'crop')..."
+            class="w-full bg-transparent px-3.5 py-2.5 text-sm sm:text-base text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button
+            type="button"
+            id="clear-search-btn"
+            class="hidden p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 mr-1"
+            aria-label="Clear search"
+          >
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <div class="hidden sm:flex items-center pr-2">
+            <kbd class="px-2 py-1 text-[11px] font-mono text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700/80 rounded border border-slate-200 dark:border-slate-600">
+              ⌘K
+            </kbd>
+          </div>
+        </div>
+
+        <!-- Search Hint -->
+        <div class="mt-3 flex items-center justify-end px-2 text-xs font-mono text-slate-500 dark:text-slate-400">
+          <span class="hidden sm:inline">Press <kbd class="px-1 py-0.5 rounded bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400">ESC</kbd> to clear</span>
+        </div>
+      </div>
+
+      <!-- Quick Filter Pills -->
+      <div class="mt-8 flex items-center justify-center gap-3 sm:gap-4 flex-wrap max-w-3xl mx-auto" id="filter-pills-container">
+        {QUICK_FILTERS.map((filter, index) => (
+          <button
+            type="button"
+            data-filter={filter.id}
+            class={`filter-pill flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold rounded-2xl transition-all cursor-pointer border shadow-xs ${
+              index === 0
+                ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-sm'
+                : 'bg-white dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700/60'
+            }`}
+          >
+            <span>{filter.label}</span>
+            <span class={`filter-count px-2 py-0.5 text-xs font-mono font-bold rounded-lg ${
+              index === 0
+                ? 'bg-white/20 dark:bg-slate-900/20 text-white dark:text-slate-900'
+                : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
+            }`}>{filter.count}</span>
+          </button>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- No Results Fallback (Shown when search has 0 matches) -->
+  <div id="no-results-state" class="hidden max-w-xl mx-auto px-4 py-16 text-center">
+    <div class="w-14 h-14 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-400 mx-auto flex items-center justify-center mb-4">
+      <ToolIcon name="search" class="w-7 h-7" />
+    </div>
+    <h3 class="text-lg font-semibold text-slate-900 dark:text-white">No tools match your query</h3>
+    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+      We couldn't find any tool matching "<span id="no-results-query" class="font-medium text-slate-800 dark:text-slate-200"></span>". Try searching for "image", "json", "converter", or reset filters.
+    </p>
+    <button
+      type="button"
+      id="reset-search-btn"
+      class="mt-5 px-4 py-2 text-xs font-semibold text-white bg-slate-900 dark:bg-white dark:text-slate-900 rounded-lg hover:opacity-90 transition-opacity"
+    >
+      Reset Search
+    </button>
+  </div>
+
+  <!-- Primary Tools Container -->
+  <div id="all-tools-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 pb-20">
+    
+    <!-- CATEGORY 1: IMAGE TOOLS SECTION -->
+    <section id="image-tools-section" class="category-block space-y-8" data-category-section="image-tools">
+      <div class="pb-4 border-b border-slate-200 dark:border-slate-800">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Image Tools ({imageTools.length})
+        </h2>
+      </div>
+
+      <!-- Image Tools Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" data-category-grid="image-tools">
+        {imageTools.map((tool) => (
+          <ToolCard tool={tool} />
+        ))}
+      </div>
+    </section>
+
+    <!-- CATEGORY 2: DEVELOPER TOOLS SECTION -->
+    <section id="dev-tools-section" class="category-block space-y-8" data-category-section="developer-tools">
+      <div class="pb-4 border-b border-slate-200 dark:border-slate-800">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Developer Tools ({devTools.length})
+        </h2>
+      </div>
+
+      <!-- Developer Tools Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" data-category-grid="developer-tools">
+        {devTools.map((tool) => (
+          <ToolCard tool={tool} />
+        ))}
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Category Highlights Section: 3-Pillar Architectural Breakdown -->
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-900/40 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Why Developers Choose OmniTools
+        </h2>
+        <p class="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          Traditional utility websites upload your private photos and sensitive JSON payloads to external cloud servers. We rewrote every single tool to execute entirely inside your web browser.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Pillar 1: Client-Side Image Suite -->
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+            <ToolIcon name="image" class="w-6 h-6" />
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
+            Client-Side Image Suite
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Harnessing HTML5 Canvas, OffscreenCanvas, and WebAssembly to compress JPEGs, convert PNGs to WebP, and crop passport photos instantly without uploading megabytes over the internet.
+          </p>
+          <ul class="space-y-2 text-xs text-slate-500 dark:text-slate-400 font-mono pt-2 border-t border-slate-100 dark:border-slate-700/60">
+            <li class="flex items-center gap-2">
+              <span class="text-emerald-500">✓</span> Lossless & lossy compression
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-emerald-500">✓</span> Exif metadata stripping
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-emerald-500">✓</span> Multi-image batch export
+            </li>
+          </ul>
+        </div>
+
+        <!-- Pillar 2: Developer Utility Hub -->
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+            <ToolIcon name="code" class="w-6 h-6" />
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
+            Developer Utility Hub
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Format, inspect, and validate your code strings in sub-milliseconds. Inspect JWT payloads and decode sensitive Base64 credentials with complete confidence that nothing is logged.
+          </p>
+          <ul class="space-y-2 text-xs text-slate-500 dark:text-slate-400 font-mono pt-2 border-t border-slate-100 dark:border-slate-700/60">
+            <li class="flex items-center gap-2">
+              <span class="text-emerald-500">✓</span> Zero server log risk for tokens
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-emerald-500">✓</span> RFC 4122 v4 & v7 UUID generation
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-emerald-500">✓</span> Real-time PCRE regex evaluation
+            </li>
+          </ul>
+        </div>
+
+        <!-- Pillar 3: Social Media Precision Specs -->
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+            <ToolIcon name="camera" class="w-6 h-6" />
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
+            Social Media Precision Resizer
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Pre-configured safe-zone canvases for YouTube Banners, Instagram Reels, LinkedIn Covers, TikTok avatars, and X headers. Avoid awkward cropping and blurry compression artifacts.
+          </p>
+          <ul class="space-y-2 text-xs text-slate-500 dark:text-slate-400 font-mono pt-2 border-t border-slate-100 dark:border-slate-700/60">
+            <li class="flex items-center gap-2">
+              <span class="text-emerald-500">✓</span> YouTube 2560x1440 & 1280x720 specs
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-emerald-500">✓</span> Instagram 1080x1350 & 9:16 Reels
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-emerald-500">✓</span> WhatsApp 500x500 DP & Sticker
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ Section with Accordion -->
+  <section id="faq-section" class="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div>
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+        Frequently Asked Questions
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+        Learn more about how our browser-based cryptographic and image processing engines work.
+      </p>
+    </div>
+
+    <div class="space-y-3 mt-8">
+          
+          <details class="group rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-4 transition-all">
+            <summary class="flex items-center justify-between font-semibold text-sm sm:text-base text-slate-900 dark:text-white cursor-pointer list-none">
+              <span>Are my images or code snippets uploaded to your server?</span>
+              <span class="ml-4 text-slate-400 group-open:rotate-180 transition-transform">&darr;</span>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              No. Absolute zero data is uploaded. Every tool runs locally in your browser using HTML5 Canvas, the Web Cryptography API, Web Workers, and WebAssembly. You can disconnect your Wi-Fi after opening the page and every tool will continue functioning with full performance.
+            </p>
+          </details>
+
+          <details class="group rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-4 transition-all">
+            <summary class="flex items-center justify-between font-semibold text-sm sm:text-base text-slate-900 dark:text-white cursor-pointer list-none">
+              <span>Is there a file size limit for image compression and resizing?</span>
+              <summary class="hidden"></summary>
+              <span class="ml-4 text-slate-400 group-open:rotate-180 transition-transform">&darr;</span>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Because all calculations happen on your hardware, there are no artificial server file size limits or queue thresholds. You can process high-resolution DSLR photos (20MB+ and 50+ megapixels) limited solely by your local machine's RAM.
+            </p>
+          </details>
+
+          <details class="group rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-4 transition-all">
+            <summary class="flex items-center justify-between font-semibold text-sm sm:text-base text-slate-900 dark:text-white cursor-pointer list-none">
+              <span>How are social media aspect ratios and resolutions kept accurate?</span>
+              <span class="ml-4 text-slate-400 group-open:rotate-180 transition-transform">&darr;</span>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Our social media tools are updated against the latest developer specifications from YouTube, Meta (Instagram, Facebook, WhatsApp), X (Twitter), ByteDance (TikTok), Pinterest, and LinkedIn to ensure accurate safe-zones and prevent mobile cropping.
+            </p>
+          </details>
+
+          <details class="group rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-4 transition-all">
+            <summary class="flex items-center justify-between font-semibold text-sm sm:text-base text-slate-900 dark:text-white cursor-pointer list-none">
+              <span>Is the JWT Decoder safe for production tokens?</span>
+              <span class="ml-4 text-slate-400 group-open:rotate-180 transition-transform">&darr;</span>
+            </summary>
+            <p class="mt-3 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Yes. Unlike public web debuggers that send token strings over HTTP POST requests, our JWT Decoder parses the Base64URL header and payload directly in client-side JavaScript, never exposing your API tokens or user claims.
+            </p>
+          </details>
+        </div>
+      </section>
+
+</Layout>
+
+<!-- Client-side Interactive Search & Filter Script -->
+<script>
+  // Elements
+  const searchInput = document.getElementById('main-search-input') as HTMLInputElement | null;
+  const clearSearchBtn = document.getElementById('clear-search-btn');
+  const resetSearchBtn = document.getElementById('reset-search-btn');
+  const noResultsState = document.getElementById('no-results-state');
+  const noResultsQuery = document.getElementById('no-results-query');
+  const filterPills = document.querySelectorAll<HTMLButtonElement>('.filter-pill');
+  const toolCards = document.querySelectorAll<HTMLElement>('[data-tool-card]');
+  const categorySections = document.querySelectorAll<HTMLElement>('.category-block');
+
+  let currentCategoryFilter = 'all';
+  let searchQuery = '';
+
+  function applyFilterAndSearch() {
+    const query = searchQuery.trim().toLowerCase();
+    let visibleCount = 0;
+
+    toolCards.forEach((card) => {
+      const category = card.getAttribute('data-category') || '';
+      const group = card.getAttribute('data-group') || '';
+      const title = card.getAttribute('data-title') || '';
+      const keywords = card.getAttribute('data-keywords') || '';
+      const tags = card.getAttribute('data-tags') || '';
+      const badge = card.getAttribute('data-badge') || '';
+
+      // Check Category Pill match
+      let matchesCategory = true;
+      if (currentCategoryFilter === 'image-tools') {
+        matchesCategory = category === 'image tools';
+      } else if (currentCategoryFilter === 'developer-tools') {
+        matchesCategory = category === 'developer tools';
+      }
+
+      // Check Search Query match
+      let matchesSearch = true;
+      if (query) {
+        matchesSearch = (
+          title.includes(query) ||
+          keywords.includes(query) ||
+          tags.includes(query) ||
+          group.includes(query) ||
+          category.includes(query)
+        );
+      }
+
+      const shouldShow = matchesCategory && matchesSearch;
+      if (shouldShow) {
+        card.classList.remove('hidden');
+        card.classList.add('flex');
+        visibleCount++;
+      } else {
+        card.classList.add('hidden');
+        card.classList.remove('flex');
+      }
+    });
+
+    // Update Category Section visibility
+    categorySections.forEach((section) => {
+      const sectionGrid = section.querySelector('[data-category-grid]');
+      const visibleCardsInSection = sectionGrid ? sectionGrid.querySelectorAll('[data-tool-card]:not(.hidden)').length : 0;
+      if (visibleCardsInSection === 0) {
+        section.classList.add('hidden');
+      } else {
+        section.classList.remove('hidden');
+      }
+    });
+
+    // Toggle Clear button
+    if (clearSearchBtn) {
+      if (query) {
+        clearSearchBtn.classList.remove('hidden');
+      } else {
+        clearSearchBtn.classList.add('hidden');
+      }
+    }
+
+    // Toggle No Results View
+    if (noResultsState && noResultsQuery) {
+      if (visibleCount === 0) {
+        noResultsQuery.textContent = query || currentCategoryFilter;
+        noResultsState.classList.remove('hidden');
+      } else {
+        noResultsState.classList.add('hidden');
+      }
+    }
+  }
+
+  // Search Input Event
+  searchInput?.addEventListener('input', (e) => {
+    searchQuery = (e.target as HTMLInputElement).value;
+    applyFilterAndSearch();
+  });
+
+  // Clear Search Button
+  clearSearchBtn?.addEventListener('click', () => {
+    if (searchInput) {
+      searchInput.value = '';
+      searchQuery = '';
+      applyFilterAndSearch();
+      searchInput.focus();
+    }
+  });
+
+  // Reset Search Button in Empty State
+  resetSearchBtn?.addEventListener('click', () => {
+    if (searchInput) {
+      searchInput.value = '';
+      searchQuery = '';
+    }
+    currentCategoryFilter = 'all';
+    updateFilterPills('all');
+    applyFilterAndSearch();
+  });
+
+  // Filter Pills Event Handlers
+  filterPills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      const filter = pill.getAttribute('data-filter') || 'all';
+      currentCategoryFilter = filter;
+      updateFilterPills(filter);
+      applyFilterAndSearch();
+    });
+  });
+
+  function updateFilterPills(activeFilter: string) {
+    filterPills.forEach((pill) => {
+      const filter = pill.getAttribute('data-filter');
+      const countBadge = pill.querySelector('.filter-count');
+      if (filter === activeFilter) {
+        pill.className = 'filter-pill flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold rounded-2xl transition-all cursor-pointer border shadow-sm bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white';
+        if (countBadge) {
+          countBadge.className = 'filter-count px-2 py-0.5 text-xs font-mono font-bold rounded-lg bg-white/20 dark:bg-slate-900/20 text-white dark:text-slate-900';
+        }
+      } else {
+        pill.className = 'filter-pill flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold rounded-2xl transition-all cursor-pointer border shadow-xs bg-white dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700/60';
+        if (countBadge) {
+          countBadge.className = 'filter-count px-2 py-0.5 text-xs font-mono font-bold rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300';
+        }
+      }
+    });
+  }
+
+  // ESC key clears search
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (searchInput && searchInput.value) {
+        searchInput.value = '';
+        searchQuery = '';
+        applyFilterAndSearch();
+      }
+    }
+  });
+</script>

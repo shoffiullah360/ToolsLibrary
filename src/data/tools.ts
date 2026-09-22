@@ -42,7 +42,7 @@ export const CATEGORIES: CategoryInfo[] = [
 
 export const TOOLS: Tool[] = [
   // ==========================================
-  // CATEGORY 1: IMAGE TOOLS (22 tools)
+  // CATEGORY 1: IMAGE TOOLS (21 tools)
   // ==========================================
   // Group: Core Editing
   {
@@ -284,20 +284,8 @@ export const TOOLS: Tool[] = [
     tags: ['9:16 Vertical', 'Video Covers', 'Clear Avatar'],
     keywords: ['tiktok thumbnail size', 'tiktok 1080x1920', 'tiktok profile photo'],
     icon: 'play-square',
-    href: '/tiktok-story-resizer',
-    specs: '1080x1920 Fullscreen · 9:16'
-  },
-  {
-    id: 'tumblr-image-resizer',
-    title: 'Tumblr Specs & Resizer',
-    category: 'Image Tools',
-    group: 'Social Media Specs & Resizers',
-    description: 'Produce sharp Tumblr Header Banners (3000x1055) and Dashboard Post visuals (1280x1920).',
-    tags: ['High Res Banner', 'Dashboard Feed', 'Clean Preview'],
-    keywords: ['tumblr banner size', 'tumblr photo dimensions', 'dashboard post'],
-    icon: 'layout',
-    href: '/tumblr-banner-resizer',
-    specs: '3000x1055 Banner · 1280x1920 Post'
+    href: '/tiktok-profile-picture-resizer',
+    specs: '200x200 DP Avatar · 800x800 Shop'
   },
   {
     id: 'whatsapp-image-resizer',
@@ -529,7 +517,7 @@ export function getToolsByGroup(category: 'Image Tools' | 'Developer Tools', gro
 }
 
 export const QUICK_FILTERS = [
-  { id: 'all', label: 'All Tools', count: 38 },
-  { id: 'image-tools', label: 'Image Tools', count: 22 },
+  { id: 'all', label: 'All Tools', count: 37 },
+  { id: 'image-tools', label: 'Image Tools', count: 21 },
   { id: 'developer-tools', label: 'Developer Tools', count: 16 }
 ];

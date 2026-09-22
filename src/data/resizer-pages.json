@@ -1,1834 +1,1855 @@
 [
   {
-    "slug": "resize-image-to-20kb",
-    "title": "Resize Image to 20KB Online Free - Precision KB Compression",
-    "metaDescription": "Compress and resize image to 20KB online without losing quality. Perfect for online applications, job portals, and official admission forms.",
-    "h1": "Resize Image to 20KB Online",
-    "subtitle": "Automatically compress photos, signatures, and documents strictly under 20KB using instant client-side binary search.",
-    "badge": "20 KB Target",
-    "defaultSettings": {
-      "targetKB": 20,
-      "width": null,
-      "height": null,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
+    "slug": "resize-image-to-15kb",
+    "keyword": "resize image to 15kb",
+    "metaTitle": "Resize Image to 15KB - Free Online Tool",
+    "metaDescription": "Easily resize image to 15kb online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 15KB",
+    "category": "filesize",
+    "preset": {
+      "targetSize": 15,
+      "targetUnit": "KB"
     },
-    "features": [
-      "Strict Under-20KB Guarantee using 7-pass quantization",
-      "Proportional dimension downscaling for lossless formats like PNG",
-      "Instant client-side execution — photos never leave your device",
-      "Ideal for state exam registrations and government portal submissions"
-    ],
-    "faq": [
+    "faqs": [
       {
-        "q": "How can I resize an image to exactly 20KB?",
-        "a": "Upload your image, leave 'Target Max File Size' checked with 20 KB selected, and click Download. Our client-side algorithm will automatically calibrate compression and dimensions to ensure the file is strictly <= 20KB."
+        "q": "How can I resize an image to exactly 15KB?",
+        "a": "Upload your photo or signature, ensure 'Target Max File Size' is enabled with 15 KB selected, and click Download. Our browser-based quantization algorithm optimizes compression and dimensions so the file remains strictly under 15KB."
       },
       {
-        "q": "Will my image lose readability at 20KB?",
-        "a": "For photos and signatures, our adaptive bicubic downsampler preserves high-contrast edges and essential details so documents remain crisp and eligible for official review."
+        "q": "Will my image remain legible at 15KB?",
+        "a": "Yes. Our adaptive compression prioritizes edge sharpness and text contrast, making it ideal for scanned signatures, candidate photographs, and government exam upload forms."
       },
       {
-        "q": "What format is best for reaching 20KB?",
-        "a": "JPG and WebP yield the sharpest clarity at small sizes like 20KB. If using PNG, our engine proportionally downscales canvas resolution to stay within 20KB."
+        "q": "Which file format works best to achieve 15KB?",
+        "a": "JPG and WebP deliver optimal visual clarity at ultra-low file sizes like 15KB. If you export as PNG, the tool proportionally downscales resolution to stay within 15KB."
+      },
+      {
+        "q": "Are my photos uploaded to a cloud server?",
+        "a": "No. All resizing and compression occur 100% locally in your web browser using HTML5 Canvas APIs, ensuring absolute privacy for sensitive application documents."
       }
     ]
   },
   {
-    "slug": "resize-image-to-30kb",
-    "title": "Resize Image to 30KB Online Free - Fast & Lossless",
-    "metaDescription": "Resize image to 30KB online free. Ideal for government portals, signatures, and document uploads requiring strict under 30KB limits.",
-    "h1": "Resize Image to 30KB Online",
-    "subtitle": "Compress photos and scanned signatures to exactly 30KB or less with sharp clarity and zero watermarks.",
-    "badge": "30 KB Target",
-    "defaultSettings": {
-      "targetKB": 30,
-      "width": null,
-      "height": null,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
+    "slug": "resize-image-to-20kb",
+    "keyword": "resize image to 20kb",
+    "metaTitle": "Resize Image to 20KB - Free Online Tool",
+    "metaDescription": "Easily resize image to 20kb online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 20KB",
+    "category": "filesize",
+    "preset": {
+      "targetSize": 20,
+      "targetUnit": "KB"
     },
-    "features": [
-      "Guaranteed under 30KB file weight for official portal compliance",
-      "Specialized for candidate photographs and scanned sign copies",
-      "Zero server uploads — 100% private in-browser compression",
-      "Supports JPG, PNG, and modern WebP outputs"
-    ],
-    "faq": [
+    "faqs": [
       {
-        "q": "Why do government exam forms require 30KB images?",
-        "a": "Standardized application portals restrict upload sizes between 10KB and 30KB to save server bandwidth and speed up document verification workflows."
+        "q": "How can I resize an image to 20KB online?",
+        "a": "Simply drag and drop your image into the workspace. The tool is pre-configured with a 20 KB ceiling. Click Download to generate a high-clarity file guaranteed to be 20KB or less."
       },
       {
-        "q": "How does OmniTools guarantee my file stays below 30KB?",
-        "a": "We use binary-search quality targeting that recalculates file weight over multiple rapid passes, never exceeding your chosen 30KB ceiling."
+        "q": "Why do government exam forms require 20KB images?",
+        "a": "Online recruitment portals and government examination systems restrict photo and signature sizes to 20KB to ensure fast server processing and database storage efficiency."
       },
       {
-        "q": "Can I resize signatures to 30KB with transparent backgrounds?",
-        "a": "Yes, select PNG format and Transparent padding. Our tool preserves alpha transparency while downscaling dimensions to fit within 30KB."
+        "q": "Can I resize signatures to 20KB with a transparent background?",
+        "a": "Yes. Choose PNG format and select Transparent background. Our tool optimizes pixel data while preserving transparency channels."
+      },
+      {
+        "q": "Does resizing to 20KB reduce picture dimensions?",
+        "a": "If compression alone is insufficient to reach 20KB without artifacting, our smart binary search smoothly downscales dimensions to maintain crisp readability."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-25kb",
+    "keyword": "resize image 25kb",
+    "metaTitle": "Resize Image 25KB - Free Online Tool",
+    "metaDescription": "Easily resize image 25kb online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image 25KB",
+    "category": "filesize",
+    "preset": {
+      "targetSize": 25,
+      "targetUnit": "KB"
+    },
+    "faqs": [
+      {
+        "q": "How to resize image 25kb for online job applications?",
+        "a": "Upload your candidate photo or certificate. The target size is preset to 25 KB. Click Download to immediately save a compliant image processed entirely on your device."
+      },
+      {
+        "q": "What makes this 25KB image resizer different?",
+        "a": "Unlike typical cloud tools, our resizer processes images directly in your browser using multi-pass quantization, producing no watermarks and zero upload delay."
+      },
+      {
+        "q": "Can I batch resize multiple photos to 25KB?",
+        "a": "Yes, you can drop up to 15 photos simultaneously. Each image is calibrated to fit under 25KB and can be downloaded in a single ZIP file."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-to-40kb",
+    "keyword": "resize image to 40kb",
+    "metaTitle": "Resize Image to 40KB - Free Online Tool",
+    "metaDescription": "Easily resize image to 40kb online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 40KB",
+    "category": "filesize",
+    "preset": {
+      "targetSize": 40,
+      "targetUnit": "KB"
+    },
+    "faqs": [
+      {
+        "q": "How do I compress and resize an image to 40KB?",
+        "a": "Select your image file, verify that the 40 KB target preset is enabled, and press Download. The tool balances JPEG quality and dimensions to meet the 40KB limit."
+      },
+      {
+        "q": "Which portals require 40KB image uploads?",
+        "a": "State recruitment boards, educational admissions, and passport renewal portals frequently mandate file sizes under 40KB for ID verification."
+      },
+      {
+        "q": "Is there any quality loss when resizing to 40KB?",
+        "a": "At 40KB, portrait photos and scanned identity documents retain high fidelity with virtually zero visible artifacts under standard display resolutions."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-to-45kb",
+    "keyword": "resize image to 45kb",
+    "metaTitle": "Resize Image to 45KB - Free Online Tool",
+    "metaDescription": "Easily resize image to 45kb online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 45KB",
+    "category": "filesize",
+    "preset": {
+      "targetSize": 45,
+      "targetUnit": "KB"
+    },
+    "faqs": [
+      {
+        "q": "How to resize image to 45kb without losing clarity?",
+        "a": "Upload your document or portrait photo. Our bicubic downsampling engine optimizes color tables and compression coefficients to match 45KB with maximum crispness."
+      },
+      {
+        "q": "Can I convert PNG or HEIC images to 45KB?",
+        "a": "Yes. Our tool automatically ingests PNG, HEIC, WEBP, and JPG files, converting and sizing them directly into a lightweight 45KB JPG or WebP."
+      },
+      {
+        "q": "Is my personal data safe when resizing official photos?",
+        "a": "100% safe. Your images are never transmitted across the network or stored on any server. Processing takes place completely inside your local browser."
       }
     ]
   },
   {
     "slug": "resize-image-to-50kb",
-    "title": "Resize Image to 50KB Online Free - Passport & Exam Resizer",
-    "metaDescription": "Resize image to 50KB online in seconds. Optimize JPG, PNG, and WebP photos for competitive exams, job portals, and visa applications.",
-    "h1": "Resize Image to 50KB Online",
-    "subtitle": "Optimize any photo down to 50KB with multi-pass binary compression for official document uploads.",
-    "badge": "50 KB Target",
-    "defaultSettings": {
-      "targetKB": 50,
-      "width": null,
-      "height": null,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
+    "keyword": "resize image to 50kb",
+    "metaTitle": "Resize Image to 50KB - Free Online Tool",
+    "metaDescription": "Easily resize image to 50kb online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 50KB",
+    "category": "filesize",
+    "preset": {
+      "targetSize": 50,
+      "targetUnit": "KB"
     },
-    "features": [
-      "The most common document upload standard (20KB - 50KB)",
-      "High visual fidelity preservation with smooth color gradation",
-      "One-click batch processing for multiple certificate photos",
-      "No registration, no daily quota, and zero watermarks"
-    ],
-    "faq": [
+    "faqs": [
       {
-        "q": "How do I resize a 2MB photo to 50KB?",
-        "a": "Simply drag and drop your 2MB photo into the dropzone. With the 50KB target active, OmniTools compresses the file to under 50KB in milliseconds for immediate download."
+        "q": "How do I resize an image to 50KB online?",
+        "a": "Drop your image into the tool. With the 50 KB preset active, click Download. The algorithm conducts a 7-pass binary search to produce a file strictly under 50KB."
       },
       {
-        "q": "Is resizing to 50KB free and safe?",
-        "a": "Yes. OmniTools runs completely inside your browser sandbox via HTML5 Canvas. Your sensitive identity documents are never uploaded to any cloud server."
+        "q": "Why is 50KB the most common online form requirement?",
+        "a": "Portals like UPSC, SSC, IBPS, and international visa portals standardise on 50KB as the sweet spot between document clarity and fast database indexing."
       },
       {
-        "q": "Can I specify both 50KB and exact pixel dimensions?",
-        "a": "Yes. Switch to the Dimensions tab to set your required width and height (e.g. 350x450 px), and our engine will honor both the dimensions and the 50KB file weight."
+        "q": "What if my original image is over 5MB?",
+        "a": "Our engine handles high-resolution smartphone photos up to 50MB effortlessly, reducing them to under 50KB in milliseconds without crashing your browser."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-to-60kb",
+    "keyword": "resize image to 60kb",
+    "metaTitle": "Resize Image to 60KB - Free Online Tool",
+    "metaDescription": "Easily resize image to 60kb online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 60KB",
+    "category": "filesize",
+    "preset": {
+      "targetSize": 60,
+      "targetUnit": "KB"
+    },
+    "faqs": [
+      {
+        "q": "How can I resize an image to 60KB?",
+        "a": "Upload your picture to the editor. The target size is automatically locked at 60 KB. Review the live preview and hit Download for immediate export."
+      },
+      {
+        "q": "Can I adjust width and height while keeping the file under 60KB?",
+        "a": "Yes, you can specify custom pixel or centimeter bounds in the dimensions panel while preserving the 60KB max file size ceiling."
+      },
+      {
+        "q": "Does this tool support WebP export at 60KB?",
+        "a": "Yes. WebP provides up to 30% higher visual quality than JPEG at 60KB, preserving sharper facial contours and cleaner background gradients."
       }
     ]
   },
   {
     "slug": "resize-image-to-100kb",
-    "title": "Resize Image to 100KB Online Free - High Quality Compression",
-    "metaDescription": "Resize image to 100KB online for free. Compress large pictures to under 100KB while preserving vivid colors and crisp details.",
-    "h1": "Resize Image to 100KB Online",
-    "subtitle": "Achieve the sweet spot between lightweight file size and sharp image quality under 100KB.",
-    "badge": "100 KB Target",
-    "defaultSettings": {
-      "targetKB": 100,
-      "width": null,
-      "height": null,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
+    "keyword": "resize image to 100kb",
+    "metaTitle": "Resize Image to 100KB - Free Online Tool",
+    "metaDescription": "Easily resize image to 100kb online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 100KB",
+    "category": "filesize",
+    "preset": {
+      "targetSize": 100,
+      "targetUnit": "KB"
     },
-    "features": [
-      "Optimal balance of visual sharpness and lightweight file size",
-      "Perfect for university admission forms, resume headshots, and KYC portals",
-      "Multi-core browser acceleration for fast export",
-      "Supports JPG, WebP, AVIF, and PDF output"
-    ],
-    "faq": [
+    "faqs": [
       {
-        "q": "What is the 100KB image size standard used for?",
-        "a": "100KB is the default maximum upload threshold for banking KYC portals, university registration forms, and digital resume headshots."
+        "q": "How do I compress an image down to 100KB?",
+        "a": "Upload any JPG, PNG, or WebP photo. With the pre-calibrated 100 KB target size enabled, download your optimized picture with one click."
       },
       {
-        "q": "Will a 100KB image look blurry when printed?",
-        "a": "At standard wallet or passport physical sizes (2x2 inches or 35x45 mm), a 100KB JPEG retains excellent sharpness and 300 DPI resolution."
+        "q": "Is 100KB sufficient for passport and visa submissions?",
+        "a": "Yes. Most official consular portals (such as US, UK, and Schengen visas) specify a maximum file size between 100KB and 240KB, making 100KB universally compliant."
       },
       {
-        "q": "Can I convert my resized 100KB image directly to PDF?",
-        "a": "Yes. Select PDF under Export Format to embed your 100KB optimized image into a single-page printable PDF document."
+        "q": "Will text on certificates remain sharp at 100KB?",
+        "a": "Yes. 100KB provides ample byte budget for scanned diplomas, identity cards, and receipts to remain completely legible and OCR-compatible."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-to-150kb",
+    "keyword": "resize image to 150kb",
+    "metaTitle": "Resize Image to 150KB - Free Online Tool",
+    "metaDescription": "Easily resize image to 150kb online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 150KB",
+    "category": "filesize",
+    "preset": {
+      "targetSize": 150,
+      "targetUnit": "KB"
+    },
+    "faqs": [
+      {
+        "q": "How to resize an image to 150KB online?",
+        "a": "Drop your file onto the tool canvas. The target file size is pre-set to 150 KB. The tool performs fast client-side quantization and exports your image instantly."
+      },
+      {
+        "q": "Can I resize batch images to 150KB simultaneously?",
+        "a": "Yes. Queue up to 15 files at once. Every image will be processed to meet the 150KB threshold and can be downloaded individually or as a single ZIP."
+      },
+      {
+        "q": "Which websites require 150KB images?",
+        "a": "Academic journal submissions, university admission portals, and government vendor registration systems often specify 150KB image limits."
       }
     ]
   },
   {
     "slug": "resize-image-to-200kb",
-    "title": "Resize Image to 200KB Online Free - Fast Photo Optimizer",
-    "metaDescription": "Compress and resize images to 200KB online free. Suitable for web publishing, email attachments, and online submission portals.",
-    "h1": "Resize Image to 200KB Online",
-    "subtitle": "Quickly downscale high-resolution photos under 200KB with zero quality loss and no cloud uploads.",
-    "badge": "200 KB Target",
-    "defaultSettings": {
-      "targetKB": 200,
-      "width": null,
-      "height": null,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
+    "keyword": "resize image to 200kb",
+    "metaTitle": "Resize Image to 200KB - Free Online Tool",
+    "metaDescription": "Easily resize image to 200kb online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 200KB",
+    "category": "filesize",
+    "preset": {
+      "targetSize": 200,
+      "targetUnit": "KB"
     },
-    "features": [
-      "Standard target for website assets, e-commerce listings, and email photos",
-      "Maintains vibrant color fidelity and contrast",
-      "Instant before/after file weight estimation",
-      "Batch mode allows resizing up to 15 photos to 200KB together"
-    ],
-    "faq": [
+    "faqs": [
       {
-        "q": "Why resize images to 200KB for web pages?",
-        "a": "Keeping page hero and blog illustrations under 200KB ensures fast Core Web Vitals (LCP) and prevents high mobile data consumption."
+        "q": "How do I resize an image to 200KB?",
+        "a": "Upload your image file, verify that the 200 KB target size constraint is checked, and download the compressed output in JPG, WebP, or PNG."
       },
       {
-        "q": "Can I resize a 10MB camera photo to 200KB?",
-        "a": "Yes. Our binary-search compression will scale quality quantization and downscale dimensions if necessary to fit strictly within 200KB."
+        "q": "Is 200KB recommended for website performance?",
+        "a": "Yes. 200KB is the ideal web performance benchmark for hero banners and featured blog graphics, achieving rapid Core Web Vitals (LCP) scores."
       },
       {
-        "q": "Does 200KB compression strip image EXIF data?",
-        "a": "Yes. Exporting through HTML5 Canvas automatically removes private camera metadata and GPS coordinates for enhanced privacy."
+        "q": "Does the tool upscale images that are already below 200KB?",
+        "a": "If your file is smaller than 200KB and you need it to meet an exact threshold, you can use our canvas resolution booster to adjust file weight."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-to-250kb",
+    "keyword": "resize image to 250kb",
+    "metaTitle": "Resize Image to 250KB - Free Online Tool",
+    "metaDescription": "Easily resize image to 250kb online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 250KB",
+    "category": "filesize",
+    "preset": {
+      "targetSize": 250,
+      "targetUnit": "KB"
+    },
+    "faqs": [
+      {
+        "q": "How to resize an image to 250KB without losing quality?",
+        "a": "Upload your photo. Our client-side compression engine iteratively tests quality coefficients to deliver maximum clarity while capping file size at 250 KB."
+      },
+      {
+        "q": "What types of images benefit from a 250KB preset?",
+        "a": "High-resolution product catalog photos, real estate listings, and portfolio showcases maintain exceptional richness and detail at 250KB."
+      },
+      {
+        "q": "Are there any file limits or watermarks?",
+        "a": "None. You can resize unlimited photos to 250KB completely free without registration or watermarks."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-to-300kb",
+    "keyword": "resize image to 300kb",
+    "metaTitle": "Resize Image to 300KB - Free Online Tool",
+    "metaDescription": "Easily resize image to 300kb online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 300KB",
+    "category": "filesize",
+    "preset": {
+      "targetSize": 300,
+      "targetUnit": "KB"
+    },
+    "faqs": [
+      {
+        "q": "How do I resize an image to 300KB?",
+        "a": "Upload your image. The tool is pre-configured with a 300 KB limit. Click Download to receive your optimized photo in seconds."
+      },
+      {
+        "q": "Which portals require 300KB images?",
+        "a": "The Indian Visa online portal (regular/e-visa), professional certification boards, and various banking portals require photographs capped at 300KB."
+      },
+      {
+        "q": "Can I crop and rotate my image before resizing to 300KB?",
+        "a": "Yes. Use our built-in crop handles, 90-degree rotate tools, and flip tools before exporting at 300KB."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-to-400kb",
+    "keyword": "resize image to 400kb",
+    "metaTitle": "Resize Image to 400KB - Free Online Tool",
+    "metaDescription": "Easily resize image to 400kb online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 400KB",
+    "category": "filesize",
+    "preset": {
+      "targetSize": 400,
+      "targetUnit": "KB"
+    },
+    "faqs": [
+      {
+        "q": "How to compress an image to 400KB online?",
+        "a": "Drop your picture into the editor. The 400 KB preset ensures high image detail while meeting form upload ceilings. Click Download to save."
+      },
+      {
+        "q": "Does 400KB preserve full HD resolution?",
+        "a": "Yes. 1080p and 1440p images easily compress to 400KB with negligible visual loss when using modern WebP or optimized JPEG."
+      },
+      {
+        "q": "Will resizing to 400KB work on mobile phones?",
+        "a": "Yes, our responsive web application runs smoothly on Safari for iOS and Chrome for Android directly in your mobile browser."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-to-450kb",
+    "keyword": "resize image to 450kb",
+    "metaTitle": "Resize Image to 450KB - Free Online Tool",
+    "metaDescription": "Easily resize image to 450kb online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 450KB",
+    "category": "filesize",
+    "preset": {
+      "targetSize": 450,
+      "targetUnit": "KB"
+    },
+    "faqs": [
+      {
+        "q": "How do I resize an image to 450KB?",
+        "a": "Upload your image and download the result. The 450 KB preset automatically optimizes compression ratios in milliseconds."
+      },
+      {
+        "q": "What if my portal has a strict 500KB limit?",
+        "a": "Setting your target size to 450KB gives you a comfortable safety buffer, guaranteeing that slight server-side file recalculations will never reject your upload."
+      },
+      {
+        "q": "Can I convert HEIC photos from iPhone to 450KB JPG?",
+        "a": "Yes. Our tool decodes Apple HEIC photos instantly and compresses them into a standard 450KB JPG."
       }
     ]
   },
   {
     "slug": "resize-image-to-500kb",
-    "title": "Resize Image to 500KB Online Free - Professional Image Compressor",
-    "metaDescription": "Resize images to 500KB online. Perfect for high-res portfolio photos, real estate listings, and blog illustrations.",
-    "h1": "Resize Image to 500KB Online",
-    "subtitle": "Downscale heavy multi-megabyte camera photos strictly under 500KB while preserving pristine detail.",
-    "badge": "500 KB Target",
-    "defaultSettings": {
-      "targetKB": 500,
-      "width": null,
-      "height": null,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
+    "keyword": "resize image to 500kb",
+    "metaTitle": "Resize Image to 500KB - Free Online Tool",
+    "metaDescription": "Easily resize image to 500kb online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 500KB",
+    "category": "filesize",
+    "preset": {
+      "targetSize": 500,
+      "targetUnit": "KB"
     },
-    "features": [
-      "Premium quality for photography portfolios and real estate galleries",
-      "Preserves ultra-fine textures, text labels, and detailed backgrounds",
-      "Real-time file savings indicator",
-      "Full transparency support in PNG and WebP formats"
-    ],
-    "faq": [
+    "faqs": [
       {
-        "q": "When should I resize images to 500KB?",
-        "a": "500KB is ideal when you need high-resolution graphics for desktop presentation slides, client proofing galleries, and high-DPI displays."
+        "q": "How to resize an image to 500KB online for free?",
+        "a": "Select your image. The 500 KB limit is pre-selected. Click Download to receive your high-resolution, compressed photo."
       },
       {
-        "q": "How does 500KB compare to 100KB in visual quality?",
-        "a": "500KB allows higher color quantization and less aggressive compression, preserving smooth gradients in night shots and intricate patterns."
+        "q": "Why is 500KB widely used for digital uploads?",
+        "a": "500KB provides outstanding visual crispness for full-page PDF attachments, legal filings, and high-DPI scans while preventing server timeouts."
       },
       {
-        "q": "Can I batch export multiple 500KB images as a ZIP file?",
-        "a": "Yes. Upload up to 15 files, set target file size to 500 KB, and click 'Download All (ZIP)' to process them all simultaneously."
+        "q": "Does client-side compression protect my confidential paperwork?",
+        "a": "Absolutely. No file bytes ever leave your device memory, satisfying strict enterprise privacy and GDPR compliance requirements."
       }
     ]
   },
   {
-    "slug": "compress-image-to-20kb",
-    "title": "Compress Image to 20KB Online Free - Signature & Photo Tool",
-    "metaDescription": "Compress image to 20KB online without losing clarity. Perfect for government exam forms, digital signatures, and ID cards.",
-    "h1": "Compress Image to 20KB Online",
-    "subtitle": "Precision compression engine that reduces photo file size strictly below 20KB right in your browser.",
-    "badge": "20 KB Compression",
-    "defaultSettings": {
-      "targetKB": 20,
-      "width": null,
-      "height": null,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
+    "slug": "resize-image-to-512kb",
+    "keyword": "resize image to 512kb",
+    "metaTitle": "Resize Image to 512KB - Free Online Tool",
+    "metaDescription": "Easily resize image to 512kb online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 512KB",
+    "category": "filesize",
+    "preset": {
+      "targetSize": 512,
+      "targetUnit": "KB"
     },
-    "features": [
-      "Targeted for high-rejection official application portals",
-      "Strict <= 20,480 bytes validation logic",
-      "Fast client-side binary search in less than 50ms",
-      "Guaranteed no watermarks or registration walls"
-    ],
-    "faq": [
+    "faqs": [
       {
-        "q": "What happens if a photo is too detailed to fit in 20KB?",
-        "a": "Our algorithm automatically downscales the pixel dimensions proportionally until the encoded file strictly meets the 20KB requirement."
+        "q": "Why resize an image to exactly 512KB (0.5 MB)?",
+        "a": "512KB corresponds to half a binary megabyte (524,288 bytes), a standard boundary for email attachments, WhatsApp stickers, and database binary fields."
       },
       {
-        "q": "Can I compress black-and-white scanned signatures to 20KB?",
-        "a": "Yes. Black-and-white signatures compress efficiently; our tool ensures the signature lines remain solid and unbroken."
+        "q": "How do I resize an image to 512KB?",
+        "a": "Upload your picture. The 512 KB preset is active. The engine optimizes file encoding to stay strictly below 512KB."
       },
       {
-        "q": "Do I need to install any software to compress to 20KB?",
-        "a": "No, OmniTools runs 100% inside your browser on Windows, Mac, iOS, and Android without any installation."
+        "q": "Can I export transparent PNGs under 512KB?",
+        "a": "Yes. When exporting PNGs with transparency, our engine adjusts canvas dimensions to ensure the output remains under 512KB."
       }
     ]
   },
   {
-    "slug": "compress-image-to-50kb",
-    "title": "Compress Image to 50KB Online Free - Quick & Secure",
-    "metaDescription": "Compress image to 50KB online free. Fast client-side photo compressor for admission tests, job registrations, and visas.",
-    "h1": "Compress Image to 50KB Online",
-    "subtitle": "Instantly squeeze image weight below 50KB with maximum sharpness and absolute privacy.",
-    "badge": "50 KB Compression",
-    "defaultSettings": {
-      "targetKB": 50,
-      "width": null,
-      "height": null,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
+    "slug": "resize-image-to-600kb",
+    "keyword": "resize image to 600kb",
+    "metaTitle": "Resize Image to 600KB - Free Online Tool",
+    "metaDescription": "Easily resize image to 600kb online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 600KB",
+    "category": "filesize",
+    "preset": {
+      "targetSize": 600,
+      "targetUnit": "KB"
     },
-    "features": [
-      "Strict under-50KB binary search optimization",
-      "Guaranteed acceptance on public exam and job application sites",
-      "100% client-side privacy — zero cloud exposure",
-      "Live preview showing exact resulting dimensions and size"
-    ],
-    "faq": [
+    "faqs": [
       {
-        "q": "How to compress image to 50KB without losing quality?",
-        "a": "Use JPG or WebP format with our precision compression engine. It finds the highest possible mathematical quality factor that remains under 50KB."
+        "q": "How to resize an image to 600KB?",
+        "a": "Drop your file into the workspace, verify the 600 KB target size, and click Download for an immediate, artifact-free export."
       },
       {
-        "q": "Can I compress PNG images to 50KB?",
-        "a": "Yes. For PNGs, our tool proportionally scales down the canvas dimensions until the lossless output fits within 50KB, or suggests switching to WebP for sharper results."
+        "q": "Is 600KB sufficient for 4K wallpaper images?",
+        "a": "Yes. Modern WebP compression can store stunning 3840x2160 images under 600KB with excellent color fidelity and dynamic range."
       },
       {
-        "q": "Is there a limit on how many images I can compress to 50KB?",
-        "a": "No, OmniTools is completely free with unlimited usage and batch processing support."
+        "q": "Can I customize the dimensions while locking 600KB?",
+        "a": "Yes. Enter your desired width and height; our compression engine will automatically calibrate quality to respect the 600KB ceiling."
       }
     ]
   },
   {
-    "slug": "reduce-image-size-in-kb",
-    "title": "Reduce Image Size in KB Online Free - Custom KB Compressor",
-    "metaDescription": "Reduce image size in KB online free. Set any custom KB target to compress JPG, PNG, and WebP pictures accurately.",
-    "h1": "Reduce Image Size in KB Online",
-    "subtitle": "Input any exact target KB value and let our intelligent binary search compress your file in milliseconds.",
-    "badge": "Custom KB Reducer",
-    "defaultSettings": {
-      "targetKB": 100,
-      "width": null,
-      "height": null,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
+    "slug": "resize-image-to-2mb",
+    "keyword": "resize image to 2mb",
+    "metaTitle": "Resize Image to 2MB - Free Online Tool",
+    "metaDescription": "Easily resize image to 2mb online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 2MB",
+    "category": "filesize",
+    "preset": {
+      "targetSize": 2,
+      "targetUnit": "MB"
     },
-    "features": [
-      "Fully configurable KB and MB target size inputs",
-      "Smart format suggestions for maximum compression ratio",
-      "Proportional dimension downscaling fallback",
-      "Supports JPG, PNG, WebP, AVIF, and PDF output"
-    ],
-    "faq": [
+    "faqs": [
       {
-        "q": "How do I choose the right target KB?",
-        "a": "Check your portal requirements. Common sizes are 20KB for signatures, 50KB for passport photos, and 100KB-200KB for scanned certificates and ID cards."
+        "q": "How do I resize an image to 2MB?",
+        "a": "Upload your high-res RAW or camera photo. With the 2 MB preset enabled, click Download to save an ultra-crisp image under 2MB."
       },
       {
-        "q": "How does reducing image size in KB work?",
-        "a": "Our engine runs an iterative binary search across compression quality quantization matrices. If quality alone isn't enough, it downscales pixel resolution proportionally."
+        "q": "Why do websites impose a 2MB upload limit?",
+        "a": "Content Management Systems (WordPress, Shopify) and email providers often set default max upload limits at 2MB to ensure swift load times."
       },
       {
-        "q": "Does reducing KB affect the image aspect ratio?",
-        "a": "No. Aspect ratio is strictly locked to prevent distortion or stretching of facial features and text."
+        "q": "Can I resize batch images to 2MB?",
+        "a": "Yes. Upload up to 15 photos at a time to process a batch of multi-megapixel pictures to under 2MB each."
       }
     ]
   },
   {
-    "slug": "passport-size-photo-resizer",
-    "title": "Passport Size Photo Resizer Online - 35x45 mm & Custom KB",
-    "metaDescription": "Make passport size photos online for free. Resize to 35x45 mm with white background, 300 DPI print quality, and official form specs.",
-    "h1": "Passport Size Photo Resizer",
-    "subtitle": "Crop and resize headshots to standard 35x45 mm passport dimensions at 300 DPI with official background compliance.",
-    "badge": "Passport 35x45mm",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 35,
-      "height": 45,
-      "unit": "MM",
-      "mode": "Fit",
-      "padding": "Transparent"
+    "slug": "resize-image-to-5mb",
+    "keyword": "resize image to 5mb",
+    "metaTitle": "Resize Image to 5MB - Free Online Tool",
+    "metaDescription": "Easily resize image to 5mb online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 5MB",
+    "category": "filesize",
+    "preset": {
+      "targetSize": 5,
+      "targetUnit": "MB"
     },
-    "features": [
-      "Standard international 35 × 45 mm passport photo dimensions",
-      "Crisp 300 DPI print-ready rendering (413 × 531 pixels)",
-      "Smart 'Fill & Crop' centering for perfect face framing",
-      "Solid white, custom color, or blur background fill options"
-    ],
-    "faq": [
+    "faqs": [
       {
-        "q": "What are the standard dimensions for a passport size photo?",
-        "a": "The global standard (ICAO) is 35 mm wide by 45 mm high. At 300 DPI print resolution, this corresponds to exactly 413 × 531 pixels."
+        "q": "How can I reduce high-resolution camera photos to 5MB?",
+        "a": "Drop your 20MB-50MB DSLR or smartphone photos into the resizer. The 5 MB target preset maintains print-grade resolution while keeping size under 5MB."
       },
       {
-        "q": "Can I also limit the passport photo file size to 50KB?",
-        "a": "Yes. Switch to 'Export Settings', check 'Target Max File Size', and type 50 KB. The tool will preserve 35x45 mm proportions while keeping the file under 50KB."
+        "q": "Which platforms restrict uploads to 5MB?",
+        "a": "Discord (free tier), Twitter/X avatars, job application portals, and cloud storage previews frequently cap single photo uploads at 5MB."
       },
       {
-        "q": "What background color is required for passport photos?",
-        "a": "Most consulates require a plain white or light off-white background. You can select 'White' under Fit Background to ensure full compliance."
+        "q": "Does reducing a 24MP image to 5MB preserve sharpness?",
+        "a": "Yes. At 5MB, virtually no visual compression artifacts occur, preserving fine textures, hair strands, and subtle gradients."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-20kb-to-50kb",
+    "keyword": "resize image 20kb to 50kb",
+    "metaTitle": "Resize Image 20KB to 50KB - Free Online Tool",
+    "metaDescription": "Easily resize image 20kb to 50kb online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image 20KB to 50KB",
+    "category": "filesize",
+    "preset": {
+      "targetSize": 50,
+      "targetUnit": "KB"
+    },
+    "faqs": [
+      {
+        "q": "How to resize an image within the 20KB to 50KB range?",
+        "a": "Setting your target max size to 50KB guarantees your output will stay below 50KB while remaining comfortably within the 20KB-50KB bracket required by competitive examination portals."
+      },
+      {
+        "q": "Which government portals mandate the 20KB to 50KB file size range?",
+        "a": "Major recruitment portals such as SSC, UPSC, State PSCs, and railway exams (RRB) strictly mandate candidate photos to be between 20KB and 50KB."
+      },
+      {
+        "q": "What should I do if my photo drops below 20KB?",
+        "a": "If your file compresses to less than 20KB, you can slightly increase the canvas pixel dimensions (e.g., to 350x450 px) or use our target size booster to keep it safely within the 20KB-50KB window."
+      },
+      {
+        "q": "What dimensions are recommended for 20KB to 50KB photos?",
+        "a": "Standard dimensions of 3.5cm × 4.5cm or 200 × 230 pixels are standard for official applications in this file size bracket."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-50kb-to-100kb",
+    "keyword": "resize image 50kb to 100kb",
+    "metaTitle": "Resize Image 50KB to 100KB - Free Online Tool",
+    "metaDescription": "Easily resize image 50kb to 100kb online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image 50KB to 100KB",
+    "category": "filesize",
+    "preset": {
+      "targetSize": 100,
+      "targetUnit": "KB"
+    },
+    "faqs": [
+      {
+        "q": "How to resize an image within the 50KB to 100KB range?",
+        "a": "Setting the target max file size to 100KB guarantees your photo will not exceed 100KB while remaining comfortably within the 50KB to 100KB requirement specified by online portals."
+      },
+      {
+        "q": "Why do admission portals require a 50KB to 100KB size range?",
+        "a": "Universities and immigration portals mandate this bracket to prevent overly compressed, blurry photos while still ensuring fast document indexing."
+      },
+      {
+        "q": "How do I ensure my document stays above 50KB?",
+        "a": "Keep dimensions at 600x600 px or higher and export in high-quality JPG or PNG. Our tool ensures your file stays within the required 50KB-100KB range."
+      },
+      {
+        "q": "Can I resize signatures and certificates to the 50KB-100KB bracket?",
+        "a": "Yes. Certificates and scanned marksheets uploaded within 50KB-100KB retain full typographical legibility for automated optical character recognition (OCR)."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-to-250x250",
+    "keyword": "resize image to 250x250",
+    "metaTitle": "Resize Image to 250x250 - Free Online Tool",
+    "metaDescription": "Easily resize image to 250x250 online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 250x250",
+    "category": "dimension",
+    "preset": {
+      "width": 250,
+      "height": 250,
+      "unit": "PX",
+      "lockRatio": false
+    },
+    "faqs": [
+      {
+        "q": "How to resize image to 250x250 pixels online?",
+        "a": "Upload your picture. The width and height are pre-configured to 250x250 pixels. Choose 'Fit' with clean borders or 'Fill / Crop' to square-crop without distortion."
+      },
+      {
+        "q": "What are 250x250 images commonly used for?",
+        "a": "250x250 px is a popular square thumbnail size for online avatars, e-commerce catalog widgets, app icons, and author bios."
+      },
+      {
+        "q": "Will my image stretch when resized to 250x250?",
+        "a": "No. By default, 'Fit' mode maintains original aspect ratios with transparent padding, while 'Fill' center-crops cleanly. You can also disable aspect locking if explicit stretching is desired."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-to-300x80",
+    "keyword": "resize image to 300x80",
+    "metaTitle": "Resize Image to 300x80 - Free Online Tool",
+    "metaDescription": "Easily resize image to 300x80 online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 300x80",
+    "category": "dimension",
+    "preset": {
+      "width": 300,
+      "height": 80,
+      "unit": "PX",
+      "lockRatio": false
+    },
+    "faqs": [
+      {
+        "q": "How do I resize a signature image to 300x80 pixels?",
+        "a": "Upload your scanned signature. The dimensions are pre-set to 300x80 pixels. Download as PNG to preserve transparent backgrounds or JPG with crisp ink contrast."
+      },
+      {
+        "q": "Why is 300x80 the standard digital signature preset?",
+        "a": "Most recruitment portals and banking systems require uploaded signature images to measure exactly 300x80 pixels (or a 15:4 ratio) with file sizes under 20KB-30KB."
+      },
+      {
+        "q": "How can I remove the paper background from my signature?",
+        "a": "Upload a clean photo of your signature. Our tool maintains high contrast on black and white ink, allowing effortless cropping to 300x80."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-to-300x100",
+    "keyword": "resize image to 300x100",
+    "metaTitle": "Resize Image to 300x100 - Free Online Tool",
+    "metaDescription": "Easily resize image to 300x100 online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 300x100",
+    "category": "dimension",
+    "preset": {
+      "width": 300,
+      "height": 100,
+      "unit": "PX",
+      "lockRatio": false
+    },
+    "faqs": [
+      {
+        "q": "How to resize image to 300x100 pixels?",
+        "a": "Upload your photo or graphic. The editor is initialized to 300x100 pixels. Adjust padding or crop framing and download your file instantly."
+      },
+      {
+        "q": "What is the 300x100 resolution used for?",
+        "a": "300x100 px is widely utilized for website header logos, compact affiliate banners, official form signatures, and email signature strips."
+      },
+      {
+        "q": "Can I export transparent PNGs at 300x100?",
+        "a": "Yes. Select PNG as your export format and choose Transparent background padding to keep alpha channels intact."
       }
     ]
   },
   {
     "slug": "resize-image-to-300x300",
-    "title": "Resize Image to 300x300 Pixels Online Free - Square Cropper",
-    "metaDescription": "Resize image to 300x300 pixels free online. Create crisp square photos, profile pictures, and product thumbnails without stretching.",
-    "h1": "Resize Image to 300x300 Pixels",
-    "subtitle": "Convert any picture into a sharp 300 × 300 px square photo with clean center cropping or fit padding.",
-    "badge": "300x300 PX",
-    "defaultSettings": {
-      "targetKB": null,
+    "keyword": "resize image to 300x300",
+    "metaTitle": "Resize Image to 300x300 - Free Online Tool",
+    "metaDescription": "Easily resize image to 300x300 online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 300x300",
+    "category": "dimension",
+    "preset": {
       "width": 300,
       "height": 300,
       "unit": "PX",
-      "mode": "Fill & Crop",
-      "padding": "Transparent"
+      "lockRatio": false
     },
-    "features": [
-      "Exact 1:1 square ratio conversion (300 × 300 pixels)",
-      "Fill & Crop prevents distortion or stretching",
-      "Fit mode adds clean border padding to preserve entire photo",
-      "High-speed export in JPG, PNG, or WebP"
-    ],
-    "faq": [
+    "faqs": [
       {
-        "q": "Why is 300x300 pixels a popular image dimension?",
-        "a": "300x300 is the standard specification for e-commerce thumbnails, social media profile avatars, and online exam application portals."
+        "q": "How do I resize an image to 300x300 pixels online?",
+        "a": "Drop your image into the workspace. The tool pre-loads 300x300 pixels. Click Download to save an exact 1:1 square image."
       },
       {
-        "q": "How to make a rectangular photo 300x300 without stretching?",
-        "a": "Use 'Fill & Crop' to center-crop the photo proportionally, or choose 'Fit' with a blur or white border to keep the entire original image visible."
+        "q": "Where is 300x300 px commonly required?",
+        "a": "300x300 pixels is standard for Bangladesh passport photos, government service cards, profile avatars, and social media icons."
       },
       {
-        "q": "Can I resize to 300x300 and target under 20KB?",
-        "a": "Yes. Enter 300 in width and height, then enable 'Target Max File Size' and specify 20 KB in the Export Settings tab."
+        "q": "How does the tool prevent image distortion at 300x300?",
+        "a": "Our tool defaults to 'Fit' mode to keep your entire photo visible with clean borders, or allows one-click 'Fill / Crop' to square-crop without squeezing."
       }
     ]
   },
   {
-    "slug": "resize-image-35x45-mm",
-    "title": "Resize Image to 35x45 mm Online Free - Official Visa & ID Standard",
-    "metaDescription": "Resize image to 35x45 mm online free. The official photo size for Schengen visa, UK passport, and international ID applications.",
-    "h1": "Resize Image to 35x45 mm Online",
-    "subtitle": "Accurate physical metric dimension resizer with 300 DPI high-density print rendering.",
-    "badge": "35x45 MM",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 35,
-      "height": 45,
-      "unit": "MM",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Official Schengen Visa, UK, Canadian, and Australian passport dimensions",
-      "Direct millimeter-to-pixel calculation at 300 DPI",
-      "Interactive crop and aspect-ratio preservation",
-      "Printable PDF single-page export option"
-    ],
-    "faq": [
-      {
-        "q": "How many pixels is 35x45 mm at 300 DPI?",
-        "a": "At 300 DPI (dots per inch), 35 mm equals 413 pixels and 45 mm equals 531 pixels."
-      },
-      {
-        "q": "Which countries use 35x45 mm passport photos?",
-        "a": "The UK, all 27 Schengen European Union countries, Australia, New Zealand, Singapore, and many others mandate 35x45 mm photo sizes."
-      },
-      {
-        "q": "Can I export my 35x45 mm photo directly to PDF for printing?",
-        "a": "Yes. Choose 'PDF' under Export Format to generate a high-resolution, print-ready document formatted to true physical scale."
-      }
-    ]
-  },
-  {
-    "slug": "resize-image-2x2-inches",
-    "title": "Resize Image to 2x2 Inches Online Free - US Passport & Visa",
-    "metaDescription": "Resize photo to 2x2 inches online free. Convert any picture to official US Passport, Visa, and Green Card dimensions (600x600 px at 300 DPI).",
-    "h1": "Resize Image to 2x2 Inches Online",
-    "subtitle": "Standard 2 × 2 inch (51 × 51 mm) photo maker for US State Department visa and passport requirements.",
-    "badge": "2x2 INCH",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 2,
-      "height": 2,
-      "unit": "INCH",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Official US Passport, Visa (DS-160), and Green Card specification",
-      "Calculates exact 600 × 600 px dimensions at 300 DPI",
-      "Center-weighted head crop preserves eye-level positioning",
-      "Instant JPG export compliant with consular submission guidelines"
-    ],
-    "faq": [
-      {
-        "q": "What pixel resolution is a 2x2 inch photo?",
-        "a": "At standard 300 DPI print quality, a 2x2 inch photo is exactly 600 × 600 pixels."
-      },
-      {
-        "q": "What are the rules for US Visa 2x2 inch photos?",
-        "a": "The photo must be square (600x600 px), in color, taken against a plain white background, with neutral facial expression and under 240KB file size."
-      },
-      {
-        "q": "Can I change my photo's background to white for US Visa?",
-        "a": "Yes. In the Fit Background settings, select 'White' to automatically fill letterboxed areas with consular-approved pure white (#FFFFFF)."
-      }
-    ]
-  },
-  {
-    "slug": "resize-signature-online",
-    "title": "Resize Signature Online Free - 300x80 px Under 30KB",
-    "metaDescription": "Resize signature online for exam forms, bank KYC, and passport applications. Scale to 300x80 px or 140x60 px strictly under 30KB.",
-    "h1": "Resize Signature Online Free",
-    "subtitle": "Optimize handwritten signatures to official dimensions and file limits with pure transparent or white background.",
-    "badge": "Signature Tool",
-    "defaultSettings": {
-      "targetKB": 30,
-      "width": 300,
-      "height": 80,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Pre-configured 300 × 80 px official signature aspect ratio",
-      "Strict under-30KB compression for zero-rejection uploads",
-      "High-contrast edge rendering keeps handwriting crisp and legible",
-      "Transparency support for digital document signing"
-    ],
-    "faq": [
-      {
-        "q": "What is the standard size for signature upload in online forms?",
-        "a": "Most government and exam portals require signatures between 140x60 px and 300x80 px, weighing strictly between 10KB and 30KB."
-      },
-      {
-        "q": "How can I make my signature background transparent?",
-        "a": "Export in PNG format with 'Transparent' padding. Our engine preserves ink line opacity while leaving the canvas background 100% transparent."
-      },
-      {
-        "q": "How to make sure a signature stays clear under 30KB?",
-        "a": "Our adaptive downsampler sharpens dark strokes before encoding so pen curves remain intact without pixelated breaks."
-      }
-    ]
-  },
-  {
-    "slug": "us-visa-photo-resizer",
-    "title": "US Visa Photo Resizer Online - 600x600 px Under 240KB",
-    "metaDescription": "Resize and compress US Visa photo online. Meets official Department of State guidelines: 600x600 px, JPEG format, under 240KB.",
-    "h1": "US Visa Photo Resizer Online",
-    "subtitle": "Official DS-160 and US Visa photo requirements: exact 600 × 600 pixels and strictly under 240 KB.",
-    "badge": "US Visa 600x600",
-    "defaultSettings": {
-      "targetKB": 240,
-      "width": 600,
-      "height": 600,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Strict compliance with US Department of State DS-160 portal standards",
-      "Exact 600 × 600 pixel square resolution at 300 DPI",
-      "Automatic compression under 240KB limit (guaranteed acceptance)",
-      "Standard JPEG format encoding with sRGB color profile"
-    ],
-    "faq": [
-      {
-        "q": "What are the exact US Visa digital photo specifications?",
-        "a": "The digital image must be square (600x600 pixels), in JPEG format, with file size less than or equal to 240KB, and taken on a plain white or off-white background."
-      },
-      {
-        "q": "Will this tool pass the DS-160 online photo check?",
-        "a": "Yes. By generating a 600x600 JPEG under 240KB with standard sRGB color space, your output satisfies all automated technical validation requirements."
-      },
-      {
-        "q": "Can I use a mobile phone selfie for a US Visa photo?",
-        "a": "Yes, provided the selfie is taken with even lighting against a white wall, facing the camera directly with no eyeglasses or headwear."
-      }
-    ]
-  },
-  {
-    "slug": "youtube-thumbnail-resizer",
-    "title": "YouTube Thumbnail Resizer Online - 1280x720 (16:9) Under 2MB",
-    "metaDescription": "Resize image for YouTube thumbnail online free. Convert graphics to 1280x720 px, 16:9 ratio, and under 2MB limit with crisp sharpness.",
-    "h1": "YouTube Thumbnail Resizer",
-    "subtitle": "Generate eye-catching 1280 × 720 HD thumbnails with high visual punch and compliant file size.",
-    "badge": "YouTube 1280x720",
-    "defaultSettings": {
-      "targetKB": 2000,
-      "width": 1280,
-      "height": 720,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Standard YouTube recommended resolution (1280 × 720 pixels)",
-      "Precise 16:9 widescreen aspect ratio",
-      "Automatic compression under YouTube's strict 2MB limit",
-      "Smart backdrop blur for photos with non-standard aspect ratios"
-    ],
-    "faq": [
-      {
-        "q": "What is the best image size for a YouTube thumbnail?",
-        "a": "YouTube recommends 1280 pixels wide by 720 pixels high (with a minimum width of 640 pixels), 16:9 aspect ratio, and file size under 2MB."
-      },
-      {
-        "q": "How do I fit a vertical photo into a YouTube thumbnail?",
-        "a": "Select 'Fit' mode with 'Blur' background. The tool will place your vertical photo in the center with an aesthetically blurred version of the photo filling the 16:9 widescreen canvas."
-      },
-      {
-        "q": "Which image format is best for YouTube thumbnails?",
-        "a": "JPG, PNG, or WebP. JPG offers the best balance of small file weight and high color vibrancy for fast rendering across devices."
-      }
-    ],
-    "platform": "youtube"
-  },
-  {
-    "slug": "youtube-banner-resizer",
-    "title": "YouTube Banner Resizer Online - 2560x1440 Channel Art",
-    "metaDescription": "Resize image for YouTube banner online free. Format channel art to 2560x1440 pixels with safe area preservation for mobile and TV.",
-    "h1": "YouTube Banner Resizer",
-    "subtitle": "Format channel banners to 2560 × 1440 px with responsive device safety and under 6MB file size.",
-    "badge": "Banner 2560x1440",
-    "defaultSettings": {
-      "targetKB": 6000,
-      "width": 2560,
-      "height": 1440,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Official YouTube channel art resolution (2560 × 1440 pixels, 16:9)",
-      "Strict under-6MB file size compression",
-      "High-resolution bicubic upscaling and downscaling",
-      "Crisp display across TV, desktop, tablet, and mobile screens"
-    ],
-    "faq": [
-      {
-        "q": "What are the recommended dimensions for a YouTube banner?",
-        "a": "YouTube specifies 2560 × 1440 pixels with an aspect ratio of 16:9 and file size of 6MB or less. The central 1546 × 423 px is the safe area for text and logos."
-      },
-      {
-        "q": "Why does my YouTube banner look blurry on desktop?",
-        "a": "If your original image was smaller than 2560x1440, simple stretching causes blur. OmniTools uses high-grade interpolation to smooth edges and maintain clarity."
-      },
-      {
-        "q": "Can I compress my banner below 6MB?",
-        "a": "Yes. OmniTools automatically enforces YouTube's 6MB ceiling so your banner uploads smoothly without rejection."
-      }
-    ],
-    "platform": "youtube"
-  },
-  {
-    "slug": "facebook-cover-photo-resizer",
-    "title": "Facebook Cover Photo Resizer Online - 820x360 Pixels",
-    "metaDescription": "Resize photos for Facebook cover online free. Perfectly fits desktop (820x312 px) and mobile (640x360 px) without ugly pixelation.",
-    "h1": "Facebook Cover Photo Resizer",
-    "subtitle": "Create sharp Facebook profile and page headers optimized for both mobile and desktop screens.",
-    "badge": "FB Cover 820x360",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 820,
-      "height": 360,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Optimized 820 × 360 px resolution for cross-device alignment",
-      "Eliminates Facebook compression compression artifacts",
-      "Center-cropping protects logos and faces from mobile cropping",
-      "Instant download in clean sRGB JPG or PNG"
-    ],
-    "faq": [
-      {
-        "q": "What is the best size for a Facebook cover photo in 2026?",
-        "a": "820 pixels wide by 360 pixels tall is the gold standard. It displays at 820x312 px on desktop and 640x360 px on smartphones without awkward cutoffs."
-      },
-      {
-        "q": "Why does Facebook compress my cover photo and make it blurry?",
-        "a": "Facebook heavily re-encodes images over 100KB. Exporting a clean, correctly-sized sRGB photo minimizes Facebook's aggressive server-side recompression."
-      },
-      {
-        "q": "Can I add blur padding to non-standard banner graphics?",
-        "a": "Yes. Choose 'Fit' with 'Blur' background padding to elegantly fill any remaining cover photo canvas."
-      }
-    ],
-    "platform": "facebook"
-  },
-  {
-    "slug": "facebook-post-resizer",
-    "title": "Facebook Post Resizer Online - 1200x630 Shared Image Standard",
-    "metaDescription": "Resize images for Facebook posts online free. Format graphics to 1200x630 px landscape or 1080x1080 px square for high feed engagement.",
-    "h1": "Facebook Post Image Resizer",
-    "subtitle": "Scale feed images to 1200 × 630 px to ensure crisp OpenGraph previews without compression artifacts.",
-    "badge": "FB Post 1200x630",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 1200,
-      "height": 630,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Standard 1200 × 630 px (1.91:1) Facebook feed and link preview format",
-      "High visual punch to stop the infinite feed scroll",
-      "Prevents automatic awkward edge cropping in desktop and mobile feeds",
-      "Quick multi-image batch resizing"
-    ],
-    "faq": [
-      {
-        "q": "What is the optimal image size for Facebook feed posts?",
-        "a": "For horizontal link and photo posts, 1200 × 630 pixels (1.91:1 ratio) provides the highest clarity on Retina screens. For square posts, 1080 × 1080 px is recommended."
-      },
-      {
-        "q": "How do I prevent Facebook from compressing my post images?",
-        "a": "Upload photos sized to exactly 1200x630 px in high quality JPG or PNG with sRGB color profile to bypass heavy server-side resampling."
-      },
-      {
-        "q": "Can I resize multiple Facebook images at once?",
-        "a": "Yes, upload up to 15 images to batch resize and download them in a single ZIP file."
-      }
-    ],
-    "platform": "facebook"
-  },
-  {
-    "slug": "resize-image-for-instagram",
-    "title": "Resize Image for Instagram Online - Square (1:1), Portrait & Landscape",
-    "metaDescription": "Resize images for Instagram without cropping online free. Convert pictures to 1080x1080 px square, 1080x1350 px portrait, or 1080x566 px.",
-    "h1": "Resize Image for Instagram",
-    "subtitle": "Fit full photos on Instagram without cropping using clean blur borders or pure white background pads.",
-    "badge": "Instagram 1080x1080",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 1080,
-      "height": 1080,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Standard 1080 × 1080 px square format (1:1 aspect ratio)",
-      "Fit mode with blur borders prevents cutting off landscape or portrait photos",
-      "Optimized for high-DPI smartphone displays",
-      "Maintains vivid saturation and sharp line detail"
-    ],
-    "faq": [
-      {
-        "q": "How can I post full size photos on Instagram without cropping?",
-        "a": "Choose 'Fit' mode with 'Blur' or 'White' background. The tool will place your complete original photo on a 1080x1080 canvas with soft matching borders."
-      },
-      {
-        "q": "What are the recommended Instagram image sizes?",
-        "a": "Square: 1080 × 1080 px (1:1), Portrait: 1080 × 1350 px (4:5), Landscape: 1080 × 566 px (1.91:1)."
-      },
-      {
-        "q": "Why does Instagram make my photos look low quality?",
-        "a": "If you upload images wider than 1080px or with irregular ratios, Instagram's aggressive compression engine downsamples them. Resizing beforehand preserves clarity."
-      }
-    ],
-    "platform": "instagram"
-  },
-  {
-    "slug": "instagram-story-resizer",
-    "title": "Instagram Story Resizer Online - 1080x1920 (9:16) Free",
-    "metaDescription": "Resize photos and graphics for Instagram Stories and Reels online free. Convert any photo to vertical 1080x1920 px with blur padding.",
-    "h1": "Instagram Story Resizer",
-    "subtitle": "Turn horizontal or square pictures into vertical 9:16 (1080 × 1920 px) stories with stylish backdrop blur.",
-    "badge": "IG Story 1080x1920",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 1080,
-      "height": 1920,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Full-screen 1080 × 1920 px resolution (9:16 vertical aspect ratio)",
-      "Elegantly expands horizontal shots with aesthetic blur backgrounds",
-      "Also compatible with TikTok, YouTube Shorts, and Facebook Stories",
-      "Instant client-side rendering with zero compression lag"
-    ],
-    "faq": [
-      {
-        "q": "What is the exact aspect ratio and resolution for an Instagram Story?",
-        "a": "Instagram Stories require a 9:16 vertical aspect ratio with dimensions of 1080 pixels wide by 1920 pixels tall."
-      },
-      {
-        "q": "How do I make a horizontal picture fit an Instagram Story?",
-        "a": "Select 'Fit' mode and 'Blur' under Fit Background. Your horizontal picture will sit in the center while an artistic blurred version fills the vertical screen."
-      },
-      {
-        "q": "Does this work for TikTok and YouTube Shorts too?",
-        "a": "Yes, TikTok, YouTube Shorts, Snapchat, and Instagram Stories all share the exact same 1080 × 1920 px vertical format."
-      }
-    ],
-    "platform": "instagram"
-  },
-  {
-    "slug": "twitter-header-resizer",
-    "title": "Twitter Header Resizer Online - 1500x500 Banner (X Profile)",
-    "metaDescription": "Resize Twitter header image online free. Format banners to 1500x500 pixels (3:1 aspect ratio) with profile avatar safe zone.",
-    "h1": "Twitter (X) Header Resizer",
-    "subtitle": "Design pristine 1500 × 500 px headers for X (Twitter) profiles that look crisp across all devices.",
-    "badge": "Twitter 1500x500",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 1500,
+    "slug": "resize-image-to-350x500",
+    "keyword": "resize image to 350x500",
+    "metaTitle": "Resize Image to 350x500 - Free Online Tool",
+    "metaDescription": "Easily resize image to 350x500 online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 350x500",
+    "category": "dimension",
+    "preset": {
+      "width": 350,
       "height": 500,
       "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
+      "lockRatio": false
     },
-    "features": [
-      "Official 1500 × 500 px resolution (3:1 widescreen ratio)",
-      "Optimized for X (Twitter) desktop and mobile header viewports",
-      "Fast bicubic resampling avoids jagged text and logo distortion",
-      "Supports JPG, WebP, and PNG outputs"
-    ],
-    "faq": [
+    "faqs": [
       {
-        "q": "What is the official Twitter / X header dimension?",
-        "a": "The recommended header dimension is 1500 pixels wide by 500 pixels high with a 3:1 aspect ratio and file size under 2MB."
+        "q": "How to resize an image to 350x500 pixels?",
+        "a": "Upload your portrait photo. The editor is pre-set with 350 px width and 500 px height. Download your properly proportioned image in seconds."
       },
       {
-        "q": "Why does part of my Twitter header get covered?",
-        "a": "Your profile picture overlaps the bottom-left area of the header on desktop and mobile. Keep important text and artwork centered or aligned to the right."
+        "q": "What uses a 350x500 pixel aspect ratio?",
+        "a": "350x500 (a 7:10 ratio) is standard for ID cards, official badge passes, corporate directory photos, and book cover thumbnails."
       },
       {
-        "q": "Can I use PNG for my Twitter header?",
-        "a": "Yes. PNG is ideal for banners with vector graphics, typography, or illustrations as it avoids JPEG compression noise around letter edges."
-      }
-    ],
-    "platform": "twitter"
-  },
-  {
-    "slug": "linkedin-banner-resizer",
-    "title": "LinkedIn Banner Resizer Online - 1584x396 Cover Photo",
-    "metaDescription": "Resize LinkedIn background photo online free. Format personal profiles to 1584x396 px and company pages to 1128x191 px professionally.",
-    "h1": "LinkedIn Banner Resizer",
-    "subtitle": "Upgrade your professional LinkedIn presence with a crisp 1584 × 396 px cover banner.",
-    "badge": "LinkedIn 1584x396",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 1584,
-      "height": 396,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Standard LinkedIn personal profile cover dimensions (1584 × 396 px, 4:1 ratio)",
-      "Preserves professional typography and branding graphics",
-      "Safe area consideration for left-aligned profile avatar",
-      "Clean export under LinkedIn's 8MB file size threshold"
-    ],
-    "faq": [
-      {
-        "q": "What is the recommended size for a personal LinkedIn banner?",
-        "a": "LinkedIn recommends 1584 pixels wide by 396 pixels tall with an aspect ratio of 4:1."
-      },
-      {
-        "q": "Where is the safe area on a LinkedIn banner?",
-        "a": "Your circular profile photo obscures the lower-left portion of the banner on desktop and mobile. Place critical contact info and taglines on the right side."
-      },
-      {
-        "q": "What file format is best for LinkedIn cover photos?",
-        "a": "PNG is recommended for banners with text, contact badges, and logos to avoid compression artifacts. High-quality JPG works best for photos."
-      }
-    ],
-    "platform": "linkedin"
-  },
-  {
-    "slug": "resize-image-to-1920x1080",
-    "title": "Resize Image to 1920x1080 (Full HD) Online Free",
-    "metaDescription": "Resize image to 1920x1080 pixels online free. Scale photos to Full HD 1080p resolution for desktop wallpapers, presentations, and screens.",
-    "h1": "Resize Image to 1920x1080 (Full HD)",
-    "subtitle": "Upscale or downscale any graphic to standard 16:9 Full HD (1920 × 1080 px) with bicubic interpolation.",
-    "badge": "Full HD 1920x1080",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 1920,
-      "height": 1080,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Universal 1920 × 1080 pixel Full HD resolution (16:9 aspect ratio)",
-      "Smooth bicubic resampling for upscaling and downscaling",
-      "Fit mode with transparent or custom padding to maintain original ratio",
-      "Ideal for computer wallpapers, Zoom virtual backgrounds, and TV screens"
-    ],
-    "faq": [
-      {
-        "q": "What is 1920x1080 resolution?",
-        "a": "1920x1080 (also known as 1080p or Full HD) is the standard display resolution for computer monitors, television screens, and presentations."
-      },
-      {
-        "q": "How to make an image 1920x1080 without stretching?",
-        "a": "Use 'Fit' mode to letterbox your photo with clean borders, or use 'Fill & Crop' to center-crop the photo so it fills the 16:9 canvas naturally."
-      },
-      {
-        "q": "Can I convert 1920x1080 images into WebP for faster website loading?",
-        "a": "Yes. Select 'WebP' under Export Format to generate a high-efficiency 1080p image that is 30% smaller than a standard JPG."
+        "q": "Can I adjust target file size together with 350x500 dimensions?",
+        "a": "Yes. You can lock 350x500 px while simultaneously capping file weight to 50KB or 100KB in the export panel."
       }
     ]
   },
   {
-    "slug": "bulk-image-resizer",
-    "title": "Bulk Image Resizer Online Free - Resize Multiple Photos Together",
-    "metaDescription": "Resize multiple images at once online free. Batch process up to 15 JPG, PNG, and WebP files simultaneously and download as a single ZIP.",
-    "h1": "Bulk Image Resizer Online",
-    "subtitle": "Process batches of up to 15 photos in parallel directly inside your browser with unified dimensions and instant ZIP export.",
-    "badge": "Batch Multi-Resizer",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": null,
-      "height": null,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Upload and process up to 15 photos in a single session",
-      "Unified dimensions, scaling percentages, and KB file size targeting",
-      "Parallel browser threads for ultra-fast processing",
-      "One-click 'Download All' packaged in a clean ZIP archive"
-    ],
-    "faq": [
-      {
-        "q": "How many images can I resize in bulk at one time?",
-        "a": "OmniTools lets you upload up to 15 photos per batch. Once configured, they are all processed simultaneously."
-      },
-      {
-        "q": "Can I set a target file size like 50KB for all bulk images?",
-        "a": "Yes. Enable 'Target Max File Size' and set your target KB (e.g. 50KB). Every image in your queue will be compressed under that limit during batch export."
-      },
-      {
-        "q": "Are my bulk images uploaded to an external server?",
-        "a": "No. Batch resizing runs 100% locally on your computer or mobile device using client-side Web APIs, ensuring total privacy and security."
-      }
-    ]
-  },
-  {
-    "slug": "facebook-portrait-post-resizer",
-    "title": "Facebook Portrait Post Resizer Online - 1080x1350 (4:5 Ratio)",
-    "metaDescription": "Resize photos to Facebook Portrait Post (1080x1350 px) online free. Official 4:5 vertical ratio for maximum mobile feed visibility.",
-    "h1": "Facebook Portrait Post Resizer",
-    "subtitle": "Scale photos to 1080 × 1350 px (4:5 ratio) for maximum vertical screen coverage on mobile feeds.",
-    "badge": "FB Portrait 1080x1350",
-    "platform": "facebook",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 1080,
-      "height": 1350,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Standard Facebook 4:5 vertical portrait dimensions (1080 × 1350 px)",
-      "Maximizes vertical screen real estate on iPhone and Android screens",
-      "Preserves original clarity with high-fidelity canvas downsampling",
-      "Batch resize up to 15 photos in a single queue"
-    ],
-    "faq": [
-      {
-        "q": "Does Facebook support 4:5 portrait photos?",
-        "a": "Yes. 1080x1350 (4:5 ratio) is officially supported and recommended by Meta for vertical feed posts."
-      },
-      {
-        "q": "How do I avoid compression blur on Facebook portrait posts?",
-        "a": "Export in high-quality JPG or PNG. OmniTools maintains sharp bicubic interpolation so details stay crisp."
-      },
-      {
-        "q": "Can I add blurred background padding?",
-        "a": "Yes! Switch the Canvas Padding Fill to Blur or Transparent depending on your aesthetic preference."
-      }
-    ]
-  },
-  {
-    "slug": "facebook-profile-picture-resizer",
-    "title": "Facebook Profile Picture Resizer Online - 320x320 DP Maker",
-    "metaDescription": "Resize image for Facebook Profile Picture online free. Format to 320x320 px with centered composition for circular avatar display.",
-    "h1": "Facebook Profile Picture Resizer",
-    "subtitle": "Center and scale avatar photos to 320 × 320 px for crisp circular display across Facebook profiles.",
-    "badge": "FB Profile 320x320",
-    "platform": "facebook",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 320,
-      "height": 320,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Standard Facebook profile avatar dimensions (320 × 320 pixels)",
-      "Optimized for circular crop preview and high-DPI retina screens",
-      "Supports JPG, PNG, and WebP exports",
-      "Zero server uploads — 100% private in-browser tool"
-    ],
-    "faq": [
-      {
-        "q": "What is the recommended size for a Facebook profile photo?",
-        "a": "Facebook displays profile photos at 176x176 pixels on computers and 196x196 on smartphones, but recommends uploading at 320x320 or higher for sharp rendering."
-      },
-      {
-        "q": "How do I ensure my face stays centered in the circle?",
-        "a": "Use our interactive crop and fit controls to position your headshot within the square canvas before uploading."
-      },
-      {
-        "q": "Can I use a transparent PNG for Facebook DP?",
-        "a": "Facebook converts profile pictures to JPG upon upload, so exporting with a transparent or white background is recommended."
-      }
-    ]
-  },
-  {
-    "slug": "facebook-story-resizer",
-    "title": "Facebook Story Resizer Online - 1080x1920 (9:16 Fullscreen)",
-    "metaDescription": "Resize photos for Facebook Story online free. Format pictures to 1080x1920 px (9:16 aspect ratio) for full-screen immersive stories.",
-    "h1": "Facebook Story Resizer",
-    "subtitle": "Format vertical photos and graphics to 1080 × 1920 px (9:16 aspect ratio) for Facebook Stories.",
-    "badge": "FB Story 1080x1920",
-    "platform": "facebook",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 1080,
-      "height": 1920,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Official Facebook Story 9:16 aspect ratio (1080 × 1920 pixels)",
-      "Full-screen mobile canvas with safe zone margins",
-      "Fit mode preserves entire horizontal or square images with clean padding",
-      "High-speed batch processing for multiple story slides"
-    ],
-    "faq": [
-      {
-        "q": "What are Facebook Story dimensions?",
-        "a": "Facebook Stories require an aspect ratio of 9:16 with recommended pixel dimensions of 1080 × 1920 px."
-      },
-      {
-        "q": "How do I fit a horizontal photo into a vertical story?",
-        "a": "Select Fit mode. The photo will be centered on the 1080x1920 canvas with transparent or blurred background padding."
-      },
-      {
-        "q": "Can I add text without it getting covered by profile icons?",
-        "a": "Keep critical text and logos within the central 1080 × 1420 px safe area to avoid being covered by UI overlays."
-      }
-    ]
-  },
-  {
-    "slug": "facebook-event-cover-resizer",
-    "title": "Facebook Event Cover Photo Resizer - 1920x1005 HD Banner",
-    "metaDescription": "Resize image for Facebook Event Cover online free. Format to 1920x1005 px for high-definition event banner presentation.",
-    "h1": "Facebook Event Cover Photo Resizer",
-    "subtitle": "Create sharp 1920 × 1005 px event banner headers optimized for desktop and mobile event pages.",
-    "badge": "FB Event 1920x1005",
-    "platform": "facebook",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 1920,
-      "height": 1005,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Standard Facebook Event cover dimensions (1920 × 1005 pixels)",
-      "16:9 equivalent panoramic presentation for desktop and mobile",
-      "Preserves edge sharpness and text readability for event details",
-      "Fast client-side rendering with no file limits"
-    ],
-    "faq": [
-      {
-        "q": "What size is a Facebook Event cover photo in 2025?",
-        "a": "Facebook recommends 1920 × 1005 pixels (approximately 1.91:1 aspect ratio) for high-resolution event headers."
-      },
-      {
-        "q": "Will Facebook compress my event cover?",
-        "a": "Uploading an exact 1920x1005 image minimizes Facebook auto-compression artifacts and prevents awkward cropping."
-      },
-      {
-        "q": "Can I export in PNG for event banners with text?",
-        "a": "Yes. PNG format avoids JPEG artifacting around crisp typography and logos."
-      }
-    ]
-  },
-  {
-    "slug": "facebook-group-cover-resizer",
-    "title": "Facebook Group Cover Photo Resizer - 1640x856 Banner",
-    "metaDescription": "Resize image for Facebook Group Cover online free. Official 1640x856 px (1.91:1) dimensions with safe zones for mobile and desktop.",
-    "h1": "Facebook Group Cover Photo Resizer",
-    "subtitle": "Resize group banner images to 1640 × 856 px (1.91:1 ratio) with clean safe-zone margins.",
-    "badge": "FB Group 1640x856",
-    "platform": "facebook",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 1640,
-      "height": 856,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Official Facebook Group cover dimensions (1640 × 856 pixels)",
-      "Central safe zone optimized for both mobile and desktop viewports",
-      "Fit mode ensures your entire community graphic remains visible",
-      "100% private — your group assets never leave your computer"
-    ],
-    "faq": [
-      {
-        "q": "What is the best size for a Facebook Group cover photo?",
-        "a": "Facebook recommends 1640 × 856 pixels (1.91:1 ratio) to ensure proper display across mobile apps and desktop browsers."
-      },
-      {
-        "q": "Where is the safe zone for Facebook group covers?",
-        "a": "The central 1640 × 664 px area is visible on both mobile and desktop. Avoid placing critical text near the top and bottom edges."
-      },
-      {
-        "q": "How can I prevent blurry group banners?",
-        "a": "Upload images at exact 1640x856 resolution in high-quality JPG or PNG format."
-      }
-    ]
-  },
-  {
-    "slug": "instagram-portrait-post-resizer",
-    "title": "Instagram Portrait Post Resizer Online - 1080x1350 (4:5 Ratio)",
-    "metaDescription": "Resize photos for Instagram Portrait Post (1080x1350 px) free online. Official 4:5 ratio for maximum feed engagement without cropping.",
-    "h1": "Instagram Portrait Post Resizer",
-    "subtitle": "Scale vertical pictures to 1080 × 1350 px (4:5 ratio) for the highest engagement on Instagram feeds.",
-    "badge": "IG Portrait 1080x1350",
-    "platform": "instagram",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 1080,
-      "height": 1350,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Official Instagram 4:5 vertical post dimensions (1080 × 1350 px)",
-      "Occupies the maximum possible vertical screen height in the feed",
-      "Fit mode prevents Instagram from automatically cropping off heads or shoes",
-      "Instant browser-based execution with zero compression loss"
-    ],
-    "faq": [
-      {
-        "q": "Why are 4:5 portrait posts better on Instagram?",
-        "a": "4:5 vertical posts (1080x1350) occupy 25% more screen space than 1:1 squares, keeping viewers focused longer on your content."
-      },
-      {
-        "q": "Does Instagram crop 1080x1350 photos in profile grid?",
-        "a": "In the profile grid, photos are centered into 1:1 squares. The full 4:5 portrait is shown when users tap on the post."
-      },
-      {
-        "q": "Can I resize multiple portrait photos at once?",
-        "a": "Yes! OmniTools supports batch processing up to 15 photos simultaneously."
-      }
-    ]
-  },
-  {
-    "slug": "instagram-landscape-post-resizer",
-    "title": "Instagram Landscape Post Resizer Online - 1080x566 (1.91:1)",
-    "metaDescription": "Resize image for Instagram Landscape Post (1080x566 px) online free. Convert panoramic photos without distortion or unwanted borders.",
-    "h1": "Instagram Landscape Post Resizer",
-    "subtitle": "Resize wide landscape photos to 1080 × 566 px without unwanted stretching or compression artifacts.",
-    "badge": "IG Landscape 1080x566",
-    "platform": "instagram",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 1080,
-      "height": 566,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Standard Instagram horizontal post dimensions (1080 × 566 pixels)",
-      "Ideal for photography landscapes, real estate, and cinematic frames",
-      "Proportional bicubic scaling preserves delicate horizon gradients",
-      "Export in clean JPG, PNG, or modern WebP"
-    ],
-    "faq": [
-      {
-        "q": "What is the maximum width for horizontal Instagram photos?",
-        "a": "Instagram allows a maximum width of 1080 pixels with height down to 566 pixels (1.91:1 aspect ratio)."
-      },
-      {
-        "q": "Will my landscape photo have black bars on Instagram?",
-        "a": "No, by sizing to exactly 1080x566, Instagram displays the image edge-to-edge horizontally."
-      },
-      {
-        "q": "Can I resize photos directly on my phone?",
-        "a": "Yes. OmniTools works seamlessly in mobile Safari and Chrome browsers."
-      }
-    ]
-  },
-  {
-    "slug": "instagram-profile-picture-resizer",
-    "title": "Instagram Profile Picture Resizer Online - 320x320 DP Maker",
-    "metaDescription": "Resize image for Instagram Profile Picture online free. Format headshots to 320x320 px with centered circular preview.",
-    "h1": "Instagram Profile Picture Resizer",
-    "subtitle": "Crop and center headshots to 320 × 320 px for razor-sharp Instagram profile displays.",
-    "badge": "IG Profile 320x320",
-    "platform": "instagram",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 320,
-      "height": 320,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Official Instagram profile picture resolution (320 × 320 pixels)",
-      "Clear headshot centering with instant canvas transformations",
-      "100% private in-browser processing — personal photos stay on your device",
-      "Supports high-contrast border and custom background options"
-    ],
-    "faq": [
-      {
-        "q": "What size should my Instagram profile picture be?",
-        "a": "Instagram stores profile pictures at 320 × 320 pixels. Uploading at this exact size ensures sharp rendering on Retina mobile screens."
-      },
-      {
-        "q": "How do I make sure my profile picture is not cut off?",
-        "a": "Keep your face or logo centered within the circular boundary of the square canvas."
-      },
-      {
-        "q": "Is this tool completely free?",
-        "a": "Yes! 100% free with no watermark and no registration required."
-      }
-    ]
-  },
-  {
-    "slug": "youtube-shorts-resizer",
-    "title": "YouTube Shorts Thumbnail Resizer Online - 1080x1920 (9:16)",
-    "metaDescription": "Resize image for YouTube Shorts online free. Format thumbnails and vertical video covers to 1080x1920 px (9:16 aspect ratio).",
-    "h1": "YouTube Shorts Resizer",
-    "subtitle": "Resize vertical thumbnails and cover frames to 1080 × 1920 px for YouTube Shorts feeds.",
-    "badge": "YT Shorts 1080x1920",
-    "platform": "youtube",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 1080,
-      "height": 1920,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Official YouTube Shorts 9:16 vertical canvas (1080 × 1920 pixels)",
-      "High-impact cover frame optimization for mobile discovery",
-      "Fit mode preserves full frame with clean background styling",
-      "Instant export in JPG or WebP for fast YouTube upload"
-    ],
-    "faq": [
-      {
-        "q": "What resolution is best for YouTube Shorts thumbnails?",
-        "a": "YouTube Shorts use standard 1080 × 1920 vertical pixels with a 9:16 aspect ratio."
-      },
-      {
-        "q": "Where are safe zones for YouTube Shorts text?",
-        "a": "Keep titles and faces in the center 1080x1400 area, as the bottom is covered by the channel title and sound info."
-      },
-      {
-        "q": "Can I target a specific file size under 2MB?",
-        "a": "Yes, enable Target Max File Size in Export Settings to guarantee your thumbnail stays under YouTube limits."
-      }
-    ]
-  },
-  {
-    "slug": "youtube-avatar-resizer",
-    "title": "YouTube Profile Avatar Resizer Online - 800x800 Channel Icon",
-    "metaDescription": "Resize YouTube profile picture online free. Format channel icons to 800x800 px for clear circular rendering across desktop and mobile.",
-    "h1": "YouTube Profile Avatar Resizer",
-    "subtitle": "Scale channel icons and avatars to 800 × 800 px for clear circular rendering on YouTube.",
-    "badge": "YT Avatar 800x800",
-    "platform": "youtube",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 800,
-      "height": 800,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Standard YouTube channel profile icon resolution (800 × 800 pixels)",
-      "Crisp downscaling for logos, illustrations, and creator portraits",
-      "Fit mode keeps entire logo visible with transparent padding",
-      "Zero server latency — renders in browser via HTML5 canvas"
-    ],
-    "faq": [
-      {
-        "q": "What is the recommended size for a YouTube profile picture?",
-        "a": "YouTube recommends an 800 × 800 pixel image that renders cleanly as a circle at smaller sizes."
-      },
-      {
-        "q": "Can I use an animated GIF for my YouTube profile icon?",
-        "a": "YouTube does not support animated GIFs for avatars; upload static JPG, PNG, or WebP files instead."
-      },
-      {
-        "q": "How to make logo text readable in a circular avatar?",
-        "a": "Leave ample margin around logos so corners are not clipped when YouTube displays the circular mask."
-      }
-    ]
-  },
-  {
-    "slug": "youtube-watermark-resizer",
-    "title": "YouTube Video Watermark Resizer Online - 150x150 Branding Icon",
-    "metaDescription": "Resize image for YouTube Video Watermark online free. Format corner branding subscribe buttons to exact 150x150 px PNG with transparency.",
-    "h1": "YouTube Watermark Resizer",
-    "subtitle": "Format custom video corner branding watermarks to official 150 × 150 px square specifications.",
-    "badge": "YT Watermark 150x150",
-    "platform": "youtube",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 150,
-      "height": 150,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Official YouTube video branding watermark spec (150 × 150 pixels)",
-      "Full PNG alpha transparency support for clean corner overlays",
-      "Target file size under 1MB compliant with YouTube Studio",
-      "Instant download with zero watermarks"
-    ],
-    "faq": [
-      {
-        "q": "What size is a YouTube video watermark?",
-        "a": "YouTube video branding watermarks must be square with a minimum resolution of 150 × 150 pixels and file size under 1MB."
-      },
-      {
-        "q": "Should I use PNG or JPG for YouTube watermarks?",
-        "a": "PNG with transparent background is recommended so only your icon or subscribe button appears over the video."
-      },
-      {
-        "q": "Where does the watermark appear on YouTube videos?",
-        "a": "It appears in the bottom-right corner of the video player on desktop and supported mobile viewports."
-      }
-    ]
-  },
-  {
-    "slug": "tiktok-profile-picture-resizer",
-    "title": "TikTok Profile Picture Resizer Online - 200x200 DP Avatar",
-    "metaDescription": "Resize image for TikTok Profile Picture online free. Format headshots to 200x200 px for sharp circular display on TikTok profile headers.",
-    "h1": "TikTok Profile Picture Resizer",
-    "subtitle": "Resize avatars to 200 × 200 px for sharp circular display on TikTok profile headers.",
-    "badge": "TikTok DP 200x200",
-    "platform": "tiktok",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 200,
-      "height": 200,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Standard TikTok profile picture resolution (200 × 200 pixels)",
-      "Circular crop optimization with interactive positioning",
-      "Supports high-clarity JPG, PNG, and WebP exports",
-      "100% private client-side processing"
-    ],
-    "faq": [
-      {
-        "q": "What is the minimum size for a TikTok profile picture?",
-        "a": "TikTok requires a minimum of 20x20 pixels, but recommends 200 × 200 px for crisp display."
-      },
-      {
-        "q": "Can I upload transparent avatars on TikTok?",
-        "a": "Yes, uploading a PNG with alpha transparency creates unique floating avatar effects on TikTok."
-      },
-      {
-        "q": "Will my TikTok avatar be cropped into a circle?",
-        "a": "Yes, TikTok masks avatars into a circle, so keep focal details in the middle."
-      }
-    ]
-  },
-  {
-    "slug": "tiktok-shop-product-resizer",
-    "title": "TikTok Shop Product Image Resizer - 800x800 1:1 Square",
-    "metaDescription": "Resize product photos for TikTok Shop online free. Convert pictures to 800x800 px 1:1 square required for merchant catalogue listings.",
-    "h1": "TikTok Shop Product Resizer",
-    "subtitle": "Format e-commerce product photos to 800 × 800 px square dimensions required by TikTok Shop.",
-    "badge": "TikTok Shop 800x800",
-    "platform": "tiktok",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 800,
-      "height": 800,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Official TikTok Shop merchant product listing specification (800 × 800 px)",
-      "Clean 1:1 square ratio for product catalogue consistency",
-      "Solid white or transparent background fill options for compliance",
-      "Batch resize up to 15 product shots at once"
-    ],
-    "faq": [
-      {
-        "q": "What image size is required for TikTok Shop products?",
-        "a": "TikTok Shop requires square images with minimum dimensions of 800 × 800 pixels (1:1 ratio)."
-      },
-      {
-        "q": "Can I add a white background to product photos?",
-        "a": "Yes! Select White under Canvas Padding Fill to automatically frame non-square products with a compliant background."
-      },
-      {
-        "q": "What is the maximum file size for TikTok Shop images?",
-        "a": "Images should be under 5MB each. OmniTools optimizes file weight while keeping sharpness high."
-      }
-    ]
-  },
-  {
-    "slug": "linkedin-post-resizer",
-    "title": "LinkedIn Post Image Resizer Online - 1200x627 Landscape",
-    "metaDescription": "Resize image for LinkedIn post online free. Format graphics to 1200x627 px for optimal feed engagement and crisp link previews.",
-    "h1": "LinkedIn Post Image Resizer",
-    "subtitle": "Format link previews and feed graphics to standard 1200 × 627 px dimensions for LinkedIn.",
-    "badge": "LinkedIn 1200x627",
-    "platform": "linkedin",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 1200,
-      "height": 627,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Standard LinkedIn feed post dimensions (1200 × 627 pixels, ~1.91:1)",
-      "Sharp rendering on professional desktop and mobile feeds",
-      "Fit mode ensures charts, infographics, and text are not clipped",
-      "Export in clean JPG, PNG, or WebP"
-    ],
-    "faq": [
-      {
-        "q": "What is the best image size for a LinkedIn post?",
-        "a": "LinkedIn recommends 1200 × 627 pixels for single image posts and article link previews."
-      },
-      {
-        "q": "Can I upload square images on LinkedIn?",
-        "a": "Yes, LinkedIn also supports 1080x1080 square images, but 1200x627 is standard for horizontal graphics."
-      },
-      {
-        "q": "How to keep charts and text readable on LinkedIn?",
-        "a": "Export as PNG to preserve high contrast and sharp text lines without compression noise."
-      }
-    ]
-  },
-  {
-    "slug": "linkedin-profile-picture-resizer",
-    "title": "LinkedIn Profile Picture Resizer Online - 400x400 Headshot",
-    "metaDescription": "Resize professional headshots for LinkedIn profile picture online free. Format to 400x400 px with centered circular crop.",
-    "h1": "LinkedIn Profile Picture Resizer",
-    "subtitle": "Crop professional headshots to 400 × 400 px for crisp rendering across LinkedIn networks.",
-    "badge": "LinkedIn DP 400x400",
-    "platform": "linkedin",
-    "defaultSettings": {
-      "targetKB": null,
+    "slug": "resize-image-to-400x400",
+    "keyword": "resize image to 400x400",
+    "metaTitle": "Resize Image to 400x400 - Free Online Tool",
+    "metaDescription": "Easily resize image to 400x400 online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 400x400",
+    "category": "dimension",
+    "preset": {
       "width": 400,
       "height": 400,
       "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
+      "lockRatio": false
     },
-    "features": [
-      "Official LinkedIn profile picture specification (400 × 400 pixels)",
-      "Optimized for circular face centering and crisp high-DPI display",
-      "100% private in-browser tool — resumes and headshots never leave your PC",
-      "Fast inline rotate and orientation tools"
-    ],
-    "faq": [
+    "faqs": [
       {
-        "q": "What is the recommended size for a LinkedIn profile picture?",
-        "a": "LinkedIn recommends 400 × 400 pixels with a maximum file size of 8MB."
+        "q": "How to resize image to 400x400 pixels?",
+        "a": "Drop your photo into the editor. The 400x400 pixel preset is automatically populated. Click Download for a crisp 1:1 square image."
       },
       {
-        "q": "Will LinkedIn crop my photo into a circle?",
-        "a": "Yes. Keep your eyes, nose, and mouth centered in the frame so your face is framed perfectly."
+        "q": "What is 400x400 resolution used for?",
+        "a": "400x400 px is the official recommended specification for LinkedIn profile pictures, Twitter/X profile photos, and high-DPI user avatars."
       },
       {
-        "q": "What format should I upload to LinkedIn?",
-        "a": "JPG or PNG files are supported. High-quality JPG is standard for portraits."
+        "q": "Will resizing to 400x400 blur a smaller photo?",
+        "a": "Our multi-pass bicubic upscaler preserves smooth gradients and sharp contrast even when scaling up smaller source images."
       }
     ]
   },
   {
-    "slug": "linkedin-company-banner-resizer",
-    "title": "LinkedIn Company Banner Resizer Online - 1128x376 Header",
-    "metaDescription": "Resize image for LinkedIn Company Page cover banner online free. Format to 1128x376 px (3:1 ratio) for corporate branding.",
-    "h1": "LinkedIn Company Page Banner Resizer",
-    "subtitle": "Resize business headers to 1128 × 376 px (3:1 ratio) for company and organization pages.",
-    "badge": "Company Banner 1128x376",
-    "platform": "linkedin",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 1128,
-      "height": 376,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Official LinkedIn Company Page cover dimensions (1128 × 376 pixels)",
-      "Precise 3:1 aspect ratio designed for corporate branding headers",
-      "Preserves tagline sharpness and brand vector logos",
-      "Instant client-side export without watermarks"
-    ],
-    "faq": [
-      {
-        "q": "What size is a LinkedIn Company Page cover photo?",
-        "a": "LinkedIn company page cover photos require 1128 × 376 pixels (3:1 aspect ratio)."
-      },
-      {
-        "q": "How does the company banner differ from a personal banner?",
-        "a": "Company banners are 1128 × 376 px (3:1), whereas personal profile covers are 1584 × 396 px (4:1)."
-      },
-      {
-        "q": "Can I export in PNG format?",
-        "a": "Yes, PNG is ideal for corporate banners with solid brand colors and crisp vector typography."
-      }
-    ]
-  },
-  {
-    "slug": "linkedin-article-cover-resizer",
-    "title": "LinkedIn Article Cover Resizer Online - 1280x720 (16:9)",
-    "metaDescription": "Resize banner image for LinkedIn Pulse articles and newsletters online free. Format to 1280x720 px widescreen header.",
-    "h1": "LinkedIn Article Cover Resizer",
-    "subtitle": "Format banner graphics to 1280 × 720 px for LinkedIn Pulse articles and newsletters.",
-    "badge": "Article Cover 1280x720",
-    "platform": "linkedin",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 1280,
-      "height": 720,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Standard LinkedIn Pulse article header dimensions (1280 × 720 pixels, 16:9)",
-      "Professional widescreen display at the top of published articles",
-      "Fit mode preserves full graphics with custom color background options",
-      "Zero server latency with instant local download"
-    ],
-    "faq": [
-      {
-        "q": "What size is a LinkedIn article cover photo?",
-        "a": "LinkedIn recommends 1280 × 720 pixels (16:9 ratio) for article and newsletter covers."
-      },
-      {
-        "q": "Where does the article cover appear?",
-        "a": "It appears at the very top of your published LinkedIn article and as the featured image when shared in the feed."
-      },
-      {
-        "q": "Can I resize multiple header options at once?",
-        "a": "Yes, batch resize up to 15 images in seconds."
-      }
-    ]
-  },
-  {
-    "slug": "twitter-post-resizer",
-    "title": "X Twitter Post Image Resizer Online - 1200x675 (16:9)",
-    "metaDescription": "Resize photos for X (Twitter) post online free. Format images to 1200x675 px (16:9 ratio) for uncropped in-stream display.",
-    "h1": "X (Twitter) Post Image Resizer",
-    "subtitle": "Format photos to 1200 × 675 px (16:9 ratio) for clean, uncropped timeline feeds on X.",
-    "badge": "X Post 1200x675",
-    "platform": "twitter",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 1200,
-      "height": 675,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Official X (Twitter) in-stream post dimensions (1200 × 675 pixels, 16:9)",
-      "Prevents automated center-cropping in the timeline feed",
-      "Fit mode keeps full photo visible with clean background padding",
-      "Export in lightweight JPG or lossless PNG"
-    ],
-    "faq": [
-      {
-        "q": "What is the best image size for a tweet on X?",
-        "a": "1200 × 675 pixels (16:9 ratio) is recommended by X for standard in-stream single image tweets."
-      },
-      {
-        "q": "Does X compress uploaded photos?",
-        "a": "X applies minimal compression to high-resolution JPGs and PNGs uploaded under 5MB."
-      },
-      {
-        "q": "Can I upload multiple photos?",
-        "a": "Yes! X supports up to 4 photos per tweet, which you can batch resize together in OmniTools."
-      }
-    ]
-  },
-  {
-    "slug": "twitter-profile-picture-resizer",
-    "title": "X Twitter Profile Picture Resizer Online - 400x400 Avatar",
-    "metaDescription": "Resize profile photo for X (Twitter) online free. Convert headshots to 400x400 px with centered circular preview.",
-    "h1": "X (Twitter) Profile Picture Resizer",
-    "subtitle": "Center and resize avatars to 400 × 400 px for circular display on X (Twitter) profiles.",
-    "badge": "X Profile 400x400",
-    "platform": "twitter",
-    "defaultSettings": {
-      "targetKB": null,
+    "slug": "resize-image-to-400x520",
+    "keyword": "resize image to 400x520",
+    "metaTitle": "Resize Image to 400x520 - Free Online Tool",
+    "metaDescription": "Easily resize image to 400x520 online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 400x520",
+    "category": "dimension",
+    "preset": {
       "width": 400,
-      "height": 400,
+      "height": 520,
       "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
+      "lockRatio": false
     },
-    "features": [
-      "Official X (Twitter) profile avatar dimensions (400 × 400 pixels)",
-      "Circular preview centering with inline rotate and flip tools",
-      "Supports JPG, PNG, and WebP formats",
-      "Client-side privacy — personal images stay 100% on your device"
-    ],
-    "faq": [
+    "faqs": [
       {
-        "q": "What is the required size for a profile picture on X?",
-        "a": "X recommends a square image of 400 × 400 pixels with a maximum file size of 2MB."
+        "q": "How do I resize an image to 400x520 pixels?",
+        "a": "Upload your portrait photo. The tool automatically sets dimensions to 400 pixels width by 520 pixels height. Download immediately."
       },
       {
-        "q": "Will my avatar be displayed as a circle or square on X?",
-        "a": "Personal accounts display as circles, while verified organizations display as rounded squares."
+        "q": "What documents require 400x520 pixel photos?",
+        "a": "Various university admission boards, international exam bodies, and government service cards mandate a 400x520 pixel ratio for candidate photographs."
       },
       {
-        "q": "How do I avoid compression blur on X avatars?",
-        "a": "Uploading an exact 400x400 PNG or high-quality JPG yields the sharpest visual result."
+        "q": "Can I crop my photo directly to 400x520?",
+        "a": "Yes. Use our interactive crop box to position your face and eyes according to official biometric guidelines before exporting."
       }
     ]
   },
   {
-    "slug": "twitter-card-resizer",
-    "title": "X Twitter Card Image Resizer - 1200x628 Summary Large Image",
-    "metaDescription": "Resize social share cards for X (Twitter) online free. Format open graph summary images to 1200x628 px.",
-    "h1": "X (Twitter) Card Image Resizer",
-    "subtitle": "Scale website social cards to 1200 × 628 px for crisp Twitter card previews.",
-    "badge": "X Card 1200x628",
-    "platform": "twitter",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 1200,
-      "height": 628,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Official Twitter summary_large_image card dimensions (1200 × 628 px)",
-      "Optimized for OpenGraph meta tags and website social share previews",
-      "Maintains sharp typography and high-contrast illustrations",
-      "Zero server uploads with instant download"
-    ],
-    "faq": [
-      {
-        "q": "What is the standard size for a Twitter Large Summary Card?",
-        "a": "X requires a minimum of 300x157 px, and recommends 1200 × 628 px (~1.91:1) for retina screens."
-      },
-      {
-        "q": "What is the maximum file size for a Twitter card image?",
-        "a": "Card images must be under 5MB in JPG, PNG, WEBP, or GIF format."
-      },
-      {
-        "q": "How can I test my Twitter card preview?",
-        "a": "Use X Card Validator or open-source social preview debuggers to test the generated card."
-      }
-    ]
-  },
-  {
-    "slug": "pinterest-pin-resizer",
-    "title": "Pinterest Pin Resizer Online - 1000x1500 (2:3 Standard Pin)",
-    "metaDescription": "Resize image for Pinterest Pin online free. Official 1000x1500 px (2:3 aspect ratio) for maximum clicks and saves on Pinterest feeds.",
-    "h1": "Pinterest Standard Pin Resizer",
-    "subtitle": "Convert images to optimal 1000 × 1500 px (2:3 vertical ratio) for highest Pinterest engagement.",
-    "badge": "Pinterest 1000x1500",
-    "platform": "pinterest",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 1000,
-      "height": 1500,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Official Pinterest recommended 2:3 vertical pin dimensions (1000 × 1500 px)",
-      "Optimized for Pinterest algorithm recommendations and visual search",
-      "Fit mode frames horizontal photos with clean background styling",
-      "Lossless export in JPG, PNG, and WebP"
-    ],
-    "faq": [
-      {
-        "q": "What is the best image size for Pinterest pins?",
-        "a": "Pinterest recommends a 2:3 aspect ratio with dimensions of 1000 × 1500 pixels for optimal feed performance."
-      },
-      {
-        "q": "Will pins longer than 2:3 get cut off?",
-        "a": "Pinterest truncates pins with aspect ratios longer than 1:2.1 in feed previews, so 2:3 is the safest standard."
-      },
-      {
-        "q": "Can I batch resize multiple product pins at once?",
-        "a": "Yes, drag and drop up to 15 photos to process them in batch."
-      }
-    ]
-  },
-  {
-    "slug": "pinterest-infographic-resizer",
-    "title": "Pinterest Infographic Resizer Online - 1000x2100 Tall Pin",
-    "metaDescription": "Resize tall infographic images for Pinterest online free. Format long graphics to 1000x2100 px (1:2.1 ratio) without feed truncation.",
-    "h1": "Pinterest Long Infographic Resizer",
-    "subtitle": "Scale long infographics and charts to 1000 × 2100 px (1:2.1 ratio) for vertical Pinterest pins.",
-    "badge": "Infographic 1000x2100",
-    "platform": "pinterest",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 1000,
-      "height": 2100,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Optimal tall infographic dimensions for Pinterest (1000 × 2100 pixels, 1:2.1)",
-      "Safe maximum aspect ratio to prevent Pinterest automated feed cropping",
-      "Maintains ultra-sharp typographic readability for multi-step recipes and guides",
-      "Zero server uploads — large infographics process locally in browser memory"
-    ],
-    "faq": [
-      {
-        "q": "What is the maximum height for tall pins on Pinterest?",
-        "a": "Pinterest recommends not exceeding a 1:2.1 aspect ratio (1000 × 2100 px) to prevent the bottom from being truncated."
-      },
-      {
-        "q": "How can I ensure small text remains legible in infographics?",
-        "a": "Export as PNG to prevent compression artifacting around text glyphs and diagrams."
-      },
-      {
-        "q": "Can I resize long screenshots into this format?",
-        "a": "Yes, use Fit mode with clean borders to preserve the exact proportions of your infographic."
-      }
-    ]
-  },
-  {
-    "slug": "whatsapp-dp-resizer",
-    "title": "WhatsApp DP Resizer Online - 800x800 Profile Picture",
-    "metaDescription": "Resize image for WhatsApp DP (Display Picture) online free. Convert photos to 800x800 px with centered circular framing.",
-    "h1": "WhatsApp DP Resizer Online",
-    "subtitle": "Format profile pictures to 800 × 800 px for clear circular rendering without edge clipping.",
-    "badge": "WhatsApp 800x800",
-    "platform": "whatsapp",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 800,
-      "height": 800,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Official WhatsApp profile picture dimensions (800 × 800 pixels)",
-      "Circular preview centering to avoid headshot clipping",
-      "100% in-browser privacy — sensitive personal photos stay on your device",
-      "Instant download in JPG, PNG, or WebP"
-    ],
-    "faq": [
-      {
-        "q": "What size is a WhatsApp profile picture?",
-        "a": "WhatsApp displays DP at 500x500 or 192x192 px, but recommends uploading at 800 × 800 px for crisp high-resolution display."
-      },
-      {
-        "q": "How to make full picture fit in WhatsApp DP without cropping?",
-        "a": "Choose Fit mode. OmniTools adds clean transparent borders so your entire rectangular photo fits without cropping."
-      },
-      {
-        "q": "Can I compress my DP file under 100KB?",
-        "a": "Yes, check Target Max File Size in Export Settings to target any specific KB limit."
-      }
-    ]
-  },
-  {
-    "slug": "whatsapp-status-resizer",
-    "title": "WhatsApp Status Resizer Online - 1080x1920 (9:16 Fullscreen)",
-    "metaDescription": "Resize photos for WhatsApp Status story online free. Format pictures to 1080x1920 px (9:16 vertical ratio) with crisp clarity.",
-    "h1": "WhatsApp Status Resizer",
-    "subtitle": "Resize vertical photos to 1080 × 1920 px for full-screen WhatsApp Status stories.",
-    "badge": "Status 1080x1920",
-    "platform": "whatsapp",
-    "defaultSettings": {
-      "targetKB": null,
-      "width": 1080,
-      "height": 1920,
-      "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
-    },
-    "features": [
-      "Official WhatsApp Status 9:16 vertical resolution (1080 × 1920 pixels)",
-      "Fit mode preserves full frame with clean blurred or solid background padding",
-      "Bicubic downscaling prevents WhatsApp compression blur",
-      "Fast batch processing for multi-photo status updates"
-    ],
-    "faq": [
-      {
-        "q": "What is the image resolution for WhatsApp Status?",
-        "a": "WhatsApp Status stories use full-screen 1080 × 1920 pixels with a 9:16 vertical aspect ratio."
-      },
-      {
-        "q": "Why do my photos get blurry when uploaded to WhatsApp Status?",
-        "a": "WhatsApp aggressively compresses images that do not match 1080x1920. Resizing beforehand preserves clarity."
-      },
-      {
-        "q": "Can I resize photos directly on mobile WhatsApp web?",
-        "a": "Yes! OmniTools is responsive and runs on mobile browsers without app installs."
-      }
-    ]
-  },
-  {
-    "slug": "whatsapp-group-icon-resizer",
-    "title": "WhatsApp Group Icon Resizer Online - 500x500 Chat Picture",
-    "metaDescription": "Resize image for WhatsApp Group Icon online free. Format group pictures to 500x500 px with centered composition.",
-    "h1": "WhatsApp Group Icon Resizer",
-    "subtitle": "Scale group chat icons to 500 × 500 px with centered composition for WhatsApp groups.",
-    "badge": "Group Icon 500x500",
-    "platform": "whatsapp",
-    "defaultSettings": {
-      "targetKB": null,
+    "slug": "resize-image-to-500x500",
+    "keyword": "resize image to 500x500",
+    "metaTitle": "Resize Image to 500x500 - Free Online Tool",
+    "metaDescription": "Easily resize image to 500x500 online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 500x500",
+    "category": "dimension",
+    "preset": {
       "width": 500,
       "height": 500,
       "unit": "PX",
-      "mode": "Fit",
-      "padding": "Transparent"
+      "lockRatio": false
     },
-    "features": [
-      "Official WhatsApp Group chat icon resolution (500 × 500 pixels)",
-      "Circular crop optimization ensures logos and symbols stay centered",
-      "Fit mode prevents distortion or stretching of rectangular graphics",
-      "Instant local download with zero watermarks"
-    ],
-    "faq": [
+    "faqs": [
       {
-        "q": "What is the required dimension for a WhatsApp Group Icon?",
-        "a": "WhatsApp group icons should be square, with recommended dimensions of 500 × 500 pixels."
+        "q": "How to resize an image to 500x500 pixels online?",
+        "a": "Upload your picture. The width and height are preset to 500x500 pixels. Choose your export format (JPG, PNG, WebP) and click Download."
       },
       {
-        "q": "Can I use a transparent background for a group icon?",
-        "a": "WhatsApp converts group icons to JPG on upload; selecting a white or solid color background is recommended."
+        "q": "Where are 500x500 pixel images used?",
+        "a": "500x500 px is the universal standard for e-commerce product thumbnails, Shopify previews, Spotify podcast covers, and app badges."
       },
       {
-        "q": "Can I rotate or flip my group picture?",
-        "a": "Yes, rotate 90° or mirror horizontally with one click in the interactive studio."
+        "q": "Can I batch resize multiple pictures to 500x500?",
+        "a": "Yes. Drag and drop up to 15 product images at once to process and export them all at 500x500 px in seconds."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-to-512x512",
+    "keyword": "resize image to 512x512",
+    "metaTitle": "Resize Image to 512x512 - Free Online Tool",
+    "metaDescription": "Easily resize image to 512x512 online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 512x512",
+    "category": "dimension",
+    "preset": {
+      "width": 512,
+      "height": 512,
+      "unit": "PX",
+      "lockRatio": false
+    },
+    "faqs": [
+      {
+        "q": "How do I resize an image to 512x512 pixels?",
+        "a": "Upload your icon, sticker, or artwork. The tool pre-configures 512x512 px. Export with clean transparent padding or direct fill."
+      },
+      {
+        "q": "Why is 512x512 pixels an industry standard?",
+        "a": "512x512 is a power-of-two resolution required by the Google Play Store (app icons), WhatsApp sticker packs, and game texture engines."
+      },
+      {
+        "q": "Can I export transparent PNG stickers at 512x512?",
+        "a": "Yes. Export as PNG with Transparent background to create compliant WhatsApp and Telegram stickers."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-to-600x600",
+    "keyword": "resize image to 600x600",
+    "metaTitle": "Resize Image to 600x600 - Free Online Tool",
+    "metaDescription": "Easily resize image to 600x600 online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 600x600",
+    "category": "dimension",
+    "preset": {
+      "width": 600,
+      "height": 600,
+      "unit": "PX",
+      "lockRatio": false
+    },
+    "faqs": [
+      {
+        "q": "How to resize an image to 600x600 pixels online?",
+        "a": "Upload your portrait photo. The tool is pre-set with 600x600 px dimensions. Download your compliant square photo immediately."
+      },
+      {
+        "q": "Is 600x600 pixels the official US Visa photo standard?",
+        "a": "Yes. The US Department of State strictly mandates 600x600 pixels (at least 300 DPI, equal to 2x2 inches) for DS-160 online visa applications and Diversity Visa (DV) lottery entries."
+      },
+      {
+        "q": "What should the file size be for a 600x600 US Visa photo?",
+        "a": "The US Visa system requires the file to be equal to or less than 240 KB in JPEG format. Our tool automatically keeps your 600x600 image within this limit."
+      },
+      {
+        "q": "Can I center my face to meet US Visa biometric guidelines?",
+        "a": "Yes. Use our intuitive crop tool to position your head between 50% and 69% of the image's total height, adhering strictly to consular standards."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-to-600x800",
+    "keyword": "resize image to 600x800",
+    "metaTitle": "Resize Image to 600x800 - Free Online Tool",
+    "metaDescription": "Easily resize image to 600x800 online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 600x800",
+    "category": "dimension",
+    "preset": {
+      "width": 600,
+      "height": 800,
+      "unit": "PX",
+      "lockRatio": false
+    },
+    "faqs": [
+      {
+        "q": "How do I resize an image to 600x800 pixels?",
+        "a": "Upload your portrait photo. The dimensions are pre-configured to 600x800 pixels (a standard 3:4 aspect ratio). Click Download to save."
+      },
+      {
+        "q": "What uses 600x800 pixel images?",
+        "a": "600x800 is the standard ratio for digital portrait photography, medical ID badges, model comp cards, and student registration portals."
+      },
+      {
+        "q": "Will resizing reduce visual fidelity?",
+        "a": "Our high-precision downsampler preserves rich textures, skin tones, and lighting highlights without introducing compression artifacts."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-to-630x810",
+    "keyword": "resize image to 630x810",
+    "metaTitle": "Resize Image to 630x810 - Free Online Tool",
+    "metaDescription": "Easily resize image to 630x810 online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to 630x810",
+    "category": "dimension",
+    "preset": {
+      "width": 630,
+      "height": 810,
+      "unit": "PX",
+      "lockRatio": false
+    },
+    "faqs": [
+      {
+        "q": "How to resize image to 630x810 pixels?",
+        "a": "Drop your photo into the workspace. The tool pre-loads 630 pixels width by 810 pixels height. Export with one click."
+      },
+      {
+        "q": "Which application forms specify 630x810 pixels?",
+        "a": "630x810 px (representing an exact 3.5cm x 4.5cm ratio at ~450-460 DPI) is frequently requested for European Schengen visa uploads and civil service exams."
+      },
+      {
+        "q": "Can I add a white or light gray background?",
+        "a": "Yes. Choose 'White' in the background fit options to instantly fill padding areas with a clean consular-approved white background."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-4.5cm-x-3.5cm",
+    "keyword": "resize image 4.5cm x 3.5cm",
+    "metaTitle": "Resize Image 4.5cm x 3.5cm - Free Online Tool",
+    "metaDescription": "Easily resize image 4.5cm x 3.5cm online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image 4.5cm x 3.5cm",
+    "category": "dimension",
+    "preset": {
+      "width": 3.5,
+      "height": 4.5,
+      "unit": "CM",
+      "dpi": 300,
+      "lockRatio": false
+    },
+    "faqs": [
+      {
+        "q": "How do I resize a photo to 4.5cm x 3.5cm (35mm x 45mm)?",
+        "a": "Upload your photo. The tool pre-sets width to 3.5 cm and height to 4.5 cm at 300 DPI print quality (equivalent to 413 × 531 pixels). Download your ready-to-print file."
+      },
+      {
+        "q": "What countries use 3.5cm x 4.5cm passport photos?",
+        "a": "3.5cm x 4.5cm is the global standard for UK, Schengen (Germany, France, Italy, Spain), Australia, Canada, India, and Japanese visa and passport photos."
+      },
+      {
+        "q": "Why is 300 DPI necessary for physical centimeter resizing?",
+        "a": "300 DPI (dots per inch) ensures your photo prints crisply on glossy photo paper without pixelation or blur during biometric scans."
+      },
+      {
+        "q": "Can I print multiple 3.5x4.5 cm photos on a 4x6 inch paper?",
+        "a": "Yes. Once downloaded at 300 DPI, your 3.5x4.5 cm photo can be placed in a standard photo grid for economical printing at any local pharmacy or print shop."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-6cm-x-2cm",
+    "keyword": "resize image 6cm x 2cm",
+    "metaTitle": "Resize Image 6cm x 2cm - Free Online Tool",
+    "metaDescription": "Easily resize image 6cm x 2cm online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image 6cm x 2cm",
+    "category": "dimension",
+    "preset": {
+      "width": 6,
+      "height": 2,
+      "unit": "CM",
+      "dpi": 300,
+      "lockRatio": false
+    },
+    "faqs": [
+      {
+        "q": "How do I resize a signature image to 6cm x 2cm?",
+        "a": "Upload your signature. Width is pre-calibrated to 6 cm and height to 2 cm at 300 DPI (709 × 236 pixels). Click Download to save."
+      },
+      {
+        "q": "What official portals require 6cm x 2cm signatures?",
+        "a": "Various government recruitment portals, bank account opening paperwork, and legal e-filing systems stipulate 6cm x 2cm signature boxes."
+      },
+      {
+        "q": "How do I ensure the signature ink is dark and clear?",
+        "a": "Our tool maintains pure contrast and allows export to lossless PNG or high-quality JPG so your signature line remains sharp and unmistakable."
+      }
+    ]
+  },
+  {
+    "slug": "passport-size-photo-2x2-inch",
+    "keyword": "passport size photo 2x2 inch",
+    "metaTitle": "Passport Size Photo 2x2 Inch - Free Online Tool",
+    "metaDescription": "Easily passport size photo 2x2 inch online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Passport Size Photo 2x2 Inch",
+    "category": "dimension",
+    "preset": {
+      "width": 2,
+      "height": 2,
+      "unit": "INCH",
+      "dpi": 300,
+      "lockRatio": false
+    },
+    "faqs": [
+      {
+        "q": "How to resize a photo to 2x2 inches (51x51 mm)?",
+        "a": "Upload your portrait picture. The tool automatically sets dimensions to 2x2 inches at 300 DPI (600x600 pixels). Download your certified photo instantly."
+      },
+      {
+        "q": "What is the 2x2 inch photo standard used for?",
+        "a": "2x2 inches is the legal biometric photo format for US Passports, US Visas, Green Card lottery (Diversity Visa), and Indian OCI/Passport applications."
+      },
+      {
+        "q": "What are the facial composition rules for 2x2 inch passport photos?",
+        "a": "The head must be between 1 inch and 1 3/8 inches (25 mm to 35 mm) from the bottom of the chin to the top of the head with a plain white background."
+      },
+      {
+        "q": "Is this 2x2 inch tool free to use?",
+        "a": "Yes, 100% free with no subscriptions, watermark additions, or user sign-ups required."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-for-facebook-profile",
+    "keyword": "resize image for facebook profile",
+    "metaTitle": "Resize Image for Facebook Profile - Free Online Tool",
+    "metaDescription": "Easily resize image for facebook profile online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image for Facebook Profile",
+    "category": "social",
+    "preset": {
+      "width": 320,
+      "height": 320,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What is the recommended Facebook profile picture size?",
+        "a": "Facebook displays profile pictures at 176x176 pixels on desktops and 196x196 on smartphones. Resizing to 320x320 px provides optimal high-DPI retina sharpness without compression blur."
+      },
+      {
+        "q": "How do I resize an image for Facebook profile without cropping?",
+        "a": "Upload your image and choose 'Fit' mode with transparent or custom background padding to prevent Facebook's circular crop from cutting off important details."
+      },
+      {
+        "q": "What format should I use for Facebook profile photos?",
+        "a": "PNG format is recommended for avatars with logos or text, while high-quality JPG is best for real-life portraits."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-for-facebook-post",
+    "keyword": "resize image for facebook post",
+    "metaTitle": "Resize Image for Facebook Post - Free Online Tool",
+    "metaDescription": "Easily resize image for facebook post online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image for Facebook Post",
+    "category": "social",
+    "preset": {
+      "width": 1200,
+      "height": 630,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What is the best resolution for a Facebook post?",
+        "a": "1200x630 pixels (a 1.91:1 aspect ratio) is the gold standard for landscape Facebook feed posts and shared Open Graph link thumbnails."
+      },
+      {
+        "q": "How to resize an image for Facebook post online?",
+        "a": "Drop your image into the tool. Dimensions are pre-set to 1200x630 px. Click Download to save an image that won't be blurry in Facebook feeds."
+      },
+      {
+        "q": "How to prevent Facebook from compressing my photos?",
+        "a": "Exporting at exactly 1200x630 px in sRGB color profile ensures Facebook's compression algorithm does not downsample or degrade your graphics."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-for-facebook-cover",
+    "keyword": "resize image for facebook cover",
+    "metaTitle": "Resize Image for Facebook Cover - Free Online Tool",
+    "metaDescription": "Easily resize image for facebook cover online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image for Facebook Cover",
+    "category": "social",
+    "preset": {
+      "width": 820,
+      "height": 360,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What are the official Facebook cover photo dimensions?",
+        "a": "Facebook displays cover photos at 820x312 pixels on computers and 640x360 pixels on smartphones. Resizing to 820x360 px ensures critical content remains visible across both desktop and mobile."
+      },
+      {
+        "q": "How to resize an image for Facebook cover?",
+        "a": "Upload your banner. The 820x360 preset is automatically applied. Position key content in the safe center area and click Download."
+      },
+      {
+        "q": "Should Facebook covers be saved in JPG or PNG?",
+        "a": "If your cover photo contains typography, line art, or branding logos, export as PNG. For photographs, high-quality JPG under 100KB avoids compression artifacts."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-for-facebook-event-cover",
+    "keyword": "resize image for facebook event cover",
+    "metaTitle": "Resize Image for Facebook Event Cover - Free Online Tool",
+    "metaDescription": "Easily resize image for facebook event cover online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image for Facebook Event Cover",
+    "category": "social",
+    "preset": {
+      "width": 1920,
+      "height": 1005,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What is the size of a Facebook event cover photo?",
+        "a": "The recommended resolution for a Facebook event cover photo is 1920x1005 pixels (16:9 ratio), ensuring sharp visuals on both 4K monitors and mobile apps."
+      },
+      {
+        "q": "How to resize image for Facebook event cover?",
+        "a": "Upload your event banner. The 1920x1005 preset is ready. Download your high-definition image with zero watermarks."
+      },
+      {
+        "q": "Will my event banner get cropped on smartphones?",
+        "a": "Our 1920x1005 preset keeps your layout in the safe display zone, preventing event dates and titles from being clipped by mobile UI overlays."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-for-facebook-story",
+    "keyword": "resize image for facebook story",
+    "metaTitle": "Resize Image for Facebook Story - Free Online Tool",
+    "metaDescription": "Easily resize image for facebook story online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image for Facebook Story",
+    "category": "social",
+    "preset": {
+      "width": 1080,
+      "height": 1920,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What are the exact dimensions for Facebook Stories?",
+        "a": "Facebook Stories require a vertical 9:16 aspect ratio with optimal dimensions of 1080x1920 pixels."
+      },
+      {
+        "q": "How do I resize photos for Facebook stories without stretching?",
+        "a": "Upload any horizontal or square photo. Our tool applies 1080x1920 vertical canvas with your choice of blurred background or clean framing."
+      },
+      {
+        "q": "What file size limit applies to Facebook stories?",
+        "a": "Keep images under 4MB for fast, seamless story uploads without playback stutter."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-for-facebook-banner",
+    "keyword": "resize image for facebook banner",
+    "metaTitle": "Resize Image for Facebook Banner - Free Online Tool",
+    "metaDescription": "Easily resize image for facebook banner online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image for Facebook Banner",
+    "category": "social",
+    "preset": {
+      "width": 820,
+      "height": 360,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What size is a Facebook banner?",
+        "a": "A Facebook banner (page cover) is ideally sized at 820x360 pixels, offering the best compromise between desktop landscape and mobile vertical crops."
+      },
+      {
+        "q": "How to resize an image for Facebook banner?",
+        "a": "Upload your banner graphic. The 820x360 px canvas is loaded. Preview the fit and click Download."
+      },
+      {
+        "q": "How can I prevent blurry banners on Facebook business pages?",
+        "a": "Upload in PNG format if your banner has text, or save as JPG with sRGB color profile to bypass aggressive server compression."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-for-instagram-post",
+    "keyword": "resize image for instagram post",
+    "metaTitle": "Resize Image for Instagram Post - Free Online Tool",
+    "metaDescription": "Easily resize image for instagram post online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image for Instagram Post",
+    "category": "social",
+    "preset": {
+      "width": 1080,
+      "height": 1080,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What is the best resolution for an Instagram square post?",
+        "a": "1080x1080 pixels (1:1 aspect ratio) is the gold standard for crisp, high-resolution Instagram grid posts."
+      },
+      {
+        "q": "How to resize image for Instagram post without cropping?",
+        "a": "Upload your photo and select 'Fit' mode with white, black, or blurred border padding to fit horizontal or vertical photos into a 1080x1080 square."
+      },
+      {
+        "q": "Does Instagram compress 1080x1080 photos?",
+        "a": "When you upload exactly at 1080px width, Instagram does not re-scale your image, preserving original clarity and contrast."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-for-instagram-story",
+    "keyword": "resize image for instagram story",
+    "metaTitle": "Resize Image for Instagram Story - Free Online Tool",
+    "metaDescription": "Easily resize image for instagram story online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image for Instagram Story",
+    "category": "social",
+    "preset": {
+      "width": 1080,
+      "height": 1920,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What is the exact size for Instagram Stories?",
+        "a": "Instagram Stories require a full-screen vertical resolution of 1080x1920 pixels (9:16 aspect ratio)."
+      },
+      {
+        "q": "How to resize landscape photos for Instagram Story?",
+        "a": "Upload your horizontal picture. Our preset centers it on a 1080x1920 canvas with beautiful aesthetic borders or smart background padding."
+      },
+      {
+        "q": "Can this preset also be used for Instagram Reels?",
+        "a": "Yes. Instagram Reels share the exact same 1080x1920 px resolution and 9:16 aspect ratio as Stories."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-for-instagram-dp",
+    "keyword": "resize image for instagram dp",
+    "metaTitle": "Resize Image for Instagram DP - Free Online Tool",
+    "metaDescription": "Easily resize image for instagram dp online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image for Instagram DP",
+    "category": "social",
+    "preset": {
+      "width": 320,
+      "height": 320,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What is the ideal size for an Instagram DP (Display Picture)?",
+        "a": "Instagram stores profile photos at 320x320 pixels. Uploading at 320x320 px ensures razor-sharp clarity in both the mobile app and desktop feed."
+      },
+      {
+        "q": "How do I center my face for Instagram's circular avatar crop?",
+        "a": "Use our interactive crop tool to center your face inside the 320x320 square frame so no facial features are clipped by Instagram's circular mask."
+      },
+      {
+        "q": "Is JPG or PNG preferred for Instagram profile photos?",
+        "a": "JPG is best for portraits and real-life photos; PNG is superior for creator logos and graphics with crisp typography."
+      }
+    ]
+  },
+  {
+    "slug": "image-resizer-for-youtube-banner",
+    "keyword": "image resizer for youtube banner",
+    "metaTitle": "Image Resizer for YouTube Banner - Free Online Tool",
+    "metaDescription": "Easily image resizer for youtube banner online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Image Resizer for YouTube Banner",
+    "category": "social",
+    "preset": {
+      "width": 2560,
+      "height": 1440,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What are the official dimensions for a YouTube channel banner?",
+        "a": "YouTube requires channel art to be 2560x1440 pixels with a central 'safe area' of 1546x423 pixels for text and logos to display across all devices."
+      },
+      {
+        "q": "How to resize an image for YouTube banner online?",
+        "a": "Upload your artwork. The tool pre-configures a 2560x1440 px canvas. Position your core graphics in the center and click Download."
+      },
+      {
+        "q": "What is the maximum file size for YouTube channel art?",
+        "a": "YouTube allows banners up to 6MB. Our tool automatically keeps file weight under 6MB while preserving maximum 2560x1440 fidelity."
+      }
+    ]
+  },
+  {
+    "slug": "image-resizer-for-youtube-thumbnail",
+    "keyword": "image resizer for youtube thumbnail",
+    "metaTitle": "Image Resizer for YouTube Thumbnail - Free Online Tool",
+    "metaDescription": "Easily image resizer for youtube thumbnail online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Image Resizer for YouTube Thumbnail",
+    "category": "social",
+    "preset": {
+      "width": 1280,
+      "height": 720,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What is the recommended size for YouTube thumbnails?",
+        "a": "YouTube thumbnails must be 1280x720 pixels with a minimum width of 640 pixels (16:9 aspect ratio) and a file size under 2MB."
+      },
+      {
+        "q": "How to resize image for YouTube thumbnail?",
+        "a": "Upload your custom graphic or still frame. The 1280x720 preset is loaded. Download as a high-contrast JPG or PNG under 2MB."
+      },
+      {
+        "q": "How do I make my thumbnail text pop on mobile?",
+        "a": "Resizing to 1280x720 px guarantees crisp pixel density, ensuring bold typography and facial expressions remain clearly visible on small mobile screens."
+      }
+    ]
+  },
+  {
+    "slug": "image-resizer-for-youtube-watermark",
+    "keyword": "image resizer for youtube watermark",
+    "metaTitle": "Image Resizer for YouTube Watermark - Free Online Tool",
+    "metaDescription": "Easily image resizer for youtube watermark online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Image Resizer for YouTube Watermark",
+    "category": "social",
+    "preset": {
+      "width": 150,
+      "height": 150,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What is the size of a YouTube video watermark?",
+        "a": "YouTube video branding watermarks must be a square image of at least 150x150 pixels, under 1MB in file size."
+      },
+      {
+        "q": "How to resize image for YouTube watermark?",
+        "a": "Upload your brand logo or subscribe icon. The 150x150 px preset is applied. Export as a transparent PNG for seamless video overlay."
+      },
+      {
+        "q": "Why should a YouTube watermark be transparent?",
+        "a": "A transparent PNG ensures only your icon or logo covers the bottom-right corner of the video without an obtrusive white square."
+      }
+    ]
+  },
+  {
+    "slug": "image-resizer-for-youtube-profile",
+    "keyword": "image resizer for youtube profile",
+    "metaTitle": "Image Resizer for YouTube Profile - Free Online Tool",
+    "metaDescription": "Easily image resizer for youtube profile online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Image Resizer for YouTube Profile",
+    "category": "social",
+    "preset": {
+      "width": 800,
+      "height": 800,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What is the official size for a YouTube profile picture?",
+        "a": "YouTube recommends an 800x800 pixel square image for channel profile icons (avatars)."
+      },
+      {
+        "q": "How to resize an image for YouTube profile?",
+        "a": "Upload your avatar or logo. The 800x800 px preset is pre-selected. Verify circular crop centering and download your photo."
+      },
+      {
+        "q": "What file formats does YouTube accept for channel icons?",
+        "a": "YouTube accepts JPG, GIF, BMP, or PNG files (non-animated). Our tool exports high-fidelity JPG and PNG instantly."
+      }
+    ]
+  },
+  {
+    "slug": "image-resizer-for-tiktok-profile",
+    "keyword": "image resizer for tiktok profile",
+    "metaTitle": "Image Resizer for TikTok Profile - Free Online Tool",
+    "metaDescription": "Easily image resizer for tiktok profile online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Image Resizer for TikTok Profile",
+    "category": "social",
+    "preset": {
+      "width": 200,
+      "height": 200,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What size should a TikTok profile picture be?",
+        "a": "TikTok requires a minimum avatar size of 20x20 pixels, but recommends 200x200 pixels for crisp high-definition display on modern smartphones."
+      },
+      {
+        "q": "How to resize image for TikTok profile?",
+        "a": "Upload your photo. The tool automatically sets dimensions to 200x200 pixels. Center your subject within the frame and click Download."
+      },
+      {
+        "q": "How do I prevent TikTok from blurring my profile photo?",
+        "a": "Uploading at exactly 200x200 px in crisp JPG or PNG prevents TikTok's upload engine from downsampling and introducing compression artifacts."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-for-tiktok-post",
+    "keyword": "resize image for tiktok post",
+    "metaTitle": "Resize Image for TikTok Post - Free Online Tool",
+    "metaDescription": "Easily resize image for tiktok post online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image for TikTok Post",
+    "category": "social",
+    "preset": {
+      "width": 1080,
+      "height": 1920,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What are the dimensions for TikTok photo posts and slides?",
+        "a": "TikTok photo carousel posts and video frames require a vertical 1080x1920 pixel resolution (9:16 aspect ratio)."
+      },
+      {
+        "q": "How to resize photos for TikTok carousel posts?",
+        "a": "Upload your pictures. The 1080x1920 canvas is pre-configured. Download your batch of images ready for immediate TikTok slideshow upload."
+      },
+      {
+        "q": "Can I convert horizontal photos to TikTok format without distortion?",
+        "a": "Yes. Select 'Fit' mode to keep your full horizontal photo centered with modern background blur or solid color borders."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-for-tiktok-shop",
+    "keyword": "resize image for tiktok shop",
+    "metaTitle": "Resize Image for TikTok Shop - Free Online Tool",
+    "metaDescription": "Easily resize image for tiktok shop online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image for TikTok Shop",
+    "category": "social",
+    "preset": {
+      "width": 800,
+      "height": 800,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What are the image requirements for TikTok Shop products?",
+        "a": "TikTok Shop mandates product listing images to be 1:1 square with dimensions of at least 800x800 pixels (and up to 1200x1200 px) under 5MB."
+      },
+      {
+        "q": "How to resize product images for TikTok Shop?",
+        "a": "Upload your product catalog photos. The 800x800 px preset is applied. Download batch photos ready for instant catalog approval."
+      },
+      {
+        "q": "What background is best for TikTok Shop product listings?",
+        "a": "A clean white or light neutral background is strongly recommended by TikTok Shop algorithm guidelines for higher conversion and search visibility."
+      }
+    ]
+  },
+  {
+    "slug": "image-resizer-for-linkedin-banner",
+    "keyword": "image resizer for linkedin banner",
+    "metaTitle": "Image Resizer for LinkedIn Banner - Free Online Tool",
+    "metaDescription": "Easily image resizer for linkedin banner online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Image Resizer for LinkedIn Banner",
+    "category": "social",
+    "preset": {
+      "width": 1584,
+      "height": 396,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What is the recommended size for a LinkedIn personal banner?",
+        "a": "The official dimension for a LinkedIn personal profile background banner is 1584x396 pixels (a 4:1 aspect ratio)."
+      },
+      {
+        "q": "How to resize image for LinkedIn banner?",
+        "a": "Upload your professional background photo. The 1584x396 preset is pre-loaded. Keep text away from the bottom-left profile picture cutout and download."
+      },
+      {
+        "q": "What file formats does LinkedIn support for banners?",
+        "a": "LinkedIn accepts PNG and JPG files up to 8MB. Our tool optimizes colors and keeps output size lean and fast-loading."
+      }
+    ]
+  },
+  {
+    "slug": "image-resizer-for-linkedin-profile",
+    "keyword": "image resizer for linkedin profile",
+    "metaTitle": "Image Resizer for LinkedIn Profile - Free Online Tool",
+    "metaDescription": "Easily image resizer for linkedin profile online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Image Resizer for LinkedIn Profile",
+    "category": "social",
+    "preset": {
+      "width": 400,
+      "height": 400,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What is the ideal LinkedIn profile picture size?",
+        "a": "LinkedIn recommends 400x400 pixels (1:1 square ratio) for member profile photos, supporting files up to 8MB."
+      },
+      {
+        "q": "How to resize an image for LinkedIn profile?",
+        "a": "Upload your headshot. The 400x400 preset is ready. Position your eyes roughly two-thirds of the way up the circle and click Download."
+      },
+      {
+        "q": "How do I ensure maximum professionalism on LinkedIn?",
+        "a": "Our tool maintains crisp facial details and subtle color rendering without over-sharpening, presenting a sharp executive impression."
+      }
+    ]
+  },
+  {
+    "slug": "image-resizer-for-linkedin-post",
+    "keyword": "image resizer for linkedin post",
+    "metaTitle": "Image Resizer for LinkedIn Post - Free Online Tool",
+    "metaDescription": "Easily image resizer for linkedin post online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Image Resizer for LinkedIn Post",
+    "category": "social",
+    "preset": {
+      "width": 1200,
+      "height": 627,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What is the best size for a LinkedIn feed post image?",
+        "a": "1200x627 pixels (a 1.91:1 ratio) is the standard resolution for landscape LinkedIn feed images and sponsored content."
+      },
+      {
+        "q": "How to resize an image for LinkedIn post?",
+        "a": "Upload your infographic or post graphic. The 1200x627 preset is applied. Download your perfectly proportioned asset."
+      },
+      {
+        "q": "Does LinkedIn support square 1:1 post images as well?",
+        "a": "Yes. While 1200x627 is ideal for landscape links, 1080x1080 px or 1200x1200 px is great for carousel infographics."
+      }
+    ]
+  },
+  {
+    "slug": "image-resize-for-linkedin-article",
+    "keyword": "image resize for linkedin article",
+    "metaTitle": "Image Resize for LinkedIn Article - Free Online Tool",
+    "metaDescription": "Easily image resize for linkedin article online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Image Resize for LinkedIn Article",
+    "category": "social",
+    "preset": {
+      "width": 1280,
+      "height": 720,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What is the recommended cover image size for LinkedIn articles and newsletters?",
+        "a": "LinkedIn recommends 1280x720 pixels (16:9 widescreen aspect ratio) for article header banners and newsletter covers."
+      },
+      {
+        "q": "How to resize image for LinkedIn article cover?",
+        "a": "Upload your article graphic. The tool automatically calibrates the 1280x720 canvas. Download your banner with zero watermarks."
+      },
+      {
+        "q": "Will this banner look sharp in LinkedIn notifications?",
+        "a": "Yes. 1280x720 px scales down gracefully into newsletter notification emails and feed cards without losing title legibility."
+      }
+    ]
+  },
+  {
+    "slug": "image-resizer-for-whatsapp-dp",
+    "keyword": "image resizer for whatsapp dp",
+    "metaTitle": "Image Resizer for WhatsApp DP - Free Online Tool",
+    "metaDescription": "Easily image resizer for whatsapp dp online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Image Resizer for WhatsApp DP",
+    "category": "social",
+    "preset": {
+      "width": 800,
+      "height": 800,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What is the best resolution for a WhatsApp DP (Profile Picture)?",
+        "a": "While WhatsApp displays DP at 192x192 px on small devices, resizing to 800x800 pixels ensures crystal-clear rendering when contacts tap to expand your full photo."
+      },
+      {
+        "q": "How to resize full photo for WhatsApp DP without cropping?",
+        "a": "Upload your full-length or landscape photo and select 'Fit' mode. The tool adds clean background borders to fit the full photo into a square without losing shoes or sky."
+      },
+      {
+        "q": "Does WhatsApp compress profile photos?",
+        "a": "Uploading a clean 800x800 image under 500KB minimizes WhatsApp's aggressive internal compression algorithms."
+      }
+    ]
+  },
+  {
+    "slug": "whatsapp-status-image-resize",
+    "keyword": "whatsapp status image resize",
+    "metaTitle": "WhatsApp Status Image Resize - Free Online Tool",
+    "metaDescription": "Easily whatsapp status image resize online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "WhatsApp Status Image Resize",
+    "category": "social",
+    "preset": {
+      "width": 1080,
+      "height": 1920,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What is the correct size for a WhatsApp Status image?",
+        "a": "WhatsApp Status images should be 1080x1920 pixels with a 9:16 vertical aspect ratio for full-screen smartphone display."
+      },
+      {
+        "q": "How to resize image for WhatsApp status without blur?",
+        "a": "Upload your picture. The 1080x1920 preset is applied. Download your high-res image and post directly to WhatsApp Status."
+      },
+      {
+        "q": "How do I fit horizontal photos into WhatsApp Status?",
+        "a": "Select 'Fit' mode with modern background blur or dark styling to showcase horizontal panoramas cleanly on vertical phone screens."
+      }
+    ]
+  },
+  {
+    "slug": "whatsapp-sticker-image-resize",
+    "keyword": "whatsapp sticker image resize",
+    "metaTitle": "WhatsApp Sticker Image Resize - Free Online Tool",
+    "metaDescription": "Easily whatsapp sticker image resize online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "WhatsApp Sticker Image Resize",
+    "category": "social",
+    "preset": {
+      "width": 512,
+      "height": 512,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What are the exact requirements for a WhatsApp sticker?",
+        "a": "WhatsApp stickers must be exactly 512x512 pixels, exported as a transparent WebP or PNG file, with a file size strictly under 100KB."
+      },
+      {
+        "q": "How do I resize an image for a WhatsApp sticker?",
+        "a": "Upload your graphic. The tool sets dimensions to 512x512 px. Select PNG or WebP with Transparent padding and download."
+      },
+      {
+        "q": "Can I make animated WhatsApp stickers?",
+        "a": "Our tool specializes in static high-resolution 512x512 stickers, optimized for rapid rendering in sticker packs."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-for-pinterest",
+    "keyword": "resize image for pinterest",
+    "metaTitle": "Resize Image for Pinterest - Free Online Tool",
+    "metaDescription": "Easily resize image for pinterest online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image for Pinterest",
+    "category": "social",
+    "preset": {
+      "width": 1000,
+      "height": 1500,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What is the recommended size for a Pinterest Pin?",
+        "a": "Pinterest recommends a 2:3 aspect ratio with dimensions of 1000x1500 pixels for standard Pins and Idea Pins."
+      },
+      {
+        "q": "How to resize image for Pinterest online?",
+        "a": "Upload your recipe, design, or product photo. The 1000x1500 px canvas is ready. Click Download for pin-worthy clarity."
+      },
+      {
+        "q": "Why is a 2:3 vertical aspect ratio crucial on Pinterest?",
+        "a": "Vertical Pins occupy maximum visual real estate in Pinterest's multi-column mobile feed, generating significantly higher click-through rates (CTR) and repins."
+      }
+    ]
+  },
+  {
+    "slug": "image-resize-for-indian-visa",
+    "keyword": "image resize for indian visa",
+    "metaTitle": "Image Resize for Indian Visa - Free Online Tool",
+    "metaDescription": "Easily image resize for indian visa online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Image Resize for Indian Visa",
+    "category": "preset",
+    "preset": {
+      "width": 350,
+      "height": 350,
+      "unit": "PX",
+      "targetSize": 300,
+      "targetUnit": "KB"
+    },
+    "faqs": [
+      {
+        "q": "What are the official photo requirements for an Indian e-Visa?",
+        "a": "The Indian Visa online portal requires a square JPEG photo of minimum 350x350 pixels (equal width and height) and file size between 10 KB and 300 KB."
+      },
+      {
+        "q": "How to resize image for Indian visa online?",
+        "a": "Upload your portrait photo. The tool pre-configures 350x350 px and a 300 KB ceiling. Click Download for guaranteed compliance."
+      },
+      {
+        "q": "What background color is required for an Indian visa photograph?",
+        "a": "A plain white or light-colored background is mandatory. The face must be in full view with eyes open, and no shadows across the face or background."
+      },
+      {
+        "q": "Can I resize the passport page PDF/JPEG on this tool too?",
+        "a": "Yes. You can also compress scanned passport bio pages to under 300KB using our file size compressor preset."
+      }
+    ]
+  },
+  {
+    "slug": "image-resize-for-pan-card",
+    "keyword": "image resize for pan card",
+    "metaTitle": "Image Resize for PAN Card - Free Online Tool",
+    "metaDescription": "Easily image resize for pan card online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Image Resize for PAN Card",
+    "category": "preset",
+    "preset": {
+      "width": 213,
+      "height": 213,
+      "unit": "PX",
+      "targetSize": 30,
+      "targetUnit": "KB"
+    },
+    "faqs": [
+      {
+        "q": "What is the photo and signature size for NSDL / UTIITSL PAN card applications?",
+        "a": "NSDL / UTIITSL portals strictly require candidate photographs to measure exactly 213x213 pixels at 300 DPI, with file size strictly below 30 KB (and above 10 KB)."
+      },
+      {
+        "q": "How to resize photo for PAN card online?",
+        "a": "Upload your photo. The tool applies 213x213 pixels and enforces a 30 KB maximum file limit. Download your verified file."
+      },
+      {
+        "q": "What are the PAN card signature dimensions?",
+        "a": "PAN card signatures typically require 400x200 px or 213x213 px under 30KB. Both are easily created using our precision dimension tool."
+      },
+      {
+        "q": "Why does the PAN card portal reject photos?",
+        "a": "Rejections occur when files exceed 30KB or deviate by even a single pixel from 213x213 px. Our tool guarantees exact compliance with both criteria."
+      }
+    ]
+  },
+  {
+    "slug": "passport-size-photo-size-in-bd",
+    "keyword": "passport size photo size in bd",
+    "metaTitle": "Passport Size Photo Size in BD - Free Online Tool",
+    "metaDescription": "Easily passport size photo size in bd online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Passport Size Photo Size in BD",
+    "category": "preset",
+    "preset": {
+      "width": 300,
+      "height": 300,
+      "unit": "PX",
+      "targetSize": 100,
+      "targetUnit": "KB"
+    },
+    "faqs": [
+      {
+        "q": "What is the standard passport size photo in Bangladesh (BD)?",
+        "a": "In Bangladesh, digital e-Passport and government job portals (such as Teletalk / BPSC) standardise photo uploads at 300x300 pixels under 100 KB, and signatures at 300x80 pixels under 60 KB."
+      },
+      {
+        "q": "How to resize photo for Bangladesh government jobs and e-Passport?",
+        "a": "Upload your picture. The 300x300 px dimensions and 100 KB target size preset are applied. Download your Teletalk-ready image."
+      },
+      {
+        "q": "What is the physical print size for Bangladesh passport photos?",
+        "a": "Physical print passport photos in Bangladesh measure 45 mm × 35 mm on a white background with 300 DPI resolution."
+      },
+      {
+        "q": "Can I resize signatures to 300x80 px for Teletalk BD forms?",
+        "a": "Yes. Switch to our 300x80 signature preset to resize signatures under 60KB for BPSC and Teletalk recruitment forms."
+      }
+    ]
+  },
+  {
+    "slug": "image-resizer-for-discord-pfp",
+    "keyword": "image resizer for discord pfp",
+    "metaTitle": "Image Resizer for Discord PFP - Free Online Tool",
+    "metaDescription": "Easily image resizer for discord pfp online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Image Resizer for Discord PFP",
+    "category": "preset",
+    "preset": {
+      "width": 128,
+      "height": 128,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What is the official size for a Discord PFP (Profile Picture)?",
+        "a": "Discord displays avatars at 128x128 pixels. Uploading at 128x128 px or 512x512 px ensures crisp circular rendering on desktop, mobile, and server member lists."
+      },
+      {
+        "q": "How to resize an image for Discord PFP online?",
+        "a": "Upload your picture. The 128x128 preset is loaded. Position your subject within the circular preview and click Download."
+      },
+      {
+        "q": "Can I make transparent avatars for Discord?",
+        "a": "Yes. Export in PNG format with transparent padding to create transparent or cutout PFP icons."
+      }
+    ]
+  },
+  {
+    "slug": "image-resizer-for-discord-banner",
+    "keyword": "image resizer for discord banner",
+    "metaTitle": "Image Resizer for Discord Banner - Free Online Tool",
+    "metaDescription": "Easily image resizer for discord banner online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Image Resizer for Discord Banner",
+    "category": "preset",
+    "preset": {
+      "width": 600,
+      "height": 240,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What is the recommended size for a Discord profile banner?",
+        "a": "The recommended resolution for a Discord user profile banner is 600x240 pixels (a 5:2 aspect ratio), with a maximum file size of 10MB."
+      },
+      {
+        "q": "How to resize image for Discord banner?",
+        "a": "Upload your background artwork. The 600x240 px canvas is initialized. Download your banner in PNG or JPG."
+      },
+      {
+        "q": "What size is a Discord server banner?",
+        "a": "Discord server banners (available for boosted servers) recommend 960x540 pixels (16:9 ratio). You can easily customize dimensions in our tool."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-to-discord-emote",
+    "keyword": "resize image to discord emote",
+    "metaTitle": "Resize Image to Discord Emote - Free Online Tool",
+    "metaDescription": "Easily resize image to discord emote online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image to Discord Emote",
+    "category": "preset",
+    "preset": {
+      "width": 128,
+      "height": 128,
+      "unit": "PX",
+      "targetSize": 256,
+      "targetUnit": "KB"
+    },
+    "faqs": [
+      {
+        "q": "What are the image requirements for a Discord emote?",
+        "a": "Discord custom emotes must be square with recommended dimensions of 128x128 pixels and a file size strictly under 256 KB."
+      },
+      {
+        "q": "How to resize an image to a Discord emote?",
+        "a": "Upload your graphic. The tool sets dimensions to 128x128 px and caps file weight to 256 KB. Export as PNG with transparency."
+      },
+      {
+        "q": "Will my emote remain sharp when displayed in chat at 32x32?",
+        "a": "Yes. Exporting at 128x128 with clean edges guarantees crisp downsampling in active Discord text channels."
+      }
+    ]
+  },
+  {
+    "slug": "resize-image-for-discord-sticker",
+    "keyword": "resize image for discord sticker",
+    "metaTitle": "Resize Image for Discord Sticker - Free Online Tool",
+    "metaDescription": "Easily resize image for discord sticker online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
+    "h1": "Resize Image for Discord Sticker",
+    "category": "preset",
+    "preset": {
+      "width": 320,
+      "height": 320,
+      "unit": "PX"
+    },
+    "faqs": [
+      {
+        "q": "What are the exact specifications for Discord custom stickers?",
+        "a": "Discord custom stickers must be exactly 320x320 pixels, exported in PNG (or APNG) format, with a file size under 512 KB."
+      },
+      {
+        "q": "How to resize an image for a Discord sticker?",
+        "a": "Upload your character art or meme. The 320x320 px preset is applied. Select PNG format with transparent borders and click Download."
+      },
+      {
+        "q": "Can I add transparent padding to non-square images for Discord stickers?",
+        "a": "Yes. Our tool automatically centers non-square graphics onto the 320x320 canvas with transparent padding to prevent distortion."
       }
     ]
   }

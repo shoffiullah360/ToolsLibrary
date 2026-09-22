@@ -2,8 +2,14 @@
 interface Props {
   initialWidth?: number;
   initialHeight?: number;
-  initialUnit?: 'px' | 'inch' | 'cm' | 'mm' | '%';
+  initialUnit?: 'px' | 'inch' | 'cm' | 'mm' | '%' | 'PX' | 'CM' | 'MM' | 'INCH';
+  width?: number;
+  height?: number;
+  unit?: 'px' | 'inch' | 'cm' | 'mm' | '%' | 'PX' | 'CM' | 'MM' | 'INCH';
   targetSizeKB?: number;
+  targetMaxFileSize?: number;
+  targetUnit?: 'KB' | 'MB';
+  lockRatio?: boolean;
   initialFormat?: 'auto' | 'jpg' | 'png' | 'webp' | 'avif' | 'pdf' | 'ico';
 }
 
@@ -11,18 +17,32 @@ const {
   initialWidth,
   initialHeight,
   initialUnit = 'px',
+  width,
+  height,
+  unit,
   targetSizeKB,
+  targetMaxFileSize,
+  targetUnit = 'KB',
+  lockRatio,
   initialFormat = 'jpg'
 } = Astro.props;
+
+const effectiveWidth = width ?? initialWidth;
+const effectiveHeight = height ?? initialHeight;
+const effectiveUnit = (unit ?? initialUnit ?? 'px').toLowerCase();
+const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
 ---
 
 <div
   id="image-resizer-root"
   class="w-full max-w-6xl mx-auto"
-  data-initial-width={initialWidth || ''}
-  data-initial-height={initialHeight || ''}
-  data-initial-unit={initialUnit}
-  data-target-size-kb={targetSizeKB || ''}
+  data-initial-width={effectiveWidth || ''}
+  data-initial-height={effectiveHeight || ''}
+  data-initial-unit={effectiveUnit}
+  data-target-size={effectiveTargetSize || ''}
+  data-target-size-kb={effectiveTargetSize && targetUnit === 'KB' ? effectiveTargetSize : ''}
+  data-target-unit={targetUnit}
+  data-lock-ratio={lockRatio !== undefined ? String(lockRatio) : ''}
   data-initial-format={initialFormat}
 >
   <!-- INITIAL STATE: Minimalist Drag & Drop Zone -->
@@ -2985,13 +3005,33 @@ const {
       setFormat(initialFormatProp);
     }
 
-    const targetSizeKBProp = parseFloat(root.dataset.targetSizeKb || '');
-    if (!isNaN(targetSizeKBProp) && targetSizeKBProp > 0) {
+    const targetSizeVal = parseFloat(root.dataset.targetSize || root.dataset.targetSizeKb || '');
+    const targetUnitVal = (root.dataset.targetUnit || 'KB').toUpperCase();
+    if (!isNaN(targetSizeVal) && targetSizeVal > 0) {
       isTargetSizeActive = true;
       if (enableTargetSize) enableTargetSize.checked = true;
-      targetSizeValue = targetSizeKBProp;
-      if (inputTargetSize) inputTargetSize.value = targetSizeKBProp.toString();
+      targetSizeValue = targetSizeVal;
+      if (inputTargetSize) inputTargetSize.value = targetSizeVal.toString();
+      if (targetUnitVal === 'MB') {
+        targetSizeUnit = 'MB';
+        if (sizeUnitKbBtn && sizeUnitMbBtn) {
+          sizeUnitMbBtn.className = 'px-2.5 py-1.5 rounded-md bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold cursor-pointer shadow-xs';
+          sizeUnitKbBtn.className = 'px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 cursor-pointer';
+        }
+      } else {
+        targetSizeUnit = 'KB';
+        if (sizeUnitKbBtn && sizeUnitMbBtn) {
+          sizeUnitKbBtn.className = 'px-2.5 py-1.5 rounded-md bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold cursor-pointer shadow-xs';
+          sizeUnitMbBtn.className = 'px-2.5 py-1.5 rounded-md text-slate-600 dark:text-slate-400 cursor-pointer';
+        }
+      }
       updateTargetSizeControlsUI();
+    }
+
+    const lockRatioProp = root.dataset.lockRatio;
+    if (lockRatioProp === 'false') {
+      isAspectLocked = false;
+      updateLockUI();
     }
 
     // Global Event Listeners

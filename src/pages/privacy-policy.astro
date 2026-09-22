@@ -1,0 +1,175 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ToolIcon from '../components/ToolIcon.astro';
+---
+
+<Layout
+  title="Privacy Policy | ToolsLibrary"
+  description="Learn about ToolsLibrary's privacy-first approach. All image manipulation and resizing operations execute entirely client-side inside your browser with zero server uploads."
+  canonicalUrl="https://omnitools.dev/privacy-policy"
+>
+  <div class="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <!-- Header Section -->
+    <div class="mb-10 text-center sm:text-left space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-xs font-mono font-medium text-emerald-700 dark:text-emerald-400">
+        <ToolIcon name="shield-check" class="w-3.5 h-3.5" />
+        <span>100% Client-Side Privacy Guarantee</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        Privacy Policy
+      </h1>
+      <p class="text-sm text-slate-500 dark:text-slate-400 font-mono">
+        Last updated: September 2026 &bull; Effective immediately
+      </p>
+    </div>
+
+    <!-- Core Privacy Highlight Box -->
+    <div class="mb-12 p-6 rounded-2xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-200/80 dark:border-blue-900/60 space-y-3">
+      <div class="flex items-center gap-2.5 text-blue-700 dark:text-blue-300 font-semibold text-base">
+        <ToolIcon name="lock" class="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0" />
+        <span>At-A-Glance: Your Files Never Touch Our Servers</span>
+      </div>
+      <p class="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+        When you use ToolsLibrary to resize, crop, compress, convert, or format images or developer code, all processing occurs directly in your local browser through client-side WebAssembly, HTML5 Canvas, and Web Workers. Your personal photos, documents, and code strings are <strong>never uploaded, never transmitted, and never stored</strong> on any backend server or cloud repository.
+      </p>
+    </div>
+
+    <!-- Policy Content Sections -->
+    <div class="space-y-10 text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+      
+      <!-- 1. Introduction -->
+      <section class="space-y-3">
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+          1. Introduction & Overview
+        </h2>
+        <p>
+          ToolsLibrary ("we", "our", or "us") operates the website located at <a href="/" class="text-blue-600 dark:text-blue-400 hover:underline">toolslibrary.com</a> (the "Service"). We believe that digital utilities should respect individual user privacy by default. This Privacy Policy outlines what minimal information is collected when you visit our website, how third-party services operate, and your rights under global privacy frameworks including the General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA).
+        </p>
+      </section>
+
+      <!-- 2. Zero Server Storage & Client-Side Processing -->
+      <section class="space-y-3">
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+          2. Client-Side Image & Data Processing
+        </h2>
+        <p>
+          Unlike traditional web converters that require uploading your sensitive files to a remote server, ToolsLibrary is built using client-side web technologies:
+        </p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>
+            <strong>Zero File Uploads:</strong> When you drag-and-drop or select an image to resize or compress, the image is loaded into your web browser's local memory.
+          </li>
+          <li>
+            <strong>Local Processing:</strong> Compression, pixel interpolation, format conversion, and cropping happen via HTML5 Canvas APIs, WebAssembly (WASM), and Web Workers on your physical CPU/GPU.
+          </li>
+          <li>
+            <strong>Zero Server Logs of Files:</strong> We do not log filenames, image contents, EXIF metadata, or output files. Closing your tab immediately flushes memory from your browser.
+          </li>
+        </ul>
+      </section>
+
+      <!-- 3. Information We Collect Automatically -->
+      <section class="space-y-3">
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+          3. Technical Data & Web Analytics
+        </h2>
+        <p>
+          When you access ToolsLibrary, we or our third-party analytics partners (such as Google Analytics) may collect standard, non-personally identifiable log information to help us monitor platform performance and optimize tool usability. This may include:
+        </p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>Browser type, version, language preferences, and operating system.</li>
+          <li>Referring URLs, pages visited, time spent on each page, and interaction timestamps.</li>
+          <li>Aggregated diagnostic statistics (such as client-side script errors or crash reports).</li>
+          <li>Anonymized or truncated IP addresses to determine general geographic regions.</li>
+        </ul>
+      </section>
+
+      <!-- 4. Cookies & Web Beacons -->
+      <section class="space-y-3">
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+          4. Cookies and Local Storage
+        </h2>
+        <p>
+          We use modern browser <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">localStorage</code> to remember your interface preferences (such as your chosen Light/Dark theme mode) without requiring account creation.
+        </p>
+        <p>
+          Third-party vendors, including advertising networks and analytics providers, may place and read cookies on your browser or use web beacons to collect information as a result of ad serving on this website. You can configure your browser to refuse all cookies or notify you when a cookie is sent.
+        </p>
+      </section>
+
+      <!-- 5. Advertising Partners & Google AdSense -->
+      <section class="space-y-3">
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+          5. Advertising Partners & Google AdSense
+        </h2>
+        <p>
+          To maintain ToolsLibrary as a 100% free resource for everyone, we partner with third-party advertising networks, such as Google AdSense:
+        </p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>
+            Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this website or other websites.
+          </li>
+          <li>
+            Google's use of advertising cookies enables it and its partners to serve ads to users based on their visits to our site and/or other sites on the Internet.
+          </li>
+          <li>
+            Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">Google Ad Settings</a> or by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">aboutads.info</a>.
+          </li>
+        </ul>
+      </section>
+
+      <!-- 6. GDPR Compliance & Data Rights -->
+      <section class="space-y-3">
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+          6. Your Rights Under GDPR & CCPA
+        </h2>
+        <p>
+          Depending on your location, you have certain rights under data protection laws regarding any personal data we process:
+        </p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Right of Access & Portability:</strong> The right to request copies of any personal data we hold about you.</li>
+          <li><strong>Right to Erasure:</strong> The right to request that we erase your personal data under certain conditions.</li>
+          <li><strong>Right to Restrict or Object to Processing:</strong> The right to object to our processing of your personal data.</li>
+          <li><strong>Non-Discrimination:</strong> We will not discriminate against you for exercising any of your privacy rights.</li>
+        </ul>
+        <p>
+          Because ToolsLibrary operates without user accounts and does not store your files, we typically do not hold identifiable personal profiles.
+        </p>
+      </section>
+
+      <!-- 7. Third-Party Links -->
+      <section class="space-y-3">
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+          7. External Links
+        </h2>
+        <p>
+          Our website may contain links to external sites or third-party documentation. If you click on a third-party link, you will be directed to that site. We strongly advise you to review the Privacy Policy of every site you visit, as we have no control over and assume no responsibility for their content or policies.
+        </p>
+      </section>
+
+      <!-- 8. Children's Privacy -->
+      <section class="space-y-3">
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+          8. Children's Privacy
+        </h2>
+        <p>
+          Our services are not intended for use by children under the age of 13. We do not knowingly collect personal identifiable information from children under 13. If we discover that a child under 13 has provided us with personal information, we will immediately take steps to remove it.
+        </p>
+      </section>
+
+      <!-- 9. Contact Us -->
+      <section class="space-y-3 pt-4 border-t border-slate-200 dark:border-slate-800">
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+          9. Contact Us
+        </h2>
+        <p>
+          If you have any questions, concerns, or requests regarding this Privacy Policy or our client-side architecture, please contact us at:
+        </p>
+        <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 inline-block font-mono text-sm">
+          <strong>Email:</strong> <a href="mailto:support@toolslibrary.com" class="text-blue-600 dark:text-blue-400 hover:underline">support@toolslibrary.com</a>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ToolIcon from '../components/ToolIcon.astro';
+---
+
+<Layout
+  title="404 - Page Not Found | ToolsLibrary"
+  description="The tool or page you are looking for does not exist or has been moved. Explore our suite of free client-side image and developer utilities."
+  canonicalUrl="https://omnitools.dev/404"
+>
+  <div class="relative min-h-[75vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 overflow-hidden">
+    <!-- Subtle Background Glow -->
+    <div class="absolute inset-0 pointer-events-none -z-10 flex items-center justify-center">
+      <div class="w-[500px] h-[500px] bg-blue-500/10 dark:bg-blue-600/10 rounded-full blur-3xl"></div>
+      <div class="w-[400px] h-[400px] bg-indigo-500/10 dark:bg-indigo-600/10 rounded-full blur-3xl -translate-y-24"></div>
+    </div>
+
+    <div class="max-w-xl mx-auto text-center space-y-8">
+      <!-- 404 Badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 text-xs font-mono font-medium text-red-600 dark:text-red-400">
+        <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+        <span>Error 404 &bull; Page Not Found</span>
+      </div>
+
+      <!-- Prominent 404 Heading -->
+      <div class="space-y-3">
+        <h1 class="text-7xl sm:text-8xl md:text-9xl font-extrabold tracking-tight text-slate-900 dark:text-white font-mono">
+          404
+        </h1>
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-slate-100">
+          The requested tool or page does not exist
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-md mx-auto leading-relaxed">
+          The link you followed may be broken, or the page may have been relocated. All our utilities run client-side right from the homepage.
+        </p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+        <a
+          href="/"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm sm:text-base shadow-sm hover:shadow transition-all duration-200"
+        >
+          <ToolIcon name="refresh-cw" class="w-4 h-4" />
+          <span>Return to Homepage</span>
+        </a>
+        <a
+          href="/tools/image-resizer"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700/60 font-medium text-sm sm:text-base transition-all duration-200"
+        >
+          <ToolIcon name="image" class="w-4 h-4 text-blue-500" />
+          <span>Launch Image Resizer</span>
+        </a>
+      </div>
+
+      <!-- Helpful Links Box -->
+      <div class="p-6 rounded-2xl bg-white/60 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 backdrop-blur-xs text-left">
+        <h3 class="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold mb-3">
+          Popular Utilities & Destinations
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+          <a href="/bulk-image-resizer" class="flex items-center gap-2 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1">
+            <span class="text-blue-500">&rarr;</span> Bulk Image Resizer
+          </a>
+          <a href="/passport-size-photo-resizer" class="flex items-center gap-2 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1">
+            <span class="text-blue-500">&rarr;</span> Passport Photo Resizer
+          </a>
+          <a href="/resize-image-to-50kb" class="flex items-center gap-2 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1">
+            <span class="text-blue-500">&rarr;</span> Resize to 50KB
+          </a>
+          <a href="/contact" class="flex items-center gap-2 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1">
+            <span class="text-blue-500">&rarr;</span> Report a Broken Link
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

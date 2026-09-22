@@ -1,0 +1,154 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ToolIcon from '../components/ToolIcon.astro';
+---
+
+<Layout
+  title="About Us | ToolsLibrary"
+  description="ToolsLibrary provides fast, free, privacy-first client-side image editing and developer tools. Learn about our mission and zero-upload architecture."
+  canonicalUrl="https://omnitools.dev/about"
+>
+  <div class="relative py-12 sm:py-16 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-16 sm:space-y-24">
+    
+    <!-- Hero Section -->
+    <div class="text-center space-y-6 max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 text-xs font-mono font-medium text-blue-700 dark:text-blue-400">
+        <ToolIcon name="cpu" class="w-3.5 h-3.5" />
+        <span>Client-Side Digital Utility Platform</span>
+      </div>
+      
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+        Fast, private utilities built for modern creators & developers
+      </h1>
+      
+      <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+        ToolsLibrary was founded on a simple belief: everyday utilities like resizing images, converting formats, and validating code shouldn't require compromising your private files or waiting on slow remote servers.
+      </p>
+    </div>
+
+    <!-- Quick Stats Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+      <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-center shadow-xs">
+        <div class="text-3xl sm:text-4xl font-extrabold text-blue-600 dark:text-blue-400 font-mono mb-1">0</div>
+        <div class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">Files Uploaded to Servers</div>
+      </div>
+      <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-center shadow-xs">
+        <div class="text-3xl sm:text-4xl font-extrabold text-emerald-600 dark:text-emerald-400 font-mono mb-1">100%</div>
+        <div class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">Client-Side Browser Execution</div>
+      </div>
+      <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-center shadow-xs">
+        <div class="text-3xl sm:text-4xl font-extrabold text-indigo-600 dark:text-indigo-400 font-mono mb-1">37+</div>
+        <div class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">Precision Utilities & Presets</div>
+      </div>
+      <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-center shadow-xs">
+        <div class="text-3xl sm:text-4xl font-extrabold text-amber-600 dark:text-amber-400 font-mono mb-1">0$</div>
+        <div class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">Completely Free Forever</div>
+      </div>
+    </div>
+
+    <!-- Our Mission & Story -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+          Why We Built ToolsLibrary
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 text-base leading-relaxed">
+          Most online image and file tools work by uploading your files to a cloud server, running a script, and forcing you to download the result. This model creates serious privacy hazards for sensitive personal photos, slows down your workflow, and frequently hides behind intrusive subscription paywalls.
+        </p>
+        <p class="text-slate-600 dark:text-slate-300 text-base leading-relaxed">
+          ToolsLibrary reimagines utilities by leveraging the compute power of modern browsers. Using HTML5 Canvas, Web Workers, and WebAssembly, all processing is performed instantly on your local hardware.
+        </p>
+      </div>
+
+      <div class="p-6 sm:p-8 rounded-3xl bg-slate-900 text-white dark:bg-slate-800/90 border border-slate-800 dark:border-slate-700 space-y-4 shadow-xl">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">
+            <ToolIcon name="lock" class="w-5 h-5" />
+          </div>
+          <h3 class="text-lg font-bold">Our Privacy Guarantee</h3>
+        </div>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          Your photos, passport scans, social media graphics, and proprietary data strings never leave your device. There is no remote queue, no cloud storage, and no backend pipeline archiving your files.
+        </p>
+        <div class="pt-2">
+          <a href="/privacy-policy" class="inline-flex items-center gap-1.5 text-xs font-mono text-blue-400 hover:text-blue-300">
+            <span>Read full Privacy Policy</span>
+            <span>&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Core Pillars Grid -->
+    <div class="space-y-8">
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+          What Sets ToolsLibrary Apart
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+          Engineered for maximum speed, accuracy, and ease of use.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+            <ToolIcon name="zap" class="w-5 h-5" />
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Instant Feedback</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Real-time preview and instant downloads with no server queue times or upload buffering, even on large batches.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+            <ToolIcon name="sliders" class="w-5 h-5" />
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Pixel-Perfect Presets</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Precision dimensions for YouTube, Instagram, Facebook, TikTok, LinkedIn, passport formats, and specific KB limits.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/80 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+            <ToolIcon name="code" class="w-5 h-5" />
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Developer Suite</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Essential programmatic helpers from JSON formatting and Base64 conversion to JWT inspection and Unix timestamps.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="p-8 sm:p-10 rounded-3xl bg-linear-to-r from-blue-600 to-indigo-600 text-white text-center space-y-6 shadow-xl">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">
+        Ready to boost your workflow?
+      </h2>
+      <p class="max-w-xl mx-auto text-blue-100 text-sm sm:text-base leading-relaxed">
+        Start resizing images or formatting code right now in seconds — no account creation, no payment details, and no waiting.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a
+          href="/"
+          class="px-6 py-3 rounded-xl bg-white text-blue-700 font-semibold text-sm hover:bg-blue-50 transition-colors shadow-sm"
+        >
+          Explore All Tools
+        </a>
+        <a
+          href="/contact"
+          class="px-6 py-3 rounded-xl bg-blue-700/60 text-white border border-blue-400/40 font-semibold text-sm hover:bg-blue-700/80 transition-colors"
+        >
+          Contact Our Team
+        </a>
+      </div>
+    </div>
+
+  </div>
+</Layout>

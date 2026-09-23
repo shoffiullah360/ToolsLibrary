@@ -911,28 +911,24 @@
     "h1": "Resize Image 4.5cm x 3.5cm",
     "category": "dimension",
     "preset": {
-      "width": 3.5,
-      "height": 4.5,
+      "width": 4.5,
+      "height": 3.5,
       "unit": "CM",
       "dpi": 300,
       "lockRatio": false
     },
     "faqs": [
       {
-        "q": "How do I resize a photo to 4.5cm x 3.5cm (35mm x 45mm)?",
-        "a": "Upload your photo. The tool pre-sets width to 3.5 cm and height to 4.5 cm at 300 DPI print quality (equivalent to 413 × 531 pixels). Download your ready-to-print file."
-      },
-      {
-        "q": "What countries use 3.5cm x 4.5cm passport photos?",
-        "a": "3.5cm x 4.5cm is the global standard for UK, Schengen (Germany, France, Italy, Spain), Australia, Canada, India, and Japanese visa and passport photos."
+        "q": "How do I resize a photo to 4.5cm x 3.5cm?",
+        "a": "Upload your photo. The tool pre-sets width to 4.5 cm and height to 3.5 cm at 300 DPI print quality (equivalent to 531 × 413 pixels). Download your ready-to-print file."
       },
       {
         "q": "Why is 300 DPI necessary for physical centimeter resizing?",
         "a": "300 DPI (dots per inch) ensures your photo prints crisply on glossy photo paper without pixelation or blur during biometric scans."
       },
       {
-        "q": "Can I print multiple 3.5x4.5 cm photos on a 4x6 inch paper?",
-        "a": "Yes. Once downloaded at 300 DPI, your 3.5x4.5 cm photo can be placed in a standard photo grid for economical printing at any local pharmacy or print shop."
+        "q": "Can I print multiple 4.5x3.5 cm photos on a 4x6 inch paper?",
+        "a": "Yes. Once downloaded at 300 DPI, your 4.5x3.5 cm photo can be placed in a standard photo grid for economical printing at any local pharmacy or print shop."
       }
     ]
   },

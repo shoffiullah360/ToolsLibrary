@@ -431,9 +431,9 @@ const hasPreset = Boolean(
                     type="button"
                     id="dpi-toggle-btn"
                     class="px-2 py-0.5 rounded text-[11px] font-mono font-medium border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:border-blue-500 transition cursor-pointer"
-                    title="Toggle standard 96 DPI screen vs 300 DPI high-res print"
+                    title={effectiveDpi === 300 ? 'Switch to 96 DPI (Web/Screen)' : 'Toggle standard 96 DPI screen vs 300 DPI high-res print'}
                   >
-                    <span id="dpi-val">96 DPI</span> (Screen)
+                    <span id="dpi-val">{effectiveDpi === 300 ? '300 DPI' : '96 DPI'}</span> <span id="dpi-suffix">{effectiveDpi === 300 ? '(Print)' : '(Screen)'}</span>
                   </button>
                 </div>
               </div>
@@ -1020,6 +1020,7 @@ const hasPreset = Boolean(
     const activeUnitLabels = root.querySelectorAll<HTMLElement>('.active-unit-label');
     const dpiToggleBtn = document.getElementById('dpi-toggle-btn') as HTMLButtonElement | null;
     const dpiValDisplay = document.getElementById('dpi-val') as HTMLElement | null;
+    const dpiSuffixDisplay = document.getElementById('dpi-suffix') as HTMLElement | null;
     const resizeModeRadios = root.querySelectorAll<HTMLInputElement>('input[name="resize-mode"]');
     const modeHint = document.getElementById('mode-hint') as HTMLElement | null;
     const presetButtons = root.querySelectorAll<HTMLButtonElement>('.preset-btn');
@@ -1293,6 +1294,19 @@ const hasPreset = Boolean(
       activeUnitLabels.forEach(el => {
         el.textContent = activeUnit;
       });
+    }
+
+    function updateDpiUI(newDpi: number) {
+      dpi = newDpi;
+      if (dpiValDisplay) dpiValDisplay.textContent = `${dpi} DPI`;
+      if (dpiSuffixDisplay) {
+        dpiSuffixDisplay.textContent = (dpi === 300) ? '(Print)' : '(Screen)';
+      }
+      if (dpiToggleBtn) {
+        dpiToggleBtn.title = (dpi === 300)
+          ? 'Switch to 96 DPI (Web/Screen)'
+          : 'Switch to 300 DPI (High-res Print)';
+      }
     }
 
     function changeUnit(newUnit: 'px' | 'inch' | 'cm' | 'mm' | '%') {
@@ -3549,14 +3563,17 @@ const hasPreset = Boolean(
     setFitBg('transparent');
 
     const initialUnitProp = root.dataset.initialUnit as any;
+    const rawDpi = root.dataset.dpi ? parseInt(root.dataset.dpi, 10) : NaN;
     if (initialUnitProp && ['px', 'inch', 'cm', 'mm', '%'].includes(initialUnitProp)) {
       activeUnit = initialUnitProp;
-      if (['inch', 'cm', 'mm'].includes(initialUnitProp)) {
-        dpi = 300;
-        if (dpiValDisplay) dpiValDisplay.textContent = '300 DPI';
-        if (dpiToggleBtn) dpiToggleBtn.title = 'Switch to 96 DPI (Web/Screen)';
-      }
       updateUnitUI();
+    }
+    if (!isNaN(rawDpi) && rawDpi > 0) {
+      updateDpiUI(rawDpi);
+    } else if (initialUnitProp && ['inch', 'cm', 'mm'].includes(initialUnitProp)) {
+      updateDpiUI(300);
+    } else {
+      updateDpiUI(96);
     }
 
     const initialFormatProp = root.dataset.initialFormat as any;
@@ -3676,9 +3693,7 @@ const hasPreset = Boolean(
 
     dpiToggleBtn?.addEventListener('click', () => {
       markAsModified();
-      dpi = dpi === 96 ? 300 : 96;
-      if (dpiValDisplay) dpiValDisplay.textContent = `${dpi} DPI`;
-      dpiToggleBtn.title = dpi === 300 ? 'Switch to 96 DPI (Web/Screen)' : 'Switch to 300 DPI (High-res Print)';
+      updateDpiUI(dpi === 96 ? 300 : 96);
       syncInputsFromPx();
       triggerRender();
     });
@@ -3709,9 +3724,7 @@ const hasPreset = Boolean(
 
         if (btn.dataset.presetPassport === '35x45') {
           changeUnit('mm');
-          dpi = 300;
-          if (dpiValDisplay) dpiValDisplay.textContent = '300 DPI';
-          if (dpiToggleBtn) dpiToggleBtn.title = 'Switch to 96 DPI (Web/Screen)';
+          updateDpiUI(300);
           targetPxW = Math.round(35 * (300 / 25.4)); // ~413 px
           targetPxH = Math.round(45 * (300 / 25.4)); // ~531 px
           if (inputWidth) inputWidth.value = '35';
@@ -3723,9 +3736,7 @@ const hasPreset = Boolean(
         } else if (btn.dataset.presetUnit === 'inch' && btn.dataset.presetInchVal) {
           changeUnit('inch');
           const inches = parseFloat(btn.dataset.presetInchVal);
-          dpi = 300;
-          if (dpiValDisplay) dpiValDisplay.textContent = '300 DPI';
-          if (dpiToggleBtn) dpiToggleBtn.title = 'Switch to 96 DPI (Web/Screen)';
+          updateDpiUI(300);
           targetPxW = Math.round(inches * 300);
           targetPxH = Math.round(inches * 300);
           if (inputWidth) inputWidth.value = inches.toString();

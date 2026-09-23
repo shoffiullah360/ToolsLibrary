@@ -509,6 +509,7 @@
     "h1": "Resize Image 20KB to 50KB",
     "category": "filesize",
     "preset": {
+      "targetMinSize": 20,
       "targetSize": 50,
       "targetUnit": "KB"
     },
@@ -539,6 +540,7 @@
     "h1": "Resize Image 50KB to 100KB",
     "category": "filesize",
     "preset": {
+      "targetMinSize": 50,
       "targetSize": 100,
       "targetUnit": "KB"
     },

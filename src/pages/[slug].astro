@@ -15,6 +15,7 @@ interface ResizerPage {
     width?: number;
     height?: number;
     dpi?: number;
+    targetMinSize?: number;
     targetSize?: number;
     targetUnit?: "KB" | "MB";
     lockRatio?: boolean;
@@ -194,12 +195,15 @@ const jsonLdFaq = {
   <!-- Interactive Studio Container with Pre-configured Tool -->
   <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">
     <ImageResizer
+      preset={page.preset}
       initialWidth={page.preset.width}
       initialHeight={page.preset.height}
       initialUnit={page.preset.unit?.toLowerCase() as any}
       width={page.preset.width}
       height={page.preset.height}
       unit={page.preset.unit as any}
+      targetMinFileSize={page.preset.targetMinSize ?? (page.slug.match(/(\d+)(?:kb|mb)-to-(\d+)(?:kb|mb)/i) ? parseInt(page.slug.match(/(\d+)(?:kb|mb)-to-(\d+)(?:kb|mb)/i)![1], 10) : undefined)}
+      targetMinSizeKB={page.preset.targetMinSize}
       targetMaxFileSize={page.preset.targetSize}
       targetUnit={page.preset.targetUnit || 'KB'}
       targetSizeKB={page.preset.targetUnit === 'MB' ? (page.preset.targetSize ? page.preset.targetSize * 1024 : undefined) : page.preset.targetSize}
@@ -231,6 +235,17 @@ const jsonLdFaq = {
           sizeUnitMbBtn.click();
         } else if (sizeUnitKbBtn) {
           sizeUnitKbBtn.click();
+        }
+      }
+
+      // Range Target Min Size configuration
+      const slugRangeMatch = window.location.pathname.match(/(\d+)(?:kb|mb)-to-(\d+)(?:kb|mb)/i);
+      const minVal = preset.targetMinSize || (slugRangeMatch ? parseInt(slugRangeMatch[1], 10) : null);
+      if (minVal) {
+        const root = document.getElementById('image-resizer-root');
+        if (root) {
+          root.dataset.targetMinSize = minVal.toString();
+          root.dataset.targetMinSizeKb = minVal.toString();
         }
       }
 

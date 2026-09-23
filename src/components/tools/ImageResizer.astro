@@ -1,11 +1,27 @@
 ---
 interface Props {
+  preset?: {
+    width?: number;
+    height?: number;
+    unit?: 'px' | 'inch' | 'cm' | 'mm' | '%' | 'PX' | 'CM' | 'MM' | 'INCH' | string;
+    targetSize?: number;
+    targetMinSize?: number;
+    targetUnit?: 'KB' | 'MB' | string;
+    format?: 'auto' | 'jpg' | 'png' | 'webp' | 'avif' | 'pdf' | 'ico';
+    initialFormat?: 'auto' | 'jpg' | 'png' | 'webp' | 'avif' | 'pdf' | 'ico';
+    targetFileSize?: number;
+    targetMinFileSize?: number;
+    lockRatio?: boolean;
+    dpi?: number;
+  };
   initialWidth?: number;
   initialHeight?: number;
   initialUnit?: 'px' | 'inch' | 'cm' | 'mm' | '%' | 'PX' | 'CM' | 'MM' | 'INCH';
   width?: number;
   height?: number;
   unit?: 'px' | 'inch' | 'cm' | 'mm' | '%' | 'PX' | 'CM' | 'MM' | 'INCH';
+  targetMinSizeKB?: number;
+  targetMinFileSize?: number;
   targetSizeKB?: number;
   targetMaxFileSize?: number;
   targetUnit?: 'KB' | 'MB';
@@ -14,36 +30,61 @@ interface Props {
 }
 
 const {
+  preset,
   initialWidth,
   initialHeight,
-  initialUnit = 'px',
+  initialUnit,
   width,
   height,
   unit,
+  targetMinSizeKB,
+  targetMinFileSize,
   targetSizeKB,
   targetMaxFileSize,
-  targetUnit = 'KB',
+  targetUnit,
   lockRatio,
-  initialFormat = 'jpg'
+  initialFormat
 } = Astro.props;
 
-const effectiveWidth = width ?? initialWidth;
-const effectiveHeight = height ?? initialHeight;
-const effectiveUnit = (unit ?? initialUnit ?? 'px').toLowerCase();
-const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
+const effectiveWidth = width ?? initialWidth ?? preset?.width;
+const effectiveHeight = height ?? initialHeight ?? preset?.height;
+const rawUnit = unit ?? initialUnit ?? preset?.unit;
+const effectiveUnit = rawUnit ? rawUnit.toLowerCase() : 'px';
+const effectiveTargetMinSize = targetMinFileSize ?? targetMinSizeKB ?? preset?.targetMinFileSize ?? preset?.targetMinSize;
+const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB ?? preset?.targetFileSize ?? preset?.targetSize;
+const effectiveTargetUnit = targetUnit ?? preset?.targetUnit ?? 'KB';
+const effectiveLockRatio = lockRatio ?? preset?.lockRatio;
+const effectiveFormat = initialFormat ?? preset?.format ?? preset?.initialFormat;
+const effectiveDpi = preset?.dpi;
+
+const hasPreset = Boolean(
+  (preset && Object.keys(preset).length > 0) ||
+  effectiveWidth !== undefined ||
+  effectiveHeight !== undefined ||
+  rawUnit !== undefined ||
+  effectiveTargetMinSize !== undefined ||
+  effectiveTargetSize !== undefined ||
+  effectiveLockRatio !== undefined ||
+  effectiveFormat !== undefined ||
+  effectiveDpi !== undefined
+);
 ---
 
 <div
   id="image-resizer-root"
   class="w-full max-w-6xl mx-auto"
+  data-has-preset={hasPreset ? 'true' : 'false'}
   data-initial-width={effectiveWidth || ''}
   data-initial-height={effectiveHeight || ''}
-  data-initial-unit={effectiveUnit}
+  data-initial-unit={rawUnit ? effectiveUnit : ''}
+  data-target-min-size={effectiveTargetMinSize || ''}
+  data-target-min-size-kb={effectiveTargetMinSize && effectiveTargetUnit === 'KB' ? effectiveTargetMinSize : ''}
   data-target-size={effectiveTargetSize || ''}
-  data-target-size-kb={effectiveTargetSize && targetUnit === 'KB' ? effectiveTargetSize : ''}
-  data-target-unit={targetUnit}
-  data-lock-ratio={lockRatio !== undefined ? String(lockRatio) : ''}
-  data-initial-format={initialFormat}
+  data-target-size-kb={effectiveTargetSize && effectiveTargetUnit === 'KB' ? effectiveTargetSize : ''}
+  data-target-unit={effectiveTargetUnit}
+  data-lock-ratio={effectiveLockRatio !== undefined ? String(effectiveLockRatio) : ''}
+  data-initial-format={effectiveFormat || ''}
+  data-dpi={effectiveDpi || ''}
 >
   <!-- INITIAL STATE: Minimalist Drag & Drop Zone -->
   <div id="dropzone-view" class="transition-all duration-300">
@@ -894,6 +935,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
     thumbDataUrl: string;
     fitBg?: 'transparent' | 'blur' | 'white' | 'black' | 'custom';
     fitCustomColor?: string;
+    isUntouched?: boolean;
   }
 
   type SupportedFormat = 'auto' | 'jpg' | 'png' | 'webp' | 'avif' | 'pdf' | 'ico';
@@ -1060,12 +1102,80 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
     // Export State
     let exportFormat: SupportedFormat = 'auto';
     let isTargetSizeActive = false;
+    let targetMinSizeValue: number | null = null;
     let targetSizeValue = 50;
     let targetSizeUnit: 'KB' | 'MB' = 'KB';
     let quality = 0.92;
     let autoUpscaleActive = false;
     let isUpscaling = false;
     let lastAutoUpscaleTime = 0;
+
+    // Detect Preset Mode vs Default Mode
+    const hasPreset = root.dataset.hasPreset === 'true' || Boolean(
+      root.dataset.initialWidth ||
+      root.dataset.initialHeight ||
+      root.dataset.targetSize ||
+      root.dataset.targetMinSize ||
+      root.dataset.initialFormat ||
+      detectTargetMinSize()
+    );
+    let isUntouched = false;
+
+    function markAsModified() {
+      if (isUntouched) {
+        isUntouched = false;
+        if (imageQueue[activeQueueIndex]) {
+          imageQueue[activeQueueIndex].isUntouched = false;
+        }
+      }
+    }
+
+    function detectTargetMinSize(): number | null {
+      const rawMin = root.dataset.targetMinSize || root.dataset.targetMinSizeKb;
+      if (rawMin) {
+        const parsed = parseFloat(rawMin);
+        if (!isNaN(parsed) && parsed > 0) return parsed;
+      }
+      // Check URL pathname (e.g. /resize-image-50kb-to-100kb or /resize-image-20kb-to-50kb)
+      const pathMatch = typeof window !== 'undefined' ? window.location.pathname.match(/(\d+)\s*(?:kb|mb)?\s*(?:to|-)\s*(\d+)\s*(kb|mb)/i) : null;
+      if (pathMatch) {
+        const minVal = parseFloat(pathMatch[1]);
+        if (!isNaN(minVal) && minVal > 0) return minVal;
+      }
+      // Check document title or H1 text (e.g. "Resize Image 50KB to 100KB")
+      const h1Text = typeof document !== 'undefined' ? (document.querySelector('h1')?.textContent || document.title || '') : '';
+      const textMatch = h1Text.match(/(\d+)\s*(?:kb|mb)?\s*(?:to|-)\s*(\d+)\s*(kb|mb)/i);
+      if (textMatch) {
+        const minVal = parseFloat(textMatch[1]);
+        if (!isNaN(minVal) && minVal > 0) return minVal;
+      }
+      return null;
+    }
+
+    function getTargetMinBytes(): number {
+      if (targetMinSizeValue && targetMinSizeValue > 0) {
+        return targetSizeUnit === 'MB' ? targetMinSizeValue * 1024 * 1024 : targetMinSizeValue * 1024;
+      }
+      const detected = detectTargetMinSize();
+      if (detected && detected > 0) {
+        targetMinSizeValue = detected;
+        return targetSizeUnit === 'MB' ? detected * 1024 * 1024 : detected * 1024;
+      }
+      return 0;
+    }
+
+    function getTargetMaxBytes(): number {
+      return targetSizeUnit === 'MB' ? targetSizeValue * 1024 * 1024 : targetSizeValue * 1024;
+    }
+
+    function updateQualityUI(q: number) {
+      quality = Math.max(0.01, Math.min(1.0, q));
+      const val = Math.round(quality * 100);
+      if (qualitySlider) qualitySlider.value = String(val);
+      if (qualityValDisplay) {
+        qualityValDisplay.textContent = `${val}% ${val >= 90 ? '(High)' : val >= 70 ? '(Good)' : '(Compact)'}`;
+      }
+    }
 
     // Debounce & Cache
     let renderDebounceTimer: number | null = null;
@@ -1468,12 +1578,6 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
 
     function getTargetMimeType(): string {
       if (exportFormat === 'auto') {
-        if (fitBg === 'transparent' && resizeMode === 'fit') {
-          if (originalMimeType === 'image/png' || originalMimeType === 'image/webp' || originalMimeType === 'image/avif') {
-            return originalMimeType;
-          }
-          return 'image/png';
-        }
         return originalMimeType || 'image/jpeg';
       }
       if (exportFormat === 'jpg') return 'image/jpeg';
@@ -1494,73 +1598,97 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
       return m === 'image/png' ? 'png' : m === 'image/webp' ? 'webp' : 'jpg';
     }
 
-    async function binarySearchQuality(mime: string, targetBytes: number, canvas: HTMLCanvasElement = previewCanvas!): Promise<Blob> {
+    async function binarySearchQuality(
+      mime: string,
+      targetBytes: number,
+      canvas: HTMLCanvasElement = previewCanvas!,
+      minTargetBytes: number = getTargetMinBytes()
+    ): Promise<Blob> {
       if (!canvas) {
         return new Blob([], { type: mime });
       }
 
-      // 1. STRICT PNG DIMENSION DOWNSCALING (UNDER TARGET KB)
-      // Browsers ignore quality parameter for PNG (lossless), so we iteratively downscale canvas dimensions
+      const hasRange = minTargetBytes > 0 && minTargetBytes < targetBytes;
+      // When a range target exists (e.g. 50KB to 100KB), keep estimated size strictly between min and max limits,
+      // ideally hovering around 80KB–95KB.
+      const idealMinBytes = hasRange ? Math.max(minTargetBytes, Math.round(targetBytes * 0.80)) : Math.round(targetBytes * 0.85);
+      const idealMaxBytes = Math.min(targetBytes, hasRange ? Math.round(targetBytes * 0.95) : Math.round(targetBytes * 0.98));
+
+      // 1. STRICT PNG DIMENSION SCALING
+      // Browsers ignore quality parameter for PNG (lossless), so we binary search canvas dimensions
       if (mime === 'image/png') {
         const origBlob = await new Promise<Blob | null>((res) => canvas.toBlob(res, 'image/png'));
-        if (origBlob && origBlob.size <= targetBytes) {
-          return origBlob;
-        }
-
-        let bestBlob: Blob | null = origBlob;
-        const pngScaleFactors = [0.95, 0.85, 0.70, 0.55, 0.40, 0.25, 0.18, 0.12, 0.08, 0.05];
-
-        for (const scale of pngScaleFactors) {
-          const sW = Math.max(1, Math.round(canvas.width * scale));
-          const sH = Math.max(1, Math.round(canvas.height * scale));
-          const scaledCanvas = document.createElement('canvas');
-          scaledCanvas.width = sW;
-          scaledCanvas.height = sH;
-          const sCtx = scaledCanvas.getContext('2d');
-          if (!sCtx) continue;
-          sCtx.imageSmoothingEnabled = true;
-          sCtx.imageSmoothingQuality = 'high';
-          sCtx.drawImage(canvas, 0, 0, sW, sH);
-
-          const curBlob = await new Promise<Blob | null>((res) => scaledCanvas.toBlob(res, 'image/png'));
-          if (curBlob) {
-            bestBlob = curBlob;
-            if (curBlob.size <= targetBytes) {
-              return curBlob;
+        if (origBlob) {
+          if (hasRange) {
+            if (origBlob.size >= minTargetBytes && origBlob.size <= targetBytes) {
+              return origBlob;
+            }
+          } else {
+            if (origBlob.size <= targetBytes) {
+              return origBlob;
             }
           }
         }
 
-        // Further downscale if still exceeding for micro target limits
-        let extraScale = 0.04;
-        while (extraScale > 0.005) {
-          const sW = Math.max(1, Math.round(canvas.width * extraScale));
-          const sH = Math.max(1, Math.round(canvas.height * extraScale));
-          const scaledCanvas = document.createElement('canvas');
-          scaledCanvas.width = sW;
-          scaledCanvas.height = sH;
-          const sCtx = scaledCanvas.getContext('2d');
-          if (!sCtx) break;
-          sCtx.imageSmoothingEnabled = true;
-          sCtx.imageSmoothingQuality = 'high';
-          sCtx.drawImage(canvas, 0, 0, sW, sH);
+        // If origBlob is larger than targetBytes, binary search scale down to fit between min and max
+        if (origBlob && origBlob.size > targetBytes) {
+          let lowScale = 0.05;
+          let highScale = 1.0;
+          let bestBlob: Blob = origBlob;
 
-          const curBlob = await new Promise<Blob | null>((res) => scaledCanvas.toBlob(res, 'image/png'));
-          if (curBlob) {
-            bestBlob = curBlob;
-            if (curBlob.size <= targetBytes) {
+          for (let step = 0; step < 9; step++) {
+            const midScale = (lowScale + highScale) / 2;
+            const sW = Math.max(1, Math.round(canvas.width * midScale));
+            const sH = Math.max(1, Math.round(canvas.height * midScale));
+            const scaledCanvas = document.createElement('canvas');
+            scaledCanvas.width = sW;
+            scaledCanvas.height = sH;
+            const sCtx = scaledCanvas.getContext('2d');
+            if (!sCtx) break;
+            sCtx.imageSmoothingEnabled = true;
+            sCtx.imageSmoothingQuality = 'high';
+            sCtx.drawImage(canvas, 0, 0, sW, sH);
+
+            const curBlob = await new Promise<Blob | null>((res) => scaledCanvas.toBlob(res, 'image/png'));
+            if (!curBlob) break;
+
+            if (curBlob.size >= idealMinBytes && curBlob.size <= idealMaxBytes) {
               return curBlob;
             }
+
+            if (curBlob.size <= targetBytes) {
+              bestBlob = curBlob;
+              lowScale = midScale;
+            } else {
+              highScale = midScale;
+            }
           }
-          extraScale *= 0.6;
+
+          return bestBlob;
         }
 
-        return bestBlob || origBlob || new Blob([], { type: 'image/png' });
+        return origBlob || new Blob([], { type: 'image/png' });
       }
 
       // 2. JPG / WebP / AVIF: Binary search on quality, and proportionally scale down dimensions if still exceeding
       const maxQBlob = await new Promise<Blob | null>((res) => canvas.toBlob(res, mime, 1.0));
-      if (maxQBlob && maxQBlob.size <= targetBytes) {
+      if (maxQBlob) {
+        if (hasRange) {
+          if (maxQBlob.size >= minTargetBytes && maxQBlob.size <= targetBytes) {
+            updateQualityUI(1.0);
+            return maxQBlob;
+          }
+        } else {
+          if (maxQBlob.size <= targetBytes) {
+            updateQualityUI(1.0);
+            return maxQBlob;
+          }
+        }
+      }
+
+      // If even max quality is below min threshold, return maxQBlob (range enforcer / booster will calibrate)
+      if (hasRange && maxQBlob && maxQBlob.size < minTargetBytes) {
+        updateQualityUI(1.0);
         return maxQBlob;
       }
 
@@ -1571,61 +1699,63 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
         let low = minQ;
         let high = 1.0;
         let bestBlob: Blob = minQBlob;
+        let bestQ = minQ;
 
-        for (let step = 0; step < 8; step++) {
+        for (let step = 0; step < 9; step++) {
           const mid = (low + high) / 2;
           const b = await new Promise<Blob | null>((res) => canvas.toBlob(res, mime, mid));
           if (!b) break;
 
+          if (b.size >= idealMinBytes && b.size <= idealMaxBytes) {
+            bestBlob = b;
+            bestQ = mid;
+            updateQualityUI(bestQ);
+            return bestBlob;
+          }
+
           if (b.size <= targetBytes) {
             bestBlob = b;
+            bestQ = mid;
             low = mid;
           } else {
             high = mid;
           }
         }
+        updateQualityUI(bestQ);
         return bestBlob;
       }
 
-      // Still exceeding at lowest quality: proportionally scale down canvas dimensions
+      // Still exceeding at lowest quality (0.02): proportionally scale down canvas dimensions with binary search
+      let lowScale = 0.05;
+      let highScale = 1.0;
       let bestScaledBlob: Blob | null = minQBlob;
-      const lossyScales = [0.90, 0.80, 0.70, 0.60, 0.50, 0.40, 0.30, 0.20, 0.10, 0.05];
 
-      for (const scale of lossyScales) {
-        const sW = Math.max(1, Math.round(canvas.width * scale));
-        const sH = Math.max(1, Math.round(canvas.height * scale));
+      for (let step = 0; step < 8; step++) {
+        const midScale = (lowScale + highScale) / 2;
+        const sW = Math.max(1, Math.round(canvas.width * midScale));
+        const sH = Math.max(1, Math.round(canvas.height * midScale));
         const scaledCanvas = document.createElement('canvas');
         scaledCanvas.width = sW;
         scaledCanvas.height = sH;
         const sCtx = scaledCanvas.getContext('2d');
-        if (!sCtx) continue;
+        if (!sCtx) break;
         sCtx.imageSmoothingEnabled = true;
         sCtx.imageSmoothingQuality = 'high';
         sCtx.drawImage(canvas, 0, 0, sW, sH);
 
-        const testBlob = await new Promise<Blob | null>((res) => scaledCanvas.toBlob(res, mime, 0.05));
-        if (testBlob) {
-          bestScaledBlob = testBlob;
-          if (testBlob.size <= targetBytes) {
-            // Found canvas dimensions that can fit under targetBytes!
-            // Run binary search on quality to maximize visual sharpness
-            let sLow = 0.05;
-            let sHigh = 0.95;
-            let sBest: Blob = testBlob;
+        const testBlob = await new Promise<Blob | null>((res) => scaledCanvas.toBlob(res, mime, 0.85));
+        if (!testBlob) break;
 
-            for (let step = 0; step < 6; step++) {
-              const mid = (sLow + sHigh) / 2;
-              const b = await new Promise<Blob | null>((res) => scaledCanvas.toBlob(res, mime, mid));
-              if (!b) break;
-              if (b.size <= targetBytes) {
-                sBest = b;
-                sLow = mid;
-              } else {
-                sHigh = mid;
-              }
-            }
-            return sBest;
-          }
+        if (testBlob.size >= idealMinBytes && testBlob.size <= idealMaxBytes) {
+          updateQualityUI(0.85);
+          return testBlob;
+        }
+
+        if (testBlob.size <= targetBytes) {
+          bestScaledBlob = testBlob;
+          lowScale = midScale;
+        } else {
+          highScale = midScale;
         }
       }
 
@@ -1673,7 +1803,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
       if (exportFormat === 'pdf') {
         let jpegBytes: Uint8Array | null = null;
         if (isTargetSizeActive) {
-          const targetBytes = (targetSizeUnit === 'MB' ? targetSizeValue * 1024 * 1024 : targetSizeValue * 1024);
+          const targetBytes = getTargetMaxBytes();
           const jpegTarget = Math.max(1024, targetBytes - 700);
           const jpegBlob = await binarySearchQuality('image/jpeg', jpegTarget, canvasToExport);
           jpegBytes = new Uint8Array(await jpegBlob.arrayBuffer());
@@ -1692,7 +1822,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
         blob = await createIcoBlob(canvasToExport);
       } else if (exportFormat === 'avif') {
         if (isTargetSizeActive) {
-          const targetBytes = (targetSizeUnit === 'MB' ? targetSizeValue * 1024 * 1024 : targetSizeValue * 1024);
+          const targetBytes = getTargetMaxBytes();
           blob = await binarySearchQuality('image/avif', targetBytes, canvasToExport);
         } else {
           blob = await new Promise<Blob | null>((resolve) => {
@@ -1706,7 +1836,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
         }
       } else {
         if (isTargetSizeActive) {
-          const targetBytes = (targetSizeUnit === 'MB' ? targetSizeValue * 1024 * 1024 : targetSizeValue * 1024);
+          const targetBytes = getTargetMaxBytes();
           blob = await binarySearchQuality(mimeType, targetBytes, canvasToExport);
         } else {
           blob = await new Promise<Blob | null>((resolve) => {
@@ -1748,13 +1878,22 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
         return;
       }
 
-      const targetBytes = (targetSizeUnit === 'MB' ? targetSizeValue * 1024 * 1024 : targetSizeValue * 1024);
+      const targetBytes = getTargetMaxBytes();
+      const targetMin = getTargetMinBytes();
+      const hasRange = targetMin > 0 && targetMin < targetBytes;
       const targetStr = `${targetSizeValue} ${targetSizeUnit}`;
 
-      // Show upscale suggestion when current blob size is less than 90% of target
-      if (currentSize < 0.90 * targetBytes) {
+      // When a range target is active (e.g. 50KB to 100KB), trigger suggestion if below min or below 85% of target
+      const threshold = hasRange ? Math.max(targetMin, Math.round(targetBytes * 0.85)) : Math.round(targetBytes * 0.88);
+
+      if (currentSize < threshold) {
         const currentStr = formatBytes(currentSize);
-        targetUpscaleMsg.innerHTML = `Image is currently <strong class="text-blue-600 dark:text-blue-400 font-mono">${currentStr}</strong> (under ${targetStr} limit).`;
+        if (hasRange && currentSize < targetMin) {
+          const minStr = formatBytes(targetMin);
+          targetUpscaleMsg.innerHTML = `Image is currently <strong class="text-blue-600 dark:text-blue-400 font-mono">${currentStr}</strong> (below ${minStr}–${targetStr} range).`;
+        } else {
+          targetUpscaleMsg.innerHTML = `Image is currently <strong class="text-blue-600 dark:text-blue-400 font-mono">${currentStr}</strong> (under ${targetStr} limit).`;
+        }
         boostUpscaleBtnText.textContent = `Boost to ~${targetStr}`;
         targetUpscaleContainer.classList.remove('hidden');
 
@@ -1762,18 +1901,37 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
         const now = Date.now();
         if (autoUpscaleActive && !isUpscaling && now - lastAutoUpscaleTime > 700) {
           lastAutoUpscaleTime = now;
-          upscaleCanvasToTargetKB();
+          boostFileSizeToTarget(false);
         }
       } else {
         targetUpscaleContainer.classList.add('hidden');
       }
     }
 
-    async function upscaleCanvasToTargetKB(): Promise<boolean> {
+    async function boostFileSizeToTarget(isAutomaticRangeEnforcement: boolean = false): Promise<boolean> {
       if (!originalImage || isUpscaling || !isTargetSizeActive) return false;
 
-      const targetBytes = (targetSizeUnit === 'MB' ? targetSizeValue * 1024 * 1024 : targetSizeValue * 1024);
-      if (targetBytes <= 0) return false;
+      const targetMaxBytes = getTargetMaxBytes();
+      if (targetMaxBytes <= 0) return false;
+
+      const targetMinBytes = getTargetMinBytes();
+      const hasRange = targetMinBytes > 0 && targetMinBytes < targetMaxBytes;
+
+      // When range target is active (e.g. 50KB to 100KB):
+      // Keep estimated size strictly between min and max limits, ideally hovering around 80KB–95KB.
+      // For general target: 85% to 98% of target limit.
+      const targetLow = hasRange 
+        ? Math.max(targetMinBytes, Math.round(targetMaxBytes * 0.80)) 
+        : Math.round(targetMaxBytes * 0.85);
+      const targetHigh = Math.min(
+        targetMaxBytes,
+        hasRange ? Math.round(targetMaxBytes * 0.95) : Math.round(targetMaxBytes * 0.98)
+      );
+
+      // If already in target range, no need to boost:
+      if (lastBlob && lastBlob.size >= targetLow && lastBlob.size <= targetHigh) {
+        return true;
+      }
 
       const effSrcW = getEffectiveSourceWidth();
       const effSrcH = getEffectiveSourceHeight();
@@ -1784,13 +1942,67 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
       const ratio = baseH / baseW;
 
       isUpscaling = true;
-      if (boostUpscaleBtnText) boostUpscaleBtnText.textContent = 'Matching...';
+      if (boostUpscaleBtnText) {
+        boostUpscaleBtnText.textContent = isAutomaticRangeEnforcement ? 'Calibrating...' : 'Boosting...';
+      }
       if (boostUpscaleBtn) boostUpscaleBtn.disabled = true;
 
       try {
         const mimeType = getTargetMimeType();
+        const isPng = (mimeType === 'image/png');
 
-        // Prepare oriented base buffer
+        // Step 1: For JPG/WebP/AVIF, attempt to increase quality slider / compression quality first
+        if (!isPng && previewCanvas) {
+          const testMaxQBlob = await new Promise<Blob | null>((res) => previewCanvas!.toBlob(res, mimeType, 1.0));
+          if (testMaxQBlob) {
+            if (testMaxQBlob.size >= targetLow && testMaxQBlob.size <= targetHigh) {
+              updateQualityUI(1.0);
+              lastBlob = testMaxQBlob;
+              if (previewSizePill) previewSizePill.textContent = `Est. ~${formatBytes(testMaxQBlob.size)}`;
+              if (summaryMetaSize) summaryMetaSize.textContent = `SIZE: ${formatBytes(testMaxQBlob.size)}`;
+              updateUpscaleUI(testMaxQBlob.size);
+              return true;
+            } else if (testMaxQBlob.size > targetHigh) {
+              // Quality 1.0 exceeds targetHigh: binary search quality to land in [targetLow, targetHigh]
+              let lowQ = quality;
+              let highQ = 1.0;
+              let bestQ = 1.0;
+              let bestBlob: Blob = testMaxQBlob;
+
+              for (let step = 0; step < 7; step++) {
+                const midQ = (lowQ + highQ) / 2;
+                const b = await new Promise<Blob | null>((res) => previewCanvas!.toBlob(res, mimeType, midQ));
+                if (!b) break;
+                if (b.size >= targetLow && b.size <= targetHigh) {
+                  bestQ = midQ;
+                  bestBlob = b;
+                  break;
+                }
+                if (b.size < targetLow) {
+                  lowQ = midQ;
+                  bestQ = midQ;
+                  bestBlob = b;
+                } else {
+                  highQ = midQ;
+                }
+              }
+
+              if (bestBlob && bestBlob.size >= (hasRange ? targetMinBytes : targetLow) && bestBlob.size <= targetMaxBytes) {
+                updateQualityUI(bestQ);
+                lastBlob = bestBlob;
+                if (previewSizePill) previewSizePill.textContent = `Est. ~${formatBytes(bestBlob.size)}`;
+                if (summaryMetaSize) summaryMetaSize.textContent = `SIZE: ${formatBytes(bestBlob.size)}`;
+                updateUpscaleUI(bestBlob.size);
+                return true;
+              }
+            }
+          }
+          // If testMaxQBlob was still < targetLow, set quality high (95%) and upscale resolution below
+          updateQualityUI(0.95);
+        }
+
+        // Step 2: Proportional step-by-step canvas resolution upscale
+        // Used for PNG (lossless) and for JPG/WebP when quality alone is insufficient
         const buffer = document.createElement('canvas');
         buffer.width = effSrcW;
         buffer.height = effSrcH;
@@ -1814,31 +2026,27 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
             tCtx.imageSmoothingEnabled = true;
             tCtx.imageSmoothingQuality = 'high';
             tCtx.drawImage(buffer, 0, 0, baseW, baseH);
-            const b = await new Promise<Blob | null>((res) => testCanvas.toBlob(res, mimeType, 0.95));
+            const b = await new Promise<Blob | null>((res) => testCanvas.toBlob(res, mimeType, isPng ? undefined : quality));
             if (b) currentSize = b.size;
           }
         }
 
-        if (currentSize >= 0.90 * targetBytes) {
-          return true;
-        }
-
-        // Proportional step-by-step resolution upscale
-        const areaMultiplier = targetBytes / Math.max(1024, currentSize);
-        const estScale = Math.max(1.1, Math.sqrt(areaMultiplier));
+        const targetAim = Math.round((targetLow + targetHigh) / 2);
+        const areaMultiplier = targetAim / Math.max(1024, currentSize);
+        const estScale = Math.max(1.05, Math.sqrt(areaMultiplier));
 
         let lowScale = 1.0;
-        let highScale = Math.min(10.0, Math.max(2.0, estScale * 1.5));
+        let highScale = Math.min(25.0, Math.max(2.0, estScale * 1.8));
         let bestW = baseW;
         let bestH = baseH;
+        const exportQ = isPng ? undefined : Math.max(0.90, quality);
 
-        const maxSteps = 8;
-        for (let i = 0; i < maxSteps; i++) {
+        for (let i = 0; i < 10; i++) {
           const midScale = (lowScale + highScale) / 2;
           const testW = Math.max(1, Math.round(baseW * midScale));
           const testH = Math.max(1, Math.round(baseW * midScale * ratio));
 
-          if (testW * testH > 36000000) {
+          if (testW * testH > 40000000) {
             highScale = midScale;
             continue;
           }
@@ -1854,10 +2062,10 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
           offCtx.drawImage(buffer, 0, 0, testW, testH);
 
           const stepBlob = await new Promise<Blob | null>((res) => {
-            if (mimeType === 'image/png') {
+            if (isPng) {
               offCanvas.toBlob(res, 'image/png');
             } else {
-              offCanvas.toBlob(res, mimeType, 0.92);
+              offCanvas.toBlob(res, mimeType, exportQ);
             }
           });
 
@@ -1865,13 +2073,13 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
 
           const size = stepBlob.size;
 
-          if (size >= 0.90 * targetBytes && size <= targetBytes) {
+          if (size >= targetLow && size <= targetHigh) {
             bestW = testW;
             bestH = testH;
             break;
           }
 
-          if (size < targetBytes) {
+          if (size < targetLow) {
             bestW = testW;
             bestH = testH;
             lowScale = midScale;
@@ -1907,8 +2115,73 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
       }
     }
 
+    function renderCanvasPreviewOnly() {
+      if (!originalImage || !previewCanvas || !canvasCtx) return;
+
+      let natW = originalImage.naturalWidth || originalWidth;
+      let natH = originalImage.naturalHeight || originalHeight;
+      if (natW <= 0 || natH <= 0) {
+        const currentItem = imageQueue[activeQueueIndex];
+        if (currentItem && currentItem.width > 0 && currentItem.height > 0) {
+          natW = currentItem.width;
+          natH = currentItem.height;
+        } else {
+          return;
+        }
+      }
+
+      originalWidth = natW;
+      originalHeight = natH;
+
+      const effSrcW = getEffectiveSourceWidth();
+      const effSrcH = getEffectiveSourceHeight();
+
+      targetPxW = effSrcW;
+      targetPxH = effSrcH;
+
+      previewCanvas.width = effSrcW;
+      previewCanvas.height = effSrcH;
+
+      canvasCtx.clearRect(0, 0, effSrcW, effSrcH);
+      canvasCtx.imageSmoothingEnabled = true;
+      canvasCtx.imageSmoothingQuality = 'high';
+      canvasCtx.drawImage(originalImage, 0, 0, effSrcW, effSrcH);
+
+      lastBlob = null;
+    }
+
+    function updateUntouchedUI() {
+      const srcW = getEffectiveSourceWidth();
+      const srcH = getEffectiveSourceHeight();
+      const sizeStr = formatBytes(originalSizeBytes);
+
+      if (previewDimPill) previewDimPill.textContent = `${srcW} × ${srcH} px`;
+      if (summaryMetaRes) summaryMetaRes.textContent = `${srcW} × ${srcH} px`;
+
+      if (previewSizePill) previewSizePill.textContent = `Est. ~${sizeStr}`;
+      if (summaryMetaSize) summaryMetaSize.textContent = `SIZE: ${sizeStr}`;
+
+      if (previewSavingsPill) {
+        previewSavingsPill.textContent = 'Original (0%)';
+        previewSavingsPill.className = 'px-2 py-1 rounded-full text-xs font-mono font-bold bg-slate-600 dark:bg-slate-700 text-white shadow-sm';
+        previewSavingsPill.classList.remove('hidden');
+      }
+
+      const origExt = (originalFile?.name ? originalFile.name.split('.').pop() : (originalMimeType.includes('png') ? 'PNG' : originalMimeType.includes('webp') ? 'WEBP' : 'JPG'))?.toUpperCase() || 'JPG';
+      if (summaryMetaFormat) summaryMetaFormat.textContent = `FORMAT: ${origExt}`;
+      if (formatBadgePreview) formatBadgePreview.textContent = exportFormat === 'auto' ? `AUTO (${origExt})` : exportFormat.toUpperCase();
+
+      if (targetUpscaleContainer) targetUpscaleContainer.classList.add('hidden');
+    }
+
     async function renderCanvas() {
       if (!originalImage || !previewCanvas || !canvasCtx) return;
+
+      if (isUntouched) {
+        renderCanvasPreviewOnly();
+        updateUntouchedUI();
+        return;
+      }
 
       // Ensure original image dimensions are valid before drawing
       let natW = originalImage.naturalWidth || originalWidth;
@@ -2041,6 +2314,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
 
     function handleWidthInput() {
       if (!inputWidth) return;
+      markAsModified();
       const val = parseFloat(inputWidth.value);
       if (isNaN(val) || val <= 0) return;
 
@@ -2074,6 +2348,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
 
     function handleHeightInput() {
       if (!inputHeight) return;
+      markAsModified();
       const val = parseFloat(inputHeight.value);
       if (isNaN(val) || val <= 0) return;
 
@@ -2283,7 +2558,25 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
 
       syncInputsFromPx();
       renderQueueStrip();
-      await renderCanvas();
+
+      isUntouched = Boolean(!hasPreset && item.isUntouched);
+
+      if (isUntouched) {
+        // Main Tool Page (No Presets) untouched state:
+        // Do NOT run canvas re-encoding or inflate file size.
+        renderCanvasPreviewOnly();
+        updateUntouchedUI();
+      } else {
+        await renderCanvas();
+
+        // Automatic Range Enforcement (e.g. 50KB to 100KB):
+        // When a page has a range target, ensure initial auto-compression does NOT drop below the minimum threshold (50KB),
+        // keeping estimated size strictly between min and max limits, hovering around 80KB–95KB.
+        const targetMin = getTargetMinBytes();
+        if (isTargetSizeActive && targetMin > 0 && lastBlob && lastBlob.size < targetMin) {
+          await boostFileSizeToTarget(true);
+        }
+      }
     }
 
     async function removeQueueItem(index: number) {
@@ -2411,6 +2704,9 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
         } else {
           targetH = Math.max(1, Math.round((targetW * h) / w));
         }
+      } else if (!isNaN(initialH) && initialH > 0) {
+        targetH = convertToPx(initialH, activeUnit, h);
+        targetW = Math.max(1, Math.round((targetH * w) / h));
       }
 
       return {
@@ -2428,7 +2724,8 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
         targetH: Math.max(1, targetH),
         thumbDataUrl,
         fitBg: 'transparent',
-        fitCustomColor: '#3b82f6'
+        fitCustomColor: '#3b82f6',
+        isUntouched: !hasPreset
       };
     }
 
@@ -2472,10 +2769,18 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
         dropzoneView.classList.add('hidden');
         editorView.classList.remove('hidden');
         if (isFirstLoad && imageQueue[0]) {
-          if (imageQueue[0].mimeType === 'image/png') {
-            setFormat('png');
-          } else if (imageQueue[0].mimeType === 'image/webp') {
-            setFormat('webp');
+          if (!hasPreset) {
+            // Default Mode on Main Tool Page: preserve original format without conversion
+            setFormat('auto');
+          } else {
+            // Preset Mode: if format not explicitly preset, respect image's native format
+            if (!root.dataset.initialFormat) {
+              if (imageQueue[0].mimeType === 'image/png') {
+                setFormat('png');
+              } else if (imageQueue[0].mimeType === 'image/webp') {
+                setFormat('webp');
+              }
+            }
           }
         }
         await selectQueueItem(startIndex < imageQueue.length ? startIndex : 0);
@@ -2487,6 +2792,20 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
         window.clearTimeout(renderDebounceTimer);
         renderDebounceTimer = null;
       }
+
+      // If untouched on Main Tool Page (No Presets): direct original file download
+      if (isUntouched && originalFile) {
+        const url = URL.createObjectURL(originalFile);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = originalFile.name;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        return;
+      }
+
       await renderCanvas();
       if (!lastBlob) {
         await computeExportBlob();
@@ -2672,12 +2991,16 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
             batchDownloadLabel.textContent = `Exporting ${i + 1}/${imageQueue.length}...`;
           }
 
-          const blob = await renderItemToBlob(item);
-          if (blob) {
-            const ext = getExtensionForFormat(exportFormat, blob.type);
-            const baseName = item.name.replace(/\.[^/.]+$/, '');
-            const filename = `${baseName}-${item.targetW || item.width}x${item.targetH || item.height}.${ext}`;
-            zip.file(filename, blob);
+          if (item.isUntouched) {
+            zip.file(item.name, item.file);
+          } else {
+            const blob = await renderItemToBlob(item);
+            if (blob) {
+              const ext = getExtensionForFormat(exportFormat, blob.type);
+              const baseName = item.name.replace(/\.[^/.]+$/, '');
+              const filename = `${baseName}-${item.targetW || item.width}x${item.targetH || item.height}.${ext}`;
+              zip.file(filename, blob);
+            }
           }
         }
 
@@ -2844,6 +3167,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
           sourceSpecs.textContent = `Original: ${cropPxW} × ${cropPxH} px • ${formatBytes(originalSizeBytes)}`;
         }
 
+        markAsModified();
         syncInputsFromPx();
         renderQueueStrip();
         await renderCanvas();
@@ -2934,6 +3258,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
 
     function rotateClockwise() {
       if (!originalImage) return;
+      markAsModified();
       if (isCropModeActive) closeInlineCrop();
       rotation = (rotation + 90) % 360;
 
@@ -2955,6 +3280,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
 
     function flipHorizontal() {
       if (!originalImage) return;
+      markAsModified();
       if (isCropModeActive) closeInlineCrop();
       flipH = !flipH;
 
@@ -3003,6 +3329,15 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
     const initialFormatProp = root.dataset.initialFormat as any;
     if (initialFormatProp && ['auto', 'jpg', 'png', 'webp', 'avif', 'pdf', 'ico'].includes(initialFormatProp)) {
       setFormat(initialFormatProp);
+    } else if (!hasPreset) {
+      setFormat('auto');
+    }
+
+    const targetMinSizeVal = parseFloat(root.dataset.targetMinSize || root.dataset.targetMinSizeKb || '');
+    if (!isNaN(targetMinSizeVal) && targetMinSizeVal > 0) {
+      targetMinSizeValue = targetMinSizeVal;
+    } else {
+      targetMinSizeValue = detectTargetMinSize();
     }
 
     const targetSizeVal = parseFloat(root.dataset.targetSize || root.dataset.targetSizeKb || '');
@@ -3100,12 +3435,14 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
 
     unitButtons.forEach(btn => {
       btn.addEventListener('click', () => {
+        markAsModified();
         const unit = btn.dataset.unit as 'px' | 'inch' | 'cm' | 'mm' | '%';
         changeUnit(unit);
       });
     });
 
     dpiToggleBtn?.addEventListener('click', () => {
+      markAsModified();
       dpi = dpi === 96 ? 300 : 96;
       if (dpiValDisplay) dpiValDisplay.textContent = `${dpi} DPI`;
       dpiToggleBtn.title = dpi === 300 ? 'Switch to 96 DPI (Web/Screen)' : 'Switch to 300 DPI (High-res Print)';
@@ -3114,6 +3451,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
     });
 
     lockAspectBtn?.addEventListener('click', () => {
+      markAsModified();
       isAspectLocked = !isAspectLocked;
       updateLockUI();
     });
@@ -3123,6 +3461,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
 
     resizeModeRadios.forEach(radio => {
       radio.addEventListener('change', (e) => {
+        markAsModified();
         const target = e.target as HTMLInputElement;
         resizeMode = target.value as any;
         updateResizeModeUI();
@@ -3132,6 +3471,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
 
     presetButtons.forEach(btn => {
       btn.addEventListener('click', () => {
+        markAsModified();
         if (socialPresetSelect) socialPresetSelect.value = '';
 
         if (btn.dataset.presetPassport === '35x45') {
@@ -3189,6 +3529,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
     });
 
     socialPresetSelect?.addEventListener('change', () => {
+      markAsModified();
       const val = socialPresetSelect.value;
       if (!val) return;
 
@@ -3233,6 +3574,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
     // Fit Background Fill Selector Listeners
     fitBgButtons.forEach(btn => {
       btn.addEventListener('click', () => {
+        markAsModified();
         const mode = btn.dataset.fitBg as 'transparent' | 'blur' | 'white' | 'black' | 'custom';
         if (!mode) return;
         setFitBg(mode);
@@ -3247,6 +3589,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
     });
 
     fitCustomColorInput?.addEventListener('input', (e) => {
+      markAsModified();
       const newColor = (e.target as HTMLInputElement).value;
       setFitBg('custom', newColor);
       if (imageQueue[activeQueueIndex]) {
@@ -3257,6 +3600,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
     });
 
     fitCustomColorInput?.addEventListener('change', (e) => {
+      markAsModified();
       const newColor = (e.target as HTMLInputElement).value;
       setFitBg('custom', newColor);
       if (imageQueue[activeQueueIndex]) {
@@ -3267,6 +3611,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
     });
 
     resetTransformsBtn?.addEventListener('click', () => {
+      markAsModified();
       closeInlineCrop();
       rotation = 0;
       flipH = false;
@@ -3288,6 +3633,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
 
     formatButtons.forEach(btn => {
       btn.addEventListener('click', () => {
+        markAsModified();
         const fmt = btn.dataset.format as any;
         setFormat(fmt);
         if (moreFormatMenu) moreFormatMenu.classList.add('hidden');
@@ -3315,6 +3661,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
       moreFormatOptions.forEach(opt => {
         opt.addEventListener('click', (e) => {
           e.stopPropagation();
+          markAsModified();
           const fmt = opt.dataset.moreFormat as SupportedFormat;
           setFormat(fmt);
           moreFormatMenu.classList.add('hidden');
@@ -3334,26 +3681,30 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
     }
 
     enableTargetSize?.addEventListener('change', () => {
+      markAsModified();
       isTargetSizeActive = enableTargetSize.checked;
       updateTargetSizeControlsUI();
       triggerRender();
     });
 
     boostUpscaleBtn?.addEventListener('click', () => {
-      upscaleCanvasToTargetKB();
+      markAsModified();
+      boostFileSizeToTarget(false);
     });
 
     autoUpscaleToggle?.addEventListener('change', () => {
+      markAsModified();
       if (autoUpscaleToggle) {
         autoUpscaleActive = autoUpscaleToggle.checked;
         if (autoUpscaleActive && lastBlob) {
-          upscaleCanvasToTargetKB();
+          boostFileSizeToTarget(false);
         }
       }
     });
 
     inputTargetSize?.addEventListener('input', () => {
       if (!inputTargetSize) return;
+      markAsModified();
       const val = parseFloat(inputTargetSize.value);
       if (!isNaN(val) && val > 0) {
         targetSizeValue = val;
@@ -3362,6 +3713,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
     });
 
     sizeUnitKbBtn?.addEventListener('click', () => {
+      markAsModified();
       targetSizeUnit = 'KB';
       if (sizeUnitKbBtn && sizeUnitMbBtn) {
         sizeUnitKbBtn.className = 'px-2.5 py-1.5 rounded-md bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold cursor-pointer shadow-xs';
@@ -3371,6 +3723,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
     });
 
     sizeUnitMbBtn?.addEventListener('click', () => {
+      markAsModified();
       targetSizeUnit = 'MB';
       if (sizeUnitKbBtn && sizeUnitMbBtn) {
         sizeUnitMbBtn.className = 'px-2.5 py-1.5 rounded-md bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold cursor-pointer shadow-xs';
@@ -3382,6 +3735,7 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
     switchToWebpBtn?.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
+      markAsModified();
       setFormat('webp');
       triggerRender();
     });
@@ -3389,12 +3743,14 @@ const effectiveTargetSize = targetMaxFileSize ?? targetSizeKB;
     switchToJpgBtn?.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
+      markAsModified();
       setFormat('jpg');
       triggerRender();
     });
 
     qualitySlider?.addEventListener('input', () => {
       if (!qualitySlider) return;
+      markAsModified();
       const val = parseInt(qualitySlider.value, 10);
       quality = val / 100;
       if (qualityValDisplay) {

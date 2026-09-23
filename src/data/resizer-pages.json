@@ -1648,13 +1648,15 @@
     "metaTitle": "Image Resize for Indian Visa - Free Online Tool",
     "metaDescription": "Easily image resize for indian visa online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
     "h1": "Image Resize for Indian Visa",
+    "badge": "350 × 350 PX",
+    "targetTag": "350 × 350 PX",
     "category": "preset",
     "preset": {
       "width": 350,
       "height": 350,
       "unit": "PX",
-      "targetSize": 300,
-      "targetUnit": "KB"
+      "maxFileSize": 300,
+      "maxFileUnit": "KB"
     },
     "faqs": [
       {
@@ -1681,13 +1683,15 @@
     "metaTitle": "Image Resize for PAN Card - Free Online Tool",
     "metaDescription": "Easily image resize for pan card online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
     "h1": "Image Resize for PAN Card",
+    "badge": "213 × 213 PX",
+    "targetTag": "213 × 213 PX",
     "category": "preset",
     "preset": {
       "width": 213,
       "height": 213,
       "unit": "PX",
-      "targetSize": 30,
-      "targetUnit": "KB"
+      "maxFileSize": 30,
+      "maxFileUnit": "KB"
     },
     "faqs": [
       {
@@ -1714,13 +1718,15 @@
     "metaTitle": "Passport Size Photo Size in BD - Free Online Tool",
     "metaDescription": "Easily passport size photo size in bd online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
     "h1": "Passport Size Photo Size in BD",
+    "badge": "300 × 300 PX",
+    "targetTag": "300 × 300 PX",
     "category": "preset",
     "preset": {
       "width": 300,
       "height": 300,
       "unit": "PX",
-      "targetSize": 100,
-      "targetUnit": "KB"
+      "maxFileSize": 100,
+      "maxFileUnit": "KB"
     },
     "faqs": [
       {
@@ -1801,13 +1807,16 @@
     "metaTitle": "Resize Image to Discord Emote - Free Online Tool",
     "metaDescription": "Easily resize image to discord emote online without losing quality. Fast, free client-side image resizer for JPG, PNG, and WebP.",
     "h1": "Resize Image to Discord Emote",
+    "badge": "128 × 128 PX",
+    "targetTag": "128 × 128 PX",
     "category": "preset",
     "preset": {
       "width": 128,
       "height": 128,
       "unit": "PX",
-      "targetSize": 256,
-      "targetUnit": "KB"
+      "maxFileSize": 256,
+      "maxFileUnit": "KB",
+      "lockRatio": false
     },
     "faqs": [
       {

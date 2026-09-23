@@ -11,6 +11,8 @@ interface Props {
     initialFormat?: 'auto' | 'jpg' | 'png' | 'webp' | 'avif' | 'pdf' | 'ico';
     targetFileSize?: number;
     targetMinFileSize?: number;
+    maxFileSize?: number;
+    maxFileUnit?: 'KB' | 'MB' | string;
     lockRatio?: boolean;
     dpi?: number;
   };

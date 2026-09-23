@@ -1168,6 +1168,21 @@ const hasPreset = Boolean(
       return targetSizeUnit === 'MB' ? targetSizeValue * 1024 * 1024 : targetSizeValue * 1024;
     }
 
+    function getTargetWindow(): { low: number; high: number; target: number; hasRange: boolean } {
+      const target = getTargetMaxBytes();
+      const minBytes = getTargetMinBytes();
+      const hasRange = minBytes > 0 && minBytes < target;
+      // Single target limit (e.g. 20KB, 25KB, 40KB, 500KB, 2MB):
+      // Must hit ~88% to 98% of target limit.
+      // Range target (e.g. 50KB to 100KB):
+      // Must hit between minBytes and 98% of max target (at least 85% of max).
+      const low = hasRange 
+        ? Math.max(minBytes, Math.round(target * 0.85)) 
+        : Math.round(target * 0.88);
+      const high = Math.min(target, Math.round(target * 0.98));
+      return { low, high, target, hasRange };
+    }
+
     function updateQualityUI(q: number) {
       quality = Math.max(0.01, Math.min(1.0, q));
       const val = Math.round(quality * 100);
@@ -1608,14 +1623,9 @@ const hasPreset = Boolean(
         return new Blob([], { type: mime });
       }
 
-      const hasRange = minTargetBytes > 0 && minTargetBytes < targetBytes;
-      // When a range target exists (e.g. 50KB to 100KB), keep estimated size strictly between min and max limits,
-      // ideally hovering around 80KB–95KB.
-      const idealMinBytes = hasRange ? Math.max(minTargetBytes, Math.round(targetBytes * 0.80)) : Math.round(targetBytes * 0.85);
-      const idealMaxBytes = Math.min(targetBytes, hasRange ? Math.round(targetBytes * 0.95) : Math.round(targetBytes * 0.98));
+      const { low: idealMinBytes, high: idealMaxBytes, hasRange } = getTargetWindow();
 
-      // 1. STRICT PNG DIMENSION SCALING
-      // Browsers ignore quality parameter for PNG (lossless), so we binary search canvas dimensions
+      // 1. STRICT PNG DIMENSION SCALING (Lossless)
       if (mime === 'image/png') {
         const origBlob = await new Promise<Blob | null>((res) => canvas.toBlob(res, 'image/png'));
         if (origBlob) {
@@ -1624,113 +1634,100 @@ const hasPreset = Boolean(
               return origBlob;
             }
           } else {
-            if (origBlob.size <= targetBytes) {
+            if (origBlob.size >= idealMinBytes && origBlob.size <= targetBytes) {
               return origBlob;
             }
           }
         }
 
-        // If origBlob is larger than targetBytes, binary search scale down to fit between min and max
-        if (origBlob && origBlob.size > targetBytes) {
-          let lowScale = 0.05;
-          let highScale = 1.0;
-          let bestBlob: Blob = origBlob;
+        // Binary search scale to fit tightly between idealMinBytes and idealMaxBytes
+        let lowScale = 0.05;
+        let highScale = 1.0;
+        let bestBlob: Blob = origBlob || new Blob([], { type: 'image/png' });
 
-          for (let step = 0; step < 9; step++) {
-            const midScale = (lowScale + highScale) / 2;
-            const sW = Math.max(1, Math.round(canvas.width * midScale));
-            const sH = Math.max(1, Math.round(canvas.height * midScale));
-            const scaledCanvas = document.createElement('canvas');
-            scaledCanvas.width = sW;
-            scaledCanvas.height = sH;
-            const sCtx = scaledCanvas.getContext('2d');
-            if (!sCtx) break;
-            sCtx.imageSmoothingEnabled = true;
-            sCtx.imageSmoothingQuality = 'high';
-            sCtx.drawImage(canvas, 0, 0, sW, sH);
+        for (let step = 0; step < 11; step++) {
+          const midScale = (lowScale + highScale) / 2;
+          const sW = Math.max(1, Math.round(canvas.width * midScale));
+          const sH = Math.max(1, Math.round(canvas.height * midScale));
+          const scaledCanvas = document.createElement('canvas');
+          scaledCanvas.width = sW;
+          scaledCanvas.height = sH;
+          const sCtx = scaledCanvas.getContext('2d');
+          if (!sCtx) break;
+          sCtx.imageSmoothingEnabled = true;
+          sCtx.imageSmoothingQuality = 'high';
+          sCtx.drawImage(canvas, 0, 0, sW, sH);
 
-            const curBlob = await new Promise<Blob | null>((res) => scaledCanvas.toBlob(res, 'image/png'));
-            if (!curBlob) break;
+          const curBlob = await new Promise<Blob | null>((res) => scaledCanvas.toBlob(res, 'image/png'));
+          if (!curBlob) break;
 
-            if (curBlob.size >= idealMinBytes && curBlob.size <= idealMaxBytes) {
-              return curBlob;
-            }
-
-            if (curBlob.size <= targetBytes) {
-              bestBlob = curBlob;
-              lowScale = midScale;
-            } else {
-              highScale = midScale;
-            }
+          if (curBlob.size >= idealMinBytes && curBlob.size <= idealMaxBytes) {
+            return curBlob;
           }
 
-          return bestBlob;
+          if (curBlob.size <= targetBytes) {
+            bestBlob = curBlob;
+            lowScale = midScale; // keep iterating upwards
+          } else {
+            highScale = midScale;
+          }
         }
 
-        return origBlob || new Blob([], { type: 'image/png' });
+        return bestBlob;
       }
 
-      // 2. JPG / WebP / AVIF: Binary search on quality, and proportionally scale down dimensions if still exceeding
+      // 2. JPG / WebP / AVIF: Binary search on quality, and adjust dimensions if quality alone doesn't hit [idealMinBytes, idealMaxBytes]
       const maxQBlob = await new Promise<Blob | null>((res) => canvas.toBlob(res, mime, 1.0));
       if (maxQBlob) {
-        if (hasRange) {
-          if (maxQBlob.size >= minTargetBytes && maxQBlob.size <= targetBytes) {
-            updateQualityUI(1.0);
-            return maxQBlob;
-          }
-        } else {
-          if (maxQBlob.size <= targetBytes) {
-            updateQualityUI(1.0);
-            return maxQBlob;
-          }
+        if (maxQBlob.size >= idealMinBytes && maxQBlob.size <= targetBytes) {
+          updateQualityUI(1.0);
+          return maxQBlob;
         }
-      }
-
-      // If even max quality is below min threshold, return maxQBlob (range enforcer / booster will calibrate)
-      if (hasRange && maxQBlob && maxQBlob.size < minTargetBytes) {
-        updateQualityUI(1.0);
-        return maxQBlob;
       }
 
       const minQ = 0.02;
       const minQBlob = await new Promise<Blob | null>((res) => canvas.toBlob(res, mime, minQ));
 
-      if (minQBlob && minQBlob.size <= targetBytes) {
-        let low = minQ;
-        let high = 1.0;
-        let bestBlob: Blob = minQBlob;
-        let bestQ = minQ;
+      let low = minQ;
+      let high = 1.0;
+      let bestBlob: Blob = minQBlob || maxQBlob || new Blob([], { type: mime });
+      let bestQ = minQ;
+      let hitWindow = false;
 
-        for (let step = 0; step < 9; step++) {
-          const mid = (low + high) / 2;
-          const b = await new Promise<Blob | null>((res) => canvas.toBlob(res, mime, mid));
-          if (!b) break;
+      for (let step = 0; step < 11; step++) {
+        const mid = (low + high) / 2;
+        const b = await new Promise<Blob | null>((res) => canvas.toBlob(res, mime, mid));
+        if (!b) break;
 
-          if (b.size >= idealMinBytes && b.size <= idealMaxBytes) {
-            bestBlob = b;
-            bestQ = mid;
-            updateQualityUI(bestQ);
-            return bestBlob;
-          }
-
-          if (b.size <= targetBytes) {
-            bestBlob = b;
-            bestQ = mid;
-            low = mid;
-          } else {
-            high = mid;
-          }
+        if (b.size >= idealMinBytes && b.size <= idealMaxBytes) {
+          bestBlob = b;
+          bestQ = mid;
+          hitWindow = true;
+          updateQualityUI(bestQ);
+          return bestBlob;
         }
-        updateQualityUI(bestQ);
+
+        if (b.size <= targetBytes) {
+          bestBlob = b;
+          bestQ = mid;
+          low = mid; // keep iterating upwards toward target
+        } else {
+          high = mid;
+        }
+      }
+      updateQualityUI(bestQ);
+
+      // If quality search already landed in ideal target window, return
+      if (hitWindow) {
         return bestBlob;
       }
 
-      // Still exceeding at lowest quality (0.02): proportionally scale down canvas dimensions with binary search
+      // If still below idealMinBytes or exceeding targetBytes, scale canvas dimensions with high-quality smoothing
       let lowScale = 0.05;
       let highScale = 1.0;
-      let bestScaledBlob: Blob | null = minQBlob;
+      let bestScaledBlob: Blob = bestBlob;
 
-      for (let step = 0; step < 8; step++) {
+      for (let step = 0; step < 10; step++) {
         const midScale = (lowScale + highScale) / 2;
         const sW = Math.max(1, Math.round(canvas.width * midScale));
         const sH = Math.max(1, Math.round(canvas.height * midScale));
@@ -1743,23 +1740,23 @@ const hasPreset = Boolean(
         sCtx.imageSmoothingQuality = 'high';
         sCtx.drawImage(canvas, 0, 0, sW, sH);
 
-        const testBlob = await new Promise<Blob | null>((res) => scaledCanvas.toBlob(res, mime, 0.85));
+        const testBlob = await new Promise<Blob | null>((res) => scaledCanvas.toBlob(res, mime, 0.86));
         if (!testBlob) break;
 
         if (testBlob.size >= idealMinBytes && testBlob.size <= idealMaxBytes) {
-          updateQualityUI(0.85);
+          updateQualityUI(0.86);
           return testBlob;
         }
 
         if (testBlob.size <= targetBytes) {
           bestScaledBlob = testBlob;
-          lowScale = midScale;
+          lowScale = midScale; // keep iterating upwards
         } else {
           highScale = midScale;
         }
       }
 
-      return bestScaledBlob || minQBlob || maxQBlob || new Blob([], { type: mime });
+      return bestScaledBlob || bestBlob || new Blob([], { type: mime });
     }
 
     async function computeExportBlob() {
@@ -1908,25 +1905,279 @@ const hasPreset = Boolean(
       }
     }
 
+    async function optimizePresetTargetSize(): Promise<void> {
+      if (!originalImage || !isTargetSizeActive) return;
+      const { low, high, target, hasRange } = getTargetWindow();
+      if (target <= 0) return;
+
+      const mime = getTargetMimeType();
+      const isPng = (mime === 'image/png');
+      const hasExplicitDimPreset = Boolean(root.dataset.initialWidth || root.dataset.initialHeight);
+
+      const effSrcW = getEffectiveSourceWidth();
+      const effSrcH = getEffectiveSourceHeight();
+      if (effSrcW <= 0 || effSrcH <= 0) return;
+
+      const baseW = (hasExplicitDimPreset && targetPxW > 0) ? targetPxW : effSrcW;
+      const baseH = (hasExplicitDimPreset && targetPxH > 0) ? targetPxH : effSrcH;
+      const aspect = baseH / baseW;
+
+      // Render base oriented buffer once
+      const buffer = document.createElement('canvas');
+      buffer.width = effSrcW;
+      buffer.height = effSrcH;
+      const bCtx = buffer.getContext('2d');
+      if (!bCtx) return;
+      bCtx.save();
+      bCtx.translate(effSrcW / 2, effSrcH / 2);
+      bCtx.rotate((rotation * Math.PI) / 180);
+      if (flipH) bCtx.scale(-1, 1);
+      bCtx.drawImage(originalImage, -originalWidth / 2, -originalHeight / 2);
+      bCtx.restore();
+
+      async function getTestBlob(w: number, h: number, q?: number): Promise<Blob | null> {
+        const tc = document.createElement('canvas');
+        tc.width = Math.max(1, Math.round(w));
+        tc.height = Math.max(1, Math.round(h));
+        const tCtx = tc.getContext('2d');
+        if (!tCtx) return null;
+        tCtx.imageSmoothingEnabled = true;
+        tCtx.imageSmoothingQuality = 'high';
+        tCtx.drawImage(buffer, 0, 0, tc.width, tc.height);
+        if (isPng) {
+          return new Promise<Blob | null>((res) => tc.toBlob(res, 'image/png'));
+        }
+        return new Promise<Blob | null>((res) => tc.toBlob(res, mime, q ?? quality));
+      }
+
+      // If explicit dimension preset exists, dimensions cannot change; optimize quality only
+      if (hasExplicitDimPreset) {
+        if (!isPng) {
+          let lowQ = 0.05;
+          let highQ = 1.0;
+          let bestQ = 0.92;
+          for (let i = 0; i < 10; i++) {
+            const midQ = (lowQ + highQ) / 2;
+            const b = await getTestBlob(baseW, baseH, midQ);
+            if (!b) break;
+            if (b.size >= low && b.size <= high) {
+              bestQ = midQ;
+              break;
+            }
+            if (b.size < low) {
+              bestQ = midQ;
+              lowQ = midQ;
+            } else {
+              highQ = midQ;
+            }
+          }
+          updateQualityUI(bestQ);
+        }
+        return;
+      }
+
+      // --- No explicit dimension preset (Filesize Preset Pages: 20KB, 25KB, 40KB, 500KB, 2MB, etc.) ---
+      // Test 1: Original dimensions at high quality (0.92)
+      const defaultQ = 0.92;
+      const baseBlob = await getTestBlob(baseW, baseH, isPng ? undefined : defaultQ);
+      if (!baseBlob) return;
+      const baseSize = baseBlob.size;
+
+      // If original size is already within target window [low, high]:
+      if (baseSize >= low && baseSize <= high) {
+        targetPxW = baseW;
+        targetPxH = baseH;
+        if (imageQueue[activeQueueIndex]) {
+          imageQueue[activeQueueIndex].targetW = baseW;
+          imageQueue[activeQueueIndex].targetH = baseH;
+        }
+        syncInputsFromPx();
+        if (!isPng) updateQualityUI(defaultQ);
+        return;
+      }
+
+      // --- CASE A: Original image is SMALLER than target (500KB, 600KB, 2MB, 5MB, etc.) ---
+      if (baseSize < low) {
+        // Upscale proportionally with image smoothing quality = 'high', strictly capped at 2.0x
+        const MAX_SAFE_UPSCALE = 2.0;
+        let lowScale = 1.0;
+        let highScale = MAX_SAFE_UPSCALE;
+        let bestScale = 1.0;
+        const upscaleQ = isPng ? undefined : 0.95;
+
+        for (let step = 0; step < 10; step++) {
+          const midScale = (lowScale + highScale) / 2;
+          const testW = Math.max(1, Math.round(baseW * midScale));
+          const testH = Math.max(1, Math.round(baseW * midScale * aspect));
+          const b = await getTestBlob(testW, testH, upscaleQ);
+          if (!b) break;
+
+          if (b.size >= low && b.size <= high) {
+            bestScale = midScale;
+            break;
+          }
+
+          if (b.size < low) {
+            bestScale = midScale;
+            lowScale = midScale; // keep iterating upwards toward target
+          } else {
+            highScale = midScale;
+          }
+        }
+
+        // Apply the safely capped upscale
+        const finalW = Math.max(1, Math.round(baseW * bestScale));
+        const finalH = Math.max(1, Math.round(baseW * bestScale * aspect));
+        targetPxW = finalW;
+        targetPxH = finalH;
+        if (imageQueue[activeQueueIndex]) {
+          imageQueue[activeQueueIndex].targetW = finalW;
+          imageQueue[activeQueueIndex].targetH = finalH;
+        }
+        syncInputsFromPx();
+        if (!isPng) updateQualityUI(0.95);
+        return;
+      }
+
+      // --- CASE B: Original image is LARGER than target (20KB, 25KB, 40KB, 50KB, 100KB, etc.) ---
+      // Step 1: For JPG/WebP/AVIF, can we hit [low, high] by adjusting quality alone at original dimensions?
+      if (!isPng) {
+        let lowQ = 0.45;
+        let highQ = 1.0;
+        let bestQ = 0.45;
+        let hitWindowWithQualityOnly = false;
+
+        for (let i = 0; i < 9; i++) {
+          const midQ = (lowQ + highQ) / 2;
+          const b = await getTestBlob(baseW, baseH, midQ);
+          if (!b) break;
+
+          if (b.size >= low && b.size <= high) {
+            bestQ = midQ;
+            hitWindowWithQualityOnly = true;
+            break;
+          }
+
+          if (b.size < low) {
+            lowQ = midQ;
+          } else {
+            highQ = midQ;
+            bestQ = midQ;
+          }
+        }
+
+        if (hitWindowWithQualityOnly) {
+          updateQualityUI(bestQ);
+          targetPxW = baseW;
+          targetPxH = baseH;
+          if (imageQueue[activeQueueIndex]) {
+            imageQueue[activeQueueIndex].targetW = baseW;
+            imageQueue[activeQueueIndex].targetH = baseH;
+          }
+          syncInputsFromPx();
+          return;
+        }
+      }
+
+      // Step 2: Quality alone didn't land in [low, high] (or PNG).
+      // Proportionally scale dimensions at a crisp, artifact-free quality (0.82)
+      const baseCompressQ = isPng ? undefined : 0.82;
+      let lowScale = 0.05;
+      let highScale = 1.0;
+      let bestScale = 0.5;
+      let bestBlob: Blob | null = null;
+
+      for (let step = 0; step < 11; step++) {
+        const midScale = (lowScale + highScale) / 2;
+        const testW = Math.max(1, Math.round(baseW * midScale));
+        const testH = Math.max(1, Math.round(baseW * midScale * aspect));
+        const b = await getTestBlob(testW, testH, baseCompressQ);
+        if (!b) break;
+
+        if (b.size >= low && b.size <= high) {
+          bestScale = midScale;
+          bestBlob = b;
+          break;
+        }
+
+        if (b.size < low) {
+          bestScale = midScale;
+          bestBlob = b;
+          lowScale = midScale; // keep iterating upwards!
+        } else {
+          highScale = midScale;
+        }
+      }
+
+      let finalW = Math.max(1, Math.round(baseW * bestScale));
+      let finalH = Math.max(1, Math.round(baseW * bestScale * aspect));
+      let finalQ = isPng ? 1.0 : 0.82;
+
+      // Step 3: Upward iteration fine-tuning (Prevent Premature Stop below 88%):
+      // If best candidate is below low (e.g. 15.7KB for 20KB/25KB, or 28.7KB for 40KB),
+      // keep iterating upwards by adjusting quality and fine dimensional nudges
+      if (!isPng) {
+        let qLow = 0.80;
+        let qHigh = 0.98;
+        for (let j = 0; j < 7; j++) {
+          const midQ = (qLow + qHigh) / 2;
+          const b = await getTestBlob(finalW, finalH, midQ);
+          if (!b) break;
+          if (b.size >= low && b.size <= high) {
+            finalQ = midQ;
+            break;
+          }
+          if (b.size < low) {
+            finalQ = midQ;
+            qLow = midQ; // iterate quality upwards
+          } else {
+            qHigh = midQ;
+          }
+        }
+
+        // Check if still below low after quality adjustment:
+        const recheckBlob = await getTestBlob(finalW, finalH, finalQ);
+        if (recheckBlob && recheckBlob.size < low) {
+          // Fine-nudge dimensions upwards to reach [low, high]
+          const scaleNudge = Math.min(1.0 / bestScale, Math.sqrt(((low + high) / 2) / Math.max(1024, recheckBlob.size)));
+          const nudgedW = Math.max(1, Math.min(baseW, Math.round(finalW * scaleNudge)));
+          const nudgedH = Math.max(1, Math.min(baseH, Math.round(finalH * scaleNudge)));
+          const nudgedBlob = await getTestBlob(nudgedW, nudgedH, finalQ);
+          if (nudgedBlob && nudgedBlob.size <= high) {
+            finalW = nudgedW;
+            finalH = nudgedH;
+          }
+        }
+      } else {
+        // For PNG: fine-nudge scale upwards if below low
+        if (bestBlob && bestBlob.size < low) {
+          const scaleNudge = Math.min(1.0 / bestScale, Math.sqrt(((low + high) / 2) / Math.max(1024, bestBlob.size)));
+          const nudgedW = Math.max(1, Math.min(baseW, Math.round(finalW * scaleNudge)));
+          const nudgedH = Math.max(1, Math.min(baseH, Math.round(finalH * scaleNudge)));
+          const nudgedBlob = await getTestBlob(nudgedW, nudgedH);
+          if (nudgedBlob && nudgedBlob.size <= high) {
+            finalW = nudgedW;
+            finalH = nudgedH;
+          }
+        }
+      }
+
+      targetPxW = finalW;
+      targetPxH = finalH;
+      if (imageQueue[activeQueueIndex]) {
+        imageQueue[activeQueueIndex].targetW = finalW;
+        imageQueue[activeQueueIndex].targetH = finalH;
+      }
+      syncInputsFromPx();
+      if (!isPng) updateQualityUI(finalQ);
+    }
+
     async function boostFileSizeToTarget(isAutomaticRangeEnforcement: boolean = false): Promise<boolean> {
       if (!originalImage || isUpscaling || !isTargetSizeActive) return false;
 
-      const targetMaxBytes = getTargetMaxBytes();
+      const { low: targetLow, high: targetHigh, target: targetMaxBytes, hasRange } = getTargetWindow();
       if (targetMaxBytes <= 0) return false;
-
       const targetMinBytes = getTargetMinBytes();
-      const hasRange = targetMinBytes > 0 && targetMinBytes < targetMaxBytes;
-
-      // When range target is active (e.g. 50KB to 100KB):
-      // Keep estimated size strictly between min and max limits, ideally hovering around 80KB–95KB.
-      // For general target: 85% to 98% of target limit.
-      const targetLow = hasRange 
-        ? Math.max(targetMinBytes, Math.round(targetMaxBytes * 0.80)) 
-        : Math.round(targetMaxBytes * 0.85);
-      const targetHigh = Math.min(
-        targetMaxBytes,
-        hasRange ? Math.round(targetMaxBytes * 0.95) : Math.round(targetMaxBytes * 0.98)
-      );
 
       // If already in target range, no need to boost:
       if (lastBlob && lastBlob.size >= targetLow && lastBlob.size <= targetHigh) {
@@ -1969,7 +2220,7 @@ const hasPreset = Boolean(
               let bestQ = 1.0;
               let bestBlob: Blob = testMaxQBlob;
 
-              for (let step = 0; step < 7; step++) {
+              for (let step = 0; step < 9; step++) {
                 const midQ = (lowQ + highQ) / 2;
                 const b = await new Promise<Blob | null>((res) => previewCanvas!.toBlob(res, mimeType, midQ));
                 if (!b) break;
@@ -2002,7 +2253,7 @@ const hasPreset = Boolean(
         }
 
         // Step 2: Proportional step-by-step canvas resolution upscale
-        // Used for PNG (lossless) and for JPG/WebP when quality alone is insufficient
+        // Strictly capped to MAX_SAFE_UPSCALE (2.0x) to protect visual clarity
         const buffer = document.createElement('canvas');
         buffer.width = effSrcW;
         buffer.height = effSrcH;
@@ -2016,30 +2267,12 @@ const hasPreset = Boolean(
         bCtx.drawImage(originalImage, -originalWidth / 2, -originalHeight / 2);
         bCtx.restore();
 
-        let currentSize = lastBlob ? lastBlob.size : 0;
-        if (currentSize === 0) {
-          const testCanvas = document.createElement('canvas');
-          testCanvas.width = baseW;
-          testCanvas.height = baseH;
-          const tCtx = testCanvas.getContext('2d');
-          if (tCtx) {
-            tCtx.imageSmoothingEnabled = true;
-            tCtx.imageSmoothingQuality = 'high';
-            tCtx.drawImage(buffer, 0, 0, baseW, baseH);
-            const b = await new Promise<Blob | null>((res) => testCanvas.toBlob(res, mimeType, isPng ? undefined : quality));
-            if (b) currentSize = b.size;
-          }
-        }
-
-        const targetAim = Math.round((targetLow + targetHigh) / 2);
-        const areaMultiplier = targetAim / Math.max(1024, currentSize);
-        const estScale = Math.max(1.05, Math.sqrt(areaMultiplier));
-
+        const MAX_SAFE_UPSCALE = 2.0;
         let lowScale = 1.0;
-        let highScale = Math.min(25.0, Math.max(2.0, estScale * 1.8));
+        let highScale = MAX_SAFE_UPSCALE;
         let bestW = baseW;
         let bestH = baseH;
-        const exportQ = isPng ? undefined : Math.max(0.90, quality);
+        const exportQ = isPng ? undefined : Math.max(0.92, quality);
 
         for (let i = 0; i < 10; i++) {
           const midScale = (lowScale + highScale) / 2;
@@ -2567,6 +2800,9 @@ const hasPreset = Boolean(
         renderCanvasPreviewOnly();
         updateUntouchedUI();
       } else {
+        if (isTargetSizeActive && hasPreset) {
+          await optimizePresetTargetSize();
+        }
         await renderCanvas();
 
         // Automatic Range Enforcement (e.g. 50KB to 100KB):
@@ -2931,9 +3167,6 @@ const hasPreset = Boolean(
       let mime = getTargetMimeType();
       if (exportFormat === 'auto') {
         mime = item.mimeType || 'image/jpeg';
-        if (effectiveFitBg === 'transparent' && resizeMode === 'fit' && (item.mimeType === 'image/jpeg' || !item.mimeType)) {
-          mime = 'image/png';
-        }
       }
 
       if (isTargetSizeActive) {

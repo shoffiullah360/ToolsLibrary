@@ -1,0 +1,11 @@
+---
+import Footer from '../Footer.astro';
+
+interface Props {
+  class?: string;
+}
+
+const props = Astro.props;
+---
+
+<Footer {...props} />

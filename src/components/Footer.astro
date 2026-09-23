@@ -1,20 +1,41 @@
 ---
-import { TOOLS } from '../data/tools';
-import ToolIcon from './ToolIcon.astro';
+interface Props {
+  class?: string;
+}
 
-const imageTools = TOOLS.filter((t) => t.category === 'Image Tools');
-const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
+const { class: className = '' } = Astro.props;
+
+const tools = [
+  { name: 'Image Resizer', href: '/tools/image-resizer' },
+  { name: 'Image Compressor', href: '/tools/image-compressor' },
+  { name: 'Image Cropper', href: '/tools/image-cropper' },
+  { name: 'Image Converter', href: '/tools/image-converter' },
+  { name: 'Image Optimizer', href: '/tools/image-optimizer' },
+];
+
+const company = [
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
+  { name: 'Privacy Policy', href: '/privacy-policy' },
+  { name: 'Terms of Service', href: '/terms' },
+];
+
+const resources = [
+  { name: 'Image Size Guide', href: '/tools/image-resizer#size-guide' },
+  { name: 'FAQ', href: '/#faq-section' },
+  { name: 'Sitemap', href: '/sitemap-index.xml' },
+];
 ---
 
-<footer class="w-full border-t border-slate-200 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/60 transition-colors duration-200">
+<footer class={`w-full border-t border-slate-200 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/60 transition-colors duration-200 ${className}`}>
   <!-- Main Footer Content -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
       
-      <!-- Col 1: Brand & Security -->
+      <!-- Brand Section (Left / Full width on mobile) -->
       <div class="space-y-4">
-        <a href="/" class="flex items-center gap-2.5">
-          <div class="w-8 h-8 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 flex items-center justify-center font-mono font-bold text-sm shadow-xs">
+        <a href="/" class="flex items-center gap-2.5 group">
+          <div class="w-8 h-8 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 flex items-center justify-center font-mono font-bold text-sm shadow-xs group-hover:scale-105 transition-transform">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
               <polyline points="2 17 12 22 22 17"></polyline>
@@ -26,12 +47,12 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
           </span>
         </a>
         
-        <p class="text-sm sm:text-base leading-relaxed text-slate-600 dark:text-slate-400">
-          The high-performance programmatic utility platform. All 37 tools run client-side in your browser for zero latency and guaranteed file privacy.
+        <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+          Free online client-side image tools. Fast, secure, and private with zero server uploads.
         </p>
 
-        <!-- Live Status Badge -->
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 text-xs font-mono text-slate-600 dark:text-slate-300 shadow-xs">
+        <!-- Privacy Status Badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 text-xs font-mono text-slate-600 dark:text-slate-300 shadow-2xs">
           <span class="flex h-2 w-2 relative">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -40,96 +61,68 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
         </div>
       </div>
 
-      <!-- Col 2: Image Tools -->
+      <!-- Column 1: Tools -->
       <div>
-        <div class="text-sm font-semibold tracking-wider uppercase text-slate-900 dark:text-slate-100 flex items-center gap-2 mb-4 sm:mb-5">
-          <ToolIcon name="image" class="w-4 h-4 text-blue-500" />
-          <span>Image Tools</span>
-        </div>
-        <ul class="space-y-2.5 text-sm sm:text-base font-normal">
-          {imageTools.map((tool) => (
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-4">
+          Tools
+        </h3>
+        <ul class="space-y-2.5 text-sm">
+          {tools.map((tool) => (
             <li>
-              <a href={tool.href} class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors block">
-                {tool.title}
+              <a
+                href={tool.href}
+                class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors block"
+              >
+                {tool.name}
               </a>
             </li>
           ))}
         </ul>
       </div>
 
-      <!-- Col 3: Developer Tools -->
+      <!-- Column 2: Company -->
       <div>
-        <div class="text-sm font-semibold tracking-wider uppercase text-slate-900 dark:text-slate-100 flex items-center gap-2 mb-4 sm:mb-5">
-          <ToolIcon name="code" class="w-4 h-4 text-emerald-500" />
-          <span>Developer Tools</span>
-        </div>
-        <ul class="space-y-2.5 text-sm sm:text-base font-normal">
-          {devTools.map((tool) => (
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-4">
+          Company
+        </h3>
+        <ul class="space-y-2.5 text-sm">
+          {company.map((item) => (
             <li>
-              <a href={tool.href} class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors block">
-                {tool.title}
+              <a
+                href={item.href}
+                class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors block"
+              >
+                {item.name}
               </a>
             </li>
           ))}
         </ul>
       </div>
 
-      <!-- Col 4: Legal & Support -->
+      <!-- Column 3: Resources -->
       <div>
-        <div class="text-sm font-semibold tracking-wider uppercase text-slate-900 dark:text-slate-100 flex items-center gap-2 mb-4 sm:mb-5">
-          <ToolIcon name="shield-check" class="w-4 h-4 text-slate-400" />
-          <span>Legal & Support</span>
-        </div>
-        <ul class="space-y-2.5 text-sm sm:text-base font-normal">
-          <li>
-            <a href="/about" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors block">
-              About Us
-            </a>
-          </li>
-          <li>
-            <a href="/contact" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors block">
-              Contact Us
-            </a>
-          </li>
-          <li>
-            <a href="/privacy-policy" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors block">
-              Privacy Policy
-            </a>
-          </li>
-          <li>
-            <a href="/terms" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors block">
-              Terms of Service
-            </a>
-          </li>
-          <li>
-            <a href="/#faq-section" class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors block">
-              Security & Privacy FAQ
-            </a>
-          </li>
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-4">
+          Resources
+        </h3>
+        <ul class="space-y-2.5 text-sm">
+          {resources.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors block"
+              >
+                {item.name}
+              </a>
+            </li>
+          ))}
         </ul>
-
-        <div class="pt-6 mt-6 border-t border-slate-200/60 dark:border-slate-800">
-          <div class="p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 space-y-1.5">
-            <div class="text-xs font-mono font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
-              <span>🔒 Zero-Log Policy</span>
-            </div>
-            <p class="text-xs leading-relaxed text-slate-500 dark:text-slate-400">
-              Files and strings never leave your device. Computations occur strictly in WebAssembly & Web Workers.
-            </p>
-          </div>
-        </div>
       </div>
 
     </div>
 
     <!-- Bottom Bar -->
-    <div class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-      <div>
-        &copy; {new Date().getFullYear()} OmniTools Suite.
-      </div>
-      <div class="text-xs sm:text-sm font-mono text-slate-400">
-        No cookies tracked
-      </div>
+    <div class="mt-12 pt-8 border-t border-slate-200 dark:border-slate-800/80 text-center text-xs text-slate-500 dark:text-slate-400">
+      <p>&copy; 2026 OmniTools. All rights reserved.</p>
     </div>
   </div>
 </footer>

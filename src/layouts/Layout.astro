@@ -13,7 +13,7 @@ interface Props {
 const {
   title = "OmniTools — Free Client-Side Developer & Image Tools",
   description = "Fast, private, browser-based suite of 37 developer and image tools. Crop, compress, format JSON, decode JWT, encode Base64, and scale social media assets with zero server uploads.",
-  canonicalUrl = "https://omnitools.dev",
+  canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://fasttoolverse.com").href,
   image = "/og-image.png"
 } = Astro.props;
 
@@ -23,13 +23,13 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://omnitools.dev/#website",
-      "url": "https://omnitools.dev",
+      "@id": "https://fasttoolverse.com/#website",
+      "url": "https://fasttoolverse.com",
       "name": "OmniTools Suite",
       "description": description,
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://omnitools.dev/?q={search_term_string}",
+        "target": "https://fasttoolverse.com/?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     },

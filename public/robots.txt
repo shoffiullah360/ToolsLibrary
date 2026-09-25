@@ -3,4 +3,4 @@ Allow: /
 Disallow: /api/
 Disallow: /dist/
 
-Sitemap: https://toolslibrary.pages.dev/sitemap-index.xml
+Sitemap: https://fasttoolverse.com/sitemap-index.xml

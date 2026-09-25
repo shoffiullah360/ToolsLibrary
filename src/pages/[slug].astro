@@ -38,7 +38,7 @@ export async function getStaticPaths() {
 
 const { page } = Astro.props as { page: ResizerPage };
 
-const canonicalUrl = `https://toolslibrary.pages.dev/${page.slug}`;
+const canonicalUrl = `https://fasttoolverse.com/${page.slug}`;
 
 // Helper badge formatter
 function formatBadge(p: { preset?: Partial<ResizerPage['preset']>; category?: string; badge?: string; targetTag?: string }): string {

@@ -4,7 +4,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 
-https://vigorous-virgo.pages.dev/*
+https://toolslibrary.pages.dev/*
   X-Robots-Tag: noindex
 
 /_astro/*

@@ -11,7 +11,7 @@ interface Props {
 }
 
 const {
-  title = "OmniTools — Free Client-Side Developer & Image Tools",
+  title = "FastToolVerse — Free Client-Side Developer & Image Tools",
   description = "Fast, private, browser-based suite of 37 developer and image tools. Crop, compress, format JSON, decode JWT, encode Base64, and scale social media assets with zero server uploads.",
   canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://fasttoolverse.com").href,
   image = "/og-image.png"
@@ -25,7 +25,7 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": "https://fasttoolverse.com/#website",
       "url": "https://fasttoolverse.com",
-      "name": "OmniTools Suite",
+      "name": "FastToolVerse Suite",
       "description": description,
       "potentialAction": {
         "@type": "SearchAction",
@@ -35,7 +35,7 @@ const jsonLd = {
     },
     {
       "@type": "SoftwareApplication",
-      "name": "OmniTools Online Utilities",
+      "name": "FastToolVerse Online Utilities",
       "operatingSystem": "All (Web Browser)",
       "applicationCategory": "UtilitiesApplication",
       "offers": {
@@ -78,7 +78,7 @@ const jsonLd = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
-    <meta property="og:site_name" content="OmniTools" />
+    <meta property="og:site_name" content="FastToolVerse" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />

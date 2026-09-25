@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://toolslibrary.pages.dev',
+  site: 'https://fasttoolverse.com',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()]

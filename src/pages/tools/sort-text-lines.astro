@@ -1,0 +1,1203 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ToolIcon from '../../components/ToolIcon.astro';
+
+// FAQ Data for Schema and Accordion
+const faqs = [
+  {
+    question: "How do I alphabetize a list online?",
+    answer: "Paste or type your text list into the Input Text box. By default, FastToolVerse immediately sorts your lines in ascending alphabetical order (A-Z). You can switch to reverse order (Z-A), numerical sort, or sort by line length instantly."
+  },
+  {
+    question: "What is 'Natural / Numerical Sort' and how does it differ from ASCII sort?",
+    answer: "In standard computer ASCII sorting, 'Episode 10' appears before 'Episode 2' because character '1' precedes character '2'. Natural sort uses numerical collation (Intl.Collator with numeric: true), sorting multi-digit numbers by their real numeric value so 'Episode 2' correctly precedes 'Episode 10'."
+  },
+  {
+    question: "Does this tool upload my lists or data to a server?",
+    answer: "No. FastToolVerse executes 100% of its sorting algorithms locally inside your web browser using JavaScript's native Intl collation and array routines. Your proprietary data, customer names, product inventories, and passwords never leave your computer's RAM."
+  },
+  {
+    question: "How does the 'Remove duplicates' option work during sorting?",
+    answer: "When 'Remove duplicates' is enabled, FastToolVerse passes your list through a high-speed Set deduplication filter before sorting, eliminating recurring lines so your final output contains only unique entries."
+  },
+  {
+    question: "Can I sort lines by character length?",
+    answer: "Yes. Select 'Line Length (Shortest → Longest)' or 'Line Length (Longest → Shortest)'. FastToolVerse will organize your entries based on string character length, which is ideal for copywriting, code refactoring, and formatting keyword clusters."
+  },
+  {
+    question: "How does the 'Randomize / Shuffle Lines' mode work?",
+    answer: "The shuffle mode executes an unbiased Fisher-Yates (Knuth) algorithmic permutation in your browser. Every item has an equal probability of landing in any position, making it perfect for giveaways, random pairings, or study flashcards."
+  },
+  {
+    question: "Can this tool handle massive lists with tens of thousands of lines?",
+    answer: "Yes. Modern V8 JavaScript engines sort arrays of 50,000+ items in milliseconds using Timsort (O(N log N)). FastToolVerse debounces input calculations so your browser UI stays silky smooth without freezing."
+  },
+  {
+    question: "Does this text sorter work offline?",
+    answer: "Yes. Once the page is loaded in your browser, all JavaScript logic runs locally. You can disconnect from the internet or work in airplane mode, and FastToolVerse will continue to sort text lines flawlessly."
+  }
+];
+
+// Schema.org SoftwareApplication
+const jsonLdSoftwareApp = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Free Online Text Line Sorter & List Alphabetizer",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All (Web Browser)",
+  "browserRequirements": "Requires JavaScript. Runs 100% client-side.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "100% In-browser text sorting privacy",
+    "Alphabetical sorting A-Z and reverse Z-A",
+    "Natural numerical sorting (handles embedded numbers correctly)",
+    "Sort lines by character length (shortest and longest)",
+    "Fisher-Yates unbiased line randomizer / shuffler",
+    "Case-sensitive comparison toggle",
+    "Integrated duplicate line removal",
+    "Live line, word, and character counters",
+    "1-click copy to clipboard and .txt file export"
+  ]
+};
+
+// Schema.org FAQPage
+const jsonLdFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((f) => ({
+    "@type": "Question",
+    "name": f.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.answer
+    }
+  }))
+};
+
+// Schema.org BreadcrumbList
+const jsonLdBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://fasttoolverse.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Text & Formatting",
+      "item": "https://fasttoolverse.com/#text-tools-section"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Sort Text Lines",
+      "item": "https://fasttoolverse.com/tools/sort-text-lines"
+    }
+  ]
+};
+
+const canonicalUrl = "https://fasttoolverse.com/tools/sort-text-lines";
+const pageTitle = "Sort Text Lines Online - Free List Alphabetizer & Sorter | FastToolVerse";
+const pageDescription = "Sort text lists alphabetically (A-Z, Z-A), numerically, or by line length directly in your browser with zero server uploads. 100% private text sorter.";
+const pageKeywords = "sort text lines, list alphabetizer, alphabetize list online, sort lines a to z, reverse alphabetical sort, natural sort, sort by length, randomize list, shuffle lines, client side text tool";
+const ogImage = "https://fasttoolverse.com/og-image.png";
+
+// Programmatic target cards / presets
+const presets = [
+  {
+    id: "preset-az",
+    title: "Alphabetize List A to Z",
+    tag: "Standard Alphabetical",
+    desc: "Order names, glossary terms, or items in clean ascending alphabetical order from A to Z.",
+    options: { sortType: "az", caseSensitive: false, dedupe: false },
+    sampleText: "Watermelon\nApple\nGrape\nBanana\nOrange\nPineapple\nMango\nCherry"
+  },
+  {
+    id: "preset-za",
+    title: "Reverse Alphabetical Sorter",
+    tag: "Descending Z to A",
+    desc: "Flip list hierarchy to descending alphabetical order from Z down to A.",
+    options: { sortType: "za", caseSensitive: false, dedupe: false },
+    sampleText: "Berlin\nAmsterdam\nTokyo\nParis\nLondon\nMadrid\nRome\nVienna"
+  },
+  {
+    id: "preset-length",
+    title: "Sort Lines by Length",
+    tag: "String Length Hierarchy",
+    desc: "Reorganize lines from shortest to longest to visualize density and text length.",
+    options: { sortType: "length-asc", caseSensitive: false, dedupe: false },
+    sampleText: "The quick brown fox jumps over the lazy dog\nYes\nHello world\nArtificial intelligence\nOk\nWeb development tools\nCode"
+  },
+  {
+    id: "preset-natural",
+    title: "Natural Number Sorter",
+    tag: "Human Numerical Order",
+    desc: "Sort strings containing numbers naturally so 'Episode 2' comes before 'Episode 10' instead of ASCII order.",
+    options: { sortType: "natural", caseSensitive: false, dedupe: false },
+    sampleText: "Episode 10\nEpisode 1\nEpisode 2\nEpisode 20\nEpisode 3\nEpisode 11\nEpisode 4"
+  },
+  {
+    id: "preset-shuffle",
+    title: "Random Line Shuffler",
+    tag: "Fisher-Yates Shuffle",
+    desc: "Randomize lines unpredictably for raffle drawings, flashcard reviews, or unbiased sampling.",
+    options: { sortType: "shuffle", caseSensitive: false, dedupe: false },
+    sampleText: "Participant 1: Alex Morgan\nParticipant 2: Brian Chen\nParticipant 3: Clara Silva\nParticipant 4: David Kim\nParticipant 5: Elena Rostova\nParticipant 6: Farhan Qureshi"
+  },
+  {
+    id: "preset-combo",
+    title: "Sort & Deduplicate Combo",
+    tag: "Clean & Alphabetize",
+    desc: "Purge repeated entries and simultaneously organize the unique remnants in pristine alphabetical order.",
+    options: { sortType: "az", caseSensitive: false, dedupe: true },
+    sampleText: "Python\nJavaScript\nTypeScript\nPython\nGo\nRust\nJavaScript\nC++\nGo\nRuby"
+  }
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalUrl={canonicalUrl}
+  image={ogImage}
+>
+  <!-- Injected Head Elements: Twitter & JSON-LD Schemas -->
+  <Fragment slot="head">
+    <meta name="keywords" content={pageKeywords} />
+
+    <!-- Open Graph tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Structured Data Schemas -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdSoftwareApp)} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdFaq)} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdBreadcrumb)} />
+  </Fragment>
+
+  <!-- Hero Header Section -->
+  <section class="relative pt-10 pb-6 sm:pt-14 sm:pb-8 overflow-hidden">
+    <div class="hero-mesh-bg" aria-hidden="true"></div>
+
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-5 flex justify-center">
+        <ol class="inline-flex items-center space-x-1.5 md:space-x-2 text-xs font-medium text-slate-500 dark:text-slate-400">
+          <li class="inline-flex items-center">
+            <a href="/" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
+          </li>
+          <li>
+            <div class="flex items-center">
+              <svg class="w-3 h-3 text-slate-400 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <a href="/#text-tools-section" class="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Text & Formatting</a>
+            </div>
+          </li>
+          <li aria-current="page">
+            <div class="flex items-center">
+              <svg class="w-3 h-3 text-slate-400 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="text-slate-900 dark:text-white font-semibold">Sort Text Lines</span>
+            </div>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Privacy Status Badge -->
+      <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-semibold bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 border border-purple-200 dark:border-purple-900/50 mb-3 shadow-2xs">
+        <ToolIcon name="shield-check" class="w-3.5 h-3.5" />
+        <span>100% In-Browser Privacy • Zero Server Uploads</span>
+      </div>
+
+      <!-- Hero Title -->
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+        Free Online Text Line Sorter & List Alphabetizer
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="mt-3 sm:mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        Sort text lists alphabetically (A-Z, Z-A), numerically, or by line length directly in your browser.
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive Studio Container -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
+    <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl overflow-hidden transition-colors">
+      
+      <!-- Top Options & Controls Bar -->
+      <div class="p-5 sm:p-6 border-b border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/70">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          
+          <!-- Sorting Rules (Select & Checkboxes) -->
+          <div class="flex flex-col sm:flex-row sm:items-center gap-4 flex-wrap">
+            
+            <!-- Sort Mode Selector -->
+            <div class="flex items-center gap-2">
+              <label for="select-sort-type" class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider shrink-0">
+                Sort Type:
+              </label>
+              <select
+                id="select-sort-type"
+                class="px-3 py-1.5 text-xs sm:text-sm font-medium rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-500 transition cursor-pointer shadow-2xs"
+              >
+                <option value="az" selected>Alphabetical (A &rarr; Z)</option>
+                <option value="za">Reverse Alphabetical (Z &rarr; A)</option>
+                <option value="natural">Natural / Numerical (1, 2, 10...)</option>
+                <option value="length-asc">Line Length (Shortest &rarr; Longest)</option>
+                <option value="length-desc">Line Length (Longest &rarr; Shortest)</option>
+                <option value="shuffle">Randomize / Shuffle Lines</option>
+              </select>
+            </div>
+
+            <!-- Options Checkboxes -->
+            <div class="flex items-center gap-4 sm:border-l sm:border-slate-200 sm:dark:border-slate-800 sm:pl-4">
+              <label class="inline-flex items-center gap-2 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+                <input
+                  type="checkbox"
+                  id="opt-case-sensitive"
+                  class="w-4 h-4 rounded border-slate-300 dark:border-slate-700 text-purple-600 focus:ring-purple-500 dark:bg-slate-800 cursor-pointer"
+                />
+                <span>Case-sensitive</span>
+              </label>
+
+              <label class="inline-flex items-center gap-2 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+                <input
+                  type="checkbox"
+                  id="opt-dedupe"
+                  class="w-4 h-4 rounded border-slate-300 dark:border-slate-700 text-purple-600 focus:ring-purple-500 dark:bg-slate-800 cursor-pointer"
+                />
+                <span>Remove duplicates</span>
+              </label>
+            </div>
+
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex items-center gap-2.5 shrink-0">
+            <button
+              type="button"
+              id="btn-sample"
+              class="px-3.5 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer shadow-2xs"
+            >
+              Load Sample
+            </button>
+            <button
+              type="button"
+              id="btn-sort"
+              class="px-5 py-2 text-xs sm:text-sm font-semibold rounded-lg bg-purple-600 hover:bg-purple-700 text-white shadow-sm transition-all flex items-center gap-2 cursor-pointer"
+            >
+              <ToolIcon name="arrow-up-down" class="w-4 h-4" />
+              <span>Sort Lines</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Dual Textarea Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-slate-200 dark:divide-slate-800">
+        
+        <!-- Left: Input Area -->
+        <div class="p-5 sm:p-6 flex flex-col space-y-3 bg-white dark:bg-slate-900">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-mono uppercase tracking-wider font-semibold text-slate-500 dark:text-slate-400">
+                Input Text
+              </span>
+              <span id="badge-input-ready" class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+                Live Typing
+              </span>
+            </div>
+            
+            <div class="flex items-center gap-2">
+              <button
+                type="button"
+                id="btn-paste"
+                class="px-2.5 py-1 text-xs font-medium rounded-md border border-slate-200 dark:border-slate-700/80 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors flex items-center gap-1.5 cursor-pointer"
+                title="Paste from clipboard"
+              >
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+                <span>Paste</span>
+              </button>
+              <button
+                type="button"
+                id="btn-clear"
+                class="px-2.5 py-1 text-xs font-medium rounded-md border border-slate-200 dark:border-slate-700/80 hover:bg-rose-50 dark:hover:bg-rose-950/40 text-slate-600 hover:text-rose-600 dark:text-slate-400 dark:hover:text-rose-400 transition-colors cursor-pointer"
+                title="Clear input text"
+              >
+                Clear
+              </button>
+            </div>
+          </div>
+
+          <textarea
+            id="input-text"
+            rows="14"
+            placeholder="Paste or type your list here... It will automatically be sorted in real time according to your chosen mode."
+            class="w-full p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/60 text-slate-900 dark:text-slate-100 font-mono text-sm leading-relaxed placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-500 transition resize-y min-h-[320px]"
+            spellcheck="false"
+          ></textarea>
+
+          <!-- Input Live Counters -->
+          <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 pt-1 font-mono">
+            <div class="flex items-center gap-3">
+              <span>Lines: <strong id="stat-input-lines" class="text-slate-800 dark:text-slate-200">0</strong></span>
+              <span>Chars: <strong id="stat-input-chars" class="text-slate-800 dark:text-slate-200">0</strong></span>
+              <span>Words: <strong id="stat-input-words" class="text-slate-800 dark:text-slate-200">0</strong></span>
+            </div>
+            <div class="text-[11px] text-slate-400 dark:text-slate-500">
+              Input buffer
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Output Area -->
+        <div class="p-5 sm:p-6 flex flex-col space-y-3 bg-white dark:bg-slate-900">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-mono uppercase tracking-wider font-semibold text-purple-600 dark:text-purple-400">
+                Sorted Result
+              </span>
+              <span
+                id="status-sort-mode"
+                class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/40"
+              >
+                Alphabetical (A-Z)
+              </span>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <button
+                type="button"
+                id="btn-copy"
+                class="px-3 py-1 text-xs font-semibold rounded-md bg-purple-600 hover:bg-purple-700 text-white transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
+                title="Copy sorted text to clipboard"
+              >
+                <svg id="copy-icon-idle" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+                </svg>
+                <svg id="copy-icon-success" class="w-3.5 h-3.5 hidden text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span id="copy-btn-text">Copy Result</span>
+              </button>
+
+              <button
+                type="button"
+                id="btn-download"
+                class="px-2.5 py-1 text-xs font-medium rounded-md border border-slate-200 dark:border-slate-700/80 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors flex items-center gap-1.5 cursor-pointer"
+                title="Download sorted list as .txt file"
+              >
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                <span>.txt</span>
+              </button>
+            </div>
+          </div>
+
+          <textarea
+            id="output-text"
+            rows="14"
+            placeholder="Your sorted list will appear here in real time..."
+            class="w-full p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/60 text-slate-900 dark:text-slate-100 font-mono text-sm leading-relaxed placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-500 transition resize-y min-h-[320px]"
+            spellcheck="false"
+          ></textarea>
+
+          <!-- Output Live Counters -->
+          <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 pt-1 font-mono">
+            <div class="flex items-center gap-3">
+              <span>Lines: <strong id="stat-output-lines" class="text-slate-800 dark:text-slate-200">0</strong></span>
+              <span>Chars: <strong id="stat-output-chars" class="text-slate-800 dark:text-slate-200">0</strong></span>
+              <span>Duplicates: <strong id="stat-dupes-removed" class="text-emerald-600 dark:text-emerald-400">0</strong></span>
+            </div>
+            <div id="stat-reduction-pct" class="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+              0% duplicate reduction
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3-Step Guide Section -->
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-16 sm:py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          How to Sort Text Lines Online in 3 Simple Steps
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          Alphabetize customer lists, sort numeric logs, or randomize items in seconds.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        
+        <!-- Step 1 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs relative">
+          <div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-purple-100 dark:border-purple-900/50">
+            01
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Paste or Enter List
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Copy names, keywords, items, or numbers from a spreadsheet or document and paste them directly into the input box using <kbd class="px-1.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">Ctrl+V</kbd> or the Paste button.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs relative">
+          <div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-purple-100 dark:border-purple-900/50">
+            02
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Select Sorting Mode
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Choose your desired ordering: alphabetical (A-Z, Z-A), natural numeric sort, line length, or random shuffle. Optionally toggle case-sensitivity or automatic deduplication.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs relative">
+          <div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-purple-100 dark:border-purple-900/50">
+            03
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Copy or Download
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Review the sorted result and live counters, then click <strong>Copy Result</strong> to copy to your clipboard or download as a clean <strong>.txt</strong> file.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Quick Presets / Programmatic Target Cards Section -->
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/40 py-16 sm:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Popular List Sorting Presets
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          Jump straight into pre-configured ordering modes tailored for names, episodes, keywords, and giveaways.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {presets.map((preset) => (
+          <div class="group relative p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/70 hover:border-purple-500/50 dark:hover:border-purple-500/50 hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full bg-purple-50 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 border border-purple-100 dark:border-purple-900/50 mb-3 font-mono">
+                {preset.tag}
+              </span>
+              <h3 class="text-base font-semibold text-slate-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors leading-snug mb-2">
+                {preset.title}
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                {preset.desc}
+              </p>
+            </div>
+            
+            <button
+              type="button"
+              data-preset={preset.id}
+              class="preset-card-btn text-xs font-semibold text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 inline-flex items-center gap-1 mt-auto pt-2 cursor-pointer border-t border-slate-100 dark:border-slate-800/80"
+            >
+              <span>Apply preset & sample</span>
+              <span>&rarr;</span>
+            </button>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Feature Comparison Table Section -->
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/60 py-16 sm:py-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 border border-purple-200 dark:border-purple-900/50 mb-3">
+          <ToolIcon name="zap" class="w-3.5 h-3.5" />
+          <span>Feature Comparison</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Why Choose FastToolVerse List Sorter vs Cloud Tools
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          Compare the client-side privacy, natural numeric collation, and offline reliability of FastToolVerse against remote web utilities.
+        </p>
+      </div>
+
+      <!-- Comparison Card / Table -->
+      <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs">
+        
+        <!-- Table Header -->
+        <div class="grid grid-cols-12 border-b border-slate-200 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-900/90 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300">
+          <div class="col-span-4 p-4 sm:p-5 flex items-center">
+            <span>Feature / Capability</span>
+          </div>
+          <div class="col-span-4 p-4 sm:p-5 bg-purple-50/60 dark:bg-purple-950/30 border-x border-purple-100 dark:border-purple-900/40 text-purple-700 dark:text-purple-300 flex items-center justify-between">
+            <span class="font-bold flex items-center gap-1.5">
+              FastToolVerse
+              <span class="hidden sm:inline-block px-2 py-0.5 text-[11px] font-medium bg-purple-600 text-white rounded-full">Recommended</span>
+            </span>
+            <span class="text-xs text-purple-600 dark:text-purple-400 font-normal hidden md:inline">This Tool</span>
+          </div>
+          <div class="col-span-4 p-4 sm:p-5 text-slate-500 dark:text-slate-400 flex items-center">
+            <span>Cloud &amp; Server Tools</span>
+          </div>
+        </div>
+
+        <!-- Row 1: Privacy -->
+        <div class="grid grid-cols-12 border-b border-slate-100 dark:border-slate-800/80 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+          <div class="col-span-12 sm:col-span-4 p-4 sm:p-5 flex flex-col justify-center">
+            <span class="font-semibold text-sm text-slate-900 dark:text-white">Data Privacy &amp; Security</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Where your text is processed</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-purple-50/30 dark:bg-purple-950/15 border-r sm:border-x border-purple-100 dark:border-purple-900/30 flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">100% Client-Side In Browser</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Pure browser JavaScript. Zero server requests, no telemetry logs, your private lists never leave local RAM.</p>
+            </div>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Server-Side Transmission</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Sends confidential employee lists, customer emails, or proprietary inventories to remote servers.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Latency & Speed -->
+        <div class="grid grid-cols-12 border-b border-slate-100 dark:border-slate-800/80 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+          <div class="col-span-12 sm:col-span-4 p-4 sm:p-5 flex flex-col justify-center">
+            <span class="font-semibold text-sm text-slate-900 dark:text-white">Execution Latency</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Speed of sorting</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-purple-50/30 dark:bg-purple-950/15 border-r sm:border-x border-purple-100 dark:border-purple-900/30 flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">Instant 0ms Local Processing</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Sorts live as you type or change options without page reloads or waiting for network round-trips.</p>
+            </div>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Server Queue Delay &amp; Ads</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Disruptive reload cycles, video ads, and remote server queuing delays on every sort change.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3: Natural Numeric Sorting -->
+        <div class="grid grid-cols-12 border-b border-slate-100 dark:border-slate-800/80 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+          <div class="col-span-12 sm:col-span-4 p-4 sm:p-5 flex flex-col justify-center">
+            <span class="font-semibold text-sm text-slate-900 dark:text-white">Natural Numerical Sort</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Handles embedded numbers naturally</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-purple-50/30 dark:bg-purple-950/15 border-r sm:border-x border-purple-100 dark:border-purple-900/30 flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">Intl Numerical Collation</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Properly sorts 'Item 2' before 'Item 10' by evaluating multi-digit values naturally.</p>
+            </div>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Rigid ASCII Sorting</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Orders 'Item 10' before 'Item 2' because it compares character codes rather than numeric value.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 4: Multi-Mode Flexibility -->
+        <div class="grid grid-cols-12 border-b border-slate-100 dark:border-slate-800/80 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+          <div class="col-span-12 sm:col-span-4 p-4 sm:p-5 flex flex-col justify-center">
+            <span class="font-semibold text-sm text-slate-900 dark:text-white">Multi-Mode Capabilities</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Choice of ordering algorithms</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-purple-50/30 dark:bg-purple-950/15 border-r sm:border-x border-purple-100 dark:border-purple-900/30 flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">6 Specialized Sorting Modes</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">A-Z, Z-A, Natural, Shortest/Longest length, and Fisher-Yates random shuffle with deduplication.</p>
+            </div>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Basic A-Z Only</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Limited to standard ascending sort without line length ranking or random shuffling.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 5: Offline Capable -->
+        <div class="grid grid-cols-12 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+          <div class="col-span-12 sm:col-span-4 p-4 sm:p-5 flex flex-col justify-center">
+            <span class="font-semibold text-sm text-slate-900 dark:text-white">Offline Capability</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Works without Wi-Fi</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-purple-50/30 dark:bg-purple-950/15 border-r sm:border-x border-purple-100 dark:border-purple-900/30 flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">100% Offline Compatible</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Disconnect your Wi-Fi after page load and all sorting functions continue to work flawlessly.</p>
+            </div>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Requires Active Connection</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Fails completely if network connectivity drops or remote web servers experience downtime.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Informational Educational SEO Article -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-12 prose dark:prose-invert text-slate-300">
+    <div class="border-t border-slate-200 dark:border-slate-800/80 pt-12 space-y-12">
+      
+      <!-- H2 1: Complete Privacy -->
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Complete Privacy: A 100% Client-Side Private List Sorter
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          Whether you are alphabetizing employee rosters, reordering confidential client portfolios, or organizing proprietary API endpoints, list sorting frequently involves private information. Many cloud-based text utilities transmit your data across the internet to remote servers, exposing confidential records to network interception, third-party analytics, and database caching.
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          FastToolVerse operates under a zero-compromise client-side architecture: <strong>all sorting operations, Unicode collations, deduplication routines, and randomizations execute strictly inside your browser's local sandbox memory</strong>. Your text is never uploaded to any remote server, no cookies track your data, and no logs are retained. You can disconnect from Wi-Fi after opening the page, and the tool will continue functioning with zero degradation in speed.
+        </p>
+      </div>
+
+      <!-- H2 2: Collation & Natural Sort -->
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          The Science of String Collation: Natural Sorting vs ASCII Binary Comparison
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          In basic computer programming, sorting is performed by comparing the Unicode character codes (ASCII values) of consecutive characters. This produces notorious sorting anomalies when handling numbers:
+        </p>
+        <div class="not-prose my-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 font-mono text-xs text-purple-300 overflow-x-auto space-y-1">
+          <div class="text-rose-400">// Naive ASCII Lexicographical Sort:</div>
+          <div>["Item 1", "Item 10", "Item 11", "Item 2", "Item 20", "Item 3"]</div>
+          <div class="pt-2 text-emerald-400">// FastToolVerse Natural Collation Sort:</div>
+          <div>["Item 1", "Item 2", "Item 3", "Item 10", "Item 11", "Item 20"]</div>
+        </div>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          FastToolVerse uses modern ECMAScript Internationalization (<code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">Intl.Collator</code>) with <code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">&#123; numeric: true &#125;</code>. This parses numerical tokens within strings as true multi-digit integers, ensuring natural, intuitive human ordering across version numbers, chapter headings, and numbered files.
+        </p>
+      </div>
+
+      <!-- H2 3: Fisher-Yates Randomization -->
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Unbiased Randomization: The Fisher-Yates Shuffle Algorithm
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          A common anti-pattern in amateur web randomizers is using <code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">array.sort(() =&gt; Math.random() - 0.5)</code>. Mathematically, this produces severe statistical bias because not all permutations have equal probability.
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          FastToolVerse implements the gold-standard <strong>Fisher-Yates (Knuth) Shuffle</strong>. Starting from the end of the array, the algorithm swaps each item with a randomly chosen preceding item. This guarantees a mathematically uniform probability distribution of $O(N)$ linear complexity, making it trustworthy for fair raffles, classroom teams, and unbiased experimental sampling.
+        </p>
+      </div>
+
+      <!-- H2 4: Real-World Use Cases -->
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Practical Industry Applications: From Keyword Clustering to Database Hygiene
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          Sorting text is a fundamental workflow step across multiple technical domains:
+        </p>
+        <ul class="space-y-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 list-disc pl-5">
+          <li><strong>SEO &amp; Content Marketing:</strong> Alphabetizing and deduplicating keyword research lists to group semantic variations and eliminate cannibalization.</li>
+          <li><strong>Programming &amp; Code Refactoring:</strong> Sorting CSS declarations, JSON keys, import statements, and enum declarations to maintain clean repository style guides.</li>
+          <li><strong>E-Commerce &amp; Product Catalogs:</strong> Organizing SKU lists and inventory spreadsheets numerically or by length for uniform visual presentation.</li>
+          <li><strong>Event Management &amp; Education:</strong> Alphabetizing attendee rosters by last name or generating random group assignments with the shuffle tool.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ Section (SEO crawlable) -->
+  <section class="py-16 sm:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Frequently Asked Questions
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          Everything you need to know about text sorting, collation modes, and data privacy.
+        </p>
+      </div>
+
+      <!-- Semantic FAQ List -->
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 transition-all duration-200 open:shadow-xs">
+            <summary class="flex items-center justify-between font-semibold text-sm sm:text-base text-slate-900 dark:text-white cursor-pointer list-none select-none">
+              <span>{faq.question}</span>
+              <span class="ml-4 flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 group-open:rotate-180 transition-transform duration-200">
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed pt-2 border-t border-slate-100 dark:border-slate-800/80">
+              {faq.answer}
+            </p>
+          </details>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Related Tools Row -->
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-12 sm:py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-6">
+        Explore Related Text &amp; Formatting Tools
+      </h3>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a
+          href="/tools/remove-extra-spaces"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-purple-500 transition shadow-2xs"
+        >
+          <ToolIcon name="space" class="w-4 h-4 text-purple-500" />
+          <span>Remove Extra Spaces</span>
+        </a>
+        <a
+          href="/tools/remove-duplicate-lines"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-purple-500 transition shadow-2xs"
+        >
+          <ToolIcon name="list-filter" class="w-4 h-4 text-purple-500" />
+          <span>Remove Duplicate Lines</span>
+        </a>
+        <a
+          href="/tools/remove-empty-lines"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-purple-500 transition shadow-2xs"
+        >
+          <ToolIcon name="list-x" class="w-4 h-4 text-purple-500" />
+          <span>Remove Empty Lines</span>
+        </a>
+        <a
+          href="/tools/remove-line-breaks"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-purple-500 transition shadow-2xs"
+        >
+          <ToolIcon name="wrap-text" class="w-4 h-4 text-purple-500" />
+          <span>Remove Line Breaks</span>
+        </a>
+        <a
+          href="/tools/text-case-converter"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-purple-500 transition shadow-2xs"
+        >
+          <ToolIcon name="case-upper" class="w-4 h-4 text-purple-500" />
+          <span>Text Case Converter</span>
+        </a>
+        <a
+          href="/tools/text-to-slug-converter"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-purple-500 transition shadow-2xs"
+        >
+          <ToolIcon name="link-2" class="w-4 h-4 text-purple-500" />
+          <span>Text to Slug Converter</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<!-- Client-Side JavaScript Logic -->
+<script is:inline>
+  (function () {
+    const inputText = document.getElementById('input-text');
+    const outputText = document.getElementById('output-text');
+    const selectSortType = document.getElementById('select-sort-type');
+    const optCaseSensitive = document.getElementById('opt-case-sensitive');
+    const optDedupe = document.getElementById('opt-dedupe');
+    const btnSort = document.getElementById('btn-sort');
+    const btnSample = document.getElementById('btn-sample');
+    const btnPaste = document.getElementById('btn-paste');
+    const btnClear = document.getElementById('btn-clear');
+    const btnCopy = document.getElementById('btn-copy');
+    const btnDownload = document.getElementById('btn-download');
+
+    const copyBtnText = document.getElementById('copy-btn-text');
+    const copyIconIdle = document.getElementById('copy-icon-idle');
+    const copyIconSuccess = document.getElementById('copy-icon-success');
+
+    const statInputChars = document.getElementById('stat-input-chars');
+    const statInputWords = document.getElementById('stat-input-words');
+    const statInputLines = document.getElementById('stat-input-lines');
+
+    const statOutputChars = document.getElementById('stat-output-chars');
+    const statOutputLines = document.getElementById('stat-output-lines');
+    const statDupesRemoved = document.getElementById('stat-dupes-removed');
+    const statReductionPct = document.getElementById('stat-reduction-pct');
+    const statusSortMode = document.getElementById('status-sort-mode');
+
+    const presetButtons = document.querySelectorAll('.preset-card-btn');
+
+    // Preset Data map
+    const presetMap = {
+      'preset-az': {
+        options: { sortType: 'az', caseSensitive: false, dedupe: false },
+        sample: 'Watermelon\nApple\nGrape\nBanana\nOrange\nPineapple\nMango\nCherry'
+      },
+      'preset-za': {
+        options: { sortType: 'za', caseSensitive: false, dedupe: false },
+        sample: 'Berlin\nAmsterdam\nTokyo\nParis\nLondon\nMadrid\nRome\nVienna'
+      },
+      'preset-length': {
+        options: { sortType: 'length-asc', caseSensitive: false, dedupe: false },
+        sample: 'The quick brown fox jumps over the lazy dog\nYes\nHello world\nArtificial intelligence\nOk\nWeb development tools\nCode'
+      },
+      'preset-natural': {
+        options: { sortType: 'natural', caseSensitive: false, dedupe: false },
+        sample: 'Episode 10\nEpisode 1\nEpisode 2\nEpisode 20\nEpisode 3\nEpisode 11\nEpisode 4'
+      },
+      'preset-shuffle': {
+        options: { sortType: 'shuffle', caseSensitive: false, dedupe: false },
+        sample: 'Participant 1: Alex Morgan\nParticipant 2: Brian Chen\nParticipant 3: Clara Silva\nParticipant 4: David Kim\nParticipant 5: Elena Rostova\nParticipant 6: Farhan Qureshi'
+      },
+      'preset-combo': {
+        options: { sortType: 'az', caseSensitive: false, dedupe: true },
+        sample: 'Python\nJavaScript\nTypeScript\nPython\nGo\nRust\nJavaScript\nC++\nGo\nRuby'
+      }
+    };
+
+    function countWords(str) {
+      if (!str || !str.trim()) return 0;
+      return str.trim().split(/\s+/).length;
+    }
+
+    function countLines(str) {
+      if (!str) return 0;
+      return str.split(/\r?\n/).length;
+    }
+
+    // High-performance Text Sorter logic
+    function sortLines(text) {
+      if (!text) {
+        return {
+          result: '',
+          linesCount: 0,
+          dupesRemoved: 0
+        };
+      }
+
+      let lines = text.split(/\r?\n/);
+      const sortType = selectSortType ? selectSortType.value : 'az';
+      const isCaseSensitive = optCaseSensitive ? optCaseSensitive.checked : false;
+      const isDedupe = optDedupe ? optDedupe.checked : false;
+
+      let dupesRemoved = 0;
+      if (isDedupe) {
+        const seen = new Set();
+        const unique = [];
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i];
+          const key = isCaseSensitive ? line : line.toLowerCase();
+          if (!seen.has(key)) {
+            seen.add(key);
+            unique.push(line);
+          } else {
+            dupesRemoved++;
+          }
+        }
+        lines = unique;
+      }
+
+      // Execute sorting algorithm
+      if (sortType === 'az') {
+        lines.sort(function (a, b) {
+          return a.localeCompare(b, undefined, {
+            sensitivity: isCaseSensitive ? 'case' : 'base'
+          });
+        });
+      } else if (sortType === 'za') {
+        lines.sort(function (a, b) {
+          return b.localeCompare(a, undefined, {
+            sensitivity: isCaseSensitive ? 'case' : 'base'
+          });
+        });
+      } else if (sortType === 'natural') {
+        lines.sort(function (a, b) {
+          return a.localeCompare(b, undefined, {
+            numeric: true,
+            sensitivity: isCaseSensitive ? 'case' : 'base'
+          });
+        });
+      } else if (sortType === 'length-asc') {
+        lines.sort(function (a, b) {
+          if (a.length !== b.length) return a.length - b.length;
+          return a.localeCompare(b, undefined, {
+            sensitivity: isCaseSensitive ? 'case' : 'base'
+          });
+        });
+      } else if (sortType === 'length-desc') {
+        lines.sort(function (a, b) {
+          if (a.length !== b.length) return b.length - a.length;
+          return a.localeCompare(b, undefined, {
+            sensitivity: isCaseSensitive ? 'case' : 'base'
+          });
+        });
+      } else if (sortType === 'shuffle') {
+        // Fisher-Yates unbiased shuffle
+        for (let i = lines.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          const temp = lines[i];
+          lines[i] = lines[j];
+          lines[j] = temp;
+        }
+      }
+
+      const result = lines.join('\n');
+      return {
+        result: result,
+        linesCount: lines.length,
+        dupesRemoved: dupesRemoved
+      };
+    }
+
+    function update() {
+      const raw = inputText.value || '';
+      const cleanResult = sortLines(raw);
+      outputText.value = cleanResult.result;
+
+      // Input Stats
+      const inChars = raw.length;
+      const inWords = countWords(raw);
+      const inLines = raw ? countLines(raw) : 0;
+
+      statInputChars.textContent = inChars.toLocaleString();
+      statInputWords.textContent = inWords.toLocaleString();
+      statInputLines.textContent = inLines.toLocaleString();
+
+      // Output Stats
+      const outChars = cleanResult.result.length;
+      const outLines = cleanResult.result ? cleanResult.linesCount : 0;
+
+      statOutputChars.textContent = outChars.toLocaleString();
+      statOutputLines.textContent = outLines.toLocaleString();
+
+      const dupes = cleanResult.dupesRemoved;
+      statDupesRemoved.textContent = dupes.toLocaleString();
+
+      const pct = inLines > 0 ? Math.max(0, Math.round((dupes / inLines) * 100)) : 0;
+      statReductionPct.textContent = pct + '% duplicate reduction';
+
+      // Status label description
+      const sortType = selectSortType ? selectSortType.value : 'az';
+      let modeText = 'Alphabetical (A-Z)';
+      if (sortType === 'za') modeText = 'Reverse (Z-A)';
+      if (sortType === 'natural') modeText = 'Natural Numeric';
+      if (sortType === 'length-asc') modeText = 'Length (Shortest First)';
+      if (sortType === 'length-desc') modeText = 'Length (Longest First)';
+      if (sortType === 'shuffle') modeText = 'Randomized';
+
+      if (dupes > 0) {
+        statusSortMode.textContent = modeText + ' • ' + dupes + ' dupes removed';
+      } else {
+        statusSortMode.textContent = modeText;
+      }
+    }
+
+    // Debounce helper for silky performance with large text
+    let timeoutId;
+    function debouncedUpdate() {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(update, 50);
+    }
+
+    // Event Listeners
+    inputText?.addEventListener('input', debouncedUpdate);
+    selectSortType?.addEventListener('change', update);
+    optCaseSensitive?.addEventListener('change', update);
+    optDedupe?.addEventListener('change', update);
+    btnSort?.addEventListener('click', update);
+
+    // Sample Text
+    btnSample?.addEventListener('click', function () {
+      inputText.value =
+        'Orange\nApple\nGrape\nBanana\nApple\nMango\nPineapple\nBanana\nWatermelon\nCherry';
+      update();
+    });
+
+    // Clear
+    btnClear?.addEventListener('click', function () {
+      inputText.value = '';
+      outputText.value = '';
+      update();
+      inputText.focus();
+    });
+
+    // Paste from Clipboard
+    btnPaste?.addEventListener('click', async function () {
+      try {
+        if (navigator.clipboard && navigator.clipboard.readText) {
+          const clipText = await navigator.clipboard.readText();
+          if (clipText) {
+            inputText.value = clipText;
+            update();
+          }
+        } else {
+          inputText.focus();
+          inputText.select();
+        }
+      } catch (err) {
+        inputText.focus();
+      }
+    });
+
+    // Copy to Clipboard
+    btnCopy?.addEventListener('click', async function () {
+      const textToCopy = outputText.value;
+      if (!textToCopy) return;
+
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(textToCopy);
+        } else {
+          outputText.select();
+          document.execCommand('copy');
+        }
+
+        copyBtnText.textContent = 'Copied!';
+        copyIconIdle.classList.add('hidden');
+        copyIconSuccess.classList.remove('hidden');
+
+        setTimeout(function () {
+          copyBtnText.textContent = 'Copy Result';
+          copyIconIdle.classList.remove('hidden');
+          copyIconSuccess.classList.add('hidden');
+        }, 2000);
+      } catch (err) {
+        outputText.select();
+      }
+    });
+
+    // Download .txt file
+    btnDownload?.addEventListener('click', function () {
+      const content = outputText.value;
+      if (!content) return;
+
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'sorted-list.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+
+    // Preset Buttons
+    presetButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const id = btn.getAttribute('data-preset');
+        const data = presetMap[id];
+        if (!data) return;
+
+        if (selectSortType) {
+          selectSortType.value = data.options.sortType;
+        }
+
+        if (optCaseSensitive) {
+          optCaseSensitive.checked = data.options.caseSensitive;
+        }
+
+        if (optDedupe) {
+          optDedupe.checked = data.options.dedupe;
+        }
+
+        if (data.sample) {
+          inputText.value = data.sample;
+        }
+
+        update();
+
+        // Scroll to editor
+        const studio = document.getElementById('input-text');
+        if (studio) {
+          studio.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+    });
+
+    // Initial update on page load
+    update();
+  })();
+</script>

@@ -521,3 +521,85 @@ export const QUICK_FILTERS = [
   { id: 'image-tools', label: 'Image Tools', count: 21 },
   { id: 'developer-tools', label: 'Developer Tools', count: 16 }
 ];
+
+export interface TextTool {
+  id: string;
+  title: string;
+  href: string;
+  icon: string;
+  description: string;
+}
+
+export const TEXT_TOOLS: TextTool[] = [
+  {
+    id: 'remove-extra-spaces',
+    title: 'Remove Extra Spaces',
+    href: '/tools/remove-extra-spaces',
+    icon: 'space',
+    description: 'Clean multiple spaces, leading and trailing whitespace, and tabs.'
+  },
+  {
+    id: 'remove-duplicate-lines',
+    title: 'Remove Duplicate Lines',
+    href: '/tools/remove-duplicate-lines',
+    icon: 'list-filter',
+    description: 'Deduplicate text lines while preserving your original line order.'
+  },
+  {
+    id: 'remove-empty-lines',
+    title: 'Remove Empty Lines',
+    href: '/tools/remove-empty-lines',
+    icon: 'list-x',
+    description: 'Strip out blank lines and lines containing only space characters.'
+  },
+  {
+    id: 'remove-line-breaks',
+    title: 'Remove Line Breaks',
+    href: '/tools/remove-line-breaks',
+    icon: 'wrap-text',
+    description: 'Merge lines into paragraphs or join lines with custom delimiters.'
+  },
+  {
+    id: 'sort-text-lines',
+    title: 'Sort Text Lines',
+    href: '/tools/sort-text-lines',
+    icon: 'arrow-up-down',
+    description: 'Sort lines alphabetically (A-Z or Z-A), numerically, or by string length.'
+  },
+  {
+    id: 'text-case-converter',
+    title: 'Text Case Converter',
+    href: '/tools/text-case-converter',
+    icon: 'case-upper',
+    description: 'Convert text to UPPERCASE, lowercase, Title Case, camelCase, and kebab-case.'
+  },
+  {
+    id: 'find-and-replace-text',
+    title: 'Find & Replace Text',
+    href: '/tools/find-and-replace-text',
+    icon: 'replace',
+    description: 'Search and replace words, phrases, or regex patterns across multiline text.'
+  },
+  {
+    id: 'add-prefix-suffix',
+    title: 'Add Prefix & Suffix',
+    href: '/tools/add-prefix-suffix',
+    icon: 'list-plus',
+    description: 'Prepend prefixes or append suffixes to every line of text instantly.'
+  },
+  {
+    id: 'remove-special-characters',
+    title: 'Remove Special Characters',
+    href: '/tools/remove-special-characters',
+    icon: 'eraser',
+    description: 'Strip symbols, punctuation, emojis, or non-ASCII characters cleanly.'
+  },
+  {
+    id: 'text-to-slug-converter',
+    title: 'Text to Slug Converter',
+    href: '/tools/text-to-slug-converter',
+    icon: 'link-2',
+    description: 'Convert headings and titles into clean, URL-safe SEO slugs.'
+  }
+];
+

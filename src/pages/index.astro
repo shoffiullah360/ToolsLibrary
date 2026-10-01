@@ -70,12 +70,12 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
       </div>
 
       <!-- Quick Filter Pills -->
-      <div class="mt-8 flex items-center justify-center gap-3 sm:gap-4 flex-wrap max-w-3xl mx-auto" id="filter-pills-container">
+      <div class="mt-8 flex items-center gap-2 overflow-x-auto no-scrollbar py-2 w-full flex-nowrap sm:flex-wrap sm:justify-center max-w-3xl mx-auto px-2 sm:px-0" id="filter-pills-container">
         {QUICK_FILTERS.map((filter, index) => (
           <button
             type="button"
             data-filter={filter.id}
-            class={`filter-pill flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold rounded-2xl transition-all cursor-pointer border shadow-xs ${
+            class={`filter-pill flex items-center gap-2 whitespace-nowrap flex-shrink-0 px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold rounded-2xl transition-all cursor-pointer border shadow-xs ${
               index === 0
                 ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-sm'
                 : 'bg-white dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700/60'
@@ -124,7 +124,7 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
       </div>
 
       <!-- Image Tools Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" data-category-grid="image-tools">
+      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4" data-category-grid="image-tools">
         {imageTools.map((tool) => (
           <ToolCard tool={tool} />
         ))}
@@ -140,7 +140,7 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
       </div>
 
       <!-- Developer Tools Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" data-category-grid="developer-tools">
+      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4" data-category-grid="developer-tools">
         {devTools.map((tool) => (
           <ToolCard tool={tool} />
         ))}
@@ -431,12 +431,12 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
       const filter = pill.getAttribute('data-filter');
       const countBadge = pill.querySelector('.filter-count');
       if (filter === activeFilter) {
-        pill.className = 'filter-pill flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold rounded-2xl transition-all cursor-pointer border shadow-sm bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white';
+        pill.className = 'filter-pill flex items-center gap-2 whitespace-nowrap flex-shrink-0 px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold rounded-2xl transition-all cursor-pointer border shadow-sm bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white';
         if (countBadge) {
           countBadge.className = 'filter-count px-2 py-0.5 text-xs font-mono font-bold rounded-lg bg-white/20 dark:bg-slate-900/20 text-white dark:text-slate-900';
         }
       } else {
-        pill.className = 'filter-pill flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold rounded-2xl transition-all cursor-pointer border shadow-xs bg-white dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700/60';
+        pill.className = 'filter-pill flex items-center gap-2 whitespace-nowrap flex-shrink-0 px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold rounded-2xl transition-all cursor-pointer border shadow-xs bg-white dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700/60';
         if (countBadge) {
           countBadge.className = 'filter-count px-2 py-0.5 text-xs font-mono font-bold rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300';
         }
@@ -455,3 +455,58 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
     }
   });
 </script>
+
+<style is:global>
+  /* Tool Filter Tabs & Mobile Scrollbar */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Mobile Tool Cards (2-column layout on small screens) */
+  @media (max-width: 639px) {
+    .tool-card {
+      padding: 0.75rem !important; /* p-3 */
+      border-radius: 0.875rem !important;
+    }
+    .tool-card > div:first-child {
+      width: 2rem !important;
+      height: 2rem !important;
+      margin-bottom: 0.5rem !important;
+      border-radius: 0.5rem !important;
+    }
+    .tool-card > div:first-child svg {
+      width: 1rem !important;
+      height: 1rem !important;
+    }
+    .tool-card h3 {
+      font-size: 0.875rem !important; /* text-sm */
+      line-height: 1.25rem !important;
+      margin-bottom: 0.25rem !important;
+    }
+    .tool-card p {
+      font-size: 0.75rem !important; /* text-xs */
+      line-height: 1rem !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+    }
+  }
+
+  /* Extra small screens: hide description to optimize glanceability */
+  @media (max-width: 380px) {
+    .tool-card p {
+      display: none !important;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 767px) {
+    .tool-card {
+      padding: 1.25rem !important; /* sm:p-5 */
+    }
+  }
+</style>

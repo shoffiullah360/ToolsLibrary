@@ -217,7 +217,7 @@ const hasPreset = Boolean(
       
       <!-- LEFT COLUMN: Canvas Preview + Transform Bar (7 Cols) -->
       <div class="lg:col-span-7 flex flex-col gap-4">
-        <div id="preview-canvas-container" class="relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900/90 overflow-hidden min-h-[380px] sm:min-h-[440px] flex items-center justify-center p-4 shadow-sm group select-none">
+        <div id="preview-canvas-container" class="relative max-h-[220px] sm:max-h-[380px] h-[220px] sm:h-[380px] w-full flex items-center justify-center overflow-hidden rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900/90 p-2 sm:p-4 shadow-sm group select-none">
           
           <!-- Transparent checkerboard background -->
           <div class="absolute inset-0 opacity-40 dark:opacity-20 pointer-events-none" style="background-image: linear-gradient(45deg, #cbd5e1 25%, transparent 25%), linear-gradient(-45deg, #cbd5e1 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #cbd5e1 75%), linear-gradient(-45deg, transparent 75%, #cbd5e1 75%); background-size: 16px 16px; background-position: 0 0, 0 8px, 8px -8px, -8px 0;"></div>
@@ -225,21 +225,21 @@ const hasPreset = Boolean(
           <!-- Real Preview Canvas -->
           <canvas
             id="preview-canvas"
-            class="max-w-full max-h-[420px] object-contain rounded-lg shadow-md transition-transform relative z-10"
+            class="max-h-full max-w-full object-contain rounded-lg shadow-md transition-transform relative z-10"
           ></canvas>
 
           <!-- Status Overlays -->
-          <div class="absolute top-3 left-3 z-20 flex items-center gap-1.5 pointer-events-none">
-            <span id="preview-dim-pill" class="px-2.5 py-1 rounded-full text-xs font-mono font-medium bg-slate-900/80 text-white backdrop-blur-md shadow-sm">
+          <div class="absolute top-2 left-2 sm:top-3 sm:left-3 z-20 flex items-center gap-1.5 pointer-events-none">
+            <span id="preview-dim-pill" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[11px] sm:text-xs font-mono font-medium bg-slate-900/80 text-white backdrop-blur-md shadow-sm">
               1920 × 1080 px
             </span>
           </div>
 
-          <div class="absolute top-3 right-3 z-20 flex items-center gap-1.5 pointer-events-none">
-            <span id="preview-size-pill" class="px-2.5 py-1 rounded-full text-xs font-mono font-medium bg-blue-600/90 text-white backdrop-blur-md shadow-sm">
+          <div class="absolute top-2 right-2 sm:top-3 sm:right-3 z-20 flex items-center gap-1.5 pointer-events-none">
+            <span id="preview-size-pill" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[11px] sm:text-xs font-mono font-medium bg-blue-600/90 text-white backdrop-blur-md shadow-sm">
               Est. ~150 KB
             </span>
-            <span id="preview-savings-pill" class="hidden px-2 py-1 rounded-full text-xs font-mono font-bold bg-emerald-600 text-white shadow-sm">
+            <span id="preview-savings-pill" class="hidden px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[11px] sm:text-xs font-mono font-bold bg-emerald-600 text-white shadow-sm">
               -60%
             </span>
           </div>
@@ -395,7 +395,7 @@ const hasPreset = Boolean(
       </div>
 
       <!-- RIGHT COLUMN: Settings Card (Tabs) + Download Action (5 Cols) -->
-      <div class="lg:col-span-5 flex flex-col gap-4">
+      <div class="lg:col-span-5 flex flex-col gap-4 pb-20 sm:pb-0">
         
         <!-- Tabbed Settings Card -->
         <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 sm:p-6 shadow-sm">
@@ -878,12 +878,12 @@ const hasPreset = Boolean(
 
         </div>
 
-        <!-- Download Action Card -->
-        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-sm space-y-3">
+        <!-- Download Action Card (Sticky Action Bar on Mobile, Static on Desktop) -->
+        <div id="download-action-container" class="sticky sm:static bottom-0 inset-x-0 p-3 sm:p-5 bg-[#0A0E1A]/95 sm:bg-white dark:sm:bg-slate-900 backdrop-blur-md sm:backdrop-blur-none border-t sm:border border-slate-800 sm:border-slate-200 dark:sm:border-slate-800 -mx-4 sm:mx-0 rounded-none sm:rounded-2xl z-30 shadow-2xl sm:shadow-sm space-y-2 sm:space-y-3">
           <button
             type="button"
             id="download-btn"
-            class="w-full py-3.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
+            class="w-full py-3 sm:py-3.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-semibold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99]"
           >
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.25">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
@@ -895,7 +895,7 @@ const hasPreset = Boolean(
           <button
             type="button"
             id="batch-download-btn"
-            class="hidden w-full py-3 px-4 rounded-xl border-2 border-blue-600 dark:border-blue-500 bg-blue-50/80 dark:bg-blue-950/40 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 font-semibold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
+            class="hidden w-full py-2.5 sm:py-3 px-4 rounded-xl border-2 border-blue-600 dark:border-blue-500 bg-blue-50/80 dark:bg-blue-950/40 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99]"
           >
             <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0l-3-3m3 3l3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
@@ -903,7 +903,7 @@ const hasPreset = Boolean(
             <span id="batch-download-label">Download All (ZIP)</span>
           </button>
 
-          <div class="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 px-1 font-mono">
+          <div class="flex items-center justify-between text-[11px] text-slate-400 sm:text-slate-500 dark:text-slate-400 px-1 font-mono">
             <span id="summary-meta-res">1920 × 1080 px</span>
             <span id="summary-meta-format">FORMAT: JPG</span>
             <span id="summary-meta-size">SIZE: ~150 KB</span>

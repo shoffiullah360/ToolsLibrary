@@ -372,83 +372,121 @@ const textTools = TEXT_TOOLS;
         id="mobile-menu-btn"
         class="md:hidden p-2 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
         aria-label="Toggle mobile menu"
+        aria-expanded="false"
       >
-        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <svg id="mobile-menu-icon-open" class="w-5 h-5 block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="mobile-menu-icon-close" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
 
   </div>
 
-  <!-- Mobile Drawer Menu -->
+  <!-- Mobile Drawer Menu (Overlay Backdrop) -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md px-4 pt-3 pb-6 space-y-4 max-h-[80vh] overflow-y-auto"
+    class="hidden md:hidden fixed inset-0 top-[60px] z-50 bg-[#0B0F19]/95 backdrop-blur-md overflow-y-auto p-4 space-y-3 pb-24 border-t border-slate-800/80 text-white transition-all"
   >
-    <div class="space-y-1">
-      <div class="text-[11px] font-mono uppercase tracking-wider font-semibold text-slate-400 dark:text-slate-500 px-2 py-1">
-        Navigation
-      </div>
-      <a href="#image-tools-section" class="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200">
-        Image Tools ({imageTools.length})
-      </a>
-      <a href="#dev-tools-section" class="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200">
-        Developer Tools ({devTools.length})
-      </a>
-      <a href="#text-tools-section" class="block px-3 py-2 text-sm font-medium rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200">
-        Text & Formatting ({textTools.length})
-      </a>
-    </div>
-
-    <!-- Mobile Tools List Accordion -->
-    <div class="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800">
-      <div class="text-[11px] font-mono uppercase tracking-wider font-semibold text-slate-400 dark:text-slate-500 px-2">
-        Browse All Categories
-      </div>
-      
-      <details class="group/mob">
-        <summary class="flex items-center justify-between px-3 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer list-none">
-          <span>Image Tools ({imageTools.length})</span>
-          <span class="transition group-open/mob:rotate-180">&darr;</span>
+    <div class="max-w-lg mx-auto space-y-3 pt-1">
+      <!-- 1. Image Tools Accordion -->
+      <details name="mobile-category" class="mobile-accordion group/mob rounded-xl border border-slate-700/60 bg-slate-900/70 overflow-hidden transition-all">
+        <summary class="flex items-center justify-between px-3.5 py-3 text-sm font-semibold text-slate-100 hover:bg-slate-800/80 cursor-pointer list-none select-none transition-colors">
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
+              <ToolIcon name="image" class="w-4 h-4" />
+            </div>
+            <span>Image Tools</span>
+            <span class="px-2 py-0.5 text-xs font-mono font-medium rounded-full bg-slate-800 text-slate-300">
+              {imageTools.length}
+            </span>
+          </div>
+          <svg class="w-4 h-4 text-slate-400 transition-transform duration-200 group-open/mob:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
         </summary>
-        <div class="grid grid-cols-1 gap-1 pl-4 mt-1 border-l-2 border-slate-100 dark:border-slate-800">
-          {imageTools.map((t) => (
-            <a href={t.href} class="text-xs text-slate-600 dark:text-slate-400 hover:text-blue-600 py-1.5 flex items-center gap-2">
-              <ToolIcon name={t.icon} class="w-3.5 h-3.5 text-slate-400" />
-              <span>{t.title}</span>
-            </a>
-          ))}
+        <div class="p-2.5 pt-0 border-t border-slate-800/80 bg-slate-950/40">
+          <div class="grid grid-cols-2 gap-2 text-xs py-2">
+            {imageTools.map((t) => (
+              <a
+                href={t.href}
+                class="flex items-center gap-2 p-2 rounded-xl bg-slate-900/80 hover:bg-blue-600/20 text-slate-200 hover:text-white border border-slate-800/80 hover:border-blue-500/40 transition-colors group/item"
+              >
+                <div class="w-6 h-6 rounded-lg flex items-center justify-center bg-slate-800 text-blue-400 group-hover/item:text-blue-300 shrink-0">
+                  <ToolIcon name={t.icon} class="w-3.5 h-3.5" />
+                </div>
+                <span class="font-medium truncate">{t.title}</span>
+              </a>
+            ))}
+          </div>
         </div>
       </details>
 
-      <details class="group/mob">
-        <summary class="flex items-center justify-between px-3 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer list-none">
-          <span>Developer Tools ({devTools.length})</span>
-          <span class="transition group-open/mob:rotate-180">&darr;</span>
+      <!-- 2. Developer Tools Accordion -->
+      <details name="mobile-category" class="mobile-accordion group/mob rounded-xl border border-slate-700/60 bg-slate-900/70 overflow-hidden transition-all">
+        <summary class="flex items-center justify-between px-3.5 py-3 text-sm font-semibold text-slate-100 hover:bg-slate-800/80 cursor-pointer list-none select-none transition-colors">
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0">
+              <ToolIcon name="code" class="w-4 h-4" />
+            </div>
+            <span>Developer Tools</span>
+            <span class="px-2 py-0.5 text-xs font-mono font-medium rounded-full bg-slate-800 text-slate-300">
+              {devTools.length}
+            </span>
+          </div>
+          <svg class="w-4 h-4 text-slate-400 transition-transform duration-200 group-open/mob:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
         </summary>
-        <div class="grid grid-cols-1 gap-1 pl-4 mt-1 border-l-2 border-slate-100 dark:border-slate-800">
-          {devTools.map((t) => (
-            <a href={t.href} class="text-xs text-slate-600 dark:text-slate-400 hover:text-emerald-600 py-1.5 flex items-center gap-2">
-              <ToolIcon name={t.icon} class="w-3.5 h-3.5 text-slate-400" />
-              <span>{t.title}</span>
-            </a>
-          ))}
+        <div class="p-2.5 pt-0 border-t border-slate-800/80 bg-slate-950/40">
+          <div class="grid grid-cols-2 gap-2 text-xs py-2">
+            {devTools.map((t) => (
+              <a
+                href={t.href}
+                class="flex items-center gap-2 p-2 rounded-xl bg-slate-900/80 hover:bg-emerald-600/20 text-slate-200 hover:text-white border border-slate-800/80 hover:border-emerald-500/40 transition-colors group/item"
+              >
+                <div class="w-6 h-6 rounded-lg flex items-center justify-center bg-slate-800 text-emerald-400 group-hover/item:text-emerald-300 shrink-0">
+                  <ToolIcon name={t.icon} class="w-3.5 h-3.5" />
+                </div>
+                <span class="font-medium truncate">{t.title}</span>
+              </a>
+            ))}
+          </div>
         </div>
       </details>
 
-      <details class="group/mob">
-        <summary class="flex items-center justify-between px-3 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer list-none">
-          <span>Text & Formatting ({textTools.length})</span>
-          <span class="transition group-open/mob:rotate-180">&darr;</span>
+      <!-- 3. Text & Formatting Accordion -->
+      <details name="mobile-category" class="mobile-accordion group/mob rounded-xl border border-slate-700/60 bg-slate-900/70 overflow-hidden transition-all">
+        <summary class="flex items-center justify-between px-3.5 py-3 text-sm font-semibold text-slate-100 hover:bg-slate-800/80 cursor-pointer list-none select-none transition-colors">
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0">
+              <ToolIcon name="type" class="w-4 h-4" />
+            </div>
+            <span>Text & Formatting</span>
+            <span class="px-2 py-0.5 text-xs font-mono font-medium rounded-full bg-slate-800 text-slate-300">
+              {textTools.length}
+            </span>
+          </div>
+          <svg class="w-4 h-4 text-slate-400 transition-transform duration-200 group-open/mob:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
         </summary>
-        <div class="grid grid-cols-1 gap-1 pl-4 mt-1 border-l-2 border-slate-100 dark:border-slate-800">
-          {textTools.map((t) => (
-            <a href={t.href} class="text-xs text-slate-600 dark:text-slate-400 hover:text-purple-600 py-1.5 flex items-center gap-2">
-              <ToolIcon name={t.icon} class="w-3.5 h-3.5 text-slate-400" />
-              <span>{t.title}</span>
-            </a>
-          ))}
+        <div class="p-2.5 pt-0 border-t border-slate-800/80 bg-slate-950/40">
+          <div class="grid grid-cols-2 gap-2 text-xs py-2">
+            {textTools.map((t) => (
+              <a
+                href={t.href}
+                class="flex items-center gap-2 p-2 rounded-xl bg-slate-900/80 hover:bg-purple-600/20 text-slate-200 hover:text-white border border-slate-800/80 hover:border-purple-500/40 transition-colors group/item"
+              >
+                <div class="w-6 h-6 rounded-lg flex items-center justify-center bg-slate-800 text-purple-400 group-hover/item:text-purple-300 shrink-0">
+                  <ToolIcon name={t.icon} class="w-3.5 h-3.5" />
+                </div>
+                <span class="font-medium truncate">{t.title}</span>
+              </a>
+            ))}
+          </div>
         </div>
       </details>
     </div>
@@ -498,12 +536,55 @@ const textTools = TEXT_TOOLS;
     updateTheme(!isDark);
   });
 
-  // Mobile Menu Toggle
+  // Mobile Menu Toggle & Accordion Behavior
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuIconOpen = document.getElementById('mobile-menu-icon-open');
+  const mobileMenuIconClose = document.getElementById('mobile-menu-icon-close');
+  const mobileAccordions = document.querySelectorAll<HTMLDetailsElement>('#mobile-menu details');
+
+  function toggleMobileMenu(forceClose?: boolean) {
+    if (!mobileMenu) return;
+    const isCurrentlyOpen = !mobileMenu.classList.contains('hidden');
+    const shouldOpen = forceClose ? false : !isCurrentlyOpen;
+
+    if (shouldOpen) {
+      mobileMenu.classList.remove('hidden');
+      mobileMenuIconOpen?.classList.add('hidden');
+      mobileMenuIconClose?.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+      mobileMenuBtn?.setAttribute('aria-expanded', 'true');
+    } else {
+      mobileMenu.classList.add('hidden');
+      mobileMenuIconOpen?.classList.remove('hidden');
+      mobileMenuIconClose?.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+      mobileMenuBtn?.setAttribute('aria-expanded', 'false');
+    }
+  }
 
   mobileMenuBtn?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
+    toggleMobileMenu();
+  });
+
+  // Close mobile drawer when any link is clicked
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      toggleMobileMenu(true);
+    });
+  });
+
+  // Accordion exclusive collapse behavior: only one open at a time
+  mobileAccordions.forEach((acc) => {
+    acc.addEventListener('toggle', () => {
+      if (acc.open) {
+        mobileAccordions.forEach((other) => {
+          if (other !== acc) {
+            other.open = false;
+          }
+        });
+      }
+    });
   });
 
   // Search trigger focus

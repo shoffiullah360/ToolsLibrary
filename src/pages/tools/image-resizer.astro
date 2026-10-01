@@ -151,7 +151,7 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
   </section>
 
   <!-- Interactive Studio Container -->
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
+  <section id="tool-workspace" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24 scroll-mt-20">
     <ImageResizer />
   </section>
 
@@ -227,20 +227,20 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-4">
         {pagesData.map((page) => (
-          <div class="group relative p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/70 hover:border-blue-500/50 dark:hover:border-blue-500/50 hover:shadow-md transition-all flex flex-col justify-between">
+          <div class="group relative p-2.5 sm:p-4 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/70 hover:border-blue-500/50 dark:hover:border-blue-500/50 hover:shadow-md transition-all flex flex-col justify-between">
             <div>
-              <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50 mb-3">
+              <span class="inline-block text-[10px] sm:text-xs font-semibold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50 mb-1.5 sm:mb-3">
                 {page.preset.targetSize ? `${page.preset.targetSize} ${page.preset.targetUnit || 'KB'} Target` : (page.preset.width ? `${page.preset.width} × ${page.preset.height} ${page.preset.unit || 'px'}` : page.category.toUpperCase())}
               </span>
-              <h3 class="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 leading-snug mb-4">
+              <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 leading-snug mb-2 sm:mb-4">
                 {page.h1}
               </h3>
             </div>
             <a
               href={`/${page.slug}`}
-              class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 inline-flex items-center gap-1 mt-auto after:absolute after:inset-0"
+              class="text-[11px] sm:text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 inline-flex items-center gap-1 mt-auto after:absolute after:inset-0"
             >
               Resize now →
             </a>
@@ -271,123 +271,123 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
       <!-- Modern PDF Guru Style Comparison Card / Table -->
       <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs">
         
-        <!-- Table Header (Desktop) -->
+        <!-- Table Header (Desktop & Mobile) -->
         <div class="grid grid-cols-12 border-b border-slate-200 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-900/90 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300">
-          <div class="col-span-4 sm:col-span-4 p-4 sm:p-5 flex items-center">
+          <div class="col-span-12 sm:col-span-4 p-3 sm:p-5 flex items-center border-b sm:border-b-0 border-slate-200 dark:border-slate-800">
             <span>Feature / Capability</span>
           </div>
-          <div class="col-span-4 sm:col-span-4 p-4 sm:p-5 bg-blue-50/60 dark:bg-blue-950/30 border-x border-blue-100 dark:border-blue-900/40 text-blue-700 dark:text-blue-300 flex items-center justify-between">
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 bg-blue-50/60 dark:bg-blue-950/30 border-r sm:border-x border-blue-100 dark:border-blue-900/40 text-blue-700 dark:text-blue-300 flex items-center justify-between">
             <span class="font-bold flex items-center gap-1.5">
               FastToolVerse
               <span class="hidden sm:inline-block px-2 py-0.5 text-[11px] font-medium bg-blue-600 text-white rounded-full">Recommended</span>
             </span>
             <span class="text-xs text-blue-600 dark:text-blue-400 font-normal hidden md:inline">This Tool</span>
           </div>
-          <div class="col-span-4 sm:col-span-4 p-4 sm:p-5 text-slate-500 dark:text-slate-400 flex items-center">
-            <span>Other Online Resizers</span>
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 text-slate-500 dark:text-slate-400 flex items-center">
+            <span>Other Resizers</span>
           </div>
         </div>
 
         <!-- Row 1: Privacy -->
         <div class="grid grid-cols-12 border-b border-slate-100 dark:border-slate-800/80 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
-          <div class="col-span-12 sm:col-span-4 p-4 sm:p-5 flex flex-col justify-center">
-            <span class="font-semibold text-sm text-slate-900 dark:text-white">Privacy & Security</span>
-            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Where your images are processed</span>
+          <div class="col-span-12 sm:col-span-4 p-3 sm:p-5 flex flex-col justify-center bg-slate-50/60 dark:bg-slate-800/30 sm:bg-transparent">
+            <span class="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">Privacy & Security</span>
+            <span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">Where your images are processed</span>
           </div>
-          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-blue-50/30 dark:bg-blue-950/15 border-r sm:border-x border-blue-100 dark:border-blue-900/30 flex items-start gap-2.5">
-            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 bg-blue-50/30 dark:bg-blue-950/15 border-r sm:border-x border-blue-100 dark:border-blue-900/30 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             </div>
-            <div>
-              <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">100% In-Browser Privacy</p>
-              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">HTML5 Canvas engine. Zero server uploads, zero logs, images never leave your machine.</p>
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">100% In-Browser</p>
+              <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">HTML5 Canvas engine. Zero server uploads, zero logs, images never leave your machine.</p>
             </div>
           </div>
-          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 flex items-start gap-2.5">
-            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0 mt-0.5">
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/80 text-rose-600 dark:text-rose-400 border border-rose-300 dark:border-rose-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
             </div>
-            <div>
-              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Server-Side Uploads</p>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Photos uploaded to remote cloud queues with potential retention and privacy risks.</p>
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Server Uploads</p>
+              <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Photos uploaded to remote cloud queues with potential retention and privacy risks.</p>
             </div>
           </div>
         </div>
 
         <!-- Row 2: Batch Processing -->
         <div class="grid grid-cols-12 border-b border-slate-100 dark:border-slate-800/80 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
-          <div class="col-span-12 sm:col-span-4 p-4 sm:p-5 flex flex-col justify-center">
-            <span class="font-semibold text-sm text-slate-900 dark:text-white">Batch Processing</span>
-            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Simultaneous image conversions</span>
+          <div class="col-span-12 sm:col-span-4 p-3 sm:p-5 flex flex-col justify-center bg-slate-50/60 dark:bg-slate-800/30 sm:bg-transparent">
+            <span class="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">Batch Processing</span>
+            <span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">Simultaneous image conversions</span>
           </div>
-          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-blue-50/30 dark:bg-blue-950/15 border-r sm:border-x border-blue-100 dark:border-blue-900/30 flex items-start gap-2.5">
-            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 bg-blue-50/30 dark:bg-blue-950/15 border-r sm:border-x border-blue-100 dark:border-blue-900/30 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             </div>
-            <div>
-              <p class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">Up to 15 Images in Batch</p>
-              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Instant multi-threaded browser execution with individual or batch ZIP downloads.</p>
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">Up to 15 in Batch</p>
+              <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Instant multi-threaded browser execution with individual or batch ZIP downloads.</p>
             </div>
           </div>
-          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 flex items-start gap-2.5">
-            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0 mt-0.5">
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/80 text-rose-600 dark:text-rose-400 border border-rose-300 dark:border-rose-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
             </div>
-            <div>
-              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Limited to 1–3 Images</p>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Throttled queues or batch resizing restricted behind paid subscriptions.</p>
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Limited to 1–3</p>
+              <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Throttled queues or batch resizing restricted behind paid subscriptions.</p>
             </div>
           </div>
         </div>
 
         <!-- Row 3: Intrusive Ads -->
         <div class="grid grid-cols-12 border-b border-slate-100 dark:border-slate-800/80 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
-          <div class="col-span-12 sm:col-span-4 p-4 sm:p-5 flex flex-col justify-center">
-            <span class="font-semibold text-sm text-slate-900 dark:text-white">Ad & User Experience</span>
-            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Distraction-free interface vs clutter</span>
+          <div class="col-span-12 sm:col-span-4 p-3 sm:p-5 flex flex-col justify-center bg-slate-50/60 dark:bg-slate-800/30 sm:bg-transparent">
+            <span class="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">Ad & User Experience</span>
+            <span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">Distraction-free interface vs clutter</span>
           </div>
-          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-blue-50/30 dark:bg-blue-950/15 border-r sm:border-x border-blue-100 dark:border-blue-900/30 flex items-start gap-2.5">
-            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 bg-blue-50/30 dark:bg-blue-950/15 border-r sm:border-x border-blue-100 dark:border-blue-900/30 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             </div>
-            <div>
+            <div class="min-w-0">
               <p class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">Clean, Zero Popups</p>
-              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">No interstitial modals, zero banner takeovers, and no deceptive 'Download' traps.</p>
+              <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">No interstitial modals, zero banner takeovers, and no deceptive 'Download' traps.</p>
             </div>
           </div>
-          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 flex items-start gap-2.5">
-            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0 mt-0.5">
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/80 text-rose-600 dark:text-rose-400 border border-rose-300 dark:border-rose-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
             </div>
-            <div>
-              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Heavy Modal & Video Ads</p>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Cluttered UI, video auto-plays, countdown delays, and confusing third-party banners.</p>
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Heavy Modal Ads</p>
+              <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Cluttered UI, video auto-plays, countdown delays, and confusing third-party banners.</p>
             </div>
           </div>
         </div>
 
         <!-- Row 4: Export Formats -->
         <div class="grid grid-cols-12 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
-          <div class="col-span-12 sm:col-span-4 p-4 sm:p-5 flex flex-col justify-center">
-            <span class="font-semibold text-sm text-slate-900 dark:text-white">Export Range</span>
-            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Supported image & document outputs</span>
+          <div class="col-span-12 sm:col-span-4 p-3 sm:p-5 flex flex-col justify-center bg-slate-50/60 dark:bg-slate-800/30 sm:bg-transparent">
+            <span class="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">Export Range</span>
+            <span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">Supported image & document outputs</span>
           </div>
-          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-blue-50/30 dark:bg-blue-950/15 border-r sm:border-x border-blue-100 dark:border-blue-900/30 flex items-start gap-2.5">
-            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 bg-blue-50/30 dark:bg-blue-950/15 border-r sm:border-x border-blue-100 dark:border-blue-900/30 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             </div>
-            <div>
+            <div class="min-w-0">
               <p class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">JPG, PNG, WebP, AVIF, PDF, ICO</p>
-              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Full modern format range with precision DPI presets, target KB sizing, and alpha channels.</p>
+              <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Full modern format range with precision DPI presets, target KB sizing, and alpha channels.</p>
             </div>
           </div>
-          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 flex items-start gap-2.5">
-            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0 mt-0.5">
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/80 text-rose-600 dark:text-rose-400 border border-rose-300 dark:border-rose-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
             </div>
-            <div>
+            <div class="min-w-0">
               <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Basic JPG & PNG Only</p>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Modern WebP/AVIF or PDF conversions often require separate tools or paid upgrades.</p>
+              <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Modern WebP/AVIF or PDF conversions often require separate tools or paid upgrades.</p>
             </div>
           </div>
         </div>
@@ -677,6 +677,27 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
         </p>
       </div>
 
+    </div>
+  </section>
+
+  <!-- Bottom "Jump to Upload" CTA Banner -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <div class="rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white shadow-xl shadow-blue-500/10 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
+      <div class="space-y-1">
+        <h3 class="text-lg sm:text-xl font-bold tracking-tight text-white">
+          Ready to resize images with zero latency?
+        </h3>
+        <p class="text-xs sm:text-sm text-blue-100 max-w-md">
+          100% private, client-side HTML5 Canvas engine. No watermarks, no file limits, zero cloud uploads.
+        </p>
+      </div>
+      <a
+        href="#tool-workspace"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white text-slate-900 hover:bg-blue-50 font-semibold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all active:scale-95 shrink-0"
+      >
+        <span>Upload & Resize Now</span>
+        <span aria-hidden="true" class="text-base font-bold leading-none">↑</span>
+      </a>
     </div>
   </section>
 

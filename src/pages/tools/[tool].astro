@@ -273,13 +273,9 @@ const jsonLd = {
         <span class="text-slate-700 dark:text-slate-200 font-semibold truncate max-w-[200px] sm:max-w-none">{toolName}</span>
       </nav>
 
-      <!-- Status Badge -->
-      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-amber-500/10 dark:bg-amber-400/10 border border-amber-500/30 dark:border-amber-400/20 text-amber-700 dark:text-amber-300 text-xs sm:text-sm font-medium tracking-wide shadow-xs mb-6">
-        <span class="flex h-2 w-2 relative">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
-        </span>
-        <span>🚀 In Final QA &amp; Optimization • Launching Shortly</span>
+      <!-- Coming Very Soon Eyebrow -->
+      <div class="mb-3">
+        <span class="text-amber-400 font-semibold tracking-wider uppercase text-sm sm:text-base">Coming Very Soon</span>
       </div>
 
       <!-- Main Heading & Tool Icon -->
@@ -288,14 +284,30 @@ const jsonLd = {
           <ToolIcon name={icon} class="w-7 h-7 sm:w-8 sm:h-8" />
         </div>
         <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-          {toolName}
+          {toolName} is Launching Soon
         </h1>
       </div>
 
-      <!-- Subheading -->
-      <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed mb-10">
-        This utility is currently being optimized for high-speed client-side processing with zero server uploads.
+      <!-- Subtitle -->
+      <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed mb-8">
+        We are actively building this high-speed, 100% private browser tool. It will be available here very soon.
       </p>
+
+      <!-- Fast Action CTAs Directly Below Heading -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-14">
+        <a
+          href="/tools/image-resizer"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm sm:text-base shadow-sm hover:shadow transition-all duration-200"
+        >
+          <span>Use Free Image Resizer Now &rarr;</span>
+        </a>
+        <a
+          href="/"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 font-medium text-sm sm:text-base transition-all duration-200"
+        >
+          <span>Back to Home</span>
+        </a>
+      </div>
 
       <!-- Expected Core Capabilities (Dynamic Grid of 3 Cards) -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-left mb-12">
@@ -339,38 +351,11 @@ const jsonLd = {
         </div>
       </div>
 
-      <!-- Interactive Call-To-Action (Keep Visitors Engaged) -->
-      <div class="p-7 sm:p-9 rounded-3xl bg-gradient-to-b from-slate-50 to-white dark:from-slate-800/80 dark:to-slate-900/90 border border-slate-200 dark:border-slate-700/80 shadow-lg mb-10 text-center">
-        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2">
-          Need Instant Processing Right Now?
-        </h2>
-        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-xl mx-auto mb-6">
-          Our fully verified image resizer and text formatting engines are live and running with zero server latency.
-        </p>
-
-        <!-- Primary & Secondary Buttons -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-8">
-          <a
-            href="/tools/image-resizer"
-            class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm sm:text-base shadow-sm hover:shadow transition-all duration-200"
-          >
-            <ToolIcon name="maximize-2" class="w-4 h-4" />
-            <span>Launch Image Resizer</span>
-          </a>
-          <a
-            href="/#text-tools-section"
-            class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 font-medium text-sm sm:text-base transition-all duration-200"
-          >
-            <ToolIcon name="type" class="w-4 h-4 text-purple-500" />
-            <span>Explore Text &amp; Formatting Tools</span>
-          </a>
+      <!-- Quick Links to Popular Presets -->
+      <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-slate-50 to-white dark:from-slate-800/80 dark:to-slate-900/90 border border-slate-200 dark:border-slate-700/80 shadow-md mb-10 text-center">
+        <div class="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold mb-3">
+          Popular Pre-Configured Presets
         </div>
-
-        <!-- Quick Links to Popular Presets -->
-        <div class="pt-6 border-t border-slate-200/80 dark:border-slate-800">
-          <div class="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold mb-3">
-            Popular Pre-Configured Presets
-          </div>
           <div class="flex flex-wrap items-center justify-center gap-2">
             <a
               href="/resize-image-to-300x100"
@@ -416,7 +401,6 @@ const jsonLd = {
             </a>
           </div>
         </div>
-      </div>
 
       <!-- Live Active Text & Utility Tools Grid -->
       <div class="text-left">

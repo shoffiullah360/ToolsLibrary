@@ -2003,14 +2003,16 @@ const presets = [
   downloadBatchZipBtn?.addEventListener('click', async () => {
     if (queue.length === 0) return;
 
-    if (queue.length === 1 && queue[0] && queue[0].compressedBlob) {
+    if (queue.length === 1 && queue[0]) {
       const item = queue[0];
-      let ext = 'jpg';
-      if (item.outputMime === 'image/png') ext = 'png';
-      else if (item.outputMime === 'image/webp') ext = 'webp';
-      const baseName = item.name.substring(0, item.name.lastIndexOf('.')) || item.name;
-      downloadBlob(item.compressedBlob, `${baseName}-compressed.${ext}`);
-      return;
+      if (item.compressedBlob) {
+        let ext = 'jpg';
+        if (item.outputMime === 'image/png') ext = 'png';
+        else if (item.outputMime === 'image/webp') ext = 'webp';
+        const baseName = item.name.substring(0, item.name.lastIndexOf('.')) || item.name;
+        downloadBlob(item.compressedBlob, `${baseName}-compressed.${ext}`);
+        return;
+      }
     }
 
     try {

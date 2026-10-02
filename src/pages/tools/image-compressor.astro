@@ -365,29 +365,32 @@ const presets = [
               </div>
 
               <!-- Stage 1: Interactive Draggable Split-Screen Slider -->
-              <div id="split-slider-container" class="relative w-full aspect-[4/3] sm:aspect-[16/10] bg-slate-100 dark:bg-slate-950 rounded-xl overflow-hidden select-none border border-slate-200/80 dark:border-slate-800/80 flex items-center justify-center">
+              <div
+                id="split-slider-container"
+                class="relative w-full max-h-[360px] h-[340px] sm:h-[360px] flex items-center justify-center overflow-hidden rounded-xl bg-slate-900/60 select-none border border-slate-200/80 dark:border-slate-800/80 touch-none cursor-ew-resize"
+              >
                 <!-- Original Image (Base Layer) -->
                 <img
                   id="preview-original-img"
-                  class="absolute inset-0 w-full h-full object-contain pointer-events-none"
+                  class="absolute inset-0 w-full h-full object-contain pointer-events-none select-none"
                   alt="Original Image"
                 />
-                <span class="absolute top-3 left-3 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-slate-900/80 text-white rounded backdrop-blur-xs z-10">
+                <span class="absolute top-3 right-3 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-slate-900/80 text-white rounded backdrop-blur-xs z-10 pointer-events-none select-none shadow-xs">
                   Original (<span id="slider-orig-size">240 KB</span>)
                 </span>
 
                 <!-- Compressed Image (Overlay Layer clipped by divider) -->
                 <div
                   id="split-compressed-wrapper"
-                  class="absolute inset-0 overflow-hidden pointer-events-none"
-                  style="width: 50%;"
+                  class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none select-none"
+                  style="clip-path: inset(0 50% 0 0); -webkit-clip-path: inset(0 50% 0 0);"
                 >
                   <img
                     id="preview-compressed-img"
-                    class="absolute inset-0 w-full h-full object-contain max-w-none"
+                    class="absolute inset-0 w-full h-full object-contain pointer-events-none select-none"
                     alt="Compressed Image"
                   />
-                  <span class="absolute top-3 left-3 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-blue-600/90 text-white rounded backdrop-blur-xs z-10">
+                  <span class="absolute top-3 left-3 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-blue-600/90 text-white rounded backdrop-blur-xs z-10 pointer-events-none select-none shadow-xs">
                     Compressed (<span id="slider-comp-size">76 KB</span>)
                   </span>
                 </div>
@@ -395,10 +398,10 @@ const presets = [
                 <!-- Draggable Divider Line & Handle -->
                 <div
                   id="split-handle"
-                  class="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-20 shadow-[0_0_10px_rgba(0,0,0,0.5)] touch-none flex items-center justify-center"
+                  class="absolute top-0 bottom-0 w-0.5 bg-white cursor-ew-resize z-20 shadow-[0_0_10px_rgba(0,0,0,0.5)] touch-none flex items-center justify-center pointer-events-none"
                   style="left: 50%; transform: translateX(-50%);"
                 >
-                  <div class="w-7 h-7 rounded-full bg-white dark:bg-slate-900 text-slate-800 dark:text-white border-2 border-blue-500 shadow-md flex items-center justify-center text-[10px] font-bold select-none">
+                  <div class="w-7 h-7 rounded-full bg-white dark:bg-slate-900 text-slate-800 dark:text-white border-2 border-blue-500 shadow-md flex items-center justify-center text-[10px] font-bold select-none pointer-events-auto cursor-ew-resize">
                     ◂▸
                   </div>
                 </div>
@@ -414,7 +417,7 @@ const presets = [
               </div>
 
               <!-- Stage 2: Side-by-Side Dual View (Hidden by default) -->
-              <div id="side-by-side-container" class="hidden grid grid-cols-2 gap-3 w-full aspect-[4/3] sm:aspect-[16/10]">
+              <div id="side-by-side-container" class="hidden grid grid-cols-2 gap-3 w-full max-h-[360px] h-[340px] sm:h-[360px] overflow-hidden rounded-xl">
                 <!-- Card 1: Original -->
                 <div class="relative rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950 overflow-hidden flex flex-col">
                   <div class="p-2 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between text-[11px] font-semibold text-slate-700 dark:text-slate-300">
@@ -710,9 +713,11 @@ const presets = [
                   </p>
                   <a
                     href="/tools/image-resizer"
-                    class="mt-3 inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs transition shadow-sm hover:shadow active:scale-95"
+                    id="cta-image-resizer-btn"
+                    class="group mt-3 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold text-xs shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 active:scale-95 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
                   >
-                    <span>Open in Image Resizer →</span>
+                    <span>Open in Image Resizer</span>
+                    <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-0.5 font-bold">→</span>
                   </a>
                 </div>
               </div>
@@ -1913,7 +1918,8 @@ const presets = [
     const clamped = Math.max(0, Math.min(100, percent));
     splitSliderPercent = clamped;
     if (splitCompressedWrapper) {
-      splitCompressedWrapper.style.width = `${clamped}%`;
+      splitCompressedWrapper.style.clipPath = `inset(0 ${100 - clamped}% 0 0)`;
+      splitCompressedWrapper.style.setProperty('-webkit-clip-path', `inset(0 ${100 - clamped}% 0 0)`);
     }
     if (splitHandle) {
       splitHandle.style.left = `${clamped}%`;
@@ -1923,41 +1929,61 @@ const presets = [
   function handleSliderMove(clientX: number) {
     if (!splitSliderContainer) return;
     const rect = splitSliderContainer.getBoundingClientRect();
+    if (rect.width === 0) return;
     const offsetX = clientX - rect.left;
     const percent = (offsetX / rect.width) * 100;
     updateSliderPosition(percent);
   }
 
-  splitSliderContainer?.addEventListener('mousedown', (e) => {
-    isSplitSliderDragging = true;
-    handleSliderMove(e.clientX);
-  });
-
-  window.addEventListener('mousemove', (e) => {
-    if (!isSplitSliderDragging) return;
-    handleSliderMove(e.clientX);
-  });
-
-  window.addEventListener('mouseup', () => {
-    isSplitSliderDragging = false;
-  });
-
-  // Touch Support for mobile
-  splitSliderContainer?.addEventListener('touchstart', (e) => {
-    if (e.touches[0]) {
+  if (splitSliderContainer) {
+    // Pointer Events: hardware accelerated unified tracking for mouse, touch, and pen
+    splitSliderContainer.addEventListener('pointerdown', (e) => {
       isSplitSliderDragging = true;
+      try {
+        splitSliderContainer.setPointerCapture(e.pointerId);
+      } catch (_) {}
+      handleSliderMove(e.clientX);
+    });
+
+    splitSliderContainer.addEventListener('pointermove', (e) => {
+      if (!isSplitSliderDragging) return;
+      handleSliderMove(e.clientX);
+    });
+
+    const stopDragging = (e: PointerEvent) => {
+      if (isSplitSliderDragging) {
+        isSplitSliderDragging = false;
+        try {
+          splitSliderContainer.releasePointerCapture(e.pointerId);
+        } catch (_) {}
+      }
+    };
+
+    splitSliderContainer.addEventListener('pointerup', stopDragging);
+    splitSliderContainer.addEventListener('pointercancel', stopDragging);
+
+    // Touch event fallbacks for maximum mobile device & browser compatibility
+    splitSliderContainer.addEventListener('touchstart', (e) => {
+      if (e.touches && e.touches[0]) {
+        isSplitSliderDragging = true;
+        handleSliderMove(e.touches[0].clientX);
+      }
+    }, { passive: false });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isSplitSliderDragging || !e.touches || !e.touches[0]) return;
+      if (e.cancelable) e.preventDefault();
       handleSliderMove(e.touches[0].clientX);
-    }
-  }, { passive: true });
+    }, { passive: false });
 
-  window.addEventListener('touchmove', (e) => {
-    if (!isSplitSliderDragging || !e.touches[0]) return;
-    handleSliderMove(e.touches[0].clientX);
-  }, { passive: true });
+    window.addEventListener('touchend', () => {
+      isSplitSliderDragging = false;
+    });
 
-  window.addEventListener('touchend', () => {
-    isSplitSliderDragging = false;
-  });
+    window.addEventListener('touchcancel', () => {
+      isSplitSliderDragging = false;
+    });
+  }
 
   // Toggle View Modes (Split vs Side-by-Side)
   viewModeSplit?.addEventListener('click', () => {

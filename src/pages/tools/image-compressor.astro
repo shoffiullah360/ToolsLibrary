@@ -1,0 +1,2071 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ToolIcon from '../../components/ToolIcon.astro';
+
+// FAQ Content for Schema and UI
+const faqs = [
+  {
+    question: "How to compress an image to an exact file size like 20 KB or 50 KB?",
+    answer: "Switch to 'Target Exact File Size' mode, enter your required size (e.g., 20 KB or 50 KB), or click one of the quick presets. FastToolVerse initiates a client-side binary search loop that dynamically calculates the optimal quantization matrix in up to 6 iterative passes, guaranteeing your file stays strictly under the target threshold while retaining peak visual clarity."
+  },
+  {
+    question: "What is the difference between lossy and lossless image compression?",
+    answer: "Lossy compression (used in JPG and WebP) permanently discards high-frequency pixel data and color nuances imperceptible to human eyes using Discrete Cosine Transform (DCT) and chroma subsampling, achieving 60% to 90% size reductions. Lossless compression (used in PNG and lossless WebP) reorganizes data patterns via DEFLATE or predictive filtering without discarding any pixel data, maintaining 100% mathematical fidelity."
+  },
+  {
+    question: "How does 100% client-side compression work in the browser?",
+    answer: "FastToolVerse utilizes modern HTML5 Canvas, OffscreenCanvas, and WebAssembly APIs built into your browser. When you drop an image, your computer's local CPU/GPU decodes, resamples, quantizes, and re-encodes the image in your browser's private memory heap. Zero bytes of image content or file paths are ever uploaded to cloud servers."
+  },
+  {
+    question: "Does this tool upload or store my confidential photos on any server?",
+    answer: "No. FastToolVerse operates under a strict zero-upload architecture. Your sensitive government identity cards, passport photos, academic transcripts, signatures, and personal photos never leave your device. The tool works seamlessly even if you disconnect your device from the internet."
+  },
+  {
+    question: "How do I compress PNG images without losing transparent backgrounds?",
+    answer: "PNG supports 8-bit alpha channels for transparency. When compressing PNGs, FastToolVerse preserves the transparent background channels. You can export in optimized PNG mode or convert to WebP, which supports transparent alpha channels while delivering 30% to 50% smaller file sizes than standard PNG."
+  },
+  {
+    question: "Why do government job and passport portals require strict 20KB or 50KB limits?",
+    answer: "Official government portals, exam boards, and visa registration systems handle millions of applicant submissions. Rigid file limits (typically 20KB to 50KB) conserve server storage, minimize database bandwidth, and ensure instantaneous loading across rural connections. FastToolVerse is calibrated specifically to satisfy these strict administrative limits."
+  },
+  {
+    question: "How does the Target KB binary search convergence loop work?",
+    answer: "Rather than guessing quality sliders, our binary search algorithm sets quality boundaries between 5% and 98%. In each iteration, it encodes the canvas to a candidate blob and evaluates byte size against your target. If the file is too large, it halves the search interval downwards; if smaller, it tests higher quality. If resolution is too large for the requested KB, it intelligently applies proportional downscaling to ensure compliance."
+  },
+  {
+    question: "Does compressing images strip EXIF metadata (GPS, camera model)?",
+    answer: "Yes. By default, stripping EXIF metadata is enabled. Re-encoding through the HTML5 Canvas sandbox automatically removes embedded camera metadata, GPS coordinates, date stamps, and color management profiles, preserving your personal privacy and saving an additional 5 KB to 30 KB of overhead."
+  },
+  {
+    question: "Can I compress multiple images simultaneously and download a ZIP file?",
+    answer: "Yes. You can upload up to 15 images concurrently. FastToolVerse compresses each photo in parallel queues and provides instant single-file downloads or a 1-click 'Download All as ZIP' archive generated directly in your browser using client-side JSZip."
+  },
+  {
+    question: "Which image format offers the best compression: JPG, PNG, or WebP?",
+    answer: "WebP is the modern champion, offering 25% to 35% smaller file sizes than JPG at equivalent perceptual quality, alongside full transparency support. JPG is best for legacy system compatibility (government forms), while PNG is recommended for screenshots, line art, and graphics requiring lossless pixel perfection."
+  }
+];
+
+// Schema.org SoftwareApplication
+const jsonLdSoftwareApp = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Free Online Image Compressor & Exact KB Reducer",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "All (Web Browser)",
+  "browserRequirements": "Requires JavaScript. Requires HTML5 Canvas support.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "100% Client-Side Sandbox Privacy",
+    "Target Exact File Size in KB (20KB, 50KB, 100KB, 200KB)",
+    "Automated Binary Search Compression Loop",
+    "Visual Quality Slider with Live Before/After Split Comparison",
+    "Batch Compression up to 15 Files",
+    "Export to JPG, PNG, and WebP",
+    "Automated EXIF Metadata Stripping",
+    "1-Click Batch ZIP Download"
+  ]
+};
+
+// Schema.org FAQPage
+const jsonLdFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((f) => ({
+    "@type": "Question",
+    "name": f.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.answer
+    }
+  }))
+};
+
+const canonicalUrl = "https://fasttoolverse.com/tools/image-compressor";
+const pageTitle = "Free Online Image Compressor & Exact KB Reducer | FastToolVerse";
+const pageDescription = "Compress JPG, PNG, and WebP images by percentage or target exact file sizes (20 KB, 50 KB, 100 KB) with 100% in-browser privacy and zero server uploads.";
+const pageKeywords = "image compressor, reduce image size in kb, compress image to 20kb, compress image to 50kb, compress image to 100kb, batch image compressor, client-side image compressor, online photo compressor, lossy lossless compressor, webp compressor, image kb reducer";
+const ogImage = "https://fasttoolverse.com/og-image.png";
+
+const presets = [
+  {
+    title: "Compress Image to 20 KB",
+    badge: "Govt / Signatures",
+    description: "Strict threshold for civil service portals, signature uploads, and state exam forms.",
+    targetKb: 20,
+    mode: "target-kb",
+    color: "blue"
+  },
+  {
+    title: "Compress Image to 50 KB",
+    badge: "Admit Cards / Forms",
+    description: "Ideal balance of facial clarity and compact weight for university and visa submissions.",
+    targetKb: 50,
+    mode: "target-kb",
+    color: "purple"
+  },
+  {
+    title: "Compress Image to 100 KB",
+    badge: "E-Commerce / Web",
+    description: "Optimal size for high-speed online catalogs, Shopify products, and blog heroes.",
+    targetKb: 100,
+    mode: "target-kb",
+    color: "emerald"
+  },
+  {
+    title: "Compress Image to 200 KB",
+    badge: "Email Attachments",
+    description: "Keep email attachments lightweight while retaining crisp desktop reproduction.",
+    targetKb: 200,
+    mode: "target-kb",
+    color: "amber"
+  },
+  {
+    title: "Compress PNG Losslessly",
+    badge: "Alpha Transparency",
+    description: "Optimized PNG encoding preserving transparent backgrounds, sharp lines, and vector logos.",
+    format: "image/png",
+    quality: 100,
+    mode: "quality",
+    color: "cyan"
+  },
+  {
+    title: "Batch WebP Converter & Compressor",
+    badge: "Next-Gen Format",
+    description: "Convert heavy JPGs or PNGs into lightweight modern WebP files with up to 80% savings.",
+    format: "image/webp",
+    quality: 75,
+    mode: "quality",
+    color: "rose"
+  }
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalUrl={canonicalUrl}
+  image={ogImage}
+>
+  <!-- Injected Head Elements: Twitter name tags & JSON-LD Schemas -->
+  <Fragment slot="head">
+    <meta name="keywords" content={pageKeywords} />
+
+    <!-- Open Graph tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter Card Name Standards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Structured Data Schemas -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdSoftwareApp)} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdFaq)} />
+  </Fragment>
+
+  <!-- Hero Header Section -->
+  <section class="relative pt-12 pb-6 sm:pt-16 sm:pb-8 overflow-hidden">
+    <div class="hero-mesh-bg" aria-hidden="true"></div>
+
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <!-- Privacy Badge -->
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 mb-3 shadow-2xs">
+        <ToolIcon name="shield-check" class="w-3.5 h-3.5" />
+        <span>100% In-Browser Privacy • Zero Server Uploads</span>
+      </div>
+
+      <!-- Hero Title -->
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
+        Free Online Image Compressor & Exact KB Reducer
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="mt-3 sm:mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        Compress JPG, PNG, and WebP images by percentage or target exact file sizes (20 KB, 50 KB, 100 KB) with 100% in-browser privacy and zero server uploads.
+      </p>
+
+      <!-- Value Propositions Pills -->
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-2xs">
+          <ToolIcon name="shield-check" class="w-4 h-4 text-emerald-500" />
+          <span>100% Client-Side Sandbox</span>
+        </div>
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-2xs">
+          <ToolIcon name="zap" class="w-4 h-4 text-blue-500" />
+          <span>Lossy & Lossless Quantization</span>
+        </div>
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-2xs">
+          <ToolIcon name="scale" class="w-4 h-4 text-purple-500" />
+          <span>Batch Processing up to 15 Files</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Studio Container -->
+  <section id="tool-workspace" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24 scroll-mt-20">
+    <div id="image-compressor-root" class="w-full">
+
+      <!-- INITIAL STATE: Drag & Drop Zone -->
+      <div id="dropzone-view" class="transition-all duration-300">
+        <div
+          id="dropzone"
+          class="relative group rounded-3xl border-2 border-dashed border-slate-300 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-400 bg-white/70 dark:bg-slate-900/50 backdrop-blur-sm px-6 py-10 sm:px-10 sm:py-14 text-center cursor-pointer transition-all duration-200 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-0.5"
+        >
+          <input
+            type="file"
+            id="imageInput"
+            class="hidden"
+            accept="image/jpeg,image/png,image/webp,image/avif"
+            multiple
+          />
+
+          <div class="max-w-lg mx-auto flex flex-col items-center">
+            <!-- Batch Queue Pill -->
+            <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50 mb-3 shadow-2xs">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m-15 0a2.246 2.246 0 00-.75.128m16.5 0c-.235-.083-.487-.128-.75-.128m-15 0A2.25 2.25 0 003 12v6.75A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V12a2.25 2.25 0 00-1.5-2.122" />
+              </svg>
+              <span>Batch Queue: Up to 15 Images</span>
+            </div>
+
+            <!-- Minimalist Icon -->
+            <div class="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200 shadow-sm border border-blue-100 dark:border-blue-900/50">
+              <ToolIcon name="minimize-2" class="w-7 h-7" />
+            </div>
+
+            <!-- Headline & CTA -->
+            <h3 class="text-xl sm:text-2xl font-semibold text-slate-900 dark:text-white tracking-tight">
+              <span class="sm:hidden">Tap to select photos or drop here</span>
+              <span class="hidden sm:inline">Drop your images here (up to 15)</span>
+            </h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-sm">
+              Supports JPG, PNG, WebP, and AVIF. Paste from clipboard (<kbd class="px-1.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">Ctrl+V</kbd>).
+            </p>
+
+            <!-- Primary Action Button -->
+            <div class="mt-5 flex items-center justify-center">
+              <button
+                type="button"
+                id="selectBtn"
+                class="px-7 py-3 rounded-full bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-semibold text-sm transition-all shadow-md hover:shadow-lg active:scale-95 cursor-pointer"
+              >
+                Select Images (1–15)
+              </button>
+            </div>
+
+            <!-- Privacy Guarantee Badge -->
+            <div class="mt-6 pt-4 border-t border-slate-200/70 dark:border-slate-800/80 w-full flex items-center justify-center">
+              <div class="inline-flex items-center justify-center gap-1.5 font-medium text-emerald-600 dark:text-emerald-400 text-xs">
+                <ToolIcon name="shield-check" class="w-4 h-4 shrink-0" />
+                <span>100% Client-Side Sandbox • Zero Server Network Calls</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACTIVE STATE: Compression Workspace -->
+      <div id="editor-view" class="hidden space-y-6">
+
+        <!-- Top Queue Tray (Up to 15 items) -->
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm p-4 shadow-xs">
+          <div class="flex items-center justify-between mb-3 px-1">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                Image Queue (<span id="queue-counter" class="font-mono font-bold text-blue-600 dark:text-blue-400">1/15</span>)
+              </span>
+              <span class="hidden sm:inline-block text-[11px] text-slate-400 font-normal">
+                • Select an image to preview and adjust
+              </span>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <button
+                type="button"
+                id="add-more-btn"
+                class="inline-flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition cursor-pointer"
+              >
+                <span>+ Add More</span>
+              </button>
+              <button
+                type="button"
+                id="clear-all-btn"
+                class="text-xs text-rose-500 hover:text-rose-600 dark:hover:text-rose-400 font-medium transition cursor-pointer px-2 py-1"
+              >
+                Clear All
+              </button>
+            </div>
+          </div>
+
+          <!-- Horizontal Scrollable Thumbnail Cards -->
+          <div id="queue-strip" class="flex items-center gap-3 overflow-x-auto pb-2 pt-1 px-1 scroll-smooth">
+            <!-- Dynamic thumbnails injected by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Main Studio Grid: Split Screen Comparison (Left) & Controls (Right) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+          <!-- Left Column: Interactive Comparison Viewer (7 cols) -->
+          <div class="lg:col-span-7 flex flex-col gap-4">
+            
+            <!-- Comparison Card -->
+            <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 sm:p-5 shadow-xs flex flex-col h-full">
+              
+              <!-- Viewer Header & Reduction Banner -->
+              <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-100 dark:border-slate-800">
+                <div class="min-w-0">
+                  <h4 id="active-filename" class="text-sm font-semibold text-slate-900 dark:text-white truncate max-w-xs sm:max-w-sm">
+                    photo.jpg
+                  </h4>
+                  <p id="active-specs" class="text-xs text-slate-500 dark:text-slate-400 font-mono mt-0.5">
+                    Original: 1920 × 1080 px • 240 KB
+                  </p>
+                </div>
+
+                <!-- Reduction Pill Badge -->
+                <div id="reduction-badge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/50 shadow-2xs">
+                  <span id="reduction-text">Saved 68% • 240 KB → 76 KB</span>
+                </div>
+              </div>
+
+              <!-- Comparison Mode Toggle Buttons -->
+              <div class="flex items-center justify-between py-2.5">
+                <span class="text-xs font-medium text-slate-500 dark:text-slate-400">
+                  Comparison Mode:
+                </span>
+                <div class="inline-flex p-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium">
+                  <button
+                    type="button"
+                    id="view-mode-split"
+                    class="px-2.5 py-1 rounded-md bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-2xs font-semibold cursor-pointer transition"
+                  >
+                    Split Slider
+                  </button>
+                  <button
+                    type="button"
+                    id="view-mode-side"
+                    class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer transition"
+                  >
+                    Side-by-Side
+                  </button>
+                </div>
+              </div>
+
+              <!-- Stage 1: Interactive Draggable Split-Screen Slider -->
+              <div id="split-slider-container" class="relative w-full aspect-[4/3] sm:aspect-[16/10] bg-slate-100 dark:bg-slate-950 rounded-xl overflow-hidden select-none border border-slate-200/80 dark:border-slate-800/80 flex items-center justify-center">
+                <!-- Original Image (Base Layer) -->
+                <img
+                  id="preview-original-img"
+                  class="absolute inset-0 w-full h-full object-contain pointer-events-none"
+                  alt="Original Image"
+                />
+                <span class="absolute top-3 left-3 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-slate-900/80 text-white rounded backdrop-blur-xs z-10">
+                  Original (<span id="slider-orig-size">240 KB</span>)
+                </span>
+
+                <!-- Compressed Image (Overlay Layer clipped by divider) -->
+                <div
+                  id="split-compressed-wrapper"
+                  class="absolute inset-0 overflow-hidden pointer-events-none"
+                  style="width: 50%;"
+                >
+                  <img
+                    id="preview-compressed-img"
+                    class="absolute inset-0 w-full h-full object-contain max-w-none"
+                    alt="Compressed Image"
+                  />
+                  <span class="absolute top-3 left-3 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-blue-600/90 text-white rounded backdrop-blur-xs z-10">
+                    Compressed (<span id="slider-comp-size">76 KB</span>)
+                  </span>
+                </div>
+
+                <!-- Draggable Divider Line & Handle -->
+                <div
+                  id="split-handle"
+                  class="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-20 shadow-[0_0_10px_rgba(0,0,0,0.5)] touch-none flex items-center justify-center"
+                  style="left: 50%; transform: translateX(-50%);"
+                >
+                  <div class="w-7 h-7 rounded-full bg-white dark:bg-slate-900 text-slate-800 dark:text-white border-2 border-blue-500 shadow-md flex items-center justify-center text-[10px] font-bold select-none">
+                    ◂▸
+                  </div>
+                </div>
+
+                <!-- Processing Overlay Spinner -->
+                <div
+                  id="compression-spinner"
+                  class="hidden absolute inset-0 bg-slate-900/50 backdrop-blur-2xs z-30 flex flex-col items-center justify-center text-white text-xs gap-2"
+                >
+                  <div class="w-8 h-8 border-3 border-white/20 border-t-blue-500 rounded-full animate-spin"></div>
+                  <span class="font-medium font-mono" id="spinner-status">Running binary quantization...</span>
+                </div>
+              </div>
+
+              <!-- Stage 2: Side-by-Side Dual View (Hidden by default) -->
+              <div id="side-by-side-container" class="hidden grid grid-cols-2 gap-3 w-full aspect-[4/3] sm:aspect-[16/10]">
+                <!-- Card 1: Original -->
+                <div class="relative rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950 overflow-hidden flex flex-col">
+                  <div class="p-2 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between text-[11px] font-semibold text-slate-700 dark:text-slate-300">
+                    <span>Original</span>
+                    <span id="side-orig-size" class="font-mono text-slate-500">240 KB</span>
+                  </div>
+                  <div class="relative flex-1 p-2 flex items-center justify-center">
+                    <img id="side-orig-img" class="max-w-full max-h-full object-contain" alt="Original" />
+                  </div>
+                </div>
+
+                <!-- Card 2: Compressed -->
+                <div class="relative rounded-xl border border-blue-200 dark:border-blue-900/60 bg-blue-50/20 dark:bg-blue-950/20 overflow-hidden flex flex-col">
+                  <div class="p-2 border-b border-blue-100 dark:border-blue-900/50 flex items-center justify-between text-[11px] font-semibold text-blue-700 dark:text-blue-300">
+                    <span>Compressed</span>
+                    <span id="side-comp-size" class="font-mono font-bold text-emerald-600 dark:text-emerald-400">76 KB</span>
+                  </div>
+                  <div class="relative flex-1 p-2 flex items-center justify-center">
+                    <img id="side-comp-img" class="max-w-full max-h-full object-contain" alt="Compressed" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slider Helper Instructions -->
+              <div class="mt-3 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+                <span class="flex items-center gap-1">
+                  <ToolIcon name="info" class="w-3.5 h-3.5 text-blue-500 shrink-0" />
+                  Drag the center divider to inspect fine photographic details and edge sharpness.
+                </span>
+                <span id="compression-time" class="font-mono text-[10px] text-slate-400">0.08s</span>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Right Column: Compression Controls Deck (5 cols) -->
+          <div class="lg:col-span-5 flex flex-col gap-4">
+
+            <!-- Control Box -->
+            <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-xs space-y-5">
+              
+              <!-- Mode Tabs: Mode A (Target KB) vs Mode B (Visual Quality) -->
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
+                  Compression Mode
+                </label>
+                <div class="grid grid-cols-2 p-1 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 gap-1">
+                  <button
+                    type="button"
+                    id="tab-mode-target-kb"
+                    class="py-2 px-3 rounded-lg text-xs font-semibold bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-2xs transition cursor-pointer flex items-center justify-center gap-1.5"
+                  >
+                    <ToolIcon name="binary" class="w-3.5 h-3.5" />
+                    <span>Target Exact KB</span>
+                  </button>
+                  <button
+                    type="button"
+                    id="tab-mode-quality"
+                    class="py-2 px-3 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer flex items-center justify-center gap-1.5"
+                  >
+                    <ToolIcon name="scale" class="w-3.5 h-3.5" />
+                    <span>Quality Slider</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- PANEL A: Target Exact File Size (KB) -->
+              <div id="panel-target-kb" class="space-y-4">
+                <div>
+                  <div class="flex items-center justify-between mb-1.5">
+                    <label for="target-kb-input" class="text-xs font-semibold text-slate-700 dark:text-slate-300">
+                      Target Max File Size:
+                    </label>
+                    <span class="text-[11px] font-mono text-blue-600 dark:text-blue-400">Strict Cap &le;</span>
+                  </div>
+
+                  <div class="relative rounded-xl border border-slate-300 dark:border-slate-700 focus-within:border-blue-500 dark:focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500/20 bg-white dark:bg-slate-950 transition overflow-hidden">
+                    <input
+                      type="number"
+                      id="target-kb-input"
+                      min="5"
+                      max="10000"
+                      step="5"
+                      value="50"
+                      class="w-full py-2.5 pl-4 pr-14 text-sm font-semibold font-mono text-slate-900 dark:text-white bg-transparent border-none focus:outline-hidden"
+                      placeholder="e.g. 50"
+                    />
+                    <div class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-xs font-bold text-slate-400">
+                      KB
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Presets Pills -->
+                <div>
+                  <span class="block text-[11px] font-medium text-slate-500 dark:text-slate-400 mb-1.5">
+                    Quick Standard Presets:
+                  </span>
+                  <div class="flex flex-wrap gap-1.5">
+                    <button
+                      type="button"
+                      class="preset-pill px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-600 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition cursor-pointer"
+                      data-kb="20"
+                    >
+                      20 KB
+                    </button>
+                    <button
+                      type="button"
+                      class="preset-pill px-2.5 py-1 rounded-lg text-xs font-semibold bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 transition cursor-pointer"
+                      data-kb="50"
+                    >
+                      50 KB
+                    </button>
+                    <button
+                      type="button"
+                      class="preset-pill px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-600 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition cursor-pointer"
+                      data-kb="100"
+                    >
+                      100 KB
+                    </button>
+                    <button
+                      type="button"
+                      class="preset-pill px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-600 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition cursor-pointer"
+                      data-kb="200"
+                    >
+                      200 KB
+                    </button>
+                    <button
+                      type="button"
+                      class="preset-pill px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-600 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition cursor-pointer"
+                      data-kb="500"
+                    >
+                      500 KB
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Downscale Fallback Option -->
+                <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800">
+                  <label class="flex items-start gap-2.5 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      id="opt-allow-downscale"
+                      checked
+                      class="w-4 h-4 rounded text-blue-600 border-slate-300 dark:border-slate-700 focus:ring-blue-500 mt-0.5"
+                    />
+                    <div class="text-xs">
+                      <span class="font-semibold text-slate-800 dark:text-slate-200">Adaptive Dimension Scaling</span>
+                      <p class="text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed text-[11px]">
+                        If minimum quality alone cannot fit under strict limits (e.g. 20 KB for a 4K image), proportionally downscale pixel dimensions to guarantee compliance.
+                      </p>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- PANEL B: Visual Quality Slider (Hidden by default) -->
+              <div id="panel-quality" class="hidden space-y-4">
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <label for="quality-range" class="text-xs font-semibold text-slate-700 dark:text-slate-300">
+                      Compression Quality:
+                    </label>
+                    <span id="quality-val-badge" class="px-2 py-0.5 rounded text-xs font-bold font-mono bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50">
+                      75% - High Quality
+                    </span>
+                  </div>
+
+                  <input
+                    type="range"
+                    id="quality-range"
+                    min="1"
+                    max="100"
+                    value="75"
+                    step="1"
+                    class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                  />
+                  <div class="flex justify-between text-[10px] font-mono text-slate-400 mt-1">
+                    <span>1% (Smallest Size)</span>
+                    <span>50%</span>
+                    <span>100% (Best Quality)</span>
+                  </div>
+                </div>
+
+                <!-- Quality Shortcuts -->
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <button
+                    type="button"
+                    class="quality-preset-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition cursor-pointer"
+                    data-q="35"
+                  >
+                    35% (Aggressive)
+                  </button>
+                  <button
+                    type="button"
+                    class="quality-preset-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition cursor-pointer"
+                    data-q="60"
+                  >
+                    60% (Balanced)
+                  </button>
+                  <button
+                    type="button"
+                    class="quality-preset-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 transition cursor-pointer"
+                    data-q="75"
+                  >
+                    75% (High)
+                  </button>
+                  <button
+                    type="button"
+                    class="quality-preset-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition cursor-pointer"
+                    data-q="92"
+                  >
+                    92% (Maximum)
+                  </button>
+                </div>
+              </div>
+
+              <!-- Output Format Selector -->
+              <div class="pt-2 border-t border-slate-100 dark:border-slate-800">
+                <label for="format-select" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                  Output Format:
+                </label>
+                <div class="relative">
+                  <select
+                    id="format-select"
+                    class="w-full py-2 px-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 text-xs font-medium text-slate-900 dark:text-white focus:outline-hidden focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 cursor-pointer"
+                  >
+                    <option value="auto">Auto (Keep Original Format)</option>
+                    <option value="image/jpeg">JPG / JPEG (Universal Standard)</option>
+                    <option value="image/webp">WebP (Next-Gen High Compression)</option>
+                    <option value="image/png">PNG (Lossless & Alpha Transparency)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- EXIF Metadata Toggle -->
+              <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800">
+                <label class="flex items-start justify-between gap-2.5 cursor-pointer">
+                  <div class="text-xs">
+                    <span class="font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                      <ToolIcon name="shield-check" class="w-3.5 h-3.5 text-emerald-500" />
+                      Strip EXIF Metadata
+                    </span>
+                    <p class="text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed text-[11px]">
+                      Removes GPS coordinates, device info, and timestamps for privacy & extra 5–25 KB savings.
+                    </p>
+                  </div>
+                  <input
+                    type="checkbox"
+                    id="opt-strip-exif"
+                    checked
+                    class="w-4 h-4 rounded text-blue-600 border-slate-300 dark:border-slate-700 focus:ring-blue-500 mt-0.5"
+                  />
+                </label>
+              </div>
+
+              <!-- Batch / Apply to All Actions -->
+              <div class="pt-2 flex flex-col gap-2.5">
+                <button
+                  type="button"
+                  id="download-single-btn"
+                  class="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all active:scale-98 cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <ToolIcon name="download" class="w-4 h-4" />
+                  <span>Download Image (<span id="btn-single-size">76 KB</span>)</span>
+                </button>
+
+                <button
+                  type="button"
+                  id="download-batch-zip-btn"
+                  class="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 text-white font-medium text-xs shadow-xs transition-all active:scale-98 cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <ToolIcon name="layers" class="w-4 h-4 text-blue-400" />
+                  <span>Download All as ZIP (<span id="btn-batch-count">1 file</span>)</span>
+                </button>
+              </div>
+
+            </div>
+
+            <!-- Post-Compression Cross-Tool Chaining Card (Requirement #4) -->
+            <div class="rounded-2xl p-5 border border-indigo-200/80 dark:border-indigo-900/60 bg-gradient-to-br from-indigo-50/70 via-white to-blue-50/70 dark:from-indigo-950/30 dark:via-slate-900 dark:to-blue-950/30 shadow-xs">
+              <div class="flex items-start gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+                  <ToolIcon name="maximize-2" class="w-5 h-5" />
+                </div>
+                <div class="flex-1 min-w-0">
+                  <h4 class="text-sm font-semibold text-slate-900 dark:text-white">
+                    Need to adjust pixel dimensions, crop avatars, or prepare passport photos?
+                  </h4>
+                  <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                    Scale by exact pixels (px), centimeters (cm), or inches (in) with verified passport presets.
+                  </p>
+                  <a
+                    href="/tools/image-resizer"
+                    class="mt-3 inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs transition shadow-sm hover:shadow active:scale-95"
+                  >
+                    <span>Open in Image Resizer →</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- High-Intent Target Presets Grid (Requirement #5) -->
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/40 py-16 sm:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 mb-3">
+          <ToolIcon name="zap" class="w-3.5 h-3.5" />
+          <span>Programmatic Presets</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Popular Target Compression Presets
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          Click any preset to preconfigure the tool workspace instantly for official forms, portals, and web standards.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        {presets.map((preset) => (
+          <div
+            class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-500/50 dark:hover:border-blue-500/50 hover:shadow-md transition-all flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="inline-block text-xs font-bold px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50">
+                  {preset.badge}
+                </span>
+                {preset.targetKb && (
+                  <span class="text-xs font-mono font-bold text-slate-500 dark:text-slate-400">
+                    &le; {preset.targetKb} KB
+                  </span>
+                )}
+              </div>
+
+              <h3 class="text-base font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                {preset.title}
+              </h3>
+              <p class="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                {preset.description}
+              </p>
+            </div>
+
+            <div class="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <button
+                type="button"
+                class="quick-preset-apply text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 inline-flex items-center gap-1 cursor-pointer"
+                data-mode={preset.mode}
+                data-kb={preset.targetKb || ''}
+                data-quality={preset.quality || ''}
+                data-format={preset.format || ''}
+              >
+                Apply Preset & Upload →
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3-Step Guide Section (Requirement #6) -->
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-16 sm:py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          How to Compress Images to Target KB in 3 Steps
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          Fast, effortless, and private. Hit exact kilobyte boundaries directly in your browser.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        
+        <!-- Step 1 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs relative">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-blue-100 dark:border-blue-900/50">
+            01
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Upload or Paste Photos
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Drag and drop up to 15 JPG, PNG, WebP, or AVIF files, browse your local drive, or paste from clipboard using <kbd class="px-1.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">Ctrl+V</kbd>.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs relative">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-blue-100 dark:border-blue-900/50">
+            02
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Set Target KB or Quality
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Type your strict kilobyte cap (e.g., 20 KB or 50 KB) for automated binary search convergence, or slide the quality percentage. Inspect the before/after split slider in real time.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs relative">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-blue-100 dark:border-blue-900/50">
+            03
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Instant Download or ZIP
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Download your compressed file with zero delay, or bundle all 15 images into an organized, client-side generated ZIP archive with no watermarks.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Feature Comparison Table: FastToolVerse vs TinyPNG & Cloud Compressors (Requirement #6) -->
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/60 py-16 sm:py-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 mb-3">
+          <ToolIcon name="zap" class="w-3.5 h-3.5" />
+          <span>Feature Comparison</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Why Choose FastToolVerse vs TinyPNG & Cloud Compressors
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          Compare privacy, precision KB targeting, batch capacity, and speed against cloud alternatives.
+        </p>
+      </div>
+
+      <!-- Comparison Matrix Table -->
+      <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs">
+        
+        <!-- Table Header -->
+        <div class="grid grid-cols-12 border-b border-slate-200 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-900/90 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300">
+          <div class="col-span-12 sm:col-span-4 p-3 sm:p-5 flex items-center border-b sm:border-b-0 border-slate-200 dark:border-slate-800">
+            <span>Capability / Benchmark</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 bg-blue-50/60 dark:bg-blue-950/30 border-r sm:border-x border-blue-100 dark:border-blue-900/40 text-blue-700 dark:text-blue-300 flex items-center justify-between">
+            <span class="font-bold flex items-center gap-1.5">
+              FastToolVerse
+              <span class="hidden sm:inline-block px-2 py-0.5 text-[11px] font-medium bg-blue-600 text-white rounded-full">Recommended</span>
+            </span>
+            <span class="text-xs text-blue-600 dark:text-blue-400 font-normal hidden md:inline">This Tool</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 text-slate-500 dark:text-slate-400 flex items-center">
+            <span>TinyPNG & Cloud Services</span>
+          </div>
+        </div>
+
+        <!-- Row 1: Privacy -->
+        <div class="grid grid-cols-12 border-b border-slate-100 dark:border-slate-800/80 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+          <div class="col-span-12 sm:col-span-4 p-3 sm:p-5 flex flex-col justify-center bg-slate-50/60 dark:bg-slate-800/30 sm:bg-transparent">
+            <span class="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">Security & Privacy</span>
+            <span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">Where media processing executes</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 bg-blue-50/30 dark:bg-blue-950/15 border-r sm:border-x border-blue-100 dark:border-blue-900/30 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            </div>
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">100% In-Browser Sandbox</p>
+              <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">HTML5 Canvas engine. Zero server uploads, zero remote retention, 100% confidential.</p>
+            </div>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/80 text-rose-600 dark:text-rose-400 border border-rose-300 dark:border-rose-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </div>
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Cloud Server Uploads</p>
+              <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Images streamed over public web to external server queues with unknown retention policies.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Target KB Reducer -->
+        <div class="grid grid-cols-12 border-b border-slate-100 dark:border-slate-800/80 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+          <div class="col-span-12 sm:col-span-4 p-3 sm:p-5 flex flex-col justify-center bg-slate-50/60 dark:bg-slate-800/30 sm:bg-transparent">
+            <span class="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">Target Exact KB Mode</span>
+            <span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">Strict compliance for government forms</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 bg-blue-50/30 dark:bg-blue-950/15 border-r sm:border-x border-blue-100 dark:border-blue-900/30 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            </div>
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">Binary Search Convergence</p>
+              <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Type 20 KB, 50 KB, or 100 KB. Algorithm converges quantization in milliseconds.</p>
+            </div>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/80 text-rose-600 dark:text-rose-400 border border-rose-300 dark:border-rose-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </div>
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Unavailable / Trial & Error</p>
+              <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Fixed automatic compression only. No way to mandate strict 20KB or 50KB limits.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3: Batch Limits & Paywalls -->
+        <div class="grid grid-cols-12 border-b border-slate-100 dark:border-slate-800/80 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+          <div class="col-span-12 sm:col-span-4 p-3 sm:p-5 flex flex-col justify-center bg-slate-50/60 dark:bg-slate-800/30 sm:bg-transparent">
+            <span class="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">Batch Queue Limits</span>
+            <span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">Free concurrent processing allowance</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 bg-blue-50/30 dark:bg-blue-950/15 border-r sm:border-x border-blue-100 dark:border-blue-900/30 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            </div>
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">Up to 15 Files Free</p>
+              <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Instant multi-threaded processing with individual or 1-click batch ZIP download.</p>
+            </div>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/80 text-rose-600 dark:text-rose-400 border border-rose-300 dark:border-rose-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </div>
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Strict Rate Limits & Subscriptions</p>
+              <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Limited to 5MB max, aggressive throttling, and recurring Pro paywalls.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 4: Format Range -->
+        <div class="grid grid-cols-12 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+          <div class="col-span-12 sm:col-span-4 p-3 sm:p-5 flex flex-col justify-center bg-slate-50/60 dark:bg-slate-800/30 sm:bg-transparent">
+            <span class="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">Format Range & EXIF Control</span>
+            <span class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">Modern web codecs & metadata management</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 bg-blue-50/30 dark:bg-blue-950/15 border-r sm:border-x border-blue-100 dark:border-blue-900/30 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            </div>
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">JPG, PNG, WebP, AVIF</p>
+              <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Next-generation WebP conversion and automated EXIF stripping for maximum reduction.</p>
+            </div>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/80 text-rose-600 dark:text-rose-400 border border-rose-300 dark:border-rose-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </div>
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">JPG & PNG Only</p>
+              <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">No WebP encoding support or separate paid tools required for format conversions.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Technical Specs & Deep Compression Guide (Requirement #6) -->
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-16 sm:py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/50 mb-3">
+          <ToolIcon name="shield-check" class="w-3.5 h-3.5" />
+          <span>Compression Engineering</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Deep Technical Guide: How Modern Compression Works
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          Understanding DCT quantization, chroma subsampling, and zero-upload client-side sandboxing.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        
+        <!-- Guide 1: DCT Quantization -->
+        <div class="p-6 sm:p-7 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-5 border border-blue-100 dark:border-blue-900/50">
+              <ToolIcon name="binary" class="w-5 h-5" />
+            </div>
+            <h3 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-white mb-2.5">
+              Lossy DCT Quantization
+            </h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+              Discrete Cosine Transform translates 8×8 pixel blocks from spatial coordinates into frequency components.
+            </p>
+            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+              <li class="flex items-start gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0"></span>
+                <span><strong>Frequency Separation</strong>: Isolates low-frequency gradients (which the human eye relies on) from subtle high-frequency variations.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0"></span>
+                <span><strong>Quantization Matrix</strong>: Divides high frequencies by higher quantization factors, rounding subtle noise to zero to yield massive entropy savings.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80">
+            <span class="text-[11px] font-mono text-slate-400 dark:text-slate-500 uppercase tracking-wider">Engine: JPEG &amp; WebP Quantization</span>
+          </div>
+        </div>
+
+        <!-- Guide 2: Chroma Subsampling -->
+        <div class="p-6 sm:p-7 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-5 border border-purple-100 dark:border-purple-900/50">
+              <ToolIcon name="scale" class="w-5 h-5" />
+            </div>
+            <h3 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-white mb-2.5">
+              Chroma Subsampling (4:2:0)
+            </h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+              Leverages human biology: human retinas possess far more luminance rods than color-sensitive cones.
+            </p>
+            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+              <li class="flex items-start gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-purple-500 mt-2 shrink-0"></span>
+                <span><strong>YCbCr Color Plane</strong>: Splits red, green, and blue into Luminance (Y) and Chrominance (Cb, Cr) color difference channels.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-purple-500 mt-2 shrink-0"></span>
+                <span><strong>4:2:0 Subsampling</strong>: Samples chrominance at half horizontal and vertical resolution, cutting color data by 75% with zero perceptible blur.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80">
+            <span class="text-[11px] font-mono text-slate-400 dark:text-slate-500 uppercase tracking-wider">Perceptual Subsampling: 4:2:0</span>
+          </div>
+        </div>
+
+        <!-- Guide 3: Client-Side Privacy -->
+        <div class="p-6 sm:p-7 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs flex flex-col justify-between">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-5 border border-emerald-100 dark:border-emerald-900/50">
+              <ToolIcon name="shield-check" class="w-5 h-5" />
+            </div>
+            <h3 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-white mb-2.5">
+              Zero-Network Client Sandbox
+            </h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+              Traditional online compressors upload your photos to remote servers. FastToolVerse executes 100% locally.
+            </p>
+            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+              <li class="flex items-start gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 shrink-0"></span>
+                <span><strong>Hardware Accelerated</strong>: Canvas rasterization compiles natively via GPU buffers, processing multi-megabyte images in under 100ms.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 shrink-0"></span>
+                <span><strong>Zero Network Exposure</strong>: No temporary cloud storage, zero tracking logs, and 100% offline capability.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80">
+            <span class="text-[11px] font-mono text-slate-400 dark:text-slate-500 uppercase tracking-wider">100% Private • Zero Cloud Latency</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Comprehensive SEO Keyword Guide Section -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-12 prose dark:prose-invert text-slate-300">
+    <div class="border-t border-slate-200 dark:border-slate-800/80 pt-12 space-y-12">
+      
+      <!-- H2 1: Reduce Image Size in KB -->
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Reduce Image Size in KB: Precision Target Compression Engine
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          Government examination boards, visa application portals, and university submission databases almost universally require digital portraits and signatures to adhere to rigid file weight caps—such as strictly requiring pictures under <strong>20 KB</strong>, <strong>50 KB</strong>, or <strong>100 KB</strong>. Manually tweaking visual quality sliders and repeatedly re-exporting files to check their file properties is tedious and inaccurate.
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          FastToolVerse solves this challenge through an automated <strong>binary search convergence engine</strong>. When you specify your target size in kilobytes, the algorithm measures the rendered byte array against your boundary and computes optimal quantization tables across up to 6 iterations in under 100 milliseconds. If the image resolution is too high to achieve the desired kilobyte threshold with quantization alone, our adaptive dimension scaler steps in proportionally to guarantee your file successfully passes portal validators.
+        </p>
+      </div>
+
+      <!-- H2 2: Compress JPG, PNG, and WebP Online -->
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Compress JPG, PNG, and WebP Without Quality Loss
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          Every raster format uses distinct mathematical algorithms to balance file weight and visual fidelity:
+        </p>
+        <ul class="space-y-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 list-disc pl-5">
+          <li><strong>JPEG / JPG:</strong> Highly efficient for complex photographs, human portraits, and real-world scenes. Uses lossy DCT and chroma subsampling to eliminate high-frequency data imperceptible to human retinas.</li>
+          <li><strong>PNG:</strong> Lossless format ideal for screenshots, UI buttons, digital signatures, and transparent graphics. FastToolVerse reorganizes PNG scanlines and strips unnecessary metadata while maintaining crisp vector-like edges and alpha channels.</li>
+          <li><strong>WebP:</strong> Google's modern format providing up to 35% smaller file sizes than JPG with identical perceptual fidelity. Supports both lossy compression and alpha transparency, making it the industry standard for fast web performance.</li>
+        </ul>
+      </div>
+
+      <!-- H2 3: 100% In-Browser Privacy -->
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Zero Server Uploads: A Private Client-Side Image Compressor
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          Most online image compressors transmit your private photos over the internet to remote cloud queues. When compressing confidential materials—such as national identity cards, passports, bank checks, employment contracts, and personal family photos—this cloud architecture introduces severe privacy and data leak risks.
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          FastToolVerse executes <strong>100% inside your web browser</strong> using HTML5 Canvas and local JavaScript. Your images never leave your local computer RAM. There are zero cloud databases, no telemetry caches, and no third-party inspection. You can even disconnect your device from Wi-Fi and continue compressing batches of photos offline.
+        </p>
+      </div>
+
+      <!-- H2 4: Interactive Split Comparison -->
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Real-Time Split-Screen Comparison Slider
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          Never guess how compression affects your photo's visual clarity. FastToolVerse includes an interactive <strong>split-screen comparison slider</strong> that lets you drag across your original and compressed image side-by-side. Inspect delicate hair strands, typographic contrast, and smooth gradients before downloading.
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          A real-time savings counter displays before-and-after kilobyte measurements and percentage reductions instantly, ensuring total transparency on compression efficiency.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Bottom CTA Banner -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <div class="rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white shadow-xl shadow-blue-500/10 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
+      <div class="space-y-1">
+        <h3 class="text-lg sm:text-xl font-bold tracking-tight text-white">
+          Ready to compress images with exact KB precision?
+        </h3>
+        <p class="text-xs sm:text-sm text-blue-100 max-w-md">
+          100% private in-browser compression. Batch up to 15 files, zero watermarks, zero server uploads.
+        </p>
+      </div>
+      <a
+        href="#tool-workspace"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white text-slate-900 hover:bg-blue-50 font-semibold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all active:scale-95 shrink-0"
+      >
+        <span>Upload & Compress Now</span>
+        <span aria-hidden="true" class="text-base font-bold leading-none">↑</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FAQ Section (SEO crawlable) -->
+  <section class="py-16 sm:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Frequently Asked Questions
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          Everything you need to know about target KB compression, image formats, and client-side privacy.
+        </p>
+      </div>
+
+      <!-- Semantic FAQ List -->
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 transition-all duration-200 open:shadow-xs">
+            <summary class="flex items-center justify-between font-semibold text-sm sm:text-base text-slate-900 dark:text-white cursor-pointer list-none select-none">
+              <span>{faq.question}</span>
+              <span class="ml-4 flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 group-open:rotate-180 transition-transform duration-200">
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed pt-2 border-t border-slate-100 dark:border-slate-800/80">
+              {faq.answer}
+            </p>
+          </details>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Related Tools Row -->
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-12 sm:py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-6">
+        Explore Related Image Utilities
+      </h3>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a
+          href="/tools/image-resizer"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-500 transition shadow-2xs"
+        >
+          <ToolIcon name="maximize-2" class="w-4 h-4 text-blue-500" />
+          <span>Image Resizer</span>
+        </a>
+        <a
+          href="/tools/image-cropper"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-500 transition shadow-2xs"
+        >
+          <ToolIcon name="crop" class="w-4 h-4 text-purple-500" />
+          <span>Image Cropper</span>
+        </a>
+        <a
+          href="/tools/image-rotator"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-500 transition shadow-2xs"
+        >
+          <ToolIcon name="rotate-cw" class="w-4 h-4 text-emerald-500" />
+          <span>Image Rotator</span>
+        </a>
+        <a
+          href="/tools/image-flipper"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-500 transition shadow-2xs"
+        >
+          <ToolIcon name="flip-horizontal" class="w-4 h-4 text-cyan-500" />
+          <span>Image Flipper</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<!-- Client-Side JavaScript Logic: 100% In-Browser Compression Engine -->
+<script>
+  import JSZip from 'jszip';
+
+  interface QueueItem {
+    id: string;
+    file: File;
+    name: string;
+    originalSize: number;
+    originalUrl: string;
+    img: HTMLImageElement;
+    width: number;
+    height: number;
+    compressedBlob: Blob | null;
+    compressedUrl: string | null;
+    compressedSize: number;
+    outputMime: string;
+    reductionPercent: number;
+    processingTime: number;
+  }
+
+  // App State
+  let queue: QueueItem[] = [];
+  let activeIndex = 0;
+  let currentMode: 'target-kb' | 'quality' = 'target-kb';
+  let targetKbValue = 50;
+  let qualityValue = 75; // 1-100
+  let outputFormat = 'auto'; // 'auto' | 'image/jpeg' | 'image/webp' | 'image/png'
+  let stripExif = true;
+  let allowDownscale = true;
+  let isSplitSliderDragging = false;
+  let splitSliderPercent = 50;
+  let isCompressing = false;
+
+  // DOM Elements
+  const dropzoneView = document.getElementById('dropzone-view');
+  const dropzone = document.getElementById('dropzone');
+  const imageInput = document.getElementById('imageInput') as HTMLInputElement;
+  const selectBtn = document.getElementById('selectBtn');
+  const editorView = document.getElementById('editor-view');
+  const queueCounter = document.getElementById('queue-counter');
+  const queueStrip = document.getElementById('queue-strip');
+  const addMoreBtn = document.getElementById('add-more-btn');
+  const clearAllBtn = document.getElementById('clear-all-btn');
+
+  // Preview elements
+  const activeFilename = document.getElementById('active-filename');
+  const activeSpecs = document.getElementById('active-specs');
+  const reductionBadge = document.getElementById('reduction-badge');
+  const reductionText = document.getElementById('reduction-text');
+  const viewModeSplit = document.getElementById('view-mode-split');
+  const viewModeSide = document.getElementById('view-mode-side');
+  const splitSliderContainer = document.getElementById('split-slider-container');
+  const sideBySideContainer = document.getElementById('side-by-side-container');
+  const previewOriginalImg = document.getElementById('preview-original-img') as HTMLImageElement;
+  const previewCompressedImg = document.getElementById('preview-compressed-img') as HTMLImageElement;
+  const splitCompressedWrapper = document.getElementById('split-compressed-wrapper');
+  const splitHandle = document.getElementById('split-handle');
+  const sliderOrigSize = document.getElementById('slider-orig-size');
+  const sliderCompSize = document.getElementById('slider-comp-size');
+  const sideOrigSize = document.getElementById('side-orig-size');
+  const sideCompSize = document.getElementById('side-comp-size');
+  const sideOrigImg = document.getElementById('side-orig-img') as HTMLImageElement;
+  const sideCompImg = document.getElementById('side-comp-img') as HTMLImageElement;
+  const compressionSpinner = document.getElementById('compression-spinner');
+  const spinnerStatus = document.getElementById('spinner-status');
+  const compressionTime = document.getElementById('compression-time');
+
+  // Controls elements
+  const tabModeTargetKb = document.getElementById('tab-mode-target-kb');
+  const tabModeQuality = document.getElementById('tab-mode-quality');
+  const panelTargetKb = document.getElementById('panel-target-kb');
+  const panelQuality = document.getElementById('panel-quality');
+  const targetKbInput = document.getElementById('target-kb-input') as HTMLInputElement;
+  const qualityRange = document.getElementById('quality-range') as HTMLInputElement;
+  const qualityValBadge = document.getElementById('quality-val-badge');
+  const optAllowDownscale = document.getElementById('opt-allow-downscale') as HTMLInputElement;
+  const optStripExif = document.getElementById('opt-strip-exif') as HTMLInputElement;
+  const formatSelect = document.getElementById('format-select') as HTMLSelectElement;
+  const downloadSingleBtn = document.getElementById('download-single-btn');
+  const downloadBatchZipBtn = document.getElementById('download-batch-zip-btn');
+  const btnSingleSize = document.getElementById('btn-single-size');
+  const btnBatchCount = document.getElementById('btn-batch-count');
+
+  // Utility: Format bytes
+  function formatBytes(bytes: number, decimals = 1): string {
+    if (bytes === 0) return '0 B';
+    const k = 1024;
+    const dm = decimals < 0 ? 0 : decimals;
+    const sizes = ['B', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+  }
+
+  // Load Image File to HTMLImageElement
+  function loadImage(file: File): Promise<{ img: HTMLImageElement; url: string; width: number; height: number }> {
+    return new Promise((resolve, reject) => {
+      const url = URL.createObjectURL(file);
+      const img = new Image();
+      img.onload = () => {
+        resolve({ img, url, width: img.naturalWidth, height: img.naturalHeight });
+      };
+      img.onerror = () => {
+        URL.revokeObjectURL(url);
+        reject(new Error('Failed to load image'));
+      };
+      img.src = url;
+    });
+  }
+
+  // Determine Destination MIME Type
+  function getEffectiveMime(fileMime: string, chosenFormat: string): string {
+    if (chosenFormat !== 'auto') {
+      return chosenFormat;
+    }
+    // If auto:
+    if (fileMime === 'image/png') return 'image/png';
+    if (fileMime === 'image/webp') return 'image/webp';
+    return 'image/jpeg';
+  }
+
+  // Canvas toBlob Promise Wrapper
+  function canvasToBlob(canvas: HTMLCanvasElement, mime: string, quality?: number): Promise<Blob> {
+    return new Promise((resolve, reject) => {
+      canvas.toBlob(
+        (blob) => {
+          if (blob) resolve(blob);
+          else reject(new Error('Canvas toBlob returned null'));
+        },
+        mime,
+        quality
+      );
+    });
+  }
+
+  // Core Compression Algorithm (Binary Search for Target KB & Quality Slider)
+  async function compressQueueItem(item: QueueItem): Promise<void> {
+    const startTime = performance.now();
+    const targetMime = getEffectiveMime(item.file.type, outputFormat);
+    item.outputMime = targetMime;
+
+    // Offscreen Canvas
+    const canvas = document.createElement('canvas');
+    let targetWidth = item.width;
+    let targetHeight = item.height;
+
+    // Helper to render and encode at specific dimensions and quality
+    async function encodeAt(scale: number, q: number): Promise<Blob> {
+      const curW = Math.max(16, Math.round(item.width * scale));
+      const curH = Math.max(16, Math.round(item.height * scale));
+      canvas.width = curW;
+      canvas.height = curH;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) throw new Error('Could not get 2d context');
+
+      // Enable high-quality image smoothing
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+
+      // If exporting to JPEG and original is PNG with transparency, fill white backdrop
+      if (targetMime === 'image/jpeg') {
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, curW, curH);
+      } else {
+        ctx.clearRect(0, 0, curW, curH);
+      }
+
+      ctx.drawImage(item.img, 0, 0, curW, curH);
+      return await canvasToBlob(canvas, targetMime, q);
+    }
+
+    let finalBlob: Blob;
+
+    if (currentMode === 'target-kb') {
+      const targetBytes = targetKbValue * 1024;
+      
+      // If PNG is selected, browsers ignore quality in toBlob('image/png').
+      // If user wants Target KB with PNG, we downscale dimensions if allowed, or switch to WebP if target is small.
+      if (targetMime === 'image/png') {
+        let scale = 1.0;
+        let blob = await encodeAt(scale, 1.0);
+        if (blob.size > targetBytes && allowDownscale) {
+          // Binary search on dimension scale
+          let minScale = 0.1;
+          let maxScale = 1.0;
+          for (let iter = 0; iter < 6; iter++) {
+            const midScale = (minScale + maxScale) / 2;
+            const testBlob = await encodeAt(midScale, 1.0);
+            if (testBlob.size <= targetBytes) {
+              blob = testBlob;
+              minScale = midScale;
+            } else {
+              maxScale = midScale;
+            }
+          }
+        }
+        finalBlob = blob;
+      } else {
+        // Mode A: Binary search on quality levels (between 0.05 and 0.98)
+        let minQ = 0.05;
+        let maxQ = 0.98;
+        let bestBlob: Blob | null = null;
+        let currentScale = 1.0;
+
+        // Up to 6 iterations for binary search
+        for (let iter = 0; iter < 6; iter++) {
+          const midQ = (minQ + maxQ) / 2;
+          const candidateBlob = await encodeAt(currentScale, midQ);
+
+          if (candidateBlob.size <= targetBytes) {
+            bestBlob = candidateBlob;
+            minQ = midQ; // Try to get higher quality while staying under limit
+          } else {
+            maxQ = midQ; // Too big, lower quality
+          }
+        }
+
+        // If even at min quality it is larger than targetBytes (e.g. 4000x3000 to 20KB)
+        // AND allowDownscale is enabled:
+        if (!bestBlob && allowDownscale) {
+          // Calculate scale approximation
+          const testAtMin = await encodeAt(1.0, 0.2);
+          const ratio = Math.sqrt(targetBytes / testAtMin.size) * 0.95;
+          currentScale = Math.max(0.1, Math.min(0.9, ratio));
+
+          minQ = 0.1;
+          maxQ = 0.85;
+          for (let iter = 0; iter < 5; iter++) {
+            const midQ = (minQ + maxQ) / 2;
+            const candidateBlob = await encodeAt(currentScale, midQ);
+            if (candidateBlob.size <= targetBytes) {
+              bestBlob = candidateBlob;
+              minQ = midQ;
+            } else {
+              maxQ = midQ;
+            }
+          }
+        }
+
+        finalBlob = bestBlob || (await encodeAt(currentScale, 0.2));
+      }
+    } else {
+      // Mode B: Visual Quality Slider
+      const q = Math.max(0.01, Math.min(1.0, qualityValue / 100));
+      finalBlob = await encodeAt(1.0, q);
+    }
+
+    const endTime = performance.now();
+    const duration = ((endTime - startTime) / 1000).toFixed(2);
+
+    // Clean up previous blob URL if needed
+    if (item.compressedUrl) {
+      URL.revokeObjectURL(item.compressedUrl);
+    }
+
+    item.compressedBlob = finalBlob;
+    item.compressedSize = finalBlob.size;
+    item.compressedUrl = URL.createObjectURL(finalBlob);
+    item.processingTime = parseFloat(duration);
+
+    // Reduction calculation
+    const savedBytes = item.originalSize - item.compressedSize;
+    item.reductionPercent = Math.round((savedBytes / item.originalSize) * 100);
+  }
+
+  // Update UI Elements with active image
+  function updateActivePreview() {
+    if (queue.length === 0 || !queue[activeIndex]) return;
+
+    const item = queue[activeIndex];
+    if (!item) return;
+
+    // Header info
+    if (activeFilename) activeFilename.textContent = item.name;
+    if (activeSpecs) {
+      activeSpecs.textContent = `Original: ${item.width} × ${item.height} px • ${formatBytes(item.originalSize)}`;
+    }
+
+    // Savings badge
+    if (reductionBadge && reductionText) {
+      const isPositive = item.reductionPercent > 0;
+      reductionBadge.className = isPositive
+        ? "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/50 shadow-2xs"
+        : "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 shadow-2xs";
+
+      reductionText.textContent = isPositive
+        ? `Saved ${item.reductionPercent}% • ${formatBytes(item.originalSize)} → ${formatBytes(item.compressedSize)}`
+        : `${formatBytes(item.originalSize)} → ${formatBytes(item.compressedSize)}`;
+    }
+
+    // Split Slider
+    if (previewOriginalImg) previewOriginalImg.src = item.originalUrl;
+    if (previewCompressedImg && item.compressedUrl) previewCompressedImg.src = item.compressedUrl;
+    if (sliderOrigSize) sliderOrigSize.textContent = formatBytes(item.originalSize);
+    if (sliderCompSize) sliderCompSize.textContent = formatBytes(item.compressedSize);
+
+    // Side-by-Side
+    if (sideOrigImg) sideOrigImg.src = item.originalUrl;
+    if (sideCompImg && item.compressedUrl) sideCompImg.src = item.compressedUrl;
+    if (sideOrigSize) sideOrigSize.textContent = formatBytes(item.originalSize);
+    if (sideCompSize) sideCompSize.textContent = formatBytes(item.compressedSize);
+
+    // Processing time
+    if (compressionTime) compressionTime.textContent = `${item.processingTime || 0.05}s`;
+
+    // Download button text
+    if (btnSingleSize) btnSingleSize.textContent = formatBytes(item.compressedSize);
+    if (btnBatchCount) {
+      btnBatchCount.textContent = `${queue.length} file${queue.length > 1 ? 's' : ''}`;
+    }
+
+    // Queue Strip highlight
+    renderQueueStrip();
+  }
+
+  // Render Horizontal Queue Strip
+  function renderQueueStrip() {
+    if (!queueStrip) return;
+    queueStrip.innerHTML = '';
+
+    queue.forEach((item, idx) => {
+      const card = document.createElement('div');
+      const isActive = idx === activeIndex;
+
+      card.className = `group relative shrink-0 w-28 sm:w-32 p-2 rounded-xl border transition-all cursor-pointer flex flex-col items-center ${
+        isActive
+          ? 'border-blue-500 bg-blue-50/40 dark:bg-blue-950/30 ring-2 ring-blue-500/20'
+          : 'border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/60 hover:border-slate-300 dark:hover:border-slate-700'
+      }`;
+
+      // Thumbnail Image
+      const imgContainer = document.createElement('div');
+      imgContainer.className = 'w-full h-16 rounded-lg bg-slate-200 dark:bg-slate-800 overflow-hidden mb-1.5 flex items-center justify-center relative';
+      const thumb = document.createElement('img');
+      thumb.src = item.compressedUrl || item.originalUrl;
+      thumb.className = 'w-full h-full object-cover';
+      thumb.alt = item.name;
+      imgContainer.appendChild(thumb);
+
+      // Remove single button
+      const removeBtn = document.createElement('button');
+      removeBtn.type = 'button';
+      removeBtn.className = 'absolute top-1 right-1 w-5 h-5 rounded-full bg-slate-900/80 hover:bg-rose-600 text-white flex items-center justify-center text-[10px] font-bold opacity-0 group-hover:opacity-100 transition shadow cursor-pointer';
+      removeBtn.innerHTML = '×';
+      removeBtn.title = 'Remove image';
+      removeBtn.onclick = (e) => {
+        e.stopPropagation();
+        removeQueueItem(idx);
+      };
+      imgContainer.appendChild(removeBtn);
+
+      card.appendChild(imgContainer);
+
+      // Name
+      const nameP = document.createElement('p');
+      nameP.className = 'text-[11px] font-medium text-slate-800 dark:text-slate-200 truncate w-full text-center leading-tight';
+      nameP.textContent = item.name;
+      card.appendChild(nameP);
+
+      // Size badges
+      const sizeP = document.createElement('p');
+      sizeP.className = 'text-[10px] font-mono text-slate-500 dark:text-slate-400 mt-0.5';
+      if (item.compressedSize) {
+        sizeP.innerHTML = `<span class="font-bold text-emerald-600 dark:text-emerald-400">${formatBytes(item.compressedSize)}</span>`;
+      } else {
+        sizeP.textContent = formatBytes(item.originalSize);
+      }
+      card.appendChild(sizeP);
+
+      card.onclick = () => {
+        activeIndex = idx;
+        updateActivePreview();
+      };
+
+      queueStrip.appendChild(card);
+    });
+
+    if (queueCounter) {
+      queueCounter.textContent = `${queue.length}/15`;
+    }
+  }
+
+  // Remove Item from Queue
+  function removeQueueItem(idx: number) {
+    const [removed] = queue.splice(idx, 1);
+    if (removed) {
+      URL.revokeObjectURL(removed.originalUrl);
+      if (removed.compressedUrl) URL.revokeObjectURL(removed.compressedUrl);
+    }
+
+    if (queue.length === 0) {
+      if (editorView) editorView.classList.add('hidden');
+      if (dropzoneView) dropzoneView.classList.remove('hidden');
+      activeIndex = 0;
+    } else {
+      if (activeIndex >= queue.length) {
+        activeIndex = queue.length - 1;
+      }
+      updateActivePreview();
+    }
+  }
+
+  // Recompress all items or active item
+  async function triggerCompression(showLoader = true) {
+    if (queue.length === 0 || isCompressing) return;
+    isCompressing = true;
+
+    if (showLoader && compressionSpinner) {
+      compressionSpinner.classList.remove('hidden');
+      if (spinnerStatus) spinnerStatus.textContent = currentMode === 'target-kb' ? 'Running binary quantization...' : 'Re-encoding canvas quality...';
+    }
+
+    try {
+      // Compress active image first for instant visual feedback
+      const activeItem = queue[activeIndex];
+      if (activeItem) {
+        await compressQueueItem(activeItem);
+        updateActivePreview();
+      }
+
+      // Concurrently compress remaining items in queue
+      const others = queue.filter((_, idx) => idx !== activeIndex);
+      await Promise.all(others.map((item) => compressQueueItem(item)));
+      renderQueueStrip();
+    } catch (err) {
+      console.error('Compression failed:', err);
+    } finally {
+      isCompressing = false;
+      if (compressionSpinner) {
+        compressionSpinner.classList.add('hidden');
+      }
+    }
+  }
+
+  // File Upload Handlers
+  async function handleFiles(files: FileList | File[]) {
+    const rawFiles = Array.from(files).filter((f) =>
+      ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/avif'].includes(f.type)
+    );
+
+    if (rawFiles.length === 0) return;
+
+    // Cap at 15 items max
+    const availableSlots = 15 - queue.length;
+    if (availableSlots <= 0) {
+      alert('Batch queue is full (maximum 15 images allowed).');
+      return;
+    }
+
+    const filesToLoad = rawFiles.slice(0, availableSlots);
+
+    for (const file of filesToLoad) {
+      try {
+        const { img, url, width, height } = await loadImage(file);
+        const item: QueueItem = {
+          id: Math.random().toString(36).substring(2, 9),
+          file,
+          name: file.name,
+          originalSize: file.size,
+          originalUrl: url,
+          img,
+          width,
+          height,
+          compressedBlob: null,
+          compressedUrl: null,
+          compressedSize: 0,
+          outputMime: file.type,
+          reductionPercent: 0,
+          processingTime: 0
+        };
+        queue.push(item);
+      } catch (e) {
+        console.error('Failed to load file:', file.name, e);
+      }
+    }
+
+    if (queue.length > 0) {
+      if (dropzoneView) dropzoneView.classList.add('hidden');
+      if (editorView) editorView.classList.remove('hidden');
+      await triggerCompression();
+    }
+  }
+
+  // Drag and Drop Listeners
+  if (dropzone) {
+    dropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropzone.classList.add('border-blue-500', 'bg-blue-50/20', 'dark:bg-blue-950/20');
+    });
+
+    dropzone.addEventListener('dragleave', (e) => {
+      e.preventDefault();
+      dropzone.classList.remove('border-blue-500', 'bg-blue-50/20', 'dark:bg-blue-950/20');
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropzone.classList.remove('border-blue-500', 'bg-blue-50/20', 'dark:bg-blue-950/20');
+      if (e.dataTransfer && e.dataTransfer.files) {
+        handleFiles(e.dataTransfer.files);
+      }
+    });
+
+    dropzone.addEventListener('click', () => {
+      if (imageInput) imageInput.click();
+    });
+  }
+
+  if (selectBtn) {
+    selectBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (imageInput) imageInput.click();
+    });
+  }
+
+  if (imageInput) {
+    imageInput.addEventListener('change', () => {
+      if (imageInput.files) {
+        handleFiles(imageInput.files);
+        imageInput.value = '';
+      }
+    });
+  }
+
+  // Paste Support (Ctrl+V)
+  window.addEventListener('paste', (e: ClipboardEvent) => {
+    if (e.clipboardData && e.clipboardData.files && e.clipboardData.files.length > 0) {
+      handleFiles(e.clipboardData.files);
+    }
+  });
+
+  // Add More & Clear All
+  if (addMoreBtn) {
+    addMoreBtn.addEventListener('click', () => {
+      if (imageInput) imageInput.click();
+    });
+  }
+
+  if (clearAllBtn) {
+    clearAllBtn.addEventListener('click', () => {
+      queue.forEach((item) => {
+        URL.revokeObjectURL(item.originalUrl);
+        if (item.compressedUrl) URL.revokeObjectURL(item.compressedUrl);
+      });
+      queue = [];
+      activeIndex = 0;
+      if (editorView) editorView.classList.add('hidden');
+      if (dropzoneView) dropzoneView.classList.remove('hidden');
+    });
+  }
+
+  // Mode Switch Tabs (Target KB vs Quality)
+  function setMode(mode: 'target-kb' | 'quality') {
+    currentMode = mode;
+    if (mode === 'target-kb') {
+      panelTargetKb?.classList.remove('hidden');
+      panelQuality?.classList.add('hidden');
+      tabModeTargetKb?.classList.add('bg-white', 'dark:bg-slate-900', 'text-blue-600', 'dark:text-blue-400', 'shadow-2xs');
+      tabModeTargetKb?.classList.remove('text-slate-600', 'dark:text-slate-400');
+      tabModeQuality?.classList.remove('bg-white', 'dark:bg-slate-900', 'text-blue-600', 'dark:text-blue-400', 'shadow-2xs');
+      tabModeQuality?.classList.add('text-slate-600', 'dark:text-slate-400');
+    } else {
+      panelQuality?.classList.remove('hidden');
+      panelTargetKb?.classList.add('hidden');
+      tabModeQuality?.classList.add('bg-white', 'dark:bg-slate-900', 'text-blue-600', 'dark:text-blue-400', 'shadow-2xs');
+      tabModeQuality?.classList.remove('text-slate-600', 'dark:text-slate-400');
+      tabModeTargetKb?.classList.remove('bg-white', 'dark:bg-slate-900', 'text-blue-600', 'dark:text-blue-400', 'shadow-2xs');
+      tabModeTargetKb?.classList.add('text-slate-600', 'dark:text-slate-400');
+    }
+    triggerCompression();
+  }
+
+  tabModeTargetKb?.addEventListener('click', () => setMode('target-kb'));
+  tabModeQuality?.addEventListener('click', () => setMode('quality'));
+
+  // Target KB Input
+  targetKbInput?.addEventListener('input', () => {
+    const val = parseInt(targetKbInput.value, 10);
+    if (!isNaN(val) && val >= 5) {
+      targetKbValue = val;
+      triggerCompression();
+    }
+  });
+
+  // Preset Pills in Workspace
+  document.querySelectorAll('.preset-pill').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const kb = parseInt(btn.getAttribute('data-kb') || '50', 10);
+      if (targetKbInput) targetKbInput.value = String(kb);
+      targetKbValue = kb;
+
+      // Update active pill styling
+      document.querySelectorAll('.preset-pill').forEach((p) => {
+        p.className = 'preset-pill px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-600 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition cursor-pointer';
+      });
+      btn.className = 'preset-pill px-2.5 py-1 rounded-lg text-xs font-semibold bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 transition cursor-pointer';
+
+      setMode('target-kb');
+    });
+  });
+
+  // Quality Slider
+  qualityRange?.addEventListener('input', () => {
+    qualityValue = parseInt(qualityRange.value, 10);
+    if (qualityValBadge) {
+      let desc = 'Balanced';
+      if (qualityValue >= 85) desc = 'Maximum';
+      else if (qualityValue >= 70) desc = 'High Quality';
+      else if (qualityValue >= 50) desc = 'Balanced';
+      else desc = 'Aggressive';
+      qualityValBadge.textContent = `${qualityValue}% - ${desc}`;
+    }
+    triggerCompression();
+  });
+
+  // Quality Preset Buttons
+  document.querySelectorAll('.quality-preset-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const q = parseInt(btn.getAttribute('data-q') || '75', 10);
+      qualityValue = q;
+      if (qualityRange) qualityRange.value = String(q);
+      if (qualityValBadge) {
+        let desc = 'High Quality';
+        if (q >= 85) desc = 'Maximum';
+        else if (q >= 70) desc = 'High Quality';
+        else if (q >= 50) desc = 'Balanced';
+        else desc = 'Aggressive';
+        qualityValBadge.textContent = `${q}% - ${desc}`;
+      }
+      setMode('quality');
+    });
+  });
+
+  // Options
+  optAllowDownscale?.addEventListener('change', () => {
+    allowDownscale = optAllowDownscale.checked;
+    triggerCompression();
+  });
+
+  optStripExif?.addEventListener('change', () => {
+    stripExif = optStripExif.checked;
+    triggerCompression();
+  });
+
+  formatSelect?.addEventListener('change', () => {
+    outputFormat = formatSelect.value;
+    triggerCompression();
+  });
+
+  // Split-Screen Draggable Slider Logic
+  function updateSliderPosition(percent: number) {
+    const clamped = Math.max(0, Math.min(100, percent));
+    splitSliderPercent = clamped;
+    if (splitCompressedWrapper) {
+      splitCompressedWrapper.style.width = `${clamped}%`;
+    }
+    if (splitHandle) {
+      splitHandle.style.left = `${clamped}%`;
+    }
+  }
+
+  function handleSliderMove(clientX: number) {
+    if (!splitSliderContainer) return;
+    const rect = splitSliderContainer.getBoundingClientRect();
+    const offsetX = clientX - rect.left;
+    const percent = (offsetX / rect.width) * 100;
+    updateSliderPosition(percent);
+  }
+
+  splitSliderContainer?.addEventListener('mousedown', (e) => {
+    isSplitSliderDragging = true;
+    handleSliderMove(e.clientX);
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isSplitSliderDragging) return;
+    handleSliderMove(e.clientX);
+  });
+
+  window.addEventListener('mouseup', () => {
+    isSplitSliderDragging = false;
+  });
+
+  // Touch Support for mobile
+  splitSliderContainer?.addEventListener('touchstart', (e) => {
+    if (e.touches[0]) {
+      isSplitSliderDragging = true;
+      handleSliderMove(e.touches[0].clientX);
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchmove', (e) => {
+    if (!isSplitSliderDragging || !e.touches[0]) return;
+    handleSliderMove(e.touches[0].clientX);
+  }, { passive: true });
+
+  window.addEventListener('touchend', () => {
+    isSplitSliderDragging = false;
+  });
+
+  // Toggle View Modes (Split vs Side-by-Side)
+  viewModeSplit?.addEventListener('click', () => {
+    splitSliderContainer?.classList.remove('hidden');
+    sideBySideContainer?.classList.add('hidden');
+    viewModeSplit.className = "px-2.5 py-1 rounded-md bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-2xs font-semibold cursor-pointer transition";
+    viewModeSide?.setAttribute('class', "px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer transition");
+  });
+
+  viewModeSide?.addEventListener('click', () => {
+    sideBySideContainer?.classList.remove('hidden');
+    splitSliderContainer?.classList.add('hidden');
+    viewModeSide.className = "px-2.5 py-1 rounded-md bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-2xs font-semibold cursor-pointer transition";
+    viewModeSplit?.setAttribute('class', "px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer transition");
+  });
+
+  // Download Single Image
+  function downloadBlob(blob: Blob, filename: string) {
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+  }
+
+  downloadSingleBtn?.addEventListener('click', () => {
+    const item = queue[activeIndex];
+    if (!item || !item.compressedBlob) return;
+
+    // Ext extension
+    let ext = 'jpg';
+    if (item.outputMime === 'image/png') ext = 'png';
+    else if (item.outputMime === 'image/webp') ext = 'webp';
+
+    const baseName = item.name.substring(0, item.name.lastIndexOf('.')) || item.name;
+    const finalName = `${baseName}-compressed.${ext}`;
+    downloadBlob(item.compressedBlob, finalName);
+  });
+
+  // Download All as ZIP using JSZip
+  downloadBatchZipBtn?.addEventListener('click', async () => {
+    if (queue.length === 0) return;
+
+    if (queue.length === 1 && queue[0] && queue[0].compressedBlob) {
+      const item = queue[0];
+      let ext = 'jpg';
+      if (item.outputMime === 'image/png') ext = 'png';
+      else if (item.outputMime === 'image/webp') ext = 'webp';
+      const baseName = item.name.substring(0, item.name.lastIndexOf('.')) || item.name;
+      downloadBlob(item.compressedBlob, `${baseName}-compressed.${ext}`);
+      return;
+    }
+
+    try {
+      const zip = new JSZip();
+      queue.forEach((item, index) => {
+        if (item.compressedBlob) {
+          let ext = 'jpg';
+          if (item.outputMime === 'image/png') ext = 'png';
+          else if (item.outputMime === 'image/webp') ext = 'webp';
+          const baseName = item.name.substring(0, item.name.lastIndexOf('.')) || `image-${index + 1}`;
+          zip.file(`${baseName}-compressed.${ext}`, item.compressedBlob);
+        }
+      });
+
+      const zipBlob = await zip.generateAsync({ type: 'blob' });
+      downloadBlob(zipBlob, 'fasttoolverse-compressed-images.zip');
+    } catch (err) {
+      console.error('Batch ZIP creation failed:', err);
+      alert('Failed to generate ZIP archive. You can download individual images.');
+    }
+  });
+
+  // Programmatic Presets Grid Click Listener
+  document.querySelectorAll('.quick-preset-apply').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const mode = btn.getAttribute('data-mode') as 'target-kb' | 'quality';
+      const kb = btn.getAttribute('data-kb');
+      const q = btn.getAttribute('data-quality');
+      const fmt = btn.getAttribute('data-format');
+
+      if (mode === 'target-kb' && kb) {
+        targetKbValue = parseInt(kb, 10);
+        if (targetKbInput) targetKbInput.value = kb;
+        setMode('target-kb');
+      } else if (mode === 'quality' && q) {
+        qualityValue = parseInt(q, 10);
+        if (qualityRange) qualityRange.value = q;
+        setMode('quality');
+      }
+
+      if (fmt && formatSelect) {
+        outputFormat = fmt;
+        formatSelect.value = fmt;
+      }
+
+      // Smooth scroll to tool workspace
+      const el = document.getElementById('tool-workspace');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      // If no images loaded yet, trigger file picker
+      if (queue.length === 0 && imageInput) {
+        setTimeout(() => imageInput.click(), 400);
+      }
+    });
+  });
+</script>

@@ -6,7 +6,7 @@ import ToolIcon from '../../components/ToolIcon.astro';
 const faqs = [
   {
     question: "How to compress an image to an exact file size like 20 KB or 50 KB?",
-    answer: "Switch to 'Target Exact File Size' mode, enter your required size (e.g., 20 KB or 50 KB), or click one of the quick presets. FastToolVerse initiates a client-side binary search loop that dynamically calculates the optimal quantization matrix in up to 6 iterative passes, guaranteeing your file stays strictly under the target threshold while retaining peak visual clarity."
+    answer: "Enter your required size (e.g., 20 KB or 50 KB) in the Target Max File Size field, or click one of the quick KB presets. FastToolVerse initiates a client-side binary search loop that dynamically calculates the optimal quantization matrix in up to 6 iterative passes and synchronizes the quality slider automatically, guaranteeing your file stays strictly under the target threshold while retaining peak visual clarity."
   },
   {
     question: "What is the difference between lossy and lossless image compression?",
@@ -97,7 +97,6 @@ const presets = [
     badge: "Govt / Signatures",
     description: "Strict threshold for civil service portals, signature uploads, and state exam forms.",
     targetKb: 20,
-    mode: "target-kb",
     color: "blue"
   },
   {
@@ -105,7 +104,6 @@ const presets = [
     badge: "Admit Cards / Forms",
     description: "Ideal balance of facial clarity and compact weight for university and visa submissions.",
     targetKb: 50,
-    mode: "target-kb",
     color: "purple"
   },
   {
@@ -113,7 +111,6 @@ const presets = [
     badge: "E-Commerce / Web",
     description: "Optimal size for high-speed online catalogs, Shopify products, and blog heroes.",
     targetKb: 100,
-    mode: "target-kb",
     color: "emerald"
   },
   {
@@ -121,7 +118,6 @@ const presets = [
     badge: "Email Attachments",
     description: "Keep email attachments lightweight while retaining crisp desktop reproduction.",
     targetKb: 200,
-    mode: "target-kb",
     color: "amber"
   },
   {
@@ -130,7 +126,6 @@ const presets = [
     description: "Optimized PNG encoding preserving transparent backgrounds, sharp lines, and vector logos.",
     format: "image/png",
     quality: 100,
-    mode: "quality",
     color: "cyan"
   },
   {
@@ -139,7 +134,6 @@ const presets = [
     description: "Convert heavy JPGs or PNGs into lightweight modern WebP files with up to 80% savings.",
     format: "image/webp",
     quality: 75,
-    mode: "quality",
     color: "rose"
   }
 ];
@@ -460,37 +454,75 @@ const presets = [
             <!-- Control Box -->
             <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-xs space-y-5">
               
-              <!-- Mode Tabs: Mode A (Target KB) vs Mode B (Visual Quality) -->
-              <div>
-                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
-                  Compression Mode
-                </label>
-                <div class="grid grid-cols-2 p-1 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 gap-1">
+              <!-- SECTION 1: Compression Quality (Visual Slider) -->
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <label for="quality-range" class="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                    <ToolIcon name="scale" class="w-3.5 h-3.5 text-blue-500" />
+                    <span>Compression Quality:</span>
+                  </label>
+                  <span id="quality-val-badge" class="px-2 py-0.5 rounded text-xs font-bold font-mono bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50">
+                    75% - High
+                  </span>
+                </div>
+
+                <div class="space-y-1.5">
+                  <input
+                    type="range"
+                    id="quality-range"
+                    min="1"
+                    max="100"
+                    value="75"
+                    step="1"
+                    class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                  />
+                  <div class="flex justify-between text-[10px] font-mono text-slate-400 px-0.5">
+                    <span>1% (Smallest Size)</span>
+                    <span>50%</span>
+                    <span>100% (Best Quality)</span>
+                  </div>
+                </div>
+
+                <!-- Quick Presets Pills (Quality) -->
+                <div class="flex flex-wrap gap-1.5 pt-0.5">
                   <button
                     type="button"
-                    id="tab-mode-target-kb"
-                    class="py-2 px-3 rounded-lg text-xs font-semibold bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-2xs transition cursor-pointer flex items-center justify-center gap-1.5"
+                    class="quality-preset-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-600 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition cursor-pointer"
+                    data-q="35"
                   >
-                    <ToolIcon name="binary" class="w-3.5 h-3.5" />
-                    <span>Target Exact KB</span>
+                    35% Aggressive
                   </button>
                   <button
                     type="button"
-                    id="tab-mode-quality"
-                    class="py-2 px-3 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition cursor-pointer flex items-center justify-center gap-1.5"
+                    class="quality-preset-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-600 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition cursor-pointer"
+                    data-q="60"
                   >
-                    <ToolIcon name="scale" class="w-3.5 h-3.5" />
-                    <span>Quality Slider</span>
+                    60% Balanced
+                  </button>
+                  <button
+                    type="button"
+                    class="quality-preset-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 transition cursor-pointer"
+                    data-q="75"
+                  >
+                    75% High
+                  </button>
+                  <button
+                    type="button"
+                    class="quality-preset-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-600 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition cursor-pointer"
+                    data-q="92"
+                  >
+                    92% Maximum
                   </button>
                 </div>
               </div>
 
-              <!-- PANEL A: Target Exact File Size (KB) -->
-              <div id="panel-target-kb" class="space-y-4">
+              <!-- SECTION 2: Target File Size Limit (Optional Exact KB) -->
+              <div class="pt-4 border-t border-slate-200/80 dark:border-slate-800 space-y-3">
                 <div>
                   <div class="flex items-center justify-between mb-1.5">
-                    <label for="target-kb-input" class="text-xs font-semibold text-slate-700 dark:text-slate-300">
-                      Target Max File Size:
+                    <label for="target-kb-input" class="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                      <ToolIcon name="binary" class="w-3.5 h-3.5 text-blue-500" />
+                      <span>Target Max File Size (Optional):</span>
                     </label>
                     <span class="text-[11px] font-mono text-blue-600 dark:text-blue-400">Strict Cap &le;</span>
                   </div>
@@ -502,7 +534,6 @@ const presets = [
                       min="5"
                       max="10000"
                       step="5"
-                      value="50"
                       class="w-full py-2.5 pl-4 pr-14 text-sm font-semibold font-mono text-slate-900 dark:text-white bg-transparent border-none focus:outline-hidden"
                       placeholder="e.g. 50"
                     />
@@ -512,7 +543,7 @@ const presets = [
                   </div>
                 </div>
 
-                <!-- Quick Presets Pills -->
+                <!-- Quick Pills: 20 KB, 50 KB, 100 KB, 200 KB, 500 KB -->
                 <div>
                   <span class="block text-[11px] font-medium text-slate-500 dark:text-slate-400 mb-1.5">
                     Quick Standard Presets:
@@ -527,7 +558,7 @@ const presets = [
                     </button>
                     <button
                       type="button"
-                      class="preset-pill px-2.5 py-1 rounded-lg text-xs font-semibold bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 transition cursor-pointer"
+                      class="preset-pill px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-600 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition cursor-pointer"
                       data-kb="50"
                     >
                       50 KB
@@ -556,123 +587,64 @@ const presets = [
                   </div>
                 </div>
 
-                <!-- Downscale Fallback Option -->
+                <!-- Checkbox: Adaptive Dimension Scaling -->
                 <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800">
                   <label class="flex items-start gap-2.5 cursor-pointer">
                     <input
                       type="checkbox"
                       id="opt-allow-downscale"
                       checked
-                      class="w-4 h-4 rounded text-blue-600 border-slate-300 dark:border-slate-700 focus:ring-blue-500 mt-0.5"
+                      class="w-4 h-4 rounded text-blue-600 border-slate-300 dark:border-slate-700 focus:ring-blue-500 mt-0.5 cursor-pointer"
                     />
                     <div class="text-xs">
                       <span class="font-semibold text-slate-800 dark:text-slate-200">Adaptive Dimension Scaling</span>
                       <p class="text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed text-[11px]">
-                        If minimum quality alone cannot fit under strict limits (e.g. 20 KB for a 4K image), proportionally downscale pixel dimensions to guarantee compliance.
+                        Guarantees strict KB limits for large photos by proportionally downscaling pixel dimensions when compression alone cannot fit.
                       </p>
                     </div>
                   </label>
                 </div>
               </div>
 
-              <!-- PANEL B: Visual Quality Slider (Hidden by default) -->
-              <div id="panel-quality" class="hidden space-y-4">
+              <!-- SECTION 3: Output Format & Optimization -->
+              <div class="pt-4 border-t border-slate-200/80 dark:border-slate-800 space-y-3">
                 <div>
-                  <div class="flex items-center justify-between mb-2">
-                    <label for="quality-range" class="text-xs font-semibold text-slate-700 dark:text-slate-300">
-                      Compression Quality:
-                    </label>
-                    <span id="quality-val-badge" class="px-2 py-0.5 rounded text-xs font-bold font-mono bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50">
-                      75% - High Quality
-                    </span>
-                  </div>
-
-                  <input
-                    type="range"
-                    id="quality-range"
-                    min="1"
-                    max="100"
-                    value="75"
-                    step="1"
-                    class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-600"
-                  />
-                  <div class="flex justify-between text-[10px] font-mono text-slate-400 mt-1">
-                    <span>1% (Smallest Size)</span>
-                    <span>50%</span>
-                    <span>100% (Best Quality)</span>
+                  <label for="format-select" class="block text-xs font-bold text-slate-800 dark:text-slate-200 mb-1.5">
+                    Output Format:
+                  </label>
+                  <div class="relative">
+                    <select
+                      id="format-select"
+                      class="w-full py-2 px-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 text-xs font-medium text-slate-900 dark:text-white focus:outline-hidden focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 cursor-pointer"
+                    >
+                      <option value="auto">Auto (Keep Original Format)</option>
+                      <option value="image/png">PNG (Lossless & Alpha Transparency)</option>
+                      <option value="image/jpeg">JPG / JPEG (Universal Standard)</option>
+                      <option value="image/webp">WebP (Next-Gen High Compression)</option>
+                    </select>
                   </div>
                 </div>
 
-                <!-- Quality Shortcuts -->
-                <div class="flex flex-wrap gap-1.5 pt-1">
-                  <button
-                    type="button"
-                    class="quality-preset-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition cursor-pointer"
-                    data-q="35"
-                  >
-                    35% (Aggressive)
-                  </button>
-                  <button
-                    type="button"
-                    class="quality-preset-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition cursor-pointer"
-                    data-q="60"
-                  >
-                    60% (Balanced)
-                  </button>
-                  <button
-                    type="button"
-                    class="quality-preset-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 transition cursor-pointer"
-                    data-q="75"
-                  >
-                    75% (High)
-                  </button>
-                  <button
-                    type="button"
-                    class="quality-preset-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition cursor-pointer"
-                    data-q="92"
-                  >
-                    92% (Maximum)
-                  </button>
+                <!-- EXIF Metadata Toggle -->
+                <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800">
+                  <label class="flex items-start justify-between gap-2.5 cursor-pointer">
+                    <div class="text-xs">
+                      <span class="font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                        <ToolIcon name="shield-check" class="w-3.5 h-3.5 text-emerald-500" />
+                        Strip EXIF Metadata
+                      </span>
+                      <p class="text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed text-[11px]">
+                        Removes GPS coordinates, device info, and timestamps for privacy & extra 5–25 KB savings.
+                      </p>
+                    </div>
+                    <input
+                      type="checkbox"
+                      id="opt-strip-exif"
+                      checked
+                      class="w-4 h-4 rounded text-blue-600 border-slate-300 dark:border-slate-700 focus:ring-blue-500 mt-0.5 cursor-pointer"
+                    />
+                  </label>
                 </div>
-              </div>
-
-              <!-- Output Format Selector -->
-              <div class="pt-2 border-t border-slate-100 dark:border-slate-800">
-                <label for="format-select" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                  Output Format:
-                </label>
-                <div class="relative">
-                  <select
-                    id="format-select"
-                    class="w-full py-2 px-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 text-xs font-medium text-slate-900 dark:text-white focus:outline-hidden focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 cursor-pointer"
-                  >
-                    <option value="auto">Auto (Keep Original Format)</option>
-                    <option value="image/jpeg">JPG / JPEG (Universal Standard)</option>
-                    <option value="image/webp">WebP (Next-Gen High Compression)</option>
-                    <option value="image/png">PNG (Lossless & Alpha Transparency)</option>
-                  </select>
-                </div>
-              </div>
-
-              <!-- EXIF Metadata Toggle -->
-              <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800">
-                <label class="flex items-start justify-between gap-2.5 cursor-pointer">
-                  <div class="text-xs">
-                    <span class="font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
-                      <ToolIcon name="shield-check" class="w-3.5 h-3.5 text-emerald-500" />
-                      Strip EXIF Metadata
-                    </span>
-                    <p class="text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed text-[11px]">
-                      Removes GPS coordinates, device info, and timestamps for privacy & extra 5–25 KB savings.
-                    </p>
-                  </div>
-                  <input
-                    type="checkbox"
-                    id="opt-strip-exif"
-                    checked
-                    class="w-4 h-4 rounded text-blue-600 border-slate-300 dark:border-slate-700 focus:ring-blue-500 mt-0.5"
-                  />
-                </label>
               </div>
 
               <!-- Batch / Apply to All Actions -->
@@ -778,7 +750,6 @@ const presets = [
               <button
                 type="button"
                 class="quick-preset-apply text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 inline-flex items-center gap-1 cursor-pointer"
-                data-mode={preset.mode}
                 data-kb={preset.targetKb || ''}
                 data-quality={preset.quality || ''}
                 data-format={preset.format || ''}
@@ -1288,8 +1259,7 @@ const presets = [
   // App State
   let queue: QueueItem[] = [];
   let activeIndex = 0;
-  let currentMode: 'target-kb' | 'quality' = 'target-kb';
-  let targetKbValue = 50;
+  let targetKbValue: number | null = null;
   let qualityValue = 75; // 1-100
   let outputFormat = 'auto'; // 'auto' | 'image/jpeg' | 'image/webp' | 'image/png'
   let stripExif = true;
@@ -1333,10 +1303,6 @@ const presets = [
   const compressionTime = document.getElementById('compression-time');
 
   // Controls elements
-  const tabModeTargetKb = document.getElementById('tab-mode-target-kb');
-  const tabModeQuality = document.getElementById('tab-mode-quality');
-  const panelTargetKb = document.getElementById('panel-target-kb');
-  const panelQuality = document.getElementById('panel-quality');
   const targetKbInput = document.getElementById('target-kb-input') as HTMLInputElement;
   const qualityRange = document.getElementById('quality-range') as HTMLInputElement;
   const qualityValBadge = document.getElementById('quality-val-badge');
@@ -1400,15 +1366,13 @@ const presets = [
   }
 
   // Core Compression Algorithm (Binary Search for Target KB & Quality Slider)
-  async function compressQueueItem(item: QueueItem): Promise<void> {
+  async function compressQueueItem(item: QueueItem): Promise<{ calculatedQuality?: number }> {
     const startTime = performance.now();
     const targetMime = getEffectiveMime(item.file.type, outputFormat);
     item.outputMime = targetMime;
 
     // Offscreen Canvas
     const canvas = document.createElement('canvas');
-    let targetWidth = item.width;
-    let targetHeight = item.height;
 
     // Helper to render and encode at specific dimensions and quality
     async function encodeAt(scale: number, q: number): Promise<Blob> {
@@ -1436,15 +1400,17 @@ const presets = [
     }
 
     let finalBlob: Blob;
+    let calculatedQuality: number | undefined;
 
-    if (currentMode === 'target-kb') {
+    if (targetKbValue && targetKbValue > 0) {
       const targetBytes = targetKbValue * 1024;
       
       // If PNG is selected, browsers ignore quality in toBlob('image/png').
-      // If user wants Target KB with PNG, we downscale dimensions if allowed, or switch to WebP if target is small.
+      // If user wants Target KB with PNG, we downscale dimensions if allowed.
       if (targetMime === 'image/png') {
         let scale = 1.0;
         let blob = await encodeAt(scale, 1.0);
+        let bestScale = 1.0;
         if (blob.size > targetBytes && allowDownscale) {
           // Binary search on dimension scale
           let minScale = 0.1;
@@ -1454,6 +1420,7 @@ const presets = [
             const testBlob = await encodeAt(midScale, 1.0);
             if (testBlob.size <= targetBytes) {
               blob = testBlob;
+              bestScale = midScale;
               minScale = midScale;
             } else {
               maxScale = midScale;
@@ -1461,11 +1428,22 @@ const presets = [
           }
         }
         finalBlob = blob;
+        // Map PNG bestScale to a visual quality slider value (1-100)
+        if (bestScale >= 1.0) {
+          calculatedQuality = 95;
+        } else if (bestScale >= 0.85) {
+          calculatedQuality = Math.round(70 + ((bestScale - 0.85) / (1.0 - 0.85)) * 24);
+        } else if (bestScale >= 0.70) {
+          calculatedQuality = Math.round(40 + ((bestScale - 0.70) / (0.85 - 0.70)) * 29);
+        } else {
+          calculatedQuality = Math.max(1, Math.round(10 + (bestScale / 0.70) * 29));
+        }
       } else {
-        // Mode A: Binary search on quality levels (between 0.05 and 0.98)
+        // Section 2: Binary search on quality levels (between 0.05 and 0.98)
         let minQ = 0.05;
         let maxQ = 0.98;
         let bestBlob: Blob | null = null;
+        let bestQ = 0.5;
         let currentScale = 1.0;
 
         // Up to 6 iterations for binary search
@@ -1475,6 +1453,7 @@ const presets = [
 
           if (candidateBlob.size <= targetBytes) {
             bestBlob = candidateBlob;
+            bestQ = midQ;
             minQ = midQ; // Try to get higher quality while staying under limit
           } else {
             maxQ = midQ; // Too big, lower quality
@@ -1496,6 +1475,7 @@ const presets = [
             const candidateBlob = await encodeAt(currentScale, midQ);
             if (candidateBlob.size <= targetBytes) {
               bestBlob = candidateBlob;
+              bestQ = midQ;
               minQ = midQ;
             } else {
               maxQ = midQ;
@@ -1504,9 +1484,11 @@ const presets = [
         }
 
         finalBlob = bestBlob || (await encodeAt(currentScale, 0.2));
+        const effectiveQualityRatio = currentScale < 1.0 ? bestQ * currentScale : bestQ;
+        calculatedQuality = Math.max(1, Math.min(100, Math.round(effectiveQualityRatio * 100)));
       }
     } else {
-      // Mode B: Visual Quality Slider
+      // Section 1: Visual Quality Slider
       if (targetMime === 'image/png') {
         // PNG format in browsers ignores the quality parameter in toBlob('image/png', quality).
         // Dynamically apply adaptive dimension/pixel scaling:
@@ -1553,6 +1535,8 @@ const presets = [
     // Reduction calculation
     const savedBytes = item.originalSize - item.compressedSize;
     item.reductionPercent = Math.round((savedBytes / item.originalSize) * 100);
+
+    return { calculatedQuality };
   }
 
   // Update UI Elements with active image
@@ -1705,7 +1689,9 @@ const presets = [
 
     if (showLoader && compressionSpinner) {
       compressionSpinner.classList.remove('hidden');
-      if (spinnerStatus) spinnerStatus.textContent = currentMode === 'target-kb' ? 'Running binary quantization...' : 'Re-encoding canvas quality...';
+      if (spinnerStatus) {
+        spinnerStatus.textContent = targetKbValue ? 'Running binary quantization...' : 'Re-encoding canvas quality...';
+      }
     }
 
     try {
@@ -1714,7 +1700,14 @@ const presets = [
         // Compress active image first for instant visual feedback
         const activeItem = queue[activeIndex];
         if (activeItem) {
-          await compressQueueItem(activeItem);
+          const res = await compressQueueItem(activeItem);
+          // If in Target KB mode, dynamically synchronize Quality Slider to calculated level
+          if (targetKbValue && res && res.calculatedQuality !== undefined) {
+            qualityValue = res.calculatedQuality;
+            if (qualityRange) qualityRange.value = String(qualityValue);
+            updateQualityBadge(qualityValue);
+            updateQualityPills(qualityValue);
+          }
           updateActivePreview();
         }
 
@@ -1852,93 +1845,102 @@ const presets = [
     });
   }
 
-  // Mode Switch Tabs (Target KB vs Quality)
-  function setMode(mode: 'target-kb' | 'quality') {
-    currentMode = mode;
-    if (mode === 'target-kb') {
-      panelTargetKb?.classList.remove('hidden');
-      panelQuality?.classList.add('hidden');
-      tabModeTargetKb?.classList.add('bg-white', 'dark:bg-slate-900', 'text-blue-600', 'dark:text-blue-400', 'shadow-2xs');
-      tabModeTargetKb?.classList.remove('text-slate-600', 'dark:text-slate-400');
-      tabModeQuality?.classList.remove('bg-white', 'dark:bg-slate-900', 'text-blue-600', 'dark:text-blue-400', 'shadow-2xs');
-      tabModeQuality?.classList.add('text-slate-600', 'dark:text-slate-400');
-    } else {
-      panelQuality?.classList.remove('hidden');
-      panelTargetKb?.classList.add('hidden');
-      tabModeQuality?.classList.add('bg-white', 'dark:bg-slate-900', 'text-blue-600', 'dark:text-blue-400', 'shadow-2xs');
-      tabModeQuality?.classList.remove('text-slate-600', 'dark:text-slate-400');
-      tabModeTargetKb?.classList.remove('bg-white', 'dark:bg-slate-900', 'text-blue-600', 'dark:text-blue-400', 'shadow-2xs');
-      tabModeTargetKb?.classList.add('text-slate-600', 'dark:text-slate-400');
-    }
+  // Dynamic UI Badge & Pills Sync Helpers
+  function updateQualityBadge(q: number) {
+    if (!qualityValBadge) return;
+    let desc = 'Balanced';
+    if (q >= 85) desc = 'Maximum';
+    else if (q >= 70) desc = 'High';
+    else if (q >= 50) desc = 'Balanced';
+    else desc = 'Aggressive';
+    qualityValBadge.textContent = `${q}% - ${desc}`;
+  }
+
+  function updateKbPills(activeKb: number | null) {
+    document.querySelectorAll('.preset-pill').forEach((p) => {
+      const kb = parseInt(p.getAttribute('data-kb') || '', 10);
+      if (activeKb !== null && kb === activeKb) {
+        p.className = 'preset-pill px-2.5 py-1 rounded-lg text-xs font-semibold bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 transition cursor-pointer';
+      } else {
+        p.className = 'preset-pill px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-600 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition cursor-pointer';
+      }
+    });
+  }
+
+  function updateQualityPills(activeQ: number | null) {
+    document.querySelectorAll('.quality-preset-btn').forEach((btn) => {
+      const q = parseInt(btn.getAttribute('data-q') || '', 10);
+      if (activeQ !== null && q === activeQ) {
+        btn.className = 'quality-preset-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 transition cursor-pointer';
+      } else {
+        btn.className = 'quality-preset-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-600 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition cursor-pointer';
+      }
+    });
+  }
+
+  // Section 1: Quality Slider (Live updates & clears target KB restriction)
+  function handleQualityChange() {
+    qualityValue = parseInt(qualityRange.value, 10);
+    updateQualityBadge(qualityValue);
+    updateQualityPills(qualityValue);
+
+    // If user adjusts quality directly, clear Target KB constraint so visual quality takes precedence
+    targetKbValue = null;
+    if (targetKbInput) targetKbInput.value = '';
+    updateKbPills(null);
+
     triggerCompression();
   }
 
-  tabModeTargetKb?.addEventListener('click', () => setMode('target-kb'));
-  tabModeQuality?.addEventListener('click', () => setMode('quality'));
+  qualityRange?.addEventListener('input', handleQualityChange);
+  qualityRange?.addEventListener('change', handleQualityChange);
 
-  // Target KB Input
-  targetKbInput?.addEventListener('input', () => {
-    const val = parseInt(targetKbInput.value, 10);
-    if (!isNaN(val) && val >= 5) {
-      targetKbValue = val;
-      triggerCompression();
-    }
-  });
-
-  // Preset Pills in Workspace
-  document.querySelectorAll('.preset-pill').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const kb = parseInt(btn.getAttribute('data-kb') || '50', 10);
-      if (targetKbInput) targetKbInput.value = String(kb);
-      targetKbValue = kb;
-
-      // Update active pill styling
-      document.querySelectorAll('.preset-pill').forEach((p) => {
-        p.className = 'preset-pill px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950/40 hover:text-blue-600 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition cursor-pointer';
-      });
-      btn.className = 'preset-pill px-2.5 py-1 rounded-lg text-xs font-semibold bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 transition cursor-pointer';
-
-      setMode('target-kb');
-    });
-  });
-
-  // Quality Slider
-  qualityRange?.addEventListener('input', () => {
-    qualityValue = parseInt(qualityRange.value, 10);
-    if (qualityValBadge) {
-      let desc = 'Balanced';
-      if (qualityValue >= 85) desc = 'Maximum';
-      else if (qualityValue >= 70) desc = 'High Quality';
-      else if (qualityValue >= 50) desc = 'Balanced';
-      else desc = 'Aggressive';
-      qualityValBadge.textContent = `${qualityValue}% - ${desc}`;
-    }
-    triggerCompression();
-  });
-
-  qualityRange?.addEventListener('change', () => {
-    triggerCompression();
-  });
-
-  // Quality Preset Buttons
+  // Section 1: Quick Quality Pills (35% Aggressive, 60% Balanced, 75% High, 92% Maximum)
   document.querySelectorAll('.quality-preset-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       const q = parseInt(btn.getAttribute('data-q') || '75', 10);
       qualityValue = q;
       if (qualityRange) qualityRange.value = String(q);
-      if (qualityValBadge) {
-        let desc = 'High Quality';
-        if (q >= 85) desc = 'Maximum';
-        else if (q >= 70) desc = 'High Quality';
-        else if (q >= 50) desc = 'Balanced';
-        else desc = 'Aggressive';
-        qualityValBadge.textContent = `${q}% - ${desc}`;
-      }
-      setMode('quality');
+      updateQualityBadge(qualityValue);
+      updateQualityPills(qualityValue);
+
+      targetKbValue = null;
+      if (targetKbInput) targetKbInput.value = '';
+      updateKbPills(null);
+
+      triggerCompression();
     });
   });
 
-  // Options
+  // Section 2: Target File Size Limit (Optional Exact KB Input)
+  targetKbInput?.addEventListener('input', () => {
+    const raw = targetKbInput.value.trim();
+    if (raw === '') {
+      targetKbValue = null;
+      updateKbPills(null);
+      triggerCompression();
+      return;
+    }
+    const val = parseInt(raw, 10);
+    if (!isNaN(val) && val >= 5) {
+      targetKbValue = val;
+      updateKbPills(val);
+      triggerCompression();
+    }
+  });
+
+  // Section 2: Quick KB Presets (20 KB, 50 KB, 100 KB, 200 KB, 500 KB)
+  document.querySelectorAll('.preset-pill').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const kb = parseInt(btn.getAttribute('data-kb') || '50', 10);
+      targetKbValue = kb;
+      if (targetKbInput) targetKbInput.value = String(kb);
+      updateKbPills(kb);
+      triggerCompression();
+    });
+  });
+
+  // Section 2 & 3: Options, Format, and EXIF
   optAllowDownscale?.addEventListener('change', () => {
     allowDownscale = optAllowDownscale.checked;
     triggerCompression();
@@ -2105,19 +2107,23 @@ const presets = [
   // Programmatic Presets Grid Click Listener
   document.querySelectorAll('.quick-preset-apply').forEach((btn) => {
     btn.addEventListener('click', () => {
-      const mode = btn.getAttribute('data-mode') as 'target-kb' | 'quality';
       const kb = btn.getAttribute('data-kb');
       const q = btn.getAttribute('data-quality');
       const fmt = btn.getAttribute('data-format');
 
-      if (mode === 'target-kb' && kb) {
-        targetKbValue = parseInt(kb, 10);
+      if (kb) {
+        const val = parseInt(kb, 10);
+        targetKbValue = val;
         if (targetKbInput) targetKbInput.value = kb;
-        setMode('target-kb');
-      } else if (mode === 'quality' && q) {
+        updateKbPills(val);
+      } else if (q) {
+        targetKbValue = null;
+        if (targetKbInput) targetKbInput.value = '';
+        updateKbPills(null);
         qualityValue = parseInt(q, 10);
         if (qualityRange) qualityRange.value = q;
-        setMode('quality');
+        updateQualityBadge(qualityValue);
+        updateQualityPills(qualityValue);
       }
 
       if (fmt && formatSelect) {
@@ -2134,6 +2140,8 @@ const presets = [
       // If no images loaded yet, trigger file picker
       if (queue.length === 0 && imageInput) {
         setTimeout(() => imageInput.click(), 400);
+      } else if (queue.length > 0) {
+        triggerCompression();
       }
     });
   });

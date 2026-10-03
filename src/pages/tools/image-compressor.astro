@@ -215,7 +215,7 @@ const presets = [
       <div id="dropzone-view" class="transition-all duration-300">
         <div
           id="dropzone"
-          class="relative group rounded-3xl border-2 border-dashed border-slate-300 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-400 bg-white/70 dark:bg-slate-900/50 backdrop-blur-sm px-6 py-10 sm:px-10 sm:py-14 text-center cursor-pointer transition-all duration-200 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-0.5"
+          class="relative group rounded-3xl border-2 border-dashed border-slate-300 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-400 bg-white/70 dark:bg-slate-900/50 backdrop-blur-sm px-6 py-8 sm:px-10 sm:py-9 text-center cursor-pointer transition-all duration-200 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-0.5"
         >
           <input
             type="file"
@@ -235,35 +235,39 @@ const presets = [
             </div>
 
             <!-- Minimalist Icon -->
-            <div class="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200 shadow-sm border border-blue-100 dark:border-blue-900/50">
-              <ToolIcon name="minimize-2" class="w-7 h-7" />
+            <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-200 shadow-sm border border-blue-100 dark:border-blue-900/50">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+              </svg>
             </div>
 
             <!-- Headline & CTA -->
-            <h3 class="text-xl sm:text-2xl font-semibold text-slate-900 dark:text-white tracking-tight">
-              <span class="sm:hidden">Tap to select photos or drop here</span>
-              <span class="hidden sm:inline">Drop your images here (up to 15)</span>
+            <h3 class="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white tracking-tight">
+              <span class="sm:hidden">Tap to select photos or drag & drop</span>
+              <span class="hidden sm:inline">Upload your images (up to 15)</span>
             </h3>
-            <p class="mt-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-sm">
-              Supports JPG, PNG, WebP, and AVIF. Paste from clipboard (<kbd class="px-1.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">Ctrl+V</kbd>).
+            <p class="mt-1 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+              Supports JPG, PNG, WebP & AVIF. <span class="hidden sm:inline">Paste from clipboard </span><span class="hidden sm:inline-block">(<kbd class="px-1.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">Ctrl+V</kbd>)</span>
             </p>
 
             <!-- Primary Action Button -->
-            <div class="mt-5 flex items-center justify-center">
+            <div class="mt-4 flex items-center justify-center">
               <button
                 type="button"
                 id="selectBtn"
-                class="px-7 py-3 rounded-full bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-semibold text-sm transition-all shadow-md hover:shadow-lg active:scale-95 cursor-pointer"
+                class="px-6 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-medium text-xs sm:text-sm transition-all shadow-md hover:shadow-lg active:scale-95 cursor-pointer"
               >
                 Select Images (1–15)
               </button>
             </div>
 
-            <!-- Privacy Guarantee Badge -->
-            <div class="mt-6 pt-4 border-t border-slate-200/70 dark:border-slate-800/80 w-full flex items-center justify-center">
-              <div class="inline-flex items-center justify-center gap-1.5 font-medium text-emerald-600 dark:text-emerald-400 text-xs">
-                <ToolIcon name="shield-check" class="w-4 h-4 shrink-0" />
-                <span>100% Client-Side Sandbox • Zero Server Network Calls</span>
+            <!-- Privacy & Security Note -->
+            <div class="mt-5 pt-3.5 border-t border-slate-200/70 dark:border-slate-800/80 w-full flex items-center justify-center">
+              <div class="inline-flex items-center justify-center gap-1.5 font-medium text-emerald-600 dark:text-emerald-400 text-xs whitespace-nowrap">
+                <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                </svg>
+                <span>Images never leave your browser (100% Client-Side)</span>
               </div>
             </div>
           </div>
@@ -1779,20 +1783,24 @@ const presets = [
 
   // Drag and Drop Listeners
   if (dropzone) {
-    dropzone.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      dropzone.classList.add('border-blue-500', 'bg-blue-50/20', 'dark:bg-blue-950/20');
+    ['dragenter', 'dragover'].forEach((eventName) => {
+      dropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropzone.classList.add('border-blue-500', 'scale-[1.01]');
+      });
     });
 
-    dropzone.addEventListener('dragleave', (e) => {
-      e.preventDefault();
-      dropzone.classList.remove('border-blue-500', 'bg-blue-50/20', 'dark:bg-blue-950/20');
+    ['dragleave', 'drop'].forEach((eventName) => {
+      dropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropzone.classList.remove('border-blue-500', 'scale-[1.01]');
+      });
     });
 
     dropzone.addEventListener('drop', (e) => {
-      e.preventDefault();
-      dropzone.classList.remove('border-blue-500', 'bg-blue-50/20', 'dark:bg-blue-950/20');
-      if (e.dataTransfer && e.dataTransfer.files) {
+      if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
         handleFiles(e.dataTransfer.files);
       }
     });

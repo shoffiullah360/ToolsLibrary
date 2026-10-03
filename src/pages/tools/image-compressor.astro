@@ -1507,8 +1507,34 @@ const presets = [
       }
     } else {
       // Mode B: Visual Quality Slider
-      const q = Math.max(0.01, Math.min(1.0, qualityValue / 100));
-      finalBlob = await encodeAt(1.0, q);
+      if (targetMime === 'image/png') {
+        // PNG format in browsers ignores the quality parameter in toBlob('image/png', quality).
+        // Dynamically apply adaptive dimension/pixel scaling:
+        // - 90%-100%: Keep 100% dimensions, strip EXIF metadata
+        // - 70%-89%: Scale internal canvas dimensions to ~85%-92% (imperceptible, drops byte weight)
+        // - 40%-69%: Scale internal canvas dimensions to ~70%-80%
+        // - <40%: Scale internal canvas dimensions accordingly
+        const qVal = Math.max(1, Math.min(100, qualityValue));
+        let pngScale = 1.0;
+
+        if (qVal >= 90) {
+          pngScale = 1.0;
+        } else if (qVal >= 70) {
+          const t = (qVal - 70) / (89 - 70);
+          pngScale = 0.85 + t * (0.92 - 0.85);
+        } else if (qVal >= 40) {
+          const t = (qVal - 40) / (69 - 40);
+          pngScale = 0.70 + t * (0.80 - 0.70);
+        } else {
+          const t = qVal / 40;
+          pngScale = Math.max(0.2, 0.30 + t * (0.70 - 0.30));
+        }
+
+        finalBlob = await encodeAt(pngScale, 1.0);
+      } else {
+        const q = Math.max(0.01, Math.min(1.0, qualityValue / 100));
+        finalBlob = await encodeAt(1.0, q);
+      }
     }
 
     const endTime = performance.now();
@@ -1666,9 +1692,15 @@ const presets = [
     }
   }
 
+  let needsRecompress = false;
+
   // Recompress all items or active item
   async function triggerCompression(showLoader = true) {
-    if (queue.length === 0 || isCompressing) return;
+    if (queue.length === 0) return;
+    if (isCompressing) {
+      needsRecompress = true;
+      return;
+    }
     isCompressing = true;
 
     if (showLoader && compressionSpinner) {
@@ -1677,17 +1709,22 @@ const presets = [
     }
 
     try {
-      // Compress active image first for instant visual feedback
-      const activeItem = queue[activeIndex];
-      if (activeItem) {
-        await compressQueueItem(activeItem);
-        updateActivePreview();
-      }
+      do {
+        needsRecompress = false;
+        // Compress active image first for instant visual feedback
+        const activeItem = queue[activeIndex];
+        if (activeItem) {
+          await compressQueueItem(activeItem);
+          updateActivePreview();
+        }
 
-      // Concurrently compress remaining items in queue
-      const others = queue.filter((_, idx) => idx !== activeIndex);
-      await Promise.all(others.map((item) => compressQueueItem(item)));
-      renderQueueStrip();
+        // Concurrently compress remaining items in queue
+        const others = queue.filter((_, idx) => idx !== activeIndex);
+        if (others.length > 0) {
+          await Promise.all(others.map((item) => compressQueueItem(item)));
+          renderQueueStrip();
+        }
+      } while (needsRecompress);
     } catch (err) {
       console.error('Compression failed:', err);
     } finally {
@@ -1876,6 +1913,10 @@ const presets = [
       else desc = 'Aggressive';
       qualityValBadge.textContent = `${qualityValue}% - ${desc}`;
     }
+    triggerCompression();
+  });
+
+  qualityRange?.addEventListener('change', () => {
     triggerCompression();
   });
 

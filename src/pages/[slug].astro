@@ -323,14 +323,16 @@ const pageDescription = props.type === 'compress'
       </section>
 
       <!-- Pre-Configured Interactive Workspace -->
-      <ImageCompressor
-        targetKb={props.compressPreset.targetKb}
-        qualityPercent={props.compressPreset.qualityPercent}
-        format={props.compressPreset.format}
-        maxWidth={props.compressPreset.maxWidth}
-        maxHeight={props.compressPreset.maxHeight}
-        maintainAspectRatio={props.compressPreset.maintainAspectRatio}
-      />
+      <section id="tool-workspace" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24 scroll-mt-20">
+        <ImageCompressor
+          targetKb={props.compressPreset.targetKb}
+          qualityPercent={props.compressPreset.qualityPercent}
+          format={props.compressPreset.format}
+          maxWidth={props.compressPreset.maxWidth}
+          maxHeight={props.compressPreset.maxHeight}
+          maintainAspectRatio={props.compressPreset.maintainAspectRatio}
+        />
+      </section>
 
       <!-- Cross-Link Banner to Image Resizer (Requirement 4.2) -->
       <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">

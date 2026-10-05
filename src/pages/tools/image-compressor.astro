@@ -8,7 +8,7 @@ import { COMPRESS_PRESETS } from '../../data/compressPresets';
 const faqs = [
   {
     question: "How to compress an image to an exact file size like 20 KB or 50 KB?",
-    answer: "Enter your required size (e.g., 20 KB or 50 KB) in the Target Max File Size field, or click one of the quick KB presets. FastToolVerse initiates a client-side binary search loop that dynamically calculates the optimal quantization matrix in up to 6 iterative passes and synchronizes the quality slider automatically, guaranteeing your file stays strictly under the target threshold while retaining peak visual clarity."
+    answer: "Enter your required size (e.g., 20 KB or 50 KB) in the Target Max File Size field, or click one of the quick KB presets. FastToolVerse initiates a client-side binary search loop that dynamically calculates the optimal quantization matrix in up to 7 iterative passes and synchronizes the quality slider automatically, guaranteeing your file stays strictly under the target threshold while retaining peak visual clarity."
   },
   {
     question: "What is the difference between lossy and lossless image compression?",
@@ -92,59 +92,6 @@ const pageTitle = "Free Online Image Compressor & Exact KB Reducer | FastToolVer
 const pageDescription = "Compress JPG, PNG, and WebP images by percentage or target exact file sizes (20 KB, 50 KB, 100 KB) with 100% in-browser privacy and zero server uploads.";
 const pageKeywords = "image compressor, reduce image size in kb, compress image to 20kb, compress image to 50kb, compress image to 100kb, batch image compressor, client-side image compressor, online photo compressor, lossy lossless compressor, webp compressor, image kb reducer";
 const ogImage = "https://fasttoolverse.com/og-image.png";
-
-const presets = [
-  {
-    title: "Compress Image to 20 KB",
-    badge: "Govt / Signatures",
-    description: "Strict threshold for civil service portals, signature uploads, and state exam forms.",
-    targetKb: 20,
-    color: "blue",
-    slug: "compress-image-to-20kb"
-  },
-  {
-    title: "Compress Image to 50 KB",
-    badge: "Admit Cards / Forms",
-    description: "Ideal balance of facial clarity and compact weight for university and visa submissions.",
-    targetKb: 50,
-    color: "purple",
-    slug: "compress-image-to-50kb"
-  },
-  {
-    title: "Compress Image to 100 KB",
-    badge: "E-Commerce / Web",
-    description: "Optimal size for high-speed online catalogs, Shopify products, and blog heroes.",
-    targetKb: 100,
-    color: "emerald",
-    slug: "compress-image-to-100kb"
-  },
-  {
-    title: "Compress Image to 200 KB",
-    badge: "Email Attachments",
-    description: "Keep email attachments lightweight while retaining crisp desktop reproduction.",
-    targetKb: 200,
-    color: "amber",
-    slug: "compress-image-to-200kb"
-  },
-  {
-    title: "Compress PNG Losslessly",
-    badge: "Alpha Transparency",
-    description: "Optimized PNG encoding preserving transparent backgrounds, sharp lines, and vector logos.",
-    format: "image/png",
-    quality: 100,
-    color: "cyan",
-    slug: "reduce-png-size-without-losing-quality"
-  },
-  {
-    title: "Batch WebP Converter & Compressor",
-    badge: "Next-Gen Format",
-    description: "Convert heavy JPGs or PNGs into lightweight modern WebP files with up to 80% savings.",
-    format: "image/webp",
-    quality: 75,
-    color: "rose",
-    slug: "webp-image-compressor-online"
-  }
-];
 ---
 
 <Layout
@@ -176,7 +123,7 @@ const presets = [
     <script type="application/ld+json" set:html={JSON.stringify(jsonLdFaq)} />
   </Fragment>
 
-  <!-- Hero Header Section -->
+  <!-- 1. Hero Header Section -->
   <section class="relative pt-12 pb-6 sm:pt-16 sm:pb-8 overflow-hidden">
     <div class="hero-mesh-bg" aria-hidden="true"></div>
 
@@ -199,129 +146,12 @@ const presets = [
     </div>
   </section>
 
-  <!-- Interactive Studio Container -->
+  <!-- 2. Interactive Studio Container -->
   <section id="tool-workspace" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24 scroll-mt-20">
     <ImageCompressor />
   </section>
 
-  <!-- High-Intent Target Presets Grid -->
-  <section class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/40 py-16 sm:py-20">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 mb-3">
-          <ToolIcon name="zap" class="w-3.5 h-3.5" />
-          <span>Programmatic Presets</span>
-        </div>
-        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Popular Target Compression Presets
-        </h2>
-        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
-          Click any preset to preconfigure the tool workspace instantly for official forms, portals, and web standards.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-        {presets.map((preset) => (
-          <div
-            class="group p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-500/50 dark:hover:border-blue-500/50 hover:shadow-md transition-all flex flex-col justify-between"
-          >
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-3">
-                <span class="inline-block text-xs font-bold px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50">
-                  {preset.badge}
-                </span>
-                {preset.targetKb && (
-                  <span class="text-xs font-mono font-bold text-slate-500 dark:text-slate-400">
-                    &le; {preset.targetKb} KB
-                  </span>
-                )}
-              </div>
-
-              <h3 class="text-base font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                <a href={`/${preset.slug}`}>{preset.title}</a>
-              </h3>
-              <p class="mt-1.5 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                {preset.description}
-              </p>
-            </div>
-
-            <div class="mt-5 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
-              <a
-                href={`/${preset.slug}`}
-                class="font-semibold text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 inline-flex items-center gap-1"
-              >
-                Preset Page →
-              </a>
-              <button
-                type="button"
-                class="quick-preset-apply font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 inline-flex items-center gap-1 cursor-pointer"
-                data-kb={preset.targetKb || ''}
-                data-quality={preset.quality || ''}
-                data-format={preset.format || ''}
-              >
-                Apply & Upload ↑
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <!-- Complete 60 Presets Directory -->
-      <div class="mt-16 pt-12 border-t border-slate-200 dark:border-slate-800">
-        <div class="text-center max-w-2xl mx-auto mb-10">
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 mb-3">
-            <ToolIcon name="sparkles" class="w-3.5 h-3.5" />
-            <span>Target Presets Index</span>
-          </div>
-          <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-            All 60 Target Compression & Format Presets
-          </h3>
-          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2">
-            Explore our verified programmatic presets for exact government forms, admission portals, platforms, and formats.
-          </p>
-        </div>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
-          {COMPRESS_PRESETS.map((p) => (
-            <a
-              href={`/${p.slug}`}
-              class="group p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:border-blue-500/50 dark:hover:border-blue-500/50 hover:shadow-md hover:bg-blue-50/20 dark:hover:bg-blue-950/20 transition-all flex flex-col justify-between"
-            >
-              <div>
-                <div class="flex items-center justify-between gap-2 mb-3">
-                  <span class="inline-block text-xs font-medium px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50">
-                    {p.badge}
-                  </span>
-                  {p.targetKb && (
-                    <span class="text-xs font-mono font-semibold text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700/60">
-                      &le; {p.targetKb} KB
-                    </span>
-                  )}
-                </div>
-
-                <h4 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug">
-                  {p.title}
-                </h4>
-
-                <p class="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-2">
-                  {p.introDescription}
-                </p>
-              </div>
-
-              <div class="mt-5 pt-3.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400">
-                <span class="group-hover:underline">Try Preset</span>
-                <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 3-Step Guide Section -->
+  <!-- 3. 3-Step Guide Section -->
   <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-16 sm:py-20">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -380,7 +210,65 @@ const presets = [
     </div>
   </section>
 
-  <!-- Feature Comparison Table: FastToolVerse vs TinyPNG & Cloud Compressors -->
+  <!-- 4. Unified Presets Grid Section (Matching Image Resizer 1:1) -->
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/40 py-16 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 mb-3">
+          <ToolIcon name="zap" class="w-3.5 h-3.5" />
+          <span>Target Presets</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Popular Image Compression Presets
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          Instant 1-click compression configurations optimized for exact KB targets, dimensions, and formats.
+        </p>
+      </div>
+
+      <!-- Responsive 4-Column Card Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        {COMPRESS_PRESETS.map((p) => (
+          <div class="group relative p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:bg-slate-50 dark:hover:bg-slate-900/80 hover:border-blue-500/50 dark:hover:border-blue-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between">
+            <div>
+              <!-- Top Row: Badge on left, Spec/target pill on right -->
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="inline-block text-[10px] sm:text-xs font-semibold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50">
+                  {p.badge}
+                </span>
+                <span class="text-xs font-mono font-medium text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700/60">
+                  {p.targetKb ? `≤ ${p.targetKb} KB` : (p.maxWidth ? `${p.maxWidth}×${p.maxHeight} px` : (p.format ? p.format.toUpperCase() : 'OPTIMIZED'))}
+                </span>
+              </div>
+
+              <!-- Title -->
+              <h3 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 leading-snug mb-2">
+                {p.title}
+              </h3>
+
+              <!-- Intro snippet -->
+              <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed mb-4">
+                {p.introDescription}
+              </p>
+            </div>
+
+            <!-- Bottom Action Link -->
+            <a
+              href={`/${p.slug}`}
+              class="text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 inline-flex items-center gap-1 mt-auto after:absolute after:inset-0"
+            >
+              Use Preset &rarr;
+            </a>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. Feature Comparison Table: FastToolVerse vs TinyPNG & Cloud Services -->
   <section class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/60 py-16 sm:py-24">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -397,10 +285,10 @@ const presets = [
         </p>
       </div>
 
-      <!-- Comparison Matrix Table -->
+      <!-- Modern Comparison Card / Table -->
       <div class="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs">
         
-        <!-- Table Header -->
+        <!-- Table Header (Desktop & Mobile) -->
         <div class="grid grid-cols-12 border-b border-slate-200 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-900/90 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300">
           <div class="col-span-12 sm:col-span-4 p-3 sm:p-5 flex items-center border-b sm:border-b-0 border-slate-200 dark:border-slate-800">
             <span>Capability / Benchmark</span>
@@ -526,7 +414,7 @@ const presets = [
     </div>
   </section>
 
-  <!-- Technical Specs & Deep Compression Guide -->
+  <!-- 6. Technical Specs & Deep Compression Guide -->
   <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-16 sm:py-20">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -549,7 +437,7 @@ const presets = [
         <div class="p-6 sm:p-7 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs flex flex-col justify-between">
           <div>
             <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-5 border border-blue-100 dark:border-blue-900/50">
-              <ToolIcon name="binary" class="w-5 h-5" />
+              <ToolIcon name="scale" class="w-5 h-5" />
             </div>
             <h3 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-white mb-2.5">
               Lossy DCT Quantization
@@ -634,7 +522,7 @@ const presets = [
     </div>
   </section>
 
-  <!-- Comprehensive SEO Keyword Guide Section -->
+  <!-- 7. Comprehensive SEO Keyword Guide Section -->
   <section class="max-w-4xl mx-auto px-4 sm:px-6 py-12 prose dark:prose-invert text-slate-300">
     <div class="border-t border-slate-200 dark:border-slate-800/80 pt-12 space-y-12">
       
@@ -647,7 +535,7 @@ const presets = [
           Government examination boards, visa application portals, and university submission databases almost universally require digital portraits and signatures to adhere to rigid file weight caps—such as strictly requiring pictures under <strong>20 KB</strong>, <strong>50 KB</strong>, or <strong>100 KB</strong>. Manually tweaking visual quality sliders and repeatedly re-exporting files to check their file properties is tedious and inaccurate.
         </p>
         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          FastToolVerse solves this challenge through an automated <strong>binary search convergence engine</strong>. When you specify your target size in kilobytes, the algorithm measures the rendered byte array against your boundary and computes optimal quantization tables across up to 6 iterations in under 100 milliseconds. If the image resolution is too high to achieve the desired kilobyte threshold with quantization alone, our adaptive dimension scaler steps in proportionally to guarantee your file successfully passes portal validators.
+          FastToolVerse solves this challenge through an automated <strong>binary search convergence engine</strong>. When you specify your target size in kilobytes, the algorithm measures the rendered byte array against your boundary and computes optimal quantization tables across up to 7 iterations in under 100 milliseconds. If the image resolution is too high to achieve the desired kilobyte threshold with quantization alone, our adaptive dimension scaler steps in proportionally to guarantee your file successfully passes portal validators.
         </p>
       </div>
 
@@ -695,7 +583,7 @@ const presets = [
     </div>
   </section>
 
-  <!-- Bottom CTA Banner -->
+  <!-- 8. Bottom "Jump to Upload" CTA Banner -->
   <section class="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
     <div class="rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white shadow-xl shadow-blue-500/10 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
       <div class="space-y-1">
@@ -716,7 +604,33 @@ const presets = [
     </div>
   </section>
 
-  <!-- FAQ Section (SEO crawlable) -->
+  <!-- 9. Cross-Link Banner pointing to Image Resizer -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 pb-8">
+    <div class="rounded-2xl p-6 sm:p-8 border border-indigo-200/80 dark:border-indigo-900/60 bg-gradient-to-br from-indigo-50/70 via-white to-blue-50/70 dark:from-indigo-950/30 dark:via-slate-900 dark:to-blue-950/30 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+          <ToolIcon name="maximize-2" class="w-6 h-6" />
+        </div>
+        <div>
+          <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+            Need to change physical dimensions or crop photos?
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
+            Resize photos by exact pixels, cm, mm, or inches, and crop with passport & social presets.
+          </p>
+        </div>
+      </div>
+      <a
+        href="/tools/image-resizer"
+        class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs sm:text-sm shadow-sm hover:shadow-md transition-all shrink-0"
+      >
+        <span>Open Image Resizer</span>
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 10. FAQ Section (SEO crawlable) -->
   <section class="py-16 sm:py-24">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -751,7 +665,7 @@ const presets = [
     </div>
   </section>
 
-  <!-- Related Tools Row -->
+  <!-- 11. Related Tools Row -->
   <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-12 sm:py-16">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-6">

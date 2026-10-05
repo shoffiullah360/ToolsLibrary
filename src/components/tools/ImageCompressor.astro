@@ -1386,7 +1386,7 @@ const initialQuality = qualityPercent !== undefined ? qualityPercent : 75;
     const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
     splitSliderPercent = (x / rect.width) * 100;
     splitCompressedWrapper.style.clipPath = `inset(0 ${100 - splitSliderPercent}% 0 0)`;
-    splitCompressedWrapper.style.webkitClipPath = `inset(0 ${100 - splitSliderPercent}% 0 0)`;
+    splitCompressedWrapper.style.setProperty('-webkit-clip-path', `inset(0 ${100 - splitSliderPercent}% 0 0)`);
     splitHandle.style.left = `${splitSliderPercent}%`;
   }
 

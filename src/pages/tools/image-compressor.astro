@@ -283,22 +283,50 @@ const presets = [
 
       <!-- Complete 60 Presets Directory -->
       <div class="mt-16 pt-12 border-t border-slate-200 dark:border-slate-800">
-        <div class="text-center max-w-2xl mx-auto mb-8">
-          <h3 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 mb-3">
+            <ToolIcon name="sparkles" class="w-3.5 h-3.5" />
+            <span>Target Presets Index</span>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
             All 60 Target Compression & Format Presets
           </h3>
-          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2">
             Explore our verified programmatic presets for exact government forms, admission portals, platforms, and formats.
           </p>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5">
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
           {COMPRESS_PRESETS.map((p) => (
             <a
               href={`/${p.slug}`}
-              class="p-2.5 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:border-blue-500 hover:bg-blue-50/50 dark:hover:bg-blue-950/20 transition-all text-xs font-medium text-slate-700 dark:text-slate-300 truncate shadow-2xs"
+              class="group p-5 sm:p-6 rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:border-blue-500/50 dark:hover:border-blue-500/50 hover:shadow-md hover:bg-blue-50/20 dark:hover:bg-blue-950/20 transition-all flex flex-col justify-between"
             >
-              <span class="block text-[10px] text-blue-600 dark:text-blue-400 font-bold mb-0.5 truncate">{p.badge}</span>
-              <span class="truncate block">{p.title}</span>
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <span class="inline-block text-xs font-medium px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50">
+                    {p.badge}
+                  </span>
+                  {p.targetKb && (
+                    <span class="text-xs font-mono font-semibold text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700/60">
+                      &le; {p.targetKb} KB
+                    </span>
+                  )}
+                </div>
+
+                <h4 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug">
+                  {p.title}
+                </h4>
+
+                <p class="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-2">
+                  {p.introDescription}
+                </p>
+              </div>
+
+              <div class="mt-5 pt-3.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400">
+                <span class="group-hover:underline">Try Preset</span>
+                <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+              </div>
             </a>
           ))}
         </div>

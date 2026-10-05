@@ -1079,12 +1079,12 @@ const initialQuality = qualityPercent !== undefined ? qualityPercent : 75;
       let finalBlob: Blob | null = null;
       let effectiveQuality = qualityPercent / 100;
 
-      const isTargetSizeActive = enableTargetSize?.checked && targetKb && targetKb > 0;
-      const targetBytes = isTargetSizeActive
-        ? (targetSizeUnit === 'MB' ? targetKb * 1024 * 1024 : targetKb * 1024)
+      const activeTargetKb = (enableTargetSize?.checked && targetKb !== null && targetKb > 0) ? targetKb : null;
+      const targetBytes = activeTargetKb !== null
+        ? (targetSizeUnit === 'MB' ? activeTargetKb * 1024 * 1024 : activeTargetKb * 1024)
         : null;
 
-      if (isTargetSizeActive && targetBytes) {
+      if (activeTargetKb !== null && targetBytes !== null) {
         // Binary search algorithm (up to 7 iterations)
         let minQ = 0.05;
         let maxQ = 0.98;

@@ -211,7 +211,7 @@ export const TOOLS: Tool[] = [
     keywords: ['youtube banner size', 'youtube thumbnail resizer', 'channel art', 'youtube specs'],
     icon: 'video',
     badge: 'Popular',
-    href: '/youtube-banner-resizer',
+    href: '/tools/youtube-image-resizer/',
     specs: '2560x1440 Banner · 1280x720 Thumb'
   },
   {
@@ -224,7 +224,7 @@ export const TOOLS: Tool[] = [
     keywords: ['instagram photo resizer', 'square post', 'instagram story size', 'reels cover'],
     icon: 'camera',
     badge: 'Popular',
-    href: '/resize-image-for-instagram',
+    href: '/tools/instagram-image-resizer/',
     specs: '1080x1080 Square · 1080x1920 Story'
   },
   {
@@ -236,7 +236,7 @@ export const TOOLS: Tool[] = [
     tags: ['Cover Safe Area', 'Feed Post', 'Event Banner'],
     keywords: ['facebook cover size', 'fb banner resizer', 'facebook ad dimensions'],
     icon: 'share-2',
-    href: '/facebook-cover-photo-resizer',
+    href: '/tools/facebook-image-resizer/',
     specs: '820x312 Cover · 1200x630 Post'
   },
   {
@@ -248,7 +248,7 @@ export const TOOLS: Tool[] = [
     tags: ['3:1 Header', '16:9 Feed', 'No Compression Blurriness'],
     keywords: ['twitter header size', 'x banner resizer', 'twitter post image spec'],
     icon: 'twitter',
-    href: '/twitter-header-resizer',
+    href: '/tools/x-twitter-image-resizer/',
     specs: '1500x500 Header · 1600x900 Feed'
   },
   {
@@ -260,7 +260,7 @@ export const TOOLS: Tool[] = [
     tags: ['Business Standards', 'Personal Cover', 'Company Page'],
     keywords: ['linkedin banner size', 'linkedin background photo', 'linkedin post dimension'],
     icon: 'briefcase',
-    href: '/linkedin-banner-resizer',
+    href: '/tools/linkedin-image-resizer/',
     specs: '1584x396 Banner · 1200x627 Post'
   },
   {
@@ -272,7 +272,7 @@ export const TOOLS: Tool[] = [
     tags: ['2:3 Ratio', 'Tall Pins', 'High CTR'],
     keywords: ['pinterest pin size', 'pinterest 1000x1500', 'board cover resizer'],
     icon: 'pin',
-    href: '/pinterest-pin-resizer',
+    href: '/tools/pinterest-image-resizer/',
     specs: '1000x1500 Standard · 2:3 Ratio'
   },
   {
@@ -284,7 +284,7 @@ export const TOOLS: Tool[] = [
     tags: ['9:16 Vertical', 'Video Covers', 'Clear Avatar'],
     keywords: ['tiktok thumbnail size', 'tiktok 1080x1920', 'tiktok profile photo'],
     icon: 'play-square',
-    href: '/tiktok-profile-picture-resizer',
+    href: '/tools/tiktok-image-resizer/',
     specs: '200x200 DP Avatar · 800x800 Shop'
   },
   {
@@ -297,7 +297,7 @@ export const TOOLS: Tool[] = [
     keywords: ['whatsapp dp size', 'whatsapp status photo', 'whatsapp sticker 512x512'],
     icon: 'message-circle',
     badge: 'Popular',
-    href: '/whatsapp-dp-resizer',
+    href: '/tools/whatsapp-image-resizer/',
     specs: '500x500 DP · 1080x1920 Status'
   },
 

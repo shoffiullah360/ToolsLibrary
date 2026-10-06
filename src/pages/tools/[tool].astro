@@ -94,12 +94,13 @@ export async function getStaticPaths() {
 
   function slugToTitle(slug: string): string {
     if (specialTitles[slug]) return specialTitles[slug];
+    const cleanSlug = slug.replace(/\/+$/, '');
     const foundTool =
-      TOOLS.find((t) => t.id === slug || t.href === `/tools/${slug}`) ||
-      TEXT_TOOLS.find((t) => t.id === slug || t.href === `/tools/${slug}`);
+      TOOLS.find((t) => t.id === cleanSlug || t.href.replace(/^\/tools\//, '').replace(/\/+$/, '') === cleanSlug) ||
+      TEXT_TOOLS.find((t) => t.id === cleanSlug || t.href.replace(/^\/tools\//, '').replace(/\/+$/, '') === cleanSlug);
     if (foundTool) return foundTool.title;
 
-    return slug
+    return cleanSlug
       .split('-')
       .map((part) => acronyms[part.toLowerCase()] || (part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()))
       .join(' ');
@@ -111,14 +112,16 @@ export async function getStaticPaths() {
   // Add all tools from data
   TOOLS.forEach((t) => {
     if (t.href.startsWith('/tools/')) {
-      slugCandidates.add(t.href.replace('/tools/', ''));
+      const slug = t.href.replace(/^\/tools\//, '').replace(/\/+$/, '');
+      if (slug) slugCandidates.add(slug);
     }
     slugCandidates.add(t.id);
   });
 
   TEXT_TOOLS.forEach((t) => {
     if (t.href.startsWith('/tools/')) {
-      slugCandidates.add(t.href.replace('/tools/', ''));
+      const slug = t.href.replace(/^\/tools\//, '').replace(/\/+$/, '');
+      if (slug) slugCandidates.add(slug);
     }
     slugCandidates.add(t.id);
   });
@@ -168,8 +171,8 @@ export async function getStaticPaths() {
 
   return targetSlugs.map((slug) => {
     const matchedTool =
-      TOOLS.find((t) => t.id === slug || t.href === `/tools/${slug}`) ||
-      (TEXT_TOOLS.find((t) => t.id === slug || t.href === `/tools/${slug}`) as unknown as Tool | undefined);
+      TOOLS.find((t) => t.id === slug || t.href.replace(/^\/tools\//, '').replace(/\/+$/, '') === slug) ||
+      (TEXT_TOOLS.find((t) => t.id === slug || t.href.replace(/^\/tools\//, '').replace(/\/+$/, '') === slug) as unknown as Tool | undefined);
 
     const title = slugToTitle(slug);
     const category = matchedTool?.category || (slug.includes('image') || slug.includes('photo') ? 'Image Tools' : 'Developer Tools');

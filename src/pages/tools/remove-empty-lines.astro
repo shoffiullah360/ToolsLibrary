@@ -5,36 +5,24 @@ import ToolIcon from '../../components/ToolIcon.astro';
 // FAQ Data for Schema and Accordion
 const faqs = [
   {
-    question: "How do I remove empty lines from text online?",
-    answer: "Simply paste or type your text into the Input Text box. FastToolVerse automatically scans each line in real time and strips out all empty or whitespace-only lines. You can customize the behavior to collapse consecutive blank lines into single breaks, trim edge lines, or strip all blank lines completely."
+    question: "How do I remove empty lines from text online for free?",
+    answer: "Paste or type your text into the input workspace. FastToolVerse automatically evaluates every row in real time and strips out blank lines instantly. You can load samples, choose your preferred cleaning rules, and click Copy Result or download as a clean .txt file with one click."
   },
   {
-    question: "Does this tool remove lines that look empty but contain spaces or tabs?",
-    answer: "Yes. When the 'Remove whitespace-only lines' option is enabled (checked by default), FastToolVerse uses regex evaluation to detect lines consisting solely of spaces, tabs, or non-breaking spaces, ensuring invisible whitespace doesn't leave phantom gaps in your document."
+    question: "Does this tool remove lines that look blank but contain invisible spaces or tabs?",
+    answer: "Yes. Standard text editors often fail because lines contain invisible spaces or tab characters (\\t). When 'Remove whitespace-only lines' is checked (default), our regex engine (/^\\s*$/) detects and purges all hidden whitespace lines."
   },
   {
-    question: "What does 'Collapse consecutive blank lines to a single blank line' do?",
-    answer: "Instead of stripping out every single blank line and joining paragraphs together, this option condenses sequences of multiple blank lines into a single, clean blank line. This preserves standard paragraph spacing while eliminating erratic double- or triple-spaced gaps."
+    question: "How can I preserve single paragraph breaks while removing extra blank lines?",
+    answer: "Enable the 'Collapse consecutive blank lines to a single blank line' option. Instead of stripping every blank line and joining all paragraphs together, this condenses erratic double, triple, or quadruple returns into one clean paragraph break."
   },
   {
-    question: "Does FastToolVerse upload my text or source code to a server?",
-    answer: "No. FastToolVerse operates 100% client-side in your web browser. Your text, proprietary code snippets, student essays, and confidential datasets never leave your device RAM and are never transmitted over the internet."
+    question: "Can I safely clean source code, SQL queries, or Markdown files without ruining indentation?",
+    answer: "Yes. The tool only evaluates blank or whitespace-only lines. Non-empty lines retain their leading indentation spaces, making it completely safe for Python scripts, JavaScript, SQL queries, and Markdown lists."
   },
   {
-    question: "How do I fix extra blank lines in text copied from a PDF?",
-    answer: "PDF documents often insert erratic line breaks and blank rows when copied. Paste your PDF text into FastToolVerse, keep 'Remove whitespace-only lines' and 'Trim leading/trailing blank lines' enabled, and toggle 'Collapse consecutive blank lines' if you wish to keep natural paragraph spacing."
-  },
-  {
-    question: "Can I remove empty lines from source code, SQL, or Markdown files?",
-    answer: "Yes. FastToolVerse preserves line indentation on non-empty rows, making it safe for programming languages (JavaScript, Python, C++), SQL queries, and Markdown files. You can copy the result directly or export it as a clean .txt file."
-  },
-  {
-    question: "Is there a line count or document size limit?",
-    answer: "Because processing runs directly on your computer's local CPU using fast string iteration, you can comfortably clean documents with tens of thousands of lines without lag or server upload quotas."
-  },
-  {
-    question: "Does this blank line remover work offline?",
-    answer: "Yes. Once the page is loaded in your browser, all JavaScript logic runs locally. You can disconnect from the internet or work in airplane mode, and FastToolVerse will continue to clean your text flawlessly."
+    question: "Is my text, manuscript, or code secure when using this online tool?",
+    answer: "Absolute privacy is guaranteed. All text processing operates 100% client-side inside your browser sandbox. No text is ever uploaded to a server, logged in a database, or shared over the internet. You can even use this tool completely offline."
   }
 ];
 
@@ -42,7 +30,7 @@ const faqs = [
 const jsonLdSoftwareApp = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "Free Online Empty Line Remover & Blank Line Stripper",
+  "name": "Remove Empty Lines Online - Free Text Cleaner",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "All (Web Browser)",
   "browserRequirements": "Requires JavaScript. Runs 100% client-side.",
@@ -103,8 +91,8 @@ const jsonLdBreadcrumb = {
 };
 
 const canonicalUrl = "https://fasttoolverse.com/tools/remove-empty-lines";
-const pageTitle = "Remove Empty Lines Online - Fast Text Cleaner";
-const pageDescription = "Strip blank lines, remove whitespace-only breaks, and condense paragraphs online with zero server uploads. 100% private, client-side empty line remover.";
+const pageTitle = "Remove Empty Lines Online - Free Text Cleaner";
+const pageDescription = "Remove empty lines and blank spaces from your text online for free. Strip tabs, collapse breaks, and clean code with 100% private in-browser processing.";
 const pageKeywords = "remove empty lines, blank line stripper, delete empty lines, remove blank lines online, collapse blank lines, clean empty rows, text condenser, strip whitespace lines, client side text tool";
 const ogImage = "https://fasttoolverse.com/og-image.png";
 
@@ -229,13 +217,20 @@ const presets = [
 
       <!-- Hero Title -->
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
-        Free Online Empty Line Remover & Blank Line Stripper
+        Remove Empty Lines Online - Free Text Cleaner
       </h1>
 
       <!-- Subtitle -->
       <p class="mt-3 sm:mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-        Strip blank lines, delete whitespace-only breaks, and condense paragraphs with zero latency.
+        Strip blank lines, delete whitespace-only breaks, and condense paragraphs with zero server uploads.
       </p>
+
+      <!-- Intro Copy -->
+      <div class="mt-5 max-w-3xl mx-auto text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed text-center sm:text-left bg-white/70 dark:bg-slate-900/60 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-2xs">
+        <p>
+          Messy blank lines, accidental double-spacing, and phantom whitespace breaks can ruin document formatting, source code, and copy-pasted PDF texts. FastToolVerse’s online empty line remover provides a free, instant, and 100% private in-browser solution. Paste your text, source code, or manuscript to automatically detect and strip empty rows, delete lines containing only spaces or tabs, or collapse erratic multiple blank lines into consistent single paragraph breaks. Because our high-speed regex engine executes entirely in your browser’s local memory, your proprietary code, customer records, and confidential manuscripts are never transmitted across the internet.
+        </p>
+      </div>
     </div>
   </section>
 

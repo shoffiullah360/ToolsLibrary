@@ -15,6 +15,13 @@ interface ResizerPage {
   badge?: string;
   targetTag?: string;
   category: "filesize" | "dimension" | "social" | "preset";
+  introCopy?: string;
+  callout?: {
+    badge?: string;
+    title: string;
+    description: string;
+    link?: { href: string; text: string };
+  };
   preset: {
     unit?: "PX" | "CM" | "MM" | "INCH" | "%";
     width?: number;
@@ -584,8 +591,43 @@ const pageDescription = props.type === 'compress'
           <p class="mt-3 sm:mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
             {props.resizerPage.metaDescription}
           </p>
+
+          {props.resizerPage.introCopy && (
+            <div class="mt-5 max-w-3xl mx-auto text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed text-center sm:text-left bg-white/70 dark:bg-slate-900/60 p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-2xs">
+              <p set:html={props.resizerPage.introCopy} />
+            </div>
+          )}
         </div>
       </section>
+
+      {props.resizerPage.callout && (
+        <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+          <div class="rounded-2xl p-6 sm:p-7 border border-indigo-200/80 dark:border-indigo-900/60 bg-gradient-to-r from-blue-50/80 via-white to-indigo-50/80 dark:from-slate-900 dark:via-blue-950/20 dark:to-indigo-950/30 shadow-xs">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-5">
+              <div class="space-y-2">
+                {props.resizerPage.callout.badge && (
+                  <span class="inline-block text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+                    {props.resizerPage.callout.badge}
+                  </span>
+                )}
+                <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+                  {props.resizerPage.callout.title}
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl" set:html={props.resizerPage.callout.description} />
+              </div>
+              {props.resizerPage.callout.link && (
+                <a
+                  href={props.resizerPage.callout.link.href}
+                  class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs shrink-0 shadow-sm transition"
+                >
+                  <span>{props.resizerPage.callout.link.text}</span>
+                  <span>&rarr;</span>
+                </a>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
       <!-- Interactive Studio Container with Pre-configured Tool -->
       <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
@@ -949,9 +991,7 @@ const pageDescription = props.type === 'compress'
                   </svg>
                 </span>
               </summary>
-              <p class="mt-3.5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                {item.a}
-              </p>
+              <p class="mt-3.5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed" set:html={item.a} />
             </details>
           ))}
         </div>

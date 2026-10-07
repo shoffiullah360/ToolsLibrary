@@ -34,7 +34,7 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
 
       <!-- Instant Live Search Bar -->
       <div class="mt-10 max-w-2xl mx-auto">
-        <div class="relative flex items-center shadow-sm hover:shadow-md rounded-2xl bg-white dark:bg-slate-800/95 border border-slate-200/90 dark:border-slate-700 p-2 transition-all duration-200 focus-within:border-blue-500/60 dark:focus-within:border-blue-400 focus-within:ring-4 focus-within:ring-blue-500/10">
+        <div class="relative flex items-center shadow-sm hover:shadow-md rounded-2xl bg-white dark:bg-slate-800/95 border border-slate-300 dark:border-slate-700 p-2 transition-all duration-200 focus-within:border-blue-600 dark:focus-within:border-blue-400 focus-within:ring-4 focus-within:ring-blue-500/10">
           <div class="pl-3 text-slate-400">
             <ToolIcon name="search" class="w-5 h-5" />
           </div>
@@ -78,7 +78,7 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
             class={`filter-pill flex items-center gap-2 whitespace-nowrap flex-shrink-0 px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold rounded-2xl transition-all duration-200 cursor-pointer border shadow-sm ${
               index === 0
                 ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-sm'
-                : 'bg-white dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border-slate-200/90 dark:border-slate-700 hover:border-blue-500/50 hover:shadow-md hover:bg-slate-50/50 dark:hover:bg-slate-700/60'
+                : 'bg-white dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border-slate-300 dark:border-slate-700 hover:border-blue-600 hover:shadow-md hover:bg-slate-50/50 dark:hover:bg-slate-700/60'
             }`}
           >
             <span>{filter.label}</span>
@@ -96,7 +96,7 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
 
   <!-- No Results Fallback (Shown when search has 0 matches) -->
   <div id="no-results-state" class="hidden max-w-xl mx-auto px-4 py-16 text-center">
-    <div class="w-14 h-14 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200/90 dark:border-slate-700 shadow-sm text-slate-400 mx-auto flex items-center justify-center mb-4">
+    <div class="w-14 h-14 rounded-2xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 shadow-sm text-slate-400 mx-auto flex items-center justify-center mb-4">
       <ToolIcon name="search" class="w-7 h-7" />
     </div>
     <h3 class="text-lg font-semibold text-slate-900 dark:text-white">No tools match your query</h3>
@@ -165,7 +165,7 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
         <!-- Pillar 1: Client-Side Image Suite -->
-        <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/90 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-blue-500/50 transition-all duration-200 space-y-4">
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-300 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 space-y-4">
           <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center">
             <ToolIcon name="image" class="w-6 h-6" />
           </div>
@@ -189,7 +189,7 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
         </div>
 
         <!-- Pillar 2: Developer Utility Hub -->
-        <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/90 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-blue-500/50 transition-all duration-200 space-y-4">
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-300 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 space-y-4">
           <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
             <ToolIcon name="code" class="w-6 h-6" />
           </div>
@@ -213,7 +213,7 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
         </div>
 
         <!-- Pillar 3: Social Media Precision Specs -->
-        <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/90 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-blue-500/50 transition-all duration-200 space-y-4">
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-300 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 space-y-4">
           <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center">
             <ToolIcon name="camera" class="w-6 h-6" />
           </div>
@@ -255,40 +255,40 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
 
     <div class="space-y-3.5 mt-8">
           
-          <details class="group rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-800/80 shadow-sm hover:shadow-md hover:border-blue-500/50 overflow-hidden transition-all duration-200">
+          <details class="group rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-800/80 shadow-sm hover:shadow-md hover:border-blue-600 overflow-hidden transition-all duration-150">
             <summary class="flex items-center justify-between p-4 sm:p-5 font-semibold text-sm sm:text-base text-slate-900 dark:text-white cursor-pointer list-none select-none bg-slate-100/70 dark:bg-slate-800/60 transition-colors">
               <span>Are my images or code snippets uploaded to your server?</span>
-              <span class="ml-4 flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-slate-700 border border-slate-200/90 dark:border-slate-600 text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform duration-200 shrink-0 text-xs">&darr;</span>
+              <span class="ml-4 flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform duration-200 shrink-0 text-xs">&darr;</span>
             </summary>
             <div class="p-4 sm:p-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-200 dark:border-slate-700/60 bg-white dark:bg-slate-900/40">
               No. Absolute zero data is uploaded. Every tool runs locally in your browser using HTML5 Canvas, the Web Cryptography API, Web Workers, and WebAssembly. You can disconnect your Wi-Fi after opening the page and every tool will continue functioning with full performance.
             </div>
           </details>
 
-          <details class="group rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-800/80 shadow-sm hover:shadow-md hover:border-blue-500/50 overflow-hidden transition-all duration-200">
+          <details class="group rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-800/80 shadow-sm hover:shadow-md hover:border-blue-600 overflow-hidden transition-all duration-150">
             <summary class="flex items-center justify-between p-4 sm:p-5 font-semibold text-sm sm:text-base text-slate-900 dark:text-white cursor-pointer list-none select-none bg-slate-100/70 dark:bg-slate-800/60 transition-colors">
               <span>Is there a file size limit for image compression and resizing?</span>
-              <span class="ml-4 flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-slate-700 border border-slate-200/90 dark:border-slate-600 text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform duration-200 shrink-0 text-xs">&darr;</span>
+              <span class="ml-4 flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform duration-200 shrink-0 text-xs">&darr;</span>
             </summary>
             <div class="p-4 sm:p-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-200 dark:border-slate-700/60 bg-white dark:bg-slate-900/40">
               Because all calculations happen on your hardware, there are no artificial server file size limits or queue thresholds. You can process high-resolution DSLR photos (20MB+ and 50+ megapixels) limited solely by your local machine's RAM.
             </div>
           </details>
 
-          <details class="group rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-800/80 shadow-sm hover:shadow-md hover:border-blue-500/50 overflow-hidden transition-all duration-200">
+          <details class="group rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-800/80 shadow-sm hover:shadow-md hover:border-blue-600 overflow-hidden transition-all duration-150">
             <summary class="flex items-center justify-between p-4 sm:p-5 font-semibold text-sm sm:text-base text-slate-900 dark:text-white cursor-pointer list-none select-none bg-slate-100/70 dark:bg-slate-800/60 transition-colors">
               <span>How are social media aspect ratios and resolutions kept accurate?</span>
-              <span class="ml-4 flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-slate-700 border border-slate-200/90 dark:border-slate-600 text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform duration-200 shrink-0 text-xs">&darr;</span>
+              <span class="ml-4 flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform duration-200 shrink-0 text-xs">&darr;</span>
             </summary>
             <div class="p-4 sm:p-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-200 dark:border-slate-700/60 bg-white dark:bg-slate-900/40">
               Our social media tools are updated against the latest developer specifications from YouTube, Meta (Instagram, Facebook, WhatsApp), X (Twitter), ByteDance (TikTok), Pinterest, and LinkedIn to ensure accurate safe-zones and prevent mobile cropping.
             </div>
           </details>
 
-          <details class="group rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-800/80 shadow-sm hover:shadow-md hover:border-blue-500/50 overflow-hidden transition-all duration-200">
+          <details class="group rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-800/80 shadow-sm hover:shadow-md hover:border-blue-600 overflow-hidden transition-all duration-150">
             <summary class="flex items-center justify-between p-4 sm:p-5 font-semibold text-sm sm:text-base text-slate-900 dark:text-white cursor-pointer list-none select-none bg-slate-100/70 dark:bg-slate-800/60 transition-colors">
               <span>Is the JWT Decoder safe for production tokens?</span>
-              <span class="ml-4 flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-slate-700 border border-slate-200/90 dark:border-slate-600 text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform duration-200 shrink-0 text-xs">&darr;</span>
+              <span class="ml-4 flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform duration-200 shrink-0 text-xs">&darr;</span>
             </summary>
             <div class="p-4 sm:p-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-200 dark:border-slate-700/60 bg-white dark:bg-slate-900/40">
               Yes. Unlike public web debuggers that send token strings over HTTP POST requests, our JWT Decoder parses the Base64URL header and payload directly in client-side JavaScript, never exposing your API tokens or user claims.

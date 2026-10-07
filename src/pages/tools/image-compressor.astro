@@ -167,7 +167,7 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
         
         <!-- Step 1 -->
-        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs relative">
+        <div class="p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 relative">
           <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-blue-100 dark:border-blue-900/50">
             01
           </div>
@@ -180,7 +180,7 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
         </div>
 
         <!-- Step 2 -->
-        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs relative">
+        <div class="p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 relative">
           <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-blue-100 dark:border-blue-900/50">
             02
           </div>
@@ -193,7 +193,7 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
         </div>
 
         <!-- Step 3 -->
-        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs relative">
+        <div class="p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 relative">
           <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-blue-100 dark:border-blue-900/50">
             03
           </div>
@@ -231,14 +231,14 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
       <!-- Responsive 4-Column Card Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
         {COMPRESS_PRESETS.map((p) => (
-          <div class="group relative p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:bg-slate-50 dark:hover:bg-slate-900/80 hover:border-blue-500/50 dark:hover:border-blue-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between">
+          <div class="group relative p-5 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:bg-slate-50 dark:hover:bg-slate-900/80 hover:border-blue-600 dark:hover:border-blue-500 hover:shadow-md transition-all duration-150 flex flex-col justify-between">
             <div>
               <!-- Top Row: Badge on left, Spec/target pill on right -->
               <div class="flex items-center justify-between gap-2 mb-3">
                 <span class="inline-block text-[10px] sm:text-xs font-semibold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50">
                   {p.badge}
                 </span>
-                <span class="text-xs font-mono font-medium text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700/60">
+                <span class="text-xs font-mono font-medium text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700/60">
                   {p.targetKb ? `≤ ${p.targetKb} KB` : (p.maxWidth ? `${p.maxWidth}×${p.maxHeight} px` : (p.format ? p.format.toUpperCase() : 'OPTIMIZED'))}
                 </span>
               </div>
@@ -286,7 +286,7 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
       </div>
 
       <!-- Modern Comparison Card / Table -->
-      <div class="overflow-hidden rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+      <div class="overflow-hidden rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
         
         <!-- Table Header (Desktop & Mobile) -->
         <div class="grid grid-cols-12 border-b border-slate-200 dark:border-slate-800 bg-slate-100/70 dark:bg-slate-800/80 text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-200">
@@ -434,7 +434,7 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
         
         <!-- Guide 1: DCT Quantization -->
-        <div class="p-6 sm:p-7 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs flex flex-col justify-between">
+        <div class="p-6 sm:p-7 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 flex flex-col justify-between">
           <div>
             <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-5 border border-blue-100 dark:border-blue-900/50">
               <ToolIcon name="scale" class="w-5 h-5" />
@@ -462,7 +462,7 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
         </div>
 
         <!-- Guide 2: Chroma Subsampling -->
-        <div class="p-6 sm:p-7 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs flex flex-col justify-between">
+        <div class="p-6 sm:p-7 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 flex flex-col justify-between">
           <div>
             <div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-5 border border-purple-100 dark:border-purple-900/50">
               <ToolIcon name="scale" class="w-5 h-5" />
@@ -490,7 +490,7 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
         </div>
 
         <!-- Guide 3: Client-Side Privacy -->
-        <div class="p-6 sm:p-7 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs flex flex-col justify-between">
+        <div class="p-6 sm:p-7 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 flex flex-col justify-between">
           <div>
             <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-5 border border-emerald-100 dark:border-emerald-900/50">
               <ToolIcon name="shield-check" class="w-5 h-5" />
@@ -646,10 +646,10 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
       <!-- Semantic FAQ List -->
       <div class="space-y-4">
         {faqs.map((faq) => (
-          <details class="group rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-blue-500/50 overflow-hidden transition-all duration-200">
+          <details class="group rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-blue-600 overflow-hidden transition-all duration-150">
             <summary class="flex items-center justify-between p-4 sm:p-5 font-semibold text-sm sm:text-base text-slate-900 dark:text-white cursor-pointer list-none select-none bg-slate-100/70 dark:bg-slate-800/60 transition-colors">
               <span>{faq.question}</span>
-              <span class="ml-4 flex-shrink-0 w-6 h-6 rounded-full bg-white dark:bg-slate-800 border border-slate-200/90 dark:border-slate-700 flex items-center justify-center text-slate-500 group-open:rotate-180 transition-transform duration-200">
+              <span class="ml-4 flex-shrink-0 w-6 h-6 rounded-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-slate-500 group-open:rotate-180 transition-transform duration-200">
                 <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                 </svg>
@@ -674,28 +674,28 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
       <div class="flex flex-wrap justify-center gap-3">
         <a
           href="/tools/image-resizer"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-500/50 hover:shadow-md transition-all duration-200 shadow-sm"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-600 hover:shadow-md transition-all duration-150 shadow-sm"
         >
           <ToolIcon name="maximize-2" class="w-4 h-4 text-blue-500" />
           <span>Image Resizer</span>
         </a>
         <a
           href="/tools/image-cropper"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-500/50 hover:shadow-md transition-all duration-200 shadow-sm"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-600 hover:shadow-md transition-all duration-150 shadow-sm"
         >
           <ToolIcon name="crop" class="w-4 h-4 text-purple-500" />
           <span>Image Cropper</span>
         </a>
         <a
           href="/tools/image-rotator"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-500/50 hover:shadow-md transition-all duration-200 shadow-sm"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-600 hover:shadow-md transition-all duration-150 shadow-sm"
         >
           <ToolIcon name="rotate-cw" class="w-4 h-4 text-emerald-500" />
           <span>Image Rotator</span>
         </a>
         <a
           href="/tools/image-flipper"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-500/50 hover:shadow-md transition-all duration-200 shadow-sm"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-600 hover:shadow-md transition-all duration-150 shadow-sm"
         >
           <ToolIcon name="flip-horizontal" class="w-4 h-4 text-cyan-500" />
           <span>Image Flipper</span>

@@ -1,0 +1,1669 @@
+---
+import ToolIcon from '../ToolIcon.astro';
+
+interface Props {
+  initialTargetFormat?: 'webp' | 'avif' | 'jpeg' | 'png' | 'gif' | 'bmp' | 'ico' | 'pdf';
+}
+
+const { initialTargetFormat = 'webp' } = Astro.props;
+---
+
+<div id="image-converter-root" class="w-full max-w-6xl mx-auto" data-initial-format={initialTargetFormat}>
+  <!-- 1. INITIAL STATE: Drag & Drop Zone -->
+  <div id="converter-dropzone-view" class="transition-all duration-300">
+    <div
+      id="converter-dropzone"
+      class="relative group rounded-3xl border-2 border-dashed border-slate-300 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-400 bg-white/70 dark:bg-slate-900/50 backdrop-blur-sm px-6 py-10 sm:px-10 sm:py-12 text-center cursor-pointer transition-all duration-200 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-0.5"
+    >
+      <input
+        type="file"
+        id="converterFileInput"
+        class="hidden"
+        accept="image/jpeg,image/png,image/webp,image/avif,image/svg+xml,image/bmp,image/gif,image/x-icon,image/vnd.microsoft.icon,image/tiff,.jpg,.jpeg,.png,.webp,.avif,.svg,.bmp,.gif,.ico,.tif,.tiff"
+        multiple
+      />
+
+      <div class="max-w-xl mx-auto flex flex-col items-center">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50 mb-4 shadow-2xs">
+          <ToolIcon name="repeat" class="w-3.5 h-3.5" />
+          <span>Universal Client-Side Converter • Batch Ready</span>
+        </div>
+
+        <!-- Center Icon -->
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-200 shadow-md shadow-blue-500/20">
+          <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+          </svg>
+        </div>
+
+        <!-- Headline & Subtitle -->
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+          Drop your images here, or browse files
+        </h2>
+        <p class="mt-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-md">
+          Supports <span class="font-semibold text-slate-700 dark:text-slate-300">JPG, PNG, WebP, AVIF, SVG, BMP, GIF, ICO & TIFF</span>. Or paste directly with <kbd class="px-1.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">Ctrl+V</kbd>.
+        </p>
+
+        <!-- CTA Button -->
+        <div class="mt-5 flex flex-wrap items-center justify-center gap-3">
+          <button
+            type="button"
+            id="converterSelectBtn"
+            class="px-7 py-3 rounded-full bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-semibold text-sm transition-all shadow-md hover:shadow-lg active:scale-95 cursor-pointer flex items-center gap-2"
+          >
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+            <span>Choose Images (Batch Mode)</span>
+          </button>
+        </div>
+
+        <!-- Format Badges Strip -->
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-1.5 text-[11px] text-slate-500 dark:text-slate-400 font-mono">
+          <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-medium">JPG</span>
+          <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-medium">PNG</span>
+          <span class="px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 font-medium">WEBP</span>
+          <span class="px-2 py-0.5 rounded bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 font-medium">AVIF</span>
+          <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-medium">SVG</span>
+          <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-medium">BMP</span>
+          <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-medium">GIF</span>
+          <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-medium">ICO</span>
+          <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-medium">TIFF</span>
+          <span class="text-slate-400 dark:text-slate-500">→</span>
+          <span class="px-2 py-0.5 rounded bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 font-bold">PDF</span>
+        </div>
+
+        <!-- Privacy & Security Guarantee -->
+        <div class="mt-6 pt-4 border-t border-slate-200/70 dark:border-slate-800/80 w-full flex items-center justify-center">
+          <div class="inline-flex items-center gap-1.5 font-medium text-emerald-600 dark:text-emerald-400 text-xs">
+            <ToolIcon name="shield-check" class="w-4 h-4" />
+            <span>100% In-Browser Privacy • Zero Server Uploads • No 10MB Limits</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. ACTIVE STATE: Converter Workspace & Batch Queue -->
+  <div id="converter-workspace" class="hidden space-y-6">
+    <!-- Top Action Bar -->
+    <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 sm:p-5 shadow-xs">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        <!-- Left: Queue Counter & Add More -->
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 font-bold text-sm">
+              <ToolIcon name="repeat" class="w-4 h-4" />
+            </span>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-bold text-slate-900 dark:text-white">Batch Queue</span>
+                <span id="queue-count-badge" class="px-2 py-0.5 rounded-full text-xs font-semibold bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 font-mono">
+                  0 files
+                </span>
+              </div>
+              <p class="text-xs text-slate-500 dark:text-slate-400">All conversions run locally in browser memory</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Global Format Selector & Global Actions -->
+        <div class="flex flex-wrap items-center gap-2.5">
+          <!-- Convert All To Dropdown / Segmented -->
+          <div class="relative inline-flex items-center gap-2 bg-slate-100 dark:bg-slate-800/80 p-1 rounded-xl border border-slate-200 dark:border-slate-700">
+            <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 pl-2">Convert all to:</span>
+            <div class="relative">
+              <select
+                id="global-format-select"
+                class="appearance-none bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-bold text-xs py-1.5 pl-3 pr-8 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-hidden focus:ring-2 focus:ring-blue-500 cursor-pointer shadow-2xs"
+              >
+                <optgroup label="Modern Web">
+                  <option value="webp" selected>WebP (Best Compression)</option>
+                  <option value="avif">AVIF (Next-Gen)</option>
+                </optgroup>
+                <optgroup label="Universal Formats">
+                  <option value="jpeg">JPG / JPEG (Universal)</option>
+                  <option value="png">PNG (Lossless Alpha)</option>
+                  <option value="gif">GIF (Web Graphics)</option>
+                  <option value="bmp">BMP (Bitmap)</option>
+                  <option value="ico">ICO (Windows & Favicon)</option>
+                </optgroup>
+                <optgroup label="Document Export">
+                  <option value="pdf">PDF (Document / Multi-page)</option>
+                </optgroup>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add More Button -->
+          <button
+            type="button"
+            id="add-more-files-btn"
+            class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition cursor-pointer shadow-2xs"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+            <span>Add More</span>
+          </button>
+
+          <!-- Clear All -->
+          <button
+            type="button"
+            id="clear-all-queue-btn"
+            class="inline-flex items-center gap-1 px-2.5 py-2 rounded-xl text-xs font-medium text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition cursor-pointer"
+          >
+            <span>Clear All</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Action Buttons Row -->
+      <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-2">
+          <!-- Convert All CTA -->
+          <button
+            type="button"
+            id="convert-all-btn"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs sm:text-sm shadow-md shadow-blue-500/20 active:scale-95 transition-all cursor-pointer"
+          >
+            <ToolIcon name="zap" class="w-4 h-4" />
+            <span id="convert-all-text">Convert All Images</span>
+          </button>
+
+          <!-- Auto-convert toggle -->
+          <label class="hidden sm:inline-flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 select-none cursor-pointer ml-2">
+            <input type="checkbox" id="auto-convert-toggle" checked class="w-4 h-4 text-blue-600 rounded border-slate-300 dark:border-slate-700 focus:ring-blue-500" />
+            <span>Auto-convert on file upload</span>
+          </label>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <!-- Multi-Page PDF Download (shown when multiple items or PDF selected) -->
+          <button
+            type="button"
+            id="download-multi-pdf-btn"
+            class="hidden inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-rose-300 dark:border-rose-900/60 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 font-semibold text-xs hover:bg-rose-100 dark:hover:bg-rose-900/40 transition shadow-2xs cursor-pointer"
+          >
+            <ToolIcon name="file-text" class="w-4 h-4 text-rose-600 dark:text-rose-400" />
+            <span>Combine All into 1 PDF</span>
+          </button>
+
+          <!-- Download All as ZIP CTA -->
+          <button
+            type="button"
+            id="download-zip-btn"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-semibold text-xs sm:text-sm shadow-sm active:scale-95 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+            <span id="download-zip-text">Download All as ZIP</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. ADVANCED OPTIONS DRAWER (Collapsible Accordion) -->
+    <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs overflow-hidden transition-all duration-200">
+      <button
+        type="button"
+        id="advanced-drawer-toggle"
+        class="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors cursor-pointer select-none"
+        aria-expanded="false"
+      >
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 flex items-center justify-center border border-indigo-100 dark:border-indigo-900/40">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-bold text-slate-900 dark:text-white">Advanced Options</span>
+              <span id="drawer-summary-pill" class="px-2 py-0.5 text-[10px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full">
+                90% Quality • White Alpha Fill • Stripped EXIF
+              </span>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Quality compression, transparency fill, grayscale, and dimensions</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 text-slate-400">
+          <span class="text-xs font-medium text-blue-600 dark:text-blue-400 sm:inline hidden" id="drawer-toggle-label">Customize</span>
+          <svg id="drawer-chevron" class="w-4 h-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
+        </div>
+      </button>
+
+      <!-- Accordion Body -->
+      <div id="advanced-drawer-body" class="hidden px-5 pb-6 pt-2 border-t border-slate-100 dark:border-slate-800/80">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-3">
+          
+          <!-- Option 1: Quality Slider -->
+          <div class="space-y-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-700/60">
+            <div class="flex items-center justify-between">
+              <label for="quality-range" class="text-xs font-bold text-slate-800 dark:text-slate-200">
+                Quality Slider
+              </label>
+              <span id="quality-display-badge" class="px-2 py-0.5 rounded text-xs font-mono font-bold bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300">
+                90%
+              </span>
+            </div>
+            <input
+              type="range"
+              id="quality-range"
+              min="10"
+              max="100"
+              value="90"
+              step="1"
+              class="w-full accent-blue-600 cursor-pointer"
+            />
+            <div class="flex justify-between text-[10px] text-slate-400 font-mono">
+              <span>10% (Smallest)</span>
+              <span>90% (Standard)</span>
+              <span>100% (Max)</span>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
+              Calibrates quantization for WebP, JPG, AVIF & PDF. PNG/BMP/ICO outputs remain lossless.
+            </p>
+          </div>
+
+          <!-- Option 2: Smart Transparency Fill -->
+          <div class="space-y-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-700/60">
+            <div class="flex items-center justify-between">
+              <label class="text-xs font-bold text-slate-800 dark:text-slate-200">
+                Transparency Fill (Alpha)
+              </label>
+              <div class="flex items-center gap-1.5">
+                <input
+                  type="color"
+                  id="transparency-color-picker"
+                  value="#FFFFFF"
+                  class="w-6 h-6 rounded cursor-pointer border border-slate-300 dark:border-slate-600 bg-transparent p-0"
+                />
+                <span id="color-hex-label" class="text-xs font-mono text-slate-600 dark:text-slate-400">#FFFFFF</span>
+              </div>
+            </div>
+            <!-- Quick Color Presets -->
+            <div class="flex items-center gap-1.5 pt-1">
+              <button type="button" class="color-preset-btn px-2 py-1 text-[10px] font-medium rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-blue-500 cursor-pointer" data-color="#FFFFFF">White</button>
+              <button type="button" class="color-preset-btn px-2 py-1 text-[10px] font-medium rounded border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:border-blue-500 cursor-pointer" data-color="#F1F5F9">Light Gray</button>
+              <button type="button" class="color-preset-btn px-2 py-1 text-[10px] font-medium rounded border border-slate-200 dark:border-slate-700 bg-slate-900 text-white hover:border-blue-500 cursor-pointer" data-color="#0F172A">Dark Slate</button>
+              <button type="button" class="color-preset-btn px-2 py-1 text-[10px] font-medium rounded border border-slate-200 dark:border-slate-700 bg-black text-white hover:border-blue-500 cursor-pointer" data-color="#000000">Black</button>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
+              Fills transparent regions when converting transparent PNG/WebP/SVG to JPG or BMP.
+            </p>
+          </div>
+
+          <!-- Option 3: Grayscale & EXIF -->
+          <div class="space-y-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-700/60">
+            <!-- Grayscale Switch -->
+            <div class="flex items-center justify-between">
+              <div>
+                <label for="grayscale-toggle" class="text-xs font-bold text-slate-800 dark:text-slate-200 cursor-pointer">
+                  Grayscale (B&W)
+                </label>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400">1-click black & white canvas filter</p>
+              </div>
+              <input
+                type="checkbox"
+                id="grayscale-toggle"
+                class="w-4 h-4 text-blue-600 rounded border-slate-300 dark:border-slate-600 focus:ring-blue-500 cursor-pointer"
+              />
+            </div>
+
+            <!-- Strip EXIF Checkbox -->
+            <div class="pt-2 border-t border-slate-200/60 dark:border-slate-700/60 flex items-center justify-between">
+              <div>
+                <label for="strip-exif-toggle" class="text-xs font-bold text-slate-800 dark:text-slate-200 cursor-pointer">
+                  Strip EXIF Metadata
+                </label>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400">Removes camera GPS, model, and date info</p>
+              </div>
+              <input
+                type="checkbox"
+                id="strip-exif-toggle"
+                checked
+                class="w-4 h-4 text-blue-600 rounded border-slate-300 dark:border-slate-600 focus:ring-blue-500 cursor-pointer"
+              />
+            </div>
+          </div>
+
+          <!-- Option 4: Resize on Convert (Full Span on lg) -->
+          <div class="md:col-span-2 lg:col-span-3 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-700/60">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+              <div>
+                <span class="text-xs font-bold text-slate-800 dark:text-slate-200">Resize On Convert</span>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400">Downscale or set custom pixel dimensions concurrently with format conversion</p>
+              </div>
+
+              <!-- Resize Mode Selector -->
+              <div class="inline-flex rounded-lg p-0.5 bg-slate-200/70 dark:bg-slate-700/60 text-xs font-medium">
+                <button type="button" class="resize-mode-tab px-3 py-1 rounded-md text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 shadow-2xs font-semibold cursor-pointer" data-mode="original">
+                  Keep Original
+                </button>
+                <button type="button" class="resize-mode-tab px-3 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer" data-mode="percentage">
+                  Scale %
+                </button>
+                <button type="button" class="resize-mode-tab px-3 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer" data-mode="custom">
+                  Custom Px
+                </button>
+              </div>
+            </div>
+
+            <!-- Percentage Mode Controls -->
+            <div id="resize-percentage-panel" class="hidden flex items-center gap-2 pt-2 border-t border-slate-200/60 dark:border-slate-700/60">
+              <span class="text-xs font-medium text-slate-600 dark:text-slate-400">Downscale to:</span>
+              <button type="button" class="scale-preset-btn px-3 py-1 rounded-lg text-xs font-semibold border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-blue-500 text-slate-700 dark:text-slate-300 cursor-pointer" data-scale="0.75">75%</button>
+              <button type="button" class="scale-preset-btn px-3 py-1 rounded-lg text-xs font-semibold border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-blue-500 text-slate-700 dark:text-slate-300 cursor-pointer" data-scale="0.5">50%</button>
+              <button type="button" class="scale-preset-btn px-3 py-1 rounded-lg text-xs font-semibold border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-blue-500 text-slate-700 dark:text-slate-300 cursor-pointer" data-scale="0.25">25%</button>
+              <span id="current-scale-label" class="text-xs font-mono text-blue-600 dark:text-blue-400 font-bold ml-2">75%</span>
+            </div>
+
+            <!-- Custom Dimensions Mode Controls -->
+            <div id="resize-custom-panel" class="hidden flex flex-wrap items-center gap-3 pt-2 border-t border-slate-200/60 dark:border-slate-700/60">
+              <div class="flex items-center gap-1.5">
+                <label for="custom-width-input" class="text-xs font-medium text-slate-600 dark:text-slate-400">Width:</label>
+                <input
+                  type="number"
+                  id="custom-width-input"
+                  placeholder="e.g. 1920"
+                  class="w-24 px-2.5 py-1 text-xs font-mono rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+                />
+                <span class="text-xs text-slate-400">px</span>
+              </div>
+
+              <!-- Aspect Ratio Lock Button -->
+              <button
+                type="button"
+                id="aspect-ratio-lock-btn"
+                class="px-2 py-1 rounded-lg border border-blue-500/50 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 text-xs font-semibold flex items-center gap-1 cursor-pointer"
+                title="Maintain aspect ratio"
+              >
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                </svg>
+                <span>Ratio Locked</span>
+              </button>
+
+              <div class="flex items-center gap-1.5">
+                <label for="custom-height-input" class="text-xs font-medium text-slate-600 dark:text-slate-400">Height:</label>
+                <input
+                  type="number"
+                  id="custom-height-input"
+                  placeholder="e.g. 1080"
+                  class="w-24 px-2.5 py-1 text-xs font-mono rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+                />
+                <span class="text-xs text-slate-400">px</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. BATCH QUEUE CARDS CONTAINER -->
+    <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs overflow-hidden">
+      <div class="px-5 py-3.5 border-b border-slate-100 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex items-center justify-between">
+        <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+          Queued Files (<span id="queue-count-sub">0</span>)
+        </span>
+        <span class="text-[11px] text-slate-400">Convert individual formats or batch convert all at once</span>
+      </div>
+
+      <!-- Queue List Items Container -->
+      <div id="queue-items-list" class="divide-y divide-slate-100 dark:divide-slate-800">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. PREVIEW MODAL / DIALOG (For inspecting converted output) -->
+  <dialog id="preview-modal" class="p-0 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white backdrop:bg-slate-900/60 backdrop:backdrop-blur-xs max-w-3xl w-full mx-auto my-auto shadow-2xl">
+    <div class="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-sm" id="modal-title">Image Inspection</span>
+        <span id="modal-format-badge" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300">WEBP</span>
+      </div>
+      <button type="button" id="modal-close-btn" class="p-1 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+    <div class="p-4 sm:p-6 flex flex-col items-center justify-center bg-slate-50/50 dark:bg-slate-950/50">
+      <div class="relative max-h-[480px] w-full flex items-center justify-center overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900/90 p-2">
+        <img id="modal-preview-img" class="max-h-[440px] max-w-full object-contain select-none" alt="Preview" />
+      </div>
+      <div class="mt-4 flex flex-wrap items-center justify-between gap-3 w-full text-xs text-slate-500 font-mono">
+        <span id="modal-specs-label">-- × -- px</span>
+        <button type="button" id="modal-download-btn" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold font-sans transition cursor-pointer">
+          Download Converted Image
+        </button>
+      </div>
+    </div>
+  </dialog>
+</div>
+
+<!-- CLIENT-SIDE CONVERSION SCRIPT -->
+<script>
+  import JSZip from 'jszip';
+
+  // Format mappings & metadata
+  const EXT_MAP: Record<string, string> = {
+    webp: '.webp',
+    avif: '.avif',
+    jpeg: '.jpg',
+    png: '.png',
+    gif: '.gif',
+    bmp: '.bmp',
+    ico: '.ico',
+    pdf: '.pdf'
+  };
+
+  const MIME_MAP: Record<string, string> = {
+    webp: 'image/webp',
+    avif: 'image/avif',
+    jpeg: 'image/jpeg',
+    png: 'image/png',
+    gif: 'image/gif',
+    bmp: 'image/bmp',
+    ico: 'image/x-icon',
+    pdf: 'application/pdf'
+  };
+
+  interface QueueItem {
+    id: string;
+    file: File;
+    name: string;
+    originalSize: number;
+    originalFormat: string;
+    targetFormat: string;
+    width: number;
+    height: number;
+    aspectRatio: number;
+    sourceCanvas: HTMLCanvasElement;
+    convertedBlob: Blob | null;
+    convertedUrl: string | null;
+    convertedSize: number | null;
+    status: 'pending' | 'converting' | 'done' | 'error';
+    errorMessage?: string;
+  }
+
+  // Pure JS BMP Encoder (24-bit uncompressed BMP)
+  function canvasToBmpBlob(canvas: HTMLCanvasElement): Blob {
+    const ctx = canvas.getContext('2d')!;
+    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const { width, height, data } = imgData;
+    const extraBytes = (4 - ((width * 3) % 4)) % 4;
+    const rowSize = width * 3 + extraBytes;
+    const imageSize = rowSize * height;
+    const fileSize = 54 + imageSize;
+    const buffer = new ArrayBuffer(fileSize);
+    const view = new DataView(buffer);
+
+    // BITMAPFILEHEADER (14 bytes)
+    view.setUint16(0, 0x4D42, false); // 'BM'
+    view.setUint32(2, fileSize, true);
+    view.setUint16(6, 0, true);
+    view.setUint16(8, 0, true);
+    view.setUint32(10, 54, true); // Data offset
+
+    // BITMAPINFOHEADER (40 bytes)
+    view.setUint32(14, 40, true);
+    view.setInt32(18, width, true);
+    view.setInt32(22, height, true); // Bottom-up
+    view.setUint16(26, 1, true); // Planes
+    view.setUint16(28, 24, true); // 24-bit BGR
+    view.setUint32(30, 0, true); // BI_RGB
+    view.setUint32(34, imageSize, true);
+    view.setInt32(38, 2835, true); // 72 DPI
+    view.setInt32(42, 2835, true);
+    view.setUint32(46, 0, true);
+    view.setUint32(50, 0, true);
+
+    const bytes = new Uint8Array(buffer);
+    let pos = 54;
+    for (let y = height - 1; y >= 0; y--) {
+      for (let x = 0; x < width; x++) {
+        const idx = (y * width + x) * 4;
+        bytes[pos++] = data[idx + 2]; // B
+        bytes[pos++] = data[idx + 1]; // G
+        bytes[pos++] = data[idx];     // R
+      }
+      for (let p = 0; p < extraBytes; p++) {
+        bytes[pos++] = 0;
+      }
+    }
+    return new Blob([buffer], { type: 'image/bmp' });
+  }
+
+  // Pure JS ICO Encoder (Standard PNG payload container)
+  async function canvasToIcoBlob(canvas: HTMLCanvasElement): Promise<Blob> {
+    const pngBlob = await new Promise<Blob>((res) => canvas.toBlob((b) => res(b!), 'image/png'));
+    const pngBuffer = await pngBlob.arrayBuffer();
+    const pngBytes = new Uint8Array(pngBuffer);
+
+    const width = canvas.width > 256 ? 256 : canvas.width;
+    const height = canvas.height > 256 ? 256 : canvas.height;
+
+    // ICONDIR (6 bytes) + ICONDIRENTRY (16 bytes)
+    const header = new ArrayBuffer(22);
+    const view = new DataView(header);
+    view.setUint16(0, 0, true);
+    view.setUint16(2, 1, true); // Type 1 = Icon
+    view.setUint16(4, 1, true); // 1 Image
+
+    view.setUint8(6, width === 256 ? 0 : width);
+    view.setUint8(7, height === 256 ? 0 : height);
+    view.setUint8(8, 0); // Palette count
+    view.setUint8(9, 0); // Reserved
+    view.setUint16(10, 1, true); // Color planes
+    view.setUint16(12, 32, true); // 32 bits
+    view.setUint32(14, pngBytes.byteLength, true); // Size
+    view.setUint32(18, 22, true); // Offset
+
+    return new Blob([header, pngBytes], { type: 'image/x-icon' });
+  }
+
+  // Pure JS Static GIF89a Encoder
+  function canvasToGifBlob(canvas: HTMLCanvasElement): Blob {
+    const ctx = canvas.getContext('2d')!;
+    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const { width, height, data } = imgData;
+
+    // Standard 3-3-2 bit uniform color palette (256 colors)
+    const palette = new Uint8Array(256 * 3);
+    for (let i = 0; i < 256; i++) {
+      const r = ((i >> 5) & 0x07) * 36;
+      const g = ((i >> 2) & 0x07) * 36;
+      const b = (i & 0x03) * 85;
+      palette[i * 3] = r;
+      palette[i * 3 + 1] = g;
+      palette[i * 3 + 2] = b;
+    }
+
+    // Map each pixel to closest palette index
+    const indexedPixels = new Uint8Array(width * height);
+    for (let i = 0; i < indexedPixels.length; i++) {
+      const idx = i * 4;
+      const r = data[idx];
+      const g = data[idx + 1];
+      const b = data[idx + 2];
+      indexedPixels[i] = ((r & 0xE0) | ((g & 0xE0) >> 3) | (b >> 6));
+    }
+
+    // Assemble GIF89a header & descriptors
+    const chunks: Uint8Array[] = [];
+
+    // Header & Logical Screen Descriptor (13 bytes)
+    const lsd = new Uint8Array([
+      0x47, 0x49, 0x46, 0x38, 0x39, 0x61, // GIF89a
+      width & 0xFF, (width >> 8) & 0xFF,
+      height & 0xFF, (height >> 8) & 0xFF,
+      0xF7, // Global Color Table Flag (1), 8 bits/pixel (256 colors)
+      0x00, // Background color index
+      0x00  // Pixel aspect ratio
+    ]);
+    chunks.push(lsd);
+    chunks.push(palette);
+
+    // Graphic Control Extension (8 bytes)
+    const gce = new Uint8Array([
+      0x21, 0xF9, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00
+    ]);
+    chunks.push(gce);
+
+    // Image Descriptor (10 bytes)
+    const id = new Uint8Array([
+      0x2C, 0x00, 0x00, 0x00, 0x00,
+      width & 0xFF, (width >> 8) & 0xFF,
+      height & 0xFF, (height >> 8) & 0xFF,
+      0x00
+    ]);
+    chunks.push(id);
+
+    // LZW Raster Data: Minimum Code Size = 8
+    chunks.push(new Uint8Array([0x08]));
+
+    // Simple uncompressed/clear-code sub-blocks
+    // For universal compatibility, write indexed pixels in blocks of up to 254 bytes
+    let offset = 0;
+    while (offset < indexedPixels.length) {
+      const blockSize = Math.min(254, indexedPixels.length - offset);
+      const block = new Uint8Array(blockSize + 1);
+      block[0] = blockSize;
+      block.set(indexedPixels.subarray(offset, offset + blockSize), 1);
+      chunks.push(block);
+      offset += blockSize;
+    }
+
+    // Block Terminator (0x00) & GIF Trailer (0x3B)
+    chunks.push(new Uint8Array([0x00, 0x3B]));
+
+    return new Blob(chunks, { type: 'image/gif' });
+  }
+
+  // Pure JS PDF 1.4 Document Generator (Single or Multi-Page)
+  async function generatePdfBlobFromCanvases(canvases: HTMLCanvasElement[], quality: number = 0.92): Promise<Blob> {
+    const images = await Promise.all(
+      canvases.map(async (c) => {
+        const flatCanvas = document.createElement('canvas');
+        flatCanvas.width = c.width;
+        flatCanvas.height = c.height;
+        const fctx = flatCanvas.getContext('2d')!;
+        fctx.fillStyle = '#FFFFFF';
+        fctx.fillRect(0, 0, c.width, c.height);
+        fctx.drawImage(c, 0, 0);
+
+        const blob = await new Promise<Blob>((res) => flatCanvas.toBlob((b) => res(b!), 'image/jpeg', quality));
+        const buffer = await blob.arrayBuffer();
+        return {
+          bytes: new Uint8Array(buffer),
+          width: c.width,
+          height: c.height
+        };
+      })
+    );
+
+    const encoder = new TextEncoder();
+    const chunks: (Uint8Array | string)[] = [];
+    const offsets: number[] = [];
+    let currentOffset = 0;
+
+    function writeString(str: string) {
+      const encoded = encoder.encode(str);
+      chunks.push(encoded);
+      currentOffset += encoded.byteLength;
+    }
+
+    function writeBytes(bytes: Uint8Array) {
+      chunks.push(bytes);
+      currentOffset += bytes.byteLength;
+    }
+
+    writeString('%PDF-1.4\n%\xE2\xE3\xCF\xD3\n');
+
+    const numPages = images.length;
+    const totalObjs = 2 + numPages * 3;
+    const pageObjIds: number[] = [];
+
+    for (let i = 0; i < numPages; i++) {
+      pageObjIds.push(3 * i + 3);
+    }
+
+    // Obj 1: Catalog
+    offsets[1] = currentOffset;
+    writeString(`1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n`);
+
+    // Obj 2: Pages
+    offsets[2] = currentOffset;
+    const kidsStr = pageObjIds.map((id) => `${id} 0 R`).join(' ');
+    writeString(`2 0 obj\n<< /Type /Pages /Kids [ ${kidsStr} ] /Count ${numPages} >>\nendobj\n`);
+
+    for (let i = 0; i < numPages; i++) {
+      const img = images[i];
+      const pageId = 3 * i + 3;
+      const imgId = 3 * i + 4;
+      const contentId = 3 * i + 5;
+      const w = img.width;
+      const h = img.height;
+
+      // Page Object
+      offsets[pageId] = currentOffset;
+      writeString(
+        `${pageId} 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [ 0 0 ${w} ${h} ] /Resources << /XObject << /Im1 ${imgId} 0 R >> >> /Contents ${contentId} 0 R >>\nendobj\n`
+      );
+
+      // Image XObject
+      offsets[imgId] = currentOffset;
+      const imgHeader = `${imgId} 0 obj\n<< /Type /XObject /Subtype /Image /Width ${w} /Height ${h} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${img.bytes.byteLength} >>\nstream\n`;
+      writeString(imgHeader);
+      writeBytes(img.bytes);
+      writeString('\nendstream\nendobj\n');
+
+      // Contents Stream
+      offsets[contentId] = currentOffset;
+      const contentStr = `q\n${w} 0 0 ${h} 0 0 cm\n/Im1 Do\nQ\n`;
+      const contentEncoded = encoder.encode(contentStr);
+      writeString(`${contentId} 0 obj\n<< /Length ${contentEncoded.byteLength} >>\nstream\n${contentStr}endstream\nendobj\n`);
+    }
+
+    // Cross-reference table
+    const xrefOffset = currentOffset;
+    writeString(`xref\n0 ${totalObjs + 1}\n0000000000 65535 f \r\n`);
+    for (let i = 1; i <= totalObjs; i++) {
+      const off = offsets[i] || 0;
+      const padded = String(off).padStart(10, '0');
+      writeString(`${padded} 00000 n \r\n`);
+    }
+
+    // Trailer
+    writeString(`trailer\n<< /Size ${totalObjs + 1} /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF\n`);
+
+    return new Blob(chunks, { type: 'application/pdf' });
+  }
+
+  // Pure JS Baseline TIFF Parser Fallback
+  async function parseTiffFallback(file: File): Promise<HTMLCanvasElement> {
+    const buffer = await file.arrayBuffer();
+    const view = new DataView(buffer);
+    const isLittleEndian = view.getUint16(0) === 0x4949;
+
+    const ifdOffset = view.getUint32(4, isLittleEndian);
+    const numEntries = view.getUint16(ifdOffset, isLittleEndian);
+
+    let width = 0;
+    let height = 0;
+    let stripOffset = 0;
+    let stripBytes = 0;
+
+    for (let i = 0; i < numEntries; i++) {
+      const entryPos = ifdOffset + 2 + i * 12;
+      const tag = view.getUint16(entryPos, isLittleEndian);
+      const val = view.getUint32(entryPos + 8, isLittleEndian);
+
+      if (tag === 256) width = val;
+      else if (tag === 257) height = val;
+      else if (tag === 273) stripOffset = val;
+      else if (tag === 279) stripBytes = val;
+    }
+
+    if (!width || !height) throw new Error('Could not parse TIFF dimensions');
+
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d')!;
+    const imgData = ctx.createImageData(width, height);
+
+    // Read uncompressed RGB or Grayscale bytes
+    const rawData = new Uint8Array(buffer, stripOffset, Math.min(stripBytes || buffer.byteLength - stripOffset, buffer.byteLength - stripOffset));
+    let srcPos = 0;
+    for (let i = 0; i < width * height; i++) {
+      const dstPos = i * 4;
+      if (srcPos < rawData.length - 2) {
+        imgData.data[dstPos] = rawData[srcPos++];
+        imgData.data[dstPos + 1] = rawData[srcPos++];
+        imgData.data[dstPos + 2] = rawData[srcPos++];
+        imgData.data[dstPos + 3] = 255;
+      }
+    }
+    ctx.putImageData(imgData, 0, 0);
+    return canvas;
+  }
+
+  // Main Component Controller
+  document.addEventListener('DOMContentLoaded', () => {
+    const root = document.getElementById('image-converter-root');
+    if (!root) return;
+
+    let queue: QueueItem[] = [];
+    let globalTargetFormat = (root.getAttribute('data-initial-format') || 'webp').toLowerCase();
+
+    // DOM References
+    const dropzoneView = document.getElementById('converter-dropzone-view');
+    const dropzone = document.getElementById('converter-dropzone');
+    const fileInput = document.getElementById('converterFileInput') as HTMLInputElement;
+    const selectBtn = document.getElementById('converterSelectBtn');
+    const workspace = document.getElementById('converter-workspace');
+    const queueList = document.getElementById('queue-items-list');
+    const queueCountBadge = document.getElementById('queue-count-badge');
+    const queueCountSub = document.getElementById('queue-count-sub');
+    const globalFormatSelect = document.getElementById('global-format-select') as HTMLSelectElement;
+    const addMoreBtn = document.getElementById('add-more-files-btn');
+    const clearAllBtn = document.getElementById('clear-all-queue-btn');
+    const convertAllBtn = document.getElementById('convert-all-btn');
+    const convertAllText = document.getElementById('convert-all-text');
+    const downloadZipBtn = document.getElementById('download-zip-btn') as HTMLButtonElement;
+    const downloadZipText = document.getElementById('download-zip-text');
+    const downloadMultiPdfBtn = document.getElementById('download-multi-pdf-btn');
+    const autoConvertToggle = document.getElementById('auto-convert-toggle') as HTMLInputElement;
+
+    // Advanced Drawer DOM
+    const drawerToggle = document.getElementById('advanced-drawer-toggle');
+    const drawerBody = document.getElementById('advanced-drawer-body');
+    const drawerChevron = document.getElementById('drawer-chevron');
+    const drawerSummaryPill = document.getElementById('drawer-summary-pill');
+    const qualityRange = document.getElementById('quality-range') as HTMLInputElement;
+    const qualityDisplayBadge = document.getElementById('quality-display-badge');
+    const transparencyColorPicker = document.getElementById('transparency-color-picker') as HTMLInputElement;
+    const colorHexLabel = document.getElementById('color-hex-label');
+    const grayscaleToggle = document.getElementById('grayscale-toggle') as HTMLInputElement;
+    const stripExifToggle = document.getElementById('strip-exif-toggle') as HTMLInputElement;
+
+    // Resize controls
+    const resizeModeTabs = document.querySelectorAll('.resize-mode-tab');
+    const resizePercentagePanel = document.getElementById('resize-percentage-panel');
+    const resizeCustomPanel = document.getElementById('resize-custom-panel');
+    const scalePresetBtns = document.querySelectorAll('.scale-preset-btn');
+    const currentScaleLabel = document.getElementById('current-scale-label');
+    const customWidthInput = document.getElementById('custom-width-input') as HTMLInputElement;
+    const customHeightInput = document.getElementById('custom-height-input') as HTMLInputElement;
+    const aspectRatioLockBtn = document.getElementById('aspect-ratio-lock-btn');
+
+    let currentResizeMode: 'original' | 'percentage' | 'custom' = 'original';
+    let currentScale = 0.75;
+    let isAspectRatioLocked = true;
+    let customWidth = 0;
+    let customHeight = 0;
+
+    // Preview Modal DOM
+    const previewModal = document.getElementById('preview-modal') as HTMLDialogElement;
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+    const modalPreviewImg = document.getElementById('modal-preview-img') as HTMLImageElement;
+    const modalTitle = document.getElementById('modal-title');
+    const modalFormatBadge = document.getElementById('modal-format-badge');
+    const modalSpecsLabel = document.getElementById('modal-specs-label');
+    const modalDownloadBtn = document.getElementById('modal-download-btn');
+    let activeModalItem: QueueItem | null = null;
+
+    // Format file size helper
+    function formatBytes(bytes: number): string {
+      if (bytes === 0) return '0 B';
+      const k = 1024;
+      const sizes = ['B', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return `${parseFloat((bytes / Math.pow(k, i)).toFixed(1))} ${sizes[i]}`;
+    }
+
+    // Detect format from file
+    function detectFormat(file: File): string {
+      const ext = file.name.split('.').pop()?.toUpperCase() || '';
+      if (file.type.includes('png')) return 'PNG';
+      if (file.type.includes('jpeg') || file.type.includes('jpg')) return 'JPG';
+      if (file.type.includes('webp')) return 'WEBP';
+      if (file.type.includes('avif')) return 'AVIF';
+      if (file.type.includes('svg')) return 'SVG';
+      if (file.type.includes('bmp')) return 'BMP';
+      if (file.type.includes('gif')) return 'GIF';
+      if (file.type.includes('icon') || file.type.includes('ico')) return 'ICO';
+      if (file.type.includes('tiff') || ext === 'TIF' || ext === 'TIFF') return 'TIFF';
+      return ext || 'IMG';
+    }
+
+    // Decode File into HTMLCanvasElement
+    async function decodeImageToCanvas(file: File): Promise<{ canvas: HTMLCanvasElement; width: number; height: number }> {
+      // 1. Try standard browser image element or createImageBitmap
+      try {
+        if (file.type.includes('tiff') || file.name.match(/\.tiff?$/i)) {
+          try {
+            return await parseTiffFallback(file).then(c => ({ canvas: c, width: c.width, height: c.height }));
+          } catch {
+            // fallback to standard image
+          }
+        }
+
+        const url = URL.createObjectURL(file);
+        const img = new Image();
+        img.src = url;
+        await new Promise((resolve, reject) => {
+          img.onload = resolve;
+          img.onerror = reject;
+        });
+
+        const width = img.naturalWidth || img.width || 1200;
+        const height = img.naturalHeight || img.height || 800;
+
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d')!;
+        ctx.drawImage(img, 0, 0);
+
+        URL.revokeObjectURL(url);
+        return { canvas, width, height };
+      } catch (err) {
+        throw new Error(`Failed to decode image: ${(err as Error).message}`);
+      }
+    }
+
+    // Render converted canvas applying resize, grayscale, transparency fill
+    function renderConvertedCanvas(item: QueueItem): HTMLCanvasElement {
+      let targetW = item.width;
+      let targetH = item.height;
+
+      if (currentResizeMode === 'percentage') {
+        targetW = Math.max(1, Math.round(item.width * currentScale));
+        targetH = Math.max(1, Math.round(item.height * currentScale));
+      } else if (currentResizeMode === 'custom' && customWidth > 0 && customHeight > 0) {
+        targetW = customWidth;
+        targetH = customHeight;
+      }
+
+      const canvas = document.createElement('canvas');
+      canvas.width = targetW;
+      canvas.height = targetH;
+      const ctx = canvas.getContext('2d')!;
+
+      // Handle Transparency Fill for formats without alpha (JPG / BMP)
+      const isOpaqueTarget = item.targetFormat === 'jpeg' || item.targetFormat === 'bmp';
+      if (isOpaqueTarget) {
+        ctx.fillStyle = transparencyColorPicker.value || '#FFFFFF';
+        ctx.fillRect(0, 0, targetW, targetH);
+      }
+
+      // Handle Grayscale mode
+      if (grayscaleToggle.checked) {
+        ctx.filter = 'grayscale(100%)';
+      }
+
+      // Draw source image scaled
+      ctx.drawImage(item.sourceCanvas, 0, 0, targetW, targetH);
+
+      // Grayscale luminance fallback if ctx.filter unsupported
+      if (grayscaleToggle.checked) {
+        const imgData = ctx.getImageData(0, 0, targetW, targetH);
+        const d = imgData.data;
+        for (let i = 0; i < d.length; i += 4) {
+          const luma = 0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2];
+          d[i] = luma;
+          d[i + 1] = luma;
+          d[i + 2] = luma;
+        }
+        ctx.putImageData(imgData, 0, 0);
+      }
+
+      return canvas;
+    }
+
+    // Convert Canvas to Output Format Blob
+    async function convertCanvasToTargetBlob(canvas: HTMLCanvasElement, targetFormat: string, qualityVal: number): Promise<Blob> {
+      const qualityFactor = qualityVal / 100;
+
+      switch (targetFormat) {
+        case 'webp':
+          return new Promise((res) => canvas.toBlob((b) => res(b!), 'image/webp', qualityFactor));
+        case 'avif':
+          return new Promise((res) => {
+            canvas.toBlob((blob) => {
+              if (blob && blob.type === 'image/avif') {
+                res(blob);
+              } else {
+                // High-efficiency WebP fallback if browser lacks AVIF canvas encoder
+                canvas.toBlob((webBlob) => res(webBlob || blob!), 'image/webp', qualityFactor);
+              }
+            }, 'image/avif', qualityFactor);
+          });
+        case 'jpeg':
+          return new Promise((res) => canvas.toBlob((b) => res(b!), 'image/jpeg', qualityFactor));
+        case 'png':
+          return new Promise((res) => canvas.toBlob((b) => res(b!), 'image/png'));
+        case 'bmp':
+          return canvasToBmpBlob(canvas);
+        case 'ico':
+          return await canvasToIcoBlob(canvas);
+        case 'gif':
+          return canvasToGifBlob(canvas);
+        case 'pdf':
+          return await generatePdfBlobFromCanvases([canvas], qualityFactor);
+        default:
+          return new Promise((res) => canvas.toBlob((b) => res(b!), 'image/webp', qualityFactor));
+      }
+    }
+
+    // Convert a single item
+    async function convertQueueItem(item: QueueItem): Promise<void> {
+      item.status = 'converting';
+      renderQueueUI();
+
+      try {
+        const processedCanvas = renderConvertedCanvas(item);
+        const qualityVal = parseInt(qualityRange.value, 10) || 90;
+
+        const blob = await convertCanvasToTargetBlob(processedCanvas, item.targetFormat, qualityVal);
+        item.convertedBlob = blob;
+        item.convertedSize = blob.size;
+
+        if (item.convertedUrl) URL.revokeObjectURL(item.convertedUrl);
+        item.convertedUrl = URL.createObjectURL(blob);
+        item.status = 'done';
+      } catch (err) {
+        item.status = 'error';
+        item.errorMessage = (err as Error).message;
+      }
+      renderQueueUI();
+    }
+
+    // Convert all items in queue
+    async function convertAllQueue(): Promise<void> {
+      if (queue.length === 0) return;
+      convertAllBtn?.setAttribute('disabled', 'true');
+      if (convertAllText) convertAllText.textContent = 'Converting...';
+
+      for (const item of queue) {
+        await convertQueueItem(item);
+      }
+
+      convertAllBtn?.removeAttribute('disabled');
+      if (convertAllText) convertAllText.textContent = 'Convert All Images';
+      updateBatchActionsUI();
+    }
+
+    // Add Files into Queue
+    async function addFilesToQueue(files: FileList | File[]): Promise<void> {
+      if (!files || files.length === 0) return;
+
+      dropzoneView?.classList.add('hidden');
+      workspace?.classList.remove('hidden');
+
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const id = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+
+        try {
+          const { canvas, width, height } = await decodeImageToCanvas(file);
+          const newItem: QueueItem = {
+            id,
+            file,
+            name: file.name,
+            originalSize: file.size,
+            originalFormat: detectFormat(file),
+            targetFormat: globalTargetFormat,
+            width,
+            height,
+            aspectRatio: width / height,
+            sourceCanvas: canvas,
+            convertedBlob: null,
+            convertedUrl: null,
+            convertedSize: null,
+            status: 'pending'
+          };
+
+          // If custom dimensions empty, default to first image
+          if (customWidth === 0 && customHeight === 0) {
+            customWidth = width;
+            customHeight = height;
+            if (customWidthInput) customWidthInput.value = String(width);
+            if (customHeightInput) customHeightInput.value = String(height);
+          }
+
+          queue.push(newItem);
+        } catch (err) {
+          console.error('Error adding file to converter queue:', err);
+        }
+      }
+
+      renderQueueUI();
+
+      if (autoConvertToggle.checked) {
+        await convertAllQueue();
+      }
+    }
+
+    // Render Queue Items UI
+    function renderQueueUI(): void {
+      if (!queueList) return;
+
+      if (queueCountBadge) queueCountBadge.textContent = `${queue.length} ${queue.length === 1 ? 'file' : 'files'}`;
+      if (queueCountSub) queueCountSub.textContent = String(queue.length);
+
+      if (queue.length === 0) {
+        workspace?.classList.add('hidden');
+        dropzoneView?.classList.remove('hidden');
+        queueList.innerHTML = '';
+        return;
+      }
+
+      queueList.innerHTML = '';
+
+      queue.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-slate-50/60 dark:hover:bg-slate-800/20 transition-colors';
+
+        // Percentage savings
+        let savingsBadgeHtml = '';
+        if (item.convertedSize && item.originalSize) {
+          const diff = ((item.convertedSize - item.originalSize) / item.originalSize) * 100;
+          if (diff < 0) {
+            savingsBadgeHtml = `<span class="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400">${Math.round(diff)}%</span>`;
+          } else {
+            savingsBadgeHtml = `<span class="px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">+${Math.round(diff)}%</span>`;
+          }
+        }
+
+        // Status badge
+        let statusHtml = '';
+        if (item.status === 'pending') {
+          statusHtml = `<span class="inline-flex items-center gap-1 text-xs text-slate-500 font-medium"><span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>Ready</span>`;
+        } else if (item.status === 'converting') {
+          statusHtml = `<span class="inline-flex items-center gap-1.5 text-xs text-blue-600 dark:text-blue-400 font-medium"><svg class="animate-spin w-3.5 h-3.5" viewBox="0 0 24 24" fill="none"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>Converting...</span>`;
+        } else if (item.status === 'done') {
+          statusHtml = `<span class="inline-flex items-center gap-1 text-xs text-emerald-600 dark:text-emerald-400 font-semibold"><svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Converted</span>`;
+        } else {
+          statusHtml = `<span class="text-xs text-rose-500 font-medium">Error</span>`;
+        }
+
+        // Preview thumbnail src
+        const thumbUrl = item.convertedUrl || item.sourceCanvas.toDataURL('image/jpeg', 0.5);
+
+        card.innerHTML = `
+          <div class="flex items-center gap-3.5 min-w-0">
+            <!-- Thumbnail preview -->
+            <button type="button" class="inspect-btn relative w-14 h-14 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden bg-slate-100 dark:bg-slate-800 shrink-0 cursor-pointer group" data-id="${item.id}" title="Click to inspect preview">
+              <img src="${thumbUrl}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+              <div class="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
+              </div>
+            </button>
+
+            <!-- File info -->
+            <div class="min-w-0">
+              <div class="flex items-center gap-2">
+                <p class="text-sm font-semibold text-slate-900 dark:text-white truncate max-w-[200px] sm:max-w-xs md:max-w-sm" title="${item.name}">
+                  ${item.name}
+                </p>
+                <span class="px-1.5 py-0.2 rounded text-[10px] font-mono font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                  ${item.originalFormat}
+                </span>
+              </div>
+              <div class="flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mt-1 font-mono">
+                <span>${item.width} × ${item.height} px</span>
+                <span>•</span>
+                <span>${formatBytes(item.originalSize)}</span>
+                ${item.convertedSize ? `<span>→</span> <span class="font-bold text-slate-800 dark:text-slate-200">${formatBytes(item.convertedSize)}</span>` : ''}
+                ${savingsBadgeHtml}
+              </div>
+            </div>
+          </div>
+
+          <!-- Right side: Target Selector, Status & Download Button -->
+          <div class="flex flex-wrap items-center justify-between md:justify-end gap-3 pt-2 md:pt-0 border-t md:border-t-0 border-slate-100 dark:border-slate-800">
+            <!-- Format selector per item -->
+            <div class="flex items-center gap-2">
+              <span class="text-xs text-slate-400 font-bold">TO:</span>
+              <select class="item-format-select appearance-none bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-bold text-xs py-1.5 pl-3 pr-7 rounded-lg border border-slate-200 dark:border-slate-700 cursor-pointer" data-id="${item.id}">
+                <option value="webp" ${item.targetFormat === 'webp' ? 'selected' : ''}>WEBP</option>
+                <option value="avif" ${item.targetFormat === 'avif' ? 'selected' : ''}>AVIF</option>
+                <option value="jpeg" ${item.targetFormat === 'jpeg' ? 'selected' : ''}>JPG</option>
+                <option value="png" ${item.targetFormat === 'png' ? 'selected' : ''}>PNG</option>
+                <option value="gif" ${item.targetFormat === 'gif' ? 'selected' : ''}>GIF</option>
+                <option value="bmp" ${item.targetFormat === 'bmp' ? 'selected' : ''}>BMP</option>
+                <option value="ico" ${item.targetFormat === 'ico' ? 'selected' : ''}>ICO</option>
+                <option value="pdf" ${item.targetFormat === 'pdf' ? 'selected' : ''}>PDF</option>
+              </select>
+            </div>
+
+            <!-- Status -->
+            <div class="min-w-[90px] text-right">
+              ${statusHtml}
+            </div>
+
+            <!-- Action buttons: Download & Remove -->
+            <div class="flex items-center gap-1.5">
+              ${item.status === 'done' && item.convertedBlob ? `
+                <button type="button" class="download-single-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs transition cursor-pointer shadow-2xs" data-id="${item.id}">
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                  <span>Download</span>
+                </button>
+              ` : `
+                <button type="button" class="convert-single-btn px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium text-xs hover:bg-slate-50 dark:hover:bg-slate-700 transition cursor-pointer" data-id="${item.id}">
+                  Convert
+                </button>
+              `}
+
+              <!-- Remove file -->
+              <button type="button" class="remove-item-btn p-1.5 rounded-lg text-slate-400 hover:text-rose-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer" data-id="${item.id}" title="Remove file">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+              </button>
+            </div>
+          </div>
+        `;
+
+        queueList.appendChild(card);
+      });
+
+      attachQueueItemEvents();
+      updateBatchActionsUI();
+    }
+
+    // Attach dynamic events for queue list
+    function attachQueueItemEvents(): void {
+      // Single Download
+      document.querySelectorAll('.download-single-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const id = (btn as HTMLElement).getAttribute('data-id');
+          const item = queue.find((i) => i.id === id);
+          if (item && item.convertedBlob) {
+            triggerFileDownload(item);
+          }
+        });
+      });
+
+      // Single Convert
+      document.querySelectorAll('.convert-single-btn').forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const id = (btn as HTMLElement).getAttribute('data-id');
+          const item = queue.find((i) => i.id === id);
+          if (item) {
+            await convertQueueItem(item);
+          }
+        });
+      });
+
+      // Item Format Change
+      document.querySelectorAll('.item-format-select').forEach((sel) => {
+        sel.addEventListener('change', async (e) => {
+          const id = (sel as HTMLElement).getAttribute('data-id');
+          const item = queue.find((i) => i.id === id);
+          if (item) {
+            item.targetFormat = (e.target as HTMLSelectElement).value;
+            await convertQueueItem(item);
+          }
+        });
+      });
+
+      // Remove single item
+      document.querySelectorAll('.remove-item-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const id = (btn as HTMLElement).getAttribute('data-id');
+          const index = queue.findIndex((i) => i.id === id);
+          if (index !== -1) {
+            if (queue[index].convertedUrl) URL.revokeObjectURL(queue[index].convertedUrl!);
+            queue.splice(index, 1);
+            renderQueueUI();
+          }
+        });
+      });
+
+      // Inspect Modal
+      document.querySelectorAll('.inspect-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const id = (btn as HTMLElement).getAttribute('data-id');
+          const item = queue.find((i) => i.id === id);
+          if (item) openInspectModal(item);
+        });
+      });
+    }
+
+    // Open Inspect Modal
+    function openInspectModal(item: QueueItem): void {
+      activeModalItem = item;
+      if (!previewModal) return;
+
+      modalTitle!.textContent = item.name;
+      modalFormatBadge!.textContent = item.targetFormat.toUpperCase();
+      modalPreviewImg.src = item.convertedUrl || item.sourceCanvas.toDataURL('image/jpeg', 0.9);
+      modalSpecsLabel!.textContent = `${item.width} × ${item.height} px • Original: ${formatBytes(item.originalSize)} ${item.convertedSize ? `• Converted: ${formatBytes(item.convertedSize)}` : ''}`;
+
+      previewModal.showModal();
+    }
+
+    modalCloseBtn?.addEventListener('click', () => {
+      previewModal?.close();
+    });
+
+    modalDownloadBtn?.addEventListener('click', () => {
+      if (activeModalItem) {
+        if (!activeModalItem.convertedBlob) {
+          convertQueueItem(activeModalItem).then(() => {
+            triggerFileDownload(activeModalItem!);
+          });
+        } else {
+          triggerFileDownload(activeModalItem);
+        }
+      }
+    });
+
+    // Trigger individual download
+    function triggerFileDownload(item: QueueItem): void {
+      if (!item.convertedBlob) return;
+      const ext = EXT_MAP[item.targetFormat] || '.webp';
+      const cleanName = item.name.replace(/\.[^/.]+$/, '');
+      const filename = `${cleanName}-converted${ext}`;
+
+      const link = document.createElement('a');
+      link.href = item.convertedUrl || URL.createObjectURL(item.convertedBlob);
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Update Batch Actions & ZIP / Multi-page PDF UI
+    function updateBatchActionsUI(): void {
+      const anyDone = queue.some((i) => i.status === 'done' && i.convertedBlob);
+      const allDone = queue.length > 0 && queue.every((i) => i.status === 'done' && i.convertedBlob);
+
+      if (downloadZipBtn) {
+        downloadZipBtn.disabled = queue.length === 0;
+        if (downloadZipText) {
+          downloadZipText.textContent = `Download All as ZIP (${queue.length})`;
+        }
+      }
+
+      // Show Multi-Page PDF button if 2+ files are queued
+      if (downloadMultiPdfBtn) {
+        if (queue.length > 1) {
+          downloadMultiPdfBtn.classList.remove('hidden');
+        } else {
+          downloadMultiPdfBtn.classList.add('hidden');
+        }
+      }
+    }
+
+    // Global Format Selector Change
+    globalFormatSelect?.addEventListener('change', async (e) => {
+      globalTargetFormat = (e.target as HTMLSelectElement).value;
+      for (const item of queue) {
+        item.targetFormat = globalTargetFormat;
+      }
+      renderQueueUI();
+      if (autoConvertToggle.checked) {
+        await convertAllQueue();
+      }
+    });
+
+    // Advanced Drawer Toggle
+    drawerToggle?.addEventListener('click', () => {
+      const isHidden = drawerBody?.classList.contains('hidden');
+      if (isHidden) {
+        drawerBody?.classList.remove('hidden');
+        drawerChevron?.classList.add('rotate-180');
+        drawerToggle.setAttribute('aria-expanded', 'true');
+      } else {
+        drawerBody?.classList.add('hidden');
+        drawerChevron?.classList.remove('rotate-180');
+        drawerToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Quality Range Slider
+    qualityRange?.addEventListener('input', () => {
+      const val = qualityRange.value;
+      if (qualityDisplayBadge) qualityDisplayBadge.textContent = `${val}%`;
+      updateDrawerSummary();
+    });
+
+    qualityRange?.addEventListener('change', async () => {
+      if (autoConvertToggle.checked && queue.length > 0) {
+        await convertAllQueue();
+      }
+    });
+
+    // Transparency Fill Color Picker
+    transparencyColorPicker?.addEventListener('input', () => {
+      const hex = transparencyColorPicker.value.toUpperCase();
+      if (colorHexLabel) colorHexLabel.textContent = hex;
+      updateDrawerSummary();
+    });
+
+    transparencyColorPicker?.addEventListener('change', async () => {
+      if (autoConvertToggle.checked && queue.length > 0) {
+        await convertAllQueue();
+      }
+    });
+
+    // Transparency Quick Color Presets
+    document.querySelectorAll('.color-preset-btn').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const color = (btn as HTMLElement).getAttribute('data-color') || '#FFFFFF';
+        if (transparencyColorPicker) transparencyColorPicker.value = color;
+        if (colorHexLabel) colorHexLabel.textContent = color.toUpperCase();
+        updateDrawerSummary();
+        if (autoConvertToggle.checked && queue.length > 0) {
+          await convertAllQueue();
+        }
+      });
+    });
+
+    // Grayscale Switch
+    grayscaleToggle?.addEventListener('change', async () => {
+      updateDrawerSummary();
+      if (autoConvertToggle.checked && queue.length > 0) {
+        await convertAllQueue();
+      }
+    });
+
+    // Strip EXIF
+    stripExifToggle?.addEventListener('change', () => {
+      updateDrawerSummary();
+    });
+
+    // Resize Mode Tabs
+    resizeModeTabs.forEach((tab) => {
+      tab.addEventListener('click', async () => {
+        resizeModeTabs.forEach((t) => {
+          t.classList.remove('bg-white', 'dark:bg-slate-900', 'font-semibold', 'shadow-2xs');
+          t.classList.add('text-slate-600', 'dark:text-slate-400');
+        });
+        tab.classList.add('bg-white', 'dark:bg-slate-900', 'font-semibold', 'shadow-2xs');
+        tab.classList.remove('text-slate-600', 'dark:text-slate-400');
+
+        currentResizeMode = (tab as HTMLElement).getAttribute('data-mode') as 'original' | 'percentage' | 'custom';
+        if (currentResizeMode === 'original') {
+          resizePercentagePanel?.classList.add('hidden');
+          resizeCustomPanel?.classList.add('hidden');
+        } else if (currentResizeMode === 'percentage') {
+          resizePercentagePanel?.classList.remove('hidden');
+          resizeCustomPanel?.classList.add('hidden');
+        } else if (currentResizeMode === 'custom') {
+          resizePercentagePanel?.classList.add('hidden');
+          resizeCustomPanel?.classList.remove('hidden');
+        }
+
+        updateDrawerSummary();
+        if (autoConvertToggle.checked && queue.length > 0) {
+          await convertAllQueue();
+        }
+      });
+    });
+
+    // Scale Preset Buttons (75%, 50%, 25%)
+    scalePresetBtns.forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        scalePresetBtns.forEach((b) => b.classList.remove('border-blue-500', 'bg-blue-50', 'text-blue-600'));
+        btn.classList.add('border-blue-500', 'bg-blue-50', 'text-blue-600');
+
+        currentScale = parseFloat((btn as HTMLElement).getAttribute('data-scale') || '0.75');
+        if (currentScaleLabel) currentScaleLabel.textContent = `${Math.round(currentScale * 100)}%`;
+
+        updateDrawerSummary();
+        if (autoConvertToggle.checked && queue.length > 0) {
+          await convertAllQueue();
+        }
+      });
+    });
+
+    // Aspect Ratio Lock Toggle
+    aspectRatioLockBtn?.addEventListener('click', () => {
+      isAspectRatioLocked = !isAspectRatioLocked;
+      if (isAspectRatioLocked) {
+        aspectRatioLockBtn.classList.add('border-blue-500/50', 'bg-blue-50', 'text-blue-600');
+        aspectRatioLockBtn.classList.remove('border-slate-300', 'text-slate-500');
+        aspectRatioLockBtn.innerHTML = `
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+          <span>Ratio Locked</span>
+        `;
+      } else {
+        aspectRatioLockBtn.classList.remove('border-blue-500/50', 'bg-blue-50', 'text-blue-600');
+        aspectRatioLockBtn.classList.add('border-slate-300', 'text-slate-500');
+        aspectRatioLockBtn.innerHTML = `
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+          <span>Ratio Unlocked</span>
+        `;
+      }
+    });
+
+    // Custom Width Input
+    customWidthInput?.addEventListener('input', () => {
+      const w = parseInt(customWidthInput.value, 10);
+      if (w > 0) {
+        customWidth = w;
+        if (isAspectRatioLocked && queue.length > 0) {
+          const ratio = queue[0].aspectRatio || 1;
+          customHeight = Math.round(w / ratio);
+          if (customHeightInput) customHeightInput.value = String(customHeight);
+        }
+      }
+    });
+
+    // Custom Height Input
+    customHeightInput?.addEventListener('input', () => {
+      const h = parseInt(customHeightInput.value, 10);
+      if (h > 0) {
+        customHeight = h;
+        if (isAspectRatioLocked && queue.length > 0) {
+          const ratio = queue[0].aspectRatio || 1;
+          customWidth = Math.round(h * ratio);
+          if (customWidthInput) customWidthInput.value = String(customWidth);
+        }
+      }
+    });
+
+    // Update Drawer Summary Badge
+    function updateDrawerSummary(): void {
+      if (!drawerSummaryPill) return;
+      const parts = [`${qualityRange.value}% Quality`];
+      if (grayscaleToggle.checked) parts.push('B&W Mode');
+      if (currentResizeMode === 'percentage') parts.push(`${Math.round(currentScale * 100)}% Scaled`);
+      if (currentResizeMode === 'custom') parts.push(`${customWidth}×${customHeight}px`);
+      parts.push(transparencyColorPicker.value.toUpperCase());
+      drawerSummaryPill.textContent = parts.join(' • ');
+    }
+
+    // Convert All Button Action
+    convertAllBtn?.addEventListener('click', async () => {
+      await convertAllQueue();
+    });
+
+    // Batch Download as ZIP
+    downloadZipBtn?.addEventListener('click', async () => {
+      if (queue.length === 0) return;
+      const originalText = downloadZipBtn.innerHTML;
+      downloadZipBtn.textContent = 'Packing ZIP...';
+
+      // Ensure all items are converted
+      for (const item of queue) {
+        if (!item.convertedBlob) {
+          await convertQueueItem(item);
+        }
+      }
+
+      const zip = new JSZip();
+      const folder = zip.folder('fasttoolverse-converted') || zip;
+
+      queue.forEach((item) => {
+        if (item.convertedBlob) {
+          const ext = EXT_MAP[item.targetFormat] || '.webp';
+          const cleanName = item.name.replace(/\.[^/.]+$/, '');
+          folder.file(`${cleanName}${ext}`, item.convertedBlob);
+        }
+      });
+
+      const zipBlob = await zip.generateAsync({ type: 'blob' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(zipBlob);
+      link.download = 'fasttoolverse-converted-images.zip';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      downloadZipBtn.innerHTML = originalText;
+    });
+
+    // Multi-Page PDF Download Action
+    downloadMultiPdfBtn?.addEventListener('click', async () => {
+      if (queue.length === 0) return;
+      const originalText = downloadMultiPdfBtn.innerHTML;
+      downloadMultiPdfBtn.textContent = 'Generating PDF...';
+
+      const canvases = queue.map((item) => renderConvertedCanvas(item));
+      const qualityVal = parseInt(qualityRange.value, 10) || 90;
+      const pdfBlob = await generatePdfBlobFromCanvases(canvases, qualityVal / 100);
+
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(pdfBlob);
+      link.download = 'fasttoolverse-converted-multipage.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      downloadMultiPdfBtn.innerHTML = originalText;
+    });
+
+    // Clear All Queue
+    clearAllBtn?.addEventListener('click', () => {
+      queue.forEach((item) => {
+        if (item.convertedUrl) URL.revokeObjectURL(item.convertedUrl);
+      });
+      queue = [];
+      renderQueueUI();
+    });
+
+    // Add More Files Button
+    addMoreBtn?.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    // Select Files Button
+    selectBtn?.addEventListener('click', () => {
+      fileInput.click();
+    });
+
+    // File Input Change
+    fileInput?.addEventListener('change', (e) => {
+      const files = (e.target as HTMLInputElement).files;
+      if (files) {
+        addFilesToQueue(files);
+      }
+      fileInput.value = '';
+    });
+
+    // Drag and Drop Handling
+    ['dragenter', 'dragover'].forEach((eventName) => {
+      dropzone?.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropzone.classList.add('border-blue-500', 'bg-blue-50/20', 'dark:bg-blue-950/20');
+      });
+      workspace?.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+    });
+
+    ['dragleave', 'drop'].forEach((eventName) => {
+      dropzone?.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropzone.classList.remove('border-blue-500', 'bg-blue-50/20', 'dark:bg-blue-950/20');
+      });
+    });
+
+    dropzone?.addEventListener('drop', (e) => {
+      e.preventDefault();
+      const files = e.dataTransfer?.files;
+      if (files) addFilesToQueue(files);
+    });
+
+    workspace?.addEventListener('drop', (e) => {
+      e.preventDefault();
+      const files = e.dataTransfer?.files;
+      if (files) addFilesToQueue(files);
+    });
+
+    // Global Paste Listener (Ctrl+V)
+    window.addEventListener('paste', (e: ClipboardEvent) => {
+      const items = e.clipboardData?.items;
+      if (!items) return;
+
+      const pastedFiles: File[] = [];
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].type.indexOf('image') !== -1) {
+          const file = items[i].getAsFile();
+          if (file) pastedFiles.push(file);
+        }
+      }
+
+      if (pastedFiles.length > 0) {
+        addFilesToQueue(pastedFiles);
+      }
+    });
+  });
+</script>

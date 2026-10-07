@@ -70,6 +70,18 @@ export const TOOLS: Tool[] = [
     href: '/tools/image-compressor'
   },
   {
+    id: 'image-converter',
+    title: 'Image Converter',
+    category: 'Image Tools',
+    group: 'Core Editing',
+    description: 'Convert JPG, PNG, WebP, AVIF, SVG, BMP, GIF, ICO, and TIFF in seconds with 100% client-side privacy.',
+    tags: ['Universal Formats', 'Batch ZIP', 'PDF Export'],
+    keywords: ['image converter', 'convert png to jpg', 'convert jpg to webp', 'image to pdf', 'convertio alternative', 'avif converter'],
+    icon: 'repeat',
+    badge: 'Popular',
+    href: '/tools/image-converter'
+  },
+  {
     id: 'image-cropper',
     title: 'Image Cropper',
     category: 'Image Tools',

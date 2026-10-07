@@ -23,6 +23,8 @@ export async function getStaticPaths() {
 
   // Explicit safety fallback for known built pages
   builtSlugs.add('image-resizer');
+  builtSlugs.add('image-compressor');
+  builtSlugs.add('image-converter');
   builtSlugs.add('remove-duplicate-lines');
   builtSlugs.add('remove-empty-lines');
   builtSlugs.add('remove-extra-spaces');

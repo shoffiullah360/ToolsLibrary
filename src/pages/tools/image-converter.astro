@@ -1,0 +1,453 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ToolIcon from '../../components/ToolIcon.astro';
+import ImageConverter from '../../components/tools/ImageConverter.astro';
+
+// FAQ Content for Schema and UI
+const faqs = [
+  {
+    question: "How do I convert images online with 100% privacy and zero server uploads?",
+    answer: "Unlike traditional cloud converters like Convertio or CloudConvert that transmit your confidential documents, passport photos, and private pictures to remote servers, FastToolVerse operates 100% inside your web browser. Utilizing HTML5 Canvas, OffscreenCanvas, and client-side binary streams, your photos are decoded, resampled, and re-encoded locally in your computer's RAM. Zero bytes are ever transmitted over the network, allowing you to convert sensitive files even while completely disconnected from the internet."
+  },
+  {
+    question: "Which image format should I convert to: WebP, AVIF, JPG, or PNG?",
+    answer: "Choose WebP for modern websites and blogs to cut file sizes by 25%–35% compared to JPG while retaining full alpha transparency. Choose AVIF for next-generation maximum compression on modern Chromium and Safari browsers. Choose JPG when submitting applications to government, visa, or employment portals that require universal legacy compatibility. Choose PNG for digital signatures, screenshots, logos, and vector illustrations requiring lossless precision with transparent backgrounds. Choose PDF when converting one or more photos into a printable document."
+  },
+  {
+    question: "How does the client-side single and multi-page image-to-PDF export work?",
+    answer: "When you select PDF as your target format, FastToolVerse utilizes an in-browser PDF 1.4 compiler that encapsulates your decoded image frames directly into standard DCT streams without sending anything to a server. You can download individual images as standalone PDF files, or click 'Combine All into 1 PDF' to merge dozens of photos, receipts, or document scans into a single multi-page PDF document in milliseconds."
+  },
+  {
+    question: "Why do transparent PNGs get a solid background when converted to JPG or BMP?",
+    answer: "The JPEG and BMP specifications do not support alpha channels (transparency). When converting transparent PNG, WebP, or SVG images to JPG or BMP, any transparent pixels must be rendered against a solid color. Traditional converters often render transparent pixels as pitch black. FastToolVerse includes a Smart Transparency Fill feature with a built-in hex color picker (default #FFFFFF white) so your converted images have clean, professional solid backgrounds without awkward black borders."
+  },
+  {
+    question: "Is there any file size limit, daily conversion cap, or paywall on FastToolVerse?",
+    answer: "No. Because all conversion computation runs locally using your device's GPU and CPU rather than costly remote server infrastructure, FastToolVerse has zero file size caps, zero hourly limits, and zero paywalls. You can convert high-resolution camera photos, heavy RAW/TIFF files, and batches of up to 25+ images simultaneously with zero watermarks, zero wait times, and zero server lag."
+  }
+];
+
+// Schema.org SoftwareApplication
+const jsonLdSoftwareApp = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Free Image Converter Online (JPG, PNG, WebP, AVIF, PDF)",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "All (Web Browser)",
+  "browserRequirements": "Requires JavaScript. Requires HTML5 Canvas support.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "100% Client-Side In-Browser Conversion",
+    "Support for JPG, PNG, WebP, AVIF, SVG, BMP, GIF, ICO, TIFF",
+    "Export to WebP, AVIF, JPG, PNG, GIF, BMP, ICO, and PDF",
+    "Multi-Page and Single-Page Image-to-PDF Document Export",
+    "Batch Queue Processing with Live Thumbnails",
+    "Collapsible Advanced Options: Quality Slider, Transparency Fill, Grayscale, Resizing",
+    "Automated EXIF Metadata Stripping",
+    "1-Click Batch ZIP Download via Client-Side JSZip"
+  ]
+};
+
+// Schema.org FAQPage
+const jsonLdFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((f) => ({
+    "@type": "Question",
+    "name": f.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.answer
+    }
+  }))
+};
+
+const canonicalUrl = "https://fasttoolverse.com/tools/image-converter/";
+const pageTitle = "Free Image Converter Online (JPG, PNG, WebP, AVIF, PDF) - FastToolVerse";
+const pageDescription = "Convert images online for free with 100% privacy. Convert JPG, PNG, WebP, AVIF, and PDF in seconds without file size limits or server uploads.";
+const pageKeywords = "image converter, free image converter, convert jpg to webp, convert png to jpg, convert image to pdf, avif converter, batch image converter, client side image converter, convertio alternative, transparent png to jpg, svg to png converter";
+const ogImage = "https://fasttoolverse.com/og-image.png";
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalUrl={canonicalUrl}
+  image={ogImage}
+>
+  <!-- Injected Head Elements: Twitter & JSON-LD Schemas -->
+  <Fragment slot="head">
+    <meta name="keywords" content={pageKeywords} />
+
+    <!-- Open Graph tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Structured Data Schemas -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdSoftwareApp)} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdFaq)} />
+  </Fragment>
+
+  <!-- 1. Hero Header Section (H1 & Intent Subtitle) -->
+  <section class="relative pt-12 pb-6 sm:pt-16 sm:pb-8 overflow-hidden">
+    <div class="hero-mesh-bg" aria-hidden="true"></div>
+
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <!-- Privacy Badge -->
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 mb-3 shadow-2xs">
+        <ToolIcon name="shield-check" class="w-3.5 h-3.5" />
+        <span>100% In-Browser Privacy • Zero Server Uploads • Zero File Caps</span>
+      </div>
+
+      <!-- Hero Title -->
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
+        Free Image Converter Online
+      </h1>
+
+      <!-- Short Intent Subtitle -->
+      <p class="mt-3 sm:mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        Convert JPG, PNG, WebP, AVIF, SVG, BMP, GIF, ICO, and PDF in seconds without file size limits, server queues, or privacy risks.
+      </p>
+    </div>
+  </section>
+
+  <!-- 2. Interactive Converter Dropzone & Queue (Above-the-fold) -->
+  <section id="tool-workspace" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24 scroll-mt-20">
+    <ImageConverter />
+  </section>
+
+  <!-- 3. How to Convert Images Online in 3 Steps -->
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-16 sm:py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          How to Convert Images Online in 3 Steps
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          Fast, effortless, and private. Convert single files or batch entire folders right inside your browser.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        
+        <!-- Step 1 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs relative">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-blue-100 dark:border-blue-900/50">
+            01
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Upload or Paste Photos
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Drag and drop your images, browse your device, or paste from clipboard using <kbd class="px-1.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">Ctrl+V</kbd>. Supports JPG, PNG, WebP, AVIF, SVG, BMP, GIF, ICO, and TIFF.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs relative">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-blue-100 dark:border-blue-900/50">
+            02
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Choose Format & Options
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Pick your target format (WebP, AVIF, JPG, PNG, GIF, BMP, ICO, or PDF) globally or per file. Open the Advanced Drawer to calibrate quality, smart transparency fill, grayscale mode, or dimensions.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs relative">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-blue-100 dark:border-blue-900/50">
+            03
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Download Single, ZIP or PDF
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Save individual converted images immediately, bundle the entire batch into a clean ZIP archive with client-side JSZip, or compile multi-page PDF documents with zero wait times.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. Format Comparison Guide -->
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/40 py-16 sm:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-900/50 mb-3">
+          <ToolIcon name="scale" class="w-3.5 h-3.5" />
+          <span>Format Benchmark</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Image Format Comparison Guide
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          Compare compression efficiency, transparency support, and platform compatibility to pick the perfect output format.
+        </p>
+      </div>
+
+      <!-- Responsive Comparison Table -->
+      <div class="overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs">
+        <table class="w-full text-left text-sm border-collapse">
+          <thead>
+            <tr class="border-b border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-800/50 text-slate-900 dark:text-white font-semibold">
+              <th class="p-4 sm:px-6">Format</th>
+              <th class="p-4">Compression Type</th>
+              <th class="p-4">Compression Ratio</th>
+              <th class="p-4">Transparency</th>
+              <th class="p-4">Browser Support</th>
+              <th class="p-4 sm:px-6">Best Use Case</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800/80 font-normal text-slate-600 dark:text-slate-300 text-xs sm:text-sm">
+            <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+              <td class="p-4 sm:px-6 font-bold text-slate-900 dark:text-white">
+                <span class="inline-flex items-center gap-2">
+                  <span class="px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 font-mono text-xs">WebP</span>
+                </span>
+              </td>
+              <td class="p-4">Lossy & Lossless</td>
+              <td class="p-4 font-semibold text-emerald-600 dark:text-emerald-400">High (25%–35% smaller than JPG)</td>
+              <td class="p-4 text-emerald-600 dark:text-emerald-400 font-semibold">Yes (8-bit Alpha)</td>
+              <td class="p-4">97.8% (All Modern Browsers)</td>
+              <td class="p-4 sm:px-6">Web design, blogs, ecommerce catalogs</td>
+            </tr>
+
+            <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+              <td class="p-4 sm:px-6 font-bold text-slate-900 dark:text-white">
+                <span class="inline-flex items-center gap-2">
+                  <span class="px-2 py-0.5 rounded bg-purple-100 dark:bg-purple-900/60 text-purple-700 dark:text-purple-300 font-mono text-xs">AVIF</span>
+                </span>
+              </td>
+              <td class="p-4">Lossy & Lossless</td>
+              <td class="p-4 font-semibold text-emerald-600 dark:text-emerald-400">Ultra High (50% smaller than JPG)</td>
+              <td class="p-4 text-emerald-600 dark:text-emerald-400 font-semibold">Yes (10/12-bit HDR)</td>
+              <td class="p-4">93.4% (Chrome, Firefox, Safari 16+)</td>
+              <td class="p-4 sm:px-6">Next-gen performance, high-dynamic range photos</td>
+            </tr>
+
+            <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+              <td class="p-4 sm:px-6 font-bold text-slate-900 dark:text-white">
+                <span class="inline-flex items-center gap-2">
+                  <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono text-xs">JPG / JPEG</span>
+                </span>
+              </td>
+              <td class="p-4">Lossy (DCT)</td>
+              <td class="p-4 font-semibold text-amber-600 dark:text-amber-400">Moderate to High</td>
+              <td class="p-4 text-rose-500 font-medium">No (Solid Fill)</td>
+              <td class="p-4">100% (Universal Everywhere)</td>
+              <td class="p-4 sm:px-6">Government forms, passport portals, email photos</td>
+            </tr>
+
+            <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+              <td class="p-4 sm:px-6 font-bold text-slate-900 dark:text-white">
+                <span class="inline-flex items-center gap-2">
+                  <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono text-xs">PNG</span>
+                </span>
+              </td>
+              <td class="p-4">Lossless (DEFLATE)</td>
+              <td class="p-4 text-slate-500">Low (Preserves 100% pixels)</td>
+              <td class="p-4 text-emerald-600 dark:text-emerald-400 font-semibold">Yes (Full Alpha)</td>
+              <td class="p-4">100% (Universal Everywhere)</td>
+              <td class="p-4 sm:px-6">Logos, digital signatures, screenshots, icons</td>
+            </tr>
+
+            <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+              <td class="p-4 sm:px-6 font-bold text-slate-900 dark:text-white">
+                <span class="inline-flex items-center gap-2">
+                  <span class="px-2 py-0.5 rounded bg-rose-100 dark:bg-rose-900/60 text-rose-700 dark:text-rose-300 font-mono text-xs">PDF</span>
+                </span>
+              </td>
+              <td class="p-4">Vector / Container</td>
+              <td class="p-4 font-semibold text-blue-600 dark:text-blue-400">High (DCT Stream Embedded)</td>
+              <td class="p-4 text-slate-500">Document Boundary</td>
+              <td class="p-4">100% (Acrobat, Mobile, Browsers)</td>
+              <td class="p-4 sm:px-6">Multi-page document export, printing, archives</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. 5 Comprehensive Intent FAQs (SEO Crawlable + JSON-LD) -->
+  <section class="py-16 sm:py-24 border-t border-slate-200 dark:border-slate-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Frequently Asked Questions
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          Everything you need to know about format conversions, privacy guarantees, and client-side processing.
+        </p>
+      </div>
+
+      <!-- Semantic FAQ List -->
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 transition-all duration-200 open:shadow-xs">
+            <summary class="flex items-center justify-between font-semibold text-sm sm:text-base text-slate-900 dark:text-white cursor-pointer list-none select-none">
+              <span>{faq.question}</span>
+              <span class="ml-4 flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 group-open:rotate-180 transition-transform duration-200">
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed pt-2 border-t border-slate-100 dark:border-slate-800/80">
+              {faq.answer}
+            </p>
+          </details>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. Contextual Internal Links Section -->
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-12 sm:py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+          Explore Related Image Utilities & Presets
+        </h3>
+        <p class="mt-1 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+          Seamlessly transition between image resizing, KB compression, and official dimension presets.
+        </p>
+      </div>
+
+      <!-- Core Related Tools Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <a
+          href="/tools/image-resizer/"
+          class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-500 dark:hover:border-blue-400 transition shadow-2xs group flex items-start gap-3"
+        >
+          <div class="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+            <ToolIcon name="maximize-2" class="w-4 h-4" />
+          </div>
+          <div>
+            <h4 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              Image Resizer
+            </h4>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+              Resize dimensions in pixels, cm, mm, and aspect locks.
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="/tools/image-compressor/"
+          class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-500 dark:hover:border-blue-400 transition shadow-2xs group flex items-start gap-3"
+        >
+          <div class="w-9 h-9 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+            <ToolIcon name="minimize-2" class="w-4 h-4" />
+          </div>
+          <div>
+            <h4 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+              Image Compressor
+            </h4>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+              Reduce size to exact 20KB, 50KB, or 100KB targets.
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="/resize-image-to-20kb/"
+          class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-500 dark:hover:border-blue-400 transition shadow-2xs group flex items-start gap-3"
+        >
+          <div class="w-9 h-9 rounded-lg bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+            <ToolIcon name="zap" class="w-4 h-4" />
+          </div>
+          <div>
+            <h4 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+              Resize to 20 KB
+            </h4>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+              Calibrated for strict government job and exam portals.
+            </p>
+          </div>
+        </a>
+
+        <a
+          href="/passport-size-photo-2x2-inch/"
+          class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-500 dark:hover:border-blue-400 transition shadow-2xs group flex items-start gap-3"
+        >
+          <div class="w-9 h-9 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+            <ToolIcon name="user-check" class="w-4 h-4" />
+          </div>
+          <div>
+            <h4 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+              2x2 Passport Photo
+            </h4>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+              Official US visa & DS-160 600x600 px biometric preset.
+            </p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Quick Category Presets Pills -->
+      <div class="flex flex-wrap justify-center gap-2 text-xs">
+        <a href="/tools/image-cropper" class="px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:border-blue-500 transition shadow-2xs">
+          Image Cropper
+        </a>
+        <a href="/tools/image-rotator" class="px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:border-blue-500 transition shadow-2xs">
+          Image Rotator
+        </a>
+        <a href="/tools/image-flipper" class="px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:border-blue-500 transition shadow-2xs">
+          Image Flipper
+        </a>
+        <a href="/tools/aspect-ratio-calculator" class="px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:border-blue-500 transition shadow-2xs">
+          Aspect Ratio Calculator
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 7. Bottom CTA Banner -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <div class="rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white shadow-xl shadow-blue-500/10 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
+      <div class="space-y-1">
+        <h3 class="text-lg sm:text-xl font-bold tracking-tight text-white">
+          Ready to convert your images with 100% privacy?
+        </h3>
+        <p class="text-xs sm:text-sm text-blue-100 max-w-md">
+          Zero server uploads, zero wait times, batch download as ZIP or PDF with no limits.
+        </p>
+      </div>
+      <a
+        href="#tool-workspace"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white text-slate-900 hover:bg-blue-50 font-semibold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all active:scale-95 shrink-0"
+      >
+        <span>Upload & Convert Now</span>
+        <span aria-hidden="true" class="text-base font-bold leading-none">↑</span>
+      </a>
+    </div>
+  </section>
+
+</Layout>

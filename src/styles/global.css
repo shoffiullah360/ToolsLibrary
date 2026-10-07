@@ -10,9 +10,9 @@
   --color-card-light: #ffffff;
   --color-border-light: #e2e8f0;
   
-  --color-canvas-dark: #0f172a;
-  --color-card-dark: #1e293b;
-  --color-border-dark: #334155;
+  --color-canvas-dark: #020617;
+  --color-card-dark: #0f172a;
+  --color-border-dark: #1e293b;
 }
 
 @layer base {
@@ -30,7 +30,7 @@
   }
 
   html.dark body {
-    background-color: #0f172a;
+    background-color: #020617;
     color: #f8fafc;
   }
 
@@ -70,15 +70,25 @@ html.dark .hero-mesh-bg {
 
 /* Subtle hairline borders & whisper shadows */
 .card-hairline {
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(226, 232, 240, 0.9);
   background-color: #ffffff;
-  box-shadow: 0 1px 2px 0 rgba(15, 23, 42, 0.03);
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.05), 0 1px 2px -1px rgba(15, 23, 42, 0.05);
+  transition: all 0.2s ease;
+}
+
+.card-hairline:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.06);
 }
 
 html.dark .card-hairline {
-  border: 1px solid #334155;
-  background-color: #1e293b;
+  border: 1px solid #1e293b;
+  background-color: #0f172a;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+}
+
+html.dark .card-hairline:hover {
+  border-color: rgba(59, 130, 246, 0.5);
 }
 
 /* Custom subtle scrollbar */

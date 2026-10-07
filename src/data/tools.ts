@@ -200,17 +200,6 @@ export const TOOLS: Tool[] = [
     badge: 'Popular',
     href: '/tools/color-picker-from-image'
   },
-  {
-    id: 'image-converter',
-    title: 'Image Converter',
-    category: 'Image Tools',
-    group: 'Optimization & Utilities',
-    description: 'Batch convert pictures between PNG, JPG, WebP, GIF, SVG, BMP, and ICO with zero quality degradation.',
-    tags: ['Multi-Format', 'Lossless Output', 'Zero Upload'],
-    keywords: ['image converter', 'png to jpg', 'jpg to webp', 'convert format', 'ico maker'],
-    icon: 'repeat',
-    href: '/tools/image-converter'
-  },
 
   // Group: Social Media Specs & Resizers
   {

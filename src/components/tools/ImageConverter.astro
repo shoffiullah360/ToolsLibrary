@@ -646,7 +646,7 @@ const { initialTargetFormat = 'webp' } = Astro.props;
     // Block Terminator (0x00) & GIF Trailer (0x3B)
     chunks.push(new Uint8Array([0x00, 0x3B]));
 
-    return new Blob(chunks, { type: 'image/gif' });
+    return new Blob(chunks as unknown as BlobPart[], { type: 'image/gif' });
   }
 
   // Pure JS PDF 1.4 Document Generator (Single or Multi-Page)
@@ -746,7 +746,7 @@ const { initialTargetFormat = 'webp' } = Astro.props;
     // Trailer
     writeString(`trailer\n<< /Size ${totalObjs + 1} /Root 1 0 R >>\nstartxref\n${xrefOffset}\n%%EOF\n`);
 
-    return new Blob(chunks, { type: 'application/pdf' });
+    return new Blob(chunks as unknown as BlobPart[], { type: 'application/pdf' });
   }
 
   // Pure JS Baseline TIFF Parser Fallback

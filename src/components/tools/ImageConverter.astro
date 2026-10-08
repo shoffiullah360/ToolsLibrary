@@ -3,12 +3,35 @@ import ToolIcon from '../ToolIcon.astro';
 
 interface Props {
   initialTargetFormat?: 'webp' | 'avif' | 'jpeg' | 'png' | 'gif' | 'bmp' | 'ico' | 'pdf';
+  accept?: string;
+  initialGrayscale?: boolean;
+  initialResizeMode?: 'original' | 'percentage' | 'custom';
+  initialWidth?: number;
+  initialHeight?: number;
+  initialMatteColor?: string;
 }
 
-const { initialTargetFormat = 'webp' } = Astro.props;
+const {
+  initialTargetFormat = 'webp',
+  accept = 'image/*,application/pdf,.heic,.heif',
+  initialGrayscale = false,
+  initialResizeMode = 'original',
+  initialWidth = 0,
+  initialHeight = 0,
+  initialMatteColor = '#FFFFFF'
+} = Astro.props;
 ---
 
-<div id="image-converter-root" class="w-full max-w-6xl mx-auto" data-initial-format={initialTargetFormat}>
+<div
+  id="image-converter-root"
+  class="w-full max-w-6xl mx-auto"
+  data-initial-format={initialTargetFormat}
+  data-initial-grayscale={initialGrayscale ? "true" : "false"}
+  data-initial-resize-mode={initialResizeMode}
+  data-initial-width={initialWidth ? String(initialWidth) : ""}
+  data-initial-height={initialHeight ? String(initialHeight) : ""}
+  data-initial-matte={initialMatteColor}
+>
   <!-- 1. INITIAL STATE: Drag & Drop Zone (Matching Image Resizer / Compressor Design) -->
   <div id="converter-dropzone-view" class="transition-all duration-300">
     <div
@@ -19,7 +42,7 @@ const { initialTargetFormat = 'webp' } = Astro.props;
         type="file"
         id="converterFileInput"
         class="hidden"
-        accept="image/*,application/pdf,.heic,.heif"
+        accept={accept}
         multiple
       />
 
@@ -151,18 +174,18 @@ const { initialTargetFormat = 'webp' } = Astro.props;
                 class="w-full appearance-none bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white font-medium text-sm py-2.5 pl-3.5 pr-10 rounded-xl border border-slate-200 dark:border-slate-700 focus:outline-hidden focus:ring-2 focus:ring-blue-500 cursor-pointer shadow-2xs"
               >
                 <optgroup label="Modern Web">
-                  <option value="webp" selected>WebP (Best Web Compression)</option>
-                  <option value="avif">AVIF (Next-Gen Compression)</option>
+                  <option value="webp" selected={initialTargetFormat === 'webp'}>WebP (Best Web Compression)</option>
+                  <option value="avif" selected={initialTargetFormat === 'avif'}>AVIF (Next-Gen Compression)</option>
                 </optgroup>
                 <optgroup label="Universal Formats">
-                  <option value="jpeg">JPG / JPEG (Universal Compatibility)</option>
-                  <option value="png">PNG (Lossless with Alpha)</option>
-                  <option value="gif">GIF (Web Graphics)</option>
-                  <option value="bmp">BMP (Bitmap Standard)</option>
-                  <option value="ico">ICO (Windows & Favicon)</option>
+                  <option value="jpeg" selected={initialTargetFormat === 'jpeg'}>JPG / JPEG (Universal Compatibility)</option>
+                  <option value="png" selected={initialTargetFormat === 'png'}>PNG (Lossless with Alpha)</option>
+                  <option value="gif" selected={initialTargetFormat === 'gif'}>GIF (Web Graphics)</option>
+                  <option value="bmp" selected={initialTargetFormat === 'bmp'}>BMP (Bitmap Standard)</option>
+                  <option value="ico" selected={initialTargetFormat === 'ico'}>ICO (Windows & Favicon)</option>
                 </optgroup>
                 <optgroup label="Document Export">
-                  <option value="pdf">PDF (Document / Multi-Page)</option>
+                  <option value="pdf" selected={initialTargetFormat === 'pdf'}>PDF (Document / Multi-Page)</option>
                 </optgroup>
               </select>
               <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-slate-500">
@@ -284,10 +307,10 @@ const { initialTargetFormat = 'webp' } = Astro.props;
                   <input
                     type="color"
                     id="transparency-color-picker"
-                    value="#FFFFFF"
+                    value={initialMatteColor}
                     class="w-5 h-5 rounded cursor-pointer border border-slate-300 dark:border-slate-600 bg-transparent p-0"
                   />
-                  <span id="color-hex-label" class="text-xs font-mono font-medium text-slate-700 dark:text-slate-300">#FFFFFF</span>
+                  <span id="color-hex-label" class="text-xs font-mono font-medium text-slate-700 dark:text-slate-300">{initialMatteColor}</span>
                 </div>
               </div>
               <!-- Quick Color Presets -->
@@ -315,6 +338,7 @@ const { initialTargetFormat = 'webp' } = Astro.props;
                 <input
                   type="checkbox"
                   id="grayscale-toggle"
+                  checked={initialGrayscale}
                   class="w-4 h-4 text-blue-600 rounded border-slate-300 dark:border-slate-600 focus:ring-blue-500 cursor-pointer"
                 />
               </div>
@@ -346,20 +370,20 @@ const { initialTargetFormat = 'webp' } = Astro.props;
 
                 <!-- Resize Mode Selector -->
                 <div class="inline-flex rounded-lg p-0.5 bg-slate-200/70 dark:bg-slate-700/60 text-xs font-medium">
-                  <button type="button" class="resize-mode-tab px-2.5 py-1 rounded-md text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 shadow-2xs font-medium cursor-pointer" data-mode="original">
+                  <button type="button" class={`resize-mode-tab px-2.5 py-1 rounded-md text-xs font-medium cursor-pointer ${initialResizeMode === 'original' ? 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 shadow-2xs font-medium' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`} data-mode="original">
                     Original
                   </button>
-                  <button type="button" class="resize-mode-tab px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer" data-mode="percentage">
+                  <button type="button" class={`resize-mode-tab px-2.5 py-1 rounded-md text-xs font-medium cursor-pointer ${initialResizeMode === 'percentage' ? 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 shadow-2xs font-medium' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`} data-mode="percentage">
                     Scale %
                   </button>
-                  <button type="button" class="resize-mode-tab px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer" data-mode="custom">
+                  <button type="button" class={`resize-mode-tab px-2.5 py-1 rounded-md text-xs font-medium cursor-pointer ${initialResizeMode === 'custom' ? 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 shadow-2xs font-medium' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`} data-mode="custom">
                     Custom Px
                   </button>
                 </div>
               </div>
 
               <!-- Resize Controls Area: Both Scale % and Custom Px rendered simultaneously -->
-              <div id="resize-controls-container" class="space-y-2.5 pt-2 border-t border-slate-200/60 dark:border-slate-700/60 opacity-60 pointer-events-none transition-all duration-200">
+              <div id="resize-controls-container" class={`space-y-2.5 pt-2 border-t border-slate-200/60 dark:border-slate-700/60 transition-all duration-200 ${initialResizeMode === 'custom' ? 'opacity-100' : 'opacity-60 pointer-events-none'}`}>
                 <!-- Scale % Presets Row -->
                 <div id="resize-percentage-panel" class="flex flex-wrap items-center gap-1.5 transition-all duration-200">
                   <span class="text-xs font-medium text-slate-700 dark:text-slate-300">Scale:</span>
@@ -370,7 +394,7 @@ const { initialTargetFormat = 'webp' } = Astro.props;
                 </div>
 
                 <!-- Custom Px Dimensions Row -->
-                <div id="resize-custom-panel" class="flex items-center gap-1.5 sm:gap-2 pt-2 border-t border-slate-200/40 dark:border-slate-700/40 transition-all duration-200">
+                <div id="resize-custom-panel" class={`flex items-center gap-1.5 sm:gap-2 pt-2 border-t border-slate-200/40 dark:border-slate-700/40 transition-all duration-200 ${initialResizeMode === 'custom' ? 'opacity-100 pointer-events-auto' : 'opacity-50 pointer-events-none'}`}>
                   <span class="text-xs font-medium text-slate-700 dark:text-slate-300 shrink-0">Custom:</span>
                   <div class="flex items-center gap-1 shrink min-w-0">
                     <label for="custom-width-input" class="text-xs font-medium text-slate-600 dark:text-slate-400 shrink-0">W:</label>
@@ -378,6 +402,7 @@ const { initialTargetFormat = 'webp' } = Astro.props;
                       type="number"
                       id="custom-width-input"
                       placeholder="1920"
+                      value={initialWidth || ''}
                       class="w-16 sm:w-20 px-2 py-1 text-xs font-mono rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
                     />
                   </div>
@@ -401,6 +426,7 @@ const { initialTargetFormat = 'webp' } = Astro.props;
                       type="number"
                       id="custom-height-input"
                       placeholder="1080"
+                      value={initialHeight || ''}
                       class="w-16 sm:w-20 px-2 py-1 text-xs font-mono rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
                     />
                   </div>
@@ -855,6 +881,57 @@ const { initialTargetFormat = 'webp' } = Astro.props;
     const modalSpecsLabel = document.getElementById('modal-specs-label');
     const modalDownloadBtn = document.getElementById('modal-download-btn');
     let activeModalItem: QueueItem | null = null;
+
+    // Initialize component from preset data attributes
+    if (globalFormatSelect && globalTargetFormat) {
+      globalFormatSelect.value = globalTargetFormat;
+    }
+
+    const initGrayscale = root.getAttribute('data-initial-grayscale') === 'true';
+    if (initGrayscale && grayscaleToggle) {
+      grayscaleToggle.checked = true;
+    }
+
+    const initMatte = root.getAttribute('data-initial-matte');
+    if (initMatte && transparencyColorPicker) {
+      transparencyColorPicker.value = initMatte;
+      if (colorHexLabel) colorHexLabel.textContent = initMatte.toUpperCase();
+    }
+
+    const initResizeMode = root.getAttribute('data-initial-resize-mode') as 'original' | 'percentage' | 'custom' | null;
+    if (initResizeMode === 'custom') {
+      currentResizeMode = 'custom';
+      const initW = parseInt(root.getAttribute('data-initial-width') || '0', 10);
+      const initH = parseInt(root.getAttribute('data-initial-height') || '0', 10);
+      if (initW > 0) {
+        customWidth = initW;
+        if (customWidthInput) customWidthInput.value = String(initW);
+      }
+      if (initH > 0) {
+        customHeight = initH;
+        if (customHeightInput) customHeightInput.value = String(initH);
+      }
+
+      resizeModeTabs.forEach((t) => {
+        const mode = (t as HTMLElement).getAttribute('data-mode');
+        if (mode === 'custom') {
+          t.classList.add('bg-white', 'dark:bg-slate-900', 'font-medium', 'shadow-2xs');
+          t.classList.remove('text-slate-600', 'dark:text-slate-400');
+        } else {
+          t.classList.remove('bg-white', 'dark:bg-slate-900', 'font-medium', 'shadow-2xs');
+          t.classList.add('text-slate-600', 'dark:text-slate-400');
+        }
+      });
+
+      resizeControlsContainer?.classList.remove('opacity-60', 'pointer-events-none');
+      resizeControlsContainer?.classList.add('opacity-100');
+      resizeCustomPanel?.classList.remove('opacity-50', 'pointer-events-none');
+      resizeCustomPanel?.classList.add('opacity-100', 'pointer-events-auto');
+      resizePercentagePanel?.classList.add('opacity-50', 'pointer-events-none');
+      resizePercentagePanel?.classList.remove('opacity-100', 'pointer-events-auto');
+    }
+
+    updateDrawerSummary();
 
     // Format file size helper
     function formatBytes(bytes: number): string {

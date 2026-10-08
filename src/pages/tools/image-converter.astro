@@ -13,7 +13,7 @@ const CONVERSION_PRESETS = [
     badge: '35% Smaller',
     spec: 'LOSSLESS ALPHA',
     description: 'Preserve crisp transparent backgrounds while cutting byte payload by 30%–40% for Google Core Web Vitals.',
-    href: '/png-to-webp-compressor'
+    href: '/png-to-webp/'
   },
   {
     title: 'JPG to WebP Converter',
@@ -22,7 +22,7 @@ const CONVERSION_PRESETS = [
     badge: 'Next-Gen Web',
     spec: 'HIGH EFFICIENCY',
     description: 'Convert legacy JPEG photography to modern WebP using advanced intra-frame block prediction curves.',
-    href: '/jpg-to-webp-compressor'
+    href: '/jpg-to-webp/'
   },
   {
     title: 'AVIF to WebP Converter',
@@ -31,7 +31,7 @@ const CONVERSION_PRESETS = [
     badge: 'Universal Support',
     spec: '98% COMPATIBLE',
     description: 'Transcode AVIF to WebP for 98%+ global browser support without sacrificing modern compression efficiency.',
-    href: '/tools/image-converter?from=avif&to=webp#tool-workspace'
+    href: '/avif-to-webp/'
   },
   {
     title: 'GIF to WebP Converter',
@@ -40,7 +40,7 @@ const CONVERSION_PRESETS = [
     badge: '60% Size Cut',
     spec: 'PALETTE FREE',
     description: 'Convert heavy 256-color static GIF graphics into lightweight WebP images for instantaneous web rendering.',
-    href: '/tools/image-converter?from=gif&to=webp#tool-workspace'
+    href: '/gif-to-webp/'
   },
   {
     title: 'SVG to WebP Converter',
@@ -49,7 +49,7 @@ const CONVERSION_PRESETS = [
     badge: 'Raster Delivery',
     spec: 'CLEAN PIXELS',
     description: 'Rasterize scalable vector graphics into lightweight, high-density WebP bitmaps for fast social sharing.',
-    href: '/tools/image-converter?from=svg&to=webp#tool-workspace'
+    href: '/svg-to-webp/'
   },
   {
     title: 'BMP to WebP Converter',
@@ -58,7 +58,7 @@ const CONVERSION_PRESETS = [
     badge: '90% Compression',
     spec: 'UNCOMPRESSED → LEAN',
     description: 'Transform bulky uncompressed Windows bitmap files into modern, fast-loading WebP web assets.',
-    href: '/tools/image-converter?from=bmp&to=webp#tool-workspace'
+    href: '/bmp-to-webp/'
   },
   {
     title: 'TIFF to WebP Converter',
@@ -67,7 +67,7 @@ const CONVERSION_PRESETS = [
     badge: 'Archival to Web',
     spec: 'PORTFOLIO READY',
     description: 'Convert multi-megabyte scanner and camera TIFF files into lightweight WebP images for online portfolios.',
-    href: '/tools/image-converter?from=tiff&to=webp#tool-workspace'
+    href: '/tiff-to-webp/'
   },
   {
     title: 'ICO to WebP Converter',
@@ -76,7 +76,7 @@ const CONVERSION_PRESETS = [
     badge: 'Modern Icon',
     spec: 'VECTOR SHARP',
     description: 'Extract and convert legacy Windows favicon files into modern WebP format for fast web rendering.',
-    href: '/tools/image-converter?from=ico&to=webp#tool-workspace'
+    href: '/ico-to-webp/'
   },
   {
     title: 'Batch Image to WebP',
@@ -85,7 +85,7 @@ const CONVERSION_PRESETS = [
     badge: 'Bulk 15 Images',
     spec: 'ZIP ARCHIVE',
     description: 'Convert up to 15 mixed-format images to WebP simultaneously and download as a single organized ZIP package.',
-    href: '/tools/image-converter?to=webp#tool-workspace'
+    href: '/batch-image-to-webp/'
   },
   {
     title: 'Lossless WebP Converter',
@@ -94,7 +94,7 @@ const CONVERSION_PRESETS = [
     badge: 'Bit-for-Bit Lossless',
     spec: 'ZERO LOSS',
     description: 'Encode high-precision graphics using WebP lossless mode with bit-for-bit accuracy and reduced file sizes.',
-    href: '/tools/image-converter?from=png&to=webp#tool-workspace'
+    href: '/lossless-webp-converter/'
   },
 
   // JPG / JPEG Conversions (11-20)
@@ -105,7 +105,7 @@ const CONVERSION_PRESETS = [
     badge: 'Universal Portal',
     spec: 'SOLID MATTE FILL',
     description: 'Flatten transparent PNG files with smart white or custom hex matte fill for official job submissions.',
-    href: '/tools/image-converter?from=png&to=jpeg#tool-workspace'
+    href: '/png-to-jpg/'
   },
   {
     title: 'WebP to JPG Converter',
@@ -114,7 +114,7 @@ const CONVERSION_PRESETS = [
     badge: '100% Compatibility',
     spec: 'UNIVERSAL LEGACY',
     description: 'Convert modern WebP images into standard JPEG for legacy photo viewers, print shops, and forms.',
-    href: '/tools/image-converter?from=webp&to=jpeg#tool-workspace'
+    href: '/webp-to-jpg/'
   },
   {
     title: 'HEIC to JPG Converter',
@@ -123,7 +123,7 @@ const CONVERSION_PRESETS = [
     badge: 'iPhone Standard',
     spec: 'UNIVERSAL PHOTO',
     description: 'Convert Apple iPhone HEIC captures into universally supported JPEG images viewable on all devices.',
-    href: '/tools/image-converter?from=heic&to=jpeg#tool-workspace'
+    href: '/heic-to-jpg/'
   },
   {
     title: 'AVIF to JPG Converter',
@@ -132,7 +132,7 @@ const CONVERSION_PRESETS = [
     badge: 'Universal Format',
     spec: 'WIDE SUPPORT',
     description: 'Re-encode next-generation AVIF images into universally readable standard JPEG format without upload lag.',
-    href: '/tools/image-converter?from=avif&to=jpeg#tool-workspace'
+    href: '/avif-to-jpg/'
   },
   {
     title: 'SVG to JPG Converter',
@@ -141,7 +141,7 @@ const CONVERSION_PRESETS = [
     badge: 'Flat Raster',
     spec: 'WHITE BACKGROUND',
     description: 'Rasterize scalable vector illustrations onto a solid background for easy email and document attachments.',
-    href: '/tools/image-converter?from=svg&to=jpeg#tool-workspace'
+    href: '/svg-to-jpg/'
   },
   {
     title: 'PDF to JPG Converter',
@@ -150,7 +150,7 @@ const CONVERSION_PRESETS = [
     badge: 'Extract Pages',
     spec: 'HIGH RES RASTER',
     description: 'Convert document scans and PDF frames into standalone high-resolution JPG images in browser memory.',
-    href: '/tools/image-converter?from=pdf&to=jpeg#tool-workspace'
+    href: '/pdf-to-jpg/'
   },
   {
     title: 'BMP to JPG Converter',
@@ -159,7 +159,7 @@ const CONVERSION_PRESETS = [
     badge: 'Compact File',
     spec: '80% COMPRESSION',
     description: 'Compress raw uncompressed bitmap files into compact, email-friendly JPEG photographs in milliseconds.',
-    href: '/tools/image-converter?from=bmp&to=jpeg#tool-workspace'
+    href: '/bmp-to-jpg/'
   },
   {
     title: 'TIFF to JPG Converter',
@@ -168,7 +168,7 @@ const CONVERSION_PRESETS = [
     badge: 'Print to Web',
     spec: 'LIGHTWEIGHT',
     description: 'Convert multi-megabyte archival TIFF files into lightweight, easily shareable standard JPG photos.',
-    href: '/tools/image-converter?from=tiff&to=jpeg#tool-workspace'
+    href: '/tiff-to-jpg/'
   },
   {
     title: 'GIF to JPG Converter',
@@ -177,7 +177,7 @@ const CONVERSION_PRESETS = [
     badge: 'Single Frame',
     spec: 'RGB RE-ENCODE',
     description: 'Extract and convert static GIF graphics into sharp JPEG images with custom solid background fill.',
-    href: '/tools/image-converter?from=gif&to=jpeg#tool-workspace'
+    href: '/gif-to-jpg/'
   },
   {
     title: 'Camera RAW to JPG',
@@ -186,7 +186,7 @@ const CONVERSION_PRESETS = [
     badge: 'Digital Photo',
     spec: 'INSTANT SHARE',
     description: 'Convert high-resolution digital camera snapshots into compressed JPG photos instantly without software.',
-    href: '/tools/image-converter?to=jpeg#tool-workspace'
+    href: '/raw-to-jpg/'
   },
 
   // PNG Conversions (21-30)
@@ -197,7 +197,7 @@ const CONVERSION_PRESETS = [
     badge: 'Lossless Container',
     spec: 'PIXEL PERFECT',
     description: 'Convert JPEG photos into PNG format to freeze compression artifacts and preserve graphic fidelity.',
-    href: '/tools/image-converter?from=jpeg&to=png#tool-workspace'
+    href: '/jpg-to-png/'
   },
   {
     title: 'WebP to PNG Converter',
@@ -206,7 +206,7 @@ const CONVERSION_PRESETS = [
     badge: 'Alpha Preserved',
     spec: 'TRUECOLOR + ALPHA',
     description: 'Extract WebP images back into lossless PNG files with transparent backgrounds fully intact.',
-    href: '/tools/image-converter?from=webp&to=png#tool-workspace'
+    href: '/webp-to-png/'
   },
   {
     title: 'SVG to PNG Converter',
@@ -215,7 +215,7 @@ const CONVERSION_PRESETS = [
     badge: 'Lossless Alpha',
     spec: 'TRANSPARENT BG',
     description: 'Rasterize vector logos and SVG graphics into crisp, high-resolution PNGs with transparent alpha channels.',
-    href: '/tools/image-converter?from=svg&to=png#tool-workspace'
+    href: '/svg-to-png/'
   },
   {
     title: 'AVIF to PNG Converter',
@@ -224,7 +224,7 @@ const CONVERSION_PRESETS = [
     badge: 'Lossless Studio',
     spec: 'UNCOMPRESSED',
     description: 'Decompress next-generation AVIF images into uncompressed PNG files for pixel-precise desktop editing.',
-    href: '/tools/image-converter?from=avif&to=png#tool-workspace'
+    href: '/avif-to-png/'
   },
   {
     title: 'ICO to PNG Converter',
@@ -233,7 +233,7 @@ const CONVERSION_PRESETS = [
     badge: 'Icon Extract',
     spec: 'TRANSPARENT 32-BIT',
     description: 'Convert Windows .ico favicon icons into full-size transparent PNG images for web design and branding.',
-    href: '/tools/image-converter?from=ico&to=png#tool-workspace'
+    href: '/ico-to-png/'
   },
   {
     title: 'BMP to PNG Converter',
@@ -242,7 +242,7 @@ const CONVERSION_PRESETS = [
     badge: 'DEFLATE Lossless',
     spec: 'LOSSLESS COMPRESSION',
     description: 'Losslessly compress bulky bitmap files into compact PNGs without losing a single original pixel.',
-    href: '/tools/image-converter?from=bmp&to=png#tool-workspace'
+    href: '/bmp-to-png/'
   },
   {
     title: 'GIF to PNG Converter',
@@ -251,7 +251,7 @@ const CONVERSION_PRESETS = [
     badge: 'Indexed to RGB',
     spec: 'CLEAN EDGES',
     description: 'Convert indexed-color GIF images into TrueColor 24-bit PNG files with clean, sharp transparent edges.',
-    href: '/tools/image-converter?from=gif&to=png#tool-workspace'
+    href: '/gif-to-png/'
   },
   {
     title: 'TIFF to PNG Converter',
@@ -260,7 +260,7 @@ const CONVERSION_PRESETS = [
     badge: 'Lossless Scans',
     spec: 'DOCUMENT QUALITY',
     description: 'Convert archival scanner TIFF images into universally supported lossless PNG format for long-term storage.',
-    href: '/tools/image-converter?from=tiff&to=png#tool-workspace'
+    href: '/tiff-to-png/'
   },
   {
     title: 'PDF to PNG Converter',
@@ -269,7 +269,7 @@ const CONVERSION_PRESETS = [
     badge: 'Transparent Page',
     spec: 'CRYSTAL CLEAR',
     description: 'Convert single-page PDF document scans into crystal-clear lossless PNG graphics with zero blur.',
-    href: '/tools/image-converter?from=pdf&to=png#tool-workspace'
+    href: '/pdf-to-png/'
   },
   {
     title: 'Transparent PNG Alpha',
@@ -278,10 +278,10 @@ const CONVERSION_PRESETS = [
     badge: 'Clean Cutouts',
     spec: '8-BIT ALPHA',
     description: 'Retain or restore alpha channels with zero color banding or black artifact outlines around edges.',
-    href: '/tools/image-converter?to=png#tool-workspace'
+    href: '/transparent-png-converter/'
   },
 
-  // Modern & Specialized Conversions (31-40)
+  // Modern & Specialized Conversions (31-42)
   {
     title: 'JPG to AVIF Converter',
     source: 'JPG',
@@ -289,7 +289,7 @@ const CONVERSION_PRESETS = [
     badge: '50% Size Cut',
     spec: 'NEXT-GEN AV1',
     description: 'Leverage AV1 video intra-frame compression to achieve the highest possible web compression ratio.',
-    href: '/tools/image-converter?from=jpeg&to=avif#tool-workspace'
+    href: '/jpg-to-avif/'
   },
   {
     title: 'PNG to AVIF Converter',
@@ -298,7 +298,7 @@ const CONVERSION_PRESETS = [
     badge: 'Next-Gen Alpha',
     spec: '10-BIT COLOR',
     description: 'Cut transparent graphic file sizes in half with AVIF modern 10-bit color and HDR pipeline support.',
-    href: '/tools/image-converter?from=png&to=avif#tool-workspace'
+    href: '/png-to-avif/'
   },
   {
     title: 'WebP to AVIF Converter',
@@ -307,7 +307,7 @@ const CONVERSION_PRESETS = [
     badge: 'Ultra Compact',
     spec: 'MAX EFFICIENCY',
     description: 'Upgrade existing WebP web assets to next-generation AVIF for maximum bandwidth and performance savings.',
-    href: '/tools/image-converter?from=webp&to=avif#tool-workspace'
+    href: '/webp-to-avif/'
   },
   {
     title: 'Image to PDF Converter',
@@ -316,16 +316,16 @@ const CONVERSION_PRESETS = [
     badge: 'Print Ready',
     spec: 'PDF 1.4 COMPLIANT',
     description: 'Convert single JPG, PNG, or WebP images into standardized PDF 1.4 documents locally in your browser.',
-    href: '/tools/image-converter?to=pdf#tool-workspace'
+    href: '/image-to-pdf/'
   },
   {
-    title: 'Multi-Image to PDF',
-    source: 'BATCH',
+    title: 'JPG to PDF Converter',
+    source: 'JPG',
     target: 'PDF',
     badge: 'Multi-Page Doc',
     spec: '1-CLICK MERGE',
     description: 'Combine up to 15 receipts, scans, or photos into a single multi-page PDF document in milliseconds.',
-    href: '/tools/image-converter?to=pdf#tool-workspace'
+    href: '/jpg-to-pdf/'
   },
   {
     title: 'PNG to ICO Favicon',
@@ -334,7 +334,7 @@ const CONVERSION_PRESETS = [
     badge: '32-Bit Favicon',
     spec: '256×256 MAX',
     description: 'Generate standard Windows and website .ico favicons from transparent PNG logos with sharp alpha.',
-    href: '/tools/image-converter?from=png&to=ico#tool-workspace'
+    href: '/png-to-ico/'
   },
   {
     title: 'SVG to PNG 300 DPI',
@@ -343,7 +343,7 @@ const CONVERSION_PRESETS = [
     badge: '300 DPI Print',
     spec: 'HIGH DENSITY',
     description: 'Export high-resolution raster PNGs from vector artwork calibrated for sharp professional print density.',
-    href: '/tools/image-converter?from=svg&to=png#tool-workspace'
+    href: '/svg-to-png-300-dpi/'
   },
   {
     title: 'JPG to ICO Converter',
@@ -352,7 +352,7 @@ const CONVERSION_PRESETS = [
     badge: 'Desktop Icon',
     spec: 'FAVICON READY',
     description: 'Convert square JPEG photos into Windows icon files for application shortcuts and web favicons.',
-    href: '/tools/image-converter?from=jpeg&to=ico#tool-workspace'
+    href: '/jpg-to-ico/'
   },
   {
     title: 'WebP to PDF Converter',
@@ -361,7 +361,7 @@ const CONVERSION_PRESETS = [
     badge: 'Document Archive',
     spec: 'DCT EMBEDDED',
     description: 'Package modern WebP screenshots and web graphics directly into formal PDF documents with zero loss.',
-    href: '/tools/image-converter?from=webp&to=pdf#tool-workspace'
+    href: '/webp-to-pdf/'
   },
   {
     title: 'PNG to Multi-Page PDF',
@@ -370,7 +370,25 @@ const CONVERSION_PRESETS = [
     badge: 'Merged Report',
     spec: 'MULTI-PAGE BATCH',
     description: 'Bundle transparent illustrations and document snapshots into an organized multi-page PDF archive.',
-    href: '/tools/image-converter?to=pdf#tool-workspace'
+    href: '/png-to-pdf/'
+  },
+  {
+    title: 'Black and White Image Converter',
+    source: 'COLOR',
+    target: 'B&W',
+    badge: 'Monochrome',
+    spec: 'GRAYSCALE',
+    description: 'Convert color photos into high-contrast monochrome grayscale for print, document scanning, and toner savings.',
+    href: '/black-and-white-image-converter/'
+  },
+  {
+    title: '3000x3000 Image Converter',
+    source: 'IMG',
+    target: '3000px',
+    badge: 'Podcast Spec',
+    spec: '1:1 SQUARE',
+    description: 'Resize and convert artwork to exact 3000x3000 pixel 1:1 square canvas for Apple Podcasts and Spotify covers.',
+    href: '/3000x3000-image-converter/'
   }
 ];
 
@@ -584,10 +602,10 @@ const ogImage = "https://fasttoolverse.com/og-image-converter.png";
       <!-- Section Header -->
       <div class="text-center max-w-2xl mx-auto mb-12">
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Explore 40+ Pre-Configured Format Conversions
+          Popular Image Conversion Tools
         </h2>
         <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
-          Instant 1-click format conversion profiles optimized for modern web compression, alpha preservation, and universal document export.
+          Convert between JPG, PNG, WebP, AVIF, HEIC, and PDF with optimized settings for speed and quality.
         </p>
       </div>
 

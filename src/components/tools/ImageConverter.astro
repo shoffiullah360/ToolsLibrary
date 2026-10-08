@@ -370,42 +370,41 @@ const { initialTargetFormat = 'webp' } = Astro.props;
                 </div>
 
                 <!-- Custom Px Dimensions Row -->
-                <div id="resize-custom-panel" class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-200/40 dark:border-slate-700/40 transition-all duration-200">
-                  <span class="text-xs font-medium text-slate-700 dark:text-slate-300">Custom:</span>
-                  <div class="flex items-center gap-1">
-                    <label for="custom-width-input" class="text-xs font-medium text-slate-600 dark:text-slate-400">W:</label>
+                <div id="resize-custom-panel" class="flex items-center gap-1.5 sm:gap-2 pt-2 border-t border-slate-200/40 dark:border-slate-700/40 transition-all duration-200">
+                  <span class="text-xs font-medium text-slate-700 dark:text-slate-300 shrink-0">Custom:</span>
+                  <div class="flex items-center gap-1 shrink min-w-0">
+                    <label for="custom-width-input" class="text-xs font-medium text-slate-600 dark:text-slate-400 shrink-0">W:</label>
                     <input
                       type="number"
                       id="custom-width-input"
                       placeholder="1920"
-                      class="w-18 sm:w-20 px-2 py-1 text-xs font-mono rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+                      class="w-16 sm:w-20 px-2 py-1 text-xs font-mono rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
                     />
-                    <span class="text-xs font-mono text-slate-500 dark:text-slate-400">px</span>
                   </div>
 
                   <!-- Aspect Ratio Lock Button -->
                   <button
                     type="button"
                     id="aspect-ratio-lock-btn"
-                    class="px-2 py-1 rounded-md border border-blue-500/50 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 text-xs font-medium flex items-center gap-1 cursor-pointer transition-colors"
-                    title="Maintain aspect ratio"
+                    class="p-1.5 rounded-lg border border-blue-500/50 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 shrink-0 flex items-center justify-center cursor-pointer transition-colors"
+                    title="Aspect ratio locked (click to unlock)"
+                    aria-label="Toggle aspect ratio lock"
                   >
                     <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
                     </svg>
-                    <span>Lock</span>
                   </button>
 
-                  <div class="flex items-center gap-1">
-                    <label for="custom-height-input" class="text-xs font-medium text-slate-600 dark:text-slate-400">H:</label>
+                  <div class="flex items-center gap-1 shrink min-w-0">
+                    <label for="custom-height-input" class="text-xs font-medium text-slate-600 dark:text-slate-400 shrink-0">H:</label>
                     <input
                       type="number"
                       id="custom-height-input"
                       placeholder="1080"
-                      class="w-18 sm:w-20 px-2 py-1 text-xs font-mono rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+                      class="w-16 sm:w-20 px-2 py-1 text-xs font-mono rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
                     />
-                    <span class="text-xs font-mono text-slate-500 dark:text-slate-400">px</span>
                   </div>
+                  <span class="text-xs font-mono text-slate-500 dark:text-slate-400 shrink-0">px</span>
                 </div>
               </div>
 
@@ -1167,9 +1166,27 @@ const { initialTargetFormat = 'webp' } = Astro.props;
             </div>
           </div>
 
-          <!-- Right side: Target Selector, Status & Download Button -->
-          <div class="flex flex-wrap items-center justify-between sm:justify-end gap-2 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 dark:border-slate-800">
-            <!-- Format selector per item -->
+          <!-- Right side: Converted Download/Status Action, Target Format Selector & Delete Button -->
+          <div class="flex items-center justify-end gap-2 shrink-0">
+            ${item.status === 'converting' ? `
+              <span class="inline-flex items-center gap-1.5 text-xs text-blue-600 dark:text-blue-400 font-medium">
+                <svg class="animate-spin w-3.5 h-3.5" viewBox="0 0 24 24" fill="none"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
+                <span class="hidden sm:inline">Converting...</span>
+              </span>
+            ` : ''}
+
+            ${item.status === 'done' && item.convertedBlob ? `
+              <button type="button" class="download-single-btn inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs transition cursor-pointer shadow-2xs" data-id="${item.id}" title="Download converted file">
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                <span>Download</span>
+              </button>
+            ` : ''}
+
+            ${item.status === 'error' ? `
+              <span class="text-xs text-rose-500 font-semibold" title="${item.errorMessage || 'Conversion error'}">Error</span>
+            ` : ''}
+
+            <!-- Format selector per item placed directly before delete button -->
             <div class="flex items-center gap-1.5">
               <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">TO:</span>
               <select class="item-format-select appearance-none bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-medium text-xs py-1.5 pl-2.5 pr-6 rounded-lg border border-slate-200 dark:border-slate-700 cursor-pointer" data-id="${item.id}">
@@ -1184,29 +1201,10 @@ const { initialTargetFormat = 'webp' } = Astro.props;
               </select>
             </div>
 
-            <!-- Status -->
-            <div class="min-w-[80px] text-right">
-              ${statusHtml}
-            </div>
-
-            <!-- Action buttons: Download & Remove -->
-            <div class="flex items-center gap-1.5">
-              ${item.status === 'done' && item.convertedBlob ? `
-                <button type="button" class="download-single-btn inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs sm:text-sm transition cursor-pointer shadow-2xs" data-id="${item.id}">
-                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                  <span>Download</span>
-                </button>
-              ` : `
-                <button type="button" class="convert-single-btn px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium text-xs sm:text-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition cursor-pointer" data-id="${item.id}">
-                  Convert
-                </button>
-              `}
-
-              <!-- Remove file -->
-              <button type="button" class="remove-item-btn p-1.5 rounded-lg text-slate-400 hover:text-rose-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer" data-id="${item.id}" title="Remove file">
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-              </button>
-            </div>
+            <!-- Remove file -->
+            <button type="button" class="remove-item-btn p-1.5 rounded-lg text-slate-400 hover:text-rose-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer" data-id="${item.id}" title="Remove file">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
           </div>
         `;
 
@@ -1230,17 +1228,6 @@ const { initialTargetFormat = 'webp' } = Astro.props;
         });
       });
 
-      // Single Convert
-      document.querySelectorAll('.convert-single-btn').forEach((btn) => {
-        btn.addEventListener('click', async () => {
-          const id = (btn as HTMLElement).getAttribute('data-id');
-          const item = queue.find((i) => i.id === id);
-          if (item) {
-            await convertQueueItem(item);
-          }
-        });
-      });
-
       // Item Format Change
       document.querySelectorAll('.item-format-select').forEach((sel) => {
         sel.addEventListener('change', async (e) => {
@@ -1248,7 +1235,9 @@ const { initialTargetFormat = 'webp' } = Astro.props;
           const item = queue.find((i) => i.id === id);
           if (item) {
             item.targetFormat = (e.target as HTMLSelectElement).value;
-            await convertQueueItem(item);
+            if (item.status === 'done') {
+              await convertQueueItem(item);
+            }
           }
         });
       });
@@ -1452,22 +1441,21 @@ const { initialTargetFormat = 'webp' } = Astro.props;
     aspectRatioLockBtn?.addEventListener('click', () => {
       isAspectRatioLocked = !isAspectRatioLocked;
       if (isAspectRatioLocked) {
-        aspectRatioLockBtn.classList.add('border-blue-500/50', 'bg-blue-50', 'text-blue-600');
-        aspectRatioLockBtn.classList.remove('border-slate-300', 'text-slate-500');
+        aspectRatioLockBtn.classList.add('border-blue-500/50', 'bg-blue-50', 'dark:bg-blue-950/40', 'text-blue-600', 'dark:text-blue-400');
+        aspectRatioLockBtn.classList.remove('border-slate-300', 'dark:border-slate-600', 'text-slate-400', 'dark:text-slate-500');
+        aspectRatioLockBtn.setAttribute('title', 'Aspect ratio locked (click to unlock)');
         aspectRatioLockBtn.innerHTML = `
-          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
-          <span>Ratio Locked</span>
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
         `;
       } else {
-        aspectRatioLockBtn.classList.remove('border-blue-500/50', 'bg-blue-50', 'text-blue-600');
-        aspectRatioLockBtn.classList.add('border-slate-300', 'text-slate-500');
+        aspectRatioLockBtn.classList.remove('border-blue-500/50', 'bg-blue-50', 'dark:bg-blue-950/40', 'text-blue-600', 'dark:text-blue-400');
+        aspectRatioLockBtn.classList.add('border-slate-300', 'dark:border-slate-600', 'text-slate-400', 'dark:text-slate-500');
+        aspectRatioLockBtn.setAttribute('title', 'Aspect ratio unlocked (click to lock)');
         aspectRatioLockBtn.innerHTML = `
-          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
-          <span>Ratio Unlocked</span>
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5V6.75a4.5 4.5 0 119 0v3.75M3.75 21.75h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H3.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
         `;
       }
     });
-
     // Custom Width Input
     customWidthInput?.addEventListener('input', () => {
       const w = parseInt(customWidthInput.value, 10);

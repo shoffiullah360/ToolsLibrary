@@ -122,8 +122,8 @@ const { initialTargetFormat = 'webp' } = Astro.props;
     <!-- 2-Column Responsive Workspace Grid -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
       
-      <!-- LEFT COLUMN: QUEUED FILES LIST (7 Cols) -->
-      <div class="lg:col-span-7 flex flex-col gap-4">
+      <!-- LEFT COLUMN: QUEUED FILES LIST & BATCH ACTIONS (7 Cols) -->
+      <div class="lg:col-span-7 flex flex-col gap-5">
         <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs overflow-hidden flex flex-col">
           <div class="px-5 py-3.5 border-b border-slate-100 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex items-center justify-between">
             <span class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
@@ -137,12 +137,8 @@ const { initialTargetFormat = 'webp' } = Astro.props;
             <!-- Rendered dynamically by JavaScript -->
           </div>
         </div>
-      </div>
 
-      <!-- RIGHT COLUMN: BATCH ACTIONS & ADVANCED OPTIONS (5 Cols) -->
-      <div class="lg:col-span-5 flex flex-col gap-5 lg:sticky lg:top-20">
-        
-        <!-- Card 1: Batch Actions & Global Format Selector -->
+        <!-- Primary Action Block: Format Selector, Convert CTA & Downloads -->
         <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-xs space-y-4">
           <!-- Global Format Selector -->
           <div class="space-y-1.5">
@@ -211,8 +207,12 @@ const { initialTargetFormat = 'webp' } = Astro.props;
             </button>
           </div>
         </div>
+      </div>
 
-        <!-- Card 2: Advanced Options Panel (Open by Default) -->
+      <!-- RIGHT COLUMN: ADVANCED OPTIONS (5 Cols) -->
+      <div class="lg:col-span-5 flex flex-col gap-5 lg:sticky lg:top-20">
+        
+        <!-- Advanced Options Panel (Open by Default) -->
         <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs overflow-hidden transition-all duration-200">
           <button
             type="button"

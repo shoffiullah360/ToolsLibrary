@@ -19,7 +19,7 @@ const { initialTargetFormat = 'webp' } = Astro.props;
         type="file"
         id="converterFileInput"
         class="hidden"
-        accept="image/jpeg,image/png,image/webp,image/avif,image/svg+xml,image/bmp,image/gif,image/x-icon,image/vnd.microsoft.icon,image/tiff,.jpg,.jpeg,.png,.webp,.avif,.svg,.bmp,.gif,.ico,.tif,.tiff"
+        accept="image/*,application/pdf,.heic,.heif"
         multiple
       />
 
@@ -45,7 +45,7 @@ const { initialTargetFormat = 'webp' } = Astro.props;
           <span class="hidden sm:inline">Upload your images (up to 15)</span>
         </h3>
         <p class="mt-1 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-          Supports JPG, PNG, WebP, AVIF, SVG, BMP, GIF, ICO & TIFF. <span class="hidden sm:inline">Paste from clipboard </span><span class="hidden sm:inline-block">(<kbd class="px-1.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">Ctrl+V</kbd>)</span>
+          Supports JPG, PNG, WebP, AVIF, SVG, BMP, GIF, ICO, TIFF, HEIC &amp; PDF. <span class="hidden sm:inline">Paste from clipboard </span><span class="hidden sm:inline-block">(<kbd class="px-1.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">Ctrl+V</kbd>)</span>
         </p>
 
         <!-- Primary Action Button -->
@@ -877,6 +877,8 @@ const { initialTargetFormat = 'webp' } = Astro.props;
       if (file.type.includes('gif')) return 'GIF';
       if (file.type.includes('icon') || file.type.includes('ico')) return 'ICO';
       if (file.type.includes('tiff') || ext === 'TIF' || ext === 'TIFF') return 'TIFF';
+      if (file.type.includes('pdf') || ext === 'PDF') return 'PDF';
+      if (ext === 'HEIC' || ext === 'HEIF') return 'HEIC';
       return ext || 'IMG';
     }
 
@@ -1043,47 +1045,142 @@ const { initialTargetFormat = 'webp' } = Astro.props;
       if (!files || files.length === 0) return;
 
       const fileArray = Array.from(files);
-      const remainingSlots = Math.max(0, 15 - queue.length);
-      const toAdd = fileArray.slice(0, remainingSlots);
-      if (toAdd.length === 0) return;
+      if (queue.length >= 15) return;
 
       dropzoneView?.classList.add('hidden');
       workspace?.classList.remove('hidden');
 
-      for (let i = 0; i < toAdd.length; i++) {
-        const file = toAdd[i];
-        const id = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+      for (let i = 0; i < fileArray.length; i++) {
+        if (queue.length >= 15) break;
+        const file = fileArray[i];
+
+        const isHeic = file.name.match(/\.(heic|heif)$/i) || file.type === 'image/heic' || file.type === 'image/heif';
+        const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
 
         try {
-          const { canvas, width, height } = await decodeImageToCanvas(file);
-          const newItem: QueueItem = {
-            id,
-            file,
-            name: file.name,
-            originalSize: file.size,
-            originalFormat: detectFormat(file),
-            targetFormat: globalTargetFormat,
-            width,
-            height,
-            aspectRatio: width / height,
-            sourceCanvas: canvas,
-            convertedBlob: null,
-            convertedUrl: null,
-            convertedSize: null,
-            status: 'pending'
-          };
+          if (isHeic) {
+            // Ingest Logic - HEIC Decoding
+            const heic2anyModule = await import('heic2any');
+            const heic2any = (heic2anyModule as any).default || heic2anyModule;
+            const convertedBlob = await heic2any({ blob: file, toType: 'image/jpeg', quality: 0.95 });
+            const blobToUse: Blob = Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob;
+            const newName = file.name.replace(/\.(heic|heif)$/i, '.jpg');
+            const jpegFile = new File([blobToUse], newName, { type: 'image/jpeg' });
+            const { canvas, width, height } = await decodeImageToCanvas(jpegFile);
 
-          // If custom dimensions empty, default to first image
-          if (customWidth === 0 && customHeight === 0) {
-            customWidth = width;
-            customHeight = height;
-            if (customWidthInput) customWidthInput.value = String(width);
-            if (customHeightInput) customHeightInput.value = String(height);
+            const newItem: QueueItem = {
+              id: `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
+              file: jpegFile,
+              name: newName,
+              originalSize: blobToUse.size,
+              originalFormat: 'HEIC',
+              targetFormat: globalTargetFormat,
+              width,
+              height,
+              aspectRatio: width / height,
+              sourceCanvas: canvas,
+              convertedBlob: null,
+              convertedUrl: null,
+              convertedSize: null,
+              status: 'pending'
+            };
+
+            if (customWidth === 0 && customHeight === 0) {
+              customWidth = width;
+              customHeight = height;
+              if (customWidthInput) customWidthInput.value = String(width);
+              if (customHeightInput) customHeightInput.value = String(height);
+            }
+
+            queue.push(newItem);
+            renderQueueUI();
+          } else if (isPdf) {
+            // Ingest Logic - PDF to Images
+            const pdfjsLib: any = await import('pdfjs-dist/build/pdf');
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+            const pdf = await pdfjsLib.getDocument({ data: await file.arrayBuffer() }).promise;
+            const maxPages = Math.min(pdf.numPages, 15);
+            const baseName = file.name.replace(/\.pdf$/i, '');
+
+            for (let pageNum = 1; pageNum <= maxPages; pageNum++) {
+              if (queue.length >= 15) break;
+
+              const page = await pdf.getPage(pageNum);
+              const viewport = page.getViewport({ scale: 2.0 });
+              const offscreenCanvas = document.createElement('canvas');
+              offscreenCanvas.width = viewport.width;
+              offscreenCanvas.height = viewport.height;
+              const offscreenCtx = offscreenCanvas.getContext('2d')!;
+              await page.render({ canvasContext: offscreenCtx, viewport }).promise;
+
+              const pageBlob = await new Promise<Blob>((resolve) => {
+                offscreenCanvas.toBlob((b) => resolve(b!), 'image/png');
+              });
+
+              const pageFileName = `${baseName}-page-${pageNum}.png`;
+              const pageFile = new File([pageBlob], pageFileName, { type: 'image/png' });
+              const width = offscreenCanvas.width;
+              const height = offscreenCanvas.height;
+
+              const newItem: QueueItem = {
+                id: `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
+                file: pageFile,
+                name: pageFileName,
+                originalSize: pageBlob.size,
+                originalFormat: 'PDF',
+                targetFormat: globalTargetFormat,
+                width,
+                height,
+                aspectRatio: width / height,
+                sourceCanvas: offscreenCanvas,
+                convertedBlob: null,
+                convertedUrl: null,
+                convertedSize: null,
+                status: 'pending'
+              };
+
+              if (customWidth === 0 && customHeight === 0) {
+                customWidth = width;
+                customHeight = height;
+                if (customWidthInput) customWidthInput.value = String(width);
+                if (customHeightInput) customHeightInput.value = String(height);
+              }
+
+              queue.push(newItem);
+              renderQueueUI();
+            }
+          } else {
+            // Standard Image Decoding
+            const { canvas, width, height } = await decodeImageToCanvas(file);
+            const newItem: QueueItem = {
+              id: `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
+              file,
+              name: file.name,
+              originalSize: file.size,
+              originalFormat: detectFormat(file),
+              targetFormat: globalTargetFormat,
+              width,
+              height,
+              aspectRatio: width / height,
+              sourceCanvas: canvas,
+              convertedBlob: null,
+              convertedUrl: null,
+              convertedSize: null,
+              status: 'pending'
+            };
+
+            if (customWidth === 0 && customHeight === 0) {
+              customWidth = width;
+              customHeight = height;
+              if (customWidthInput) customWidthInput.value = String(width);
+              if (customHeightInput) customHeightInput.value = String(height);
+            }
+
+            queue.push(newItem);
+            renderQueueUI();
           }
-
-          queue.push(newItem);
         } catch (err) {
-          console.error('Error adding file to converter queue:', err);
+          console.error(`Error processing file ${file.name}:`, err);
         }
       }
 
@@ -1630,7 +1727,7 @@ const { initialTargetFormat = 'webp' } = Astro.props;
 
       const pastedFiles: File[] = [];
       for (let i = 0; i < items.length; i++) {
-        if (items[i].type.indexOf('image') !== -1) {
+        if (items[i].type.indexOf('image') !== -1 || items[i].type === 'application/pdf') {
           const file = items[i].getAsFile();
           if (file) pastedFiles.push(file);
         }

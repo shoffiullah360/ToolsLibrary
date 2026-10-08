@@ -17,7 +17,9 @@
     "@tailwindcss/vite": "^4.3.3",
     "@types/jszip": "^3.4.0",
     "astro": "^7.3.3",
+    "heic2any": "^0.0.4",
     "jszip": "^3.10.2",
+    "pdfjs-dist": "^3.11.174",
     "tailwindcss": "^4.3.3"
   },
   "allowScripts": {

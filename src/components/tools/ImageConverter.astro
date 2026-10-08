@@ -9,11 +9,11 @@ const { initialTargetFormat = 'webp' } = Astro.props;
 ---
 
 <div id="image-converter-root" class="w-full max-w-6xl mx-auto" data-initial-format={initialTargetFormat}>
-  <!-- 1. INITIAL STATE: Drag & Drop Zone -->
+  <!-- 1. INITIAL STATE: Drag & Drop Zone (Matching Image Resizer / Compressor Design) -->
   <div id="converter-dropzone-view" class="transition-all duration-300">
     <div
       id="converter-dropzone"
-      class="relative group rounded-3xl border-2 border-dashed border-slate-300 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-400 bg-white/70 dark:bg-slate-900/50 backdrop-blur-sm px-6 py-10 sm:px-10 sm:py-12 text-center cursor-pointer transition-all duration-200 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-0.5"
+      class="relative group rounded-3xl border-2 border-dashed border-slate-300 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-400 bg-white/70 dark:bg-slate-900/50 backdrop-blur-sm px-6 py-8 sm:px-10 sm:py-9 text-center cursor-pointer transition-all duration-200 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-0.5"
     >
       <input
         type="file"
@@ -23,62 +23,49 @@ const { initialTargetFormat = 'webp' } = Astro.props;
         multiple
       />
 
-      <div class="max-w-xl mx-auto flex flex-col items-center">
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50 mb-4 shadow-2xs">
-          <ToolIcon name="repeat" class="w-3.5 h-3.5" />
-          <span>Universal Client-Side Converter • Batch Ready</span>
+      <div class="max-w-lg mx-auto flex flex-col items-center">
+        <!-- Batch Queue Pill -->
+        <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50 mb-3 shadow-2xs">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m-15 0a2.246 2.246 0 00-.75.128m16.5 0c-.235-.083-.487-.128-.75-.128m-15 0A2.25 2.25 0 003 12v6.75A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V12a2.25 2.25 0 00-1.5-2.122" />
+          </svg>
+          <span>Batch Queue: Up to 15 Images</span>
         </div>
 
-        <!-- Center Icon -->
-        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-200 shadow-md shadow-blue-500/20">
-          <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+        <!-- Minimalist Icon -->
+        <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-200 shadow-sm border border-blue-100 dark:border-blue-900/50">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
           </svg>
         </div>
 
-        <!-- Headline & Subtitle -->
-        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
-          Drop your images here, or browse files
-        </h2>
-        <p class="mt-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-md">
-          Supports <span class="font-semibold text-slate-700 dark:text-slate-300">JPG, PNG, WebP, AVIF, SVG, BMP, GIF, ICO & TIFF</span>. Or paste directly with <kbd class="px-1.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">Ctrl+V</kbd>.
+        <!-- Headline & CTA -->
+        <h3 class="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white tracking-tight">
+          <span class="sm:hidden">Tap to select photos or drag & drop</span>
+          <span class="hidden sm:inline">Upload your images (up to 15)</span>
+        </h3>
+        <p class="mt-1 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+          Supports JPG, PNG, WebP, AVIF, SVG, BMP, GIF, ICO & TIFF. <span class="hidden sm:inline">Paste from clipboard </span><span class="hidden sm:inline-block">(<kbd class="px-1.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">Ctrl+V</kbd>)</span>
         </p>
 
-        <!-- CTA Button -->
-        <div class="mt-5 flex flex-wrap items-center justify-center gap-3">
+        <!-- Primary Action Button -->
+        <div class="mt-4 flex items-center justify-center">
           <button
             type="button"
             id="converterSelectBtn"
-            class="px-7 py-3 rounded-full bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-semibold text-sm transition-all shadow-md hover:shadow-lg active:scale-95 cursor-pointer flex items-center gap-2"
+            class="px-6 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-medium text-xs sm:text-sm transition-all shadow-md hover:shadow-lg active:scale-95 cursor-pointer"
           >
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-            </svg>
-            <span>Choose Images (Batch Mode)</span>
+            Select Images (1–15)
           </button>
         </div>
 
-        <!-- Format Badges Strip -->
-        <div class="mt-6 flex flex-wrap items-center justify-center gap-1.5 text-[11px] text-slate-500 dark:text-slate-400 font-mono">
-          <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-medium">JPG</span>
-          <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-medium">PNG</span>
-          <span class="px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 font-medium">WEBP</span>
-          <span class="px-2 py-0.5 rounded bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 font-medium">AVIF</span>
-          <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-medium">SVG</span>
-          <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-medium">BMP</span>
-          <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-medium">GIF</span>
-          <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-medium">ICO</span>
-          <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-medium">TIFF</span>
-          <span class="text-slate-400 dark:text-slate-500">→</span>
-          <span class="px-2 py-0.5 rounded bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 font-bold">PDF</span>
-        </div>
-
-        <!-- Privacy & Security Guarantee -->
-        <div class="mt-6 pt-4 border-t border-slate-200/70 dark:border-slate-800/80 w-full flex items-center justify-center">
-          <div class="inline-flex items-center gap-1.5 font-medium text-emerald-600 dark:text-emerald-400 text-xs">
-            <ToolIcon name="shield-check" class="w-4 h-4" />
-            <span>100% In-Browser Privacy • Zero Server Uploads • No 10MB Limits</span>
+        <!-- Privacy & Security Note -->
+        <div class="mt-5 pt-3.5 border-t border-slate-200/70 dark:border-slate-800/80 w-full flex items-center justify-center">
+          <div class="inline-flex items-center justify-center gap-1.5 font-medium text-emerald-600 dark:text-emerald-400 text-xs whitespace-nowrap">
+            <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+            </svg>
+            <span>Images never leave your browser (100% Client-Side)</span>
           </div>
         </div>
       </div>
@@ -1059,11 +1046,16 @@ const { initialTargetFormat = 'webp' } = Astro.props;
     async function addFilesToQueue(files: FileList | File[]): Promise<void> {
       if (!files || files.length === 0) return;
 
+      const fileArray = Array.from(files);
+      const remainingSlots = Math.max(0, 15 - queue.length);
+      const toAdd = fileArray.slice(0, remainingSlots);
+      if (toAdd.length === 0) return;
+
       dropzoneView?.classList.add('hidden');
       workspace?.classList.remove('hidden');
 
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i];
+      for (let i = 0; i < toAdd.length; i++) {
+        const file = toAdd[i];
         const id = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
 
         try {
@@ -1611,9 +1603,17 @@ const { initialTargetFormat = 'webp' } = Astro.props;
       fileInput.click();
     });
 
-    // Select Files Button
-    selectBtn?.addEventListener('click', () => {
-      fileInput.click();
+    // Select Files Button & Dropzone Full-Area Click Handling
+    selectBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      fileInput?.click();
+    });
+
+    dropzone?.addEventListener('click', (e) => {
+      if (selectBtn && (e.target === selectBtn || selectBtn.contains(e.target as Node))) {
+        return;
+      }
+      fileInput?.click();
     });
 
     // File Input Change
@@ -1648,6 +1648,7 @@ const { initialTargetFormat = 'webp' } = Astro.props;
 
     dropzone?.addEventListener('drop', (e) => {
       e.preventDefault();
+      e.stopPropagation();
       const files = e.dataTransfer?.files;
       if (files) addFilesToQueue(files);
     });

@@ -182,15 +182,8 @@ const { initialTargetFormat = 'webp' } = Astro.props;
               id="convert-all-btn"
               class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-md shadow-blue-500/20 active:scale-95 transition-all cursor-pointer"
             >
-              <ToolIcon name="zap" class="w-4 h-4" />
-              <span id="convert-all-text">Convert All Images</span>
+              <span id="convert-all-text">Convert Images</span>
             </button>
-
-            <!-- Auto-convert toggle -->
-            <label class="mt-2.5 inline-flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 select-none cursor-pointer">
-              <input type="checkbox" id="auto-convert-toggle" checked class="w-4 h-4 text-blue-600 rounded border-slate-300 dark:border-slate-700 focus:ring-blue-500" />
-              <span>Auto-convert on file upload</span>
-            </label>
           </div>
 
           <!-- Batch Downloads -->
@@ -820,7 +813,6 @@ const { initialTargetFormat = 'webp' } = Astro.props;
     const downloadZipBtn = document.getElementById('download-zip-btn') as HTMLButtonElement;
     const downloadZipText = document.getElementById('download-zip-text');
     const downloadMultiPdfBtn = document.getElementById('download-multi-pdf-btn');
-    const autoConvertToggle = document.getElementById('auto-convert-toggle') as HTMLInputElement;
 
     // Advanced Drawer DOM
     const drawerToggle = document.getElementById('advanced-drawer-toggle');
@@ -1038,7 +1030,7 @@ const { initialTargetFormat = 'webp' } = Astro.props;
       }
 
       convertAllBtn?.removeAttribute('disabled');
-      if (convertAllText) convertAllText.textContent = 'Convert All Images';
+      if (convertAllText) convertAllText.textContent = 'Convert Images';
       updateBatchActionsUI();
     }
 
@@ -1092,10 +1084,6 @@ const { initialTargetFormat = 'webp' } = Astro.props;
       }
 
       renderQueueUI();
-
-      if (autoConvertToggle.checked) {
-        await convertAllQueue();
-      }
     }
 
     // Render Queue Items UI
@@ -1350,15 +1338,12 @@ const { initialTargetFormat = 'webp' } = Astro.props;
     }
 
     // Global Format Selector Change
-    globalFormatSelect?.addEventListener('change', async (e) => {
+    globalFormatSelect?.addEventListener('change', (e) => {
       globalTargetFormat = (e.target as HTMLSelectElement).value;
       for (const item of queue) {
         item.targetFormat = globalTargetFormat;
       }
       renderQueueUI();
-      if (autoConvertToggle.checked) {
-        await convertAllQueue();
-      }
     });
 
     // Advanced Drawer Toggle
@@ -1382,12 +1367,6 @@ const { initialTargetFormat = 'webp' } = Astro.props;
       updateDrawerSummary();
     });
 
-    qualityRange?.addEventListener('change', async () => {
-      if (autoConvertToggle.checked && queue.length > 0) {
-        await convertAllQueue();
-      }
-    });
-
     // Transparency Fill Color Picker
     transparencyColorPicker?.addEventListener('input', () => {
       const hex = transparencyColorPicker.value.toUpperCase();
@@ -1395,31 +1374,19 @@ const { initialTargetFormat = 'webp' } = Astro.props;
       updateDrawerSummary();
     });
 
-    transparencyColorPicker?.addEventListener('change', async () => {
-      if (autoConvertToggle.checked && queue.length > 0) {
-        await convertAllQueue();
-      }
-    });
-
     // Transparency Quick Color Presets
     document.querySelectorAll('.color-preset-btn').forEach((btn) => {
-      btn.addEventListener('click', async () => {
+      btn.addEventListener('click', () => {
         const color = (btn as HTMLElement).getAttribute('data-color') || '#FFFFFF';
         if (transparencyColorPicker) transparencyColorPicker.value = color;
         if (colorHexLabel) colorHexLabel.textContent = color.toUpperCase();
         updateDrawerSummary();
-        if (autoConvertToggle.checked && queue.length > 0) {
-          await convertAllQueue();
-        }
       });
     });
 
     // Grayscale Switch
-    grayscaleToggle?.addEventListener('change', async () => {
+    grayscaleToggle?.addEventListener('change', () => {
       updateDrawerSummary();
-      if (autoConvertToggle.checked && queue.length > 0) {
-        await convertAllQueue();
-      }
     });
 
     // Strip EXIF
@@ -1429,7 +1396,7 @@ const { initialTargetFormat = 'webp' } = Astro.props;
 
     // Resize Mode Tabs
     resizeModeTabs.forEach((tab) => {
-      tab.addEventListener('click', async () => {
+      tab.addEventListener('click', () => {
         resizeModeTabs.forEach((t) => {
           t.classList.remove('bg-white', 'dark:bg-slate-900', 'font-semibold', 'shadow-2xs');
           t.classList.add('text-slate-600', 'dark:text-slate-400');
@@ -1450,15 +1417,12 @@ const { initialTargetFormat = 'webp' } = Astro.props;
         }
 
         updateDrawerSummary();
-        if (autoConvertToggle.checked && queue.length > 0) {
-          await convertAllQueue();
-        }
       });
     });
 
     // Scale Preset Buttons (75%, 50%, 25%)
     scalePresetBtns.forEach((btn) => {
-      btn.addEventListener('click', async () => {
+      btn.addEventListener('click', () => {
         scalePresetBtns.forEach((b) => b.classList.remove('border-blue-500', 'bg-blue-50', 'text-blue-600'));
         btn.classList.add('border-blue-500', 'bg-blue-50', 'text-blue-600');
 
@@ -1466,9 +1430,6 @@ const { initialTargetFormat = 'webp' } = Astro.props;
         if (currentScaleLabel) currentScaleLabel.textContent = `${Math.round(currentScale * 100)}%`;
 
         updateDrawerSummary();
-        if (autoConvertToggle.checked && queue.length > 0) {
-          await convertAllQueue();
-        }
       });
     });
 

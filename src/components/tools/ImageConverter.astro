@@ -1096,6 +1096,7 @@ const { initialTargetFormat = 'webp' } = Astro.props;
             renderQueueUI();
           } else if (isPdf) {
             // Ingest Logic - PDF to Images
+            // @ts-ignore
             const pdfjsLib: any = await import('pdfjs-dist/build/pdf');
             pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
             const pdf = await pdfjsLib.getDocument({ data: await file.arrayBuffer() }).promise;

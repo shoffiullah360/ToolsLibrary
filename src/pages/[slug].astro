@@ -404,43 +404,10 @@ const pageDescription = props.type === 'converter'
             </ol>
           </nav>
 
-          <!-- Badges -->
-          <div class="flex flex-wrap items-center justify-center gap-2 mb-4">
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 shadow-2xs">
-              <ToolIcon name="shield-check" class="w-3.5 h-3.5" />
-              <span>100% In-Browser Privacy • Zero Server Uploads</span>
-            </div>
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-900/50 shadow-2xs">
-              <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
-              <span>{props.converterPreset.badge}</span>
-            </div>
-          </div>
-
           <!-- Hero H1 Title -->
           <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
             {props.converterPreset.h1}
           </h1>
-
-          <!-- Meta Description Subtitle (Concise 2-sentence intro) -->
-          <p class="mt-3 sm:mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            {props.converterPreset.introCopy}
-          </p>
-
-          <!-- Highlights Pills -->
-          <div class="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white border border-slate-300 shadow-sm dark:bg-slate-900/60 dark:border-slate-800">
-              <ToolIcon name="zap" class="w-4 h-4 text-blue-500" />
-              <span>Instant Client-Side Processing</span>
-            </div>
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white border border-slate-300 shadow-sm dark:bg-slate-900/60 dark:border-slate-800">
-              <ToolIcon name="shield-check" class="w-4 h-4 text-emerald-500" />
-              <span>Private Memory Sandbox</span>
-            </div>
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white border border-slate-300 shadow-sm dark:bg-slate-900/60 dark:border-slate-800">
-              <ToolIcon name="scale" class="w-4 h-4 text-purple-500" />
-              <span>Batch Queue up to 15 Files</span>
-            </div>
-          </div>
 
         </div>
       </section>
@@ -456,6 +423,11 @@ const pageDescription = props.type === 'converter'
           initialHeight={props.converterPreset.preset.height}
           initialMatteColor={props.converterPreset.preset.matteColor}
         />
+
+        <!-- Relocated Description Text Directly Under Upload Container -->
+        <p class="mt-6 max-w-3xl mx-auto text-slate-600 dark:text-slate-300 text-center leading-relaxed text-sm md:text-base">
+          {props.converterPreset.introCopy}
+        </p>
       </section>
 
       <!-- Cross-Link Banner to Image Resizer -->

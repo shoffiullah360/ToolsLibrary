@@ -513,27 +513,46 @@ const ogImage = "https://fasttoolverse.com/og-image-converter.png";
     <div class="hero-mesh-bg" aria-hidden="true"></div>
 
     <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <!-- Privacy Badge -->
-      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 mb-3 shadow-2xs">
-        <ToolIcon name="shield-check" class="w-3.5 h-3.5" />
-        <span>100% In-Browser Privacy • Zero Server Uploads • Zero File Caps</span>
-      </div>
+      <!-- Semantic Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-4 flex items-center justify-center">
+        <ol class="inline-flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+          <li>
+            <a href="/" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
+          </li>
+          <li>
+            <div class="flex items-center">
+              <svg class="w-3 h-3 text-slate-400 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <a href="/tools/image-converter/" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Tools</a>
+            </div>
+          </li>
+          <li aria-current="page">
+            <div class="flex items-center">
+              <svg class="w-3 h-3 text-slate-400 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="text-slate-900 dark:text-white font-semibold">Image Converter</span>
+            </div>
+          </li>
+        </ol>
+      </nav>
 
       <!-- Hero Title -->
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
         Free Image Converter Online
       </h1>
-
-      <!-- Short Intent Subtitle -->
-      <p class="mt-3 sm:mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-        Convert JPG, PNG, WebP, AVIF, SVG, BMP, GIF, ICO, and PDF in seconds without file size limits, server queues, or privacy risks.
-      </p>
     </div>
   </section>
 
   <!-- 2. Interactive Converter Dropzone & Queue (Above-the-fold) -->
   <section id="tool-workspace" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24 scroll-mt-20">
     <ImageConverter />
+
+    <!-- Relocated Description Text Directly Under Upload Container -->
+    <p class="mt-6 max-w-3xl mx-auto text-slate-600 dark:text-slate-300 text-center leading-relaxed text-sm md:text-base">
+      Convert JPG, PNG, WebP, AVIF, SVG, BMP, GIF, ICO, and PDF in seconds without file size limits, server queues, or privacy risks.
+    </p>
   </section>
 
   <!-- 3. SECTION: How to Convert Images Online in 3 Simple Steps -->

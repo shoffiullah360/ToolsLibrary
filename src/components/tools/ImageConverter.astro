@@ -359,7 +359,7 @@ const { initialTargetFormat = 'webp' } = Astro.props;
               </div>
 
               <!-- Percentage Mode Controls -->
-              <div id="resize-percentage-panel" class="hidden flex items-center gap-2 pt-2 border-t border-slate-200/60 dark:border-slate-700/60">
+              <div id="resize-percentage-panel" class="flex items-center gap-2 pt-2 border-t border-slate-200/60 dark:border-slate-700/60 opacity-50 pointer-events-none transition-opacity duration-200">
                 <span class="text-xs font-medium text-slate-600 dark:text-slate-400">Scale:</span>
                 <button type="button" class="scale-preset-btn px-2.5 py-1 rounded-lg text-xs font-semibold border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-blue-500 text-slate-700 dark:text-slate-300 cursor-pointer" data-scale="0.75">75%</button>
                 <button type="button" class="scale-preset-btn px-2.5 py-1 rounded-lg text-xs font-semibold border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-blue-500 text-slate-700 dark:text-slate-300 cursor-pointer" data-scale="0.5">50%</button>
@@ -368,7 +368,7 @@ const { initialTargetFormat = 'webp' } = Astro.props;
               </div>
 
               <!-- Custom Dimensions Mode Controls -->
-              <div id="resize-custom-panel" class="hidden flex flex-wrap items-center gap-2.5 pt-2 border-t border-slate-200/60 dark:border-slate-700/60">
+              <div id="resize-custom-panel" class="hidden flex flex-wrap items-center gap-2.5 pt-2 border-t border-slate-200/60 dark:border-slate-700/60 transition-opacity duration-200">
                 <div class="flex items-center gap-1">
                   <label for="custom-width-input" class="text-xs font-medium text-slate-600 dark:text-slate-400">W:</label>
                   <input
@@ -837,6 +837,7 @@ const { initialTargetFormat = 'webp' } = Astro.props;
     const aspectRatioLockBtn = document.getElementById('aspect-ratio-lock-btn');
 
     let currentResizeMode: 'original' | 'percentage' | 'custom' = 'original';
+    let lastResizeSubMode: 'percentage' | 'custom' = 'percentage';
     let currentScale = 0.75;
     let isAspectRatioLocked = true;
     let customWidth = 0;
@@ -1406,14 +1407,23 @@ const { initialTargetFormat = 'webp' } = Astro.props;
 
         currentResizeMode = (tab as HTMLElement).getAttribute('data-mode') as 'original' | 'percentage' | 'custom';
         if (currentResizeMode === 'original') {
-          resizePercentagePanel?.classList.add('hidden');
-          resizeCustomPanel?.classList.add('hidden');
+          if (lastResizeSubMode === 'custom') {
+            resizePercentagePanel?.classList.add('hidden');
+            resizeCustomPanel?.classList.remove('hidden');
+            resizeCustomPanel?.classList.add('opacity-50', 'pointer-events-none');
+          } else {
+            resizeCustomPanel?.classList.add('hidden');
+            resizePercentagePanel?.classList.remove('hidden');
+            resizePercentagePanel?.classList.add('opacity-50', 'pointer-events-none');
+          }
         } else if (currentResizeMode === 'percentage') {
-          resizePercentagePanel?.classList.remove('hidden');
+          lastResizeSubMode = 'percentage';
           resizeCustomPanel?.classList.add('hidden');
+          resizePercentagePanel?.classList.remove('hidden', 'opacity-50', 'pointer-events-none');
         } else if (currentResizeMode === 'custom') {
+          lastResizeSubMode = 'custom';
           resizePercentagePanel?.classList.add('hidden');
-          resizeCustomPanel?.classList.remove('hidden');
+          resizeCustomPanel?.classList.remove('hidden', 'opacity-50', 'pointer-events-none');
         }
 
         updateDrawerSummary();

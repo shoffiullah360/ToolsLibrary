@@ -79,18 +79,18 @@ const { initialTargetFormat = 'webp' } = Astro.props;
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <!-- Left: Queue Counter & Studio Info -->
         <div class="flex items-center gap-3">
-          <div class="flex items-center gap-2">
-            <span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 font-bold text-sm">
-              <ToolIcon name="repeat" class="w-4 h-4" />
+          <div class="flex items-center gap-2.5">
+            <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 font-bold text-base">
+              <ToolIcon name="repeat" class="w-4.5 h-4.5" />
             </span>
             <div>
               <div class="flex items-center gap-2">
-                <span class="text-sm font-bold text-slate-900 dark:text-white">Batch Queue Studio</span>
-                <span id="queue-count-badge" class="px-2 py-0.5 rounded-full text-xs font-semibold bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 font-mono">
+                <span class="text-base font-bold text-slate-900 dark:text-white">Batch Queue Studio</span>
+                <span id="queue-count-badge" class="px-2.5 py-0.5 rounded-full text-xs sm:text-sm font-bold bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 font-mono">
                   0 files
                 </span>
               </div>
-              <p class="text-xs text-slate-500 dark:text-slate-400">100% private in-browser memory processing</p>
+              <p class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300">100% private in-browser memory processing</p>
             </div>
           </div>
         </div>
@@ -101,9 +101,9 @@ const { initialTargetFormat = 'webp' } = Astro.props;
           <button
             type="button"
             id="add-more-files-btn"
-            class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition cursor-pointer shadow-2xs"
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition cursor-pointer shadow-2xs"
           >
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
             <span>Add More</span>
           </button>
 
@@ -111,7 +111,7 @@ const { initialTargetFormat = 'webp' } = Astro.props;
           <button
             type="button"
             id="clear-all-queue-btn"
-            class="inline-flex items-center gap-1 px-2.5 py-2 rounded-xl text-xs font-medium text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition cursor-pointer"
+            class="inline-flex items-center gap-1 px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition cursor-pointer"
           >
             <span>Clear All</span>
           </button>
@@ -126,10 +126,10 @@ const { initialTargetFormat = 'webp' } = Astro.props;
       <div class="lg:col-span-7 flex flex-col gap-5">
         <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs overflow-hidden flex flex-col">
           <div class="px-5 py-3.5 border-b border-slate-100 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex items-center justify-between">
-            <span class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+            <span class="text-sm font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
               Queued Files (<span id="queue-count-sub">0</span>)
             </span>
-            <span class="text-[11px] text-slate-400">Click preview to inspect • Format override per file</span>
+            <span class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300">Click preview to inspect • Format override per file</span>
           </div>
 
           <!-- Queue List Items Container: Scrollable when many files are loaded -->
@@ -139,16 +139,16 @@ const { initialTargetFormat = 'webp' } = Astro.props;
         </div>
 
         <!-- Primary Action Block: Format Selector, Convert CTA & Downloads -->
-        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-xs space-y-4">
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 sm:p-6 shadow-xs space-y-4">
           <!-- Global Format Selector -->
           <div class="space-y-1.5">
-            <label for="global-format-select" class="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+            <label for="global-format-select" class="text-sm font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
               Convert All Files To:
             </label>
             <div class="relative">
               <select
                 id="global-format-select"
-                class="w-full appearance-none bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white font-bold text-sm py-2.5 pl-3.5 pr-10 rounded-xl border border-slate-200 dark:border-slate-700 focus:outline-hidden focus:ring-2 focus:ring-blue-500 cursor-pointer shadow-2xs"
+                class="w-full appearance-none bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white font-bold text-sm sm:text-base py-3 pl-4 pr-10 rounded-xl border border-slate-200 dark:border-slate-700 focus:outline-hidden focus:ring-2 focus:ring-blue-500 cursor-pointer shadow-2xs"
               >
                 <optgroup label="Modern Web">
                   <option value="webp" selected>WebP (Best Web Compression)</option>
@@ -165,7 +165,7 @@ const { initialTargetFormat = 'webp' } = Astro.props;
                   <option value="pdf">PDF (Document / Multi-Page)</option>
                 </optgroup>
               </select>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500">
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-slate-500">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
               </div>
             </div>
@@ -176,19 +176,19 @@ const { initialTargetFormat = 'webp' } = Astro.props;
             <button
               type="button"
               id="convert-all-btn"
-              class="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-md shadow-blue-500/20 active:scale-95 transition-all cursor-pointer"
+              class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm sm:text-base shadow-md shadow-blue-500/20 active:scale-95 transition-all cursor-pointer"
             >
               <span id="convert-all-text">Convert Images</span>
             </button>
           </div>
 
           <!-- Batch Downloads -->
-          <div class="pt-3 border-t border-slate-100 dark:border-slate-800 space-y-2">
+          <div class="pt-3 border-t border-slate-100 dark:border-slate-800 space-y-2.5">
             <!-- Download All as ZIP -->
             <button
               type="button"
               id="download-zip-btn"
-              class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-semibold text-xs sm:text-sm shadow-sm active:scale-95 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-bold text-sm sm:text-base shadow-sm active:scale-95 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
@@ -200,7 +200,7 @@ const { initialTargetFormat = 'webp' } = Astro.props;
             <button
               type="button"
               id="download-multi-pdf-btn"
-              class="hidden w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-rose-300 dark:border-rose-900/60 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 font-semibold text-xs hover:bg-rose-100 dark:hover:bg-rose-900/40 transition shadow-2xs cursor-pointer"
+              class="hidden w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-rose-300 dark:border-rose-900/60 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 font-bold text-sm sm:text-base hover:bg-rose-100 dark:hover:bg-rose-900/40 transition shadow-2xs cursor-pointer"
             >
               <ToolIcon name="file-text" class="w-4 h-4 text-rose-600 dark:text-rose-400" />
               <span>Combine All into 1 PDF</span>
@@ -217,25 +217,25 @@ const { initialTargetFormat = 'webp' } = Astro.props;
           <button
             type="button"
             id="advanced-drawer-toggle"
-            class="w-full px-5 py-3.5 flex items-center justify-between text-left hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors cursor-pointer select-none"
+            class="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors cursor-pointer select-none"
             aria-expanded="true"
           >
-            <div class="flex items-center gap-2.5">
-              <div class="w-7 h-7 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 flex items-center justify-center border border-indigo-100 dark:border-indigo-900/40">
-                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 flex items-center justify-center border border-indigo-100 dark:border-indigo-900/40">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
                 </svg>
               </div>
               <div>
-                <span class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Advanced Options</span>
-                <p id="drawer-summary-pill" class="text-[10px] text-slate-500 dark:text-slate-400 truncate max-w-[180px]">
+                <span class="text-sm sm:text-base font-bold text-slate-900 dark:text-white uppercase tracking-wider">Advanced Options</span>
+                <p id="drawer-summary-pill" class="text-xs font-medium text-slate-600 dark:text-slate-300 truncate max-w-[200px]">
                   90% Quality • White Alpha Fill • Stripped EXIF
                 </p>
               </div>
             </div>
 
             <div class="flex items-center gap-1.5 text-slate-400">
-              <span class="text-xs font-medium text-blue-600 dark:text-blue-400" id="drawer-toggle-label">Toggle</span>
+              <span class="text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400" id="drawer-toggle-label">Toggle</span>
               <svg id="drawer-chevron" class="w-4 h-4 transform transition-transform duration-200 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
               </svg>
@@ -246,12 +246,12 @@ const { initialTargetFormat = 'webp' } = Astro.props;
           <div id="advanced-drawer-body" class="px-5 pb-5 pt-3 border-t border-slate-100 dark:border-slate-800/80 space-y-4">
             
             <!-- Option 1: Quality Slider -->
-            <div class="space-y-2 p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-700/60">
+            <div class="space-y-2 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-700/60">
               <div class="flex items-center justify-between">
-                <label for="quality-range" class="text-xs font-bold text-slate-800 dark:text-slate-200">
+                <label for="quality-range" class="text-sm sm:text-base font-semibold text-slate-900 dark:text-slate-100">
                   Quality Slider
                 </label>
-                <span id="quality-display-badge" class="px-2 py-0.5 rounded text-xs font-mono font-bold bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300">
+                <span id="quality-display-badge" class="px-2.5 py-0.5 rounded text-xs sm:text-sm font-mono font-bold bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300">
                   90%
                 </span>
               </div>
@@ -264,144 +264,148 @@ const { initialTargetFormat = 'webp' } = Astro.props;
                 step="1"
                 class="w-full accent-blue-600 cursor-pointer"
               />
-              <div class="flex justify-between text-[10px] text-slate-400 font-mono">
+              <div class="flex justify-between text-xs text-slate-500 dark:text-slate-400 font-mono font-medium">
                 <span>10% (Smallest)</span>
                 <span>90% (Standard)</span>
                 <span>100% (Max)</span>
               </div>
-              <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium leading-relaxed">
                 For WebP, JPG, AVIF & PDF. PNG/BMP/ICO outputs remain lossless.
               </p>
             </div>
 
             <!-- Option 2: Smart Transparency Fill -->
-            <div class="space-y-2.5 p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-700/60">
+            <div class="space-y-2.5 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-700/60">
               <div class="flex items-center justify-between">
-                <label class="text-xs font-bold text-slate-800 dark:text-slate-200">
+                <label class="text-sm sm:text-base font-semibold text-slate-900 dark:text-slate-100">
                   Transparency Fill (Alpha)
                 </label>
-                <div class="flex items-center gap-1.5">
+                <div class="flex items-center gap-2">
                   <input
                     type="color"
                     id="transparency-color-picker"
                     value="#FFFFFF"
                     class="w-6 h-6 rounded cursor-pointer border border-slate-300 dark:border-slate-600 bg-transparent p-0"
                   />
-                  <span id="color-hex-label" class="text-xs font-mono text-slate-600 dark:text-slate-400">#FFFFFF</span>
+                  <span id="color-hex-label" class="text-xs sm:text-sm font-mono font-semibold text-slate-700 dark:text-slate-300">#FFFFFF</span>
                 </div>
               </div>
               <!-- Quick Color Presets -->
               <div class="flex flex-wrap items-center gap-1.5 pt-0.5">
-                <button type="button" class="color-preset-btn px-2 py-1 text-[10px] font-medium rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-blue-500 cursor-pointer" data-color="#FFFFFF">White</button>
-                <button type="button" class="color-preset-btn px-2 py-1 text-[10px] font-medium rounded border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:border-blue-500 cursor-pointer" data-color="#F1F5F9">Gray</button>
-                <button type="button" class="color-preset-btn px-2 py-1 text-[10px] font-medium rounded border border-slate-200 dark:border-slate-700 bg-slate-900 text-white hover:border-blue-500 cursor-pointer" data-color="#0F172A">Slate</button>
-                <button type="button" class="color-preset-btn px-2 py-1 text-[10px] font-medium rounded border border-slate-200 dark:border-slate-700 bg-black text-white hover:border-blue-500 cursor-pointer" data-color="#000000">Black</button>
+                <button type="button" class="color-preset-btn px-2.5 py-1 text-xs font-semibold rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-blue-500 cursor-pointer" data-color="#FFFFFF">White</button>
+                <button type="button" class="color-preset-btn px-2.5 py-1 text-xs font-semibold rounded border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:border-blue-500 cursor-pointer" data-color="#F1F5F9">Gray</button>
+                <button type="button" class="color-preset-btn px-2.5 py-1 text-xs font-semibold rounded border border-slate-200 dark:border-slate-700 bg-slate-900 text-white hover:border-blue-500 cursor-pointer" data-color="#0F172A">Slate</button>
+                <button type="button" class="color-preset-btn px-2.5 py-1 text-xs font-semibold rounded border border-slate-200 dark:border-slate-700 bg-black text-white hover:border-blue-500 cursor-pointer" data-color="#000000">Black</button>
               </div>
-              <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-tight">
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium leading-relaxed">
                 Fills transparent alpha channels when converting PNG/WebP/SVG to JPG or BMP.
               </p>
             </div>
 
             <!-- Option 3: Grayscale & EXIF -->
-            <div class="space-y-3 p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-700/60">
+            <div class="space-y-3.5 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-700/60">
               <!-- Grayscale Switch -->
               <div class="flex items-center justify-between">
                 <div>
-                  <label for="grayscale-toggle" class="text-xs font-bold text-slate-800 dark:text-slate-200 cursor-pointer">
+                  <label for="grayscale-toggle" class="text-sm sm:text-base font-semibold text-slate-900 dark:text-slate-100 cursor-pointer">
                     Grayscale (B&W)
                   </label>
-                  <p class="text-[11px] text-slate-500 dark:text-slate-400">1-click monochrome filter</p>
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium">1-click monochrome filter</p>
                 </div>
                 <input
                   type="checkbox"
                   id="grayscale-toggle"
-                  class="w-4 h-4 text-blue-600 rounded border-slate-300 dark:border-slate-600 focus:ring-blue-500 cursor-pointer"
+                  class="w-4.5 h-4.5 text-blue-600 rounded border-slate-300 dark:border-slate-600 focus:ring-blue-500 cursor-pointer"
                 />
               </div>
 
               <!-- Strip EXIF Checkbox -->
-              <div class="pt-2 border-t border-slate-200/60 dark:border-slate-700/60 flex items-center justify-between">
+              <div class="pt-2.5 border-t border-slate-200/60 dark:border-slate-700/60 flex items-center justify-between">
                 <div>
-                  <label for="strip-exif-toggle" class="text-xs font-bold text-slate-800 dark:text-slate-200 cursor-pointer">
+                  <label for="strip-exif-toggle" class="text-sm sm:text-base font-semibold text-slate-900 dark:text-slate-100 cursor-pointer">
                     Strip EXIF Metadata
                   </label>
-                  <p class="text-[11px] text-slate-500 dark:text-slate-400">Purges GPS and camera tags</p>
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium">Purges GPS and camera tags</p>
                 </div>
                 <input
                   type="checkbox"
                   id="strip-exif-toggle"
                   checked
-                  class="w-4 h-4 text-blue-600 rounded border-slate-300 dark:border-slate-600 focus:ring-blue-500 cursor-pointer"
+                  class="w-4.5 h-4.5 text-blue-600 rounded border-slate-300 dark:border-slate-600 focus:ring-blue-500 cursor-pointer"
                 />
               </div>
             </div>
 
             <!-- Option 4: Resize on Convert -->
-            <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-700/60 space-y-3">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-700/60 space-y-3.5">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                 <div>
-                  <span class="text-xs font-bold text-slate-800 dark:text-slate-200">Resize On Convert</span>
-                  <p class="text-[11px] text-slate-500 dark:text-slate-400">Downscale or custom resolution</p>
+                  <span class="text-sm sm:text-base font-semibold text-slate-900 dark:text-slate-100">Resize On Convert</span>
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium">Downscale or custom resolution</p>
                 </div>
 
                 <!-- Resize Mode Selector -->
-                <div class="inline-flex rounded-lg p-0.5 bg-slate-200/70 dark:bg-slate-700/60 text-[11px] font-medium">
-                  <button type="button" class="resize-mode-tab px-2.5 py-1 rounded-md text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 shadow-2xs font-semibold cursor-pointer" data-mode="original">
+                <div class="inline-flex rounded-lg p-0.5 bg-slate-200/70 dark:bg-slate-700/60 text-xs sm:text-sm font-semibold">
+                  <button type="button" class="resize-mode-tab px-3 py-1.5 rounded-md text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 shadow-2xs font-semibold cursor-pointer" data-mode="original">
                     Original
                   </button>
-                  <button type="button" class="resize-mode-tab px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer" data-mode="percentage">
+                  <button type="button" class="resize-mode-tab px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer" data-mode="percentage">
                     Scale %
                   </button>
-                  <button type="button" class="resize-mode-tab px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer" data-mode="custom">
+                  <button type="button" class="resize-mode-tab px-3 py-1.5 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer" data-mode="custom">
                     Custom Px
                   </button>
                 </div>
               </div>
 
-              <!-- Percentage Mode Controls -->
-              <div id="resize-percentage-panel" class="flex items-center gap-2 pt-2 border-t border-slate-200/60 dark:border-slate-700/60 opacity-50 pointer-events-none transition-opacity duration-200">
-                <span class="text-xs font-medium text-slate-600 dark:text-slate-400">Scale:</span>
-                <button type="button" class="scale-preset-btn px-2.5 py-1 rounded-lg text-xs font-semibold border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-blue-500 text-slate-700 dark:text-slate-300 cursor-pointer" data-scale="0.75">75%</button>
-                <button type="button" class="scale-preset-btn px-2.5 py-1 rounded-lg text-xs font-semibold border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-blue-500 text-slate-700 dark:text-slate-300 cursor-pointer" data-scale="0.5">50%</button>
-                <button type="button" class="scale-preset-btn px-2.5 py-1 rounded-lg text-xs font-semibold border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-blue-500 text-slate-700 dark:text-slate-300 cursor-pointer" data-scale="0.25">25%</button>
-                <span id="current-scale-label" class="text-xs font-mono text-blue-600 dark:text-blue-400 font-bold ml-1">75%</span>
-              </div>
-
-              <!-- Custom Dimensions Mode Controls -->
-              <div id="resize-custom-panel" class="hidden flex flex-wrap items-center gap-2.5 pt-2 border-t border-slate-200/60 dark:border-slate-700/60 transition-opacity duration-200">
-                <div class="flex items-center gap-1">
-                  <label for="custom-width-input" class="text-xs font-medium text-slate-600 dark:text-slate-400">W:</label>
-                  <input
-                    type="number"
-                    id="custom-width-input"
-                    placeholder="1920"
-                    class="w-20 px-2 py-1 text-xs font-mono rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                  />
-                  <span class="text-[10px] text-slate-400">px</span>
+              <!-- Resize Controls Area: Both Scale % and Custom Px rendered simultaneously -->
+              <div id="resize-controls-container" class="space-y-3 pt-2.5 border-t border-slate-200/60 dark:border-slate-700/60 opacity-60 pointer-events-none transition-all duration-200">
+                <!-- Scale % Presets Row -->
+                <div id="resize-percentage-panel" class="flex flex-wrap items-center gap-2 transition-all duration-200">
+                  <span class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300">Scale:</span>
+                  <button type="button" class="scale-preset-btn px-2.5 py-1 rounded-lg text-xs sm:text-sm font-semibold border border-blue-500 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 cursor-pointer transition-colors" data-scale="0.75">75%</button>
+                  <button type="button" class="scale-preset-btn px-2.5 py-1 rounded-lg text-xs sm:text-sm font-semibold border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-blue-500 text-slate-700 dark:text-slate-300 cursor-pointer transition-colors" data-scale="0.5">50%</button>
+                  <button type="button" class="scale-preset-btn px-2.5 py-1 rounded-lg text-xs sm:text-sm font-semibold border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-blue-500 text-slate-700 dark:text-slate-300 cursor-pointer transition-colors" data-scale="0.25">25%</button>
+                  <span id="current-scale-label" class="text-xs sm:text-sm font-mono text-blue-600 dark:text-blue-400 font-bold ml-1">75%</span>
                 </div>
 
-                <!-- Aspect Ratio Lock Button -->
-                <button
-                  type="button"
-                  id="aspect-ratio-lock-btn"
-                  class="px-2 py-1 rounded-lg border border-blue-500/50 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 text-xs font-semibold flex items-center gap-1 cursor-pointer"
-                  title="Maintain aspect ratio"
-                >
-                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                  </svg>
-                  <span>Lock</span>
-                </button>
+                <!-- Custom Px Dimensions Row -->
+                <div id="resize-custom-panel" class="flex flex-wrap items-center gap-2.5 pt-2 border-t border-slate-200/40 dark:border-slate-700/40 transition-all duration-200">
+                  <span class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300">Custom:</span>
+                  <div class="flex items-center gap-1.5">
+                    <label for="custom-width-input" class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">W:</label>
+                    <input
+                      type="number"
+                      id="custom-width-input"
+                      placeholder="1920"
+                      class="w-20 sm:w-24 px-2 py-1 text-xs sm:text-sm font-mono rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+                    />
+                    <span class="text-xs font-mono text-slate-500 dark:text-slate-400">px</span>
+                  </div>
 
-                <div class="flex items-center gap-1">
-                  <label for="custom-height-input" class="text-xs font-medium text-slate-600 dark:text-slate-400">H:</label>
-                  <input
-                    type="number"
-                    id="custom-height-input"
-                    placeholder="1080"
-                    class="w-20 px-2 py-1 text-xs font-mono rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-                  />
-                  <span class="text-[10px] text-slate-400">px</span>
+                  <!-- Aspect Ratio Lock Button -->
+                  <button
+                    type="button"
+                    id="aspect-ratio-lock-btn"
+                    class="px-2.5 py-1 rounded-lg border border-blue-500/50 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 text-xs sm:text-sm font-semibold flex items-center gap-1 cursor-pointer transition-colors"
+                    title="Maintain aspect ratio"
+                  >
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                    </svg>
+                    <span>Lock</span>
+                  </button>
+
+                  <div class="flex items-center gap-1.5">
+                    <label for="custom-height-input" class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">H:</label>
+                    <input
+                      type="number"
+                      id="custom-height-input"
+                      placeholder="1080"
+                      class="w-20 sm:w-24 px-2 py-1 text-xs sm:text-sm font-mono rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
+                    />
+                    <span class="text-xs font-mono text-slate-500 dark:text-slate-400">px</span>
+                  </div>
                 </div>
               </div>
 
@@ -830,6 +834,7 @@ const { initialTargetFormat = 'webp' } = Astro.props;
     const resizeModeTabs = document.querySelectorAll('.resize-mode-tab');
     const resizePercentagePanel = document.getElementById('resize-percentage-panel');
     const resizeCustomPanel = document.getElementById('resize-custom-panel');
+    const resizeControlsContainer = document.getElementById('resize-controls-container');
     const scalePresetBtns = document.querySelectorAll('.scale-preset-btn');
     const currentScaleLabel = document.getElementById('current-scale-label');
     const customWidthInput = document.getElementById('custom-width-input') as HTMLInputElement;
@@ -837,7 +842,6 @@ const { initialTargetFormat = 'webp' } = Astro.props;
     const aspectRatioLockBtn = document.getElementById('aspect-ratio-lock-btn');
 
     let currentResizeMode: 'original' | 'percentage' | 'custom' = 'original';
-    let lastResizeSubMode: 'percentage' | 'custom' = 'percentage';
     let currentScale = 0.75;
     let isAspectRatioLocked = true;
     let customWidth = 0;
@@ -1112,22 +1116,22 @@ const { initialTargetFormat = 'webp' } = Astro.props;
         if (item.convertedSize && item.originalSize) {
           const diff = ((item.convertedSize - item.originalSize) / item.originalSize) * 100;
           if (diff < 0) {
-            savingsBadgeHtml = `<span class="px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400">${Math.round(diff)}%</span>`;
+            savingsBadgeHtml = `<span class="px-2.5 py-0.5 rounded text-xs font-mono font-bold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400">${Math.round(diff)}%</span>`;
           } else {
-            savingsBadgeHtml = `<span class="px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">+${Math.round(diff)}%</span>`;
+            savingsBadgeHtml = `<span class="px-2.5 py-0.5 rounded text-xs font-mono font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">+${Math.round(diff)}%</span>`;
           }
         }
 
         // Status badge
         let statusHtml = '';
         if (item.status === 'pending') {
-          statusHtml = `<span class="inline-flex items-center gap-1 text-xs text-slate-500 font-medium"><span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>Ready</span>`;
+          statusHtml = `<span class="inline-flex items-center gap-1.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-semibold"><span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>Ready</span>`;
         } else if (item.status === 'converting') {
-          statusHtml = `<span class="inline-flex items-center gap-1.5 text-xs text-blue-600 dark:text-blue-400 font-medium"><svg class="animate-spin w-3.5 h-3.5" viewBox="0 0 24 24" fill="none"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>Converting...</span>`;
+          statusHtml = `<span class="inline-flex items-center gap-1.5 text-xs sm:text-sm text-blue-600 dark:text-blue-400 font-semibold"><svg class="animate-spin w-3.5 h-3.5" viewBox="0 0 24 24" fill="none"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>Converting...</span>`;
         } else if (item.status === 'done') {
-          statusHtml = `<span class="inline-flex items-center gap-1 text-xs text-emerald-600 dark:text-emerald-400 font-semibold"><svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Converted</span>`;
+          statusHtml = `<span class="inline-flex items-center gap-1 text-xs sm:text-sm text-emerald-600 dark:text-emerald-400 font-bold"><svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Converted</span>`;
         } else {
-          statusHtml = `<span class="text-xs text-rose-500 font-medium">Error</span>`;
+          statusHtml = `<span class="text-xs sm:text-sm text-rose-500 font-semibold">Error</span>`;
         }
 
         // Preview thumbnail src
@@ -1146,14 +1150,14 @@ const { initialTargetFormat = 'webp' } = Astro.props;
             <!-- File info -->
             <div class="min-w-0">
               <div class="flex items-center gap-2">
-                <p class="text-sm font-semibold text-slate-900 dark:text-white truncate max-w-[200px] sm:max-w-xs md:max-w-sm" title="${item.name}">
+                <p class="text-sm sm:text-base font-bold text-slate-900 dark:text-white truncate max-w-[200px] sm:max-w-xs md:max-w-sm" title="${item.name}">
                   ${item.name}
                 </p>
-                <span class="px-1.5 py-0.2 rounded text-[10px] font-mono font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                <span class="px-2 py-0.5 rounded text-xs font-mono font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
                   ${item.originalFormat}
                 </span>
               </div>
-              <div class="flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mt-1 font-mono">
+              <div class="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1 font-mono font-medium">
                 <span>${item.width} × ${item.height} px</span>
                 <span>•</span>
                 <span>${formatBytes(item.originalSize)}</span>
@@ -1167,8 +1171,8 @@ const { initialTargetFormat = 'webp' } = Astro.props;
           <div class="flex flex-wrap items-center justify-between sm:justify-end gap-2.5 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 dark:border-slate-800">
             <!-- Format selector per item -->
             <div class="flex items-center gap-2">
-              <span class="text-xs text-slate-400 font-bold">TO:</span>
-              <select class="item-format-select appearance-none bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-bold text-xs py-1.5 pl-3 pr-7 rounded-lg border border-slate-200 dark:border-slate-700 cursor-pointer" data-id="${item.id}">
+              <span class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-bold">TO:</span>
+              <select class="item-format-select appearance-none bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-bold text-xs sm:text-sm py-1.5 pl-3 pr-7 rounded-lg border border-slate-200 dark:border-slate-700 cursor-pointer" data-id="${item.id}">
                 <option value="webp" ${item.targetFormat === 'webp' ? 'selected' : ''}>WEBP</option>
                 <option value="avif" ${item.targetFormat === 'avif' ? 'selected' : ''}>AVIF</option>
                 <option value="jpeg" ${item.targetFormat === 'jpeg' ? 'selected' : ''}>JPG</option>
@@ -1188,12 +1192,12 @@ const { initialTargetFormat = 'webp' } = Astro.props;
             <!-- Action buttons: Download & Remove -->
             <div class="flex items-center gap-1.5">
               ${item.status === 'done' && item.convertedBlob ? `
-                <button type="button" class="download-single-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs transition cursor-pointer shadow-2xs" data-id="${item.id}">
+                <button type="button" class="download-single-btn inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm transition cursor-pointer shadow-2xs" data-id="${item.id}">
                   <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
                   <span>Download</span>
                 </button>
               ` : `
-                <button type="button" class="convert-single-btn px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium text-xs hover:bg-slate-50 dark:hover:bg-slate-700 transition cursor-pointer" data-id="${item.id}">
+                <button type="button" class="convert-single-btn px-3.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition cursor-pointer" data-id="${item.id}">
                   Convert
                 </button>
               `}
@@ -1407,23 +1411,24 @@ const { initialTargetFormat = 'webp' } = Astro.props;
 
         currentResizeMode = (tab as HTMLElement).getAttribute('data-mode') as 'original' | 'percentage' | 'custom';
         if (currentResizeMode === 'original') {
-          if (lastResizeSubMode === 'custom') {
-            resizePercentagePanel?.classList.add('hidden');
-            resizeCustomPanel?.classList.remove('hidden');
-            resizeCustomPanel?.classList.add('opacity-50', 'pointer-events-none');
-          } else {
-            resizeCustomPanel?.classList.add('hidden');
-            resizePercentagePanel?.classList.remove('hidden');
-            resizePercentagePanel?.classList.add('opacity-50', 'pointer-events-none');
-          }
+          resizeControlsContainer?.classList.remove('opacity-100');
+          resizeControlsContainer?.classList.add('opacity-60', 'pointer-events-none');
+          resizePercentagePanel?.classList.remove('opacity-50', 'pointer-events-none');
+          resizeCustomPanel?.classList.remove('opacity-50', 'pointer-events-none');
         } else if (currentResizeMode === 'percentage') {
-          lastResizeSubMode = 'percentage';
-          resizeCustomPanel?.classList.add('hidden');
-          resizePercentagePanel?.classList.remove('hidden', 'opacity-50', 'pointer-events-none');
+          resizeControlsContainer?.classList.remove('opacity-60', 'pointer-events-none');
+          resizeControlsContainer?.classList.add('opacity-100');
+          resizePercentagePanel?.classList.remove('opacity-50', 'pointer-events-none');
+          resizePercentagePanel?.classList.add('opacity-100', 'pointer-events-auto');
+          resizeCustomPanel?.classList.add('opacity-50', 'pointer-events-none');
+          resizeCustomPanel?.classList.remove('opacity-100', 'pointer-events-auto');
         } else if (currentResizeMode === 'custom') {
-          lastResizeSubMode = 'custom';
-          resizePercentagePanel?.classList.add('hidden');
-          resizeCustomPanel?.classList.remove('hidden', 'opacity-50', 'pointer-events-none');
+          resizeControlsContainer?.classList.remove('opacity-60', 'pointer-events-none');
+          resizeControlsContainer?.classList.add('opacity-100');
+          resizeCustomPanel?.classList.remove('opacity-50', 'pointer-events-none');
+          resizeCustomPanel?.classList.add('opacity-100', 'pointer-events-auto');
+          resizePercentagePanel?.classList.add('opacity-50', 'pointer-events-none');
+          resizePercentagePanel?.classList.remove('opacity-100', 'pointer-events-auto');
         }
 
         updateDrawerSummary();

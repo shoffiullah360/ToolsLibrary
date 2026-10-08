@@ -4,8 +4,12 @@ import ToolIcon from '../../components/ToolIcon.astro';
 import ImageCompressor from '../../components/tools/ImageCompressor.astro';
 import { COMPRESS_PRESETS } from '../../data/compressPresets';
 
-// FAQ Content for Schema and UI
+// FAQ Content for Schema and UI (8 Technically Sound Questions)
 const faqs = [
+  {
+    question: "How does the Target KB binary search convergence loop work?",
+    answer: "Rather than guessing with trial-and-error visual sliders, our client-side binary search algorithm sets quality boundaries between 5% and 98%. In each pass, it encodes the canvas to a candidate blob in memory and measures the byte size against your target limit. If the file exceeds your boundary, it halves the search interval downwards; if smaller, it explores higher quality. If raw resolution is too dense for the requested kilobyte cap, it automatically downscales dimensions proportionally to ensure guaranteed portal compliance."
+  },
   {
     question: "How to compress an image to an exact file size like 20 KB or 50 KB?",
     answer: "Enter your required size (e.g., 20 KB or 50 KB) in the Target Max File Size field, or click one of the quick KB presets. FastToolVerse initiates a client-side binary search loop that dynamically calculates the optimal quantization matrix in up to 7 iterative passes and synchronizes the quality slider automatically, guaranteeing your file stays strictly under the target threshold while retaining peak visual clarity."
@@ -15,12 +19,8 @@ const faqs = [
     answer: "Lossy compression (used in JPG and WebP) permanently discards high-frequency pixel data and color nuances imperceptible to human eyes using Discrete Cosine Transform (DCT) and chroma subsampling, achieving 60% to 90% size reductions. Lossless compression (used in PNG and lossless WebP) reorganizes data patterns via DEFLATE or predictive filtering without discarding any pixel data, maintaining 100% mathematical fidelity."
   },
   {
-    question: "How does 100% client-side compression work in the browser?",
-    answer: "FastToolVerse utilizes modern HTML5 Canvas, OffscreenCanvas, and WebAssembly APIs built into your browser. When you drop an image, your computer's local CPU/GPU decodes, resamples, quantizes, and re-encodes the image in your browser's private memory heap. Zero bytes of image content or file paths are ever uploaded to cloud servers."
-  },
-  {
     question: "Does this tool upload or store my confidential photos on any server?",
-    answer: "No. FastToolVerse operates under a strict zero-upload architecture. Your sensitive government identity cards, passport photos, academic transcripts, signatures, and personal photos never leave your device. The tool works seamlessly even if you disconnect your device from the internet."
+    answer: "No. FastToolVerse operates under a strict zero-upload architecture. Your sensitive government identity cards, passport photos, academic transcripts, signatures, and personal photos never leave your device. All compression algorithms execute inside your local browser memory heap. The tool works seamlessly even if you disconnect your device from the internet."
   },
   {
     question: "How do I compress PNG images without losing transparent backgrounds?",
@@ -31,28 +31,21 @@ const faqs = [
     answer: "Official government portals, exam boards, and visa registration systems handle millions of applicant submissions. Rigid file limits (typically 20KB to 50KB) conserve server storage, minimize database bandwidth, and ensure instantaneous loading across rural connections. FastToolVerse is calibrated specifically to satisfy these strict administrative limits."
   },
   {
-    question: "How does the Target KB binary search convergence loop work?",
-    answer: "Rather than guessing quality sliders, our binary search algorithm sets quality boundaries between 5% and 98%. In each iteration, it encodes the canvas to a candidate blob and evaluates byte size against your target. If the file is too large, it halves the search interval downwards; if smaller, it tests higher quality. If resolution is too large for the requested KB, it intelligently applies proportional downscaling to ensure compliance."
-  },
-  {
     question: "Does compressing images strip EXIF metadata (GPS, camera model)?",
     answer: "Yes. By default, stripping EXIF metadata is enabled. Re-encoding through the HTML5 Canvas sandbox automatically removes embedded camera metadata, GPS coordinates, date stamps, and color management profiles, preserving your personal privacy and saving an additional 5 KB to 30 KB of overhead."
   },
   {
     question: "Can I compress multiple images simultaneously and download a ZIP file?",
     answer: "Yes. You can upload up to 15 images concurrently. FastToolVerse compresses each photo in parallel queues and provides instant single-file downloads or a 1-click 'Download All as ZIP' archive generated directly in your browser using client-side JSZip."
-  },
-  {
-    question: "Which image format offers the best compression: JPG, PNG, or WebP?",
-    answer: "WebP is the modern champion, offering 25% to 35% smaller file sizes than JPG at equivalent perceptual quality, alongside full transparency support. JPG is best for legacy system compatibility (government forms), while PNG is recommended for screenshots, line art, and graphics requiring lossless pixel perfection."
   }
 ];
 
-// Schema.org SoftwareApplication
+// Schema.org WebApplication
 const jsonLdSoftwareApp = {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
+  "@type": "WebApplication",
   "name": "Free Online Image Compressor & Exact KB Reducer",
+  "url": "https://fasttoolverse.com/tools/image-compressor",
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "All (Web Browser)",
   "browserRequirements": "Requires JavaScript. Requires HTML5 Canvas support.",
@@ -136,12 +129,12 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
 
       <!-- Hero Title -->
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
-        Free Online Image Compressor & Exact KB Reducer
+        Free Online Image Compressor &amp; Exact KB Reducer
       </h1>
 
       <!-- Subtitle -->
       <p class="mt-3 sm:mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-        Compress JPG, PNG, and WebP images by percentage or target exact file sizes (20 KB, 50 KB, 100 KB) with 100% in-browser privacy and zero server uploads.
+        Compress JPG, PNG, and WebP images by percentage or target exact file sizes (20 KB, 50 KB, 100 KB) with 100% in-browser privacy.
       </p>
     </div>
   </section>
@@ -160,7 +153,7 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
           How to Compress Images to Target KB in 3 Steps
         </h2>
         <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
-          Fast, effortless, and private. Hit exact kilobyte boundaries directly in your browser.
+          Fast, effortless, and private. Hit exact kilobyte boundaries directly in your browser in seconds.
         </p>
       </div>
 
@@ -175,7 +168,7 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
             Upload or Paste Photos
           </h3>
           <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Drag and drop up to 15 JPG, PNG, WebP, or AVIF files, browse your local drive, or paste from clipboard using <kbd class="px-1.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">Ctrl+V</kbd>.
+            Drag and drop up to 15 JPG, PNG, WebP, or AVIF files, browse your local drive, or paste from clipboard using <kbd class="px-1.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">Ctrl+V</kbd>. Zero files ever leave your machine.
           </p>
         </div>
 
@@ -188,7 +181,7 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
             Set Target KB or Quality
           </h3>
           <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Type your strict kilobyte cap (e.g., 20 KB or 50 KB) for automated binary search convergence, or slide the quality percentage. Inspect the before/after split slider in real time.
+            Type your strict kilobyte cap (e.g., 20 KB, 50 KB, or 100 KB) for automated binary search convergence, or slide the quality percentage. Inspect the before/after split slider in real time.
           </p>
         </div>
 
@@ -201,7 +194,7 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
             Instant Download or ZIP
           </h3>
           <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Download your compressed file with zero delay, or bundle all 15 images into an organized, client-side generated ZIP archive with no watermarks.
+            Download your compressed file with zero delay, or bundle all 15 images into an organized, client-side generated ZIP archive with no watermarks and no server latency.
           </p>
         </div>
 
@@ -212,14 +205,10 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
 
   <!-- 4. Unified Presets Grid Section (Matching Image Resizer 1:1) -->
   <section class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/40 py-16 sm:py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Section Header -->
       <div class="text-center max-w-2xl mx-auto mb-12">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 mb-3">
-          <ToolIcon name="zap" class="w-3.5 h-3.5" />
-          <span>Target Presets</span>
-        </div>
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
           Popular Image Compression Presets
         </h2>
@@ -229,37 +218,22 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
       </div>
 
       <!-- Responsive 4-Column Card Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-4">
         {COMPRESS_PRESETS.map((p) => (
-          <div class="group relative p-5 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:bg-slate-50 dark:hover:bg-slate-900/80 hover:border-blue-600 dark:hover:border-blue-500 hover:shadow-md transition-all duration-150 flex flex-col justify-between">
+          <div class="group relative p-2.5 sm:p-4 rounded-xl sm:rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900/70 hover:border-blue-600 dark:hover:border-blue-500 hover:shadow-md transition-all duration-150 flex flex-col justify-between">
             <div>
-              <!-- Top Row: Badge on left, Spec/target pill on right -->
-              <div class="flex items-center justify-between gap-2 mb-3">
-                <span class="inline-block text-[10px] sm:text-xs font-semibold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50">
-                  {p.badge}
-                </span>
-                <span class="text-xs font-mono font-medium text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700/60">
-                  {p.targetKb ? `≤ ${p.targetKb} KB` : (p.maxWidth ? `${p.maxWidth}×${p.maxHeight} px` : (p.format ? p.format.toUpperCase() : 'OPTIMIZED'))}
-                </span>
-              </div>
-
-              <!-- Title -->
-              <h3 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 leading-snug mb-2">
+              <span class="inline-block text-[10px] sm:text-xs font-semibold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50 mb-1.5 sm:mb-3">
+                {p.targetKb ? `≤ ${p.targetKb} KB Target` : (p.maxWidth ? `${p.maxWidth} × ${p.maxHeight} px` : p.badge)}
+              </span>
+              <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 leading-snug mb-2 sm:mb-4">
                 {p.title}
               </h3>
-
-              <!-- Intro snippet -->
-              <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed mb-4">
-                {p.introDescription}
-              </p>
             </div>
-
-            <!-- Bottom Action Link -->
             <a
               href={`/${p.slug}`}
-              class="text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 inline-flex items-center gap-1 mt-auto after:absolute after:inset-0"
+              class="text-[11px] sm:text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 inline-flex items-center gap-1 mt-auto after:absolute after:inset-0"
             >
-              Use Preset &rarr;
+              Compress now &rarr;
             </a>
           </div>
         ))}
@@ -278,7 +252,7 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
           <span>Feature Comparison</span>
         </div>
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Why Choose FastToolVerse vs TinyPNG & Cloud Compressors
+          Why Choose FastToolVerse vs TinyPNG &amp; Cloud Compressors
         </h2>
         <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
           Compare privacy, precision KB targeting, batch capacity, and speed against cloud alternatives.
@@ -301,14 +275,14 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
             <span class="text-xs text-blue-600 dark:text-blue-400 font-normal hidden md:inline">This Tool</span>
           </div>
           <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 text-slate-600 dark:text-slate-400 flex items-center">
-            <span>TinyPNG & Cloud Services</span>
+            <span>TinyPNG &amp; Cloud Services</span>
           </div>
         </div>
 
         <!-- Row 1: Privacy -->
         <div class="grid grid-cols-12 border-b border-slate-200 dark:border-slate-800 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
           <div class="col-span-12 sm:col-span-4 p-3 sm:p-5 flex flex-col justify-center bg-slate-50/60 dark:bg-slate-800/30 sm:bg-transparent">
-            <span class="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">Security & Privacy</span>
+            <span class="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">Security &amp; Privacy</span>
             <span class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5">Where media processing executes</span>
           </div>
           <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 bg-blue-50/30 dark:bg-blue-950/15 border-r sm:border-x border-slate-200 dark:border-slate-800 flex items-start gap-2 sm:gap-2.5">
@@ -351,7 +325,7 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
             </div>
             <div class="min-w-0">
-              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Unavailable / Trial & Error</p>
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Unavailable / Trial &amp; Error</p>
               <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Fixed automatic compression only. No way to mandate strict 20KB or 50KB limits.</p>
             </div>
           </div>
@@ -377,7 +351,7 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
             </div>
             <div class="min-w-0">
-              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Strict Rate Limits & Subscriptions</p>
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Strict Rate Limits &amp; Subscriptions</p>
               <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Limited to 5MB max, aggressive throttling, and recurring Pro paywalls.</p>
             </div>
           </div>
@@ -386,8 +360,8 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
         <!-- Row 4: Format Range -->
         <div class="grid grid-cols-12 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
           <div class="col-span-12 sm:col-span-4 p-3 sm:p-5 flex flex-col justify-center bg-slate-50/60 dark:bg-slate-800/30 sm:bg-transparent">
-            <span class="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">Format Range & EXIF Control</span>
-            <span class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5">Modern web codecs & metadata management</span>
+            <span class="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">Format Range &amp; EXIF Control</span>
+            <span class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5">Modern web codecs &amp; metadata management</span>
           </div>
           <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 bg-blue-50/30 dark:bg-blue-950/15 border-r sm:border-x border-slate-200 dark:border-slate-800 flex items-start gap-2 sm:gap-2.5">
             <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
@@ -403,7 +377,7 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
             </div>
             <div class="min-w-0">
-              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">JPG & PNG Only</p>
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">JPG &amp; PNG Only</p>
               <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">No WebP encoding support or separate paid tools required for format conversions.</p>
             </div>
           </div>
@@ -414,7 +388,7 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
     </div>
   </section>
 
-  <!-- 6. Technical Specs & Deep Compression Guide -->
+  <!-- 6. Technical Specs & Deep Compression Guide (Core Advantages 3-Card Grid) -->
   <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-16 sm:py-20">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -448,55 +422,55 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
             <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
               <li class="flex items-start gap-2">
                 <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0"></span>
-                <span><strong>Frequency Separation</strong>: Isolates low-frequency gradients (which the human eye relies on) from subtle high-frequency variations.</span>
+                <span><strong>High-Frequency Truncation</strong>: Human eyes struggle to discern subtle high-frequency color variations. Quantization scales these coefficients toward zero to eliminate payload.</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0"></span>
-                <span><strong>Quantization Matrix</strong>: Divides high frequencies by higher quantization factors, rounding subtle noise to zero to yield massive entropy savings.</span>
+                <span><strong>Huffman Run-Length Coding</strong>: Zig-zag scanning organizes zero-value matrices into hyper-compact serialized byte sequences.</span>
               </li>
             </ul>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80">
-            <span class="text-[11px] font-mono text-slate-400 dark:text-slate-500 uppercase tracking-wider">Engine: JPEG &amp; WebP Quantization</span>
+            <span class="text-[11px] font-mono text-slate-400 dark:text-slate-500 uppercase tracking-wider">Standard: ISO/IEC 10918-1 (JPEG)</span>
           </div>
         </div>
 
-        <!-- Guide 2: Chroma Subsampling -->
+        <!-- Guide 2: Lossless DEFLATE & Alpha -->
         <div class="p-6 sm:p-7 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 flex flex-col justify-between">
           <div>
             <div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-5 border border-purple-100 dark:border-purple-900/50">
-              <ToolIcon name="scale" class="w-5 h-5" />
+              <ToolIcon name="layers" class="w-5 h-5" />
             </div>
             <h3 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-white mb-2.5">
-              Chroma Subsampling (4:2:0)
+              DEFLATE &amp; Alpha Transparency
             </h3>
             <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-              Leverages human biology: human retinas possess far more luminance rods than color-sensitive cones.
+              PNG lossless compression preserves 100% of original pixel mathematics while compressing repeating byte structures.
             </p>
             <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
               <li class="flex items-start gap-2">
                 <span class="w-1.5 h-1.5 rounded-full bg-purple-500 mt-2 shrink-0"></span>
-                <span><strong>YCbCr Color Plane</strong>: Splits red, green, and blue into Luminance (Y) and Chrominance (Cb, Cr) color difference channels.</span>
+                <span><strong>LZ77 Sliding Window</strong>: Finds duplicated pixel patterns across horizontal raster scanlines without discarding graphical detail.</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="w-1.5 h-1.5 rounded-full bg-purple-500 mt-2 shrink-0"></span>
-                <span><strong>4:2:0 Subsampling</strong>: Samples chrominance at half horizontal and vertical resolution, cutting color data by 75% with zero perceptible blur.</span>
+                <span><strong>8-Bit Alpha Channels</strong>: Retains 256 levels of smooth opacity for product cutouts, floating logos, and UI graphics.</span>
               </li>
             </ul>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80">
-            <span class="text-[11px] font-mono text-slate-400 dark:text-slate-500 uppercase tracking-wider">Perceptual Subsampling: 4:2:0</span>
+            <span class="text-[11px] font-mono text-slate-400 dark:text-slate-500 uppercase tracking-wider">Preserves 100% Bit-for-Bit Fidelity</span>
           </div>
         </div>
 
-        <!-- Guide 3: Client-Side Privacy -->
+        <!-- Guide 3: Zero-Upload Sandboxing -->
         <div class="p-6 sm:p-7 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 flex flex-col justify-between">
           <div>
             <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-5 border border-emerald-100 dark:border-emerald-900/50">
               <ToolIcon name="shield-check" class="w-5 h-5" />
             </div>
             <h3 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-white mb-2.5">
-              Zero-Network Client Sandbox
+              Local Sandbox Security
             </h3>
             <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
               Traditional online compressors upload your photos to remote servers. FastToolVerse executes 100% locally.
@@ -522,14 +496,27 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
     </div>
   </section>
 
-  <!-- 7. Comprehensive SEO Keyword Guide Section -->
+  <!-- 7. SEO Keyword Supporting Article (700+ Words) -->
   <section class="max-w-4xl mx-auto px-4 sm:px-6 py-12 prose dark:prose-invert text-slate-300">
     <div class="border-t border-slate-200 dark:border-slate-800/80 pt-12 space-y-12">
       
-      <!-- H2 1: Reduce Image Size in KB -->
+      <!-- H2 1: Complete Privacy -->
       <div class="space-y-4">
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Reduce Image Size in KB: Precision Target Compression Engine
+          Complete Privacy: 100% In-Browser Private Image Compression
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          Most online image compressors transmit your private photos over the internet to remote cloud queues. When compressing confidential materials—such as national identity cards, passport credentials, bank checks, academic degrees, employment contracts, and personal family photos—this cloud architecture introduces severe privacy, surveillance, and data interception risks.
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          FastToolVerse executes <strong>100% inside your web browser</strong> using HTML5 Canvas, WebAssembly, and local JavaScript memory sandboxing. Your images never leave your local computer RAM. There are zero cloud databases, no temporary server storage buckets, and zero telemetry tracking. You can even disconnect your device from Wi-Fi and continue compressing batches of confidential photos offline with total peace of mind.
+        </p>
+      </div>
+
+      <!-- H2 2: Precision Target Size Reduction -->
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Precision Target Size Reduction: Compress Images to 20KB, 50KB, and 100KB
         </h2>
         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
           Government examination boards, visa application portals, and university submission databases almost universally require digital portraits and signatures to adhere to rigid file weight caps—such as strictly requiring pictures under <strong>20 KB</strong>, <strong>50 KB</strong>, or <strong>100 KB</strong>. Manually tweaking visual quality sliders and repeatedly re-exporting files to check their file properties is tedious and inaccurate.
@@ -539,51 +526,137 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
         </p>
       </div>
 
-      <!-- H2 2: Compress JPG, PNG, and WebP Online -->
+      <!-- H2 3: High-Performance Batch Image Compressor -->
       <div class="space-y-4">
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Compress JPG, PNG, and WebP Without Quality Loss
+          High-Performance Batch Image Compressor for Bulk Assets
         </h2>
         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          Every raster format uses distinct mathematical algorithms to balance file weight and visual fidelity:
+          Manually optimizing e-commerce product photos, marketing banners, and photography portfolios one file at a time wastes valuable hours. Built as an industrial-grade <strong>batch image compressor</strong>, FastToolVerse processes up to <strong>15 files concurrently</strong> in parallel browser threads.
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          Adaptive multi-threading allocates compression tasks across your available CPU cores, minimizing thermal throttling and eliminating upload-download latency. Once compressed, you can download individual files immediately or click a single button to bundle the entire batch into an organized, clean ZIP archive generated locally via JSZip.
+        </p>
+      </div>
+
+      <!-- H2 4: Lossy vs Lossless Image Compression Mechanics Explained -->
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Lossy vs Lossless Image Compression Mechanics Explained
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          Every compression codec uses distinct mathematical principles to negotiate the fundamental trade-off between file weight and visual fidelity:
         </p>
         <ul class="space-y-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 list-disc pl-5">
-          <li><strong>JPEG / JPG:</strong> Highly efficient for complex photographs, human portraits, and real-world scenes. Uses lossy DCT and chroma subsampling to eliminate high-frequency data imperceptible to human retinas.</li>
-          <li><strong>PNG:</strong> Lossless format ideal for screenshots, UI buttons, digital signatures, and transparent graphics. FastToolVerse reorganizes PNG scanlines and strips unnecessary metadata while maintaining crisp vector-like edges and alpha channels.</li>
-          <li><strong>WebP:</strong> Google's modern format providing up to 35% smaller file sizes than JPG with identical perceptual fidelity. Supports both lossy compression and alpha transparency, making it the industry standard for fast web performance.</li>
+          <li><strong>Lossy Discrete Cosine Transform (DCT):</strong> Standard in JPEG and lossy WebP. Divides images into 8×8 pixel blocks and converts spatial data into frequency coefficients. Discards fine high-frequency variations that human eyes cannot discern, achieving 60% to 85% payload reductions with minimal perceptible difference.</li>
+          <li><strong>Lossless DEFLATE &amp; LZ77:</strong> Utilized in PNG and lossless WebP. Eliminates redundant byte sequences using sliding dictionary windows and Huffman coding. Preserves 100% of mathematical pixel values, making it essential for software user interfaces, logos, line art, and typography.</li>
+          <li><strong>Interactive Real-Time Visual Inspection:</strong> FastToolVerse features an interactive split-screen slider allowing you to slide between uncompressed and compressed states at 100% zoom before downloading.</li>
         </ul>
       </div>
 
-      <!-- H2 3: 100% In-Browser Privacy -->
-      <div class="space-y-4">
+      <!-- H2 5: Next-Gen Format Compression (EMBEDDED CUSTOM MINI-TABLE) -->
+      <div id="compression-benchmarks" class="space-y-4 scroll-mt-20">
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Zero Server Uploads: A Private Client-Side Image Compressor
+          Next-Gen Format Compression: WebP and AVIF Size Savings
         </h2>
         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          Most online image compressors transmit your private photos over the internet to remote cloud queues. When compressing confidential materials—such as national identity cards, passports, bank checks, employment contracts, and personal family photos—this cloud architecture introduces severe privacy and data leak risks.
+          Modern web standards demand lightweight modern codecs to achieve top Google Core Web Vitals rankings and lightning-fast Largest Contentful Paint (LCP). Converting legacy imagery to WebP or AVIF delivers dramatic byte savings across every asset category:
         </p>
-        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          FastToolVerse executes <strong>100% inside your web browser</strong> using HTML5 Canvas and local JavaScript. Your images never leave your local computer RAM. There are zero cloud databases, no telemetry caches, and no third-party inspection. You can even disconnect your device from Wi-Fi and continue compressing batches of photos offline.
-        </p>
+        
+        <!-- Tailwind Responsive Comparison Table Matching Resizer Layout -->
+        <div class="not-prose my-6 overflow-hidden rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="bg-slate-100/70 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-semibold">
+                <tr>
+                  <th scope="col" class="py-3.5 px-4 sm:px-6">Format Optimization Pipeline</th>
+                  <th scope="col" class="py-3.5 px-4 sm:px-6">Average Size Reduction</th>
+                  <th scope="col" class="py-3.5 px-4 sm:px-6">Compression Efficiency</th>
+                  <th scope="col" class="py-3.5 px-4 sm:px-6">Optimal Production Use Case</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-slate-600 dark:text-slate-300">
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                  <td class="py-3.5 px-4 sm:px-6 font-medium text-slate-900 dark:text-white">JPEG Compression</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-mono text-xs text-blue-600 dark:text-blue-400">60% &ndash; 80% Size Reduction</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-semibold text-blue-600 dark:text-blue-400">High (DCT Baseline)</td>
+                  <td class="py-3.5 px-4 sm:px-6">Standard photography &amp; legacy portfolios</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                  <td class="py-3.5 px-4 sm:px-6 font-medium text-slate-900 dark:text-white">PNG Palette Optimization</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-mono text-xs text-purple-600 dark:text-purple-400">50% &ndash; 70% Size Reduction</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-semibold text-purple-600 dark:text-purple-400">Moderate (Lossless)</td>
+                  <td class="py-3.5 px-4 sm:px-6">Transparent UI icons &amp; vector logos</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                  <td class="py-3.5 px-4 sm:px-6 font-medium text-slate-900 dark:text-white">WebP Re-encoding</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-mono text-xs text-emerald-600 dark:text-emerald-400">70% &ndash; 85% Size Reduction</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-semibold text-emerald-600 dark:text-emerald-400">Very High (VP8 Coding)</td>
+                  <td class="py-3.5 px-4 sm:px-6">High-speed responsive web pages &amp; blogs</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                  <td class="py-3.5 px-4 sm:px-6 font-medium text-slate-900 dark:text-white">AVIF Deep Quantization</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-mono text-xs text-rose-600 dark:text-rose-400">80% &ndash; 90% Size Reduction</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-semibold text-rose-600 dark:text-rose-400">Ultra High (AV1 Keyframe)</td>
+                  <td class="py-3.5 px-4 sm:px-6">Next-gen mobile performance &amp; hero banners</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
 
-      <!-- H2 4: Interactive Split Comparison -->
+      <!-- H2 6: Automated Color Depth & EXIF Metadata Optimization (EMBEDDED 3-PRESET PILL BOX) -->
       <div class="space-y-4">
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Real-Time Split-Screen Comparison Slider
+          Automated Color Depth &amp; EXIF Metadata Optimization
         </h2>
         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          Never guess how compression affects your photo's visual clarity. FastToolVerse includes an interactive <strong>split-screen comparison slider</strong> that lets you drag across your original and compressed image side-by-side. Inspect delicate hair strands, typographic contrast, and smooth gradients before downloading.
+          Digital cameras and smartphones embed invisible metadata into every image file, including GPS latitude and longitude coordinates, camera serial numbers, lens models, and capture timestamps. In addition to creating significant privacy vulnerabilities when uploaded online, this metadata bloat frequently accounts for 10KB to 50KB of unnecessary dead file weight.
         </p>
         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          A real-time savings counter displays before-and-after kilobyte measurements and percentage reductions instantly, ensuring total transparency on compression efficiency.
+          FastToolVerse automatically purges all EXIF, XMP, and IPTC headers during local canvas quantization. Combined with adaptive color depth reduction, our engine delivers ultra-lightweight files specifically calibrated for official submissions and fast digital delivery:
         </p>
+        
+        <!-- 3-Preset Pill Box Matching Resizer Layout -->
+        <div class="not-prose grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+          <a
+            href="/compress-image-to-20kb"
+            class="group p-4 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:border-blue-600 hover:shadow-md transition-all duration-150 text-center block"
+          >
+            <span class="inline-block px-2.5 py-1 rounded-full text-xs font-bold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 mb-1">Target &le; 20 KB</span>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Mandatory threshold for government civil service exams, signatures, and biometric uploads.</p>
+            <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 mt-2 inline-flex items-center gap-1 group-hover:underline">
+              Compress to 20KB &rarr;
+            </span>
+          </a>
+          <a
+            href="/compress-image-to-50kb"
+            class="group p-4 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:border-purple-600 hover:shadow-md transition-all duration-150 text-center block"
+          >
+            <span class="inline-block px-2.5 py-1 rounded-full text-xs font-bold bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 mb-1">Target &le; 50 KB</span>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Optimal balance between clarity and weight for digital resumes, employee badges, and ID cards.</p>
+            <span class="text-xs font-semibold text-purple-600 dark:text-purple-400 mt-2 inline-flex items-center gap-1 group-hover:underline">
+              Compress to 50KB &rarr;
+            </span>
+          </a>
+          <a
+            href="/compress-image-to-100kb"
+            class="group p-4 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:border-emerald-600 hover:shadow-md transition-all duration-150 text-center block"
+          >
+            <span class="inline-block px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 mb-1">Target &le; 100 KB</span>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Production benchmark for crisp e-commerce product listings and high-speed responsive web layouts.</p>
+            <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mt-2 inline-flex items-center gap-1 group-hover:underline">
+              Compress to 100KB &rarr;
+            </span>
+          </a>
+        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- 8. Bottom "Jump to Upload" CTA Banner -->
+  <!-- 8. Bottom "Jump to Upload" CTA Banner (Strictly Above FAQ) -->
   <section class="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
     <div class="rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white shadow-xl shadow-blue-500/10 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
       <div class="space-y-1">
@@ -598,39 +671,13 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
         href="#tool-workspace"
         class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white text-slate-900 hover:bg-blue-50 font-semibold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all active:scale-95 shrink-0"
       >
-        <span>Upload & Compress Now</span>
-        <span aria-hidden="true" class="text-base font-bold leading-none">↑</span>
+        <span>Upload &amp; Compress Now</span>
+        <span aria-hidden="true" class="text-base font-bold leading-none">&uarr;</span>
       </a>
     </div>
   </section>
 
-  <!-- 9. Cross-Link Banner pointing to Image Resizer -->
-  <section class="max-w-4xl mx-auto px-4 sm:px-6 pb-8">
-    <div class="rounded-2xl p-6 sm:p-8 border border-indigo-200/80 dark:border-indigo-900/60 bg-gradient-to-br from-indigo-50/70 via-white to-blue-50/70 dark:from-indigo-950/30 dark:via-slate-900 dark:to-blue-950/30 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
-      <div class="flex items-center gap-4">
-        <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-sm">
-          <ToolIcon name="maximize-2" class="w-6 h-6" />
-        </div>
-        <div>
-          <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
-            Need to change physical dimensions or crop photos?
-          </h3>
-          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
-            Resize photos by exact pixels, cm, mm, or inches, and crop with passport & social presets.
-          </p>
-        </div>
-      </div>
-      <a
-        href="/tools/image-resizer"
-        class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs sm:text-sm shadow-sm hover:shadow-md transition-all shrink-0"
-      >
-        <span>Open Image Resizer</span>
-        <span aria-hidden="true">&rarr;</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- 10. FAQ Section (SEO crawlable) -->
+  <!-- 9. FAQ Section (SEO crawlable, 8 Items) -->
   <section class="py-16 sm:py-24">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -665,7 +712,7 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
     </div>
   </section>
 
-  <!-- 11. Related Tools Row -->
+  <!-- 10. Related Tools Row (Matching Image Resizer - No Orphan Pills) -->
   <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-950/40 py-12 sm:py-16">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-6">
@@ -680,6 +727,13 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
           <span>Image Resizer</span>
         </a>
         <a
+          href="/tools/image-converter"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-600 hover:shadow-md transition-all duration-150 shadow-sm"
+        >
+          <ToolIcon name="repeat" class="w-4 h-4 text-emerald-500" />
+          <span>Image Converter</span>
+        </a>
+        <a
           href="/tools/image-cropper"
           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-600 hover:shadow-md transition-all duration-150 shadow-sm"
         >
@@ -690,15 +744,8 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
           href="/tools/image-rotator"
           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-600 hover:shadow-md transition-all duration-150 shadow-sm"
         >
-          <ToolIcon name="rotate-cw" class="w-4 h-4 text-emerald-500" />
+          <ToolIcon name="rotate-cw" class="w-4 h-4 text-cyan-500" />
           <span>Image Rotator</span>
-        </a>
-        <a
-          href="/tools/image-flipper"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-600 hover:shadow-md transition-all duration-150 shadow-sm"
-        >
-          <ToolIcon name="flip-horizontal" class="w-4 h-4 text-cyan-500" />
-          <span>Image Flipper</span>
         </a>
       </div>
     </div>

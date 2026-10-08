@@ -374,77 +374,7 @@ const CONVERSION_PRESETS = [
   }
 ];
 
-// Comparison Matrix Data
-const FORMAT_BENCHMARKS = [
-  {
-    format: 'WebP',
-    mechanism: 'Intra-frame predictive (VP8)',
-    savings: '25%–35% vs JPEG',
-    savingsClass: 'text-emerald-600 dark:text-emerald-400 font-semibold',
-    transparency: 'Yes (8-bit Alpha)',
-    transparencyClass: 'text-emerald-600 dark:text-emerald-400 font-semibold',
-    colorDepth: '8-bit sRGB (Lossy & Lossless)',
-    support: '98.2% (Universal Modern)',
-    useCase: 'Modern websites, blogs, ecommerce catalogs, Core Web Vitals'
-  },
-  {
-    format: 'AVIF',
-    mechanism: 'AV1 video keyframe transform',
-    savings: '50%–60% vs JPEG',
-    savingsClass: 'text-emerald-600 dark:text-emerald-400 font-semibold',
-    transparency: 'Yes (10/12-bit HDR Alpha)',
-    transparencyClass: 'text-emerald-600 dark:text-emerald-400 font-semibold',
-    colorDepth: '10/12-bit HDR & wide-gamut P3',
-    support: '93.8% (Chrome, Safari 16+, Firefox)',
-    useCase: 'Next-gen performance, high-dynamic range photos, hero banners'
-  },
-  {
-    format: 'JPEG / JPG',
-    mechanism: 'Discrete Cosine Transform (DCT)',
-    savings: 'Baseline standard',
-    savingsClass: 'text-slate-500 dark:text-slate-400',
-    transparency: 'No (Solid Matte Required)',
-    transparencyClass: 'text-rose-500 font-medium',
-    colorDepth: '8-bit sRGB (24-bit TrueColor)',
-    support: '100% (Universal Everywhere)',
-    useCase: 'Government forms, visa portals, job applications, legacy prints'
-  },
-  {
-    format: 'PNG',
-    mechanism: 'DEFLATE / LZ77 predictive filter',
-    savings: 'Larger (Lossless archival)',
-    savingsClass: 'text-amber-600 dark:text-amber-400',
-    transparency: 'Yes (Full 8-bit Alpha)',
-    transparencyClass: 'text-emerald-600 dark:text-emerald-400 font-semibold',
-    colorDepth: '24/48-bit TrueColor + Alpha',
-    support: '100% (Universal Everywhere)',
-    useCase: 'Logos, digital signatures, software UI screenshots, transparency'
-  },
-  {
-    format: 'SVG',
-    mechanism: 'XML Vector Geometry & Paths',
-    savings: '70%–90% vs Raster (Vector)',
-    savingsClass: 'text-emerald-600 dark:text-emerald-400 font-semibold',
-    transparency: 'Yes (Full Vector Transparency)',
-    transparencyClass: 'text-emerald-600 dark:text-emerald-400 font-semibold',
-    colorDepth: 'Infinite Scalability (sRGB)',
-    support: '100% (Modern Browsers)',
-    useCase: 'Scalable icons, brand marks, UI vector assets, responsive design'
-  },
-  {
-    format: 'PDF',
-    mechanism: 'ISO 32000 / DCT Stream Wrapper',
-    savings: 'Document container',
-    savingsClass: 'text-blue-600 dark:text-blue-400 font-semibold',
-    transparency: 'Document Boundaries & Layers',
-    transparencyClass: 'text-slate-600 dark:text-slate-400',
-    colorDepth: 'Standard DeviceRGB & CMYK',
-    support: '100% (Acrobat, Mobile, Browsers)',
-    useCase: 'Multi-page document export, print orders, records & archiving'
-  }
-];
-
-// Comprehensive 7 Technical FAQs
+// Comprehensive 8 Technical FAQs
 const faqs = [
   {
     question: "How does FastToolVerse convert images without uploading them to a remote server?",
@@ -473,6 +403,10 @@ const faqs = [
   {
     question: "Is there any file size limitation or daily throttle on batch image conversions?",
     answer: "No. Because all conversion computation runs locally using your device's CPU and GPU rather than costly remote server infrastructure, FastToolVerse imposes zero file size limits, zero hourly conversion quotas, and zero paywalls. You can convert high-resolution camera photos, heavy RAW/TIFF files, and batches of up to 15 images simultaneously with 100% privacy and zero server lag."
+  },
+  {
+    question: "Can I convert vector SVG files into high-resolution PNG or WebP raster images?",
+    answer: "Yes. SVG vector files are rendered directly on the browser's high-DPI canvas engine and rasterized into lossless PNG or modern WebP format at their natural dimensions or scaled up to custom pixel resolutions. This ensures clean, anti-aliased iconography and logo graphics without pixelation."
   }
 ];
 
@@ -585,15 +519,11 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-2xl mx-auto mb-12">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 mb-3">
-          <ToolIcon name="repeat" class="w-3.5 h-3.5" />
-          <span>Process Architecture</span>
-        </div>
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
           How to Convert Images Online in 3 Simple Steps
         </h2>
         <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
-          Fast, effortless, and private. Convert single files or batch entire folders right inside your browser memory.
+          Fast, effortless, and private. Process single files or batch entire folders right inside your browser in seconds.
         </p>
       </div>
 
@@ -608,7 +538,7 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
             Upload or Drop Image Files
           </h3>
           <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Drag and drop up to 15 images, browse your local drive, or paste from clipboard using <kbd class="px-1.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">Ctrl+V</kbd>. Multi-file client-side ingestion supports JPG, PNG, WebP, AVIF, SVG, BMP, GIF, ICO, and PDF with zero server upload.
+            Drag and drop up to 15 JPG, PNG, WebP, AVIF, SVG, BMP, GIF, ICO, or PDF files, browse your local drive, or paste from clipboard using <kbd class="px-1.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">Ctrl+V</kbd>. Multi-file client-side ingestion runs entirely in-memory with zero server uploads.
           </p>
         </div>
 
@@ -621,7 +551,7 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
             Select Format & Target Parameters
           </h3>
           <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Granular output configuration. Choose raster formats (WebP, JPG, PNG, AVIF), set transparency background fills (HEX/RGB), configure quality compression curves, toggle monochrome grayscale, or downscale custom pixel dimensions per file or globally.
+            Choose your target format (WebP, JPG, PNG, AVIF, GIF, BMP, ICO, or PDF) globally or per file. Open Advanced Options to adjust quality curves, configure smart transparency matte fills (HEX/RGB), toggle monochrome grayscale, or downscale custom pixel dimensions.
           </p>
         </div>
 
@@ -645,14 +575,10 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
 
   <!-- 4. SECTION: Explore 40+ Pre-Configured Format Conversions (pSEO Internal Linking Mesh) -->
   <section class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/40 py-16 sm:py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 mb-3">
-          <ToolIcon name="repeat" class="w-3.5 h-3.5" />
-          <span>Format Presets Hub</span>
-        </div>
+      <div class="text-center max-w-2xl mx-auto mb-12">
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
           Explore 40+ Pre-Configured Format Conversions
         </h2>
@@ -662,37 +588,20 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
       </div>
 
       <!-- 4-Column Responsive Grid of Conversion Preset Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-4">
         {CONVERSION_PRESETS.map((p) => (
-          <div class="group relative p-5 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:bg-slate-50 dark:hover:bg-slate-900/80 hover:border-blue-600 dark:hover:border-blue-500 hover:shadow-md transition-all duration-150 flex flex-col justify-between">
+          <div class="group relative p-2.5 sm:p-4 rounded-xl sm:rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900/70 hover:border-blue-600 dark:hover:border-blue-500 hover:shadow-md transition-all duration-150 flex flex-col justify-between">
             <div>
-              <!-- Top Row: Source -> Target format badges on left, Spec pill on right -->
-              <div class="flex items-center justify-between gap-2 mb-3">
-                <span class="inline-flex items-center gap-1 text-[10px] sm:text-xs font-mono font-bold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50">
-                  <span>{p.source}</span>
-                  <span class="opacity-60">→</span>
-                  <span>{p.target}</span>
-                </span>
-                <span class="text-[10px] sm:text-xs font-mono font-semibold text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700/60">
-                  {p.spec}
-                </span>
-              </div>
-
-              <!-- Title -->
-              <h3 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 leading-snug mb-2">
+              <span class="inline-block text-[10px] sm:text-xs font-semibold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50 mb-1.5 sm:mb-3">
+                {p.source} &rarr; {p.target} ({p.badge})
+              </span>
+              <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 leading-snug mb-2 sm:mb-4">
                 {p.title}
               </h3>
-
-              <!-- Description -->
-              <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed mb-4">
-                {p.description}
-              </p>
             </div>
-
-            <!-- Bottom Action Link -->
             <a
               href={p.href}
-              class="text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 inline-flex items-center gap-1 mt-auto after:absolute after:inset-0"
+              class="text-[11px] sm:text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 inline-flex items-center gap-1 mt-auto after:absolute after:inset-0"
             >
               Convert to {p.target} &rarr;
             </a>
@@ -703,178 +612,446 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
     </div>
   </section>
 
-  <!-- 5. SECTION: Lossy vs. Lossless Image Format Benchmarks (Structured Data Comparison Table) -->
-  <section class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/40 py-16 sm:py-20">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- 5. SECTION: Comparison Matrix Section ("Why Choose FastToolVerse vs Others") -->
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/60 py-16 sm:py-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-900/50 mb-3">
-          <ToolIcon name="scale" class="w-3.5 h-3.5" />
-          <span>Format Benchmark Matrix</span>
+      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 mb-3">
+          <ToolIcon name="zap" class="w-3.5 h-3.5" />
+          <span>Feature Comparison</span>
         </div>
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Lossy vs. Lossless Image Format Benchmarks
+          Why Choose FastToolVerse vs Other Converters
         </h2>
         <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
-          Compare compression mechanisms, transparency support, and platform suitability to choose the optimal export container.
+          Compare the privacy, batch speed, format flexibility, and document packaging of FastToolVerse against traditional online converters.
         </p>
       </div>
 
-      <!-- High-Contrast Responsive Data Table -->
-      <div class="overflow-x-auto rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
-        <table class="w-full text-left text-sm border-collapse min-w-[700px]">
-          <thead>
-            <tr class="border-b border-slate-200 dark:border-slate-800 bg-slate-100/70 dark:bg-slate-800/80 text-slate-900 dark:text-white font-semibold">
-              <th class="p-4 sm:px-6">Format</th>
-              <th class="p-4">Compression Mechanism</th>
-              <th class="p-4">Size Savings vs Raw JPG</th>
-              <th class="p-4">Alpha / Transparency</th>
-              <th class="p-4">Color Depth & Gamut</th>
-              <th class="p-4 sm:px-6">Best Use Case</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-slate-200 dark:divide-slate-800 font-normal text-slate-600 dark:text-slate-300 text-xs sm:text-sm">
-            {FORMAT_BENCHMARKS.map((b) => (
-              <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
-                <td class="p-4 sm:px-6 font-bold text-slate-900 dark:text-white">
-                  <span class="inline-flex items-center gap-2">
-                    <span class="px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 font-mono text-xs">
-                      {b.format}
-                    </span>
-                  </span>
-                </td>
-                <td class="p-4 font-mono text-xs">{b.mechanism}</td>
-                <td class={`p-4 ${b.savingsClass}`}>{b.savings}</td>
-                <td class={`p-4 ${b.transparencyClass}`}>{b.transparency}</td>
-                <td class="p-4 text-xs font-mono">{b.colorDepth}</td>
-                <td class="p-4 sm:px-6">{b.useCase}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <!-- Modern PDF Guru Style Comparison Card / Table -->
+      <div class="overflow-hidden rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+        
+        <!-- Table Header (Desktop & Mobile) -->
+        <div class="grid grid-cols-12 border-b border-slate-200 dark:border-slate-800 bg-slate-100/70 dark:bg-slate-800/80 text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-200">
+          <div class="col-span-12 sm:col-span-4 p-3 sm:p-5 flex items-center border-b sm:border-b-0 border-slate-200 dark:border-slate-800">
+            <span>Feature / Capability</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 bg-blue-50/80 dark:bg-blue-950/40 border-r sm:border-x border-slate-200 dark:border-slate-800 text-blue-700 dark:text-blue-300 flex items-center justify-between">
+            <span class="font-bold flex items-center gap-1.5">
+              FastToolVerse
+              <span class="hidden sm:inline-block px-2 py-0.5 text-[11px] font-medium bg-blue-600 text-white rounded-full">Recommended</span>
+            </span>
+            <span class="text-xs text-blue-600 dark:text-blue-400 font-normal hidden md:inline">This Tool</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 text-slate-600 dark:text-slate-400 flex items-center">
+            <span>Other Cloud Converters</span>
+          </div>
+        </div>
+
+        <!-- Row 1: Privacy -->
+        <div class="grid grid-cols-12 border-b border-slate-200 dark:border-slate-800 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+          <div class="col-span-12 sm:col-span-4 p-3 sm:p-5 flex flex-col justify-center bg-slate-50/60 dark:bg-slate-800/30 sm:bg-transparent">
+            <span class="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">Privacy & Security</span>
+            <span class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5">Where your image conversions run</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 bg-blue-50/30 dark:bg-blue-950/15 border-r sm:border-x border-slate-200 dark:border-slate-800 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            </div>
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">100% In-Browser</p>
+              <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">HTML5 Canvas engine. Zero server uploads, zero logs, images never leave your machine.</p>
+            </div>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/80 text-rose-600 dark:text-rose-400 border border-rose-300 dark:border-rose-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </div>
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Server Uploads</p>
+              <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Photos uploaded to remote cloud queues with potential retention and privacy risks.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Batch Processing -->
+        <div class="grid grid-cols-12 border-b border-slate-200 dark:border-slate-800 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+          <div class="col-span-12 sm:col-span-4 p-3 sm:p-5 flex flex-col justify-center bg-slate-50/60 dark:bg-slate-800/30 sm:bg-transparent">
+            <span class="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">Batch Processing</span>
+            <span class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5">Simultaneous image conversions</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 bg-blue-50/30 dark:bg-blue-950/15 border-r sm:border-x border-slate-200 dark:border-slate-800 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            </div>
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">Up to 15 in Batch</p>
+              <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Instant multi-threaded browser execution with individual or batch ZIP downloads.</p>
+            </div>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/80 text-rose-600 dark:text-rose-400 border border-rose-300 dark:border-rose-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </div>
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Limited to 1–2</p>
+              <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Throttled queues, conversion countdown delays, or batch locked behind paid tiers.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3: Output Ecosystem -->
+        <div class="grid grid-cols-12 border-b border-slate-200 dark:border-slate-800 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+          <div class="col-span-12 sm:col-span-4 p-3 sm:p-5 flex flex-col justify-center bg-slate-50/60 dark:bg-slate-800/30 sm:bg-transparent">
+            <span class="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">Format Ecosystem</span>
+            <span class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5">Supported output image containers</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 bg-blue-50/30 dark:bg-blue-950/15 border-r sm:border-x border-slate-200 dark:border-slate-800 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            </div>
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">WebP, AVIF, JPG, PNG, GIF, BMP, ICO, PDF</p>
+              <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Modern web standards with transparency fills, custom quality, and smart matte color rendering.</p>
+            </div>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/80 text-rose-600 dark:text-rose-400 border border-rose-300 dark:border-rose-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </div>
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Basic JPG & PNG Only</p>
+              <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Modern WebP/AVIF or multi-page PDF exports often require separate tools or fees.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 4: Document Packaging -->
+        <div class="grid grid-cols-12 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+          <div class="col-span-12 sm:col-span-4 p-3 sm:p-5 flex flex-col justify-center bg-slate-50/60 dark:bg-slate-800/30 sm:bg-transparent">
+            <span class="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">Multi-Page PDF & Bundling</span>
+            <span class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5">Compiling photos into document scans</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 bg-blue-50/30 dark:bg-blue-950/15 border-r sm:border-x border-slate-200 dark:border-slate-800 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            </div>
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white">1-Click Multi-Page PDF & JSZip</p>
+              <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Instantly merge dozens of receipts, contracts, and scans into a single PDF or clean ZIP archive.</p>
+            </div>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-3 sm:p-5 flex items-start gap-2 sm:gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/80 text-rose-600 dark:text-rose-400 border border-rose-300 dark:border-rose-700 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </div>
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Single File Exports Only</p>
+              <p class="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Users forced to download one file at a time; PDF combination requires separate paid services.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </div>
   </section>
 
-  <!-- 6. SECTION: Technical Deep-Dive: Image Encoding & Modern Web Optimization -->
-  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-16 sm:py-24">
+  <!-- 6. SECTION: Core Advantages / Technical Standards & Privacy -->
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-16 sm:py-20">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
         <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/50 mb-3">
-          <ToolIcon name="code" class="w-3.5 h-3.5" />
-          <span>Engineering Architecture</span>
+          <ToolIcon name="shield-check" class="w-3.5 h-3.5" />
+          <span>Technical Standards & Privacy</span>
         </div>
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Technical Deep-Dive: Image Encoding & Modern Web Optimization
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Core Conversion Architecture & Color Standards
         </h2>
-        <p class="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
-          An in-depth exploration of compression algorithms, chroma downsampling, alpha channel composition, and client-side sandboxed execution.
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          Essential insights into vector rasterization, alpha channel compositing, and sandboxed memory execution.
         </p>
       </div>
 
-      <!-- 4 Technical Articles Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
         
-        <!-- Deep Dive 1: Chroma Subsampling -->
-        <article class="p-6 sm:p-8 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm flex flex-col justify-between">
+        <!-- Guide 1: Vector vs. Raster Color Space Encoding -->
+        <div class="p-6 sm:p-7 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 flex flex-col justify-between">
           <div>
             <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-5 border border-blue-100 dark:border-blue-900/50">
-              <ToolIcon name="eye" class="w-5 h-5" />
+              <ToolIcon name="scale" class="w-5 h-5" />
             </div>
-            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-3">
-              Understanding Chroma Subsampling and Raster Compression
+            <h3 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-white mb-2.5">
+              Color Space & Precision Encoding
             </h3>
             <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-              Human visual perception is substantially more sensitive to variations in brightness (luminance, <code class="font-mono text-xs bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded">Y</code>) than to fine shifts in color hue and saturation (chrominance, <code class="font-mono text-xs bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded">Cb</code> and <code class="font-mono text-xs bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded">Cr</code>). Modern lossy encoders exploit this biological trait through <strong>4:2:0 chroma subsampling</strong>.
+              Modern image containers differ substantially in color reproduction pipelines and gamut coverage.
             </p>
-            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              By sampling chrominance resolution at half horizontal and half vertical rates relative to luminance, 50% of raw color data is discarded before Discrete Cosine Transform (DCT) quantization begins. This yields immediate 50% byte savings with virtually zero perceptible loss on photorealistic scenes.
-            </p>
+            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+              <li class="flex items-start gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0"></span>
+                <span><strong>sRGB Standard (8-bit)</strong>: Universal color space utilized by standard JPEG, PNG, and WebP for consistent cross-browser and mobile display fidelity.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0"></span>
+                <span><strong>Wide-Gamut P3 & HDR (10/12-bit)</strong>: Supported natively in modern AVIF containers for professional photography with expanded dynamic range and gradient depth.</span>
+              </li>
+            </ul>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80">
-            <span class="text-xs font-mono text-blue-600 dark:text-blue-400 font-medium">Mechanism: YCbCr 4:2:0 Quantization Matrix</span>
+            <span class="text-[11px] font-mono text-slate-400 dark:text-slate-500 uppercase tracking-wider">Supports: sRGB, Display P3, TrueColor 24/32-Bit</span>
           </div>
-        </article>
+        </div>
 
-        <!-- Deep Dive 2: Lossless vs Next-Gen Delivery -->
-        <article class="p-6 sm:p-8 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm flex flex-col justify-between">
+        <!-- Guide 2: Alpha Channel Compositing & Matte Geometry -->
+        <div class="p-6 sm:p-7 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 flex flex-col justify-between">
           <div>
             <div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-5 border border-purple-100 dark:border-purple-900/50">
-              <ToolIcon name="zap" class="w-5 h-5" />
-            </div>
-            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-3">
-              The Difference Between Lossless Archival and Next-Gen Delivery
-            </h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-              Legacy archival formats like PNG rely on <strong>DEFLATE (LZ77 + Huffman coding)</strong> combined with five 2D predictive filter heuristics (Sub, Up, Average, Paeth). Every pixel is preserved bit-for-bit, making PNG the gold standard for software screenshots, vector diagrams, and typographic marks.
-            </p>
-            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              Conversely, next-generation codecs like <strong>WebP and AVIF</strong> leverage spatial prediction algorithms derived from VP8 and AV1 video standards. By predicting pixel blocks from adjacent macroblocks, they achieve 30% to 55% smaller payloads than JPEG and PNG at equivalent visual fidelity, dramatically accelerating Largest Contentful Paint (LCP).
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80">
-            <span class="text-xs font-mono text-purple-600 dark:text-purple-400 font-medium">Standard: ISO/IEC 15444 & AOMedia AV1 Specification</span>
-          </div>
-        </article>
-
-        <!-- Deep Dive 3: Alpha Channel Flattening -->
-        <article class="p-6 sm:p-8 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-5 border border-amber-100 dark:border-amber-900/50">
               <ToolIcon name="layers" class="w-5 h-5" />
             </div>
-            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-3">
-              Alpha Channel Flattening During Transparent Conversions
+            <h3 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-white mb-2.5">
+              Alpha Compositing & Matte Geometry
             </h3>
             <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-              The 24-bit JPEG and BMP file specifications have no alpha transparency channel. When converting 32-bit RGBA files (transparent PNG, WebP, or SVG) to JPEG, every pixel's alpha byte is discarded. Traditional converters assume a black background <code class="font-mono text-xs bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded">#000000</code>, creating unsightly dark halos along anti-aliased edges.
+              Flawless conversion of transparent graphics requires intelligent background matte compensation.
             </p>
-            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              FastToolVerse implements <strong>Smart Transparency Compositing</strong>. Before running raster quantization, an offscreen canvas renders an opaque matte (defaulting to pure white <code class="font-mono text-xs bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded">#FFFFFF</code> or any custom hex color) beneath the transparent pixels, ensuring silky-smooth anti-aliased edges with zero dark fringes.
-            </p>
+            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+              <li class="flex items-start gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-purple-500 mt-2 shrink-0"></span>
+                <span><strong>Alpha Retention (PNG/WebP/AVIF)</strong>: Preserves full 8-bit or 10-bit transparent alpha channels for product cutouts, logos, and user interface elements.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-purple-500 mt-2 shrink-0"></span>
+                <span><strong>Smart Matte Blending (JPEG/BMP)</strong>: Automatically composites transparent pixels against pure white (#FFFFFF) or custom HEX colors to prevent unsightly black halo artifacts.</span>
+              </li>
+            </ul>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80">
-            <span class="text-xs font-mono text-amber-600 dark:text-amber-400 font-medium">Algorithm: Alpha Matte Blending (C = α·C_fg + (1-α)·C_bg)</span>
+            <span class="text-[11px] font-mono text-slate-400 dark:text-slate-500 uppercase tracking-wider">Formula: C = α·C_fg + (1-α)·C_bg</span>
           </div>
-        </article>
+        </div>
 
-        <!-- Deep Dive 4: In-Browser Memory Processing -->
-        <article class="p-6 sm:p-8 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm flex flex-col justify-between">
+        <!-- Guide 3: Zero-Upload Local Processing -->
+        <div class="p-6 sm:p-7 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 flex flex-col justify-between">
           <div>
             <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-5 border border-emerald-100 dark:border-emerald-900/50">
               <ToolIcon name="shield-check" class="w-5 h-5" />
             </div>
-            <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-3">
-              Client-Side In-Browser Memory Processing vs. Cloud APIs
+            <h3 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-white mb-2.5">
+              Zero-Upload Local Sandbox Security
             </h3>
             <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-              Traditional online converters upload your personal documents and photos across the public internet to third-party cloud servers. This introduces network transfer lag, file size limits, rate limiting, and potential data leaks of sensitive identity documents.
+              Unlike cloud services that stream personal images to remote servers, FastToolVerse runs 100% locally.
             </p>
-            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              FastToolVerse executes all image conversions directly inside your client browser sandboxed memory via HTML5 Canvas, typed arrays, and pure JavaScript encoders. Sensitive documents, passport pictures, and proprietary assets never leave your local device, guaranteeing 100% compliance with GDPR, HIPAA, and corporate security guidelines.
-            </p>
+            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+              <li class="flex items-start gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 shrink-0"></span>
+                <span><strong>HTML5 Canvas Sandbox</strong>: Image decoding, resampling, palette extraction, and re-encoding occur strictly in your browser's private memory heap.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 shrink-0"></span>
+                <span><strong>Zero Network Exposure</strong>: Zero bytes of image content or file paths leave your computer. Complete confidentiality for sensitive documents, ID cards, and commercial media.</span>
+              </li>
+            </ul>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80">
-            <span class="text-xs font-mono text-emerald-600 dark:text-emerald-400 font-medium">Architecture: Zero-Transmission Web Sandbox (100% Client-Side)</span>
+            <span class="text-[11px] font-mono text-slate-400 dark:text-slate-500 uppercase tracking-wider">100% Client-Side • Zero Cloud Storage</span>
           </div>
-        </article>
+        </div>
 
       </div>
 
     </div>
   </section>
 
-  <!-- 7. SECTION: Frequently Asked Questions (FAQ) (SEO Accordion with FAQPage Schema) -->
-  <section class="py-16 sm:py-24 border-t border-slate-200 dark:border-slate-800">
+  <!-- 7. SECTION: 700+ WORD SEMANTIC TECHNICAL ARTICLE -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-12 prose dark:prose-invert text-slate-300">
+    <div class="border-t border-slate-200 dark:border-slate-800/80 pt-12 space-y-12">
+      
+      <!-- H2 1: Complete Privacy -->
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Complete Privacy: A 100% Client-Side Private Image Converter
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          In an era where everyday web apps routinely upload confidential media to third-party cloud servers for remote processing, FastToolVerse provides a radically secure architecture. As a dedicated <strong>client-side private image converter</strong>, every pixel transformation, color-quantization loop, and container re-encoding pass executes directly within your browser's local sandbox via HTML5 Canvas, WebAssembly, and TypedArray memory buffers.
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          Because <strong>zero server uploads</strong> occur, your confidential files—such as international passport photographs, medical records, financial statements, identity cards, and legal signatures—remain strictly on your machine. There are no temporary cloud storage buckets, zero telemetry tracking, and zero risk of network interception. Everything completes instantaneously in memory, empowering you to convert sensitive files safely even while completely disconnected from the internet.
+        </p>
+      </div>
+
+      <!-- H2 2: High-Throughput Batch Image Converter -->
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          High-Throughput Batch Image Converter for Instant Workflow Pipelines
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          Converting files one by one creates a severe bottleneck for developers, content creators, and corporate operations. Engineered as a high-throughput <strong>batch image converter</strong>, FastToolVerse allows you to drag, drop, and queue up to <strong>15 files concurrently</strong> across mixed formats.
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          Each item within your multi-image queue can be customized independently or converted uniformly across the entire batch:
+        </p>
+        <ul class="space-y-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 list-disc pl-5">
+          <li><strong>Concurrent Multi-Image Ingestion:</strong> Drag and drop up to 15 images at once. Local multi-threaded canvas rendering prepares outputs in parallel without server queuing delays.</li>
+          <li><strong>Granular Format Overrides:</strong> Apply a global target format across all files, or override the destination format individually per queue card (e.g., convert image 1 to WebP, image 2 to AVIF, and image 3 to PDF).</li>
+          <li><strong>1-Click Batch ZIP and Multi-Page PDF:</strong> Package all converted outputs into a single, clean ZIP archive using client-side JSZip, or merge them directly into a multi-page PDF document with zero upload wait times.</li>
+        </ul>
+      </div>
+
+      <!-- H2 3: Next-Gen Web Optimization -->
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Next-Gen Web Optimization: WebP &amp; AVIF Compression Mechanics
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          Serving legacy JPEG and PNG images to modern web visitors creates unnecessary bandwidth overhead and harms Google Core Web Vitals scores, particularly Largest Contentful Paint (LCP). FastToolVerse enables effortless transcoding into <strong>WebP and AVIF</strong> modern compression formats.
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          WebP leverages intra-frame predictive coding borrowed from the VP8 video standard, achieving a 25% to 35% size reduction over equivalent JPEG photography while supporting both lossy and lossless modes with 8-bit alpha channels. For cutting-edge applications, AVIF utilizes the AV1 video codec's transform kernels, delivering up to 50% to 60% byte savings compared to JPEG, paired with 10-bit and 12-bit wide-gamut HDR color reproduction for breathtaking photographic depth.
+        </p>
+      </div>
+
+      <!-- H2 4: Lossless Format Conversion -->
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Lossless Format Conversion: Preserving Sharp Vectors and Crisp Typography
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          When dealing with branding marks, software screenshots, diagrams, and digital signatures, lossy compression algorithms introduce blurry ringing artifacts around high-contrast edges. FastToolVerse incorporates a dedicated <strong>lossless format conversion</strong> pipeline to guarantee absolute pixel fidelity.
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          Our in-browser engine rasterizes scalable vector SVG illustrations directly onto high-density pixel grids, encodes 32-bit TrueColor PNGs with transparent alpha channels intact, and packages legacy Windows BMP or multi-resolution ICO favicons with bit-for-bit mathematical accuracy.
+        </p>
+      </div>
+
+      <!-- H2 5: Alpha Channel Handling (EMBEDDED CUSTOM MINI-TABLE) -->
+      <div id="alpha-guide" class="space-y-4 scroll-mt-20">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Alpha Channel Handling: Transparent vs. Solid Background Reproduction
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          One of the most common pitfalls in digital image conversion occurs when transitioning between formats with transparency (PNG, SVG, WebP) and formats without transparency (JPEG, BMP). Without proper matte compensation, transparent pixels are erroneously mapped to black, generating dark halos around anti-aliased outlines. FastToolVerse provides precise control over alpha matte blending.
+        </p>
+        
+        <!-- Tailwind Responsive Comparison Table Matching Resizer Layout -->
+        <div class="not-prose my-6 overflow-hidden rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="bg-slate-100/70 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white font-semibold">
+                <tr>
+                  <th scope="col" class="py-3.5 px-4 sm:px-6">Conversion Pipeline</th>
+                  <th scope="col" class="py-3.5 px-4 sm:px-6">Alpha / Transparency Status</th>
+                  <th scope="col" class="py-3.5 px-4 sm:px-6">Color Pipeline</th>
+                  <th scope="col" class="py-3.5 px-4 sm:px-6">Typical Use Case</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-slate-600 dark:text-slate-300">
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                  <td class="py-3.5 px-4 sm:px-6 font-medium text-slate-900 dark:text-white">PNG / SVG &rarr; WebP</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-semibold text-emerald-600 dark:text-emerald-400">Alpha Preserved (8-bit)</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-mono text-xs text-blue-600 dark:text-blue-400">8-bit sRGB</td>
+                  <td class="py-3.5 px-4 sm:px-6">Modern web graphics &amp; transparent logos</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                  <td class="py-3.5 px-4 sm:px-6 font-medium text-slate-900 dark:text-white">PNG / WebP &rarr; JPG</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-medium text-amber-600 dark:text-amber-400">Matte Fill Applied (White/Hex)</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-mono text-xs text-purple-600 dark:text-purple-400">24-bit TrueColor</td>
+                  <td class="py-3.5 px-4 sm:px-6">E-commerce white backgrounds &amp; job portals</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                  <td class="py-3.5 px-4 sm:px-6 font-medium text-slate-900 dark:text-white">Any Format &rarr; AVIF</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-semibold text-emerald-600 dark:text-emerald-400">Alpha Preserved (10-bit)</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-mono text-xs text-emerald-600 dark:text-emerald-400">10/12-bit HDR P3</td>
+                  <td class="py-3.5 px-4 sm:px-6">Ultra-lightweight landing pages &amp; heroes</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                  <td class="py-3.5 px-4 sm:px-6 font-medium text-slate-900 dark:text-white">Raster Images &rarr; PDF</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-medium text-blue-600 dark:text-blue-400">Document Embed (Multi-Page)</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-mono text-xs text-blue-600 dark:text-blue-400">DeviceRGB Standard</td>
+                  <td class="py-3.5 px-4 sm:px-6">Official document scans, receipts &amp; printing</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                  <td class="py-3.5 px-4 sm:px-6 font-medium text-slate-900 dark:text-white">PNG &rarr; ICO (Favicon)</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-semibold text-emerald-600 dark:text-emerald-400">Alpha Preserved</td>
+                  <td class="py-3.5 px-4 sm:px-6 font-mono text-xs text-rose-600 dark:text-rose-400">32-bit RGBA</td>
+                  <td class="py-3.5 px-4 sm:px-6">Browser tab icons &amp; desktop shortcuts</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- H2 6: Client-Side Quality Sliders & Metadata Scrubbing (EMBEDDED 3-PRESET PILL BOX) -->
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Client-Side Quality Sliders &amp; Metadata Scrubbing
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          Balancing file weight against visual fidelity requires granular calibration. FastToolVerse features an integrated client-side quality slider that modulates lossy quantization tables from 10% to 100% in real time.
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          Furthermore, every re-encoding pass automatically strips unneeded EXIF metadata—including GPS geo-coordinates, camera serial numbers, exposure timestamps, and lens models. This protects personal identity privacy while eliminating 5KB to 40KB of invisible data bloat from every exported image.
+        </p>
+        
+        <!-- 3-Preset Pill Box Matching Resizer Layout -->
+        <div class="not-prose grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+          <div class="group p-4 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:border-blue-600 hover:shadow-md transition-all duration-150 text-center block">
+            <span class="inline-block px-2.5 py-1 rounded-full text-xs font-bold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 mb-1">Web Quality (80%)</span>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Aggressive byte reduction optimized for responsive blog imagery and mobile web speed.</p>
+            <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 mt-2 inline-flex items-center gap-1">
+              Optimized for Web &rarr;
+            </span>
+          </div>
+          <div class="group p-4 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:border-purple-600 hover:shadow-md transition-all duration-150 text-center block">
+            <span class="inline-block px-2.5 py-1 rounded-full text-xs font-bold bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 mb-1">High Fidelity (90%)</span>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Default production sweet-spot preserving facial tones, sharp text, and smooth gradients.</p>
+            <span class="text-xs font-semibold text-purple-600 dark:text-purple-400 mt-2 inline-flex items-center gap-1">
+              Balanced Fidelity &rarr;
+            </span>
+          </div>
+          <div class="group p-4 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:border-emerald-600 hover:shadow-md transition-all duration-150 text-center block">
+            <span class="inline-block px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 mb-1">Maximum Lossless (100%)</span>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Bit-for-bit mathematical preservation tailored for print archival, logos, and digital art.</p>
+            <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mt-2 inline-flex items-center gap-1">
+              Zero Degradation &rarr;
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 8. Bottom High-Conversion CTA Banner (Strictly Above FAQ) -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+    <div class="rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white shadow-xl shadow-blue-500/10 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
+      <div class="space-y-1">
+        <h3 class="text-lg sm:text-xl font-bold tracking-tight text-white">
+          Ready to convert images at scale with 100% privacy?
+        </h3>
+        <p class="text-xs sm:text-sm text-blue-100 max-w-md">
+          Zero server uploads, zero wait times, batch download as ZIP or multi-page PDF with no limits.
+        </p>
+      </div>
+      <a
+        href="#tool-workspace"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white text-slate-900 hover:bg-blue-50 font-semibold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all active:scale-95 shrink-0"
+      >
+        <span>Upload &amp; Convert Now</span>
+        <span aria-hidden="true" class="text-base font-bold leading-none">&uarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 9. SECTION: Frequently Asked Questions (FAQ Accordion with 8 items) -->
+  <section class="py-16 sm:py-24">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center mb-12">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 mb-3">
-          <ToolIcon name="help-circle" class="w-3.5 h-3.5" />
-          <span>Technical FAQ</span>
-        </div>
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
           Frequently Asked Questions
         </h2>
@@ -905,127 +1082,42 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
     </div>
   </section>
 
-  <!-- 8. Contextual Internal Links Section -->
+  <!-- 10. Related Tools Row (Matching Image Resizer Exactly - No Orphan Pills) -->
   <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-950/40 py-12 sm:py-16">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-2xl mx-auto mb-8">
-        <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
-          Explore Related Image Utilities & Presets
-        </h3>
-        <p class="mt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
-          Seamlessly transition between image resizing, KB compression, and official dimension presets.
-        </p>
-      </div>
-
-      <!-- Core Related Tools Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-6">
+        Explore Related Image Utilities
+      </h3>
+      <div class="flex flex-wrap justify-center gap-3">
         <a
-          href="/tools/image-resizer/"
-          class="p-4 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-600 hover:shadow-md transition-all duration-150 shadow-sm group flex items-start gap-3"
+          href="/tools/image-resizer"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-600 hover:shadow-md transition-all duration-150 shadow-sm"
         >
-          <div class="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-            <ToolIcon name="maximize-2" class="w-4 h-4" />
-          </div>
-          <div>
-            <h4 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-              Image Resizer
-            </h4>
-            <p class="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
-              Resize dimensions in pixels, cm, mm, and aspect locks.
-            </p>
-          </div>
+          <ToolIcon name="maximize-2" class="w-4 h-4 text-blue-500" />
+          <span>Image Resizer</span>
         </a>
-
         <a
-          href="/tools/image-compressor/"
-          class="p-4 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-600 hover:shadow-md transition-all duration-150 shadow-sm group flex items-start gap-3"
+          href="/tools/image-compressor"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-600 hover:shadow-md transition-all duration-150 shadow-sm"
         >
-          <div class="w-9 h-9 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-            <ToolIcon name="minimize-2" class="w-4 h-4" />
-          </div>
-          <div>
-            <h4 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-              Image Compressor
-            </h4>
-            <p class="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
-              Reduce size to exact 20KB, 50KB, or 100KB targets.
-            </p>
-          </div>
+          <ToolIcon name="minimize-2" class="w-4 h-4 text-emerald-500" />
+          <span>Image Compressor</span>
         </a>
-
         <a
-          href="/resize-image-to-20kb/"
-          class="p-4 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-600 hover:shadow-md transition-all duration-150 shadow-sm group flex items-start gap-3"
+          href="/tools/image-cropper"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-600 hover:shadow-md transition-all duration-150 shadow-sm"
         >
-          <div class="w-9 h-9 rounded-lg bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-            <ToolIcon name="zap" class="w-4 h-4" />
-          </div>
-          <div>
-            <h4 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
-              Resize to 20 KB
-            </h4>
-            <p class="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
-              Calibrated for strict government job and exam portals.
-            </p>
-          </div>
+          <ToolIcon name="crop" class="w-4 h-4 text-purple-500" />
+          <span>Image Cropper</span>
         </a>
-
         <a
-          href="/passport-size-photo-2x2-inch/"
-          class="p-4 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-600 hover:shadow-md transition-all duration-150 shadow-sm group flex items-start gap-3"
+          href="/tools/image-rotator"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-600 hover:shadow-md transition-all duration-150 shadow-sm"
         >
-          <div class="w-9 h-9 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-            <ToolIcon name="user-check" class="w-4 h-4" />
-          </div>
-          <div>
-            <h4 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-              2x2 Passport Photo
-            </h4>
-            <p class="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">
-              Official US visa & DS-160 600x600 px biometric preset.
-            </p>
-          </div>
+          <ToolIcon name="rotate-cw" class="w-4 h-4 text-cyan-500" />
+          <span>Image Rotator</span>
         </a>
       </div>
-
-      <!-- Quick Category Presets Pills -->
-      <div class="flex flex-wrap justify-center gap-2 text-xs">
-        <a href="/tools/image-cropper" class="px-3 py-1.5 rounded-full border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-blue-600 hover:shadow-sm transition-all duration-150 shadow-2xs">
-          Image Cropper
-        </a>
-        <a href="/tools/image-rotator" class="px-3 py-1.5 rounded-full border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-blue-600 hover:shadow-sm transition-all duration-150 shadow-2xs">
-          Image Rotator
-        </a>
-        <a href="/tools/image-flipper" class="px-3 py-1.5 rounded-full border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-blue-600 hover:shadow-sm transition-all duration-150 shadow-2xs">
-          Image Flipper
-        </a>
-        <a href="/tools/aspect-ratio-calculator" class="px-3 py-1.5 rounded-full border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-blue-600 hover:shadow-sm transition-all duration-150 shadow-2xs">
-          Aspect Ratio Calculator
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 9. SECTION: Bottom High-Conversion CTA & Final Summary -->
-  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-    <div class="rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white shadow-xl shadow-blue-500/10 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
-      <div class="space-y-1">
-        <h3 class="text-lg sm:text-xl font-bold tracking-tight text-white">
-          Ready to convert images at scale with 100% privacy?
-        </h3>
-        <p class="text-xs sm:text-sm text-blue-100 max-w-md">
-          Zero server uploads, zero wait times, batch download as ZIP or multi-page PDF with no limits.
-        </p>
-      </div>
-      <a
-        href="#tool-workspace"
-        class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white text-slate-900 hover:bg-blue-50 font-semibold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all active:scale-95 shrink-0"
-      >
-        <span>Upload & Convert Now</span>
-        <span aria-hidden="true" class="text-base font-bold leading-none">↑</span>
-      </a>
     </div>
   </section>
 

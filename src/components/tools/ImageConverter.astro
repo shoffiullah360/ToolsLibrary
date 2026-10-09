@@ -277,14 +277,11 @@ const {
                 step="1"
                 class="w-full accent-blue-600 cursor-pointer"
               />
-              <div class="flex justify-between text-[11px] text-slate-500 dark:text-slate-400 font-mono">
+              <div class="flex justify-between text-xs md:text-sm font-medium text-slate-200 font-mono">
                 <span>10% (Smallest)</span>
                 <span>90% (Standard)</span>
                 <span>100% (Max)</span>
               </div>
-              <p class="text-xs text-slate-500 dark:text-slate-400 font-normal leading-normal">
-                For WebP, JPG, AVIF & PDF. PNG/BMP/ICO outputs remain lossless.
-              </p>
             </div>
 
             <!-- Option 2: Smart Transparency Fill -->
@@ -305,14 +302,11 @@ const {
               </div>
               <!-- Quick Color Presets -->
               <div class="flex flex-wrap items-center gap-1.5 pt-0.5">
-                <button type="button" class="color-preset-btn px-2 py-0.5 text-xs font-medium rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:border-blue-500 cursor-pointer" data-color="#FFFFFF">White</button>
-                <button type="button" class="color-preset-btn px-2 py-0.5 text-xs font-medium rounded border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:border-blue-500 cursor-pointer" data-color="#F1F5F9">Gray</button>
-                <button type="button" class="color-preset-btn px-2 py-0.5 text-xs font-medium rounded border border-slate-200 dark:border-slate-700 bg-slate-900 text-white hover:border-blue-500 cursor-pointer" data-color="#0F172A">Slate</button>
-                <button type="button" class="color-preset-btn px-2 py-0.5 text-xs font-medium rounded border border-slate-200 dark:border-slate-700 bg-black text-white hover:border-blue-500 cursor-pointer" data-color="#000000">Black</button>
+                <button type="button" class="color-preset-btn px-2 py-0.5 font-medium text-xs md:text-sm text-slate-100 rounded border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-blue-500 cursor-pointer" data-color="#FFFFFF">White</button>
+                <button type="button" class="color-preset-btn px-2 py-0.5 font-medium text-xs md:text-sm text-slate-100 rounded border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 hover:border-blue-500 cursor-pointer" data-color="#F1F5F9">Gray</button>
+                <button type="button" class="color-preset-btn px-2 py-0.5 font-medium text-xs md:text-sm text-slate-100 rounded border border-slate-200 dark:border-slate-700 bg-slate-900 hover:border-blue-500 cursor-pointer" data-color="#0F172A">Slate</button>
+                <button type="button" class="color-preset-btn px-2 py-0.5 font-medium text-xs md:text-sm text-slate-100 rounded border border-slate-200 dark:border-slate-700 bg-black hover:border-blue-500 cursor-pointer" data-color="#000000">Black</button>
               </div>
-              <p class="text-xs text-slate-500 dark:text-slate-400 font-normal leading-normal">
-                Fills transparent alpha channels when converting PNG/WebP/SVG to JPG or BMP.
-              </p>
             </div>
 
             <!-- Option 3: Grayscale & EXIF -->
@@ -320,10 +314,10 @@ const {
               <!-- Grayscale Switch -->
               <div class="flex items-center justify-between">
                 <div>
-                  <label for="grayscale-toggle" class="text-xs uppercase tracking-wider font-semibold text-slate-700 dark:text-slate-300 cursor-pointer">
+                  <label for="grayscale-toggle" class="text-xs md:text-sm font-bold text-slate-100 tracking-wider uppercase cursor-pointer">
                     Grayscale (B&W)
                   </label>
-                  <p class="text-xs text-slate-500 dark:text-slate-400 font-normal">1-click monochrome filter</p>
+                  <p class="text-xs text-slate-300 font-normal">1-click monochrome filter</p>
                 </div>
                 <input
                   type="checkbox"
@@ -336,10 +330,10 @@ const {
               <!-- Strip EXIF Checkbox -->
               <div class="pt-2.5 border-t border-slate-200/60 dark:border-slate-700/60 flex items-center justify-between">
                 <div>
-                  <label for="strip-exif-toggle" class="text-xs uppercase tracking-wider font-semibold text-slate-700 dark:text-slate-300 cursor-pointer">
+                  <label for="strip-exif-toggle" class="text-xs md:text-sm font-bold text-slate-100 tracking-wider uppercase cursor-pointer">
                     Strip EXIF Metadata
                   </label>
-                  <p class="text-xs text-slate-500 dark:text-slate-400 font-normal">Purges GPS and camera tags</p>
+                  <p class="text-xs text-slate-300 font-normal">Purges GPS and camera tags</p>
                 </div>
                 <input
                   type="checkbox"
@@ -355,18 +349,17 @@ const {
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
                   <span class="text-xs uppercase tracking-wider font-semibold text-slate-700 dark:text-slate-300">Resize On Convert</span>
-                  <p class="text-xs text-slate-500 dark:text-slate-400 font-normal">Downscale or custom resolution</p>
                 </div>
 
                 <!-- Resize Mode Selector -->
                 <div class="inline-flex rounded-lg p-0.5 bg-slate-200/70 dark:bg-slate-700/60 text-xs font-medium">
-                  <button type="button" class={`resize-mode-tab px-2.5 py-1 rounded-md text-xs font-medium cursor-pointer ${initialResizeMode === 'original' ? 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 shadow-2xs font-medium' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`} data-mode="original">
+                  <button type="button" class={`resize-mode-tab px-2.5 py-1 rounded-md text-xs md:text-sm font-medium text-slate-200 cursor-pointer ${initialResizeMode === 'original' ? 'bg-white dark:bg-slate-900 shadow-2xs font-medium' : 'hover:text-white'}`} data-mode="original">
                     Original
                   </button>
-                  <button type="button" class={`resize-mode-tab px-2.5 py-1 rounded-md text-xs font-medium cursor-pointer ${initialResizeMode === 'percentage' ? 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 shadow-2xs font-medium' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`} data-mode="percentage">
+                  <button type="button" class={`resize-mode-tab px-2.5 py-1 rounded-md text-xs md:text-sm font-medium text-slate-200 cursor-pointer ${initialResizeMode === 'percentage' ? 'bg-white dark:bg-slate-900 shadow-2xs font-medium' : 'hover:text-white'}`} data-mode="percentage">
                     Scale %
                   </button>
-                  <button type="button" class={`resize-mode-tab px-2.5 py-1 rounded-md text-xs font-medium cursor-pointer ${initialResizeMode === 'custom' ? 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 shadow-2xs font-medium' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`} data-mode="custom">
+                  <button type="button" class={`resize-mode-tab px-2.5 py-1 rounded-md text-xs md:text-sm font-medium text-slate-200 cursor-pointer ${initialResizeMode === 'custom' ? 'bg-white dark:bg-slate-900 shadow-2xs font-medium' : 'hover:text-white'}`} data-mode="custom">
                     Custom Px
                   </button>
                 </div>

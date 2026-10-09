@@ -933,11 +933,11 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
   {
     slug: '3000x3000-image-converter',
     title: '3000x3000 Image Converter',
-    metaTitle: '3000x3000 Image Converter Online Free - Exact Square Pixel Resizer',
-    metaDescription: 'Convert and resize images to exact 3000x3000 square pixels online. Meets official Apple Podcasts, Spotify cover art, and vinyl album specifications with 100% privacy.',
+    metaTitle: '3000x3000 Image Converter – Convert Images Online Free',
+    metaDescription: 'Convert images to 3000x3000 pixels online. Upload supported photos, select JPG, PNG, or WebP, and export 1:1 square artwork with private in-browser processing.',
     h1: '3000x3000 Image Converter',
     badge: '3000 × 3000 Px Square Canvas (1:1 Ratio)',
-    introCopy: 'Convert and resize artwork, photography, and album covers to an exact 3000x3000 pixel 1:1 square canvas in seconds. Engineered specifically to comply with official Apple Podcasts, Spotify, and Amazon Music distribution guidelines, vinyl sleeve album prints, and high-resolution e-commerce zoom requirements with 100% in-browser privacy.',
+    introCopy: 'Convert images to an exact 3000x3000 pixel 1:1 square canvas in seconds. Pre-configured for high-resolution podcast cover art, square profile graphics, and 9-megapixel digital artwork with 100% private in-browser processing.',
     preset: {
       targetFormat: 'jpeg',
       accept: 'image/*',
@@ -950,122 +950,126 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
     steps: [
       {
         stepNumber: '01',
-        title: 'Upload Cover Art or Photo',
-        desc: 'Select your podcast cover design, album artwork, or product photography from your computer or mobile device.'
+        title: 'Upload Source Images',
+        desc: 'Select or drag and drop single or batch images (up to 15 files). Supports JPG, PNG, WebP, AVIF, HEIC, and other standard raster formats.'
       },
       {
         stepNumber: '02',
-        title: '3000x3000 Px Preset Auto-Locked',
-        desc: 'The tool is pre-configured with Resize Mode: Custom Px, Width: 3000, and Height: 3000. Hardware-accelerated bicubic interpolation scales the canvas smoothly.'
+        title: '3000x3000 Pixel Canvas Locked',
+        desc: 'The tool is pre-set with Custom Px width and height locked at 3000 × 3000 pixels. Select your preferred output format (JPG, PNG, or WebP) and adjust quality in Advanced Options if needed.'
       },
       {
         stepNumber: '03',
-        title: 'Export Distribution-Ready File',
-        desc: 'Download your 3000x3000 square asset in high-clarity JPG, PNG, or WebP format ready for instant submission to Apple Podcasts, Spotify, or your online store.'
+        title: 'Convert and Download',
+        desc: 'Click Convert Images to generate your 3000x3000 square assets locally in browser memory. Download files individually or pack all images into a single ZIP archive.'
       }
     ],
     technicalDetails: {
-      title: 'Technical Mechanics: 9-Megapixel Square Canvas & Bicubic Resampling',
-      description: 'Meeting strict distributor specifications for high-DPI displays without introducing blur or pixelation.',
+      title: 'Technical Mechanics: 9-Megapixel Square Canvas & High-Fidelity Resampling',
+      description: 'Understanding pixel geometry, canvas resampling behavior, and format considerations for 3000x3000 square graphics.',
       cards: [
         {
-          title: 'Apple Podcasts & Spotify Official Guidelines Met',
-          desc: 'Apple Podcasts and Spotify specify square 1:1 artwork between 1400x1400 and 3000x3000 pixels in RGB color space at 72 dpi. 3000x3000 pixels represents the official maximum recommended tier, guaranteeing razor-sharp display across Apple TV, 4K displays, and mobile retina screens.',
-          highlight: 'Meets Apple Podcasts Maximum Spec'
+          title: '3000×3000 Pixel Geometry (9 Megapixels)',
+          desc: 'A 3000x3000 pixel raster graphic contains exactly 9,000,000 active pixels in a 1:1 square aspect ratio. This pixel density ensures crisp rendering across high-DPI retina screens, 4K displays, and large desktop viewports without blur or pixelation.',
+          highlight: 'Exact 9,000,000 Pixel Raster'
         },
         {
-          title: 'High-Precision Bicubic Resampling',
-          desc: 'Scaling artwork up or down can cause harsh aliasing or soft blur. Our browser engine applies high-precision bicubic interpolation, weighting surrounding 16-pixel neighborhoods to produce smooth color gradients, clean typography, and sharp line art.',
-          highlight: '16-Sample Bicubic Interpolation'
+          title: 'Podcast Cover Art Resolution Standards',
+          desc: 'Major podcast platforms such as Apple Podcasts, Spotify, and Amazon Music specify square 1:1 artwork between 1400x1400 and 3000x3000 pixels. Exporting at 3000x3000 pixels utilizes the highest recommended resolution tier for podcast directories.',
+          highlight: '1400–3000 Px Directory Range'
         },
         {
-          title: '300 DPI Physical Print Calibration',
-          desc: 'A 3000x3000 pixel raster graphic contains 9.0 million active pixels. At the industry-standard 300 dots per inch (DPI) print density, this provides an exact 10-inch by 10-inch physical canvas, perfect for vinyl record sleeve prints and merchandise.',
-          highlight: '10×10 Inch 300 DPI Print Output'
+          title: 'Print Density & Physical Dimensions (300 PPI)',
+          desc: 'At a standard commercial print resolution of 300 pixels per inch (PPI), a 3000x3000 pixel file contains sufficient raster data to produce a sharp 10-inch by 10-inch (25.4 × 25.4 cm) physical print. Note that this tool outputs exact pixel dimensions rather than embedded DPI metadata tags.',
+          highlight: '10×10 Inch at 300 PPI Print Density'
         },
         {
-          title: 'Optimal File Weight for RSS Distribution',
-          desc: 'Podcast RSS feeds require cover art to stay under 512KB for fast syndication. Pairing 3000x3000 pixels with our 90% quality JPEG output provides stunning visual clarity while remaining comfortably beneath RSS feed size caps.',
-          highlight: 'RSS Feed File Size Safety'
+          title: 'File Weight & RSS Feed Considerations',
+          desc: 'Many podcast RSS feed validators recommend keeping cover art files under 512KB to ensure fast syndication across listening apps. Exporting 3000x3000 pixels in JPEG at 90% quality provides high visual fidelity while staying well within recommended file size bounds.',
+          highlight: 'Balanced Compression & Clarity'
         }
       ]
     },
     specMatrix: {
       title: '3000x3000 Pixel Canvas Specification Matrix',
-      subtitle: 'Technical dimensions, aspect ratios, and platform compliance for professional distribution.',
-      columns: ['Specification Attribute', '3000x3000 Canvas Metric', 'Platform Distribution Standard'],
+      subtitle: 'Technical specifications, aspect ratios, and format considerations for square image conversion.',
+      columns: ['Specification Attribute', '3000x3000 Canvas Metric', 'Standard / Platform Benchmark'],
       rows: [
         {
           parameter: 'Exact Pixel Dimensions',
           sourceVal: '3000 × 3000 pixels',
-          targetVal: 'Apple Podcasts Gold Standard (Max Recommended)',
-          notes: 'Perfect 1:1 square aspect ratio'
+          targetVal: '1:1 Square Aspect Ratio',
+          notes: 'Standard square canvas geometry'
         },
         {
           parameter: 'Total Pixel Count',
           sourceVal: '9,000,000 pixels (9.0 Megapixels)',
           targetVal: 'Retina & 4K Ultra-HD display optimized',
-          notes: 'Crisp rendering on all screen sizes'
+          notes: 'Full resolution detail across devices'
         },
         {
-          parameter: 'Print Density at 300 DPI',
+          parameter: 'Print Output at 300 PPI',
           sourceVal: '10.0 × 10.0 inches (25.4 × 25.4 cm)',
-          targetVal: 'Standard Vinyl Record / CD Insert size',
-          notes: 'Zero pixelation for commercial print'
+          targetVal: 'Square print / merchandise coverage',
+          notes: '300 PPI print raster density'
         },
         {
-          parameter: 'Color Space & Gamut',
+          parameter: 'Color Gamut & Channels',
           sourceVal: 'Standard sRGB 24-bit TrueColor',
-          targetVal: 'Required by Spotify, Apple, Amazon Music',
-          notes: 'Eliminates CMYK conversion color shifts'
+          targetVal: 'Universal web & directory compatibility',
+          notes: 'Standard color profile across platforms'
         },
         {
-          parameter: 'Recommended File Format',
+          parameter: 'Recommended Output Format',
           sourceVal: 'JPEG (90% Quality) or PNG (Lossless)',
-          targetVal: 'Under 512KB for Podcast RSS validation',
-          notes: 'Fast feed sync without distributor errors'
+          targetVal: 'Under 512KB recommended for podcast RSS',
+          notes: 'PNG for archival, JPG for lean syndication'
         }
       ]
     },
     faqs: [
       {
-        question: 'Why is 3000x3000 pixels the gold standard for podcast cover art?',
-        answer: 'Major podcast distribution directories (including Apple Podcasts, Spotify, Amazon Music, and iHeartRadio) require square 1:1 artwork between 1400x1400 and 3000x3000 pixels. The 3000x3000 pixel maximum ensures your podcast artwork looks razor-sharp when featured on large 4K Smart TVs, iPad Pro retina screens, and desktop directories.'
+        question: 'How do I convert an image to 3000x3000 pixels?',
+        answer: 'Upload your image into the dropzone (drag and drop or browse files). The tool comes pre-configured with width and height set to 3000 × 3000 pixels and JPEG as the default format. Choose your preferred output format (such as JPG, PNG, or WebP), then click "Convert Images" to generate your 3000x3000 file locally in your browser.'
       },
       {
-        question: 'What happens if my original image is not a square (1:1 ratio)?',
-        answer: 'By default, the converter locks the 1:1 ratio. If your image is rectangular (e.g. 1920x1080), you can unlock the aspect ratio lock button in the Advanced Options to stretch it, or use our companion Image Resizer tool to crop and frame the image into a perfect 1:1 square canvas before converting.'
+        question: 'What happens if my original image is not square (1:1 aspect ratio)?',
+        answer: 'The converter outputs an exact 3000×3000 pixel square canvas. If your source image is rectangular (such as 1920×1080 or 2500×1800), scaling directly to 3000×3000 will stretch the image to fill the square dimensions. If you want to prevent stretching, we recommend cropping your source image to a 1:1 square first using our companion Image Resizer tool before converting.'
       },
       {
-        question: 'Should I export my 3000x3000 artwork as JPG or PNG for Apple Podcasts?',
-        answer: 'Both formats are accepted, but JPEG at 90% quality is widely recommended. A 3000x3000 PNG can easily exceed 5MB to 10MB in size, which may cause podcast feed validators to flag or reject your RSS feed. A 90% quality JPEG maintains pristine optical quality while staying under the recommended 512KB feed target.'
+        question: 'Which output format should I choose for 3000x3000 images?',
+        answer: 'For podcast cover art (Apple Podcasts, Spotify, Amazon Music), JPEG at 90% quality is widely recommended because it keeps file sizes under the 512KB limit commonly required by RSS feed validators. For digital illustrations or graphics requiring transparent elements, choose PNG. For modern websites, WebP provides an optimal balance of quality and compression.'
       },
       {
-        question: 'Can I use this 3000x3000 converter for vinyl record or album cover prints?',
-        answer: 'Yes! At commercial 300 DPI (dots per inch) print resolution, a 3000x3000 pixel image renders exactly 10 inches by 10 inches of unpixelated physical print, making it ideal for vinyl sleeves, CD inserts, merchandise, and promotional posters.'
+        question: 'Will converting an image to 3000x3000 reduce or improve its quality?',
+        answer: 'If your source image is smaller than 3000x3000 pixels (for example, 800x800), upscaling will enlarge the pixels with smooth canvas interpolation, but it cannot restore photographic details that were not in the original file. If your source image is 3000x3000 pixels or larger, resampling maintains sharp details and crisp line work without degradation.'
       },
       {
-        question: 'Can I convert multiple cover artworks to 3000x3000 px in bulk?',
-        answer: 'Yes! You can queue up to 15 images simultaneously. Each file will be automatically resized to 3000x3000 pixels and can be downloaded individually or as a single consolidated ZIP archive.'
+        question: 'What does 3000x3000 pixels mean for printing?',
+        answer: 'At a commercial print density of 300 pixels per inch (PPI/DPI), a 3000x3000 pixel image provides enough pixel data for a 10×10 inch (25.4 × 25.4 cm) physical print without visible pixelation. Note that this tool alters pixel dimensions rather than embedding physical DPI metadata tags; if you need print-specific metadata or centimeter/millimeter sizing, use our Image Resizer companion tool.'
+      },
+      {
+        question: 'Can I convert multiple images to 3000x3000 at once?',
+        answer: 'Yes! You can queue up to 15 images simultaneously. Each image will be processed sequentially to 3000x3000 pixels directly inside your web browser. When complete, you can download each converted image individually or download all files at once in a consolidated ZIP archive.'
       }
     ],
     relatedLinks: [
       {
         title: 'Image Resizer Studio',
         href: '/tools/image-resizer',
-        desc: 'Advanced photo cropping, custom DPI calibration, and aspect ratio controls.',
+        desc: 'Crop rectangular images to square, calibrate centimeters, or adjust DPI before converting.',
         badge: 'Resizer Companion'
       },
       {
         title: 'Resize Image to 500x500',
         href: '/resize-image-to-500x500',
-        desc: 'Calibrate smaller square profile pictures and social media avatars.',
+        desc: 'Convert photos to compact 500x500 pixel square dimensions for profile avatars.',
         badge: 'Square Resizer'
       },
       {
         title: 'Resize Image to 600x600',
         href: '/resize-image-to-600x600',
-        desc: 'Square image converter calibrated for US Visa and official photo requirements.',
+        desc: 'Square image converter calibrated for US Visa and square document requirements.',
         badge: 'Square Resizer'
       },
       {
@@ -1077,7 +1081,7 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       {
         title: 'JPG to PNG Converter',
         href: '/jpg-to-png/',
-        desc: 'Convert lossy album art into lossless PNG format for high-end graphic design.',
+        desc: 'Convert lossy JPG images into lossless 24-bit PNG format with transparency support.',
         badge: 'Lossless Pipeline'
       }
     ]

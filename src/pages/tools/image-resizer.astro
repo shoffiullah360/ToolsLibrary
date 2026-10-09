@@ -133,11 +133,6 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
     <div class="hero-mesh-bg" aria-hidden="true"></div>
 
     <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 mb-3">
-        <ToolIcon name="shield-check" class="w-3.5 h-3.5" />
-        <span>100% In-Browser Privacy • Zero Server Uploads</span>
-      </div>
-
       <!-- Minimalist Hero Title -->
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
         Free Online Image Resizer & Batch Converter
@@ -231,9 +226,6 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
         {pagesData.map((page) => (
           <div class="group relative p-2.5 sm:p-4 rounded-xl sm:rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900/70 hover:border-blue-600 dark:hover:border-blue-500 hover:shadow-md transition-all duration-150 flex flex-col justify-between">
             <div>
-              <span class="inline-block text-[10px] sm:text-xs font-semibold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50 mb-1.5 sm:mb-3">
-                {page.preset.targetSize ? `${page.preset.targetSize} ${page.preset.targetUnit || 'KB'} Target` : (page.preset.width ? `${page.preset.width} × ${page.preset.height} ${page.preset.unit || 'px'}` : page.category.toUpperCase())}
-              </span>
               <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 leading-snug mb-2 sm:mb-4">
                 {page.h1}
               </h3>
@@ -256,10 +248,6 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 mb-3">
-          <ToolIcon name="zap" class="w-3.5 h-3.5" />
-          <span>Feature Comparison</span>
-        </div>
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
           Why Choose FastToolVerse vs Others
         </h2>
@@ -402,10 +390,6 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/50 mb-3">
-          <ToolIcon name="shield-check" class="w-3.5 h-3.5" />
-          <span>Technical Standards & Privacy</span>
-        </div>
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
           Technical Specifications & Security Architecture
         </h2>

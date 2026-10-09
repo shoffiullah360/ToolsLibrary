@@ -7,6 +7,7 @@ import ToolIcon from '../components/ToolIcon.astro';
 import rawPagesData from '../data/resizer-pages.json';
 import { COMPRESS_PRESETS, type CompressPreset } from '../data/compressPresets';
 import { CONVERTER_PRESETS, type ConverterPreset } from '../data/converterPresets';
+import { getPresetIntentDescription } from '../data/intentDescriptions';
 
 interface ResizerPage {
   slug: string;
@@ -322,6 +323,8 @@ const pageDescription = props.type === 'converter'
   : props.type === 'compress'
     ? props.compressPreset.metaDescription
     : props.resizerPage.metaDescription;
+
+const intentDescription = getPresetIntentDescription(props);
 ---
 
 <Layout
@@ -422,10 +425,9 @@ const pageDescription = props.type === 'converter'
           initialMatteColor={props.converterPreset.preset.matteColor}
         />
 
-        <!-- Relocated Description Text Directly Under Upload Container -->
-        <p class="mt-6 max-w-3xl mx-auto text-slate-600 dark:text-slate-300 text-center leading-relaxed text-sm md:text-base">
-          {props.converterPreset.introCopy}
-        </p>
+        <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5 md:p-6 text-slate-300 text-sm md:text-base leading-relaxed max-w-4xl mx-auto my-6">
+          <p>{intentDescription}</p>
+        </div>
       </section>
 
       <!-- Cross-Link Banner to Image Resizer -->
@@ -715,6 +717,10 @@ const pageDescription = props.type === 'converter'
           maxHeight={props.compressPreset.maxHeight}
           maintainAspectRatio={props.compressPreset.maintainAspectRatio}
         />
+
+        <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5 md:p-6 text-slate-300 text-sm md:text-base leading-relaxed max-w-4xl mx-auto my-6">
+          <p>{intentDescription}</p>
+        </div>
       </section>
 
       <!-- Cross-Link Banner to Image Resizer (Requirement 4.2) -->
@@ -987,6 +993,10 @@ const pageDescription = props.type === 'converter'
           targetSizeKB={props.resizerPage.preset.targetUnit === 'MB' ? (props.resizerPage.preset.targetSize ? props.resizerPage.preset.targetSize * 1024 : undefined) : props.resizerPage.preset.targetSize}
           lockRatio={props.resizerPage.preset.lockRatio}
         />
+
+        <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5 md:p-6 text-slate-300 text-sm md:text-base leading-relaxed max-w-4xl mx-auto my-6">
+          <p>{intentDescription}</p>
+        </div>
       </section>
 
       <!-- Direct Compressor Equivalents Interlink Banner (Requirement 4.1) -->

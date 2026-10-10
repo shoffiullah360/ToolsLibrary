@@ -563,37 +563,39 @@ const intentDescription = getPresetIntentDescription(props);
         </div>
       </section>
 
-      <!-- 4. Contextual Internal Linking Grid -->
+      <!-- 4. Explore Related Image Utilities Row -->
       <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 py-14 sm:py-16">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center mb-10">
-            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-              Related Conversion & Image Utilities
-            </h2>
-            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2">
-              Explore companion tools for precision resizing, file size compression, and reverse format conversion.
-            </p>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {props.converterPreset.relatedLinks.map((link) => (
-              <a
-                href={link.href}
-                class="group p-5 rounded-2xl bg-white border border-slate-300 shadow-sm hover:border-blue-600 hover:shadow-md transition-all duration-150 dark:bg-slate-900/60 dark:border-slate-800 flex flex-col justify-between"
-              >
-                <div>
-                  <h3 class="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-1">
-                    {link.title}
-                  </h3>
-                  <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 line-clamp-2 leading-relaxed">
-                    {link.desc}
-                  </p>
-                </div>
-                <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-semibold text-blue-600 dark:text-blue-400">
-                  <span>Open tool &rarr;</span>
-                </div>
-              </a>
-            ))}
+          <h2 class="text-2xl md:text-3xl font-bold text-white text-center mb-8">Explore Related Image Utilities</h2>
+          <div class="flex flex-wrap items-center justify-center gap-4 max-w-4xl mx-auto mb-16">
+            <a
+              href="/tools/image-resizer/"
+              class="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800/90 border border-slate-800 hover:border-slate-700 text-slate-100 hover:text-white text-base md:text-lg font-semibold tracking-wide shadow-sm hover:shadow transition-all duration-200"
+            >
+              <ToolIcon name="maximize-2" class="w-5 h-5 text-blue-400" />
+              <span>Image Resizer</span>
+            </a>
+            <a
+              href="/tools/image-compressor/"
+              class="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800/90 border border-slate-800 hover:border-slate-700 text-slate-100 hover:text-white text-base md:text-lg font-semibold tracking-wide shadow-sm hover:shadow transition-all duration-200"
+            >
+              <ToolIcon name="minimize-2" class="w-5 h-5 text-emerald-400" />
+              <span>Image Compressor</span>
+            </a>
+            <a
+              href="/tools/image-cropper/"
+              class="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800/90 border border-slate-800 hover:border-slate-700 text-slate-100 hover:text-white text-base md:text-lg font-semibold tracking-wide shadow-sm hover:shadow transition-all duration-200"
+            >
+              <ToolIcon name="crop" class="w-5 h-5 text-purple-400" />
+              <span>Image Cropper</span>
+            </a>
+            <a
+              href="/tools/image-rotator/"
+              class="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800/90 border border-slate-800 hover:border-slate-700 text-slate-100 hover:text-white text-base md:text-lg font-semibold tracking-wide shadow-sm hover:shadow transition-all duration-200"
+            >
+              <ToolIcon name="rotate-cw" class="w-5 h-5 text-cyan-400" />
+              <span>Image Rotator</span>
+            </a>
           </div>
         </div>
       </section>

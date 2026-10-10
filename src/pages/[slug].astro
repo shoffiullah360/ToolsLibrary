@@ -5,6 +5,7 @@ import ImageCompressor from '../components/tools/ImageCompressor.astro';
 import ImageConverter from '../components/tools/ImageConverter.astro';
 import WhyUseImageConverter from '../components/WhyUseImageConverter.astro';
 import SupportedImageFormats from '../components/SupportedImageFormats.astro';
+import PopularImageConversionTools from '../components/PopularImageConversionTools.astro';
 import ToolIcon from '../components/ToolIcon.astro';
 import rawPagesData from '../data/resizer-pages.json';
 import { COMPRESS_PRESETS, type CompressPreset } from '../data/compressPresets';
@@ -416,7 +417,7 @@ const intentDescription = getPresetIntentDescription(props);
           </h1>
 
           <p class="text-slate-600 dark:text-slate-300 text-center max-w-2xl mx-auto mt-3 mb-8 text-sm md:text-base leading-relaxed">
-            {page.heroSubtitle || `Convert ${sourceFormat} images to ${targetFormat} seamlessly in your browser with zero file uploads and preserved image quality.`}
+            {props.converterPreset.heroSubtitle || page.heroSubtitle || `Convert ${sourceFormat} images to ${targetFormat} seamlessly in your browser with zero file uploads and preserved image quality.`}
           </p>
 
         </div>
@@ -434,7 +435,7 @@ const intentDescription = getPresetIntentDescription(props);
           initialMatteColor={props.converterPreset.preset.matteColor}
         />
 
-        <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5 md:p-6 text-slate-300 text-sm md:text-base leading-relaxed max-w-4xl mx-auto my-6">
+        <div class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-5 md:p-6 text-slate-700 dark:text-slate-300 text-sm md:text-base leading-relaxed max-w-4xl mx-auto my-6 shadow-sm">
           <p>{intentDescription}</p>
         </div>
       </section>
@@ -493,6 +494,8 @@ const intentDescription = getPresetIntentDescription(props);
       <WhyUseImageConverter />
 
       <SupportedImageFormats />
+
+      <PopularImageConversionTools />
 
       <!-- 2. Structured Comparison / Specification Matrix -->
       <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 py-14 sm:py-16">
@@ -572,7 +575,7 @@ const intentDescription = getPresetIntentDescription(props);
       <!-- 4. Explore Related Image Utilities Row -->
       <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 py-14 sm:py-16">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 class="text-2xl md:text-3xl font-bold text-white text-center mb-8">Explore Related Image Utilities</h2>
+          <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white text-center mb-8">Explore Related Image Utilities</h2>
           <div class="flex flex-wrap items-center justify-center gap-4 max-w-4xl mx-auto mb-16">
             <a
               href="/tools/image-resizer/"

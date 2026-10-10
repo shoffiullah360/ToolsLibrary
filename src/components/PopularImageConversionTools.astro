@@ -1,0 +1,300 @@
+---
+// src/components/PopularImageConversionTools.astro
+
+interface ConversionLink {
+  slug: string;
+  title: string;
+  source: string;
+  target: string;
+  description: string;
+}
+
+export const POPULAR_CONVERSIONS: ConversionLink[] = [
+  {
+    "slug": "heic-to-jpg",
+    "title": "HEIC to JPG Converter",
+    "source": "HEIC",
+    "target": "JPG",
+    "description": "Convert Apple iPhone HEIC captures into universally supported JPG format in your browser with zero remote file uploads and preserved visual clarity."
+  },
+  {
+    "slug": "webp-to-png",
+    "title": "WebP to PNG Converter",
+    "source": "WebP",
+    "target": "PNG",
+    "description": "Convert WebP images to lossless 24-bit PNG format in your browser with full alpha transparency retention and zero remote file uploads."
+  },
+  {
+    "slug": "webp-to-jpg",
+    "title": "WebP to JPG Converter",
+    "source": "WebP",
+    "target": "JPG",
+    "description": "Convert modern WebP images to standard JPG format in your browser with clean white background blending and zero remote file uploads."
+  },
+  {
+    "slug": "png-to-pdf",
+    "title": "PNG to PDF Converter",
+    "source": "PNG",
+    "target": "PDF",
+    "description": "Convert PNG graphics and screenshots to standardized PDF documents in your browser with multi-page merging and zero remote file uploads."
+  },
+  {
+    "slug": "pdf-to-jpg",
+    "title": "PDF to JPG Converter",
+    "source": "PDF",
+    "target": "JPG",
+    "description": "Rasterize vector and text PDF pages into clean web-ready JPG images in your browser with client-side parsing and zero cloud uploads."
+  },
+  {
+    "slug": "pdf-to-png",
+    "title": "PDF to PNG Converter",
+    "source": "PDF",
+    "target": "PNG",
+    "description": "Extract PDF pages into crystal-clear lossless PNG images in your browser with client-side parsing and zero cloud uploads."
+  },
+  {
+    "slug": "png-to-jpg",
+    "title": "PNG to JPG Converter",
+    "source": "PNG",
+    "target": "JPG",
+    "description": "Convert heavy PNG images to lightweight JPG format in your browser with clean white background blending and zero remote file uploads."
+  },
+  {
+    "slug": "jpg-to-png",
+    "title": "JPG to PNG Converter",
+    "source": "JPG",
+    "target": "PNG",
+    "description": "Convert JPG photos to lossless 24-bit PNG format in your browser with zero file uploads, zero compression loss, and intact detail."
+  },
+  {
+    "slug": "svg-to-png",
+    "title": "SVG to PNG Converter",
+    "source": "SVG",
+    "target": "PNG",
+    "description": "Rasterize scalable vector SVG paths into resolution-independent crisp PNG bitmaps in your browser with intact alpha transparency."
+  },
+  {
+    "slug": "svg-to-jpg",
+    "title": "SVG to JPG Converter",
+    "source": "SVG",
+    "target": "JPG",
+    "description": "Convert scalable vector illustrations to standardized JPG raster assets in your browser with clean solid background blending."
+  },
+  {
+    "slug": "heic-to-pdf",
+    "title": "HEIC to PDF Converter",
+    "source": "HEIC",
+    "target": "PDF",
+    "description": "Bundle Apple iPhone HEIC photos into printable multi-platform PDF documents in your browser with zero remote file uploads."
+  },
+  {
+    "slug": "heic-to-png",
+    "title": "HEIC to PNG Converter",
+    "source": "HEIC",
+    "target": "PNG",
+    "description": "Convert Apple HEIC photos to lossless PNG format in your browser while preserving transparency and wide color gamut fidelity."
+  },
+  {
+    "slug": "png-to-webp",
+    "title": "PNG to WebP Converter",
+    "source": "PNG",
+    "target": "WebP",
+    "description": "Compress heavy PNG assets into modern, lightweight web-optimized WebP in your browser with full alpha transparency retention."
+  },
+  {
+    "slug": "jpg-to-webp",
+    "title": "JPG to WebP Converter",
+    "source": "JPG",
+    "target": "WebP",
+    "description": "Reduce JPG bandwidth payloads by 30-40% using next-gen WebP compression in your browser with zero remote file uploads."
+  },
+  {
+    "slug": "ico-to-png",
+    "title": "ICO to PNG Converter",
+    "source": "ICO",
+    "target": "PNG",
+    "description": "Extract icon containers and favicons into editable PNG assets in your browser with full alpha transparency retention."
+  },
+  {
+    "slug": "png-to-ico",
+    "title": "PNG to ICO Converter",
+    "source": "PNG",
+    "target": "ICO",
+    "description": "Convert square brand logos into multi-resolution Windows and web favicons in your browser with intact transparency."
+  },
+  {
+    "slug": "jpg-to-ico",
+    "title": "JPG to ICO Converter",
+    "source": "JPG",
+    "target": "ICO",
+    "description": "Transform photographic avatars into favicon icon formats in your browser with automatic square scaling."
+  },
+  {
+    "slug": "bmp-to-jpg",
+    "title": "BMP to JPG Converter",
+    "source": "BMP",
+    "target": "JPG",
+    "description": "Compress raw uncompressed Windows bitmaps into lightweight JPGs in your browser with massive file size savings."
+  },
+  {
+    "slug": "bmp-to-png",
+    "title": "BMP to PNG Converter",
+    "source": "BMP",
+    "target": "PNG",
+    "description": "Convert uncompressed BMP pixel matrices to lossless PNG containers in your browser with bit-for-bit fidelity preservation."
+  },
+  {
+    "slug": "gif-to-jpg",
+    "title": "GIF to JPG Converter",
+    "source": "GIF",
+    "target": "JPG",
+    "description": "Extract initial GIF frames into lightweight static photographic JPGs in your browser with clean background matte blending."
+  },
+  {
+    "slug": "gif-to-png",
+    "title": "GIF to PNG Converter",
+    "source": "GIF",
+    "target": "PNG",
+    "description": "Convert GIF graphics into lossless, higher color-depth PNG images in your browser with preserved alpha transparency."
+  },
+  {
+    "slug": "gif-to-webp",
+    "title": "GIF to WebP Converter",
+    "source": "GIF",
+    "target": "WebP",
+    "description": "Modernize legacy GIF graphics into ultra-efficient WebP images in your browser with massive bandwidth savings."
+  },
+  {
+    "slug": "tiff-to-jpg",
+    "title": "TIFF to JPG Converter",
+    "source": "TIFF",
+    "target": "JPG",
+    "description": "Export heavy master TIFF scans into shareable, lightweight JPG photos in your browser with zero remote file uploads."
+  },
+  {
+    "slug": "tiff-to-png",
+    "title": "TIFF to PNG Converter",
+    "source": "TIFF",
+    "target": "PNG",
+    "description": "Convert high-depth TIFF graphics into web-friendly lossless PNGs in your browser with intact graphic fidelity."
+  },
+  {
+    "slug": "tiff-to-pdf",
+    "title": "TIFF to PDF Converter",
+    "source": "TIFF",
+    "target": "PDF",
+    "description": "Compile scanned archival TIFF documents into archival PDF records in your browser with multi-page merging."
+  },
+  {
+    "slug": "avif-to-png",
+    "title": "AVIF to PNG Converter",
+    "source": "AVIF",
+    "target": "PNG",
+    "description": "Decompress AV1-encoded AVIF images into editable raster PNG files in your browser with full alpha transparency retention."
+  },
+  {
+    "slug": "avif-to-jpg",
+    "title": "AVIF to JPG Converter",
+    "source": "AVIF",
+    "target": "JPG",
+    "description": "Convert cutting-edge AVIF files into universally viewable JPG images in your browser with clean background matte blending."
+  },
+  {
+    "slug": "jpg-to-pdf",
+    "title": "JPG to PDF Converter",
+    "source": "JPG",
+    "target": "PDF",
+    "description": "Convert JPG photos and document scans to standardized PDF documents in your browser with multi-page batch merging and absolute privacy."
+  },
+  {
+    "slug": "webp-to-pdf",
+    "title": "WebP to PDF Converter",
+    "source": "WebP",
+    "target": "PDF",
+    "description": "Export web graphics and banners into standard shareable PDF files in your browser with multi-page batch merging."
+  },
+  {
+    "slug": "image-to-docx",
+    "title": "Image to DOCX Converter",
+    "source": "IMAGE",
+    "target": "DOCX",
+    "description": "Embed image assets directly into editable Microsoft Word documents in your browser with instant client-side packaging."
+  },
+  {
+    "slug": "image-to-pdf",
+    "title": "Image to PDF Converter",
+    "source": "IMAGE",
+    "target": "PDF",
+    "description": "Consolidate mixed image uploads into standard, universal PDF files in your browser with multi-page batch merging and absolute privacy."
+  },
+  {
+    "slug": "tga-to-png",
+    "title": "TGA to PNG Converter",
+    "source": "TGA",
+    "target": "PNG",
+    "description": "Convert 3D gaming Truevision Targa textures into transparent web PNGs in your browser with full alpha channel retention."
+  },
+  {
+    "slug": "tga-to-jpg",
+    "title": "TGA to JPG Converter",
+    "source": "TGA",
+    "target": "JPG",
+    "description": "Flatten game engine TGA bitmap assets into viewable JPG files in your browser with clean background matte blending."
+  },
+  {
+    "slug": "camera-raw-to-jpg",
+    "title": "Camera RAW to JPG Converter",
+    "source": "RAW",
+    "target": "JPG",
+    "description": "Process raw camera sensor captures into instantly viewable JPG photos in your browser with zero remote file uploads."
+  },
+  {
+    "slug": "batch-image-converter",
+    "title": "Batch Image Converter",
+    "source": "BATCH",
+    "target": "WEBP",
+    "description": "Bulk process multiple mixed images into unified WebP/ZIP bundles in your browser with zero remote file uploads."
+  },
+  {
+    "slug": "3000x3000-image-converter",
+    "title": "3000x3000 Image Converter",
+    "source": "IMAGE",
+    "target": "JPG",
+    "description": "Resample and convert photos to exact 3000x3000px high-resolution square format for album artwork, podcast covers, and print."
+  }
+];
+---
+
+<section class="border-t border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950/40 py-14 sm:py-18">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+        Popular Image Conversion Tools
+      </h2>
+      <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+        Direct format conversions pre-configured for speed, image fidelity, and local privacy.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+      {POPULAR_CONVERSIONS.map((tool) => (
+        <a
+          href={`/${tool.slug}/`}
+          class="group p-3 sm:p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-sm transition-all flex flex-col justify-between"
+        >
+          <div>
+            <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug">
+              {tool.title}
+            </h3>
+            <p class="mt-1.5 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">
+              {tool.description}
+            </p>
+          </div>
+          <span class="mt-3 text-[11px] sm:text-xs font-semibold text-blue-600 dark:text-blue-400 inline-flex items-center gap-1">
+            Convert to {tool.target} &rarr;
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

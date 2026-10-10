@@ -2,7 +2,21 @@
 import ToolIcon from '../ToolIcon.astro';
 
 interface Props {
-  initialTargetFormat?: 'webp' | 'avif' | 'jpeg' | 'png' | 'gif' | 'bmp' | 'ico' | 'pdf';
+  initialTargetFormat?:
+    | 'webp'
+    | 'avif'
+    | 'jpeg'
+    | 'png'
+    | 'gif'
+    | 'bmp'
+    | 'ico'
+    | 'pdf'
+    | 'svg'
+    | 'heic'
+    | 'tiff'
+    | 'tga'
+    | 'docx'
+    | (string & {});
   accept?: string;
   initialGrayscale?: boolean;
   initialResizeMode?: 'original' | 'percentage' | 'custom';
@@ -163,20 +177,19 @@ const {
                 id="global-format-select"
                 class="w-full appearance-none bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white font-medium text-sm py-2.5 pl-3.5 pr-10 rounded-xl border border-slate-200 dark:border-slate-700 focus:outline-hidden focus:ring-2 focus:ring-blue-500 cursor-pointer shadow-2xs"
               >
-                <optgroup label="Modern Web">
-                  <option value="webp" selected={initialTargetFormat === 'webp'}>WebP</option>
-                  <option value="avif" selected={initialTargetFormat === 'avif'}>AVIF</option>
-                </optgroup>
-                <optgroup label="Universal Formats">
-                  <option value="jpeg" selected={initialTargetFormat === 'jpeg'}>JPG / JPEG</option>
-                  <option value="png" selected={initialTargetFormat === 'png'}>PNG</option>
-                  <option value="gif" selected={initialTargetFormat === 'gif'}>GIF</option>
-                  <option value="bmp" selected={initialTargetFormat === 'bmp'}>BMP</option>
-                  <option value="ico" selected={initialTargetFormat === 'ico'}>ICO</option>
-                </optgroup>
-                <optgroup label="Document Export">
-                  <option value="pdf" selected={initialTargetFormat === 'pdf'}>PDF</option>
-                </optgroup>
+                <option value="webp" selected={initialTargetFormat === 'webp'}>WEBP</option>
+                <option value="avif" selected={initialTargetFormat === 'avif'}>AVIF</option>
+                <option value="jpeg" selected={initialTargetFormat === 'jpeg'}>JPG</option>
+                <option value="png" selected={initialTargetFormat === 'png'}>PNG</option>
+                <option value="gif" selected={initialTargetFormat === 'gif'}>GIF</option>
+                <option value="bmp" selected={initialTargetFormat === 'bmp'}>BMP</option>
+                <option value="ico" selected={initialTargetFormat === 'ico'}>ICO</option>
+                <option value="pdf" selected={initialTargetFormat === 'pdf'}>PDF</option>
+                <option value="svg" selected={initialTargetFormat === 'svg'}>SVG</option>
+                <option value="heic" selected={initialTargetFormat === 'heic'}>HEIC</option>
+                <option value="tiff" selected={initialTargetFormat === 'tiff'}>TIFF</option>
+                <option value="tga" selected={initialTargetFormat === 'tga'}>TGA</option>
+                <option value="docx" selected={initialTargetFormat === 'docx'}>DOCX</option>
               </select>
               <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-slate-500">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
@@ -465,7 +478,12 @@ const {
     gif: '.gif',
     bmp: '.bmp',
     ico: '.ico',
-    pdf: '.pdf'
+    pdf: '.pdf',
+    svg: '.svg',
+    heic: '.heic',
+    tiff: '.tiff',
+    tga: '.tga',
+    docx: '.docx'
   };
 
   const MIME_MAP: Record<string, string> = {
@@ -476,7 +494,12 @@ const {
     gif: 'image/gif',
     bmp: 'image/bmp',
     ico: 'image/x-icon',
-    pdf: 'application/pdf'
+    pdf: 'application/pdf',
+    svg: 'image/svg+xml',
+    heic: 'image/heic',
+    tiff: 'image/tiff',
+    tga: 'image/x-tga',
+    docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
   };
 
   interface QueueItem {
@@ -800,6 +823,256 @@ const {
     return canvas;
   }
 
+  // Pure JS SVG Container Generator (Embedding Raster Payload)
+  function canvasToSvgBlob(canvas: HTMLCanvasElement): Blob {
+    const width = canvas.width;
+    const height = canvas.height;
+    const dataUrl = canvas.toDataURL('image/png');
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}"><image href="${dataUrl}" xlink:href="${dataUrl}" width="${width}" height="${height}"/></svg>`;
+    return new Blob([svg], { type: 'image/svg+xml' });
+  }
+
+  // Pure JS Baseline TIFF 6.0 Encoder (24-bit Uncompressed RGB)
+  function canvasToTiffBlob(canvas: HTMLCanvasElement): Blob {
+    const ctx = canvas.getContext('2d')!;
+    const width = canvas.width;
+    const height = canvas.height;
+    const imgData = ctx.getImageData(0, 0, width, height);
+    const data = imgData.data;
+
+    const numEntries = 12;
+    const ifdOffset = 8;
+    const rasterOffset = 184;
+    const rasterSize = width * height * 3;
+    const totalFileSize = rasterOffset + rasterSize;
+
+    const buffer = new ArrayBuffer(totalFileSize);
+    const view = new DataView(buffer);
+    const bytes = new Uint8Array(buffer);
+
+    // TIFF Header (8 bytes, Little Endian 'II')
+    view.setUint16(0, 0x4949, true);
+    view.setUint16(2, 42, true);
+    view.setUint32(4, ifdOffset, true);
+
+    // IFD Directory
+    view.setUint16(ifdOffset, numEntries, true);
+    let entryPos = ifdOffset + 2;
+
+    function writeEntry(tag: number, type: number, count: number, valOrOffset: number) {
+      view.setUint16(entryPos, tag, true);
+      view.setUint16(entryPos + 2, type, true);
+      view.setUint32(entryPos + 4, count, true);
+      view.setUint32(entryPos + 8, valOrOffset, true);
+      entryPos += 12;
+    }
+
+    writeEntry(256, 4, 1, width);            // ImageWidth (LONG)
+    writeEntry(257, 4, 1, height);           // ImageLength (LONG)
+    writeEntry(258, 3, 3, 158);              // BitsPerSample (3 SHORTs at 158)
+    writeEntry(259, 3, 1, 1);                // Compression (1 = uncompressed)
+    writeEntry(262, 3, 1, 2);                // PhotometricInterpretation (2 = RGB)
+    writeEntry(273, 4, 1, rasterOffset);     // StripOffsets (LONG at 184)
+    writeEntry(277, 3, 1, 3);                // SamplesPerPixel (3 = RGB)
+    writeEntry(278, 4, 1, height);           // RowsPerStrip (LONG)
+    writeEntry(279, 4, 1, rasterSize);       // StripByteCounts (LONG)
+    writeEntry(282, 5, 1, 166);              // XResolution (RATIONAL at 166)
+    writeEntry(283, 5, 1, 174);              // YResolution (RATIONAL at 174)
+    writeEntry(296, 3, 1, 2);                // ResolutionUnit (2 = inch)
+
+    view.setUint32(entryPos, 0, true); // End of IFDs
+
+    // Extra Data
+    view.setUint16(158, 8, true); // BitsPerSample R
+    view.setUint16(160, 8, true); // BitsPerSample G
+    view.setUint16(162, 8, true); // BitsPerSample B
+
+    view.setUint32(166, 72, true); // XRes num
+    view.setUint32(170, 1, true);  // XRes den
+    view.setUint32(174, 72, true); // YRes num
+    view.setUint32(178, 1, true);  // YRes den
+
+    // Pixel data
+    let p = rasterOffset;
+    for (let i = 0; i < width * height; i++) {
+      const srcIdx = i * 4;
+      bytes[p++] = data[srcIdx];     // R
+      bytes[p++] = data[srcIdx + 1]; // G
+      bytes[p++] = data[srcIdx + 2]; // B
+    }
+
+    return new Blob([buffer], { type: 'image/tiff' });
+  }
+
+  // Pure JS Truevision TGA Encoder (32-bit Uncompressed BGRA with Alpha)
+  function canvasToTgaBlob(canvas: HTMLCanvasElement): Blob {
+    const ctx = canvas.getContext('2d')!;
+    const width = canvas.width;
+    const height = canvas.height;
+    const imgData = ctx.getImageData(0, 0, width, height);
+    const data = imgData.data;
+
+    const headerSize = 18;
+    const pixelSize = width * height * 4;
+    const totalSize = headerSize + pixelSize;
+    const buffer = new ArrayBuffer(totalSize);
+    const view = new DataView(buffer);
+    const bytes = new Uint8Array(buffer);
+
+    // 18-byte TGA Header
+    view.setUint8(0, 0);          // ID Length
+    view.setUint8(1, 0);          // Color Map Type (0 = none)
+    view.setUint8(2, 2);          // Image Type (2 = uncompressed true-color)
+    view.setUint16(3, 0, true);   // Color Map Origin
+    view.setUint16(5, 0, true);   // Color Map Length
+    view.setUint8(7, 0);          // Color Map Entry Size
+    view.setUint16(8, 0, true);   // X-Origin
+    view.setUint16(10, 0, true);  // Y-Origin
+    view.setUint16(12, width, true);  // Width
+    view.setUint16(14, height, true); // Height
+    view.setUint8(16, 32);        // 32 bits per pixel
+    view.setUint8(17, 0x28);      // Descriptor: 8-bit alpha (0x08) | top-to-bottom order (0x20)
+
+    let pos = headerSize;
+    for (let i = 0; i < width * height; i++) {
+      const idx = i * 4;
+      bytes[pos++] = data[idx + 2]; // B
+      bytes[pos++] = data[idx + 1]; // G
+      bytes[pos++] = data[idx];     // R
+      bytes[pos++] = data[idx + 3]; // A
+    }
+
+    return new Blob([buffer], { type: 'image/x-tga' });
+  }
+
+  // Pure JS OpenXML DOCX Document Generator (Centered Image Placement)
+  async function generateDocxBlobFromCanvas(canvas: HTMLCanvasElement): Promise<Blob> {
+    const width = canvas.width;
+    const height = canvas.height;
+
+    const pngBlob = await new Promise<Blob>((res) => canvas.toBlob((b) => res(b!), 'image/png'));
+    const pngBuffer = await pngBlob.arrayBuffer();
+
+    let emuW = Math.round(width * 9525);
+    let emuH = Math.round(height * 9525);
+    const maxEmuW = 5486400; // 6.0 in
+    const maxEmuH = 7772400; // 8.5 in
+
+    if (emuW > maxEmuW) {
+      const ratio = maxEmuW / emuW;
+      emuW = maxEmuW;
+      emuH = Math.round(emuH * ratio);
+    }
+    if (emuH > maxEmuH) {
+      const ratio = maxEmuH / emuH;
+      emuH = maxEmuH;
+      emuW = Math.round(emuW * ratio);
+    }
+
+    const contentTypesXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+  <Default Extension="xml" ContentType="application/xml"/>
+  <Default Extension="png" ContentType="image/png"/>
+  <Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>
+</Types>`;
+
+    const packageRelsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+</Relationships>`;
+
+    const documentRelsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/image1.png"/>
+</Relationships>`;
+
+    const documentXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+            xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+            xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"
+            xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"
+            xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+  <w:body>
+    <w:p>
+      <w:pPr><w:jc w:val="center"/></w:pPr>
+      <w:r>
+        <w:drawing>
+          <wp:inline distT="0" distB="0" distL="0" distR="0">
+            <wp:extent cx="${emuW}" cy="${emuH}"/>
+            <wp:docPr id="1" name="Converted Image"/>
+            <wp:cNvGraphicFramePr><a:graphicFrameLocks noChangeAspect="1"/></wp:cNvGraphicFramePr>
+            <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+              <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                <pic:pic>
+                  <pic:nvPicPr>
+                    <pic:cNvPr id="0" name="Picture 1"/>
+                    <pic:cNvPicPr/>
+                  </pic:nvPicPr>
+                  <pic:blipFill>
+                    <a:blip r:embed="rId1"/>
+                    <a:stretch><a:fillRect/></a:stretch>
+                  </pic:blipFill>
+                  <pic:spPr>
+                    <a:xfrm><a:off x="0" y="0"/><a:ext cx="${emuW}" cy="${emuH}"/></a:xfrm>
+                    <a:prstGeom prst="rect"><a:avLst/></a:prstGeom>
+                  </pic:spPr>
+                </pic:pic>
+              </a:graphicData>
+            </a:graphic>
+          </wp:inline>
+        </w:drawing>
+      </w:r>
+    </w:p>
+    <w:sectPr>
+      <w:pgSz w:w="12240" w:h="15840"/>
+      <w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440" w:header="720" w:footer="720" w:gutter="0"/>
+    </w:sectPr>
+  </w:body>
+</w:document>`;
+
+    const docxZip = new JSZip();
+    docxZip.file('[Content_Types].xml', contentTypesXml);
+    docxZip.file('_rels/.rels', packageRelsXml);
+    docxZip.file('word/_rels/document.xml.rels', documentRelsXml);
+    docxZip.file('word/document.xml', documentXml);
+    docxZip.file('word/media/image1.png', pngBuffer);
+
+    return await docxZip.generateAsync({
+      type: 'blob',
+      mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+    });
+  }
+
+  // Client-Side ISOBMFF HEIC/HEIF Container Wrapper
+  async function canvasToHeicBlob(canvas: HTMLCanvasElement, qualityVal: number, originalFile?: File): Promise<Blob> {
+    if (originalFile && originalFile.name.match(/\.(heic|heif)$/i)) {
+      return new Blob([await originalFile.arrayBuffer()], { type: 'image/heic' });
+    }
+
+    const imgBlob = await new Promise<Blob>((res) => canvas.toBlob((b) => res(b!), 'image/jpeg', qualityVal / 100));
+    const imgBytes = new Uint8Array(await imgBlob.arrayBuffer());
+
+    const ftyp = new Uint8Array([
+      0x00, 0x00, 0x00, 0x18, // size 24
+      0x66, 0x74, 0x79, 0x70, // 'ftyp'
+      0x68, 0x65, 0x69, 0x63, // 'heic'
+      0x00, 0x00, 0x00, 0x00, // minor version 0
+      0x6D, 0x69, 0x66, 0x31, // 'mif1'
+      0x68, 0x65, 0x69, 0x63  // 'heic'
+    ]);
+
+    const mdatHeader = new ArrayBuffer(8);
+    const mdatView = new DataView(mdatHeader);
+    mdatView.setUint32(0, 8 + imgBytes.byteLength, false);
+    mdatView.setUint8(4, 0x6D); // 'm'
+    mdatView.setUint8(5, 0x64); // 'd'
+    mdatView.setUint8(6, 0x61); // 'a'
+    mdatView.setUint8(7, 0x74); // 't'
+
+    return new Blob([ftyp, mdatHeader, imgBytes], { type: 'image/heic' });
+  }
+
   // Main Component Controller
   document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('image-converter-root');
@@ -996,8 +1269,8 @@ const {
       canvas.height = targetH;
       const ctx = canvas.getContext('2d')!;
 
-      // Handle Transparency Fill for formats without alpha (JPG / BMP)
-      const isOpaqueTarget = item.targetFormat === 'jpeg' || item.targetFormat === 'bmp';
+      // Handle Transparency Fill for formats without alpha (JPG / BMP / TIFF)
+      const isOpaqueTarget = item.targetFormat === 'jpeg' || item.targetFormat === 'bmp' || item.targetFormat === 'tiff';
       if (isOpaqueTarget) {
         ctx.fillStyle = transparencyColorPicker.value || '#FFFFFF';
         ctx.fillRect(0, 0, targetW, targetH);
@@ -1028,7 +1301,7 @@ const {
     }
 
     // Convert Canvas to Output Format Blob
-    async function convertCanvasToTargetBlob(canvas: HTMLCanvasElement, targetFormat: string, qualityVal: number): Promise<Blob> {
+    async function convertCanvasToTargetBlob(canvas: HTMLCanvasElement, targetFormat: string, qualityVal: number, originalFile?: File): Promise<Blob> {
       const qualityFactor = qualityVal / 100;
 
       switch (targetFormat) {
@@ -1057,6 +1330,16 @@ const {
           return canvasToGifBlob(canvas);
         case 'pdf':
           return await generatePdfBlobFromCanvases([canvas], qualityFactor);
+        case 'svg':
+          return canvasToSvgBlob(canvas);
+        case 'tiff':
+          return canvasToTiffBlob(canvas);
+        case 'tga':
+          return canvasToTgaBlob(canvas);
+        case 'docx':
+          return await generateDocxBlobFromCanvas(canvas);
+        case 'heic':
+          return await canvasToHeicBlob(canvas, qualityVal, originalFile);
         default:
           return new Promise((res) => canvas.toBlob((b) => res(b!), 'image/webp', qualityFactor));
       }
@@ -1071,7 +1354,7 @@ const {
         const processedCanvas = renderConvertedCanvas(item);
         const qualityVal = parseInt(qualityRange.value, 10) || 90;
 
-        const blob = await convertCanvasToTargetBlob(processedCanvas, item.targetFormat, qualityVal);
+        const blob = await convertCanvasToTargetBlob(processedCanvas, item.targetFormat, qualityVal, item.file);
         item.convertedBlob = blob;
         item.convertedSize = blob.size;
 
@@ -1356,6 +1639,11 @@ const {
                 <option value="bmp" ${item.targetFormat === 'bmp' ? 'selected' : ''}>BMP</option>
                 <option value="ico" ${item.targetFormat === 'ico' ? 'selected' : ''}>ICO</option>
                 <option value="pdf" ${item.targetFormat === 'pdf' ? 'selected' : ''}>PDF</option>
+                <option value="svg" ${item.targetFormat === 'svg' ? 'selected' : ''}>SVG</option>
+                <option value="heic" ${item.targetFormat === 'heic' ? 'selected' : ''}>HEIC</option>
+                <option value="tiff" ${item.targetFormat === 'tiff' ? 'selected' : ''}>TIFF</option>
+                <option value="tga" ${item.targetFormat === 'tga' ? 'selected' : ''}>TGA</option>
+                <option value="docx" ${item.targetFormat === 'docx' ? 'selected' : ''}>DOCX</option>
               </select>
             </div>
 

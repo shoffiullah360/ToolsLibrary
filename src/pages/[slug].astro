@@ -488,37 +488,8 @@ const intentDescription = getPresetIntentDescription(props);
         </div>
       </section>
 
-      <!-- 2. Format / Conversion Specifics & Technical Trade-offs -->
+      <!-- 2. Structured Comparison / Specification Matrix -->
       <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 py-14 sm:py-16">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center mb-10">
-            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-              {props.converterPreset.technicalDetails.title}
-            </h2>
-            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-2xl mx-auto">
-              {props.converterPreset.technicalDetails.description}
-            </p>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            {props.converterPreset.technicalDetails.cards.map((card) => (
-              <div class="p-5 rounded-2xl bg-white border border-slate-300 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 dark:bg-slate-900/60 dark:border-slate-800 flex flex-col justify-between">
-                <div>
-                  <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
-                    {card.title}
-                  </h3>
-                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                    {card.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <!-- 3. Structured Comparison / Specification Matrix -->
-      <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-100/60 dark:bg-slate-900/30 py-14 sm:py-16">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-10 max-w-2xl mx-auto">
             <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -562,7 +533,7 @@ const intentDescription = getPresetIntentDescription(props);
         </div>
       </section>
 
-      <!-- 4. Contextual FAQ Section -->
+      <!-- 3. Contextual FAQ Section -->
       <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 border-t border-slate-200/90 dark:border-slate-800">
         <div class="text-center mb-10">
           <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -592,7 +563,7 @@ const intentDescription = getPresetIntentDescription(props);
         </div>
       </section>
 
-      <!-- 5. Contextual Internal Linking Grid -->
+      <!-- 4. Contextual Internal Linking Grid -->
       <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 py-14 sm:py-16">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-10">

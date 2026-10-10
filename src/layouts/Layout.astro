@@ -57,7 +57,7 @@ const jsonLd = {
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="dark scroll-smooth">
   <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-35HK1V8TGX"></script>
@@ -110,12 +110,14 @@ const jsonLd = {
     <!-- Anti-Flicker Theme Script (Instant Execution in Head) -->
     <script is:inline>
       (function () {
-        const storedTheme = localStorage.getItem('theme');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (storedTheme === 'dark' || (!storedTheme && systemPrefersDark)) {
-          document.documentElement.classList.add('dark');
-        } else {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
           document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.add('dark');
+          if (!savedTheme) {
+            localStorage.setItem('theme', 'dark');
+          }
         }
       })();
     </script>

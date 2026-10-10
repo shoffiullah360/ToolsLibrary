@@ -5,7 +5,9 @@ export interface ConverterPreset {
   metaDescription: string;
   h1: string;
   badge: string;
+  heroSubtitle?: string;
   introCopy: string;
+  seoContext?: string;
   preset: {
     targetFormat: 'webp' | 'avif' | 'jpeg' | 'png' | 'gif' | 'bmp' | 'ico' | 'pdf';
     accept?: string;
@@ -55,13 +57,15 @@ export interface ConverterPreset {
 export const CONVERTER_PRESETS: ConverterPreset[] = [
   // 1. JPG to PNG
   {
+    heroSubtitle: 'Convert JPG photos to lossless 24-bit PNG format seamlessly in your browser with zero file uploads, zero compression loss, and intact detail.',
     slug: 'jpg-to-png',
     title: 'JPG to PNG Converter',
     metaTitle: 'JPG to PNG Converter Online Free - Lossless 24-bit PNG Export',
     metaDescription: 'Convert JPG to lossless PNG online with 100% in-browser privacy. Preserve crisp typography, prevent re-compression artifacts, and export clean 24-bit RGB files.',
     h1: 'JPG to PNG Converter',
     badge: 'Lossless PNG (with Alpha Channel)',
-    introCopy: 'Convert lossy JPEG photographs and raster artwork into uncompressed 24-bit lossless PNG format directly in your browser. Eliminate generational compression loss, protect high-contrast typography, and prepare images for transparent graphic design without transmitting private files to cloud servers.',
+    introCopy: 'Convert lossy JPG photographs and raster artwork into uncompressed 24-bit lossless PNG format directly in your browser without cloud uploads. Eliminate generational compression loss, safeguard high-contrast text and graphic lines, and prepare image files for transparent editing. Enjoy completely private, client-side conversion that keeps personal photos secure on your device without server latency.',
+    seoContext: 'Convert lossy JPG photographs and raster artwork into uncompressed 24-bit lossless PNG format directly in your browser without cloud uploads. Eliminate generational compression loss, safeguard high-contrast text and graphic lines, and prepare image files for transparent editing. Enjoy completely private, client-side conversion that keeps personal photos secure on your device without server latency.',
     preset: {
       targetFormat: 'png',
       accept: 'image/jpeg,.jpg,.jpeg',
@@ -201,13 +205,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // 2. PNG to JPG
   {
+    heroSubtitle: 'Convert heavy PNG images to lightweight JPG format seamlessly in your browser with clean white background blending and zero remote file uploads.',
     slug: 'png-to-jpg',
     title: 'PNG to JPG Converter',
     metaTitle: 'PNG to JPG Converter Online Free - Flatten Alpha with Custom Matte',
     metaDescription: 'Convert heavy PNG images to lightweight JPG online. Flatten transparent alpha backgrounds with clean white matte fill and cut file size up to 80% privately.',
     h1: 'PNG to JPG Converter',
     badge: 'JPG / JPEG (Universal & Lean)',
-    introCopy: 'Convert heavy PNG screenshots, illustrations, and digital artwork into universally compatible, lightweight JPEG files. Eliminate unsightly dark background artifacts with automated pure white matte blending and cut file weights by up to 80% without transmitting data across external cloud servers.',
+    introCopy: 'Convert heavy PNG screenshots, illustrations, and digital graphics into universally compatible JPG format directly in your browser without external uploads. Flatten transparent backgrounds automatically with clean white matte fill and cut image payloads by up to 80%. Perfect for submitting photos to official government portals, job applications, and legacy photo systems.',
+    seoContext: 'Convert heavy PNG screenshots, illustrations, and digital graphics into universally compatible JPG format directly in your browser without external uploads. Flatten transparent backgrounds automatically with clean white matte fill and cut image payloads by up to 80%. Perfect for submitting photos to official government portals, job applications, and legacy photo systems.',
     preset: {
       targetFormat: 'jpeg',
       accept: 'image/png,.png',
@@ -347,13 +353,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // 3. HEIC to JPG
   {
+    heroSubtitle: 'Convert Apple iPhone HEIC photos to universal JPG format seamlessly in your browser with instant client-side decoding and complete photo privacy.',
     slug: 'heic-to-jpg',
     title: 'HEIC to JPG Converter',
     metaTitle: 'HEIC to JPG Converter Online Free - Universal iPhone Photo Export',
     metaDescription: 'Convert iPhone and iPad Apple HEIC/HEIF photos to JPG online. 100% client-side decoding with zero upload delays and full Windows/Android compatibility.',
     h1: 'HEIC to JPG Converter',
     badge: 'Universal iPhone Photo Transcoder',
-    introCopy: 'Convert Apple iPhone and iPad High Efficiency Image Container (.heic / .heif) photos into universally supported JPEG files directly in your web browser. Decode Apple camera captures locally in memory with zero cloud upload delays, complete personal privacy, and 100% compatibility across Windows, Android, and Linux systems.',
+    introCopy: 'Convert Apple iPhone and iPad HEIC camera captures into universally supported JPG format directly in your web browser without cloud transfers. Decode high-efficiency mobile photos locally using in-memory WebAssembly with zero quality degradation. Ensure seamless photo viewing across Windows PCs, Android phones, email apps, and printing kiosks while keeping personal photos private on your device.',
+    seoContext: 'Convert Apple iPhone and iPad HEIC camera captures into universally supported JPG format directly in your web browser without cloud transfers. Decode high-efficiency mobile photos locally using in-memory WebAssembly with zero quality degradation. Ensure seamless photo viewing across Windows PCs, Android phones, email apps, and printing kiosks while keeping personal photos private on your device.',
     preset: {
       targetFormat: 'jpeg',
       accept: '.heic,.heif,image/heic,image/heif',
@@ -493,13 +501,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // 4. JPG to PDF
   {
+    heroSubtitle: 'Convert JPG photos and document scans to standardized PDF documents seamlessly in your browser with multi-page batch merging and absolute privacy.',
     slug: 'jpg-to-pdf',
     title: 'JPG to PDF Converter',
     metaTitle: 'JPG to PDF Converter Online Free - Single & Multi-Page Document Export',
     metaDescription: 'Convert JPG photos and document scans to PDF online for free. Combine multiple photos into one multi-page PDF document with 100% client-side privacy.',
     h1: 'JPG to PDF Converter',
     badge: 'Standardized PDF Document Engine',
-    introCopy: 'Compile photographic document scans, receipts, certificates, and multi-page records into standardized PDF documents directly in your web browser. Export individual single-page PDFs or merge up to 15 sequential images into a unified multi-page PDF document with 100% client-side privacy and zero watermark restrictions.',
+    introCopy: 'Convert JPG photographs, signed agreements, and paper document scans into standardized PDF files directly in your browser without server uploads. Combine up to 15 queued image pages into a single multi-page PDF document with calibrated margins. Ideal for submitting official applications, tax records, and student assignments securely with zero watermarks or subscription fees.',
+    seoContext: 'Convert JPG photographs, signed agreements, and paper document scans into standardized PDF files directly in your browser without server uploads. Combine up to 15 queued image pages into a single multi-page PDF document with calibrated margins. Ideal for submitting official applications, tax records, and student assignments securely with zero watermarks or subscription fees.',
     preset: {
       targetFormat: 'pdf',
       accept: 'image/jpeg,.jpg,.jpeg',
@@ -639,13 +649,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // 5. PDF to PNG
   {
+    heroSubtitle: 'Extract high-resolution PDF pages into crystal-clear lossless PNG images seamlessly in your browser with client-side parsing and zero cloud uploads.',
     slug: 'pdf-to-png',
     title: 'PDF to PNG Converter',
     metaTitle: 'PDF to PNG Converter Online Free - Extract High-DPI Pages to PNG',
     metaDescription: 'Extract PDF pages into crisp high-DPI PNG images online for free. Render vector text and illustrations with 100% privacy and client-side PDF.js parsing.',
     h1: 'PDF to PNG Converter',
     badge: 'High-DPI PDF to PNG Engine',
-    introCopy: 'Extract high-DPI raster images and vector document pages from PDF files directly inside your web browser. Render page content at crisp 2x retina density, preserve razor-sharp typography and vector strokes, and download uncompressed PNG files without transmitting private documents across cloud servers.',
+    introCopy: 'Extract document pages from PDF files into sharp 24-bit lossless PNG images directly in your browser without cloud processing. Render fine typography, vector charts, and signatures at 2x high-DPI retina density with zero lossy compression artifacts. Safeguard sensitive contracts, financial statements, and personal records with private in-memory rendering on your local machine.',
+    seoContext: 'Extract document pages from PDF files into sharp 24-bit lossless PNG images directly in your browser without cloud processing. Render fine typography, vector charts, and signatures at 2x high-DPI retina density with zero lossy compression artifacts. Safeguard sensitive contracts, financial statements, and personal records with private in-memory rendering on your local machine.',
     preset: {
       targetFormat: 'png',
       accept: 'application/pdf,.pdf',
@@ -785,13 +797,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // 6. Black and White Image Converter
   {
+    heroSubtitle: 'Convert color images to high-contrast monochrome grayscale photos seamlessly in your browser with ITU-R BT.601 luminance weighting and zero server uploads.',
     slug: 'black-and-white-image-converter',
     title: 'Black and White Image Converter',
     metaTitle: 'Black and White Image Converter Online Free - Monochrome Grayscale',
     metaDescription: 'Convert color photos into crisp black and white grayscale images online. ITU-R BT.601 luminance weighting for print, document scanning, and toner savings.',
     h1: 'Black and White Image Converter',
     badge: 'ITU-R BT.601 Monochrome Grayscale Engine',
-    introCopy: 'Convert color photos, document scans, signatures, and artwork into high-contrast black and white monochromatic images in seconds. Calibrated with ITU-R BT.601 human luminance perception weighting to optimize tonal contrast for official laser printing, Xerox photocopy legibility, and substantial office toner savings.',
+    introCopy: 'Convert color photographs, document scans, signatures, and illustrations into high-contrast monochrome grayscale images directly in your browser without cloud uploads. Optimize luminance channels using calibrated ITU-R BT.601 perceptual weighting for laser printing, photocopy clarity, and office toner savings. Fast, private client-side processing guarantees your sensitive personal and business images never leave your computer.',
+    seoContext: 'Convert color photographs, document scans, signatures, and illustrations into high-contrast monochrome grayscale images directly in your browser without cloud uploads. Optimize luminance channels using calibrated ITU-R BT.601 perceptual weighting for laser printing, photocopy clarity, and office toner savings. Fast, private client-side processing guarantees your sensitive personal and business images never leave your computer.',
     preset: {
       targetFormat: 'jpeg',
       accept: 'image/*',
@@ -931,13 +945,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // 7. 3000x3000 Image Converter
   {
+    heroSubtitle: 'Convert artwork to exact 3000x3000 pixel 1:1 square canvas seamlessly in your browser with crisp aspect preservation and zero cloud uploads.',
     slug: '3000x3000-image-converter',
     title: '3000x3000 Image Converter',
     metaTitle: '3000x3000 Image Converter – Convert Images Online Free',
     metaDescription: 'Convert images to 3000x3000 pixels online. Upload supported photos, select JPG, PNG, or WebP, and export 1:1 square artwork with private in-browser processing.',
     h1: '3000x3000 Image Converter',
     badge: '3000 × 3000 Px Square Canvas (1:1 Ratio)',
-    introCopy: 'Convert images to an exact 3000x3000 pixel 1:1 square canvas in seconds. Pre-configured for high-resolution podcast cover art, square profile graphics, and 9-megapixel digital artwork with 100% private in-browser processing.',
+    introCopy: 'Resize and convert graphic artwork and album covers to exact 3000x3000 pixel square resolution directly in your browser without server uploads. Satisfy strict publishing requirements for Apple Podcasts, Spotify cover art, and music distributor feeds without distortion. Experience instantaneous in-memory canvas scaling that preserves crisp line edges and authentic color reproduction locally.',
+    seoContext: 'Resize and convert graphic artwork and album covers to exact 3000x3000 pixel square resolution directly in your browser without server uploads. Satisfy strict publishing requirements for Apple Podcasts, Spotify cover art, and music distributor feeds without distortion. Experience instantaneous in-memory canvas scaling that preserves crisp line edges and authentic color reproduction locally.',
     preset: {
       targetFormat: 'jpeg',
       accept: 'image/*',
@@ -1090,13 +1106,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // PNG to WebP Converter
   {
+    heroSubtitle: 'Convert transparent PNG graphics to lightweight modern WebP format seamlessly in your browser with preserved alpha transparency and zero file uploads.',
     slug: 'png-to-webp',
     title: 'PNG to WebP Converter',
     metaTitle: 'PNG to WebP Converter Online Free - Lossless Alpha Compression',
     metaDescription: 'Convert PNG to WebP online with 100% privacy. Reduce image file size by 30-40% while preserving transparent backgrounds and sharp edges.',
     h1: 'PNG to WebP Converter',
     badge: '35% Smaller • Lossless Alpha',
-    introCopy: 'Convert heavy PNG images and transparent artwork into next-generation WebP format in seconds. Preserve crisp alpha transparency while reducing file sizes by 30% to 40% for lightning-fast Core Web Vitals.',
+    introCopy: 'Convert transparent PNG illustrations, website icons, and graphic overlays into modern WebP format directly in your browser without server uploads. Cut bulky image payloads by 30% to 40% while preserving crisp alpha transparency and sharp vector borders. Boost Core Web Vitals performance, speed up page rendering, and reduce bandwidth consumption across all modern devices.',
+    seoContext: 'Convert transparent PNG illustrations, website icons, and graphic overlays into modern WebP format directly in your browser without server uploads. Cut bulky image payloads by 30% to 40% while preserving crisp alpha transparency and sharp vector borders. Boost Core Web Vitals performance, speed up page rendering, and reduce bandwidth consumption across all modern devices.',
     preset: {
       targetFormat: 'webp',
       accept: 'image/png,.png',
@@ -1232,13 +1250,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // JPG to WebP Converter
   {
+    heroSubtitle: 'Convert JPG photographs to lightweight modern WebP format directly in your web browser with zero file uploads, faster page speeds, and preserved quality.',
     slug: 'jpg-to-webp',
     title: 'JPG to WebP Converter',
     metaTitle: 'JPG to WebP Converter Online Free - Modern Web Compression',
     metaDescription: 'Convert JPG to modern WebP online for free. Cut image sizes by up to 35% without losing optical quality with 100% in-browser processing.',
     h1: 'JPG to WebP Converter',
     badge: 'Next-Gen Web Compression',
-    introCopy: 'Convert JPEG photographs and raster images into modern WebP format directly in your browser. Shrink page load weights by 25% to 35% while maintaining brilliant photographic fidelity and full color depth.',
+    introCopy: 'Convert JPG photographs and web images into modern WebP format directly in your browser without cloud uploads. Shrink heavy file payloads by 30% to 40% while maintaining sharp photographic detail and color depth. Ideal for optimizing Core Web Vitals, speeding up web page loading, and reducing bandwidth costs across all modern devices.',
+    seoContext: 'Convert JPG photographs and web images into modern WebP format directly in your browser without cloud uploads. Shrink heavy file payloads by 30% to 40% while maintaining sharp photographic detail and color depth. Ideal for optimizing Core Web Vitals, speeding up web page loading, and reducing bandwidth costs across all modern devices.',
     preset: {
       targetFormat: 'webp',
       accept: 'image/jpeg,.jpg,.jpeg',
@@ -1374,13 +1394,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // AVIF to WebP Converter
   {
+    heroSubtitle: 'Convert next-generation AVIF images to universally supported WebP format seamlessly in your browser with zero server uploads and preserved image clarity.',
     slug: 'avif-to-webp',
     title: 'AVIF to WebP Converter',
     metaTitle: 'AVIF to WebP Converter Online Free - Universal Browser Fallback',
     metaDescription: 'Convert AVIF images to WebP online. Ensure 98%+ browser compatibility and legacy support without sacrificing compression performance.',
     h1: 'AVIF to WebP Converter',
     badge: 'Universal Compatibility Fallback',
-    introCopy: 'Convert AV1 Image File Format (AVIF) graphics into universally compatible WebP files. Ensure 98%+ global browser support, fast social media sharing, and instant rendering on legacy devices with zero upload latency.',
+    introCopy: 'Convert next-generation AVIF pictures into universally compatible WebP format directly in your browser without transmitting files across remote networks. Expand visual asset compatibility across 98% of worldwide web browsers while preserving rich tonal gradients and alpha transparency. Perfect for digital publishers, e-commerce stores, and developers seeking reliable cross-browser image support without unnecessary cloud delays.',
+    seoContext: 'Convert next-generation AVIF pictures into universally compatible WebP format directly in your browser without transmitting files across remote networks. Expand visual asset compatibility across 98% of worldwide web browsers while preserving rich tonal gradients and alpha transparency. Perfect for digital publishers, e-commerce stores, and developers seeking reliable cross-browser image support without unnecessary cloud delays.',
     preset: {
       targetFormat: 'webp',
       accept: 'image/avif,.avif',
@@ -1516,13 +1538,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // GIF to WebP Converter
   {
+    heroSubtitle: 'Convert static GIF graphics to ultra-lightweight WebP format seamlessly in your browser with reduced file sizes and zero remote file uploads.',
     slug: 'gif-to-webp',
     title: 'GIF to WebP Converter',
     metaTitle: 'GIF to WebP Converter Online Free - Cut Graphic Size by 60%',
     metaDescription: 'Convert heavy static GIF images to lightweight WebP online. Eliminate 256-color palette limits and slash file sizes by up to 60%.',
     h1: 'GIF to WebP Converter',
     badge: 'Palette-Free • 60% Size Cut',
-    introCopy: 'Convert heavy, palette-restricted GIF images into ultra-compact modern WebP graphics. Break free from the 256-color ceiling, eliminate dithering noise, and cut image payloads by up to 60% in your browser.',
+    introCopy: 'Convert heavy 256-color static GIF graphics into compact WebP images directly in your browser without transmitting data to remote servers. Slashing file weights by up to 60%, this conversion eliminates outdated palette constraints while preserving clean graphic outlines. Accelerate website loading speeds and optimize mobile browsing performance with instant client-side image processing on your machine.',
+    seoContext: 'Convert heavy 256-color static GIF graphics into compact WebP images directly in your browser without transmitting data to remote servers. Slashing file weights by up to 60%, this conversion eliminates outdated palette constraints while preserving clean graphic outlines. Accelerate website loading speeds and optimize mobile browsing performance with instant client-side image processing on your machine.',
     preset: {
       targetFormat: 'webp',
       accept: 'image/gif,.gif',
@@ -1658,13 +1682,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // SVG to WebP Converter
   {
+    heroSubtitle: 'Rasterize vector SVG artwork into high-density modern WebP bitmap images seamlessly in your browser with zero uploads and crisp clarity.',
     slug: 'svg-to-webp',
     title: 'SVG to WebP Converter',
     metaTitle: 'SVG to WebP Converter Online Free - High-Density Raster Delivery',
     metaDescription: 'Rasterize vector SVG files into high-density WebP images online. Perfect for fast social media sharing, email delivery, and app icons.',
     h1: 'SVG to WebP Converter',
     badge: 'High-Density Raster Delivery',
-    introCopy: 'Rasterize scalable vector graphics (SVG) into lightweight, high-density WebP images in seconds. Perfect for email attachments, social media cards, and web platforms that block raw XML vector uploads.',
+    introCopy: 'Rasterize scalable vector SVG files into lightweight modern WebP bitmap images directly in your browser without sending files to cloud servers. Render sharp iconography, company logos, and vector illustrations with pristine alpha transparency at custom resolutions. Perfect for social sharing, responsive web development, and email newsletters requiring fast-loading graphics without vector parsing overhead.',
+    seoContext: 'Rasterize scalable vector SVG files into lightweight modern WebP bitmap images directly in your browser without sending files to cloud servers. Render sharp iconography, company logos, and vector illustrations with pristine alpha transparency at custom resolutions. Perfect for social sharing, responsive web development, and email newsletters requiring fast-loading graphics without vector parsing overhead.',
     preset: {
       targetFormat: 'webp',
       accept: 'image/svg+xml,.svg',
@@ -1800,13 +1826,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // BMP to WebP Converter
   {
+    heroSubtitle: 'Convert uncompressed Windows BMP bitmap files to compact WebP format seamlessly in your browser with huge byte savings and zero uploads.',
     slug: 'bmp-to-webp',
     title: 'BMP to WebP Converter',
     metaTitle: 'BMP to WebP Converter Online Free - 90% File Size Compression',
     metaDescription: 'Convert uncompressed Windows BMP bitmap images to modern WebP online. Cut file size by up to 90% without visible loss in quality.',
     h1: 'BMP to WebP Converter',
     badge: 'Uncompressed to Lean • 90% Cut',
-    introCopy: 'Transform bulky, uncompressed Windows bitmap (.bmp) files into lean, fast-loading WebP assets. Compress raw pixel buffers by up to 90% while preserving rich color fidelity and crisp graphic sharpness.',
+    introCopy: 'Convert bulky uncompressed Windows BMP bitmap images into lightweight modern WebP format directly in your browser without cloud uploads. Reduce file size by up to 90% while preserving pixel fidelity, rich colors, and photographic contrast. Ideal for web developers and designers optimizing legacy desktop assets for lightning-fast digital distribution across all browsers.',
+    seoContext: 'Convert bulky uncompressed Windows BMP bitmap images into lightweight modern WebP format directly in your browser without cloud uploads. Reduce file size by up to 90% while preserving pixel fidelity, rich colors, and photographic contrast. Ideal for web developers and designers optimizing legacy desktop assets for lightning-fast digital distribution across all browsers.',
     preset: {
       targetFormat: 'webp',
       accept: 'image/bmp,.bmp',
@@ -1942,13 +1970,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // TIFF to WebP Converter
   {
+    heroSubtitle: 'Convert multi-megabyte archival TIFF scans to lightweight WebP web graphics seamlessly in your browser with zero uploads and preserved contrast.',
     slug: 'tiff-to-webp',
     title: 'TIFF to WebP Converter',
     metaTitle: 'TIFF to WebP Converter Online Free - Archival to Fast Web Asset',
     metaDescription: 'Convert multi-megabyte scanner and camera TIFF files to lightweight WebP online. Prepare archival scans for online portfolios and web stores.',
     h1: 'TIFF to WebP Converter',
     badge: 'Archival to Web • Ultra Lean',
-    introCopy: 'Convert multi-megabyte scanner and camera TIFF files into lightweight, high-performance WebP images. Prepare heavy archival scans for web portfolios, digital galleries, and e-commerce stores with total privacy.',
+    introCopy: 'Convert multi-megabyte scanner and camera TIFF files into lightweight WebP images directly in your browser without transmitting private documents to cloud servers. Slash heavy file sizes by up to 85% while preserving sharp typography, authentic contrast, and fine textures. Perfect for online art portfolios, digital archives, and fast web publishing without server latency.',
+    seoContext: 'Convert multi-megabyte scanner and camera TIFF files into lightweight WebP images directly in your browser without transmitting private documents to cloud servers. Slash heavy file sizes by up to 85% while preserving sharp typography, authentic contrast, and fine textures. Perfect for online art portfolios, digital archives, and fast web publishing without server latency.',
     preset: {
       targetFormat: 'webp',
       accept: 'image/tiff,.tif,.tiff',
@@ -2084,13 +2114,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // ICO to WebP Converter
   {
+    heroSubtitle: 'Convert Windows ICO favicon icons to modern WebP format seamlessly in your browser with preserved transparency and zero remote file uploads.',
     slug: 'ico-to-webp',
     title: 'ICO to WebP Converter',
     metaTitle: 'ICO to WebP Converter Online Free - Extract Favicons to Modern Web',
     metaDescription: 'Convert Windows icon and favicon (.ico) files to modern WebP format online. Extract crisp icon graphics with full alpha transparency.',
     h1: 'ICO to WebP Converter',
     badge: 'Modern Icon Format',
-    introCopy: 'Extract and convert legacy Windows .ico favicon files into modern, lightweight WebP format directly in your browser. Preserve transparent icon backgrounds and sharpen icon graphics for modern web applications.',
+    introCopy: 'Convert Windows ICO favicon files into modern lightweight WebP format directly in your browser without cloud uploads. Extract embedded icon frames with full transparency support for modern web rendering, UI design mockups, and mobile app displays. Enjoy instantaneous, 100% private in-browser conversion that keeps your creative digital assets safe on your computer.',
+    seoContext: 'Convert Windows ICO favicon files into modern lightweight WebP format directly in your browser without cloud uploads. Extract embedded icon frames with full transparency support for modern web rendering, UI design mockups, and mobile app displays. Enjoy instantaneous, 100% private in-browser conversion that keeps your creative digital assets safe on your computer.',
     preset: {
       targetFormat: 'webp',
       accept: 'image/x-icon,.ico',
@@ -2226,13 +2258,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // Batch Image to WebP Converter
   {
+    heroSubtitle: 'Batch convert up to 15 mixed-format images to WebP simultaneously in your browser with one-click ZIP download and zero server uploads.',
     slug: 'batch-image-to-webp',
     title: 'Batch Image to WebP Converter',
     metaTitle: 'Batch Image to WebP Converter Online Free - Bulk Convert Up to 15 Files',
     metaDescription: 'Batch convert up to 15 mixed-format images to WebP online for free. Download converted files as a single ZIP archive with 100% privacy.',
     h1: 'Batch Image to WebP Converter',
     badge: 'Bulk 15 Images • ZIP Archive',
-    introCopy: 'Convert up to 15 mixed-format images (JPG, PNG, AVIF, BMP, GIF, TIFF) to WebP simultaneously in your browser. Download all converted images individually or as a single, organized ZIP archive in seconds.',
+    introCopy: 'Batch convert up to 15 mixed JPG, PNG, and camera photos into modern WebP format simultaneously in your browser without cloud queues. Process entire photo galleries in parallel using client-side multithreading and download all optimized files in a single convenient ZIP archive. Save substantial time, eliminate repetitive manual uploads, and ensure absolute confidentiality for your assets.',
+    seoContext: 'Batch convert up to 15 mixed JPG, PNG, and camera photos into modern WebP format simultaneously in your browser without cloud queues. Process entire photo galleries in parallel using client-side multithreading and download all optimized files in a single convenient ZIP archive. Save substantial time, eliminate repetitive manual uploads, and ensure absolute confidentiality for your assets.',
     preset: {
       targetFormat: 'webp',
       accept: 'image/*',
@@ -2368,13 +2402,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // Lossless WebP Converter
   {
+    heroSubtitle: 'Encode high-precision graphics using bit-for-bit lossless WebP compression seamlessly in your browser with zero quality drop and zero file uploads.',
     slug: 'lossless-webp-converter',
     title: 'Lossless WebP Converter',
     metaTitle: 'Lossless WebP Converter Online Free - Bit-for-Bit Pixel Accuracy',
     metaDescription: 'Encode images to bit-for-bit lossless WebP online. Perfect for logos, illustrations, and UI screenshots needing pristine pixel fidelity.',
     h1: 'Lossless WebP Converter',
     badge: 'Bit-for-Bit Lossless Accuracy',
-    introCopy: 'Convert graphics, screenshots, and illustrations into mathematically lossless WebP format. Ensure bit-for-bit pixel precision, preserve pure alpha transparency, and reduce file weights compared to standard PNGs.',
+    introCopy: 'Encode high-precision graphic assets into bit-for-bit lossless WebP format directly in your browser without transmitting files across cloud servers. Achieve up to 26% smaller file weights than standard PNG files while maintaining exact mathematical pixel fidelity and pristine alpha transparency. Ideal for software screenshots, digital typography, and design systems demanding flawless visual accuracy.',
+    seoContext: 'Encode high-precision graphic assets into bit-for-bit lossless WebP format directly in your browser without transmitting files across cloud servers. Achieve up to 26% smaller file weights than standard PNG files while maintaining exact mathematical pixel fidelity and pristine alpha transparency. Ideal for software screenshots, digital typography, and design systems demanding flawless visual accuracy.',
     preset: {
       targetFormat: 'webp',
       accept: 'image/png,image/*',
@@ -2510,13 +2546,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // WebP to JPG Converter
   {
+    heroSubtitle: 'Convert modern WebP images to universal JPG photos seamlessly in your browser with solid matte background blending and zero file uploads.',
     slug: 'webp-to-jpg',
     title: 'WebP to JPG Converter',
     metaTitle: 'WebP to JPG Converter Online Free - Universal Legacy Compatibility',
     metaDescription: 'Convert modern WebP images to standard JPG online for free. 100% compatibility for older image viewers, print services, and web forms.',
     h1: 'WebP to JPG Converter',
     badge: '100% Universal Compatibility',
-    introCopy: 'Convert modern WebP images into universally recognized JPEG format directly in your browser. Ensure instant viewability across legacy desktop viewers, photo print kiosks, email software, and online submission forms.',
+    introCopy: 'Convert modern WebP images into universally compatible JPG photographs directly in your browser without remote server queues. Ensure 100% viewing compatibility across legacy desktop software, print fulfillment services, email clients, and official application portals. Transparent pixels are automatically composited onto clean white backgrounds for artifact-free photo exports with complete private client-side security.',
+    seoContext: 'Convert modern WebP images into universally compatible JPG photographs directly in your browser without remote server queues. Ensure 100% viewing compatibility across legacy desktop software, print fulfillment services, email clients, and official application portals. Transparent pixels are automatically composited onto clean white backgrounds for artifact-free photo exports with complete private client-side security.',
     preset: {
       targetFormat: 'jpeg',
       accept: 'image/webp,.webp',
@@ -2652,13 +2690,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // AVIF to JPG Converter
   {
+    heroSubtitle: 'Convert next-generation AVIF images into universally readable JPG photographs seamlessly in your browser with zero uploads and preserved photographic sharpness.',
     slug: 'avif-to-jpg',
     title: 'AVIF to JPG Converter',
     metaTitle: 'AVIF to JPG Converter Online Free - Universal Photo Export',
     metaDescription: 'Convert next-gen AVIF images to standard JPG online. Ensure full compatibility on older devices, print services, and social platforms.',
     h1: 'AVIF to JPG Converter',
     badge: 'Universal Format • Wide Support',
-    introCopy: 'Transcode next-generation AVIF images into standard, universally accepted JPEG photographs in seconds. Eliminate format incompatibility on Windows, Android, and social media platforms with 100% client-side privacy.',
+    introCopy: 'Convert next-generation AVIF images into standard, universally compatible JPG photographs directly in your web browser without cloud uploads. Bridge compatibility gaps across older operating systems, photo editors, and social media platforms while preserving rich color fidelity and sharp detail. Client-side processing ensures complete security and instantaneous conversion without network bottlenecks or storage risks.',
+    seoContext: 'Convert next-generation AVIF images into standard, universally compatible JPG photographs directly in your web browser without cloud uploads. Bridge compatibility gaps across older operating systems, photo editors, and social media platforms while preserving rich color fidelity and sharp detail. Client-side processing ensures complete security and instantaneous conversion without network bottlenecks or storage risks.',
     preset: {
       targetFormat: 'jpeg',
       accept: 'image/avif,.avif',
@@ -2794,13 +2834,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // SVG to JPG Converter
   {
+    heroSubtitle: 'Rasterize vector SVG files onto clean solid JPG backgrounds seamlessly in your browser with crisp resolution scaling and zero file uploads.',
     slug: 'svg-to-jpg',
     title: 'SVG to JPG Converter',
     metaTitle: 'SVG to JPG Converter Online Free - Solid Background Rasterization',
     metaDescription: 'Convert scalable vector SVG graphics to high-resolution JPG images online. Flat white background rasterization with 100% in-browser privacy.',
     h1: 'SVG to JPG Converter',
     badge: 'Flat Raster • Solid Background',
-    introCopy: 'Rasterize scalable vector graphics (SVG) into solid-background JPEG images in seconds. Perfect for social media post cards, email attachments, and document uploads that reject raw XML vector files.',
+    introCopy: 'Rasterize scalable vector SVG illustrations onto solid JPG backgrounds directly in your browser without sending files to remote servers. Flatten vector logos, blueprints, and digital graphics with crisp white matte fill for easy email distribution and document embedding. Enjoy fast, private in-browser rasterization that keeps your proprietary vector graphics secure on your machine.',
+    seoContext: 'Rasterize scalable vector SVG illustrations onto solid JPG backgrounds directly in your browser without sending files to remote servers. Flatten vector logos, blueprints, and digital graphics with crisp white matte fill for easy email distribution and document embedding. Enjoy fast, private in-browser rasterization that keeps your proprietary vector graphics secure on your machine.',
     preset: {
       targetFormat: 'jpeg',
       accept: 'image/svg+xml,.svg',
@@ -2936,13 +2978,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // PDF to JPG Converter
   {
+    heroSubtitle: 'Convert PDF document pages into high-resolution JPG images seamlessly in your browser with private client-side rendering and zero file uploads.',
     slug: 'pdf-to-jpg',
     title: 'PDF to JPG Converter',
     metaTitle: 'PDF to JPG Converter Online Free - Extract Document Pages to JPG',
     metaDescription: 'Extract PDF pages into high-resolution JPG images online for free. Fast, private client-side page rendering with zero server uploads.',
     h1: 'PDF to JPG Converter',
     badge: 'Extract Pages • High Res Raster',
-    introCopy: 'Extract high-resolution JPG photographs and raster pages from PDF documents directly in your browser. Render document pages with clean text separation, white background compositing, and complete local privacy.',
+    introCopy: 'Convert PDF document pages and digital scans into high-resolution JPG images directly in your browser without uploading confidential files to cloud servers. Render vector typography, invoices, and certificates onto clean white backgrounds with razor-sharp readability. Ideal for sharing visual snapshots, posting document pages online, and archiving records with guaranteed client-side data confidentiality.',
+    seoContext: 'Convert PDF document pages and digital scans into high-resolution JPG images directly in your browser without uploading confidential files to cloud servers. Render vector typography, invoices, and certificates onto clean white backgrounds with razor-sharp readability. Ideal for sharing visual snapshots, posting document pages online, and archiving records with guaranteed client-side data confidentiality.',
     preset: {
       targetFormat: 'jpeg',
       accept: 'application/pdf,.pdf',
@@ -3078,13 +3122,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // BMP to JPG Converter
   {
+    heroSubtitle: 'Compress heavy uncompressed Windows BMP files into compact JPG photographs seamlessly in your browser with zero uploads and dramatic size reduction.',
     slug: 'bmp-to-jpg',
     title: 'BMP to JPG Converter',
     metaTitle: 'BMP to JPG Converter Online Free - 80% File Size Reduction',
     metaDescription: 'Compress heavy Windows bitmap (.bmp) files to lightweight JPG online. Cut file size by up to 80% with fast client-side processing.',
     h1: 'BMP to JPG Converter',
     badge: 'Compact File • 80% Compression',
-    introCopy: 'Compress heavy, uncompressed Windows bitmap (.bmp) files into lightweight, universally compatible JPEG images. Shrink file sizes by up to 80% for easy emailing, web sharing, and portal uploads.',
+    introCopy: 'Compress heavy uncompressed Windows BMP bitmap files into compact, shareable JPG photographs directly in your browser without external uploads. Slash oversized file payloads by up to 80% while retaining sharp photographic contrast, rich color gradations, and edge clarity. Perfect for sharing legacy bitmap assets through email, online forms, and mobile devices without network delays.',
+    seoContext: 'Compress heavy uncompressed Windows BMP bitmap files into compact, shareable JPG photographs directly in your browser without external uploads. Slash oversized file payloads by up to 80% while retaining sharp photographic contrast, rich color gradations, and edge clarity. Perfect for sharing legacy bitmap assets through email, online forms, and mobile devices without network delays.',
     preset: {
       targetFormat: 'jpeg',
       accept: 'image/bmp,.bmp',
@@ -3220,13 +3266,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // TIFF to JPG Converter
   {
+    heroSubtitle: 'Convert bulky multi-megabyte scanner TIFF files into compact JPG photos seamlessly in your browser with zero uploads and preserved contrast.',
     slug: 'tiff-to-jpg',
     title: 'TIFF to JPG Converter',
     metaTitle: 'TIFF to JPG Converter Online Free - Print Scans to Web JPG',
     metaDescription: 'Convert heavy scanner and camera TIFF files to standard JPG online for free. Compress archival scans for easy sharing and web portfolios.',
     h1: 'TIFF to JPG Converter',
     badge: 'Print to Web • Lightweight',
-    introCopy: 'Convert multi-megabyte archival scanner and camera TIFF files into lightweight, universally accessible JPG images. Share heavy photo scans easily via email and web portfolios without sacrificing optical clarity.',
+    introCopy: 'Convert oversized archival TIFF scans and photography captures into lightweight, universally compatible JPG images directly in your browser without cloud uploads. Reduce heavy file sizes by up to 85% while preserving photographic clarity, tonal balance, and fine document detail. Perfect for sharing professional scans via email, social networks, and web forms with complete privacy.',
+    seoContext: 'Convert oversized archival TIFF scans and photography captures into lightweight, universally compatible JPG images directly in your browser without cloud uploads. Reduce heavy file sizes by up to 85% while preserving photographic clarity, tonal balance, and fine document detail. Perfect for sharing professional scans via email, social networks, and web forms with complete privacy.',
     preset: {
       targetFormat: 'jpeg',
       accept: 'image/tiff,.tif,.tiff',
@@ -3362,13 +3410,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // GIF to JPG Converter
   {
+    heroSubtitle: 'Convert static GIF graphics into sharp standard JPG photos seamlessly in your browser with custom solid background compositing and zero uploads.',
     slug: 'gif-to-jpg',
     title: 'GIF to JPG Converter',
     metaTitle: 'GIF to JPG Converter Online Free - Extract Static Frames to JPG',
     metaDescription: 'Convert static GIF images to standard JPG online. Replace 256-color palette limits with rich 24-bit TrueColor JPEG compression.',
     h1: 'GIF to JPG Converter',
     badge: 'Single Frame • RGB Re-Encode',
-    introCopy: 'Convert static GIF graphics into sharp, high-compatibility JPEG photographs in seconds. Break through 256-color palette restrictions, fill transparent areas with clean white matte, and export lightweight JPGs.',
+    introCopy: 'Convert static GIF graphics into sharp standard JPG photographs directly in your browser without transmitting images to remote servers. Re-encode 256-color graphics into 24-bit TrueColor JPEG images with clean solid matte background fills and smooth color transitions. Fast in-browser processing guarantees that your creative assets, memes, and illustrations remain entirely private on your device.',
+    seoContext: 'Convert static GIF graphics into sharp standard JPG photographs directly in your browser without transmitting images to remote servers. Re-encode 256-color graphics into 24-bit TrueColor JPEG images with clean solid matte background fills and smooth color transitions. Fast in-browser processing guarantees that your creative assets, memes, and illustrations remain entirely private on your device.',
     preset: {
       targetFormat: 'jpeg',
       accept: 'image/gif,.gif',
@@ -3504,13 +3554,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // RAW to JPG Converter
   {
+    heroSubtitle: 'Convert digital camera RAW photos into compressed universal JPG images seamlessly in your browser with instant decoding and zero cloud uploads.',
     slug: 'raw-to-jpg',
     title: 'RAW to JPG Converter',
     metaTitle: 'RAW to JPG Converter Online Free - Digital Camera Photo Export',
     metaDescription: 'Convert digital camera photos to standard JPG online for free. Fast, private client-side photo processing with zero cloud uploads.',
     h1: 'RAW to JPG Converter',
     badge: 'Digital Photo • Instant Share',
-    introCopy: 'Convert high-resolution digital camera snapshots into compressed, universally viewable JPEG photos in seconds. Share heavy camera captures easily across email, social media, and web galleries with total privacy.',
+    introCopy: 'Convert high-resolution digital camera RAW snapshots into universally shareable JPG photographs directly in your browser without cloud uploads. Extract vivid photographic frames locally in memory while preserving sharp optical focus, dynamic range, and authentic color balance. Ideal for photographers sharing quick proofs, uploading to client galleries, and posting to social media with total privacy.',
+    seoContext: 'Convert high-resolution digital camera RAW snapshots into universally shareable JPG photographs directly in your browser without cloud uploads. Extract vivid photographic frames locally in memory while preserving sharp optical focus, dynamic range, and authentic color balance. Ideal for photographers sharing quick proofs, uploading to client galleries, and posting to social media with total privacy.',
     preset: {
       targetFormat: 'jpeg',
       accept: 'image/*',
@@ -3646,13 +3698,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // WebP to PNG Converter
   {
+    heroSubtitle: 'Convert modern WebP images to lossless 24-bit PNG format seamlessly in your browser with preserved alpha transparency and zero file uploads.',
     slug: 'webp-to-png',
     title: 'WebP to PNG Converter',
     metaTitle: 'WebP to PNG Converter Online Free - Lossless Alpha Preservation',
     metaDescription: 'Convert WebP images to lossless PNG online with 100% privacy. Retain transparent backgrounds and extract uncompressed graphics.',
     h1: 'WebP to PNG Converter',
     badge: 'Alpha Preserved • TrueColor',
-    introCopy: 'Convert WebP graphics and photos into uncompressed, lossless PNG files in seconds. Extract transparent backgrounds with bit-for-bit fidelity and prepare assets for professional desktop editing in Photoshop, GIMP, or Figma.',
+    introCopy: 'Convert modern WebP images into lossless 24-bit PNG graphics directly in your browser without transmitting private files to external servers. Restore complete alpha transparency channels and freeze compression artifacts for seamless graphic design workflows in Photoshop, Figma, or Canva. Enjoy private client-side transcoding that safeguards your creative illustrations and website assets on your machine.',
+    seoContext: 'Convert modern WebP images into lossless 24-bit PNG graphics directly in your browser without transmitting private files to external servers. Restore complete alpha transparency channels and freeze compression artifacts for seamless graphic design workflows in Photoshop, Figma, or Canva. Enjoy private client-side transcoding that safeguards your creative illustrations and website assets on your machine.',
     preset: {
       targetFormat: 'png',
       accept: 'image/webp,.webp',
@@ -3788,13 +3842,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // SVG to PNG Converter
   {
+    heroSubtitle: 'Rasterize vector SVG files into crisp transparent PNG graphics seamlessly in your browser with high-DPI scaling and zero remote file uploads.',
     slug: 'svg-to-png',
     title: 'SVG to PNG Converter',
     metaTitle: 'SVG to PNG Converter Online Free - Transparent Background Rasterizer',
     metaDescription: 'Rasterize SVG vector files to crisp, high-resolution transparent PNG images online. 100% private client-side vector rendering.',
     h1: 'SVG to PNG Converter',
     badge: 'Lossless Alpha • Transparent BG',
-    introCopy: 'Rasterize scalable vector graphics (SVG) into crisp, high-resolution PNG images with transparent backgrounds. Convert vector logos, icons, and illustrations for web applications, presentation decks, and video overlays.',
+    introCopy: 'Rasterize scalable vector SVG artwork into crisp, high-resolution PNG graphics directly in your browser without server uploads. Preserve transparent alpha backgrounds with razor-sharp vector line art and typographic contours for web design, presentation slides, and mobile applications. Benefit from secure in-browser rasterization that ensures your proprietary vector logos and icons remain strictly confidential.',
+    seoContext: 'Rasterize scalable vector SVG artwork into crisp, high-resolution PNG graphics directly in your browser without server uploads. Preserve transparent alpha backgrounds with razor-sharp vector line art and typographic contours for web design, presentation slides, and mobile applications. Benefit from secure in-browser rasterization that ensures your proprietary vector logos and icons remain strictly confidential.',
     preset: {
       targetFormat: 'png',
       accept: 'image/svg+xml,.svg',
@@ -3930,13 +3986,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // AVIF to PNG Converter
   {
+    heroSubtitle: 'Decompress next-generation AVIF images into uncompressed lossless 24-bit PNG files seamlessly in your browser with zero remote uploads and bit-perfect fidelity.',
     slug: 'avif-to-png',
     title: 'AVIF to PNG Converter',
     metaTitle: 'AVIF to PNG Converter Online Free - Uncompressed Desktop Editing',
     metaDescription: 'Decompress AVIF images to uncompressed lossless PNG online. Extract full-detail transparent graphics with 100% in-browser privacy.',
     h1: 'AVIF to PNG Converter',
     badge: 'Lossless Studio • Uncompressed',
-    introCopy: 'Decompress next-generation AVIF images into uncompressed, lossless PNG files in seconds. Extract pixel-precise graphics with full alpha transparency for seamless editing in desktop graphic design suites.',
+    introCopy: 'Decompress next-generation AVIF images into uncompressed lossless PNG graphics directly in your browser without sending files to remote servers. Restore full 32-bit RGBA color buffers with transparent alpha channels for pixel-perfect editing in desktop design applications. Perfect for UI designers and developers requiring clean, uncompressed graphic containers without cloud delays or privacy concerns.',
+    seoContext: 'Decompress next-generation AVIF images into uncompressed lossless PNG graphics directly in your browser without sending files to remote servers. Restore full 32-bit RGBA color buffers with transparent alpha channels for pixel-perfect editing in desktop design applications. Perfect for UI designers and developers requiring clean, uncompressed graphic containers without cloud delays or privacy concerns.',
     preset: {
       targetFormat: 'png',
       accept: 'image/avif,.avif',
@@ -4072,13 +4130,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // ICO to PNG Converter
   {
+    heroSubtitle: 'Extract Windows ICO favicons into full-size transparent PNG images seamlessly in your browser with clean alpha channels and zero uploads.',
     slug: 'ico-to-png',
     title: 'ICO to PNG Converter',
     metaTitle: 'ICO to PNG Converter Online Free - Extract Favicons to Large PNG',
     metaDescription: 'Convert Windows icon and favicon (.ico) files to transparent PNG online for free. Extract full-resolution icon assets with 100% privacy.',
     h1: 'ICO to PNG Converter',
     badge: 'Icon Extract • Transparent 32-Bit',
-    introCopy: 'Extract Windows .ico favicon files into full-size transparent PNG images directly in your browser. Retrieve high-resolution app icons, website favicons, and graphic symbols with clean alpha transparency.',
+    introCopy: 'Extract Windows ICO icon files into full-size transparent PNG images directly in your browser without cloud uploads. Retain 32-bit alpha transparency and sharp vector borders for web development, software iconography, and graphic design mockups. Experience instantaneous, private client-side processing that keeps your creative digital assets safe and secure on your local computer.',
+    seoContext: 'Extract Windows ICO icon files into full-size transparent PNG images directly in your browser without cloud uploads. Retain 32-bit alpha transparency and sharp vector borders for web development, software iconography, and graphic design mockups. Experience instantaneous, private client-side processing that keeps your creative digital assets safe and secure on your local computer.',
     preset: {
       targetFormat: 'png',
       accept: 'image/x-icon,.ico',
@@ -4214,13 +4274,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // BMP to PNG Converter
   {
+    heroSubtitle: 'Losslessly convert Windows BMP bitmap files to compact PNG graphics seamlessly in your browser with zero loss and zero file uploads.',
     slug: 'bmp-to-png',
     title: 'BMP to PNG Converter',
     metaTitle: 'BMP to PNG Converter Online Free - DEFLATE Lossless Compression',
     metaDescription: 'Convert uncompressed Windows BMP bitmap files to lossless PNG online. Reduce file size significantly without losing a single pixel.',
     h1: 'BMP to PNG Converter',
     badge: 'DEFLATE Lossless • Zero Loss',
-    introCopy: 'Losslessly compress bulky Windows bitmap (.bmp) files into lightweight, modern PNG images. Reduce storage footprints by up to 70% while guaranteeing bit-for-bit mathematical pixel preservation with zero quality loss.',
+    introCopy: 'Losslessly convert bulky Windows BMP bitmap files into compact PNG graphics directly in your browser without cloud uploads. Eliminate redundant byte weight using DEFLATE compression while preserving every single pixel coordinate and color value bit-for-bit. Ideal for software developers, engineers, and digital artists archiving legacy bitmap assets with guaranteed client-side data privacy.',
+    seoContext: 'Losslessly convert bulky Windows BMP bitmap files into compact PNG graphics directly in your browser without cloud uploads. Eliminate redundant byte weight using DEFLATE compression while preserving every single pixel coordinate and color value bit-for-bit. Ideal for software developers, engineers, and digital artists archiving legacy bitmap assets with guaranteed client-side data privacy.',
     preset: {
       targetFormat: 'png',
       accept: 'image/bmp,.bmp',
@@ -4356,13 +4418,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // GIF to PNG Converter
   {
+    heroSubtitle: 'Convert indexed-color GIF images into TrueColor 24-bit PNG files seamlessly in your browser with clean transparent edges and zero uploads.',
     slug: 'gif-to-png',
     title: 'GIF to PNG Converter',
     metaTitle: 'GIF to PNG Converter Online Free - Indexed to TrueColor PNG',
     metaDescription: 'Convert static GIF images to TrueColor 24-bit PNG online. Eliminate color banding and clean up transparent edges with 100% privacy.',
     h1: 'GIF to PNG Converter',
     badge: 'Indexed to RGB • Clean Edges',
-    introCopy: 'Convert indexed-color static GIF graphics into TrueColor 24-bit PNG files with clean, sharp transparent edges. Eliminate 256-color banding restrictions and prepare graphics for professional design workflows.',
+    introCopy: 'Convert indexed-color GIF images into TrueColor 24-bit PNG graphics directly in your browser without transmitting files across remote servers. Upgrade 256-color limitations into smooth 32-bit RGBA color space with clean, anti-aliased transparent boundaries and zero edge fringing. Fast, client-side processing guarantees that your digital graphics and stickers remain strictly private on your device.',
+    seoContext: 'Convert indexed-color GIF images into TrueColor 24-bit PNG graphics directly in your browser without transmitting files across remote servers. Upgrade 256-color limitations into smooth 32-bit RGBA color space with clean, anti-aliased transparent boundaries and zero edge fringing. Fast, client-side processing guarantees that your digital graphics and stickers remain strictly private on your device.',
     preset: {
       targetFormat: 'png',
       accept: 'image/gif,.gif',
@@ -4498,13 +4562,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // TIFF to PNG Converter
   {
+    heroSubtitle: 'Convert scanner TIFF files into lossless uncompressed PNG graphics seamlessly in your browser with zero uploads and preserved document clarity.',
     slug: 'tiff-to-png',
     title: 'TIFF to PNG Converter',
     metaTitle: 'TIFF to PNG Converter Online Free - Lossless Archival Conversion',
     metaDescription: 'Convert multi-megabyte scanner and camera TIFF files to lossless PNG online. Maintain 100% document quality with zero server uploads.',
     h1: 'TIFF to PNG Converter',
     badge: 'Lossless Scans • Document Quality',
-    introCopy: 'Convert archival scanner and camera TIFF images into universally supported lossless PNG format. Maintain bit-perfect document clarity, crisp signature lines, and high-DPI resolution without cloud upload risks.',
+    introCopy: 'Convert archival scanner TIFF images into universally supported lossless PNG graphics directly in your browser without cloud uploads. Preserve crystal-clear typography, fine pencil sketches, and authentic document details without lossy compression noise or generational decay. Perfect for archiving historical documents, legal contracts, and engineering schematics with absolute privacy on your local machine.',
+    seoContext: 'Convert archival scanner TIFF images into universally supported lossless PNG graphics directly in your browser without cloud uploads. Preserve crystal-clear typography, fine pencil sketches, and authentic document details without lossy compression noise or generational decay. Perfect for archiving historical documents, legal contracts, and engineering schematics with absolute privacy on your local machine.',
     preset: {
       targetFormat: 'png',
       accept: 'image/tiff,.tif,.tiff',
@@ -4640,13 +4706,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // Transparent PNG Converter
   {
+    heroSubtitle: 'Optimize and restore transparent PNG alpha channels seamlessly in your browser with clean edge compositing and zero remote file uploads.',
     slug: 'transparent-png-converter',
     title: 'Transparent PNG Converter',
     metaTitle: 'Transparent PNG Converter Online Free - Clean Alpha Channel Export',
     metaDescription: 'Convert images to transparent PNG online for free. Retain full alpha channels, eliminate dark outlines, and preserve cutout quality.',
     h1: 'Transparent PNG Converter',
     badge: 'Clean Cutouts • 8-Bit Alpha',
-    introCopy: 'Convert graphics, logos, and cutouts into transparent 32-bit RGBA PNG files in seconds. Retain clean alpha channels, prevent dark outline artifacts around edges, and export uncompressed transparent graphics locally.',
+    introCopy: 'Optimize and preserve transparent PNG alpha channels directly in your browser without transmitting private graphics to cloud servers. Eliminate dark fringing, halos, and pixel artifacts around cutout edges while maintaining full 8-bit variable transparency. Ideal for product photography cutouts, digital stickers, and website overlays demanding flawless visual compositing across light and dark backgrounds.',
+    seoContext: 'Optimize and preserve transparent PNG alpha channels directly in your browser without transmitting private graphics to cloud servers. Eliminate dark fringing, halos, and pixel artifacts around cutout edges while maintaining full 8-bit variable transparency. Ideal for product photography cutouts, digital stickers, and website overlays demanding flawless visual compositing across light and dark backgrounds.',
     preset: {
       targetFormat: 'png',
       accept: 'image/*',
@@ -4782,13 +4850,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // JPG to AVIF Converter
   {
+    heroSubtitle: 'Convert JPG photos to next-generation AVIF format seamlessly in your browser with up to 50% size cuts and zero file uploads.',
     slug: 'jpg-to-avif',
     title: 'JPG to AVIF Converter',
     metaTitle: 'JPG to AVIF Converter Online Free - 50% Web Size Reduction',
     metaDescription: 'Convert JPG photos to next-generation AVIF online. Slash image file size by up to 50% with cutting-edge AV1 intra-frame compression.',
     h1: 'JPG to AVIF Converter',
     badge: '50% Size Cut • Next-Gen AV1',
-    introCopy: 'Convert JPEG photographs into cutting-edge AVIF format directly in your browser. Leverage modern AV1 intra-frame video compression to cut file weights by up to 50% while preserving superior photographic fidelity.',
+    introCopy: 'Convert JPG photographs and web graphics into next-generation AVIF format directly in your browser without cloud uploads. Slash image file sizes by up to 50% compared to standard JPEGs while preserving brilliant color gradients and sharp contrast. Ideal for performance-focused websites aiming to pass Core Web Vitals audits and accelerate mobile loading speeds.',
+    seoContext: 'Convert JPG photographs and web graphics into next-generation AVIF format directly in your browser without cloud uploads. Slash image file sizes by up to 50% compared to standard JPEGs while preserving brilliant color gradients and sharp contrast. Ideal for performance-focused websites aiming to pass Core Web Vitals audits and accelerate mobile loading speeds.',
     preset: {
       targetFormat: 'avif',
       accept: 'image/jpeg,.jpg,.jpeg',
@@ -4924,13 +4994,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // PNG to AVIF Converter
   {
+    heroSubtitle: 'Convert transparent PNG graphics to next-generation AVIF format seamlessly in your web browser with cutting-edge compression, retained alpha, and zero file uploads.',
     slug: 'png-to-avif',
     title: 'PNG to AVIF Converter',
     metaTitle: 'PNG to AVIF Converter Online Free - Next-Gen Alpha Compression',
     metaDescription: 'Convert heavy PNG images to next-gen AVIF online. Cut file size in half while preserving transparent backgrounds and 10-bit color depth.',
     h1: 'PNG to AVIF Converter',
     badge: 'Next-Gen Alpha • 10-Bit Color',
-    introCopy: 'Convert heavy transparent PNG artwork into next-generation AVIF format in seconds. Slash file sizes by over 50% while preserving transparent alpha channels and wide-gamut 10-bit color fidelity in your browser.',
+    introCopy: 'Convert transparent PNG graphics and illustrations into next-generation AVIF format directly in your browser without cloud uploads. Halve your graphic file payloads while preserving crisp alpha transparency, wide color gamuts, and razor-sharp typographic edges. Perfect for modern web applications and high-traffic websites seeking maximum bandwidth savings and ultra-fast page delivery on modern browsers.',
+    seoContext: 'Convert transparent PNG graphics and illustrations into next-generation AVIF format directly in your browser without cloud uploads. Halve your graphic file payloads while preserving crisp alpha transparency, wide color gamuts, and razor-sharp typographic edges. Perfect for modern web applications and high-traffic websites seeking maximum bandwidth savings and ultra-fast page delivery on modern browsers.',
     preset: {
       targetFormat: 'avif',
       accept: 'image/png,.png',
@@ -5066,13 +5138,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // WebP to AVIF Converter
   {
+    heroSubtitle: 'Upgrade WebP images to next-generation AVIF format seamlessly in your browser with maximum compression efficiency and zero remote file uploads.',
     slug: 'webp-to-avif',
     title: 'WebP to AVIF Converter',
     metaTitle: 'WebP to AVIF Converter Online Free - Next-Gen Web Optimization',
     metaDescription: 'Upgrade WebP images to next-generation AVIF online. Achieve up to 20% additional compression savings with cutting-edge AV1 encoding.',
     h1: 'WebP to AVIF Converter',
     badge: 'Ultra Compact • Max Efficiency',
-    introCopy: 'Upgrade existing WebP web assets to next-generation AVIF format in seconds. Gain an additional 15% to 20% in bandwidth savings and optimize mobile web performance with 100% client-side execution.',
+    introCopy: 'Upgrade existing WebP website graphics to cutting-edge AVIF format directly in your browser without server uploads. Achieve an additional 20% to 30% reduction in file payload while maintaining high visual fidelity and alpha transparency. Ideal for modern digital platforms optimizing mobile network delivery and boosting Google Core Web Vitals rankings worldwide.',
+    seoContext: 'Upgrade existing WebP website graphics to cutting-edge AVIF format directly in your browser without server uploads. Achieve an additional 20% to 30% reduction in file payload while maintaining high visual fidelity and alpha transparency. Ideal for modern digital platforms optimizing mobile network delivery and boosting Google Core Web Vitals rankings worldwide.',
     preset: {
       targetFormat: 'avif',
       accept: 'image/webp,.webp',
@@ -5208,13 +5282,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // Image to PDF Converter
   {
+    heroSubtitle: 'Convert single or multiple images into standardized PDF documents seamlessly in your browser with multi-page merging and zero file uploads.',
     slug: 'image-to-pdf',
     title: 'Image to PDF Converter',
     metaTitle: 'Image to PDF Converter Online Free - Single & Multi-Page Document Export',
     metaDescription: 'Convert any image (JPG, PNG, WebP) to standardized PDF online. Free, private document creator with single and multi-page combining.',
     h1: 'Image to PDF Converter',
     badge: 'Print Ready • PDF 1.4 Compliant',
-    introCopy: 'Convert single or multiple images (JPG, PNG, WebP, AVIF) into standardized, printable PDF documents in seconds. Combine receipts, notes, and photos into clean PDF documents with complete client-side privacy.',
+    introCopy: 'Convert single or multiple JPG, PNG, and WebP images into standardized PDF documents directly in your browser without cloud uploads. Merge up to 15 receipts, photos, or document scans into a single multi-page PDF with calibrated margins. Ideal for submitting official applications, tax records, and expense reports securely with zero watermark restrictions.',
+    seoContext: 'Convert single or multiple JPG, PNG, and WebP images into standardized PDF documents directly in your browser without cloud uploads. Merge up to 15 receipts, photos, or document scans into a single multi-page PDF with calibrated margins. Ideal for submitting official applications, tax records, and expense reports securely with zero watermark restrictions.',
     preset: {
       targetFormat: 'pdf',
       accept: 'image/*',
@@ -5350,13 +5426,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // PNG to ICO Favicon Converter
   {
+    heroSubtitle: 'Generate standard Windows and website ICO favicons from transparent PNG logos seamlessly in your browser with zero remote file uploads.',
     slug: 'png-to-ico',
     title: 'PNG to ICO Favicon Converter',
     metaTitle: 'PNG to ICO Favicon Converter Online Free - 32-Bit Windows & Web Favicon',
     metaDescription: 'Convert transparent PNG logos to standard Windows .ico favicon files online. Create sharp, professional favicons with 100% privacy.',
     h1: 'PNG to ICO Favicon Converter',
     badge: '32-Bit Favicon • 256×256 Max',
-    introCopy: 'Convert transparent PNG logos into standard Windows and website .ico favicon files directly in your browser. Preserve clean alpha transparency, calibrate dimensions up to 256x256 px, and create crisp favicons in seconds.',
+    introCopy: 'Generate standard Windows and website ICO favicon files from transparent PNG graphics directly in your browser without cloud uploads. Preserve crisp alpha transparency, high contrast, and clean icon contours across multi-resolution canvas bounds. Perfect for web developers, software creators, and designers producing compliant favicons and desktop application icons with complete privacy on-device.',
+    seoContext: 'Generate standard Windows and website ICO favicon files from transparent PNG graphics directly in your browser without cloud uploads. Preserve crisp alpha transparency, high contrast, and clean icon contours across multi-resolution canvas bounds. Perfect for web developers, software creators, and designers producing compliant favicons and desktop application icons with complete privacy on-device.',
     preset: {
       targetFormat: 'ico',
       accept: 'image/png,.png',
@@ -5492,13 +5570,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // SVG to PNG 300 DPI Converter
   {
+    heroSubtitle: 'Rasterize vector SVG artwork into high-density 300 DPI print-ready PNG files seamlessly in your browser with zero remote file uploads.',
     slug: 'svg-to-png-300-dpi',
     title: 'SVG to PNG 300 DPI Converter',
     metaTitle: 'SVG to PNG 300 DPI Converter Online Free - High-Density Print Rasterizer',
     metaDescription: 'Rasterize vector SVG files to 300 DPI high-density PNG images online. Perfect for commercial printing, apparel, and merchandise with 100% privacy.',
     h1: 'SVG to PNG 300 DPI Converter',
     badge: '300 DPI Print • High Density',
-    introCopy: 'Rasterize scalable vector graphics (SVG) into high-density 300 DPI equivalent PNG images in seconds. Perfect for commercial apparel printing, vinyl merchandise, marketing brochures, and razor-sharp print collateral.',
+    introCopy: 'Rasterize vector SVG illustrations into high-density 300 DPI print-ready PNG graphics directly in your browser without server uploads. Render razor-sharp typography, corporate logos, and detailed vector line art calibrated for commercial printing and high-DPI displays. Benefit from instantaneous client-side rasterization that keeps your proprietary vector graphics and brand assets completely private on-device.',
+    seoContext: 'Rasterize vector SVG illustrations into high-density 300 DPI print-ready PNG graphics directly in your browser without server uploads. Render razor-sharp typography, corporate logos, and detailed vector line art calibrated for commercial printing and high-DPI displays. Benefit from instantaneous client-side rasterization that keeps your proprietary vector graphics and brand assets completely private on-device.',
     preset: {
       targetFormat: 'png',
       accept: 'image/svg+xml,.svg',
@@ -5634,13 +5714,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // JPG to ICO Converter
   {
+    heroSubtitle: 'Convert square JPG photos into Windows icon ICO files seamlessly in your browser with crisp resolution and zero file uploads.',
     slug: 'jpg-to-ico',
     title: 'JPG to ICO Converter',
     metaTitle: 'JPG to ICO Converter Online Free - Desktop & Web Icon Maker',
     metaDescription: 'Convert square JPG photos into Windows icon (.ico) files online. Fast, private favicon creator with custom dimensions and zero server uploads.',
     h1: 'JPG to ICO Converter',
     badge: 'Desktop Icon • Favicon Ready',
-    introCopy: 'Convert square JPEG photos and graphics into standard Windows .ico icon files in seconds. Create website favicons and desktop application shortcuts directly in your browser with complete privacy.',
+    introCopy: 'Convert square JPG photos and graphics into Windows icon ICO files directly in your browser without transmitting data to remote servers. Format desktop shortcuts, website favicons, and application launcher icons with crisp pixel scaling and high contrast. Fast, private client-side processing guarantees your personal and commercial image assets remain completely secure on your machine.',
+    seoContext: 'Convert square JPG photos and graphics into Windows icon ICO files directly in your browser without transmitting data to remote servers. Format desktop shortcuts, website favicons, and application launcher icons with crisp pixel scaling and high contrast. Fast, private client-side processing guarantees your personal and commercial image assets remain completely secure on your machine.',
     preset: {
       targetFormat: 'ico',
       accept: 'image/jpeg,.jpg,.jpeg',
@@ -5776,13 +5858,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // WebP to PDF Converter
   {
+    heroSubtitle: 'Compile modern WebP graphics and screenshots into standardized PDF documents seamlessly in your browser with zero loss and zero uploads.',
     slug: 'webp-to-pdf',
     title: 'WebP to PDF Converter',
     metaTitle: 'WebP to PDF Converter Online Free - Document Archive Creator',
     metaDescription: 'Convert WebP images and web graphics to formal PDF documents online. 100% private in-browser document generator with single and multi-page support.',
     h1: 'WebP to PDF Converter',
     badge: 'Document Archive • DCT Embedded',
-    introCopy: 'Package modern WebP screenshots, web graphics, and digital photos into formal, printable PDF documents in seconds. Export single-page PDFs or combine multiple files into one multi-page document with total privacy.',
+    introCopy: 'Compile modern WebP images, website screenshots, and illustrations directly into standardized PDF documents in your browser without cloud uploads. Package multiple digital assets into organized single-page or multi-page PDF files with calibrated page geometry and zero compression blur. Ideal for compiling research reports, customer receipts, and design portfolios securely with complete personal privacy.',
+    seoContext: 'Compile modern WebP images, website screenshots, and illustrations directly into standardized PDF documents in your browser without cloud uploads. Package multiple digital assets into organized single-page or multi-page PDF files with calibrated page geometry and zero compression blur. Ideal for compiling research reports, customer receipts, and design portfolios securely with complete personal privacy.',
     preset: {
       targetFormat: 'pdf',
       accept: 'image/webp,.webp',
@@ -5918,13 +6002,15 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
 
   // PNG to PDF Converter
   {
+    heroSubtitle: 'Convert transparent PNG illustrations and scans into standardized PDF documents seamlessly in your browser with multi-page batch bundling and zero uploads.',
     slug: 'png-to-pdf',
     title: 'PNG to PDF Converter',
     metaTitle: 'PNG to PDF Converter Online Free - Single & Multi-Page Document Creator',
     metaDescription: 'Convert transparent PNG illustrations and scans to clean PDF documents online. Combine multiple PNG files into one PDF with 100% privacy.',
     h1: 'PNG to PDF Converter',
     badge: 'Merged Report • Multi-Page Batch',
-    introCopy: 'Bundle transparent illustrations, document snapshots, and PNG photos into standardized, printable PDF files directly in your browser. Export standalone single-page PDFs or merge up to 15 images into an organized multi-page document.',
+    introCopy: 'Convert transparent PNG graphics, signatures, and document scans into standardized PDF files directly in your browser without cloud uploads. Composite transparent elements cleanly onto white backgrounds and merge up to 15 queued pages into a single organized PDF document. Ideal for compiling business proposals, contract agreements, and portfolios with complete privacy and zero watermarks.',
+    seoContext: 'Convert transparent PNG graphics, signatures, and document scans into standardized PDF files directly in your browser without cloud uploads. Composite transparent elements cleanly onto white backgrounds and merge up to 15 queued pages into a single organized PDF document. Ideal for compiling business proposals, contract agreements, and portfolios with complete privacy and zero watermarks.',
     preset: {
       targetFormat: 'pdf',
       accept: 'image/png,.png',

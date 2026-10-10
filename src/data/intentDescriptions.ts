@@ -138,12 +138,12 @@ interface PageProps {
   type: 'resizer' | 'compress' | 'converter';
   resizerPage?: { slug: string; introCopy?: string } | null;
   compressPreset?: { slug: string; introDescription?: string } | null;
-  converterPreset?: { slug: string; introCopy?: string } | null;
+  converterPreset?: { slug: string; introCopy?: string; seoContext?: string } | null;
 }
 
 export function getPresetIntentDescription(props: PageProps): string {
   if (props.type === 'converter' && props.converterPreset) {
-    return props.converterPreset.introCopy || '';
+    return props.converterPreset.seoContext || props.converterPreset.introCopy || '';
   }
 
   if (props.type === 'compress' && props.compressPreset) {

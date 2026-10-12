@@ -15,10 +15,16 @@ const socialSlugMap: Record<string, string> = {
 
 const imageTools = TOOLS.filter((t) => t.category === 'Image Tools').map((t) => ({
   ...t,
-  href: socialSlugMap[t.title] || t.href
+  href: socialSlugMap[t.title] || (t.href.endsWith('/') ? t.href : `${t.href}/`)
 }));
-const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
-const textTools = TEXT_TOOLS;
+const devTools = TOOLS.filter((t) => t.category === 'Developer Tools').map((t) => ({
+  ...t,
+  href: t.href.endsWith('/') ? t.href : `${t.href}/`
+}));
+const textTools = TEXT_TOOLS.map((t) => ({
+  ...t,
+  href: t.href.endsWith('/') ? t.href : `${t.href}/`
+}));
 ---
 
 <header class="sticky top-0 z-[999] w-full border-b border-slate-200/80 dark:border-slate-800/80 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md transition-colors duration-200">

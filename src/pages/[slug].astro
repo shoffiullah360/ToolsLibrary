@@ -11,6 +11,9 @@ import rawPagesData from '../data/resizer-pages.json';
 import { COMPRESS_PRESETS, type CompressPreset } from '../data/compressPresets';
 import { CONVERTER_PRESETS, type ConverterPreset } from '../data/converterPresets';
 import { getPresetIntentDescription } from '../data/intentDescriptions';
+import ConversionPrivacyBrief from '../components/ConversionPrivacyBrief.astro';
+import ConversionEditorial from '../components/ConversionEditorial.astro';
+import { getConverterEditorial } from '../data/converterEditorials';
 
 interface ResizerPage {
   slug: string;
@@ -343,6 +346,7 @@ const pageDescription = props.type === 'converter'
     : props.resizerPage.metaDescription;
 
 const intentDescription = getPresetIntentDescription(props);
+const converterEditorial = props.type === 'converter' && props.converterPreset ? getConverterEditorial(props.converterPreset.slug) : null;
 ---
 
 <Layout
@@ -541,6 +545,14 @@ const intentDescription = getPresetIntentDescription(props);
           </div>
         </div>
       </section>
+
+      <!-- NEW SECTION 1: "Your Data & Our Privacy" (Compact Trust Block: ~150-200 Words) -->
+      <ConversionPrivacyBrief />
+
+      <!-- NEW SECTION 2: Keyword-Targeted Practical Editorial Guide (Minimum 600+ Words Unique Content) -->
+      {converterEditorial && (
+        <ConversionEditorial editorial={converterEditorial} />
+      )}
 
       <!-- 3. Contextual FAQ Section -->
       <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 border-t border-slate-200/90 dark:border-slate-800">

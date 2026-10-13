@@ -1,0 +1,82 @@
+---
+// src/components/ConversionPrivacyBrief.astro
+import ToolIcon from './ToolIcon.astro';
+---
+
+<section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-900/20 py-12 sm:py-14">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-6 sm:p-8 shadow-sm">
+      <div class="flex items-center gap-3.5 mb-4">
+        <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center border border-emerald-100 dark:border-emerald-900/50 shrink-0">
+          <ToolIcon name="shield-check" class="w-5 h-5" />
+        </div>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+            Your Data & Local Privacy
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
+            Enterprise-grade client sandbox isolation with zero remote data retention.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4 mt-6">
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800/80">
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-xs shrink-0 mt-0.5">✓</span>
+            <div>
+              <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100 mb-1">
+                100% Local In-Browser Processing
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                Files process strictly inside your device's memory using client-side WebAssembly and HTML5 Canvas. Zero bytes ever leave your device or touch a remote server.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800/80">
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-xs shrink-0 mt-0.5">✓</span>
+            <div>
+              <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100 mb-1">
+                Instant Memory Purge
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                Temporary memory allocations are immediately freed by your browser's garbage collector the moment you clear your queue or close this tab.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800/80">
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-xs shrink-0 mt-0.5">✓</span>
+            <div>
+              <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100 mb-1">
+                Safe for Sensitive Files
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                Ideal for private family photos, confidential workplace documents, proprietary source graphics, and copyright-protected graphic assets.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800/80">
+          <div class="flex items-start gap-3">
+            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-xs shrink-0 mt-0.5">✓</span>
+            <div>
+              <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100 mb-1">
+                No Tracking or AI Ingestion
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                Your files are never cached, logged, or utilized to train machine learning models. Your content remains completely private and untracked.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

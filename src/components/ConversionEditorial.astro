@@ -1,0 +1,135 @@
+---
+// src/components/ConversionEditorial.astro
+import type { ConverterEditorial } from '../data/converterEditorials';
+import ToolIcon from './ToolIcon.astro';
+
+interface Props {
+  editorial: ConverterEditorial;
+}
+
+const { editorial } = Astro.props;
+---
+
+<section class="border-t border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950 py-14 sm:py-16">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="space-y-10">
+      
+      <!-- 1. Real-World Use Cases (H2) -->
+      <article class="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-900/40 shadow-sm">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
+          {editorial.useCases.heading}
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+          {editorial.useCases.p1}
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+          {editorial.useCases.p2}
+        </p>
+        <div class="border-t border-slate-200 dark:border-slate-800/80 pt-5">
+          <h4 class="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">
+            Key Production Scenarios
+          </h4>
+          <ul class="space-y-2.5">
+            {editorial.useCases.checklist.map((item) => (
+              <li class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 font-bold text-xs shrink-0 mt-0.5 border border-blue-100 dark:border-blue-900/50">✓</span>
+                <span class="leading-relaxed">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </article>
+
+      <!-- 2. Preserving Quality & Avoiding Artifacts (H3) -->
+      <article class="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-900/40 shadow-sm">
+        <h3 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-3">
+          {editorial.qualityGuidance.heading}
+        </h3>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+          {editorial.qualityGuidance.p1}
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+          {editorial.qualityGuidance.p2}
+        </p>
+        <div class="p-4 rounded-xl bg-blue-50/70 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/40 text-xs sm:text-sm text-blue-900 dark:text-blue-200 flex items-start gap-3">
+          <ToolIcon name="zap" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
+          <div>
+            <strong class="font-semibold">Workflow Takeaway:</strong> {editorial.qualityGuidance.takeaway}
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. Transparency & Layout Handling (H3) -->
+      <article class="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-900/40 shadow-sm">
+        <h3 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-3">
+          {editorial.transparencyHandling.heading}
+        </h3>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+          {editorial.transparencyHandling.p1}
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+          {editorial.transparencyHandling.p2}
+        </p>
+        <div class="p-4 rounded-xl bg-purple-50/70 dark:bg-purple-950/30 border border-purple-100 dark:border-purple-900/40 text-xs sm:text-sm text-purple-900 dark:text-purple-200 flex items-start gap-3">
+          <ToolIcon name="crop" class="w-4 h-4 text-purple-500 shrink-0 mt-0.5" />
+          <div>
+            <strong class="font-semibold">Layout Rule:</strong> {editorial.transparencyHandling.takeaway}
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. Platform & Device Compatibility Tips (H3) -->
+      <article class="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-900/40 shadow-sm">
+        <h3 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-3">
+          {editorial.compatibilityTips.heading}
+        </h3>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+          {editorial.compatibilityTips.p1}
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+          {editorial.compatibilityTips.p2}
+        </p>
+        <div class="border-t border-slate-200 dark:border-slate-800/80 pt-5">
+          <h4 class="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">
+            Platform Verification Checklist
+          </h4>
+          <ul class="space-y-2.5">
+            {editorial.compatibilityTips.checklist.map((tip) => (
+              <li class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 font-bold text-xs shrink-0 mt-0.5 border border-emerald-100 dark:border-emerald-900/50">✓</span>
+                <span class="leading-relaxed">{tip}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </article>
+
+      <!-- 5. Common Mistakes & Quick Troubleshooting (H3) -->
+      <article class="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-900/40 shadow-sm">
+        <h3 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-3">
+          {editorial.troubleshooting.heading}
+        </h3>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+          {editorial.troubleshooting.p1}
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+          {editorial.troubleshooting.p2}
+        </p>
+        <div class="border-t border-slate-200 dark:border-slate-800/80 pt-5">
+          <h4 class="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">
+            Troubleshooting Best Practices
+          </h4>
+          <ul class="space-y-2.5">
+            {editorial.troubleshooting.checklist.map((item) => (
+              <li class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 font-bold text-xs shrink-0 mt-0.5 border border-amber-100 dark:border-amber-900/50">!</span>
+                <span class="leading-relaxed">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>

@@ -64,68 +64,104 @@ const { preset } = Astro.props;
   <!-- [3] Interactive Tool Workspace -->
   <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
     <!-- Emerald Options Toolbar -->
-    <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-3 sm:p-4 mb-4 flex flex-wrap items-center justify-between gap-3 shadow-xs">
+    <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-3 sm:p-4 mb-4 flex flex-col gap-3 shadow-xs">
       
-      <!-- Radio Replacement Modes & Checkboxes -->
-      <div class="flex flex-wrap items-center gap-x-5 gap-y-2.5">
-        <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">
-          Replace With:
-        </span>
+      <!-- Top Row: Radio Replacement Modes & Action buttons -->
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2.5">
+          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+            Replace With:
+          </span>
 
-        <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-300 hover:text-white transition-colors select-none">
+          <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-300 hover:text-white transition-colors select-none">
+            <input
+              type="radio"
+              name="preset-replace-mode"
+              value="space"
+              checked={preset.config.replaceWith === 'space'}
+              class="w-4 h-4 text-emerald-500 focus:ring-emerald-500/30 dark:bg-slate-800 border-slate-700 cursor-pointer accent-emerald-500"
+            />
+            <span>Space</span>
+          </label>
+
+          <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-300 hover:text-white transition-colors select-none">
+            <input
+              type="radio"
+              name="preset-replace-mode"
+              value="comma"
+              checked={preset.config.replaceWith === 'comma'}
+              class="w-4 h-4 text-emerald-500 focus:ring-emerald-500/30 dark:bg-slate-800 border-slate-700 cursor-pointer accent-emerald-500"
+            />
+            <span>Comma (,)</span>
+          </label>
+
+          <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-300 hover:text-white transition-colors select-none">
+            <input
+              type="radio"
+              name="preset-replace-mode"
+              value="semicolon"
+              checked={preset.config.replaceWith === 'semicolon'}
+              class="w-4 h-4 text-emerald-500 focus:ring-emerald-500/30 dark:bg-slate-800 border-slate-700 cursor-pointer accent-emerald-500"
+            />
+            <span>Semicolon (;)</span>
+          </label>
+
+          <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-300 hover:text-white transition-colors select-none">
+            <input
+              type="radio"
+              name="preset-replace-mode"
+              value="none"
+              checked={preset.config.replaceWith === 'none'}
+              class="w-4 h-4 text-emerald-500 focus:ring-emerald-500/30 dark:bg-slate-800 border-slate-700 cursor-pointer accent-emerald-500"
+            />
+            <span>No space</span>
+          </label>
+
+          <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-300 hover:text-white transition-colors select-none">
+            <input
+              type="radio"
+              name="preset-replace-mode"
+              value="custom"
+              checked={preset.config.replaceWith === 'custom'}
+              id="preset-mode-custom-radio"
+              class="w-4 h-4 text-emerald-500 focus:ring-emerald-500/30 dark:bg-slate-800 border-slate-700 cursor-pointer accent-emerald-500"
+            />
+            <span>Custom:</span>
+          </label>
+
           <input
-            type="radio"
-            name="preset-replace-mode"
-            value="space"
-            checked={preset.config.replaceWith === 'space'}
-            class="w-4 h-4 text-emerald-500 focus:ring-emerald-500/30 dark:bg-slate-800 border-slate-700 cursor-pointer accent-emerald-500"
+            type="text"
+            id="preset-custom-delimiter"
+            value={preset.config.customDelimiter || ''}
+            placeholder="e.g. ; or | "
+            class="w-24 px-2 py-1 text-xs font-mono rounded-lg border border-slate-700 bg-slate-800 text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition"
           />
-          <span>Space</span>
-        </label>
+        </div>
 
-        <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-300 hover:text-white transition-colors select-none">
-          <input
-            type="radio"
-            name="preset-replace-mode"
-            value="comma"
-            checked={preset.config.replaceWith === 'comma'}
-            class="w-4 h-4 text-emerald-500 focus:ring-emerald-500/30 dark:bg-slate-800 border-slate-700 cursor-pointer accent-emerald-500"
-          />
-          <span>Comma</span>
-        </label>
+        <!-- Action Buttons -->
+        <div class="flex items-center gap-2.5 shrink-0">
+          <button
+            type="button"
+            id="preset-btn-sample"
+            class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-2 rounded-lg font-medium transition cursor-pointer"
+          >
+            Load Sample
+          </button>
+          <button
+            type="button"
+            id="preset-btn-strip"
+            class="bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white shadow-sm shadow-emerald-900/20 font-medium px-4 py-2 rounded-lg text-xs sm:text-sm transition flex items-center gap-2 cursor-pointer"
+          >
+            <ToolIcon name="wrap-text" class="w-4 h-4" />
+            <span>Remove Line Breaks</span>
+          </button>
+        </div>
+      </div>
 
-        <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-300 hover:text-white transition-colors select-none">
-          <input
-            type="radio"
-            name="preset-replace-mode"
-            value="none"
-            checked={preset.config.replaceWith === 'none'}
-            class="w-4 h-4 text-emerald-500 focus:ring-emerald-500/30 dark:bg-slate-800 border-slate-700 cursor-pointer accent-emerald-500"
-          />
-          <span>No space</span>
-        </label>
-
-        <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-300 hover:text-white transition-colors select-none">
-          <input
-            type="radio"
-            name="preset-replace-mode"
-            value="custom"
-            checked={preset.config.replaceWith === 'custom'}
-            id="preset-mode-custom-radio"
-            class="w-4 h-4 text-emerald-500 focus:ring-emerald-500/30 dark:bg-slate-800 border-slate-700 cursor-pointer accent-emerald-500"
-          />
-          <span>Custom:</span>
-        </label>
-
-        <input
-          type="text"
-          id="preset-custom-delimiter"
-          value={preset.config.customDelimiter || ''}
-          placeholder="e.g. ; or | "
-          class="w-24 px-2 py-1 text-xs font-mono rounded-lg border border-slate-700 bg-slate-800 text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition"
-        />
-
-        <div class="sm:border-l sm:border-slate-800 sm:pl-4">
+      <!-- Bottom Row: Secondary Controls (Checkboxes & Quote Wrap) -->
+      <div class="pt-2.5 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3 sm:gap-4">
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+          <!-- Preserve paragraph breaks -->
           <label class="inline-flex items-center gap-2 cursor-pointer text-xs sm:text-sm font-medium text-slate-300 hover:text-white transition-colors select-none">
             <input
               type="checkbox"
@@ -135,26 +171,44 @@ const { preset } = Astro.props;
             />
             <span>Preserve paragraph breaks</span>
           </label>
-        </div>
-      </div>
 
-      <!-- Action Buttons -->
-      <div class="flex items-center gap-2.5 shrink-0">
-        <button
-          type="button"
-          id="preset-btn-sample"
-          class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-3 py-2 rounded-lg font-medium transition cursor-pointer"
-        >
-          Load Sample
-        </button>
-        <button
-          type="button"
-          id="preset-btn-strip"
-          class="bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white shadow-sm shadow-emerald-900/20 font-medium px-4 py-2 rounded-lg text-xs sm:text-sm transition flex items-center gap-2 cursor-pointer"
-        >
-          <ToolIcon name="wrap-text" class="w-4 h-4" />
-          <span>Remove Line Breaks</span>
-        </button>
+          <!-- Trim line whitespace (Default: TRUE) -->
+          <label class="inline-flex items-center gap-2 cursor-pointer text-xs sm:text-sm font-medium text-slate-300 hover:text-white transition-colors select-none">
+            <input
+              type="checkbox"
+              id="preset-opt-trim-lines"
+              checked={preset.config.trimLines !== false}
+              class="w-4 h-4 rounded border-slate-700 bg-slate-800 text-emerald-500 focus:ring-emerald-500/30 focus:ring-2 cursor-pointer accent-emerald-500"
+            />
+            <span>Trim line whitespace</span>
+          </label>
+
+          <!-- Auto-fix hyphenated PDF breaks (Default: FALSE) -->
+          <label class="inline-flex items-center gap-2 cursor-pointer text-xs sm:text-sm font-medium text-slate-300 hover:text-white transition-colors select-none">
+            <input
+              type="checkbox"
+              id="preset-opt-fix-hyphens"
+              checked={preset.config.fixHyphens === true}
+              class="w-4 h-4 rounded border-slate-700 bg-slate-800 text-emerald-500 focus:ring-emerald-500/30 focus:ring-2 cursor-pointer accent-emerald-500"
+            />
+            <span>Auto-fix hyphenated PDF breaks</span>
+          </label>
+        </div>
+
+        <!-- Wrap in quotes -->
+        <div class="inline-flex items-center gap-2">
+          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+            Wrap in quotes:
+          </span>
+          <select
+            id="preset-opt-wrap-quotes"
+            class="px-2.5 py-1 text-xs font-medium rounded-lg border border-slate-700 bg-slate-800 text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition cursor-pointer"
+          >
+            <option value="none" selected={!preset.config.wrapQuotes || preset.config.wrapQuotes === 'none'}>None</option>
+            <option value="single" selected={preset.config.wrapQuotes === 'single'}>Single ('')</option>
+            <option value="double" selected={preset.config.wrapQuotes === 'double'}>Double ("")</option>
+          </select>
+        </div>
       </div>
     </div>
 
@@ -845,7 +899,7 @@ const { preset } = Astro.props;
 </div>
 
 <!-- Client-Side Interactive Script -->
-<script is:inline define:vars={{ initialSample: preset.sampleInput, defaultReplaceWith: preset.config.replaceWith, defaultCustomDelimiter: preset.config.customDelimiter || '', defaultPreserveParagraphs: preset.config.preserveParagraphs }}>
+<script is:inline define:vars={{ initialSample: preset.sampleInput, defaultReplaceWith: preset.config.replaceWith, defaultCustomDelimiter: preset.config.customDelimiter || '', defaultPreserveParagraphs: preset.config.preserveParagraphs, defaultTrimLines: preset.config.trimLines !== false, defaultFixHyphens: preset.config.fixHyphens === true, defaultWrapQuotes: preset.config.wrapQuotes || 'none' }}>
   (function () {
     const inputText = document.getElementById('preset-input-text');
     const outputText = document.getElementById('preset-output-text');
@@ -853,6 +907,9 @@ const { preset } = Astro.props;
     const customDelimiterInput = document.getElementById('preset-custom-delimiter');
     const customRadio = document.getElementById('preset-mode-custom-radio');
     const optPreserveParagraphs = document.getElementById('preset-opt-preserve-paragraphs');
+    const optTrimLines = document.getElementById('preset-opt-trim-lines');
+    const optFixHyphens = document.getElementById('preset-opt-fix-hyphens');
+    const optWrapQuotes = document.getElementById('preset-opt-wrap-quotes');
 
     const btnStrip = document.getElementById('preset-btn-strip');
     const btnSample = document.getElementById('preset-btn-sample');
@@ -883,7 +940,7 @@ const { preset } = Astro.props;
 
     function countLines(str) {
       if (!str) return 0;
-      return str.split(/\r?\n/).length;
+      return str.split(/\r\n|\r|\n/).length;
     }
 
     function getSelectedMode() {
@@ -896,15 +953,56 @@ const { preset } = Astro.props;
     function getDelimiter() {
       const mode = getSelectedMode();
       if (mode === 'comma') return ', ';
+      if (mode === 'semicolon') return '; ';
       if (mode === 'none') return '';
       if (mode === 'custom') {
         const val = customDelimiterInput ? customDelimiterInput.value : '';
-        // If user typed \n literally
         if (val === '\\n') return '\n';
         if (val === '\\r\\n') return '\r\n';
         return val;
       }
       return ' ';
+    }
+
+    function processLinesBlock(lines, trimLines, fixHyphens, wrapQuotes, delimiter) {
+      // Step B: Trim line whitespace
+      let processed = lines.map(function (line) {
+        return trimLines ? line.trim() : line;
+      });
+
+      // Filter empty lines in this chunk
+      processed = processed.filter(function (line) {
+        return line.length > 0;
+      });
+
+      // Step C: Auto-fix hyphenated PDF breaks
+      if (fixHyphens) {
+        const rejoined = [];
+        for (let i = 0; i < processed.length; i++) {
+          let current = processed[i];
+          while (i < processed.length - 1 && /(\w+)-\s*$/.test(current)) {
+            const next = processed[i + 1];
+            current = current.replace(/-\s*$/, '') + next;
+            i++;
+          }
+          rejoined.push(current);
+        }
+        processed = rejoined;
+      }
+
+      // Step D: Wrap in quotes
+      if (wrapQuotes === 'single') {
+        processed = processed.map(function (line) {
+          return line.length > 0 ? "'" + line + "'" : line;
+        });
+      } else if (wrapQuotes === 'double') {
+        processed = processed.map(function (line) {
+          return line.length > 0 ? '"' + line + '"' : line;
+        });
+      }
+
+      // Step E: Join lines with delimiter
+      return processed.join(delimiter);
     }
 
     function cleanLineBreaks(text) {
@@ -914,31 +1012,38 @@ const { preset } = Astro.props;
 
       const delimiter = getDelimiter();
       const preserveParas = optPreserveParagraphs ? optPreserveParagraphs.checked : false;
+      const trimLines = optTrimLines ? optTrimLines.checked : true;
+      const fixHyphens = optFixHyphens ? optFixHyphens.checked : false;
+      const wrapQuotes = optWrapQuotes ? optWrapQuotes.value : 'none';
 
       // Count initial breaks
-      const initialMatches = text.match(/\r?\n/g);
-      const totalInitialBreaks = initialMatches ? initialMatches.length : 0;
+      const totalInitialBreaks = (text.match(/\r\n|\r|\n/g) || []).length;
       const inputLineCount = totalInitialBreaks + 1;
 
       let result = '';
 
       if (preserveParas) {
-        // Split on double line breaks (paragraphs)
-        const paragraphs = text.split(/\r?\n\s*\r?\n/);
-        const cleanedParagraphs = paragraphs.map(function(para) {
-          // Replace single line breaks within paragraph
-          return para.split(/\r?\n/).map(function(l) { return l.trim(); }).filter(Boolean).join(delimiter);
-        });
+        // Step E: Preserve paragraph breaks (\n\n logic)
+        const paragraphs = text.split(/(?:\r?\n\s*){2,}/);
+        const cleanedParagraphs = paragraphs
+          .map(function (para) {
+            // Step A: Split text into lines
+            const lines = para.split(/\r\n|\r|\n/);
+            return processLinesBlock(lines, trimLines, fixHyphens, wrapQuotes, delimiter);
+          })
+          .filter(function (p) {
+            return p.length > 0;
+          });
         result = cleanedParagraphs.join('\n\n');
       } else {
-        // Replace all line breaks
-        const lines = text.split(/\r?\n/);
-        result = lines.map(function(l) { return l.trim(); }).filter(Boolean).join(delimiter);
+        // Step A: Split text into lines
+        const lines = text.split(/\r\n|\r|\n/);
+        result = processLinesBlock(lines, trimLines, fixHyphens, wrapQuotes, delimiter);
       }
 
-      const outputMatches = result.match(/\r?\n/g);
-      const outputLineCount = result ? (outputMatches ? outputMatches.length + 1 : 1) : 0;
-      const breaksRemoved = Math.max(0, inputLineCount - outputLineCount);
+      const resultBreaks = (result.match(/\r\n|\r|\n/g) || []).length;
+      const breaksRemoved = Math.max(0, totalInitialBreaks - resultBreaks);
+      const outputLineCount = result ? resultBreaks + 1 : 0;
 
       return {
         result: result,
@@ -972,6 +1077,7 @@ const { preset } = Astro.props;
       const res = cleanLineBreaks(inputVal);
       if (outputText) outputText.value = res.result;
 
+      // Step F: Update real-time counter metrics accurately
       const outChars = res.result.length;
       const outWords = countWords(res.result);
       const outLines = res.outputLines;
@@ -980,8 +1086,8 @@ const { preset } = Astro.props;
       if (statOutputWords) statOutputWords.textContent = outWords.toLocaleString();
       if (statOutputLines) statOutputLines.textContent = outLines.toLocaleString();
 
-      const saved = Math.max(0, inLines - outLines);
-      const savedPct = inLines > 0 ? Math.round((saved / inLines) * 100) : 0;
+      const saved = res.breaksRemoved;
+      const savedPct = inLines > 1 ? Math.max(0, Math.round((saved / (inLines - 1)) * 100)) : 0;
 
       if (statBreaksSaved) statBreaksSaved.textContent = saved.toLocaleString();
       if (statReductionPct) statReductionPct.textContent = '(' + savedPct + '% Saved)';
@@ -995,16 +1101,16 @@ const { preset } = Astro.props;
       inputText.addEventListener('input', updateStats);
     }
 
-    radioModes.forEach(function(r) {
+    radioModes.forEach(function (r) {
       r.addEventListener('change', updateStats);
     });
 
     if (customDelimiterInput) {
-      customDelimiterInput.addEventListener('input', function() {
+      customDelimiterInput.addEventListener('input', function () {
         if (customRadio) customRadio.checked = true;
         updateStats();
       });
-      customDelimiterInput.addEventListener('focus', function() {
+      customDelimiterInput.addEventListener('focus', function () {
         if (customRadio) customRadio.checked = true;
         updateStats();
       });
@@ -1014,21 +1120,51 @@ const { preset } = Astro.props;
       optPreserveParagraphs.addEventListener('change', updateStats);
     }
 
+    if (optTrimLines) {
+      optTrimLines.addEventListener('change', updateStats);
+    }
+
+    if (optFixHyphens) {
+      optFixHyphens.addEventListener('change', updateStats);
+    }
+
+    if (optWrapQuotes) {
+      optWrapQuotes.addEventListener('change', updateStats);
+    }
+
     if (btnStrip) {
       btnStrip.addEventListener('click', updateStats);
     }
 
     if (btnSample) {
-      btnSample.addEventListener('click', function() {
+      btnSample.addEventListener('click', function () {
         if (inputText) {
           inputText.value = initialSample || '';
+          radioModes.forEach(function (r) {
+            r.checked = r.value === defaultReplaceWith;
+          });
+          if (customDelimiterInput) {
+            customDelimiterInput.value = defaultCustomDelimiter;
+          }
+          if (optPreserveParagraphs) {
+            optPreserveParagraphs.checked = defaultPreserveParagraphs;
+          }
+          if (optTrimLines) {
+            optTrimLines.checked = defaultTrimLines;
+          }
+          if (optFixHyphens) {
+            optFixHyphens.checked = defaultFixHyphens;
+          }
+          if (optWrapQuotes) {
+            optWrapQuotes.value = defaultWrapQuotes;
+          }
           updateStats();
         }
       });
     }
 
     if (btnPaste) {
-      btnPaste.addEventListener('click', async function() {
+      btnPaste.addEventListener('click', async function () {
         try {
           const clipText = await navigator.clipboard.readText();
           if (inputText) {
@@ -1044,7 +1180,7 @@ const { preset } = Astro.props;
     }
 
     if (btnClear) {
-      btnClear.addEventListener('click', function() {
+      btnClear.addEventListener('click', function () {
         if (inputText) inputText.value = '';
         if (outputText) outputText.value = '';
         updateStats();
@@ -1052,7 +1188,7 @@ const { preset } = Astro.props;
     }
 
     if (btnCopy) {
-      btnCopy.addEventListener('click', async function() {
+      btnCopy.addEventListener('click', async function () {
         if (!outputText || !outputText.value) return;
         try {
           await navigator.clipboard.writeText(outputText.value);
@@ -1060,7 +1196,7 @@ const { preset } = Astro.props;
           if (copyIconIdle) copyIconIdle.classList.add('hidden');
           if (copyIconSuccess) copyIconSuccess.classList.remove('hidden');
 
-          setTimeout(function() {
+          setTimeout(function () {
             if (copyBtnText) copyBtnText.textContent = 'Copy';
             if (copyIconIdle) copyIconIdle.classList.remove('hidden');
             if (copyIconSuccess) copyIconSuccess.classList.add('hidden');
@@ -1073,7 +1209,7 @@ const { preset } = Astro.props;
     }
 
     if (btnDownload) {
-      btnDownload.addEventListener('click', function() {
+      btnDownload.addEventListener('click', function () {
         if (!outputText || !outputText.value) return;
         const blob = new Blob([outputText.value], { type: 'text/plain;charset=utf-8' });
         const url = URL.createObjectURL(blob);
@@ -1087,7 +1223,7 @@ const { preset } = Astro.props;
       });
     }
 
-    // Initialize 0 metrics on blank load
+    // Initialize metrics on page load
     updateStats();
   })();
 </script>

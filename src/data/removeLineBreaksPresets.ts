@@ -1,8 +1,11 @@
 // Strongly typed 100 High-Intent Remove Line Breaks Presets
 export interface RemoveLineBreaksConfig {
-  replaceWith: 'space' | 'comma' | 'none' | 'custom';
+  replaceWith: 'space' | 'comma' | 'semicolon' | 'none' | 'custom';
   customDelimiter?: string;
   preserveParagraphs: boolean;
+  trimLines?: boolean;
+  fixHyphens?: boolean;
+  wrapQuotes?: 'none' | 'single' | 'double';
 }
 
 export interface RemoveLineBreaksEditorialGuide {
@@ -987,7 +990,9 @@ export const removeLineBreaksPresets: RemoveLineBreaksPreset[] = [
     "intentDescription": "PDF documents format text with fixed print coordinates rather than continuous prose, so copying text into word processors injects a hard carriage return at the end of every visual line. Learn how to reconstruct fluid paragraphs and remove PDF line breaks with complete privacy.",
     "config": {
       "replaceWith": "space",
-      "preserveParagraphs": true
+      "preserveParagraphs": true,
+      "trimLines": true,
+      "fixHyphens": true
     },
     "category": "PDF & Copy-Paste Artifacts",
     "sampleInput": "The foundational premise of distributed consensus\nalgorithms relies on majority voting among validator\nnodes across geographically isolated datacenters.\n\nWithout Byzantine fault tolerance, malicious network\npartitions can compromise transactional integrity\nand cause permanent ledger divergence.",
@@ -1081,7 +1086,9 @@ export const removeLineBreaksPresets: RemoveLineBreaksPreset[] = [
     "intentDescription": "Extracting excerpts from academic papers, eBooks, legal briefs, and PDF manuals frequently results in sentence fragments ending abruptly at column margins. Learn how to reconstruct clean paragraphs and remove PDF line breaks effortlessly.",
     "config": {
       "replaceWith": "space",
-      "preserveParagraphs": true
+      "preserveParagraphs": true,
+      "trimLines": true,
+      "fixHyphens": true
     },
     "category": "PDF & Copy-Paste Artifacts",
     "sampleInput": "Academic papers in two-column format\nproduce severe line wrap artifacts when\nselected across column margins.\n\nSecondary paragraphs also carry hard\nbreaks that ruin citation formatting.",
@@ -1128,7 +1135,9 @@ export const removeLineBreaksPresets: RemoveLineBreaksPreset[] = [
     "intentDescription": "PDF documents embed invisible ASCII control characters\u2014such as carriage returns (`\\r`), line feeds (`\\n`), and vertical form feeds (`\\x0c`)\u2014that corrupt downstream data processing. Our tool detects and purges these invisible characters in microseconds.",
     "config": {
       "replaceWith": "space",
-      "preserveParagraphs": true
+      "preserveParagraphs": true,
+      "trimLines": true,
+      "fixHyphens": true
     },
     "category": "PDF & Copy-Paste Artifacts",
     "sampleInput": "Document section with embedded \\r\\n characters\nthat cause syntax errors in databases and\nCMS text editors when imported from PDF manuals.",
@@ -1881,7 +1890,9 @@ export const removeLineBreaksPresets: RemoveLineBreaksPreset[] = [
     "intentDescription": "Aggregating multiple database rows into a single delimited string is a common requirement in SQL reporting. Explore SQL aggregate functions like STRING_AGG, GROUP_CONCAT, and LISTAGG, or use FastToolVerse to prepare formatted query parameters.",
     "config": {
       "replaceWith": "comma",
-      "preserveParagraphs": false
+      "preserveParagraphs": false,
+      "trimLines": true,
+      "wrapQuotes": "single"
     },
     "category": "Delimiters & Formatting Transformations",
     "sampleInput": "10041\n10042\n10043\n10044\n10045",

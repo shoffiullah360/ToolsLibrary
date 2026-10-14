@@ -116,7 +116,7 @@ const presets = [
     title: "Convert Multi-line to One Line",
     tag: "Single Line String",
     desc: "Join multiline paragraphs into a single continuous sentence separated by clean spaces.",
-    options: { mode: "space", custom: "", preserveParagraphs: false },
+    options: { mode: "space", custom: "", preserveParagraphs: false, trimLines: true, fixHyphens: false, wrapQuotes: "none" },
     sampleText: "Artificial intelligence and agentic workflows\nare transforming software engineering.\nModern developers leverage intelligent automation\nto build performant web applications."
   },
   {
@@ -124,7 +124,7 @@ const presets = [
     title: "Join Lines with Commas",
     tag: "Comma Separated (CSV)",
     desc: "Convert a column list of names, tags, or IDs into a comma-delimited list for spreadsheets or inputs.",
-    options: { mode: "comma", custom: "", preserveParagraphs: false },
+    options: { mode: "comma", custom: "", preserveParagraphs: false, trimLines: true, fixHyphens: false, wrapQuotes: "none" },
     sampleText: "San Francisco\nNew York\nLondon\nTokyo\nSingapore\nBerlin\nSydney"
   },
   {
@@ -132,15 +132,15 @@ const presets = [
     title: "Fix Broken PDF Copy-Paste Text",
     tag: "PDFs & Scans",
     desc: "Repair jagged sentence fragments and accidental line wraps caused by multi-column PDF layouts.",
-    options: { mode: "space", custom: "", preserveParagraphs: false },
-    sampleText: "The primary objective of this\nclinical trial was to assess the\nefficacy of the intervention across\nmultiple independent demographic groups."
+    options: { mode: "space", custom: "", preserveParagraphs: false, trimLines: true, fixHyphens: true, wrapQuotes: "none" },
+    sampleText: "The primary objective of this\nclinical trial was to assess the\nefficacy of the inter-\nvention across multi-\nline demographic groups."
   },
   {
     id: "preset-preserve-paras",
     title: "Remove Line Breaks Preserve Paragraphs",
     tag: "Paragraph Joiner",
     desc: "Unwrap hard line returns within paragraphs while preserving double-break paragraph gaps.",
-    options: { mode: "space", custom: "", preserveParagraphs: true },
+    options: { mode: "space", custom: "", preserveParagraphs: true, trimLines: true, fixHyphens: false, wrapQuotes: "none" },
     sampleText: "Early computing pioneers designed systems with\nstrict memory limitations and sequential execution.\nThese architectures laid the groundwork for today's machines.\n\nDecades later, distributed systems and parallel\nprocessing emerged to meet exponential demand.\nModern cloud networks now scale across continents."
   },
   {
@@ -148,7 +148,7 @@ const presets = [
     title: "Strip Newlines for SQL IN Clause",
     tag: "Database & SQL",
     desc: "Format pasted database IDs or records with comma delimiters ready to paste into SQL queries.",
-    options: { mode: "comma", custom: "", preserveParagraphs: false },
+    options: { mode: "comma", custom: "", preserveParagraphs: false, trimLines: true, fixHyphens: false, wrapQuotes: "single" },
     sampleText: "10024\n10025\n10031\n10089\n10142\n10199"
   },
   {
@@ -156,7 +156,7 @@ const presets = [
     title: "Single Line JSON Stringify Helper",
     tag: "JSON & Code",
     desc: "Flatten multiline descriptions or code snippets into a compact single-line string for JSON payloads.",
-    options: { mode: "space", custom: "", preserveParagraphs: false },
+    options: { mode: "space", custom: "", preserveParagraphs: false, trimLines: true, fixHyphens: false, wrapQuotes: "none" },
     sampleText: "This is a detailed product description\nwritten across multiple lines\nthat must be encoded into a JSON string\nwithout illegal newline characters."
   }
 ];
@@ -240,79 +240,73 @@ const presets = [
       
       <!-- Top Options & Controls Bar -->
       <div class="p-5 sm:p-6 border-b border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/70">
+        <!-- Row 1: Delimiters & Action Buttons -->
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           
-          <!-- Cleaning Rules (Radio Replacement Modes & Checkboxes) -->
-          <div class="flex flex-col sm:flex-row sm:items-center gap-4 flex-wrap">
+          <!-- Replacement Mode Group -->
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+              Replace With:
+            </span>
             
-            <!-- Replacement Mode Group -->
-            <div class="flex flex-wrap items-center gap-3">
-              <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
-                Replace With:
-              </span>
-              
-              <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
-                <input
-                  type="radio"
-                  name="replace-mode"
-                  value="space"
-                  checked
-                  class="w-4 h-4 text-emerald-600 focus:ring-emerald-500 dark:bg-slate-800 border-slate-300 dark:border-slate-700 cursor-pointer"
-                />
-                <span>Space</span>
-              </label>
-
-              <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
-                <input
-                  type="radio"
-                  name="replace-mode"
-                  value="comma"
-                  class="w-4 h-4 text-emerald-600 focus:ring-emerald-500 dark:bg-slate-800 border-slate-300 dark:border-slate-700 cursor-pointer"
-                />
-                <span>Comma</span>
-              </label>
-
-              <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
-                <input
-                  type="radio"
-                  name="replace-mode"
-                  value="none"
-                  class="w-4 h-4 text-emerald-600 focus:ring-emerald-500 dark:bg-slate-800 border-slate-300 dark:border-slate-700 cursor-pointer"
-                />
-                <span>No space</span>
-              </label>
-
-              <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
-                <input
-                  type="radio"
-                  name="replace-mode"
-                  value="custom"
-                  id="mode-custom-radio"
-                  class="w-4 h-4 text-emerald-600 focus:ring-emerald-500 dark:bg-slate-800 border-slate-300 dark:border-slate-700 cursor-pointer"
-                />
-                <span>Custom:</span>
-              </label>
-
+            <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
               <input
-                type="text"
-                id="input-custom-delimiter"
-                placeholder="e.g. | or ; "
-                class="w-24 px-2 py-1 text-xs font-mono rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition"
+                type="radio"
+                name="replace-mode"
+                value="space"
+                checked
+                class="w-4 h-4 text-emerald-600 focus:ring-emerald-500 dark:bg-slate-800 border-slate-300 dark:border-slate-700 cursor-pointer accent-emerald-600"
               />
-            </div>
+              <span>Space</span>
+            </label>
 
-            <!-- Paragraph Preservation Checkbox -->
-            <div class="sm:border-l sm:border-slate-200 sm:dark:border-slate-800 sm:pl-4">
-              <label class="inline-flex items-center gap-2 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
-                <input
-                  type="checkbox"
-                  id="opt-preserve-paragraphs"
-                  class="w-4 h-4 rounded border-slate-300 dark:border-slate-700 text-emerald-600 focus:ring-emerald-500 dark:bg-slate-800 cursor-pointer"
-                />
-                <span>Preserve paragraph breaks</span>
-              </label>
-            </div>
+            <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+              <input
+                type="radio"
+                name="replace-mode"
+                value="comma"
+                class="w-4 h-4 text-emerald-600 focus:ring-emerald-500 dark:bg-slate-800 border-slate-300 dark:border-slate-700 cursor-pointer accent-emerald-600"
+              />
+              <span>Comma (,)</span>
+            </label>
 
+            <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+              <input
+                type="radio"
+                name="replace-mode"
+                value="semicolon"
+                class="w-4 h-4 text-emerald-600 focus:ring-emerald-500 dark:bg-slate-800 border-slate-300 dark:border-slate-700 cursor-pointer accent-emerald-600"
+              />
+              <span>Semicolon (;)</span>
+            </label>
+
+            <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+              <input
+                type="radio"
+                name="replace-mode"
+                value="none"
+                class="w-4 h-4 text-emerald-600 focus:ring-emerald-500 dark:bg-slate-800 border-slate-300 dark:border-slate-700 cursor-pointer accent-emerald-600"
+              />
+              <span>No space</span>
+            </label>
+
+            <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+              <input
+                type="radio"
+                name="replace-mode"
+                value="custom"
+                id="mode-custom-radio"
+                class="w-4 h-4 text-emerald-600 focus:ring-emerald-500 dark:bg-slate-800 border-slate-300 dark:border-slate-700 cursor-pointer accent-emerald-600"
+              />
+              <span>Custom:</span>
+            </label>
+
+            <input
+              type="text"
+              id="input-custom-delimiter"
+              placeholder="e.g. | or \t"
+              class="w-24 px-2 py-1 text-xs font-mono rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition"
+            />
           </div>
 
           <!-- Action Buttons -->
@@ -334,6 +328,57 @@ const presets = [
             </button>
           </div>
 
+        </div>
+
+        <!-- Row 2: Secondary Controls (Checkboxes & Quote Wrapping) -->
+        <div class="mt-4 pt-3.5 border-t border-slate-200/80 dark:border-slate-800/80 flex flex-wrap items-center justify-between gap-3 sm:gap-4">
+          <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <!-- Preserve paragraph breaks -->
+            <label class="inline-flex items-center gap-2 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors select-none">
+              <input
+                type="checkbox"
+                id="opt-preserve-paragraphs"
+                class="w-4 h-4 rounded border-slate-300 dark:border-slate-700 text-emerald-600 focus:ring-emerald-500 dark:bg-slate-800 cursor-pointer accent-emerald-600"
+              />
+              <span>Preserve paragraph breaks</span>
+            </label>
+
+            <!-- Trim line whitespace (Default: TRUE) -->
+            <label class="inline-flex items-center gap-2 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors select-none">
+              <input
+                type="checkbox"
+                id="opt-trim-lines"
+                checked
+                class="w-4 h-4 rounded border-slate-300 dark:border-slate-700 text-emerald-600 focus:ring-emerald-500 dark:bg-slate-800 cursor-pointer accent-emerald-600"
+              />
+              <span>Trim line whitespace</span>
+            </label>
+
+            <!-- Auto-fix hyphenated PDF breaks (Default: FALSE) -->
+            <label class="inline-flex items-center gap-2 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors select-none">
+              <input
+                type="checkbox"
+                id="opt-fix-hyphens"
+                class="w-4 h-4 rounded border-slate-300 dark:border-slate-700 text-emerald-600 focus:ring-emerald-500 dark:bg-slate-800 cursor-pointer accent-emerald-600"
+              />
+              <span>Auto-fix hyphenated PDF breaks</span>
+            </label>
+          </div>
+
+          <!-- Wrap in quotes -->
+          <div class="inline-flex items-center gap-2">
+            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+              Wrap in quotes:
+            </span>
+            <select
+              id="opt-wrap-quotes"
+              class="px-2.5 py-1 text-xs font-medium rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition cursor-pointer"
+            >
+              <option value="none">None</option>
+              <option value="single">Single ('')</option>
+              <option value="double">Double ("")</option>
+            </select>
+          </div>
         </div>
       </div>
 
@@ -876,6 +921,9 @@ const presets = [
     const modeCustomRadio = document.getElementById('mode-custom-radio');
     const inputCustomDelimiter = document.getElementById('input-custom-delimiter');
     const optPreserveParagraphs = document.getElementById('opt-preserve-paragraphs');
+    const optTrimLines = document.getElementById('opt-trim-lines');
+    const optFixHyphens = document.getElementById('opt-fix-hyphens');
+    const optWrapQuotes = document.getElementById('opt-wrap-quotes');
     const btnRemoveBreaks = document.getElementById('btn-remove-breaks');
     const btnSample = document.getElementById('btn-sample');
     const btnPaste = document.getElementById('btn-paste');
@@ -902,27 +950,27 @@ const presets = [
     // Preset Data map
     const presetMap = {
       'preset-single-line': {
-        options: { mode: 'space', custom: '', preserveParagraphs: false },
+        options: { mode: 'space', custom: '', preserveParagraphs: false, trimLines: true, fixHyphens: false, wrapQuotes: 'none' },
         sample: 'Artificial intelligence and agentic workflows\nare transforming software engineering.\nModern developers leverage intelligent automation\nto build performant web applications.'
       },
       'preset-comma-join': {
-        options: { mode: 'comma', custom: '', preserveParagraphs: false },
+        options: { mode: 'comma', custom: '', preserveParagraphs: false, trimLines: true, fixHyphens: false, wrapQuotes: 'none' },
         sample: 'San Francisco\nNew York\nLondon\nTokyo\nSingapore\nBerlin\nSydney'
       },
       'preset-fix-pdf': {
-        options: { mode: 'space', custom: '', preserveParagraphs: false },
-        sample: 'The primary objective of this\nclinical trial was to assess the\nefficacy of the intervention across\nmultiple independent demographic groups.'
+        options: { mode: 'space', custom: '', preserveParagraphs: false, trimLines: true, fixHyphens: true, wrapQuotes: 'none' },
+        sample: 'The primary objective of this\nclinical trial was to assess the\nefficacy of the inter-\nvention across multi-\nline demographic groups.'
       },
       'preset-preserve-paras': {
-        options: { mode: 'space', custom: '', preserveParagraphs: true },
+        options: { mode: 'space', custom: '', preserveParagraphs: true, trimLines: true, fixHyphens: false, wrapQuotes: 'none' },
         sample: 'Early computing pioneers designed systems with\nstrict memory limitations and sequential execution.\nThese architectures laid the groundwork for today\'s machines.\n\nDecades later, distributed systems and parallel\nprocessing emerged to meet exponential demand.\nModern cloud networks now scale across continents.'
       },
       'preset-sql-in': {
-        options: { mode: 'comma', custom: '', preserveParagraphs: false },
+        options: { mode: 'comma', custom: '', preserveParagraphs: false, trimLines: true, fixHyphens: false, wrapQuotes: 'single' },
         sample: '10024\n10025\n10031\n10089\n10142\n10199'
       },
       'preset-json-helper': {
-        options: { mode: 'space', custom: '', preserveParagraphs: false },
+        options: { mode: 'space', custom: '', preserveParagraphs: false, trimLines: true, fixHyphens: false, wrapQuotes: 'none' },
         sample: 'This is a detailed product description\nwritten across multiple lines\nthat must be encoded into a JSON string\nwithout illegal newline characters.'
       }
     };
@@ -934,7 +982,7 @@ const presets = [
 
     function countLines(str) {
       if (!str) return 0;
-      return str.split(/\r?\n/).length;
+      return str.split(/\r\n|\r|\n/).length;
     }
 
     function getDelimiter() {
@@ -944,11 +992,56 @@ const presets = [
       });
 
       if (selected === 'comma') return ', ';
+      if (selected === 'semicolon') return '; ';
       if (selected === 'none') return '';
       if (selected === 'custom') {
-        return inputCustomDelimiter ? inputCustomDelimiter.value : '';
+        const val = inputCustomDelimiter ? inputCustomDelimiter.value : '';
+        if (val === '\\n') return '\n';
+        if (val === '\\r\\n') return '\r\n';
+        return val;
       }
       return ' ';
+    }
+
+    function processLinesBlock(lines, trimLines, fixHyphens, wrapQuotes, delimiter) {
+      // Step B: If "Trim line whitespace" is active, trim each individual line
+      let processed = lines.map(function (line) {
+        return trimLines ? line.trim() : line;
+      });
+
+      // Filter empty lines in this chunk
+      processed = processed.filter(function (line) {
+        return line.length > 0;
+      });
+
+      // Step C: If "Auto-fix hyphenated PDF breaks" is active, rejoin hyphenated trailing words
+      if (fixHyphens) {
+        const rejoined = [];
+        for (let i = 0; i < processed.length; i++) {
+          let current = processed[i];
+          while (i < processed.length - 1 && /(\w+)-\s*$/.test(current)) {
+            const next = processed[i + 1];
+            current = current.replace(/-\s*$/, '') + next;
+            i++;
+          }
+          rejoined.push(current);
+        }
+        processed = rejoined;
+      }
+
+      // Step D: If "Wrap in quotes" is selected (single/double), wrap non-empty line chunks
+      if (wrapQuotes === 'single') {
+        processed = processed.map(function (line) {
+          return line.length > 0 ? "'" + line + "'" : line;
+        });
+      } else if (wrapQuotes === 'double') {
+        processed = processed.map(function (line) {
+          return line.length > 0 ? '"' + line + '"' : line;
+        });
+      }
+
+      // Step E: Join lines according to selected delimiter
+      return processed.join(delimiter);
     }
 
     // High-performance Line Break Remover logic
@@ -964,46 +1057,40 @@ const presets = [
 
       const delimiter = getDelimiter();
       const preserveParagraphs = optPreserveParagraphs ? optPreserveParagraphs.checked : false;
+      const trimLines = optTrimLines ? optTrimLines.checked : true;
+      const fixHyphens = optFixHyphens ? optFixHyphens.checked : false;
+      const wrapQuotes = optWrapQuotes ? optWrapQuotes.value : 'none';
 
       // Count total raw line returns in input
       const totalBreaks = (text.match(/\r\n|\r|\n/g) || []).length;
+      const rawLinesCount = totalBreaks + 1;
 
       let result = '';
 
       if (preserveParagraphs) {
-        // Split into paragraphs by 2 or more newlines (with optional whitespace in between)
+        // Step E: Preserve paragraph breaks (\n\n logic)
         const paragraphs = text.split(/(?:\r?\n\s*){2,}/);
-        const cleanedParagraphs = paragraphs.map(function (p) {
-          return p
-            .split(/\r?\n/)
-            .map(function (line) {
-              return line.trim();
-            })
-            .filter(function (line) {
-              return line.length > 0;
-            })
-            .join(delimiter);
-        }).filter(function (p) {
-          return p.length > 0;
-        });
+        const cleanedParagraphs = paragraphs
+          .map(function (p) {
+            // Step A: Split text into lines
+            const lines = p.split(/\r\n|\r|\n/);
+            return processLinesBlock(lines, trimLines, fixHyphens, wrapQuotes, delimiter);
+          })
+          .filter(function (p) {
+            return p.length > 0;
+          });
 
         result = cleanedParagraphs.join('\n\n');
       } else {
-        // Flatten all lines
-        const lines = text.split(/\r?\n/).map(function (line) {
-          return line.trim();
-        });
-        result = lines.filter(function (line) {
-          return line.length > 0;
-        }).join(delimiter);
+        // Step A: Split text into lines
+        const lines = text.split(/\r\n|\r|\n/);
+        result = processLinesBlock(lines, trimLines, fixHyphens, wrapQuotes, delimiter);
       }
 
       // Calculate breaks removed
       const resultBreaks = (result.match(/\r\n|\r|\n/g) || []).length;
       const breaksRemoved = Math.max(0, totalBreaks - resultBreaks);
-
-      const rawLinesCount = text.split(/\r?\n/).length;
-      const outLinesCount = result ? result.split(/\r?\n/).length : 0;
+      const outLinesCount = result ? resultBreaks + 1 : 0;
 
       return {
         result: result,
@@ -1018,7 +1105,7 @@ const presets = [
       const cleanResult = removeLineBreaks(raw);
       outputText.value = cleanResult.result;
 
-      // Input Stats
+      // Step F: Update real-time counter metrics accurately
       const inChars = raw.length;
       const inWords = countWords(raw);
       const inLines = raw ? countLines(raw) : 0;
@@ -1027,7 +1114,6 @@ const presets = [
       statInputWords.textContent = inWords.toLocaleString();
       statInputLines.textContent = inLines.toLocaleString();
 
-      // Output Stats
       const outChars = cleanResult.result.length;
       const outLines = cleanResult.result ? cleanResult.outputLines : 0;
 
@@ -1067,6 +1153,9 @@ const presets = [
       }
     });
     optPreserveParagraphs?.addEventListener('change', update);
+    optTrimLines?.addEventListener('change', update);
+    optFixHyphens?.addEventListener('change', update);
+    optWrapQuotes?.addEventListener('change', update);
     btnRemoveBreaks?.addEventListener('click', update);
 
     // Sample Text
@@ -1162,6 +1251,18 @@ const presets = [
 
         if (optPreserveParagraphs) {
           optPreserveParagraphs.checked = data.options.preserveParagraphs;
+        }
+
+        if (optTrimLines) {
+          optTrimLines.checked = data.options.trimLines !== false;
+        }
+
+        if (optFixHyphens) {
+          optFixHyphens.checked = data.options.fixHyphens === true;
+        }
+
+        if (optWrapQuotes) {
+          optWrapQuotes.value = data.options.wrapQuotes || 'none';
         }
 
         if (data.sample) {

@@ -65,7 +65,7 @@
       },
       {
         "q": "What should I do if an exam portal requires a file size between 20KB and 50KB?",
-        "a": "If your application mandates a specific bracket rather than a strict 20KB maximum, use our companion <a href=\"/resize-image-20kb-to-50kb/\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">Resize Image 20KB to 50KB</a> tool to target that exact range. You can also explore our <a href=\"/tools/image-resizer/\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">main Image Resizer</a> for custom dimensions."
+        "a": "If your application mandates a specific bracket rather than a strict 20KB maximum, use our companion <a href=\"/resize-image-20kb-to-50kb/\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">Resize Image 20KB to 50KB</a> tool to target that exact range. You can also explore our <a href=\"/image-resizer/\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">main Image Resizer</a> for custom dimensions."
       }
     ]
   },
@@ -638,7 +638,7 @@
       },
       {
         "q": "What if my portal requires the file to be strictly under 50KB?",
-        "a": "If your portal has a strict 50KB ceiling instead of a 50KB-100KB bracket, switch over to our <a href=\"/resize-image-to-50kb/\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">Resize Image to 50KB</a> tool or our <a href=\"/tools/image-resizer/\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">main Image Resizer</a>."
+        "a": "If your portal has a strict 50KB ceiling instead of a 50KB-100KB bracket, switch over to our <a href=\"/resize-image-to-50kb/\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">Resize Image to 50KB</a> tool or our <a href=\"/image-resizer/\" class=\"text-blue-600 dark:text-blue-400 hover:underline\">main Image Resizer</a>."
       },
       {
         "q": "Can I resize signatures and certificates to the 50KB-100KB bracket?",

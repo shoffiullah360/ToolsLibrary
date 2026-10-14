@@ -5,36 +5,36 @@ import ToolIcon from '../../components/ToolIcon.astro';
 // FAQ Data for Schema and Accordion
 const faqs = [
   {
-    question: "How do I remove line breaks from text online?",
-    answer: "Simply paste or type your multiline text into the Input Text box. FastToolVerse automatically strips out line breaks in real time and merges lines into a continuous string using your selected replacement mode (space, comma, no space, or a custom delimiter)."
+    question: "How do I alphabetize a list online?",
+    answer: "Paste or type your text list into the Input Text box. By default, FastToolVerse immediately sorts your lines in ascending alphabetical order (A-Z). You can switch to reverse order (Z-A), numerical sort, or sort by line length instantly."
   },
   {
-    question: "Can I remove line breaks but keep paragraph breaks intact?",
-    answer: "Yes. Enable the 'Preserve paragraph breaks' checkbox. FastToolVerse detects double line returns (blank lines between paragraphs) and keeps paragraphs separated with clean double breaks while unwrapping the jagged line breaks within each individual paragraph."
+    question: "What is 'Natural / Numerical Sort' and how does it differ from ASCII sort?",
+    answer: "In standard computer ASCII sorting, 'Episode 10' appears before 'Episode 2' because character '1' precedes character '2'. Natural sort uses numerical collation (Intl.Collator with numeric: true), sorting multi-digit numbers by their real numeric value so 'Episode 2' correctly precedes 'Episode 10'."
   },
   {
-    question: "How do I convert a vertical list into a comma-separated list?",
-    answer: "Select the 'Replace with comma' replacement mode. FastToolVerse will join each line with a comma and space (e.g. 'Item 1, Item 2, Item 3'), making it ideal for CSV inputs, spreadsheet copy-pasting, and SQL IN queries."
+    question: "Does this tool upload my lists or data to a server?",
+    answer: "No. FastToolVerse executes 100% of its sorting algorithms locally inside your web browser using JavaScript's native Intl collation and array routines. Your proprietary data, customer names, product inventories, and passwords never leave your computer's RAM."
   },
   {
-    question: "Does this tool upload my text or confidential documents to a server?",
-    answer: "No. FastToolVerse operates 100% client-side in your web browser. Your text, proprietary code snippets, student essays, and confidential datasets never leave your device RAM and are never transmitted over the internet."
+    question: "How does the 'Remove duplicates' option work during sorting?",
+    answer: "When 'Remove duplicates' is enabled, FastToolVerse passes your list through a high-speed Set deduplication filter before sorting, eliminating recurring lines so your final output contains only unique entries."
   },
   {
-    question: "How does this tool handle Windows CRLF vs Unix LF line breaks?",
-    answer: "FastToolVerse automatically normalizes all line-ending formats, including Windows CRLF (\\r\\n), Unix/Linux LF (\\n), and legacy Mac CR (\\r). Regardless of your source operating system, every line break is detected and handled uniformly."
+    question: "Can I sort lines by character length?",
+    answer: "Yes. Select 'Line Length (Shortest → Longest)' or 'Line Length (Longest → Shortest)'. FastToolVerse will organize your entries based on string character length, which is ideal for copywriting, code refactoring, and formatting keyword clusters."
   },
   {
-    question: "Can I use a custom delimiter between lines?",
-    answer: "Yes. Select 'Custom delimiter' in the controls bar and type your desired separator—such as a pipe character ( | ), semicolon (; ), forward slash ( / ), or tab. FastToolVerse updates the result instantly."
+    question: "How does the 'Randomize / Shuffle Lines' mode work?",
+    answer: "The shuffle mode executes an unbiased Fisher-Yates (Knuth) algorithmic permutation in your browser. Every item has an equal probability of landing in any position, making it perfect for giveaways, random pairings, or study flashcards."
   },
   {
-    question: "How do I fix text copied from a PDF that has unwanted line wraps?",
-    answer: "Copy-pasting from PDFs often introduces hard line breaks at the end of every line. Paste your text into FastToolVerse, select 'Replace with space', and enable 'Preserve paragraph breaks' to reconstruct smooth, continuous prose."
+    question: "Can this tool handle massive lists with tens of thousands of lines?",
+    answer: "Yes. Modern V8 JavaScript engines sort arrays of 50,000+ items in milliseconds using Timsort (O(N log N)). FastToolVerse debounces input calculations so your browser UI stays silky smooth without freezing."
   },
   {
-    question: "Does this line break remover work offline?",
-    answer: "Yes. Once the page is loaded in your browser, all JavaScript logic runs locally. You can disconnect from the internet or work in airplane mode, and FastToolVerse will continue to remove line breaks flawlessly."
+    question: "Does this text sorter work offline?",
+    answer: "Yes. Once the page is loaded in your browser, all JavaScript logic runs locally. You can disconnect from the internet or work in airplane mode, and FastToolVerse will continue to sort text lines flawlessly."
   }
 ];
 
@@ -42,7 +42,7 @@ const faqs = [
 const jsonLdSoftwareApp = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "Free Online Line Break Remover & Paragraph Joiner",
+  "name": "Free Online Text Line Sorter & List Alphabetizer",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "All (Web Browser)",
   "browserRequirements": "Requires JavaScript. Runs 100% client-side.",
@@ -52,12 +52,14 @@ const jsonLdSoftwareApp = {
     "priceCurrency": "USD"
   },
   "featureList": [
-    "100% In-browser text cleaning privacy",
-    "Remove line breaks and newlines instantly",
-    "Replace breaks with space, comma, or custom delimiters",
-    "Merge lines directly without spaces",
-    "Preserve double line break paragraph structure",
-    "Live character, line, and break removal counters",
+    "100% In-browser text sorting privacy",
+    "Alphabetical sorting A-Z and reverse Z-A",
+    "Natural numerical sorting (handles embedded numbers correctly)",
+    "Sort lines by character length (shortest and longest)",
+    "Fisher-Yates unbiased line randomizer / shuffler",
+    "Case-sensitive comparison toggle",
+    "Integrated duplicate line removal",
+    "Live line, word, and character counters",
     "1-click copy to clipboard and .txt file export"
   ]
 };
@@ -96,67 +98,67 @@ const jsonLdBreadcrumb = {
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Remove Line Breaks",
-      "item": "https://fasttoolverse.com/tools/remove-line-breaks"
+      "name": "Sort Text Lines",
+      "item": "https://fasttoolverse.com/sort-text-lines/"
     }
   ]
 };
 
-const canonicalUrl = "https://fasttoolverse.com/tools/remove-line-breaks";
-const pageTitle = "Remove Line Breaks Online - Text Line Merger";
-const pageDescription = "Remove line breaks, newlines, and carriage returns online. Convert multiline text to single-line strings or join with commas. 100% private in your browser.";
-const pageKeywords = "remove line breaks, line break remover, remove newlines, paragraph joiner, merge lines online, join lines with comma, text flattener, remove carriage returns, strip newlines, client side text tool";
+const canonicalUrl = "https://fasttoolverse.com/sort-text-lines/";
+const pageTitle = "Sort Text Lines Online - Alphabetical & Length Sorter";
+const pageDescription = "Sort text lists alphabetically (A-Z, Z-A), numerically, or by line length directly in your browser with zero server uploads. 100% private text sorter.";
+const pageKeywords = "sort text lines, list alphabetizer, alphabetize list online, sort lines a to z, reverse alphabetical sort, natural sort, sort by length, randomize list, shuffle lines, client side text tool";
 const ogImage = "https://fasttoolverse.com/og-image.png";
 
 // Programmatic target cards / presets
 const presets = [
   {
-    id: "preset-single-line",
-    title: "Convert Multi-line to One Line",
-    tag: "Single Line String",
-    desc: "Join multiline paragraphs into a single continuous sentence separated by clean spaces.",
-    options: { mode: "space", custom: "", preserveParagraphs: false },
-    sampleText: "Artificial intelligence and agentic workflows\nare transforming software engineering.\nModern developers leverage intelligent automation\nto build performant web applications."
+    id: "preset-az",
+    title: "Alphabetize List A to Z",
+    tag: "Standard Alphabetical",
+    desc: "Order names, glossary terms, or items in clean ascending alphabetical order from A to Z.",
+    options: { sortType: "az", caseSensitive: false, dedupe: false },
+    sampleText: "Watermelon\nApple\nGrape\nBanana\nOrange\nPineapple\nMango\nCherry"
   },
   {
-    id: "preset-comma-join",
-    title: "Join Lines with Commas",
-    tag: "Comma Separated (CSV)",
-    desc: "Convert a column list of names, tags, or IDs into a comma-delimited list for spreadsheets or inputs.",
-    options: { mode: "comma", custom: "", preserveParagraphs: false },
-    sampleText: "San Francisco\nNew York\nLondon\nTokyo\nSingapore\nBerlin\nSydney"
+    id: "preset-za",
+    title: "Reverse Alphabetical Sorter",
+    tag: "Descending Z to A",
+    desc: "Flip list hierarchy to descending alphabetical order from Z down to A.",
+    options: { sortType: "za", caseSensitive: false, dedupe: false },
+    sampleText: "Berlin\nAmsterdam\nTokyo\nParis\nLondon\nMadrid\nRome\nVienna"
   },
   {
-    id: "preset-fix-pdf",
-    title: "Fix Broken PDF Copy-Paste Text",
-    tag: "PDFs & Scans",
-    desc: "Repair jagged sentence fragments and accidental line wraps caused by multi-column PDF layouts.",
-    options: { mode: "space", custom: "", preserveParagraphs: false },
-    sampleText: "The primary objective of this\nclinical trial was to assess the\nefficacy of the intervention across\nmultiple independent demographic groups."
+    id: "preset-length",
+    title: "Sort Lines by Length",
+    tag: "String Length Hierarchy",
+    desc: "Reorganize lines from shortest to longest to visualize density and text length.",
+    options: { sortType: "length-asc", caseSensitive: false, dedupe: false },
+    sampleText: "The quick brown fox jumps over the lazy dog\nYes\nHello world\nArtificial intelligence\nOk\nWeb development tools\nCode"
   },
   {
-    id: "preset-preserve-paras",
-    title: "Remove Line Breaks Preserve Paragraphs",
-    tag: "Paragraph Joiner",
-    desc: "Unwrap hard line returns within paragraphs while preserving double-break paragraph gaps.",
-    options: { mode: "space", custom: "", preserveParagraphs: true },
-    sampleText: "Early computing pioneers designed systems with\nstrict memory limitations and sequential execution.\nThese architectures laid the groundwork for today's machines.\n\nDecades later, distributed systems and parallel\nprocessing emerged to meet exponential demand.\nModern cloud networks now scale across continents."
+    id: "preset-natural",
+    title: "Natural Number Sorter",
+    tag: "Human Numerical Order",
+    desc: "Sort strings containing numbers naturally so 'Episode 2' comes before 'Episode 10' instead of ASCII order.",
+    options: { sortType: "natural", caseSensitive: false, dedupe: false },
+    sampleText: "Episode 10\nEpisode 1\nEpisode 2\nEpisode 20\nEpisode 3\nEpisode 11\nEpisode 4"
   },
   {
-    id: "preset-sql-in",
-    title: "Strip Newlines for SQL IN Clause",
-    tag: "Database & SQL",
-    desc: "Format pasted database IDs or records with comma delimiters ready to paste into SQL queries.",
-    options: { mode: "comma", custom: "", preserveParagraphs: false },
-    sampleText: "10024\n10025\n10031\n10089\n10142\n10199"
+    id: "preset-shuffle",
+    title: "Random Line Shuffler",
+    tag: "Fisher-Yates Shuffle",
+    desc: "Randomize lines unpredictably for raffle drawings, flashcard reviews, or unbiased sampling.",
+    options: { sortType: "shuffle", caseSensitive: false, dedupe: false },
+    sampleText: "Participant 1: Alex Morgan\nParticipant 2: Brian Chen\nParticipant 3: Clara Silva\nParticipant 4: David Kim\nParticipant 5: Elena Rostova\nParticipant 6: Farhan Qureshi"
   },
   {
-    id: "preset-json-helper",
-    title: "Single Line JSON Stringify Helper",
-    tag: "JSON & Code",
-    desc: "Flatten multiline descriptions or code snippets into a compact single-line string for JSON payloads.",
-    options: { mode: "space", custom: "", preserveParagraphs: false },
-    sampleText: "This is a detailed product description\nwritten across multiple lines\nthat must be encoded into a JSON string\nwithout illegal newline characters."
+    id: "preset-combo",
+    title: "Sort & Deduplicate Combo",
+    tag: "Clean & Alphabetize",
+    desc: "Purge repeated entries and simultaneously organize the unique remnants in pristine alphabetical order.",
+    options: { sortType: "az", caseSensitive: false, dedupe: true },
+    sampleText: "Python\nJavaScript\nTypeScript\nPython\nGo\nRust\nJavaScript\nC++\nGo\nRuby"
   }
 ];
 ---
@@ -215,7 +217,7 @@ const presets = [
               <svg class="w-3 h-3 text-slate-400 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
-              <span class="text-slate-900 dark:text-white font-semibold">Remove Line Breaks</span>
+              <span class="text-slate-900 dark:text-white font-semibold">Sort Text Lines</span>
             </div>
           </li>
         </ol>
@@ -223,12 +225,12 @@ const presets = [
 
       <!-- Hero Title -->
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
-        Free Online Line Break Remover & Paragraph Joiner
+        Free Online Text Line Sorter & List Alphabetizer
       </h1>
 
       <!-- Subtitle -->
       <p class="mt-3 sm:mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-        Remove line breaks, newlines, and carriage returns to convert multiline text into clean single-line strings.
+        Sort text lists alphabetically (A-Z, Z-A), numerically, or by line length directly in your browser.
       </p>
     </div>
   </section>
@@ -241,74 +243,45 @@ const presets = [
       <div class="p-5 sm:p-6 border-b border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/70">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           
-          <!-- Cleaning Rules (Radio Replacement Modes & Checkboxes) -->
+          <!-- Sorting Rules (Select & Checkboxes) -->
           <div class="flex flex-col sm:flex-row sm:items-center gap-4 flex-wrap">
             
-            <!-- Replacement Mode Group -->
-            <div class="flex flex-wrap items-center gap-3">
-              <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
-                Replace With:
-              </span>
-              
-              <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
-                <input
-                  type="radio"
-                  name="replace-mode"
-                  value="space"
-                  checked
-                  class="w-4 h-4 text-purple-600 focus:ring-purple-500 dark:bg-slate-800 border-slate-300 dark:border-slate-700 cursor-pointer"
-                />
-                <span>Space</span>
+            <!-- Sort Mode Selector -->
+            <div class="flex items-center gap-2">
+              <label for="select-sort-type" class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider shrink-0">
+                Sort Type:
               </label>
-
-              <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
-                <input
-                  type="radio"
-                  name="replace-mode"
-                  value="comma"
-                  class="w-4 h-4 text-purple-600 focus:ring-purple-500 dark:bg-slate-800 border-slate-300 dark:border-slate-700 cursor-pointer"
-                />
-                <span>Comma</span>
-              </label>
-
-              <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
-                <input
-                  type="radio"
-                  name="replace-mode"
-                  value="none"
-                  class="w-4 h-4 text-purple-600 focus:ring-purple-500 dark:bg-slate-800 border-slate-300 dark:border-slate-700 cursor-pointer"
-                />
-                <span>No space</span>
-              </label>
-
-              <label class="inline-flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
-                <input
-                  type="radio"
-                  name="replace-mode"
-                  value="custom"
-                  id="mode-custom-radio"
-                  class="w-4 h-4 text-purple-600 focus:ring-purple-500 dark:bg-slate-800 border-slate-300 dark:border-slate-700 cursor-pointer"
-                />
-                <span>Custom:</span>
-              </label>
-
-              <input
-                type="text"
-                id="input-custom-delimiter"
-                placeholder="e.g. | or ; "
-                class="w-24 px-2 py-1 text-xs font-mono rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-500 transition"
-              />
+              <select
+                id="select-sort-type"
+                class="px-3 py-1.5 text-xs sm:text-sm font-medium rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-500 transition cursor-pointer shadow-2xs"
+              >
+                <option value="az" selected>Alphabetical (A &rarr; Z)</option>
+                <option value="za">Reverse Alphabetical (Z &rarr; A)</option>
+                <option value="natural">Natural / Numerical (1, 2, 10...)</option>
+                <option value="length-asc">Line Length (Shortest &rarr; Longest)</option>
+                <option value="length-desc">Line Length (Longest &rarr; Shortest)</option>
+                <option value="shuffle">Randomize / Shuffle Lines</option>
+              </select>
             </div>
 
-            <!-- Paragraph Preservation Checkbox -->
-            <div class="sm:border-l sm:border-slate-200 sm:dark:border-slate-800 sm:pl-4">
+            <!-- Options Checkboxes -->
+            <div class="flex items-center gap-4 sm:border-l sm:border-slate-200 sm:dark:border-slate-800 sm:pl-4">
               <label class="inline-flex items-center gap-2 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
                 <input
                   type="checkbox"
-                  id="opt-preserve-paragraphs"
+                  id="opt-case-sensitive"
                   class="w-4 h-4 rounded border-slate-300 dark:border-slate-700 text-purple-600 focus:ring-purple-500 dark:bg-slate-800 cursor-pointer"
                 />
-                <span>Preserve paragraph breaks</span>
+                <span>Case-sensitive</span>
+              </label>
+
+              <label class="inline-flex items-center gap-2 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+                <input
+                  type="checkbox"
+                  id="opt-dedupe"
+                  class="w-4 h-4 rounded border-slate-300 dark:border-slate-700 text-purple-600 focus:ring-purple-500 dark:bg-slate-800 cursor-pointer"
+                />
+                <span>Remove duplicates</span>
               </label>
             </div>
 
@@ -325,11 +298,11 @@ const presets = [
             </button>
             <button
               type="button"
-              id="btn-remove-breaks"
+              id="btn-sort"
               class="px-5 py-2 text-xs sm:text-sm font-semibold rounded-lg bg-purple-600 hover:bg-purple-700 text-white shadow-sm transition-all flex items-center gap-2 cursor-pointer"
             >
-              <ToolIcon name="wrap-text" class="w-4 h-4" />
-              <span>Remove Line Breaks</span>
+              <ToolIcon name="arrow-up-down" class="w-4 h-4" />
+              <span>Sort Lines</span>
             </button>
           </div>
 
@@ -377,7 +350,7 @@ const presets = [
           <textarea
             id="input-text"
             rows="14"
-            placeholder="Paste or type multiline text here... Line breaks and carriage returns will be converted instantly in real time."
+            placeholder="Paste or type your list here... It will automatically be sorted in real time according to your chosen mode."
             class="w-full p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/60 text-slate-900 dark:text-slate-100 font-mono text-sm leading-relaxed placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-500 transition resize-y min-h-[320px]"
             spellcheck="false"
           ></textarea>
@@ -400,13 +373,13 @@ const presets = [
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-2">
               <span class="text-xs font-mono uppercase tracking-wider font-semibold text-purple-600 dark:text-purple-400">
-                Cleaned Result
+                Sorted Result
               </span>
               <span
-                id="status-breaks-removed"
+                id="status-sort-mode"
                 class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/40"
               >
-                0 line breaks removed
+                Alphabetical (A-Z)
               </span>
             </div>
 
@@ -415,7 +388,7 @@ const presets = [
                 type="button"
                 id="btn-copy"
                 class="px-3 py-1 text-xs font-semibold rounded-md bg-purple-600 hover:bg-purple-700 text-white transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
-                title="Copy cleaned text to clipboard"
+                title="Copy sorted text to clipboard"
               >
                 <svg id="copy-icon-idle" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
@@ -431,7 +404,7 @@ const presets = [
                 type="button"
                 id="btn-download"
                 class="px-2.5 py-1 text-xs font-medium rounded-md border border-slate-200 dark:border-slate-700/80 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors flex items-center gap-1.5 cursor-pointer"
-                title="Download cleaned text as .txt file"
+                title="Download sorted list as .txt file"
               >
                 <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -444,7 +417,7 @@ const presets = [
           <textarea
             id="output-text"
             rows="14"
-            placeholder="Your joined, single-line text will appear here automatically..."
+            placeholder="Your sorted list will appear here in real time..."
             class="w-full p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/60 text-slate-900 dark:text-slate-100 font-mono text-sm leading-relaxed placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-500 transition resize-y min-h-[320px]"
             spellcheck="false"
           ></textarea>
@@ -454,10 +427,10 @@ const presets = [
             <div class="flex items-center gap-3">
               <span>Lines: <strong id="stat-output-lines" class="text-slate-800 dark:text-slate-200">0</strong></span>
               <span>Chars: <strong id="stat-output-chars" class="text-slate-800 dark:text-slate-200">0</strong></span>
-              <span>Breaks: <strong id="stat-breaks-saved" class="text-emerald-600 dark:text-emerald-400">0</strong></span>
+              <span>Duplicates: <strong id="stat-dupes-removed" class="text-emerald-600 dark:text-emerald-400">0</strong></span>
             </div>
             <div id="stat-reduction-pct" class="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
-              0% reduction
+              0% duplicate reduction
             </div>
           </div>
         </div>
@@ -473,10 +446,10 @@ const presets = [
       
       <div class="text-center max-w-2xl mx-auto mb-12">
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-          How to Remove Line Breaks Online in 3 Simple Steps
+          How to Sort Text Lines Online in 3 Simple Steps
         </h2>
         <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
-          Unwrap broken PDF sentences, join lists with commas, and flatten paragraphs in seconds.
+          Alphabetize customer lists, sort numeric logs, or randomize items in seconds.
         </p>
       </div>
 
@@ -488,10 +461,10 @@ const presets = [
             01
           </div>
           <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
-            Paste Multiline Text
+            Paste or Enter List
           </h3>
           <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Copy text from a PDF, document, spreadsheet, or code file and paste it directly into the input box using <kbd class="px-1.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">Ctrl+V</kbd> or the Paste button.
+            Copy names, keywords, items, or numbers from a spreadsheet or document and paste them directly into the input box using <kbd class="px-1.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">Ctrl+V</kbd> or the Paste button.
           </p>
         </div>
 
@@ -501,10 +474,10 @@ const presets = [
             02
           </div>
           <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
-            Select Replacement Mode
+            Select Sorting Mode
           </h3>
           <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Choose whether to replace breaks with spaces, commas, nothing, or a custom delimiter. Toggle <em>Preserve paragraph breaks</em> to keep double-line gaps intact.
+            Choose your desired ordering: alphabetical (A-Z, Z-A), natural numeric sort, line length, or random shuffle. Optionally toggle case-sensitivity or automatic deduplication.
           </p>
         </div>
 
@@ -517,7 +490,7 @@ const presets = [
             Copy or Download
           </h3>
           <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Watch the live line break reduction counter, then click <strong>Copy Result</strong> to copy to your clipboard or download as a clean <strong>.txt</strong> file.
+            Review the sorted result and live counters, then click <strong>Copy Result</strong> to copy to your clipboard or download as a clean <strong>.txt</strong> file.
           </p>
         </div>
 
@@ -532,10 +505,10 @@ const presets = [
       
       <div class="text-center max-w-2xl mx-auto mb-12">
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Popular Line Break Removal Presets
+          Popular List Sorting Presets
         </h2>
         <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
-          Jump straight into pre-configured join modes tailored for PDF reflow, CSV conversion, SQL queries, and JSON payloads.
+          Jump straight into pre-configured ordering modes tailored for names, episodes, keywords, and giveaways.
         </p>
       </div>
 
@@ -572,10 +545,10 @@ const presets = [
       
       <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Why Choose FastToolVerse Line Break Remover vs Cloud Tools
+          Why Choose FastToolVerse List Sorter vs Cloud Tools
         </h2>
         <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
-          Compare the client-side privacy, granular delimiter customization, and paragraph preservation of FastToolVerse against remote web utilities.
+          Compare the client-side privacy, natural numeric collation, and offline reliability of FastToolVerse against remote web utilities.
         </p>
       </div>
 
@@ -611,7 +584,7 @@ const presets = [
             </div>
             <div>
               <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">100% Client-Side In Browser</p>
-              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Pure browser JavaScript. Zero server requests, no telemetry logs, your private text never leaves local RAM.</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Pure browser JavaScript. Zero server requests, no telemetry logs, your private lists never leave local RAM.</p>
             </div>
           </div>
           <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 flex items-start gap-2.5">
@@ -620,7 +593,7 @@ const presets = [
             </div>
             <div>
               <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Server-Side Transmission</p>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Transmits confidential articles, source code, and student drafts to remote third-party cloud servers.</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Sends confidential employee lists, customer emails, or proprietary inventories to remote servers.</p>
             </div>
           </div>
         </div>
@@ -629,7 +602,7 @@ const presets = [
         <div class="grid grid-cols-12 border-b border-slate-200 dark:border-slate-800/80 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
           <div class="col-span-12 sm:col-span-4 p-4 sm:p-5 flex flex-col justify-center">
             <span class="font-semibold text-sm text-slate-900 dark:text-white">Execution Latency</span>
-            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Speed of line unwrapping</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Speed of sorting</span>
           </div>
           <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-purple-50/30 dark:bg-purple-950/15 border-r sm:border-x border-purple-100 dark:border-purple-900/30 flex items-start gap-2.5">
             <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
@@ -637,7 +610,7 @@ const presets = [
             </div>
             <div>
               <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">Instant 0ms Local Processing</p>
-              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Unwraps text live as you type or paste without page reloads or waiting for network round-trips.</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Sorts live as you type or change options without page reloads or waiting for network round-trips.</p>
             </div>
           </div>
           <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 flex items-start gap-2.5">
@@ -646,24 +619,24 @@ const presets = [
             </div>
             <div>
               <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Server Queue Delay &amp; Ads</p>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Disruptive reload cycles, video ads, and remote server queuing delays on every request.</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Disruptive reload cycles, video ads, and remote server queuing delays on every sort change.</p>
             </div>
           </div>
         </div>
 
-        <!-- Row 3: Delimiter Flexibility -->
+        <!-- Row 3: Natural Numeric Sorting -->
         <div class="grid grid-cols-12 border-b border-slate-200 dark:border-slate-800/80 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
           <div class="col-span-12 sm:col-span-4 p-4 sm:p-5 flex flex-col justify-center">
-            <span class="font-semibold text-sm text-slate-900 dark:text-white">Delimiter Customization</span>
-            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Choice of separator characters</span>
+            <span class="font-semibold text-sm text-slate-900 dark:text-white">Natural Numerical Sort</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Handles embedded numbers naturally</span>
           </div>
           <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-purple-50/30 dark:bg-purple-950/15 border-r sm:border-x border-purple-100 dark:border-purple-900/30 flex items-start gap-2.5">
             <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             </div>
             <div>
-              <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">4 Flexible Replacement Modes</p>
-              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Space, comma, direct merge (no space), or custom arbitrary characters (pipes, tabs, semicolons).</p>
+              <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">Intl Numerical Collation</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Properly sorts 'Item 2' before 'Item 10' by evaluating multi-digit values naturally.</p>
             </div>
           </div>
           <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 flex items-start gap-2.5">
@@ -671,25 +644,25 @@ const presets = [
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
             </div>
             <div>
-              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Fixed Single Space Only</p>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Usually limited to substituting line breaks with spaces without comma or custom character support.</p>
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Rigid ASCII Sorting</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Orders 'Item 10' before 'Item 2' because it compares character codes rather than numeric value.</p>
             </div>
           </div>
         </div>
 
-        <!-- Row 4: Paragraph Preservation -->
+        <!-- Row 4: Multi-Mode Flexibility -->
         <div class="grid grid-cols-12 border-b border-slate-200 dark:border-slate-800/80 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
           <div class="col-span-12 sm:col-span-4 p-4 sm:p-5 flex flex-col justify-center">
-            <span class="font-semibold text-sm text-slate-900 dark:text-white">Paragraph Structure</span>
-            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Preserves semantic paragraph boundaries</span>
+            <span class="font-semibold text-sm text-slate-900 dark:text-white">Multi-Mode Capabilities</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Choice of ordering algorithms</span>
           </div>
           <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-purple-50/30 dark:bg-purple-950/15 border-r sm:border-x border-purple-100 dark:border-purple-900/30 flex items-start gap-2.5">
             <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             </div>
             <div>
-              <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">Intelligent Double-Break Detection</p>
-              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Detects double line breaks and preserves paragraphs while unwrapping ragged internal lines.</p>
+              <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">6 Specialized Sorting Modes</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">A-Z, Z-A, Natural, Shortest/Longest length, and Fisher-Yates random shuffle with deduplication.</p>
             </div>
           </div>
           <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 flex items-start gap-2.5">
@@ -697,8 +670,8 @@ const presets = [
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
             </div>
             <div>
-              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Crude Universal Flattening</p>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Destroys all paragraph organization by flattening the entire document into an unreadable wall of text.</p>
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Basic A-Z Only</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Limited to standard ascending sort without line length ranking or random shuffling.</p>
             </div>
           </div>
         </div>
@@ -715,7 +688,7 @@ const presets = [
             </div>
             <div>
               <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">100% Offline Compatible</p>
-              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Disconnect your Wi-Fi after page load and all line joining features continue to work smoothly.</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Disconnect your Wi-Fi after page load and all sorting functions continue to work flawlessly.</p>
             </div>
           </div>
           <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 flex items-start gap-2.5">
@@ -741,72 +714,61 @@ const presets = [
       <!-- H2 1: Complete Privacy -->
       <div class="space-y-4">
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Complete Privacy: A 100% Client-Side Private Line Break Remover
+          Complete Privacy: A 100% Client-Side Private List Sorter
         </h2>
         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          When reformatting confidential legal contracts, medical reports, unpublished manuscripts, or proprietary code snippets, data exposure must be avoided. Many free web utilities quietly transmit your clipboard contents to remote backend servers to generate advertising profiles or train predictive models.
+          Whether you are alphabetizing employee rosters, reordering confidential client portfolios, or organizing proprietary API endpoints, list sorting frequently involves private information. Many cloud-based text utilities transmit your data across the internet to remote servers, exposing confidential records to network interception, third-party analytics, and database caching.
         </p>
         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          FastToolVerse enforces zero-compromise client-side architecture: <strong>all string replacements, newline parsing, and character counts execute exclusively in your browser's local sandbox memory</strong>. No bytes are sent over the network, no cookies track your activity, and no server logs are created. You can verify this by checking your browser's Network inspection panel or by disconnecting your internet connection entirely after loading the page.
+          FastToolVerse operates under a zero-compromise client-side architecture: <strong>all sorting operations, Unicode collations, deduplication routines, and randomizations execute strictly inside your browser's local sandbox memory</strong>. Your text is never uploaded to any remote server, no cookies track your data, and no logs are retained. You can disconnect from Wi-Fi after opening the page, and the tool will continue functioning with zero degradation in speed.
         </p>
       </div>
 
-      <!-- H2 2: Mechanics of Line Endings -->
+      <!-- H2 2: Collation & Natural Sort -->
       <div class="space-y-4">
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-          The Mechanics of Line Endings: LF (\n) vs CRLF (\r\n) vs CR (\r)
+          The Science of String Collation: Natural Sorting vs ASCII Binary Comparison
         </h2>
         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          Digital text represents line breaks using non-printing control characters inherited from mechanical typewriters:
+          In basic computer programming, sorting is performed by comparing the Unicode character codes (ASCII values) of consecutive characters. This produces notorious sorting anomalies when handling numbers:
         </p>
-        <ul class="space-y-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 list-disc pl-5">
-          <li><strong>Unix &amp; Linux (LF - <code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">\n</code>):</strong> Line Feed moves the cursor down one line. Used universally in macOS, Linux, Android, and modern web protocols.</li>
-          <li><strong>Windows (CRLF - <code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">\r\n</code>):</strong> Carriage Return returns the cursor to the left margin, followed by Line Feed. Used across Windows Notepad and legacy DOS tools.</li>
-          <li><strong>Classic Mac OS (CR - <code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">\r</code>):</strong> Carriage Return only, seen occasionally in older text archives.</li>
-        </ul>
-        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          FastToolVerse uses generalized regular expressions (<code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">/\r\n|\r|\n/g</code>) to capture and standardize all line-ending conventions seamlessly, preventing phantom characters or mismatched encoding bugs.
-        </p>
-      </div>
-
-      <!-- H2 3: Paragraph Preservation Algorithms -->
-      <div class="space-y-4">
-        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Paragraph Preservation: Tokenizing Hard Wraps vs Semantic Paragraph Blocks
-        </h2>
-        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          The most frustrating issue with generic newline removers is that they destroy paragraph structure, concatenating hundreds of distinct thoughts into an unreadable monolithic block. FastToolVerse provides an intelligent <strong>Preserve paragraph breaks</strong> option that separates text into distinct semantic blocks:
-        </p>
-        
-        <div class="not-prose my-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 font-mono text-xs text-purple-300 overflow-x-auto space-y-2">
-          <div><span class="text-slate-500">// Intelligent paragraph preservation logic</span></div>
-          <div>const paragraphs = text.split(/(?:\r?\n\s*){'{2,}'}/);</div>
-          <div>const result = paragraphs.map(p =&gt; &#123;</div>
-          <div class="pl-4">return p.split(/\r?\n/)</div>
-          <div class="pl-8">.map(line =&gt; line.trim())</div>
-          <div class="pl-8">.filter(line =&gt; line.length &gt; 0)</div>
-          <div class="pl-8">.join(' ');</div>
-          <div>&#125;).join('\n\n');</div>
+        <div class="not-prose my-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 font-mono text-xs text-purple-300 overflow-x-auto space-y-1">
+          <div class="text-rose-400">// Naive ASCII Lexicographical Sort:</div>
+          <div>["Item 1", "Item 10", "Item 11", "Item 2", "Item 20", "Item 3"]</div>
+          <div class="pt-2 text-emerald-400">// FastToolVerse Natural Collation Sort:</div>
+          <div>["Item 1", "Item 2", "Item 3", "Item 10", "Item 11", "Item 20"]</div>
         </div>
-
         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          By splitting across double line returns (<code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">\n\n</code>), internal sentence fragments are cleanly stitched together while paragraph boundaries remain intact.
+          FastToolVerse uses modern ECMAScript Internationalization (<code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">Intl.Collator</code>) with <code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">&#123; numeric: true &#125;</code>. This parses numerical tokens within strings as true multi-digit integers, ensuring natural, intuitive human ordering across version numbers, chapter headings, and numbered files.
+        </p>
+      </div>
+
+      <!-- H2 3: Fisher-Yates Randomization -->
+      <div class="space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Unbiased Randomization: The Fisher-Yates Shuffle Algorithm
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          A common anti-pattern in amateur web randomizers is using <code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">array.sort(() =&gt; Math.random() - 0.5)</code>. Mathematically, this produces severe statistical bias because not all permutations have equal probability.
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          FastToolVerse implements the gold-standard <strong>Fisher-Yates (Knuth) Shuffle</strong>. Starting from the end of the array, the algorithm swaps each item with a randomly chosen preceding item. This guarantees a mathematically uniform probability distribution of $O(N)$ linear complexity, making it trustworthy for fair raffles, classroom teams, and unbiased experimental sampling.
         </p>
       </div>
 
       <!-- H2 4: Real-World Use Cases -->
       <div class="space-y-4">
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Practical Industry Applications: From PDF Reflow to SQL Queries
+          Practical Industry Applications: From Keyword Clustering to Database Hygiene
         </h2>
         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          Removing line breaks is a critical formatting requirement across multiple computing workflows:
+          Sorting text is a fundamental workflow step across multiple technical domains:
         </p>
         <ul class="space-y-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 list-disc pl-5">
-          <li><strong>Fixing PDF Reflow:</strong> Copying text from multi-column research papers or PDF eBooks frequently embeds a hard newline at the end of every line. Replacing breaks with a single space restores fluent reading prose.</li>
-          <li><strong>SQL <code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">WHERE id IN (...)</code> Formatting:</strong> Database administrators often copy vertical columns of primary keys from spreadsheets. Joining lines with commas instantly formats the list for SQL clauses.</li>
-          <li><strong>JSON and YAML String Sanitization:</strong> Multiline strings copied into JSON attributes cause syntax errors unless newlines are collapsed or escaped. FastToolVerse flattens strings in one click.</li>
-          <li><strong>Social Media &amp; Meta Descriptions:</strong> Flattening copy ensures character counters accurately reflect single-line character lengths for SEO title tags and meta descriptions.</li>
+          <li><strong>SEO &amp; Content Marketing:</strong> Alphabetizing and deduplicating keyword research lists to group semantic variations and eliminate cannibalization.</li>
+          <li><strong>Programming &amp; Code Refactoring:</strong> Sorting CSS declarations, JSON keys, import statements, and enum declarations to maintain clean repository style guides.</li>
+          <li><strong>E-Commerce &amp; Product Catalogs:</strong> Organizing SKU lists and inventory spreadsheets numerically or by length for uniform visual presentation.</li>
+          <li><strong>Event Management &amp; Education:</strong> Alphabetizing attendee rosters by last name or generating random group assignments with the shuffle tool.</li>
         </ul>
       </div>
 
@@ -822,7 +784,7 @@ const presets = [
           Frequently Asked Questions
         </h2>
         <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
-          Everything you need to know about line break removal, paragraph joining, and data privacy.
+          Everything you need to know about text sorting, collation modes, and data privacy.
         </p>
       </div>
 
@@ -856,25 +818,32 @@ const presets = [
       </h3>
       <div class="flex flex-wrap justify-center gap-3">
         <a
-          href="/tools/remove-extra-spaces/"
+          href="/remove-extra-spaces/"
           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150"
         >
           <ToolIcon name="space" class="w-4 h-4 text-purple-500" />
           <span>Remove Extra Spaces</span>
         </a>
         <a
-          href="/tools/remove-duplicate-lines/"
+          href="/remove-duplicate-lines/"
           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150"
         >
           <ToolIcon name="list-filter" class="w-4 h-4 text-purple-500" />
           <span>Remove Duplicate Lines</span>
         </a>
         <a
-          href="/tools/remove-empty-lines/"
+          href="/remove-empty-lines/"
           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150"
         >
           <ToolIcon name="list-x" class="w-4 h-4 text-purple-500" />
           <span>Remove Empty Lines</span>
+        </a>
+        <a
+          href="/remove-line-breaks/"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150"
+        >
+          <ToolIcon name="wrap-text" class="w-4 h-4 text-purple-500" />
+          <span>Remove Line Breaks</span>
         </a>
         <a
           href="/tools/text-case-converter/"
@@ -882,13 +851,6 @@ const presets = [
         >
           <ToolIcon name="case-upper" class="w-4 h-4 text-purple-500" />
           <span>Text Case Converter</span>
-        </a>
-        <a
-          href="/tools/find-and-replace-text/"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150"
-        >
-          <ToolIcon name="replace" class="w-4 h-4 text-purple-500" />
-          <span>Find &amp; Replace Text</span>
         </a>
         <a
           href="/tools/text-to-slug-converter/"
@@ -908,11 +870,10 @@ const presets = [
   (function () {
     const inputText = document.getElementById('input-text');
     const outputText = document.getElementById('output-text');
-    const modeRadios = document.querySelectorAll('input[name="replace-mode"]');
-    const modeCustomRadio = document.getElementById('mode-custom-radio');
-    const inputCustomDelimiter = document.getElementById('input-custom-delimiter');
-    const optPreserveParagraphs = document.getElementById('opt-preserve-paragraphs');
-    const btnRemoveBreaks = document.getElementById('btn-remove-breaks');
+    const selectSortType = document.getElementById('select-sort-type');
+    const optCaseSensitive = document.getElementById('opt-case-sensitive');
+    const optDedupe = document.getElementById('opt-dedupe');
+    const btnSort = document.getElementById('btn-sort');
     const btnSample = document.getElementById('btn-sample');
     const btnPaste = document.getElementById('btn-paste');
     const btnClear = document.getElementById('btn-clear');
@@ -929,37 +890,37 @@ const presets = [
 
     const statOutputChars = document.getElementById('stat-output-chars');
     const statOutputLines = document.getElementById('stat-output-lines');
-    const statBreaksSaved = document.getElementById('stat-breaks-saved');
+    const statDupesRemoved = document.getElementById('stat-dupes-removed');
     const statReductionPct = document.getElementById('stat-reduction-pct');
-    const statusBreaksRemoved = document.getElementById('status-breaks-removed');
+    const statusSortMode = document.getElementById('status-sort-mode');
 
     const presetButtons = document.querySelectorAll('.preset-card-btn');
 
     // Preset Data map
     const presetMap = {
-      'preset-single-line': {
-        options: { mode: 'space', custom: '', preserveParagraphs: false },
-        sample: 'Artificial intelligence and agentic workflows\nare transforming software engineering.\nModern developers leverage intelligent automation\nto build performant web applications.'
+      'preset-az': {
+        options: { sortType: 'az', caseSensitive: false, dedupe: false },
+        sample: 'Watermelon\nApple\nGrape\nBanana\nOrange\nPineapple\nMango\nCherry'
       },
-      'preset-comma-join': {
-        options: { mode: 'comma', custom: '', preserveParagraphs: false },
-        sample: 'San Francisco\nNew York\nLondon\nTokyo\nSingapore\nBerlin\nSydney'
+      'preset-za': {
+        options: { sortType: 'za', caseSensitive: false, dedupe: false },
+        sample: 'Berlin\nAmsterdam\nTokyo\nParis\nLondon\nMadrid\nRome\nVienna'
       },
-      'preset-fix-pdf': {
-        options: { mode: 'space', custom: '', preserveParagraphs: false },
-        sample: 'The primary objective of this\nclinical trial was to assess the\nefficacy of the intervention across\nmultiple independent demographic groups.'
+      'preset-length': {
+        options: { sortType: 'length-asc', caseSensitive: false, dedupe: false },
+        sample: 'The quick brown fox jumps over the lazy dog\nYes\nHello world\nArtificial intelligence\nOk\nWeb development tools\nCode'
       },
-      'preset-preserve-paras': {
-        options: { mode: 'space', custom: '', preserveParagraphs: true },
-        sample: 'Early computing pioneers designed systems with\nstrict memory limitations and sequential execution.\nThese architectures laid the groundwork for today\'s machines.\n\nDecades later, distributed systems and parallel\nprocessing emerged to meet exponential demand.\nModern cloud networks now scale across continents.'
+      'preset-natural': {
+        options: { sortType: 'natural', caseSensitive: false, dedupe: false },
+        sample: 'Episode 10\nEpisode 1\nEpisode 2\nEpisode 20\nEpisode 3\nEpisode 11\nEpisode 4'
       },
-      'preset-sql-in': {
-        options: { mode: 'comma', custom: '', preserveParagraphs: false },
-        sample: '10024\n10025\n10031\n10089\n10142\n10199'
+      'preset-shuffle': {
+        options: { sortType: 'shuffle', caseSensitive: false, dedupe: false },
+        sample: 'Participant 1: Alex Morgan\nParticipant 2: Brian Chen\nParticipant 3: Clara Silva\nParticipant 4: David Kim\nParticipant 5: Elena Rostova\nParticipant 6: Farhan Qureshi'
       },
-      'preset-json-helper': {
-        options: { mode: 'space', custom: '', preserveParagraphs: false },
-        sample: 'This is a detailed product description\nwritten across multiple lines\nthat must be encoded into a JSON string\nwithout illegal newline characters.'
+      'preset-combo': {
+        options: { sortType: 'az', caseSensitive: false, dedupe: true },
+        sample: 'Python\nJavaScript\nTypeScript\nPython\nGo\nRust\nJavaScript\nC++\nGo\nRuby'
       }
     };
 
@@ -973,85 +934,93 @@ const presets = [
       return str.split(/\r?\n/).length;
     }
 
-    function getDelimiter() {
-      let selected = 'space';
-      modeRadios.forEach(function (radio) {
-        if (radio.checked) selected = radio.value;
-      });
-
-      if (selected === 'comma') return ', ';
-      if (selected === 'none') return '';
-      if (selected === 'custom') {
-        return inputCustomDelimiter ? inputCustomDelimiter.value : '';
-      }
-      return ' ';
-    }
-
-    // High-performance Line Break Remover logic
-    function removeLineBreaks(text) {
+    // High-performance Text Sorter logic
+    function sortLines(text) {
       if (!text) {
         return {
           result: '',
-          breaksRemoved: 0,
-          originalLines: 0,
-          outputLines: 0
+          linesCount: 0,
+          dupesRemoved: 0
         };
       }
 
-      const delimiter = getDelimiter();
-      const preserveParagraphs = optPreserveParagraphs ? optPreserveParagraphs.checked : false;
+      let lines = text.split(/\r?\n/);
+      const sortType = selectSortType ? selectSortType.value : 'az';
+      const isCaseSensitive = optCaseSensitive ? optCaseSensitive.checked : false;
+      const isDedupe = optDedupe ? optDedupe.checked : false;
 
-      // Count total raw line returns in input
-      const totalBreaks = (text.match(/\r\n|\r|\n/g) || []).length;
-
-      let result = '';
-
-      if (preserveParagraphs) {
-        // Split into paragraphs by 2 or more newlines (with optional whitespace in between)
-        const paragraphs = text.split(/(?:\r?\n\s*){2,}/);
-        const cleanedParagraphs = paragraphs.map(function (p) {
-          return p
-            .split(/\r?\n/)
-            .map(function (line) {
-              return line.trim();
-            })
-            .filter(function (line) {
-              return line.length > 0;
-            })
-            .join(delimiter);
-        }).filter(function (p) {
-          return p.length > 0;
-        });
-
-        result = cleanedParagraphs.join('\n\n');
-      } else {
-        // Flatten all lines
-        const lines = text.split(/\r?\n/).map(function (line) {
-          return line.trim();
-        });
-        result = lines.filter(function (line) {
-          return line.length > 0;
-        }).join(delimiter);
+      let dupesRemoved = 0;
+      if (isDedupe) {
+        const seen = new Set();
+        const unique = [];
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i];
+          const key = isCaseSensitive ? line : line.toLowerCase();
+          if (!seen.has(key)) {
+            seen.add(key);
+            unique.push(line);
+          } else {
+            dupesRemoved++;
+          }
+        }
+        lines = unique;
       }
 
-      // Calculate breaks removed
-      const resultBreaks = (result.match(/\r\n|\r|\n/g) || []).length;
-      const breaksRemoved = Math.max(0, totalBreaks - resultBreaks);
+      // Execute sorting algorithm
+      if (sortType === 'az') {
+        lines.sort(function (a, b) {
+          return a.localeCompare(b, undefined, {
+            sensitivity: isCaseSensitive ? 'case' : 'base'
+          });
+        });
+      } else if (sortType === 'za') {
+        lines.sort(function (a, b) {
+          return b.localeCompare(a, undefined, {
+            sensitivity: isCaseSensitive ? 'case' : 'base'
+          });
+        });
+      } else if (sortType === 'natural') {
+        lines.sort(function (a, b) {
+          return a.localeCompare(b, undefined, {
+            numeric: true,
+            sensitivity: isCaseSensitive ? 'case' : 'base'
+          });
+        });
+      } else if (sortType === 'length-asc') {
+        lines.sort(function (a, b) {
+          if (a.length !== b.length) return a.length - b.length;
+          return a.localeCompare(b, undefined, {
+            sensitivity: isCaseSensitive ? 'case' : 'base'
+          });
+        });
+      } else if (sortType === 'length-desc') {
+        lines.sort(function (a, b) {
+          if (a.length !== b.length) return b.length - a.length;
+          return a.localeCompare(b, undefined, {
+            sensitivity: isCaseSensitive ? 'case' : 'base'
+          });
+        });
+      } else if (sortType === 'shuffle') {
+        // Fisher-Yates unbiased shuffle
+        for (let i = lines.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          const temp = lines[i];
+          lines[i] = lines[j];
+          lines[j] = temp;
+        }
+      }
 
-      const rawLinesCount = text.split(/\r?\n/).length;
-      const outLinesCount = result ? result.split(/\r?\n/).length : 0;
-
+      const result = lines.join('\n');
       return {
         result: result,
-        breaksRemoved: breaksRemoved,
-        originalLines: rawLinesCount,
-        outputLines: outLinesCount
+        linesCount: lines.length,
+        dupesRemoved: dupesRemoved
       };
     }
 
     function update() {
       const raw = inputText.value || '';
-      const cleanResult = removeLineBreaks(raw);
+      const cleanResult = sortLines(raw);
       outputText.value = cleanResult.result;
 
       // Input Stats
@@ -1065,19 +1034,31 @@ const presets = [
 
       // Output Stats
       const outChars = cleanResult.result.length;
-      const outLines = cleanResult.result ? cleanResult.outputLines : 0;
+      const outLines = cleanResult.result ? cleanResult.linesCount : 0;
 
       statOutputChars.textContent = outChars.toLocaleString();
       statOutputLines.textContent = outLines.toLocaleString();
 
-      const breaksRemoved = cleanResult.breaksRemoved;
-      statBreaksSaved.textContent = breaksRemoved.toLocaleString();
+      const dupes = cleanResult.dupesRemoved;
+      statDupesRemoved.textContent = dupes.toLocaleString();
 
-      const pct = inLines > 1 ? Math.max(0, Math.round((breaksRemoved / (inLines - 1)) * 100)) : 0;
-      statReductionPct.textContent = pct + '% reduction';
+      const pct = inLines > 0 ? Math.max(0, Math.round((dupes / inLines) * 100)) : 0;
+      statReductionPct.textContent = pct + '% duplicate reduction';
 
-      statusBreaksRemoved.textContent =
-        breaksRemoved.toLocaleString() + ' line ' + (breaksRemoved === 1 ? 'break' : 'breaks') + ' removed';
+      // Status label description
+      const sortType = selectSortType ? selectSortType.value : 'az';
+      let modeText = 'Alphabetical (A-Z)';
+      if (sortType === 'za') modeText = 'Reverse (Z-A)';
+      if (sortType === 'natural') modeText = 'Natural Numeric';
+      if (sortType === 'length-asc') modeText = 'Length (Shortest First)';
+      if (sortType === 'length-desc') modeText = 'Length (Longest First)';
+      if (sortType === 'shuffle') modeText = 'Randomized';
+
+      if (dupes > 0) {
+        statusSortMode.textContent = modeText + ' • ' + dupes + ' dupes removed';
+      } else {
+        statusSortMode.textContent = modeText;
+      }
     }
 
     // Debounce helper for silky performance with large text
@@ -1089,26 +1070,15 @@ const presets = [
 
     // Event Listeners
     inputText?.addEventListener('input', debouncedUpdate);
-    modeRadios.forEach(function (radio) {
-      radio.addEventListener('change', update);
-    });
-    inputCustomDelimiter?.addEventListener('input', function () {
-      if (modeCustomRadio) modeCustomRadio.checked = true;
-      debouncedUpdate();
-    });
-    inputCustomDelimiter?.addEventListener('focus', function () {
-      if (modeCustomRadio) {
-        modeCustomRadio.checked = true;
-        update();
-      }
-    });
-    optPreserveParagraphs?.addEventListener('change', update);
-    btnRemoveBreaks?.addEventListener('click', update);
+    selectSortType?.addEventListener('change', update);
+    optCaseSensitive?.addEventListener('change', update);
+    optDedupe?.addEventListener('change', update);
+    btnSort?.addEventListener('click', update);
 
     // Sample Text
     btnSample?.addEventListener('click', function () {
       inputText.value =
-        'This is a sample document that contains multiple line breaks\nthat cause awkward sentence wraps.\n\nWhen text is copied from a PDF or formatted email,\nit often separates thoughts onto erratic lines.\n\nThis tool joins everything into smooth, continuous sentences.';
+        'Orange\nApple\nGrape\nBanana\nApple\nMango\nPineapple\nBanana\nWatermelon\nCherry';
       update();
     });
 
@@ -1174,7 +1144,7 @@ const presets = [
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'joined-text.txt';
+      a.download = 'sorted-list.txt';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -1188,16 +1158,16 @@ const presets = [
         const data = presetMap[id];
         if (!data) return;
 
-        modeRadios.forEach(function (radio) {
-          radio.checked = radio.value === data.options.mode;
-        });
-
-        if (inputCustomDelimiter) {
-          inputCustomDelimiter.value = data.options.custom || '';
+        if (selectSortType) {
+          selectSortType.value = data.options.sortType;
         }
 
-        if (optPreserveParagraphs) {
-          optPreserveParagraphs.checked = data.options.preserveParagraphs;
+        if (optCaseSensitive) {
+          optCaseSensitive.checked = data.options.caseSensitive;
+        }
+
+        if (optDedupe) {
+          optDedupe.checked = data.options.dedupe;
         }
 
         if (data.sample) {

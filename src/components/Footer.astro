@@ -6,20 +6,20 @@ interface Props {
 const { class: className = '' } = Astro.props;
 
 const imageTools = [
-  { name: 'Image Resizer', href: '/tools/image-resizer/' },
-  { name: 'Image Compressor', href: '/tools/image-compressor/' },
+  { name: 'Image Resizer', href: '/image-resizer/' },
+  { name: 'Image Compressor', href: '/image-compressor/' },
   { name: 'Image Cropper', href: '/tools/image-cropper/' },
-  { name: 'Image Converter', href: '/tools/image-converter/' },
+  { name: 'Image Converter', href: '/image-converter/' },
   { name: 'Image Optimizer', href: '/tools/image-optimizer/' },
 ];
 
 const textTools = [
+  { name: 'Remove Empty Lines', href: '/remove-empty-lines/' },
+  { name: 'Remove Extra Spaces', href: '/remove-extra-spaces/' },
+  { name: 'Remove Duplicate Lines', href: '/remove-duplicate-lines/' },
+  { name: 'Remove Line Breaks', href: '/remove-line-breaks/' },
+  { name: 'Sort Text Lines', href: '/sort-text-lines/' },
   { name: 'Text Case Converter', href: '/tools/text-case-converter/' },
-  { name: 'Remove Extra Spaces', href: '/tools/remove-extra-spaces/' },
-  { name: 'Remove Duplicate Lines', href: '/tools/remove-duplicate-lines/' },
-  { name: 'Remove Line Breaks', href: '/tools/remove-line-breaks/' },
-  { name: 'Find & Replace Text', href: '/tools/find-and-replace-text/' },
-  { name: 'Text to Slug Converter', href: '/tools/text-to-slug-converter/' },
 ];
 
 const devTools = [

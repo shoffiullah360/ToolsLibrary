@@ -55,7 +55,7 @@ export const TOOLS: Tool[] = [
     keywords: ['resize image', 'scale photo', 'change dimensions', 'image resizer', 'pixel scaling'],
     icon: 'maximize-2',
     badge: 'Popular',
-    href: '/tools/image-resizer'
+    href: '/image-resizer/'
   },
   {
     id: 'image-compressor',
@@ -67,7 +67,7 @@ export const TOOLS: Tool[] = [
     keywords: ['compress image', 'shrink photo', 'reduce image size', 'optimize jpg', 'png compressor'],
     icon: 'minimize-2',
     badge: 'Essential',
-    href: '/tools/image-compressor'
+    href: '/image-compressor/'
   },
   {
     id: 'image-converter',
@@ -79,7 +79,7 @@ export const TOOLS: Tool[] = [
     keywords: ['image converter', 'convert png to jpg', 'convert jpg to webp', 'image to pdf', 'convertio alternative', 'avif converter'],
     icon: 'repeat',
     badge: 'Popular',
-    href: '/tools/image-converter'
+    href: '/image-converter/'
   },
   {
     id: 'image-cropper',
@@ -535,35 +535,35 @@ export const TEXT_TOOLS: TextTool[] = [
   {
     id: 'remove-extra-spaces',
     title: 'Remove Extra Spaces',
-    href: '/tools/remove-extra-spaces',
+    href: '/remove-extra-spaces/',
     icon: 'space',
     description: 'Clean multiple spaces, leading and trailing whitespace, and tabs.'
   },
   {
     id: 'remove-duplicate-lines',
     title: 'Remove Duplicate Lines',
-    href: '/tools/remove-duplicate-lines',
+    href: '/remove-duplicate-lines/',
     icon: 'list-filter',
     description: 'Deduplicate text lines while preserving your original line order.'
   },
   {
     id: 'remove-empty-lines',
     title: 'Remove Empty Lines',
-    href: '/tools/remove-empty-lines',
+    href: '/remove-empty-lines/',
     icon: 'list-x',
     description: 'Strip out blank lines and lines containing only space characters.'
   },
   {
     id: 'remove-line-breaks',
     title: 'Remove Line Breaks',
-    href: '/tools/remove-line-breaks',
+    href: '/remove-line-breaks/',
     icon: 'wrap-text',
     description: 'Merge lines into paragraphs or join lines with custom delimiters.'
   },
   {
     id: 'sort-text-lines',
     title: 'Sort Text Lines',
-    href: '/tools/sort-text-lines',
+    href: '/sort-text-lines/',
     icon: 'arrow-up-down',
     description: 'Sort lines alphabetically (A-Z or Z-A), numerically, or by string length.'
   },

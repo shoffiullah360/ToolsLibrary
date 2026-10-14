@@ -21,6 +21,16 @@ export default defineConfig({
     '/facebook-cover-photo-resizer': '/tools/facebook-image-resizer/',
     '/tiktok-profile-picture-resizer': '/tools/tiktok-image-resizer/',
 
+    // Main Tools Flattened Root Migrations (301)
+    '/tools/image-resizer': '/image-resizer/',
+    '/tools/image-compressor': '/image-compressor/',
+    '/tools/image-converter': '/image-converter/',
+    '/tools/remove-extra-spaces': '/remove-extra-spaces/',
+    '/tools/remove-duplicate-lines': '/remove-duplicate-lines/',
+    '/tools/remove-empty-lines': '/remove-empty-lines/',
+    '/tools/remove-line-breaks': '/remove-line-breaks/',
+    '/tools/sort-text-lines': '/sort-text-lines/',
+
     // Remove Empty Lines 301 Migrations
     '/tools/remove-empty-lines/how-to-remove-empty-lines-in-notepad-plus-plus': '/remove-empty-lines-notepad-plus-plus/',
     '/tools/remove-empty-lines/how-to-remove-empty-lines-in-excel': '/remove-empty-lines-excel/',

@@ -98,8 +98,8 @@ export async function getStaticPaths() {
     if (specialTitles[slug]) return specialTitles[slug];
     const cleanSlug = slug.replace(/\/+$/, '');
     const foundTool =
-      TOOLS.find((t) => t.id === cleanSlug || t.href.replace(/^\/tools\//, '').replace(/\/+$/, '') === cleanSlug) ||
-      TEXT_TOOLS.find((t) => t.id === cleanSlug || t.href.replace(/^\/tools\//, '').replace(/\/+$/, '') === cleanSlug);
+      TOOLS.find((t) => t.id === cleanSlug || t.href.replace(/^\/?(tools\/)?/, '').replace(/\/+$/, '') === cleanSlug) ||
+      TEXT_TOOLS.find((t) => t.id === cleanSlug || t.href.replace(/^\/?(tools\/)?/, '').replace(/\/+$/, '') === cleanSlug);
     if (foundTool) return foundTool.title;
 
     return cleanSlug
@@ -173,8 +173,8 @@ export async function getStaticPaths() {
 
   return targetSlugs.map((slug) => {
     const matchedTool =
-      TOOLS.find((t) => t.id === slug || t.href.replace(/^\/tools\//, '').replace(/\/+$/, '') === slug) ||
-      (TEXT_TOOLS.find((t) => t.id === slug || t.href.replace(/^\/tools\//, '').replace(/\/+$/, '') === slug) as unknown as Tool | undefined);
+      TOOLS.find((t) => t.id === slug || t.href.replace(/^\/?(tools\/)?/, '').replace(/\/+$/, '') === slug) ||
+      (TEXT_TOOLS.find((t) => t.id === slug || t.href.replace(/^\/?(tools\/)?/, '').replace(/\/+$/, '') === slug) as unknown as Tool | undefined);
 
     const title = slugToTitle(slug);
     const category = matchedTool?.category || (slug.includes('image') || slug.includes('photo') ? 'Image Tools' : 'Developer Tools');
@@ -301,7 +301,7 @@ const jsonLd = {
       <!-- Fast Action CTAs Directly Below Heading -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-14">
         <a
-          href="/tools/image-resizer/"
+          href="/image-resizer/"
           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm sm:text-base shadow-sm hover:shadow transition-all duration-200"
         >
           <span>Use Free Image Resizer Now &rarr;</span>
@@ -417,7 +417,7 @@ const jsonLd = {
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           <a
-            href="/tools/image-resizer/"
+            href="/image-resizer/"
             class="flex items-start gap-3 p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-300 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-blue-600 dark:hover:border-blue-500 transition-all duration-150 group"
           >
             <div class="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
@@ -434,7 +434,7 @@ const jsonLd = {
           </a>
 
           <a
-            href="/tools/remove-extra-spaces/"
+            href="/remove-extra-spaces/"
             class="flex items-start gap-3 p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-300 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150 group"
           >
             <div class="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
@@ -451,7 +451,7 @@ const jsonLd = {
           </a>
 
           <a
-            href="/tools/remove-duplicate-lines/"
+            href="/remove-duplicate-lines/"
             class="flex items-start gap-3 p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-300 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150 group"
           >
             <div class="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
@@ -468,7 +468,7 @@ const jsonLd = {
           </a>
 
           <a
-            href="/tools/remove-empty-lines/"
+            href="/remove-empty-lines/"
             class="flex items-start gap-3 p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-300 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150 group"
           >
             <div class="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
@@ -485,7 +485,7 @@ const jsonLd = {
           </a>
 
           <a
-            href="/tools/sort-text-lines/"
+            href="/sort-text-lines/"
             class="flex items-start gap-3 p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-300 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150 group"
           >
             <div class="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
@@ -502,7 +502,7 @@ const jsonLd = {
           </a>
 
           <a
-            href="/tools/remove-line-breaks/"
+            href="/remove-line-breaks/"
             class="flex items-start gap-3 p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-300 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150 group"
           >
             <div class="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">

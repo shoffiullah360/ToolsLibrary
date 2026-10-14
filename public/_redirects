@@ -21,7 +21,25 @@
 /tools/remove-empty-lines/remove-empty-lines-in-xml/ /remove-empty-lines-xml/ 301
 /tools/remove-empty-lines/remove-empty-lines-in-xml /remove-empty-lines-xml/ 301
 
-# 2. General Fallback for all 35 presets
+# 2. Main Tools Flattened Root Migrations (301 Permanent Redirects)
+/tools/image-resizer/* /image-resizer/:splat 301
+/tools/image-resizer /image-resizer/ 301
+/tools/image-compressor/* /image-compressor/:splat 301
+/tools/image-compressor /image-compressor/ 301
+/tools/image-converter/* /image-converter/:splat 301
+/tools/image-converter /image-converter/ 301
+/tools/remove-extra-spaces/* /remove-extra-spaces/:splat 301
+/tools/remove-extra-spaces /remove-extra-spaces/ 301
+/tools/remove-duplicate-lines/* /remove-duplicate-lines/:splat 301
+/tools/remove-duplicate-lines /remove-duplicate-lines/ 301
+/tools/remove-empty-lines /remove-empty-lines/ 301
+/tools/remove-empty-lines/ /remove-empty-lines/ 301
+/tools/remove-line-breaks/* /remove-line-breaks/:splat 301
+/tools/remove-line-breaks /remove-line-breaks/ 301
+/tools/sort-text-lines/* /sort-text-lines/:splat 301
+/tools/sort-text-lines /sort-text-lines/ 301
+
+# 3. General Fallback for remove-empty-lines presets
 /tools/remove-empty-lines/:slug/ /:slug/ 301
 /tools/remove-empty-lines/:slug /:slug/ 301
 

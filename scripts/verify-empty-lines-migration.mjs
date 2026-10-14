@@ -7,17 +7,17 @@ console.log(`=== AUDITING ALL ${REMOVE_EMPTY_LINES_PRESETS.length} REMOVE EMPTY 
 let allSuccess = true;
 
 // 1. Verify main tool landing page is intact
-const mainToolPath = path.join('./dist', 'tools', 'remove-empty-lines', 'index.html');
+const mainToolPath = path.join('./dist', 'remove-empty-lines', 'index.html');
 if (!fs.existsSync(mainToolPath)) {
   console.error('ERROR: Main tool landing page missing at', mainToolPath);
   allSuccess = false;
 } else {
   const mainHtml = fs.readFileSync(mainToolPath, 'utf8');
-  if (!mainHtml.includes('<link rel="canonical" href="https://fasttoolverse.com/tools/remove-empty-lines/"')) {
+  if (!mainHtml.includes('<link rel="canonical" href="https://fasttoolverse.com/remove-empty-lines/"')) {
     console.error('ERROR: Main tool landing page canonical URL mismatch!');
     allSuccess = false;
   } else {
-    console.log('✓ Main tool landing page verified at /tools/remove-empty-lines/');
+    console.log('✓ Main tool landing page verified at /remove-empty-lines/');
   }
 }
 

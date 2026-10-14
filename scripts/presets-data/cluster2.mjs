@@ -16,18 +16,17 @@ export const cluster2Presets = [
       heading: 'Notepad++ Line Cleaning Guide: Native Operations vs Browser Sanitization',
       sections: [
         {
-          title: 'Understanding Notepad++ Built-In Line Operations',
+          title: 'Shortcut to Remove Empty Lines in Notepad++',
           paragraphs: [
-            'Notepad++ has long been the preferred text editor for Windows systems administrators, developers, and data analysts. Its native menu system includes dedicated utilities under Edit > Line Operations to delete empty lines across open files.',
-            'However, many users encounter situations where the default "Remove Empty Lines" action fails to remove every blank space. This occurs because the basic command only detects lines with a character count of zero. If a line holds even a single space or tab character, Notepad++ considers it populated and leaves it untouched.',
-            'To resolve this in Notepad++, users must select "Remove Empty Lines (Containing Blank characters)". This secondary operation evaluates both strict empty rows and whitespace-padded lines, condensing the file down to populated content.',
-            'This two-tier system gives users flexibility when handling files where whitespace is intentional, but it often confuses beginners who expect all visually blank rows to vanish in a single click.'
+            'Notepad++ has long been the preferred text editor for Windows systems administrators, software engineers, and data analysts. While many users manually scroll through documents deleting blank rows, Notepad++ features high-speed built-in keyboard navigation to execute line purges in seconds.',
+            'To quickly invoke line operations using keyboard shortcuts, press Alt+E to open the Edit menu, then press L for Line Operations, and press E to trigger "Remove Empty Lines". If your document contains lines with invisible spaces or tabs, use the shortcut sequence Alt+E > L > B to choose "Remove Empty Lines (Containing Blank characters)".',
+            'For developers who perform this operation daily, Notepad++ allows you to bind a custom direct shortcut key (such as Ctrl+Shift+Alt+E) via Settings > Shortcut Mapper > Menu Commands. This eliminates menu traversal entirely and runs synchronously across the active text buffer.'
           ],
           bullets: [
-            'Edit > Line Operations > Remove Empty Lines deletes zero-length lines.',
-            'Edit > Line Operations > Remove Empty Lines (Containing Blank characters) removes space-padded rows.',
-            'Fast keyboard navigation: Alt+E, then L, then choose the desired line operation.',
-            'Line operations execute across the entire active buffer in one synchronous pass.'
+            'Fast menu shortcut: Alt+E, then L, then E for Remove Empty Lines.',
+            'Catch whitespace rows: Alt+E, then L, then B for Remove Empty Lines (Containing Blank characters).',
+            'Assign a custom hotkey like Ctrl+Shift+Alt+E via Settings > Shortcut Mapper > Menu Commands.',
+            'Line operations execute across the entire active file buffer in one synchronous pass.'
           ],
           callout: {
             type: 'tip',
@@ -36,18 +35,31 @@ export const cluster2Presets = [
           }
         },
         {
-          title: 'Advanced Regex Options in Notepad++ (\\R Patterns)',
+          title: 'How to Remove Empty Lines in Notepad++ Using Extended Search',
           paragraphs: [
-            'For advanced power users, Notepad++’s Find and Replace dialog (Ctrl+H) with regular expression mode enabled offers surgical flexibility. By searching for `^[ \\t]*\\R`, Notepad++ matches any line starting with optional spaces or tabs followed immediately by a newline.',
-            'Replacing this pattern with an empty string deletes the line completely. It is important to leave the "matches newline" checkbox unchecked so the dot quantifier does not accidentally span across multiple lines.',
-            'When processing multiple files across an entire repository, you can utilize "Find in Files" (Ctrl+Shift+F) with the same regular expression to sanitize dozens of configuration manifests or code files simultaneously.',
-            'The \\R token matches any Unicode newline sequence, including Windows CRLF (\\r\\n), Unix LF (\\n), and legacy Mac CR (\\r), making it universally compatible across mixed repositories.'
+            'In addition to standard Line Operations, Notepad++ provides an "Extended" search mode (`\\n`, `\\r`, `\\t`, `\\0`, `\\x...`) within the Find and Replace dialog (Ctrl+H). This is particularly useful when you need to condense multiple line breaks without writing full regular expressions.',
+            'Press Ctrl+H to launch Replace. Under Search Mode, select the "Extended (\\n, \\r, \\t, \\0, \\x...)" radio button. In the "Find what" input, type `\\r\\n\\r\\n` (representing two consecutive Windows CRLF line endings). In the "Replace with" input, type `\\r\\n`. Click "Replace All" repeatedly until zero replacements occur.',
+            'If you are working with Unix or Linux files that utilize LF (`\\n`) rather than CRLF, simply search for `\\n\\n` and replace with `\\n`. Extended mode offers precise escape-character control without the risk of catastrophic regex backtracking on massive 100MB server log dumps.'
           ],
           bullets: [
-            'Press Ctrl+H and select "Regular expression" mode.',
-            'Use `^[ \\t]*\\R` to match lines with spaces, tabs, or zero characters.',
-            'Leave "Replace with" empty and click "Replace All".',
-            'Use Ctrl+Shift+F for multi-file workspace batch processing.'
+            'Press Ctrl+H and select "Extended" search mode.',
+            'For Windows CRLF: Find `\\r\\n\\r\\n` and Replace with `\\r\\n`.',
+            'For Linux/Unix LF: Find `\\n\\n` and Replace with `\\n`.',
+            'Click Replace All repeatedly until zero matches remain.'
+          ]
+        },
+        {
+          title: 'How to Clean Text Blank Lines in Notepad++ (Handling Whitespace-Only Lines)',
+          paragraphs: [
+            'A common frustration among Notepad++ users is finding that "Remove Empty Lines" fails to remove visually blank rows. This happens because the standard operation strictly checks for lines with a character count of zero. If a line holds even a single space or tab character, Notepad++ considers it populated and leaves it untouched.',
+            'To resolve this, always use Edit > Line Operations > "Remove Empty Lines (Containing Blank characters)". This secondary operation evaluates both strict empty rows and whitespace-padded lines, condensing the file down to populated content.',
+            'For power users handling complex code files, you can also use Regular Expression mode (Ctrl+H) with the pattern `^[ \\t]*\\R`. Leaving "Replace with" blank and clicking Replace All purges every empty and whitespace-only line across the file.'
+          ],
+          bullets: [
+            'Edit > Line Operations > Remove Empty Lines deletes zero-length lines.',
+            'Edit > Line Operations > Remove Empty Lines (Containing Blank characters) removes space-padded rows.',
+            'Regex mode pattern: `^[ \\t]*\\R` matches lines with spaces, tabs, or zero characters.',
+            'Leave Replace with empty and click Replace All to strip whitespace rows.'
           ]
         },
         {
@@ -64,35 +76,21 @@ export const cluster2Presets = [
             'Complete local RAM processing ensures enterprise confidentiality.',
             'Instant real-time statistical readouts for lines, characters, and words.'
           ]
-        },
-        {
-          title: 'Best Practices for Sanitizing Code and System Logs',
-          paragraphs: [
-            'When removing empty lines from code or system logs, always ensure you do not inadvertently destroy semantic paragraph boundaries in documentation or Markdown files. If your goal is to make text compact without merging distinct paragraphs, enable "Collapse consecutive blank lines to one".',
-            'This setting replaces multiple blank lines with a single uniform break, preserving visual readability while purging messy multi-line gaps. FastToolVerse lets you toggle between complete line stripping and paragraph collapsing effortlessly.',
-            'Additionally, ensure that trailing empty lines at the very end of script files are cleaned cleanly to avoid linter complaints in CI/CD build environments.',
-            'Reviewing your cleaned text in our dual side-by-side workspace gives you instant visual confirmation before exporting files.'
-          ],
-          callout: {
-            type: 'note',
-            label: 'Preserving Spacing',
-            text: 'Use "Collapse consecutive blank lines to one" when cleaning prose or Markdown files to retain natural paragraph breaks between sections.'
-          }
         }
       ]
     },
     faqs: [
       {
-        question: 'How do I remove empty lines in Notepad++?',
-        answer: 'Open your document in Notepad++, go to Edit > Line Operations, and click "Remove Empty Lines" or "Remove Empty Lines (Containing Blank characters)".'
+        question: 'What is the exact shortcut to remove empty lines in Notepad++?',
+        answer: 'Press Alt+E, then press L, then press E for "Remove Empty Lines", or press Alt+E > L > B for "Remove Empty Lines (Containing Blank characters)". You can also assign a direct custom hotkey like Ctrl+Shift+Alt+E via Settings > Shortcut Mapper > Menu Commands.'
       },
       {
-        question: 'Why did Notepad++ leave blank lines containing spaces?',
-        answer: 'The standard "Remove Empty Lines" only strips zero-length lines. To catch lines with invisible spaces or tabs, use "Remove Empty Lines (Containing Blank characters)".'
+        question: 'How to delete blank lines in Notepad++ that contain hidden spaces or tabs?',
+        answer: 'Navigate to Edit > Line Operations > "Remove Empty Lines (Containing Blank characters)". Alternatively, press Ctrl+H, select Regular expression mode, enter "^[ \\t]*\\R" into Find what, leave Replace with empty, and click Replace All.'
       },
       {
-        question: 'Can I remove empty lines in Notepad++ using regular expressions?',
-        answer: 'Yes. Press Ctrl+H, select Regular expression search mode, enter "^[ \\t]*\\R" into Find what, leave Replace with empty, and click Replace All.'
+        question: 'How do I remove empty lines in Notepad++ using Extended Search?',
+        answer: 'Press Ctrl+H, choose "Extended" search mode, type "\\r\\n\\r\\n" into Find what, type "\\r\\n" into Replace with, and click Replace All repeatedly until zero matches remain.'
       },
       {
         question: 'Is there a way to run Notepad++ line operations on Mac or Linux?',
@@ -232,7 +230,7 @@ export const cluster2Presets = [
       heading: 'Guide: Sanitizing Empty Paragraphs and Blank Lines in Word Documents',
       sections: [
         {
-          title: 'Why Word Documents Accumulate Empty Lines',
+          title: 'How to Get Rid of Extra Lines Between Paragraphs in Word',
           paragraphs: [
             'In Microsoft Word, pressing the Enter key creates a new paragraph container (^p). Many writers and editors habitually press Enter twice to create visual spacing between paragraphs, or copy text from emails and web pages that carry extra line breaks.',
             'Over time, this results in inconsistent formatting—some paragraphs have single returns, others have double or triple blank lines. This makes applying document-wide styles, margins, and line spacing inconsistent.',
@@ -252,7 +250,7 @@ export const cluster2Presets = [
           }
         },
         {
-          title: 'Native Word Find and Replace Techniques (^p^p to ^p)',
+          title: 'How to Remove Empty Lines in Word Document (Using Find & Replace ^p^p)',
           paragraphs: [
             'To resolve this directly inside Microsoft Word, use the Find and Replace tool (Ctrl+H). Type `^p^p` into "Find what" and `^p` into "Replace with". Click "Replace All" repeatedly until Word reports 0 replacements.',
             'If your text was copied from a PDF or webpage, it might use manual line breaks (Shift+Enter, code `^l`) instead of paragraph marks. In that case, search for `^l^l` and replace with `^l` or `^p`.',
@@ -267,17 +265,17 @@ export const cluster2Presets = [
           ]
         },
         {
-          title: 'The FastToolVerse Workflow: Instant Paragraph Normalization',
+          title: 'Shortcut to Remove Empty Lines in Word',
           paragraphs: [
-            'Running multiple search-and-replace queries in Word can be slow and awkward for multi-page documents. FastToolVerse provides an effortless browser-based alternative.',
-            'Select your text in Word (Ctrl+A, Ctrl+C), paste into FastToolVerse, and let our engine clean the text automatically. With "Collapse consecutive blank lines to one" active, all multi-line gaps are condensed into a single clean line break between paragraphs.',
-            'You can immediately copy the sanitized text back into Word, where you can apply clean paragraph styling with 0pt before/after spacing for a professional, publication-ready layout.',
-            'Our engine processes documents containing hundreds of pages without the UI freezes commonly experienced in Word desktop software.'
+            'The fastest keyboard sequence within Microsoft Word is pressing Ctrl+H to launch Find and Replace, typing `^p^p`, tabbing to Replace with, entering `^p`, and pressing Alt+A to trigger Replace All in one motion.',
+            'However, running multiple search-and-replace queries in Word can be slow and awkward for multi-page documents. FastToolVerse provides an effortless browser-based shortcut. Select your text in Word (Ctrl+A, Ctrl+C), paste into FastToolVerse, and let our engine clean the text automatically.',
+            'With "Collapse consecutive blank lines to one" active, all multi-line gaps are condensed into a single clean line break between paragraphs in 0ms without UI freezing.',
+            'You can immediately copy the sanitized text back into Word, where you can apply clean paragraph styling with 0pt before/after spacing for a professional, publication-ready layout.'
           ],
           bullets: [
+            'Keyboard shortcut sequence: Ctrl+H > type ^p^p > Tab > type ^p > Alt+A.',
             'Normalizes erratic spacing into consistent single blank lines between paragraphs.',
             'Cleans hidden space-only lines without disrupting text content.',
-            'Provides real-time line, character, and word count statistics.',
             '100% private: all processing runs locally in browser memory.'
           ]
         },
@@ -299,24 +297,24 @@ export const cluster2Presets = [
     },
     faqs: [
       {
+        question: 'What is the shortcut to remove empty lines in Word?',
+        answer: 'Press Ctrl+H to open Find and Replace, enter "^p^p" in Find what, enter "^p" in Replace with, and press Alt+A to Replace All. Repeat until Word reports zero replacements.'
+      },
+      {
+        question: 'How do I get rid of extra space between lines in Word without breaking layout?',
+        answer: 'Toggle paragraph symbols on (Ctrl+Shift+8). If there are no extra ¶ marks, the spacing is visual: go to Paragraph settings and set "Space After" to 0pt and "Line Spacing" to Single.'
+      },
+      {
+        question: 'How to remove extra lines in a word document pasted from external websites?',
+        answer: 'Web text often carries manual line breaks (^l) or spaces between paragraph marks (^p^w^p). Open Find and Replace (Ctrl+H) and replace "^l^l" with "^l", or paste your text into FastToolVerse to collapse all breaks in 0ms.'
+      },
+      {
         question: 'How do I remove empty lines in a Word document?',
         answer: 'Press Ctrl+H, enter "^p^p" in Find what, enter "^p" in Replace with, and click Replace All. Repeat until zero replacements remain.'
       },
       {
         question: 'Why didn\'t ^p^p catch all blank lines in my Word file?',
         answer: 'The blank line likely contains hidden spaces or was created with Shift+Enter (manual line break, "^l"). Use "^p^w^p" or "^l^l" to catch these variations.'
-      },
-      {
-        question: 'Can I copy text from Word, clean it here, and paste it back?',
-        answer: 'Yes! Copy your text from Word into FastToolVerse to collapse or remove blank lines instantly, then paste it back into your document.'
-      },
-      {
-        question: 'Does FastToolVerse preserve paragraph breaks while cleaning?',
-        answer: 'Yes. With "Collapse consecutive blank lines to one" checked, our tool condenses multiple blank lines into a single clean paragraph separator.'
-      },
-      {
-        question: 'Will cleaning text in this tool remove my formatting like bold or tables?',
-        answer: 'Our tool operates on raw text. It is ideal for cleaning drafts, code, notes, or manuscripts before applying final stylesheet formatting in Word.'
       },
       {
         question: 'Is my confidential Word document safe on FastToolVerse?',
@@ -340,7 +338,7 @@ export const cluster2Presets = [
       heading: 'Practical Guide: Removing Empty Lines and Formatting Breaks in Google Docs',
       sections: [
         {
-          title: 'Understanding Spacing Anomalies in Google Docs',
+          title: 'How to Remove Empty Lines in Google Docs Documents',
           paragraphs: [
             'Google Docs is the premier cloud word processor for collaborative writing, but managing line breaks can be challenging. When importing content from emails, PDF reports, or web articles, text often arrives riddled with erratic double and triple blank lines.',
             'Because Google Docs does not feature a native "Delete Empty Lines" button, users often spend valuable time manually backspacing through long documents. Alternatively, third-party add-ons from the Google Workspace Marketplace frequently demand extensive permissions to read, edit, and delete files across your entire Google Drive.',
@@ -360,10 +358,10 @@ export const cluster2Presets = [
           }
         },
         {
-          title: 'Native Regex Search in Google Docs (Ctrl+H)',
+          title: 'How to Get Rid of Extra Lines in Google Docs Without Manual Backspace',
           paragraphs: [
             'Google Docs includes a built-in regular expression search engine within its Find and Replace menu. Press Ctrl+H (or Command+Shift+H on macOS) and check "Match using regular expressions".',
-            'To collapse multiple blank lines into a single paragraph break, enter `\\n\\n+` in the Find field and `\\n` in the Replace with field. Click "Replace all".',
+            'To collapse multiple blank lines into a single paragraph break without manual backspacing, enter `\\n\\n+` in the Find field and `\\n` in the Replace with field. Click "Replace all".',
             'If you wish to remove all empty lines completely to create a compact, single-spaced document, enter `^\\n` into Find, leave Replace with completely blank, and click "Replace all".',
             'Be careful when running regex search in Google Docs on shared files, as replacements update live for all active collaborators simultaneously.'
           ],
@@ -372,6 +370,20 @@ export const cluster2Presets = [
             'To collapse multi-line gaps: Find `\\n\\n+`, Replace with `\\n`.',
             'To delete all blank lines: Find `^\\n`, Replace with empty string.',
             'Click "Replace all" to execute across the entire document.'
+          ]
+        },
+        {
+          title: 'How to Remove Empty Rows Between Data in Google Sheets',
+          paragraphs: [
+            'Many professionals frequently copy tabular data between Google Docs and Google Sheets. When moving spreadsheet tables into documents, empty rows between records create awkward formatting gaps.',
+            'To remove empty rows inside Google Sheets before pasting into Google Docs, highlight your table, click Data > Create a filter, filter your primary column for "(Blanks)", highlight the visible row numbers, right-click, and select "Delete selected rows".',
+            'Alternatively, copying the spreadsheet range into FastToolVerse purges blank rows in 0ms while preserving tab-delimited column boundaries for clean, formatted pasting.'
+          ],
+          bullets: [
+            'Use Data > Create a filter in Google Sheets to isolate "(Blanks)".',
+            'Delete selected empty rows to consolidate spreadsheet records.',
+            'Preserve tab-delimited boundaries when transferring to Google Docs.',
+            'FastToolVerse cleans copied tables in 0ms without disrupting cell columns.'
           ]
         },
         {
@@ -388,27 +400,17 @@ export const cluster2Presets = [
             'Operates 100% client-side in browser RAM with zero server transmission.',
             'Real-time metrics display line, character, and word count reductions.'
           ]
-        },
-        {
-          title: 'Setting Clean Default Paragraph Spacing in Google Docs',
-          paragraphs: [
-            'To maintain clean spacing going forward, adjust Google Docs’ default paragraph styling. Highlight your text, go to Format > Line & paragraph spacing > Custom spacing.',
-            'Set Line spacing to 1.15 or 1.2, set Paragraph spacing before to 0, and set Paragraph spacing after to 6 or 8. Click Apply. This provides natural visual separation between paragraphs without requiring manual Enter key presses.',
-            'You can save these settings as your default style via Format > Paragraph styles > Options > Save as my default styles.',
-            'This foundational setup ensures that all future documents created in your Google Workspace account adhere to clean typographical standards.'
-          ],
-          callout: {
-            type: 'note',
-            label: 'Default Styles',
-            text: 'Save custom paragraph spacing as your default style in Google Docs so new documents automatically maintain clean, professional vertical spacing.'
-          }
         }
       ]
     },
     faqs: [
       {
-        question: 'How do I remove empty lines in Google Docs?',
-        answer: 'Press Ctrl+H, check "Match using regular expressions", enter "\\n\\n+" in Find, enter "\\n" in Replace with, and click Replace all.'
+        question: 'How to get rid of extra lines in Google Docs without manual backspace?',
+        answer: 'Press Ctrl+H (or Command+Shift+H on Mac) to open Find and Replace, check "Match using regular expressions", enter "\\n\\n+" into Find, enter "\\n" into Replace with, and click "Replace all". This collapses all multi-line gaps into clean single paragraph breaks across your document in one second.'
+      },
+      {
+        question: 'What is the shortcut to remove empty rows in Google Sheets?',
+        answer: 'Select your table range, press Alt+D then V (or click Data > Create a filter), filter your primary column for "(Blanks)", select the displayed row numbers, right-click, and click "Delete selected rows". Alternatively, highlight your table and sort it to push all blank rows to the bottom immediately.'
       },
       {
         question: 'How do I remove all blank lines completely in Google Docs?',
@@ -417,10 +419,6 @@ export const cluster2Presets = [
       {
         question: 'Why does Google Docs lag when replacing empty lines in long files?',
         answer: 'Google Docs executes replacements across its cloud document model, which can be slow for large files. FastToolVerse processes text in local RAM in milliseconds.'
-      },
-      {
-        question: 'Can I clean Google Docs text on my phone or tablet?',
-        answer: 'Yes! FastToolVerse works seamlessly on mobile browsers, allowing you to paste text, strip empty lines, and copy clean results on any device.'
       },
       {
         question: 'Does FastToolVerse need access to my Google account or Drive?',

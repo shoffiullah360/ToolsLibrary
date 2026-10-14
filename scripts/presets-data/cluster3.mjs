@@ -16,39 +16,51 @@ export const cluster3Presets = [
       heading: 'VS Code Line Cleaning Guide: Native Search Patterns vs Browser Tools',
       sections: [
         {
-          title: 'Native VS Code Regular Expression Workflow',
+          title: 'How to Remove Empty Lines in VS Code Using Regex (^\\s*$\\n)',
           paragraphs: [
             'Visual Studio Code has become the industry standard editor for modern software development. While it lacks a dedicated single-click menu button to delete blank rows, its built-in search and replace widget supports PCRE-compatible regular expressions.',
-            'Press Ctrl+H (or Command+Option+F on macOS) to open the Replace widget. Toggle regular expression mode by clicking the `.*` button (or pressing Alt+R). In the "Find" field, type `^\\s*\\n`. In the "Replace" field, leave the input completely empty.',
-            'Press Ctrl+Alt+Enter (or click Replace All). The regex engine evaluates each line anchor (^), checks for zero or more whitespace characters (\\s*), and captures the newline character (\\n), stripping the entire empty line from the active file.',
+            'Press Ctrl+H (or Command+Option+F on macOS) to open the Replace widget. Toggle regular expression mode by clicking the `.*` button (or pressing Alt+R). In the "Find" field, type `^\\s*$\\n` (or `^\\s*\\n`). In the "Replace" field, leave the input completely empty.',
+            'Press Ctrl+Alt+Enter (or click Replace All). The regex engine evaluates each line anchor (^), checks for zero or more whitespace characters (\\s*) spanning to the line termination ($), and captures the newline character (\\n), stripping the entire empty line from the active file.',
             'This expression deletes completely blank rows as well as rows containing hidden indentation spaces or tabs, without disrupting valid leading spaces on populated lines.'
           ],
           bullets: [
             'Press Ctrl+H (Windows/Linux) or Command+Option+F (macOS).',
             'Toggle Regex mode on by clicking `.*` (Alt+R).',
-            'Find input: `^\\s*\\n` (matches empty lines and whitespace lines).',
+            'Find input: `^\\s*$\\n` (matches empty lines and whitespace lines up to line feed).',
             'Leave Replace input empty and press Ctrl+Alt+Enter to execute.'
           ],
           callout: {
             type: 'tip',
             label: 'Cross-Platform Newlines',
-            text: 'If your project uses Windows CRLF line endings, the pattern `^\\s*\\r?\\n` guarantees matching regardless of the active operating system line feed format.'
+            text: 'If your project uses Windows CRLF line endings, the pattern `^\\s*$\\r?\\n` guarantees matching regardless of the active operating system line feed format.'
           }
         },
         {
-          title: 'Automating Blank Line Management via VS Code Settings',
+          title: 'Shortcut to Remove Empty Lines in Visual Studio Code & Visual Studio 2022',
           paragraphs: [
-            'For long-term repository maintenance, relying on manual search-and-replace can be error-prone. VS Code allows you to automate whitespace hygiene through `settings.json`.',
-            'Adding `"files.trimTrailingWhitespace": true` ensures that whenever you save a file, phantom spaces at the end of lines are deleted. Adding `"files.trimFinalNewlines": true` purges multiple trailing blank lines at the bottom of the document.',
-            'Furthermore, pairing VS Code with opinionated code formatters like Prettier, ESLint, or Black allows your editor to enforce strict blank line limits across entire software engineering teams on every git commit.',
-            'These automated linters can be configured to allow at most one consecutive blank line between functions while eliminating all empty lines within object definitions.'
+            'Developers working across both Visual Studio Code and full Visual Studio 2022 often need consistent keyboard shortcuts to clean up whitespace. In VS Code, the fastest shortcut workflow is: press Ctrl+H, press Alt+R to enable regex, type `^\\s*$\\n`, and press Ctrl+Alt+Enter to replace all.',
+            'In Visual Studio 2022, the corresponding sequence is: press Ctrl+H, press Alt+E to toggle regular expressions, enter `^\\s*$\\n`, leave Replace empty, and press Alt+A to Replace All. You can also run Visual Studio 2022\'s Code Cleanup profile with Ctrl+K, Ctrl+E.',
+            'Additionally, you can run VS Code\'s built-in "Format Document" shortcut (Shift+Alt+F on Windows, Shift+Option+F on Mac) if you have an opinionated formatter like Prettier or ESLint configured to collapse excessive blank lines automatically.'
           ],
           bullets: [
-            'Enable "files.trimTrailingWhitespace": true in settings.json.',
-            'Enable "files.trimFinalNewlines": true to keep clean file endings.',
-            'Configure formatOnSave: true with Prettier or language formatters.',
-            'Use Command Palette (Ctrl+Shift+P) > "Format Document" for instant cleanup.'
+            'VS Code keyboard sequence: Ctrl+H > Alt+R > type `^\\s*$\\n` > Ctrl+Alt+Enter.',
+            'Visual Studio 2022 sequence: Ctrl+H > Alt+E > type `^\\s*$\\n` > Alt+A.',
+            'Run automated formatters in VS Code with Shift+Alt+F.',
+            'Execute Code Cleanup in Visual Studio 2022 with Ctrl+K, Ctrl+E.'
           ]
+        },
+        {
+          title: 'Preserving Python and YAML Indentation Structure',
+          paragraphs: [
+            'A critical concern when cleaning empty lines from source code is preserving indentation. Languages like Python and YAML rely on indentation for syntax scoping. Inexperienced regex patterns can inadvertently delete leading spaces from code lines.',
+            'FastToolVerse’s line cleaning routine specifically targets lines that contain no printable text. Populated lines retain their exact leading spaces and tabs, ensuring that Python indentation levels and YAML hierarchy structures remain completely intact.',
+            'Always inspect output in our side-by-side comparison workspace before pasting cleaned code back into production repositories.'
+          ],
+          callout: {
+            type: 'note',
+            label: 'Indentation Safety',
+            text: 'FastToolVerse only removes lines that have zero non-whitespace characters. Your code blocks, function bodies, and YAML keys retain their exact indentation.'
+          }
         },
         {
           title: 'Why Use FastToolVerse for Ad-Hoc Snippets and Payloads?',
@@ -64,42 +76,29 @@ export const cluster3Presets = [
             'Runs in microsecond memory loops directly in your browser.',
             'Instant 1-click clipboard copy and clean .txt file download.'
           ]
-        },
-        {
-          title: 'Preserving Python and YAML Indentation Structure',
-          paragraphs: [
-            'A critical concern when cleaning empty lines from source code is preserving indentation. Languages like Python and YAML rely on indentation for syntax scoping. Inexperienced regex patterns can inadvertently delete leading spaces from code lines.',
-            'FastToolVerse’s line cleaning routine specifically targets lines that contain no printable text. Populated lines retain their exact leading spaces and tabs, ensuring that Python indentation levels and YAML hierarchy structures remain completely intact.',
-            'Always inspect output in our side-by-side comparison workspace before pasting cleaned code back into production repositories.'
-          ],
-          callout: {
-            type: 'note',
-            label: 'Indentation Safety',
-            text: 'FastToolVerse only removes lines that have zero non-whitespace characters. Your code blocks, function bodies, and YAML keys retain their exact indentation.'
-          }
         }
       ]
     },
     faqs: [
       {
+        question: 'How to delete blank lines in VS Code without altering code indentation?',
+        answer: 'Use the regex pattern "^\\s*$\\n" in Find and Replace (Ctrl+H with Alt+R regex active) and leave Replace empty. Because this pattern strictly matches start-of-line (^) to end-of-line ($) with only whitespace characters followed by newline, non-empty code lines retain all leading indentation spaces and tabs.'
+      },
+      {
+        question: 'What is the shortcut to remove empty lines in Visual Studio 2022?',
+        answer: 'Press Ctrl+H to open Find and Replace, press Alt+E to toggle regular expressions, enter "^\\s*\\n" (or "^\\s*$\\n") into Find, leave Replace empty, and press Alt+A to Replace All. You can also run Code Cleanup with Ctrl+K, Ctrl+E.'
+      },
+      {
         question: 'What is the regex to remove empty lines in VS Code?',
-        answer: 'Press Ctrl+H, toggle regex mode (Alt+R), enter "^\\s*\\n" into Find, leave Replace empty, and press Ctrl+Alt+Enter.'
+        answer: 'Press Ctrl+H, toggle regex mode (Alt+R), enter "^\\s*$\\n" into Find, leave Replace empty, and press Ctrl+Alt+Enter.'
       },
       {
         question: 'How do I remove empty lines in VS Code across all files?',
-        answer: 'Press Ctrl+Shift+H to open Search and Replace across files. Enable regex, enter "^\\s*\\n", leave Replace empty, and click Replace All.'
+        answer: 'Press Ctrl+Shift+H to open Search and Replace across files. Enable regex, enter "^\\s*$\\n", leave Replace empty, and click Replace All.'
       },
       {
         question: 'How can I automatically remove trailing whitespace on save in VS Code?',
         answer: 'Add `"files.trimTrailingWhitespace": true` to your VS Code settings.json file. It removes invisible spaces at line ends automatically.'
-      },
-      {
-        question: 'Does FastToolVerse break Python or YAML indentation?',
-        answer: 'No. Our algorithm only purges lines that are completely blank or whitespace-only. Populated lines preserve their leading spaces perfectly.'
-      },
-      {
-        question: 'Can I collapse multiple blank lines to one line in VS Code?',
-        answer: 'Yes! With regex enabled in Find and Replace (Ctrl+H), search for "\\n\\n\\n+" and replace with "\\n\\n" to collapse multi-line gaps.'
       },
       {
         question: 'Is it safe to paste proprietary code into FastToolVerse?',
@@ -123,25 +122,38 @@ export const cluster3Presets = [
       heading: 'Visual Studio IDE Guide: Removing Blank Lines in .NET and C# Code',
       sections: [
         {
-          title: 'Method 1: Native Visual Studio Regular Expression Replace',
+          title: 'Shortcut to Remove Empty Lines in Visual Studio Code & Visual Studio 2022',
           paragraphs: [
             'In full Visual Studio (including Visual Studio 2022 and 2019), the Find and Replace tool (Ctrl+H) features full .NET regular expression support. This allows developers to strip unwanted blank lines across active C#, C++, or VB.NET source files.',
-            'Press Ctrl+H to open the Quick Replace widget in the upper right corner. Ensure "Use Regular Expressions" is enabled (press Alt+E). In the Find box, type `(?([^\r\n])\s)*\r?\n$` or the simplified expression `^\s*\n`. Leave the Replace box completely empty.',
-            'Click "Replace All" (Alt+A). Visual Studio evaluates the file and strips all empty lines and whitespace-padded lines without touching lines that contain active code statements.',
-            'Because Visual Studio handles large enterprise solution files, regex replacement completes in a fraction of a second without locking the UI thread.',
-            'This workflow ensures that only truly blank or space-padded lines are purged while leaving method structures and class definitions intact.'
+            'Press Ctrl+H to open the Quick Replace widget in the upper right corner. Ensure "Use Regular Expressions" is enabled (press Alt+E). In the Find box, type `^\\s*$\\n` (or `^\\s*\\n`). Leave the Replace box completely empty.',
+            'Click "Replace All" (Alt+A). Visual Studio evaluates the file and strips all empty lines and whitespace-padded lines without touching lines that contain active code statements. Alternatively, developers can press Ctrl+K, Ctrl+E to run automated Code Cleanup profiles across the open document.',
+            'In VS Code, developers achieve identical results by pressing Ctrl+H, pressing Alt+R to enable regex, typing `^\\s*$\\n`, and pressing Ctrl+Alt+Enter.'
           ],
           bullets: [
-            'Press Ctrl+H to open Find and Replace in Visual Studio.',
-            'Enable Regular Expressions (Alt+E).',
-            'Find field: `^\s*\n` (or `(?([^\r\n])\s)*\r?\n$`).',
-            'Leave Replace field empty and click Replace All (Alt+A).'
+            'Visual Studio 2022 shortcut: Ctrl+H > Alt+E (Regex) > `^\\s*$\\n` > Alt+A.',
+            'Run Visual Studio Code Cleanup directly with Ctrl+K, Ctrl+E.',
+            'VS Code keyboard sequence: Ctrl+H > Alt+R (Regex) > `^\\s*$\\n` > Ctrl+Alt+Enter.',
+            'Leave Replace field empty to strip blank lines synchronously.'
           ],
           callout: {
             type: 'tip',
             label: 'Quick Scope Setting',
             text: 'You can change the search scope dropdown from "Current Document" to "Entire Solution" to clean blank lines across an entire project at once.'
           }
+        },
+        {
+          title: 'How to Remove Empty Lines in VS Code Using Regex (^\\s*$\\n)',
+          paragraphs: [
+            'When switching between enterprise Visual Studio solutions and lightweight VS Code projects, developers benefit from using the standardized regular expression `^\\s*$\\n`. This pattern matches the start of the line (^), zero or more whitespace characters (\\s*), the end of the line ($), and the trailing newline character (\\n).',
+            'Because this pattern requires strictly empty space between the anchors, lines containing actual code, comments, or decorators are completely immune to corruption. Leading indentation spaces on populated lines are preserved.',
+            'This guarantees that Python scripts, YAML configuration files, and C# method indentation remain compiler-ready and syntactically pristine across your development environment.'
+          ],
+          bullets: [
+            'Use `^\\s*$\\n` for unified regex compatibility across VS Code and Visual Studio 2022.',
+            'Matches strictly empty or whitespace-padded lines without touching populated code.',
+            'Preserves method-level indentation, bracket alignments, and docstrings.',
+            'Handles both Windows CRLF and Unix LF line termination safely.'
+          ]
         },
         {
           title: 'Method 2: Visual Studio Code Cleanup Profiles (Ctrl+K, Ctrl+E)',
@@ -173,31 +185,17 @@ export const cluster3Presets = [
             '100% client-side privacy: zero remote data transmission.',
             'Real-time metrics display line and character reductions.'
           ]
-        },
-        {
-          title: 'Handling Windows Line Endings in .NET Projects',
-          paragraphs: [
-            'Windows .NET solutions traditionally enforce CRLF (`\r\n`) line endings. However, with the rise of cross-platform .NET Core and .NET 8 running on Linux Docker containers, mixed line endings frequently slip into repositories.',
-            'FastToolVerse normalizes line returns automatically. It cleans empty lines while standardizing newlines, ensuring that files compile cleanly across both Windows IIS servers and Linux container environments.',
-            'Pairing clean line endings with git’s `core.autocrlf` setting ensures frictionless cross-platform team collaboration.',
-            'This eliminates mysterious build breakages in CI/CD pipelines caused by unintended carriage return characters.'
-          ],
-          callout: {
-            type: 'note',
-            label: 'Docker Tip',
-            text: 'Standardizing newline characters prevents bash scripts inside Docker containers from failing with carriage return syntax errors.'
-          }
         }
       ]
     },
     faqs: [
       {
-        question: 'What is the regex to remove blank lines in Visual Studio?',
-        answer: 'Press Ctrl+H, enable regex (Alt+E), enter "^\\s*\\n" in Find, leave Replace empty, and press Alt+A to replace all.'
+        question: 'What is the shortcut to remove empty lines in Visual Studio 2022?',
+        answer: 'Press Ctrl+H to open Find and Replace, press Alt+E to toggle regular expressions, enter "^\\s*$\\n" (or "^\\s*\\n") into Find, leave Replace empty, and press Alt+A to Replace All. To run automated formatting, press Ctrl+K, Ctrl+E.'
       },
       {
-        question: 'How do I run Code Cleanup in Visual Studio 2022?',
-        answer: 'Press Ctrl+K, Ctrl+E or click the broom icon at the bottom of the editor. This executes your active Code Cleanup profile.'
+        question: 'How to delete blank lines in VS Code without altering code indentation?',
+        answer: 'Open Find and Replace (Ctrl+H), enable regex (Alt+R), search for "^\\s*$\\n", and leave Replace empty. This expression only deletes lines that are completely blank or contain only whitespace, leaving code indentation untouched.'
       },
       {
         question: 'Can I remove blank lines across an entire solution in Visual Studio?',

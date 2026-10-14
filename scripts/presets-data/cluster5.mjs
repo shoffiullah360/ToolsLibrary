@@ -579,18 +579,18 @@ export const cluster5Presets = [
       heading: 'Universal Text File Sanitization Guide: Cleaning Blank Lines in Plain Text Files',
       sections: [
         {
-          title: 'The Challenge of Blank Lines in Plain Text Documents',
+          title: 'How to Remove Empty Lines in a Text File (.txt / Linux / Bash)',
           paragraphs: [
             'Plain text files (`.txt`, `.log`, `.md`, `.cfg`) are the foundational format for digital information storage, system logs, documentation, and notes. However, text files frequently accumulate accidental empty lines during editing, copy-pasting, or automated generation.',
             'Excessive blank lines create visual clutter across documents, disrupt pagination in printing utilities, and can cause automated file processing scripts to miscount records or fail data ingestion pipelines.',
             'Furthermore, text files created across mixed operating systems often contain conflicting line ending formats (Windows CRLF vs Unix LF), leaving orphan carriage return characters that appear as blank lines in text editors.',
-            'Understanding how to clean text files quickly and securely is an essential skill for professionals across all digital industries.'
+            'In Bash terminal environments, you can quickly sanitize files using standard streams like `tr -s "\\n" < input.txt > clean.txt` or `grep . input.txt > clean.txt` to remove empty lines with native OS performance.'
           ],
           bullets: [
-            'Plain text files frequently accumulate accidental empty lines.',
-            'Excessive blank rows disrupt pagination, word processing, and logging.',
+            'Plain text files frequently accumulate accidental empty lines from mixed OS tools.',
+            'Bash command `grep . input.txt > output.txt` strips basic zero-length lines.',
             'Conflicting Windows CRLF and Unix LF line endings create phantom gaps.',
-            'Client-side sanitizers eliminate blank lines while normalizing line feeds.'
+            'Client-side sanitizers eliminate blank lines while normalizing line feeds automatically.'
           ],
           callout: {
             type: 'tip',
@@ -599,27 +599,40 @@ export const cluster5Presets = [
           }
         },
         {
-          title: 'Preserving Text Formatting and Paragraph Separation',
+          title: 'How to Remove Empty Lines from File in Linux Using Sed & Awk',
           paragraphs: [
-            'When cleaning text files, users often face a choice: delete every single blank line to achieve a compact, single-spaced document, or collapse consecutive blank lines into single blank lines to preserve natural paragraph separation.',
-            'FastToolVerse gives you full control over this behavior through interactive option toggles. If you enable "Collapse consecutive blank lines to one", chaotic multi-line gaps are condensed into a single clean line break between paragraphs.',
-            'If you disable the collapse option, every blank line is removed, stacking your text tightly with zero empty line returns. You can choose the exact layout that suits your document needs.',
-            'Our dual-pane workspace lets you preview the exact formatting outcome in real time before copying or exporting your file.'
+            'Linux systems administrators and DevOps engineers regularly process server logs, CSV dumps, and configuration files using command-line stream editors. Two of the most reliable command line utilities for deleting empty rows are `sed` (stream editor) and `awk`.',
+            'To remove strict empty lines using sed, run `sed \'/^$/d\' input.txt > output.txt`. If the blank lines contain invisible spaces or tabs, use the character class pattern: `sed \'/^[[:space:]]*$/d\' input.txt > output.txt`. To edit files in-place directly on your server, append the `-i` flag (`sed -i \'/^[[:space:]]*$/d\' file.txt`).',
+            'With awk, the syntax is even more compact: `awk \'NF\' input.txt > output.txt`. The `NF` condition checks the Number of Fields on each row; if a line contains only whitespace or is empty, NF evaluates to zero and awk skips the line entirely, creating a pristine output file.'
           ],
           bullets: [
-            'Toggle "Collapse consecutive blank lines" to preserve paragraph breaks.',
-            'Disable collapse option to achieve tightly packed single-spaced text.',
-            'Toggle "Remove whitespace-only lines" to purge invisible spaces and tabs.',
-            'Toggle "Trim leading & trailing blanks" to clean file padding.'
+            'Sed command for strict empty lines: `sed \'/^$/d\' input.txt > output.txt`.',
+            'Sed command for whitespace-only lines: `sed \'/^[[:space:]]*$/d\' input.txt > output.txt`.',
+            'Awk one-liner: `awk \'NF\' input.txt > output.txt` (skips lines with zero fields).',
+            'Use `sed -i` for fast in-place server configuration file cleaning.'
+          ]
+        },
+        {
+          title: 'Powershell Remove Empty Lines from File Workflow',
+          paragraphs: [
+            'On modern Windows workstations and Windows Server environments, PowerShell offers object-oriented cmdlets to filter and clean plain text files without installing third-party command-line utilities.',
+            'To strip blank and whitespace-only lines, execute: `(Get-Content file.txt) | Where-Object { $_.Trim() -ne "" } | Set-Content clean.txt`. The `.Trim()` method evaluates each line object, stripping leading and trailing spaces, and only passes populated strings to `Set-Content`.',
+            'Alternatively, you can utilize regular expressions in PowerShell: `(Get-Content file.txt) -notmatch \'^\\s*$\' | Set-Content clean.txt`. Both workflows ensure that UTF-8 encoding is preserved while eradicating redundant empty lines across your scripts.'
+          ],
+          bullets: [
+            'PowerShell Trim filter: `(Get-Content file.txt) | Where-Object { $_.Trim() -ne "" } | Set-Content clean.txt`.',
+            'PowerShell Regex filter: `(Get-Content file.txt) -notmatch \'^\\s*$\' | Set-Content clean.txt`.',
+            'Preserves UTF-8 encoding across Windows scripts and log files.',
+            'Integrates cleanly into automated Windows PowerShell deployment scripts.'
           ]
         },
         {
           title: 'The FastToolVerse Browser Sanitizer: 100% Private and Free',
           paragraphs: [
-            'Text files often contain personal notes, confidential workplace documents, private journal entries, or sensitive server credentials. Uploading these files to remote server-based text formatters exposes private data to third-party cloud servers.',
-            'FastToolVerse guarantees complete client-side privacy. All text processing executes purely within your browser memory sandbox using modern JavaScript. Zero bytes of your text are ever uploaded to any server, logged in databases, or accessed by third parties.',
-            'You can load FastToolVerse, disconnect your internet connection, and continue cleaning text files completely offline.',
-            'Our engine processes massive multi-megabyte text files containing hundreds of thousands of lines in milliseconds.'
+            'While terminal tools like sed, awk, and PowerShell are powerful, they require command-line familiarity and syntax memorization. Furthermore, uploading confidential documents or private server keys to remote cloud formatters creates serious data exposure risks.',
+            'FastToolVerse brings the power of command-line sanitization into an instant, private in-browser workspace. All text processing executes purely within your browser memory sandbox using modern JavaScript. Zero bytes of your text are ever uploaded to any server, logged in databases, or accessed by third parties.',
+            'You can load FastToolVerse, disconnect your internet connection, and continue cleaning text files completely offline in 0ms.',
+            'Our engine processes massive multi-megabyte text files containing hundreds of thousands of lines in milliseconds with real-time statistical metrics.'
           ],
           bullets: [
             '100% local browser RAM processing: zero remote server transmission.',
@@ -627,24 +640,22 @@ export const cluster5Presets = [
             'Processes large text files containing hundreds of thousands of lines in 0ms.',
             'One-click clipboard copy and direct .txt file download.'
           ]
-        },
-        {
-          title: 'Verifying Cleaned Text Files Before Archiving or Sharing',
-          paragraphs: [
-            'Before sharing cleaned text files with colleagues or uploading them to documentation repositories, always verify that your document starts and ends cleanly.',
-            'Use our "Trim leading & trailing blanks" option to ensure that no stray empty lines exist at the very top or bottom of your text document.',
-            'Review our real-time metrics bar to see exact line count reductions, character counts, word counts, and percentage space savings before downloading the clean file.',
-            'This double-check ensures that your document adheres to clean typographical and formatting standards.'
-          ],
-          callout: {
-            type: 'note',
-            label: 'Document Polish',
-            text: 'Cleaning text files with FastToolVerse ensures consistent vertical rhythm and professional presentation across all digital documents.'
-          }
         }
       ]
     },
     faqs: [
+      {
+        question: 'How do I remove blank line from file in Unix without installing tools?',
+        answer: 'Use standard Unix command-line utilities. Run "sed \'/^$/d\' input.txt > output.txt" to delete all empty lines, or run "grep -v \'^[[:space:]]*$\' input.txt > output.txt" to remove lines containing spaces and tabs without installing third-party packages.'
+      },
+      {
+        question: 'How to remove empty lines in CSV file using Python?',
+        answer: 'In Python, use a generator to stream rows safely: \'with open("input.csv", "r") as infile, open("output.csv", "w") as outfile: outfile.writelines(line for line in infile if line.strip())\'. This reads line by line, strips whitespace-only breaks, and writes clean rows with minimal memory usage.'
+      },
+      {
+        question: 'How to collapse multiple blank lines to a single blank line in large files?',
+        answer: 'In FastToolVerse, enable "Collapse consecutive blank lines to one" and paste your text; it normalizes multi-line gaps into single line breaks in milliseconds. In Linux terminal, use "cat -s input.txt > output.txt" to squeeze repeating blank lines into a single blank line.'
+      },
       {
         question: 'How do I remove empty lines from a text file online for free?',
         answer: 'Paste your text into FastToolVerse, configure your desired options (strip all or collapse breaks), and click "Download .txt" or "Copy". It runs 100% free with no limits.'
@@ -652,18 +663,6 @@ export const cluster5Presets = [
       {
         question: 'Does FastToolVerse support large text files?',
         answer: 'Yes! FastToolVerse uses high-speed linear array processing that sanitizes text files with tens of thousands of lines in milliseconds in browser RAM.'
-      },
-      {
-        question: 'Can I preserve single paragraph breaks while removing extra blank lines?',
-        answer: 'Yes. Check "Collapse consecutive blank lines to one". This replaces multiple blank lines with a single blank line between paragraphs.'
-      },
-      {
-        question: 'Does this tool remove lines containing only invisible spaces?',
-        answer: 'Yes. With "Remove whitespace-only lines" checked (default), FastToolVerse detects and purges lines that contain only spaces or tabs.'
-      },
-      {
-        question: 'Can I use FastToolVerse offline without internet access?',
-        answer: 'Yes! Once loaded, FastToolVerse operates entirely in your browser using local JavaScript. You can disconnect from the internet and continue working.'
       },
       {
         question: 'Is my confidential text file data safe on FastToolVerse?',

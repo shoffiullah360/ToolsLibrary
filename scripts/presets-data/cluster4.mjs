@@ -16,52 +16,49 @@ export const cluster4Presets = [
       heading: 'Excel Data Sanitization Guide: Eliminating Blank Rows and Empty Lines',
       sections: [
         {
-          title: 'The Challenge of Blank Lines in Large Excel Worksheets',
+          title: 'How to Remove Empty Lines in Excel Cells (Alt + Enter Line Breaks)',
           paragraphs: [
-            'In corporate finance, supply chain management, and data analysis, Microsoft Excel is the primary tool for reviewing tabular datasets. However, when exporting reports from enterprise ERP systems (like SAP or Oracle) or web forms, data frequently arrives interspersed with blank rows.',
-            'Leaving empty lines in Excel causes severe operational problems. AutoSum formulas stop calculating at the first blank gap, Pivot Tables group empty rows as distinct categories, and sorting a dataset with blank lines can permanently disconnect header rows from their underlying records.',
-            'Understanding both native Excel techniques and clipboard-based web sanitizers allows analysts to clean tables safely without risking accidental data loss.',
-            'Choosing the correct method depends on whether your dataset contains full empty rows or irregular partial gaps across specific columns.'
+            'In Excel, users often insert manual line breaks inside a single cell by pressing Alt+Enter (represented internally by ASCII character 10, or CHAR(10)). Over time, cells accumulate erratic empty returns that inflate row heights and misalign tabular rows.',
+            'To strip blank lines within Excel cells without altering cell text alignment, open Find and Replace (Ctrl+H). Click into the "Find what" box and press Ctrl+J (the shortcut for newline character code 10). In the "Replace with" box, type a single space or leave it empty, then click "Replace All".',
+            'Alternatively, you can clean in-cell line breaks formulaically by wrapping cell references in `=CLEAN(A2)`, which automatically strips all non-printable ASCII line breaks while preserving standard text spacing.'
           ],
           bullets: [
-            'Blank rows break AutoSum, VLOOKUP, and dynamic formula ranges.',
-            'Sorting tables with blank rows can desynchronize column records.',
-            'Pivot Tables mistakenly treat blank cells as unique data categories.',
-            'Client-side sanitization provides a fast fallback for massive tables.'
+            'Press Ctrl+H to open Find and Replace in Excel.',
+            'Press Ctrl+J in "Find what" to target in-cell line returns (ASCII 10).',
+            'Type a space in "Replace with" to keep words separated cleanly.',
+            'Use the `=CLEAN(A2)` formula for non-destructive dynamic cell sanitization.'
           ],
           callout: {
-            type: 'warning',
-            label: 'Sorting Warning',
-            text: 'Never sort an Excel table to remove blank rows unless you have verified that every column is selected. Sorting partial ranges permanently scrambles data rows.'
+            type: 'tip',
+            label: 'In-Cell Newline Shortcut',
+            text: 'Pressing Ctrl+J in Excel’s Find box inserts an invisible newline character. A tiny blinking dot confirms the character has been entered.'
           }
         },
         {
-          title: 'Method 1: Go To Special Blanks (Ctrl+G, Special, Blanks)',
+          title: 'How to Remove Empty Rows Between Data in Excel',
           paragraphs: [
-            'For simple tables where an entire horizontal row is blank, Excel’s "Go To Special" utility is the most popular native feature. It selects all blank cells in a specified range so you can delete them in one action.',
-            'Select a single key column that should never be empty (such as an ID or Product Code column). Press Ctrl+G or F5, click "Special...", choose "Blanks", and click OK. Excel highlights only the empty cells in that column. Press Ctrl + Minus (Ctrl + -), select "Entire row", and press Enter.',
-            'All blank rows collapse immediately, bringing populated records into a contiguous block. Always ensure you only selected a single key column before opening Go To Special to avoid deleting rows that have valid data in other columns.',
-            'This keyboard sequence is fast and reliable for everyday spreadsheet cleanup.'
+            'Leaving empty rows between records in corporate financial models causes serious operational problems. AutoSum formulas stop calculating at the first blank gap, Pivot Tables categorize blank rows as unique records, and sorting tables with blank lines can permanently desynchronize columns.',
+            'For contiguous tables, Excel’s "Go To Special" feature is the fastest native tool. Select a single key column that must always contain data (like an ID or Product Code). Press F5 or Ctrl+G, click "Special...", select "Blanks", and click OK. Excel selects only the empty cells in that column. Press Ctrl + Minus (Ctrl + -), choose "Entire row", and confirm.',
+            'This sequence collapses the vertical gaps instantly, pulling populated records together cleanly while preserving column alignments.'
           ],
           bullets: [
-            'Select a mandatory key column (never select the entire sheet).',
-            'Press Ctrl+G > Special... > Blanks > OK.',
+            'Select a key mandatory column (never select the entire worksheet).',
+            'Press F5 or Ctrl+G > Special... > Blanks > OK.',
             'Press Ctrl + Minus (Ctrl + -) and choose "Entire row".',
-            'Verify that remaining rows retain proper record alignments.'
+            'Verify remaining row alignments to confirm zero partial record loss.'
           ]
         },
         {
-          title: 'Method 2: AutoFilter (The Safest Native Method for Complex Datasets)',
+          title: 'How to Delete Blank Lines in Excel All at Once',
           paragraphs: [
-            'When handling multi-column financial models or datasets where some columns legitimately contain empty values, the AutoFilter method is significantly safer than Go To Special.',
-            'Select your table headers, press Ctrl+Shift+L to activate filters, and click the filter arrow on your primary identifier column. Uncheck "(Select All)", scroll to the bottom, and select only "(Blanks)". Excel visually hides all populated rows.',
-            'Highlight the visible row numbers on the left worksheet margin, right-click, select "Delete Row", and turn the filter off. Only the truly blank rows are removed, leaving surrounding cells and formulas completely protected.',
-            'This visual isolation ensures you never delete rows containing partial data by mistake.'
+            'When handling complex multi-column spreadsheets where partial columns legitimately contain empty values, Go To Special can accidentally delete valid rows. The AutoFilter method provides a 100% safe way to delete blank lines all at once.',
+            'Highlight your entire table headers, press Ctrl+Shift+L to activate AutoFilter, and click the filter arrow on your primary identifier column. Uncheck "(Select All)", scroll to the bottom, and select only "(Blanks)". Excel visually isolates all empty rows.',
+            'Highlight the visible row numbers on the left worksheet margin, right-click, select "Delete Row", and turn the filter off. Only truly blank rows are deleted, leaving surrounding cells, formulas, and notes completely intact.'
           ],
           bullets: [
-            'Press Ctrl+Shift+L to apply AutoFilter across table headers.',
+            'Press Ctrl+Shift+L to activate AutoFilter across table headers.',
             'Filter your primary key column for "(Blanks)" only.',
-            'Highlight displayed row headers, right-click, and choose "Delete Row".',
+            'Highlight visible row numbers, right-click, and select "Delete Row".',
             'Clear the filter to restore your consolidated table.'
           ]
         },
@@ -89,12 +86,16 @@ export const cluster4Presets = [
     },
     faqs: [
       {
-        question: 'How do I remove empty lines in Excel without deleting data?',
-        answer: 'Use AutoFilter: filter your primary column for "(Blanks)", highlight the visible row numbers, right-click, select "Delete Row", and clear the filter.'
+        question: 'How to remove blank lines in a cell in Excel without affecting text alignment?',
+        answer: 'Press Ctrl+H to open Find and Replace. In "Find what", press Ctrl+J (the shortcut for in-cell newline code 10). In "Replace with", type a single space or leave it empty, then click Replace All. You can also use the "=CLEAN(A2)" formula to strip non-printable line breaks.'
       },
       {
-        question: 'What is the keyboard shortcut to delete blank rows in Excel?',
-        answer: 'Select a primary column, press F5 > Special > Blanks > Enter, then press Ctrl + Minus, choose "Entire row", and press Enter.'
+        question: 'What is the fastest shortcut to remove empty rows in Excel?',
+        answer: 'Select your key data column, press F5 (or Ctrl+G), click "Special...", select "Blanks", and press Enter. Then press Ctrl + Minus (Ctrl + -), choose "Entire row", and press Enter. All blank rows collapse in seconds.'
+      },
+      {
+        question: 'How do I clear blank lines in Excel after importing CSV data?',
+        answer: 'Apply AutoFilter (Ctrl+Shift+L) on your headers, filter your primary ID column for "(Blanks)", highlight the displayed row headers, right-click, and select "Delete Row". Alternatively, paste the raw CSV data into FastToolVerse to purge blank lines before opening in Excel.'
       },
       {
         question: 'Why does Excel say "No cells were found" when cells look empty?',
@@ -103,10 +104,6 @@ export const cluster4Presets = [
       {
         question: 'Can I remove blank rows in Excel using a formula?',
         answer: 'Yes! In modern Excel, use "=FILTER(A2:D100, A2:A100<>"")" to create a clean, live-updating spill array excluding blank records.'
-      },
-      {
-        question: 'Will copying data into FastToolVerse mess up column formatting?',
-        answer: 'No. Excel copies tabular data with tab delimiters. FastToolVerse preserves all tab characters, ensuring your columns align perfectly when pasted back.'
       },
       {
         question: 'Is my confidential financial spreadsheet data safe on FastToolVerse?',
@@ -130,18 +127,18 @@ export const cluster4Presets = [
       heading: 'Google Sheets Reference: Removing Blank Rows in Collaborative Spreadsheets',
       sections: [
         {
-          title: 'Collaborative Spreadsheet Hygiene in Google Sheets',
+          title: 'How to Remove Empty Rows Between Data in Google Sheets',
           paragraphs: [
-            'Google Sheets is the primary cloud spreadsheet platform for modern distributed teams. However, when multiple colleagues paste data from external databases, web portals, or email threads, worksheets often accumulate frustrating empty rows.',
+            'Google Sheets is the primary cloud spreadsheet platform for modern distributed teams. However, when multiple colleagues paste data from external databases, web portals, or email threads, worksheets often accumulate frustrating empty rows between data.',
             'Leaving blank rows in Google Sheets causes several issues: it breaks continuous ranges in formulas like `=SUM(A2:A)`, causes chart data series to display awkward gaps, and complicates CSV exports intended for CRM or accounting platforms.',
-            'Because Google Sheets is a real-time collaborative tool, deleting rows directly can disrupt other team members who are viewing or editing the sheet simultaneously.',
-            'Learning safe filter views and client-side sanitization ensures smooth data maintenance without collaborative friction.'
+            'To remove empty rows without disrupting other collaborators, use Google Sheets’ "Filter view" feature: highlight your table, click Data > Filter views > Create new filter view, filter your primary key column for "(Blanks)", select the displayed rows, right-click, and choose "Delete selected rows".',
+            'Because filter views are isolated to your browser session, you eliminate empty rows cleanly without altering the screen view for teammates working in the sheet.'
           ],
           bullets: [
-            'Blank lines break dynamic formula calculations and auto-expanding ranges.',
-            'Direct row deletions can conflict with simultaneous collaborative edits.',
-            'Pasted data from web forms frequently carries invisible whitespace rows.',
-            'Client-side sanitization provides a fast fallback before pasting into sheets.'
+            'Go to Data > Filter views > Create new filter view to prevent collaborative conflicts.',
+            'Filter your primary key column for "(Blanks)" only.',
+            'Highlight displayed row numbers, right-click, and choose "Delete selected rows".',
+            'Click the "X" in the top bar to return to the standard shared view.'
           ],
           callout: {
             type: 'warning',
@@ -150,18 +147,17 @@ export const cluster4Presets = [
           }
         },
         {
-          title: 'Method 1: Filter Views for Safe In-Sheet Deletion',
+          title: 'How to Remove Empty Lines in Google Docs Documents',
           paragraphs: [
-            'The safest way to remove empty rows without disrupting other collaborators is using Google Sheets’ "Filter view" feature. This creates an isolated view that affects only your screen.',
-            'Highlight your table range, click Data > Filter views > Create new filter view. Click the filter icon on your primary key column, click "Clear", check only "(Blanks)", and click OK. Google Sheets displays only the empty rows.',
-            'Highlight the visible row numbers on the left sheet margin, right-click, select "Delete selected rows", and close the filter view by clicking the "X" in the dark header bar. All empty rows are deleted cleanly.',
-            'This workflow guarantees complete isolation from other users working in the same document.'
+            'Teams that collaborate in Google Sheets often work simultaneously in Google Docs. When copying text or notes between documents and spreadsheets, erratic blank lines and empty enters frequently transfer across platforms.',
+            'To clean empty lines directly in Google Docs without manual backspacing, press Ctrl+H (or Command+Shift+H on macOS), check "Match using regular expressions", enter `\\n\\n+` into Find, enter `\\n` into Replace with, and click "Replace all".',
+            'This collapses erratic multi-line gaps into uniform single paragraph separations in one click, matching the clean structural hygiene of your Google Sheets data.'
           ],
           bullets: [
-            'Go to Data > Filter views > Create new filter view.',
-            'Filter your primary key column for "(Blanks)" only.',
-            'Highlight displayed row numbers, right-click, and choose "Delete selected rows".',
-            'Click the "X" in the top bar to return to the standard shared view.'
+            'Press Ctrl+H in Google Docs and enable "Match using regular expressions".',
+            'Find pattern: `\\n\\n+` (two or more newlines).',
+            'Replace with: `\\n` (single paragraph break).',
+            'Click "Replace all" to standardize spacing across the entire document.'
           ]
         },
         {
@@ -203,6 +199,14 @@ export const cluster4Presets = [
     },
     faqs: [
       {
+        question: 'What is the shortcut to remove empty rows in Google Sheets?',
+        answer: 'While Google Sheets does not have a single direct key combination to delete blank rows, the fastest sequence is: select your data table, press Alt+D then V (or click Data > Create a filter), filter your primary column for "(Blanks)", select the displayed row indices, right-click, and click "Delete selected rows". Alternatively, highlight the table and sort it to push all blank rows to the bottom immediately.'
+      },
+      {
+        question: 'How to get rid of extra lines in Google Docs without manual backspace?',
+        answer: 'Press Ctrl+H (or Command+Shift+H on Mac) to open Find and Replace, check "Match using regular expressions", enter "\\n\\n+" into Find, enter "\\n" into Replace with, and click "Replace all". This collapses all multi-line gaps into clean single paragraph breaks across your document in one second.'
+      },
+      {
         question: 'How do I remove empty rows in Google Sheets without messing up other users?',
         answer: 'Use a Filter View: Data > Filter views > Create new filter view. Filter for "(Blanks)", delete the visible rows, and close the filter view.'
       },
@@ -211,16 +215,8 @@ export const cluster4Presets = [
         answer: 'Use "=FILTER(A2:D, A2:A<>"")" or "=QUERY(A2:D, "select * where A is not null", 1)". Both functions dynamically generate clean tables.'
       },
       {
-        question: 'Why does Google Sheets show blanks when cells have no text?',
-        answer: 'Cells often contain empty strings from formulas ("") or invisible spaces. Use Data > Data cleanup > Trim whitespace or clean via FastToolVerse.'
-      },
-      {
         question: 'Can I sort data to move blank lines to the bottom in Google Sheets?',
         answer: 'Yes! Highlighting your dataset and sorting by any primary column (Data > Sort range) automatically moves all blank rows to the bottom.'
-      },
-      {
-        question: 'Will copying data into FastToolVerse preserve column structure?',
-        answer: 'Yes! Google Sheets uses tab characters between columns. FastToolVerse preserves all tabs while stripping empty rows, keeping grid alignment intact.'
       },
       {
         question: 'Is my Google Sheets data secure on FastToolVerse?',

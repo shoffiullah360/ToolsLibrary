@@ -1,131 +1,17 @@
 ---
-// src/pages/tools/remove-empty-lines/[slug].astro
-import Layout from '../../../layouts/Layout.astro';
-import ToolIcon from '../../../components/ToolIcon.astro';
-import PopularRemoveEmptyLines from '../../../components/PopularRemoveEmptyLines.astro';
-import {
-  REMOVE_EMPTY_LINES_PRESETS,
-  type RemoveEmptyLinesPreset
-} from '../../../data/removeEmptyLinesPresets';
-
-export async function getStaticPaths() {
-  return REMOVE_EMPTY_LINES_PRESETS.map((preset) => ({
-    params: { slug: preset.slug },
-    props: { preset }
-  }));
-}
+// src/components/RemoveEmptyLinesPresetView.astro
+import ToolIcon from './ToolIcon.astro';
+import PopularRemoveEmptyLines from './PopularRemoveEmptyLines.astro';
+import type { RemoveEmptyLinesPreset } from '../data/removeEmptyLinesPresets';
 
 interface Props {
   preset: RemoveEmptyLinesPreset;
 }
 
 const { preset } = Astro.props;
-
-// Canonical and Schema URLs (Strict Trailing Slashes)
-const canonicalUrl = `https://fasttoolverse.com/tools/remove-empty-lines/${preset.slug}/`;
-const ogImage = 'https://fasttoolverse.com/og-image.png';
-
-// Schema.org SoftwareApplication
-const jsonLdSoftwareApp = {
-  '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
-  name: `${preset.h1} - FastToolVerse`,
-  applicationCategory: 'UtilitiesApplication',
-  operatingSystem: 'All (Web Browser)',
-  browserRequirements: 'Requires JavaScript. Runs 100% client-side in browser RAM.',
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'USD'
-  },
-  featureList: [
-    '100% in-browser text cleaning with zero server uploads',
-    'Strip blank and empty lines instantly',
-    'Delete whitespace-only lines containing spaces and tabs',
-    'Collapse consecutive blank lines to a single blank line',
-    'Trim leading and trailing empty lines from file boundaries',
-    'Live line, character, and word count metric calculations',
-    'One-click clipboard copy and clean .txt file export'
-  ]
-};
-
-// Schema.org FAQPage
-const jsonLdFaq = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: preset.faqs.map((f) => ({
-    '@type': 'Question',
-    name: f.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: f.answer
-    }
-  }))
-};
-
-// Schema.org BreadcrumbList
-const jsonLdBreadcrumb = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Home',
-      item: 'https://fasttoolverse.com/'
-    },
-    {
-      '@type': 'ListItem',
-      position: 2,
-      name: 'Text & Formatting',
-      item: 'https://fasttoolverse.com/#text-tools-section'
-    },
-    {
-      '@type': 'ListItem',
-      position: 3,
-      name: 'Remove Empty Lines',
-      item: 'https://fasttoolverse.com/tools/remove-empty-lines/'
-    },
-    {
-      '@type': 'ListItem',
-      position: 4,
-      name: preset.h1,
-      item: canonicalUrl
-    }
-  ]
-};
 ---
 
-<Layout
-  title={preset.metaTitle}
-  description={preset.metaDescription}
-  canonicalUrl={canonicalUrl}
-  image={ogImage}
->
-  <!-- Injected Head Metadata -->
-  <Fragment slot="head">
-    <meta name="keywords" content={`${preset.primaryQuery}, remove empty lines, delete blank lines, strip empty rows, clean text, client side text tool`} />
-
-    <!-- Open Graph tags -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:title" content={preset.metaTitle} />
-    <meta property="og:description" content={preset.metaDescription} />
-    <meta property="og:image" content={ogImage} />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content={canonicalUrl} />
-    <meta name="twitter:title" content={preset.metaTitle} />
-    <meta name="twitter:description" content={preset.metaDescription} />
-    <meta name="twitter:image" content={ogImage} />
-
-    <!-- Structured Data Schemas -->
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdSoftwareApp)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdFaq)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdBreadcrumb)} />
-  </Fragment>
-
+<div class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen">
   <!-- 1. Hero Header Section -->
   <section class="relative pt-10 pb-6 sm:pt-14 sm:pb-8 overflow-hidden">
     <div class="hero-mesh-bg" aria-hidden="true"></div>
@@ -158,7 +44,7 @@ const jsonLdBreadcrumb = {
               <svg class="w-3 h-3 text-slate-400 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
-              <span class="text-slate-900 dark:text-white font-semibold">{preset.h1}</span>
+              <span class="text-slate-900 dark:text-white font-semibold truncate max-w-[200px] sm:max-w-none">{preset.h1}</span>
             </div>
           </li>
         </ol>
@@ -475,7 +361,7 @@ const jsonLdBreadcrumb = {
             <ToolIcon name="crop" class="w-5 h-5" />
           </div>
           <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
-            Zero File & Line Limits
+            Zero File &amp; Line Limits
           </h3>
           <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
             Clean 50,000+ line server logs, database exports, or novels without encountering paywalls, character limits, or subscription tiers.
@@ -764,7 +650,7 @@ const jsonLdBreadcrumb = {
                   No Telemetry or AI Model Training
                 </h3>
                 <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                  Your content is never tracked, stored in server logs, or utilized to train machine learning models. Complete privacy is guaranteed by architectural design.
+                  Unlike many cloud AI and text manipulation APIs, FastToolVerse does not store, log, inspect, analyze, or train machine learning models on any user content.
                 </p>
               </div>
             </div>
@@ -774,16 +660,20 @@ const jsonLdBreadcrumb = {
     </div>
   </section>
 
-  <!-- 9. Keyword-Targeted Practical Editorial Guide (Minimum 600+ Words) -->
-  <section class="border-t border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950 py-14 sm:py-18">
+  <!-- 9. Deep Authoritative Practical Editorial Guide -->
+  <section class="border-t border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950 py-16 sm:py-24">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="mb-10 text-center sm:text-left">
+      <div class="mb-12">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/50 mb-3">
+          <ToolIcon name="code" class="w-3.5 h-3.5" />
+          <span>Technical Field Guide</span>
+        </div>
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
           {preset.editorialGuide.heading}
         </h2>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
-          In-depth technical analysis and step-by-step guidance tailored for {preset.h1}.
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          In-depth technical methods, keyboard shortcuts, and native application workflows.
         </p>
       </div>
 
@@ -920,8 +810,7 @@ const jsonLdBreadcrumb = {
       </div>
     </div>
   </section>
-
-</Layout>
+</div>
 
 <!-- Client-Side Interactive Script -->
 <script is:inline define:vars={{ initialSample: preset.sampleText }}>

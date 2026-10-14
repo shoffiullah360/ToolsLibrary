@@ -14,6 +14,8 @@ import { getPresetIntentDescription } from '../data/intentDescriptions';
 import ConversionPrivacyBrief from '../components/ConversionPrivacyBrief.astro';
 import ConversionEditorial from '../components/ConversionEditorial.astro';
 import { getConverterEditorial } from '../data/converterEditorials';
+import RemoveEmptyLinesPresetView from '../components/RemoveEmptyLinesPresetView.astro';
+import { REMOVE_EMPTY_LINES_PRESETS, type RemoveEmptyLinesPreset } from '../data/removeEmptyLinesPresets';
 
 interface ResizerPage {
   slug: string;
@@ -51,26 +53,32 @@ const pagesData = rawPagesData as unknown as ResizerPage[];
 export async function getStaticPaths() {
   const resizerPaths = (rawPagesData as unknown as ResizerPage[]).map((page) => ({
     params: { slug: page.slug },
-    props: { type: 'resizer' as const, resizerPage: page, compressPreset: null, converterPreset: null }
+    props: { type: 'resizer' as const, resizerPage: page, compressPreset: null, converterPreset: null, emptyLinesPreset: null }
   }));
 
   const compressPaths = COMPRESS_PRESETS.map((preset) => ({
     params: { slug: preset.slug },
-    props: { type: 'compress' as const, resizerPage: null, compressPreset: preset, converterPreset: null }
+    props: { type: 'compress' as const, resizerPage: null, compressPreset: preset, converterPreset: null, emptyLinesPreset: null }
   }));
 
   const converterPaths = CONVERTER_PRESETS.map((preset) => ({
     params: { slug: preset.slug },
-    props: { type: 'converter' as const, resizerPage: null, compressPreset: null, converterPreset: preset }
+    props: { type: 'converter' as const, resizerPage: null, compressPreset: null, converterPreset: preset, emptyLinesPreset: null }
   }));
 
-  return [...resizerPaths, ...compressPaths, ...converterPaths];
+  const emptyLinesPaths = REMOVE_EMPTY_LINES_PRESETS.map((preset) => ({
+    params: { slug: preset.slug },
+    props: { type: 'empty-lines' as const, resizerPage: null, compressPreset: null, converterPreset: null, emptyLinesPreset: preset }
+  }));
+
+  return [...resizerPaths, ...compressPaths, ...converterPaths, ...emptyLinesPaths];
 }
 
 type Props = 
-  | { type: 'resizer'; resizerPage: ResizerPage; compressPreset: null; converterPreset: null }
-  | { type: 'compress'; resizerPage: null; compressPreset: CompressPreset; converterPreset: null }
-  | { type: 'converter'; resizerPage: null; compressPreset: null; converterPreset: ConverterPreset };
+  | { type: 'resizer'; resizerPage: ResizerPage; compressPreset: null; converterPreset: null; emptyLinesPreset: null }
+  | { type: 'compress'; resizerPage: null; compressPreset: CompressPreset; converterPreset: null; emptyLinesPreset: null }
+  | { type: 'converter'; resizerPage: null; compressPreset: null; converterPreset: ConverterPreset; emptyLinesPreset: null }
+  | { type: 'empty-lines'; resizerPage: null; compressPreset: null; converterPreset: null; emptyLinesPreset: RemoveEmptyLinesPreset };
 
 const props = Astro.props as Props;
 
@@ -327,23 +335,108 @@ if (props.type === 'converter' && props.converterPreset) {
   };
 }
 
+// ==========================================
+// REMOVE EMPTY LINES PAGE LOGIC (35 pSEO Engine)
+// ==========================================
+let emptyLinesJsonLdSoftwareApp: any = null;
+let emptyLinesJsonLdFaq: any = null;
+let emptyLinesJsonLdBreadcrumbs: any = null;
+
+if (props.type === 'empty-lines' && props.emptyLinesPreset) {
+  const preset = props.emptyLinesPreset;
+  const canonical = `https://fasttoolverse.com/${preset.slug}/`;
+
+  emptyLinesJsonLdBreadcrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://fasttoolverse.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Text & Formatting",
+        "item": "https://fasttoolverse.com/#text-tools-section"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Remove Empty Lines",
+        "item": "https://fasttoolverse.com/tools/remove-empty-lines/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": preset.h1,
+        "item": canonical
+      }
+    ]
+  };
+
+  emptyLinesJsonLdSoftwareApp = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": `${preset.h1} - FastToolVerse`,
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All (Web Browser)",
+    "browserRequirements": "Requires JavaScript. Runs 100% client-side in browser RAM.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "100% in-browser text cleaning with zero server uploads",
+      "Strip blank and empty lines instantly",
+      "Delete whitespace-only lines containing spaces and tabs",
+      "Collapse consecutive blank lines to a single blank line",
+      "Trim leading and trailing empty lines from file boundaries",
+      "Live line, character, and word count metric calculations",
+      "One-click clipboard copy and clean .txt file export"
+    ]
+  };
+
+  emptyLinesJsonLdFaq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": preset.faqs.map((f) => ({
+      "@type": "Question",
+      "name": f.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.answer
+      }
+    }))
+  };
+}
+
 const canonicalUrl = props.type === 'converter'
   ? `https://fasttoolverse.com/${props.converterPreset.slug}/`
-  : props.type === 'compress'
-    ? `https://fasttoolverse.com/${props.compressPreset.slug}`
-    : `https://fasttoolverse.com/${props.resizerPage.slug}`;
+  : props.type === 'empty-lines'
+    ? `https://fasttoolverse.com/${props.emptyLinesPreset.slug}/`
+    : props.type === 'compress'
+      ? `https://fasttoolverse.com/${props.compressPreset.slug}`
+      : `https://fasttoolverse.com/${props.resizerPage.slug}`;
 
 const pageTitle = props.type === 'converter'
   ? props.converterPreset.metaTitle
-  : props.type === 'compress'
-    ? props.compressPreset.metaTitle
-    : props.resizerPage.metaTitle;
+  : props.type === 'empty-lines'
+    ? props.emptyLinesPreset.metaTitle
+    : props.type === 'compress'
+      ? props.compressPreset.metaTitle
+      : props.resizerPage.metaTitle;
 
 const pageDescription = props.type === 'converter'
   ? props.converterPreset.metaDescription
-  : props.type === 'compress'
-    ? props.compressPreset.metaDescription
-    : props.resizerPage.metaDescription;
+  : props.type === 'empty-lines'
+    ? props.emptyLinesPreset.metaDescription
+    : props.type === 'compress'
+      ? props.compressPreset.metaDescription
+      : props.resizerPage.metaDescription;
 
 const intentDescription = getPresetIntentDescription(props);
 const converterEditorial = props.type === 'converter' && props.converterPreset ? getConverterEditorial(props.converterPreset.slug) : null;
@@ -370,6 +463,23 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
         <script type="application/ld+json" set:html={JSON.stringify(converterJsonLdBreadcrumbs)} />
         <script type="application/ld+json" set:html={JSON.stringify(converterJsonLdSoftwareApp)} />
         <script type="application/ld+json" set:html={JSON.stringify(converterJsonLdFaq)} />
+      </>
+    ) : props.type === 'empty-lines' ? (
+      <>
+        <meta name="keywords" content={`${props.emptyLinesPreset.primaryQuery}, remove empty lines, delete blank lines, strip empty rows, clean text, client side text tool`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:title" content={props.emptyLinesPreset.metaTitle} />
+        <meta property="og:description" content={props.emptyLinesPreset.metaDescription} />
+        <meta property="og:image" content="https://fasttoolverse.com/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={canonicalUrl} />
+        <meta name="twitter:title" content={props.emptyLinesPreset.metaTitle} />
+        <meta name="twitter:description" content={props.emptyLinesPreset.metaDescription} />
+        <meta name="twitter:image" content="https://fasttoolverse.com/og-image.png" />
+        <script type="application/ld+json" set:html={JSON.stringify(emptyLinesJsonLdBreadcrumbs)} />
+        <script type="application/ld+json" set:html={JSON.stringify(emptyLinesJsonLdSoftwareApp)} />
+        <script type="application/ld+json" set:html={JSON.stringify(emptyLinesJsonLdFaq)} />
       </>
     ) : props.type === 'compress' ? (
       <>
@@ -624,6 +734,8 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
       </section>
 
     </div>
+  ) : props.type === 'empty-lines' ? (
+    <RemoveEmptyLinesPresetView preset={props.emptyLinesPreset} />
   ) : props.type === 'compress' ? (
     <div class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen">
       <!-- Hero Header Section -->

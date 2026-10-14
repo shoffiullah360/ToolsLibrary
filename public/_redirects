@@ -1,0 +1,37 @@
+# Cloudflare Pages 301 Permanent Redirects
+# Remove Empty Lines pSEO Route Migration (Old -> Root)
+
+# 1. Renamed Old Slugs to New Punchy Slugs
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-notepad-plus-plus/ /remove-empty-lines-notepad-plus-plus/ 301
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-notepad-plus-plus /remove-empty-lines-notepad-plus-plus/ 301
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-excel/ /remove-empty-lines-excel/ 301
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-excel /remove-empty-lines-excel/ 301
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-word/ /remove-empty-lines-word/ 301
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-word /remove-empty-lines-word/ 301
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-google-docs/ /remove-empty-lines-google-docs/ 301
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-google-docs /remove-empty-lines-google-docs/ 301
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-vscode/ /remove-empty-lines-vscode/ 301
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-vscode /remove-empty-lines-vscode/ 301
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-google-sheets/ /remove-empty-lines-google-sheets/ 301
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-google-sheets /remove-empty-lines-google-sheets/ 301
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-vim/ /remove-empty-lines-vim/ 301
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-vim /remove-empty-lines-vim/ 301
+/tools/remove-empty-lines/remove-empty-lines-in-json/ /remove-empty-lines-json/ 301
+/tools/remove-empty-lines/remove-empty-lines-in-json /remove-empty-lines-json/ 301
+/tools/remove-empty-lines/remove-empty-lines-in-xml/ /remove-empty-lines-xml/ 301
+/tools/remove-empty-lines/remove-empty-lines-in-xml /remove-empty-lines-xml/ 301
+
+# 2. General Fallback for all 35 presets
+/tools/remove-empty-lines/:slug/ /:slug/ 301
+/tools/remove-empty-lines/:slug /:slug/ 301
+
+# Existing Tool Redirects
+/pinterest-pin-resizer /tools/pinterest-image-resizer/ 301
+/twitter-header-resizer /tools/x-twitter-image-resizer/ 301
+/whatsap /tools/whatsapp-image-resizer/ 301
+/whatsapp-dp-resizer /tools/whatsapp-image-resizer/ 301
+/linkedin-banner-resizer /tools/linkedin-image-resizer/ 301
+/youtube-banner-resizer /tools/youtube-image-resizer/ 301
+/resize-image-for-instagram /tools/instagram-image-resizer/ 301
+/facebook-cover-photo-resizer /tools/facebook-image-resizer/ 301
+/tiktok-profile-picture-resizer /tools/tiktok-image-resizer/ 301

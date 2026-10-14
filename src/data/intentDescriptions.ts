@@ -258,5 +258,9 @@ export function getPresetIntentDescription(props: PageProps): string {
     }
   }
 
+  if (props.type === 'empty-lines' && (props as any).emptyLinesPreset) {
+    return (props as any).emptyLinesPreset.intentCard || '';
+  }
+
   return '';
 }

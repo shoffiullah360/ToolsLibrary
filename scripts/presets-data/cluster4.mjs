@@ -1,7 +1,7 @@
 // Cluster 4: Spreadsheets & CSV Data (4 Routes)
 export const cluster4Presets = [
   {
-    slug: 'remove-empty-lines-excel',
+    slug: 'excel-remove-empty-lines',
     cluster: 'spreadsheets-csv',
     clusterTitle: 'Spreadsheets & CSV Data',
     primaryQuery: 'remove empty lines excel',

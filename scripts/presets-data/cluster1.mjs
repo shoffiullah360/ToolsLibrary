@@ -1,7 +1,7 @@
 // Cluster 1: Direct "How-To" Question Queries (7 High-CTR Routes)
 export const cluster1Presets = [
   {
-    slug: 'how-to-remove-empty-lines-in-notepad-plus-plus',
+    slug: 'remove-empty-lines-notepad-plus-plus',
     cluster: 'how-to',
     clusterTitle: 'Direct How-To Question Guides',
     primaryQuery: 'how to remove empty lines in notepad ++',
@@ -106,7 +106,7 @@ export const cluster1Presets = [
     ]
   },
   {
-    slug: 'how-to-remove-empty-lines-in-excel',
+    slug: 'remove-empty-lines-excel',
     cluster: 'how-to',
     clusterTitle: 'Direct How-To Question Guides',
     primaryQuery: 'how to remove empty lines in excel',
@@ -210,7 +210,7 @@ export const cluster1Presets = [
     ]
   },
   {
-    slug: 'how-to-remove-empty-lines-in-word',
+    slug: 'remove-empty-lines-word',
     cluster: 'how-to',
     clusterTitle: 'Direct How-To Question Guides',
     primaryQuery: 'how to remove empty lines in word',
@@ -314,7 +314,7 @@ export const cluster1Presets = [
     ]
   },
   {
-    slug: 'how-to-remove-empty-lines-in-google-docs',
+    slug: 'remove-empty-lines-google-docs',
     cluster: 'how-to',
     clusterTitle: 'Direct How-To Question Guides',
     primaryQuery: 'how to remove empty lines in google docs',
@@ -420,7 +420,7 @@ export const cluster1Presets = [
     ]
   },
   {
-    slug: 'how-to-remove-empty-lines-in-vscode',
+    slug: 'remove-empty-lines-vscode',
     cluster: 'how-to',
     clusterTitle: 'Direct How-To Question Guides',
     primaryQuery: 'how to remove empty lines in vscode',
@@ -526,7 +526,7 @@ export const cluster1Presets = [
     ]
   },
   {
-    slug: 'how-to-remove-empty-lines-in-google-sheets',
+    slug: 'remove-empty-lines-google-sheets',
     cluster: 'how-to',
     clusterTitle: 'Direct How-To Question Guides',
     primaryQuery: 'how to remove empty lines in google sheets',
@@ -631,7 +631,7 @@ export const cluster1Presets = [
     ]
   },
   {
-    slug: 'how-to-remove-empty-lines-in-vim',
+    slug: 'remove-empty-lines-vim',
     cluster: 'how-to',
     clusterTitle: 'Direct How-To Question Guides',
     primaryQuery: 'how to remove empty lines in vim',

@@ -38,7 +38,7 @@ export interface RemoveEmptyLinesPreset {
 
 export const REMOVE_EMPTY_LINES_PRESETS: RemoveEmptyLinesPreset[] = [
   {
-    "slug": "how-to-remove-empty-lines-in-notepad-plus-plus",
+    "slug": "remove-empty-lines-notepad-plus-plus",
     "cluster": "how-to",
     "clusterTitle": "Direct How-To Question Guides",
     "primaryQuery": "how to remove empty lines in notepad ++",
@@ -147,7 +147,7 @@ export const REMOVE_EMPTY_LINES_PRESETS: RemoveEmptyLinesPreset[] = [
     ]
   },
   {
-    "slug": "how-to-remove-empty-lines-in-excel",
+    "slug": "remove-empty-lines-excel",
     "cluster": "how-to",
     "clusterTitle": "Direct How-To Question Guides",
     "primaryQuery": "how to remove empty lines in excel",
@@ -255,7 +255,7 @@ export const REMOVE_EMPTY_LINES_PRESETS: RemoveEmptyLinesPreset[] = [
     ]
   },
   {
-    "slug": "how-to-remove-empty-lines-in-word",
+    "slug": "remove-empty-lines-word",
     "cluster": "how-to",
     "clusterTitle": "Direct How-To Question Guides",
     "primaryQuery": "how to remove empty lines in word",
@@ -363,7 +363,7 @@ export const REMOVE_EMPTY_LINES_PRESETS: RemoveEmptyLinesPreset[] = [
     ]
   },
   {
-    "slug": "how-to-remove-empty-lines-in-google-docs",
+    "slug": "remove-empty-lines-google-docs",
     "cluster": "how-to",
     "clusterTitle": "Direct How-To Question Guides",
     "primaryQuery": "how to remove empty lines in google docs",
@@ -473,7 +473,7 @@ export const REMOVE_EMPTY_LINES_PRESETS: RemoveEmptyLinesPreset[] = [
     ]
   },
   {
-    "slug": "how-to-remove-empty-lines-in-vscode",
+    "slug": "remove-empty-lines-vscode",
     "cluster": "how-to",
     "clusterTitle": "Direct How-To Question Guides",
     "primaryQuery": "how to remove empty lines in vscode",
@@ -583,7 +583,7 @@ export const REMOVE_EMPTY_LINES_PRESETS: RemoveEmptyLinesPreset[] = [
     ]
   },
   {
-    "slug": "how-to-remove-empty-lines-in-google-sheets",
+    "slug": "remove-empty-lines-google-sheets",
     "cluster": "how-to",
     "clusterTitle": "Direct How-To Question Guides",
     "primaryQuery": "how to remove empty lines in google sheets",
@@ -692,7 +692,7 @@ export const REMOVE_EMPTY_LINES_PRESETS: RemoveEmptyLinesPreset[] = [
     ]
   },
   {
-    "slug": "how-to-remove-empty-lines-in-vim",
+    "slug": "remove-empty-lines-vim",
     "cluster": "how-to",
     "clusterTitle": "Direct How-To Question Guides",
     "primaryQuery": "how to remove empty lines in vim",
@@ -2268,7 +2268,7 @@ export const REMOVE_EMPTY_LINES_PRESETS: RemoveEmptyLinesPreset[] = [
     ]
   },
   {
-    "slug": "remove-empty-lines-excel",
+    "slug": "excel-remove-empty-lines",
     "cluster": "spreadsheets-csv",
     "clusterTitle": "Spreadsheets & CSV Data",
     "primaryQuery": "remove empty lines excel",
@@ -2729,7 +2729,7 @@ export const REMOVE_EMPTY_LINES_PRESETS: RemoveEmptyLinesPreset[] = [
     ]
   },
   {
-    "slug": "remove-empty-lines-in-json",
+    "slug": "remove-empty-lines-json",
     "cluster": "code-payloads",
     "clusterTitle": "Code Sanitization & Payloads",
     "primaryQuery": "remove empty lines in json",
@@ -2844,7 +2844,7 @@ export const REMOVE_EMPTY_LINES_PRESETS: RemoveEmptyLinesPreset[] = [
     ]
   },
   {
-    "slug": "remove-empty-lines-in-xml",
+    "slug": "remove-empty-lines-xml",
     "cluster": "code-payloads",
     "clusterTitle": "Code Sanitization & Payloads",
     "primaryQuery": "remove empty lines in xml",

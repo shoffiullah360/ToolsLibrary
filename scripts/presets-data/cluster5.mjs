@@ -1,7 +1,7 @@
 // Cluster 5: Code Sanitization & Payload Formats (6 Routes)
 export const cluster5Presets = [
   {
-    slug: 'remove-empty-lines-in-json',
+    slug: 'remove-empty-lines-json',
     cluster: 'code-payloads',
     clusterTitle: 'Code Sanitization & Payloads',
     primaryQuery: 'remove empty lines in json',
@@ -112,7 +112,7 @@ export const cluster5Presets = [
     ]
   },
   {
-    slug: 'remove-empty-lines-in-xml',
+    slug: 'remove-empty-lines-xml',
     cluster: 'code-payloads',
     clusterTitle: 'Code Sanitization & Payloads',
     primaryQuery: 'remove empty lines in xml',

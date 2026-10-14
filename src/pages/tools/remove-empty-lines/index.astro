@@ -1,6 +1,7 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import ToolIcon from '../../components/ToolIcon.astro';
+import Layout from '../../../layouts/Layout.astro';
+import ToolIcon from '../../../components/ToolIcon.astro';
+import PopularRemoveEmptyLines from '../../../components/PopularRemoveEmptyLines.astro';
 
 // FAQ Data for Schema and Accordion
 const faqs = [
@@ -85,12 +86,12 @@ const jsonLdBreadcrumb = {
       "@type": "ListItem",
       "position": 3,
       "name": "Remove Empty Lines",
-      "item": "https://fasttoolverse.com/tools/remove-empty-lines"
+      "item": "https://fasttoolverse.com/tools/remove-empty-lines/"
     }
   ]
 };
 
-const canonicalUrl = "https://fasttoolverse.com/tools/remove-empty-lines";
+const canonicalUrl = "https://fasttoolverse.com/tools/remove-empty-lines/";
 const pageTitle = "Remove Empty Lines Online - Free Text Cleaner";
 const pageDescription = "Remove empty lines and blank spaces from your text online for free. Strip tabs, collapse breaks, and clean code with 100% private in-browser processing.";
 const pageKeywords = "remove empty lines, blank line stripper, delete empty lines, remove blank lines online, collapse blank lines, clean empty rows, text condenser, strip whitespace lines, client side text tool";
@@ -516,6 +517,9 @@ const presets = [
 
     </div>
   </section>
+
+  <!-- Popular Presets Interlinking Grid (35 Presets) -->
+  <PopularRemoveEmptyLines />
 
   <!-- Feature Comparison Table Section -->
   <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/60 py-16 sm:py-24">

@@ -16,6 +16,8 @@ import ConversionEditorial from '../components/ConversionEditorial.astro';
 import { getConverterEditorial } from '../data/converterEditorials';
 import RemoveEmptyLinesPresetView from '../components/RemoveEmptyLinesPresetView.astro';
 import { REMOVE_EMPTY_LINES_PRESETS, type RemoveEmptyLinesPreset } from '../data/removeEmptyLinesPresets';
+import RemoveLineBreaksPresetView from '../components/RemoveLineBreaksPresetView.astro';
+import { removeLineBreaksPresets, type RemoveLineBreaksPreset } from '../data/removeLineBreaksPresets';
 
 interface ResizerPage {
   slug: string;
@@ -53,32 +55,38 @@ const pagesData = rawPagesData as unknown as ResizerPage[];
 export async function getStaticPaths() {
   const resizerPaths = (rawPagesData as unknown as ResizerPage[]).map((page) => ({
     params: { slug: page.slug },
-    props: { type: 'resizer' as const, resizerPage: page, compressPreset: null, converterPreset: null, emptyLinesPreset: null }
+    props: { type: 'resizer' as const, resizerPage: page, compressPreset: null, converterPreset: null, emptyLinesPreset: null, lineBreaksPreset: null }
   }));
 
   const compressPaths = COMPRESS_PRESETS.map((preset) => ({
     params: { slug: preset.slug },
-    props: { type: 'compress' as const, resizerPage: null, compressPreset: preset, converterPreset: null, emptyLinesPreset: null }
+    props: { type: 'compress' as const, resizerPage: null, compressPreset: preset, converterPreset: null, emptyLinesPreset: null, lineBreaksPreset: null }
   }));
 
   const converterPaths = CONVERTER_PRESETS.map((preset) => ({
     params: { slug: preset.slug },
-    props: { type: 'converter' as const, resizerPage: null, compressPreset: null, converterPreset: preset, emptyLinesPreset: null }
+    props: { type: 'converter' as const, resizerPage: null, compressPreset: null, converterPreset: preset, emptyLinesPreset: null, lineBreaksPreset: null }
   }));
 
   const emptyLinesPaths = REMOVE_EMPTY_LINES_PRESETS.map((preset) => ({
     params: { slug: preset.slug },
-    props: { type: 'empty-lines' as const, resizerPage: null, compressPreset: null, converterPreset: null, emptyLinesPreset: preset }
+    props: { type: 'empty-lines' as const, resizerPage: null, compressPreset: null, converterPreset: null, emptyLinesPreset: preset, lineBreaksPreset: null }
   }));
 
-  return [...resizerPaths, ...compressPaths, ...converterPaths, ...emptyLinesPaths];
+  const lineBreaksPaths = removeLineBreaksPresets.map((preset) => ({
+    params: { slug: preset.slug },
+    props: { type: 'line-breaks' as const, resizerPage: null, compressPreset: null, converterPreset: null, emptyLinesPreset: null, lineBreaksPreset: preset }
+  }));
+
+  return [...resizerPaths, ...compressPaths, ...converterPaths, ...emptyLinesPaths, ...lineBreaksPaths];
 }
 
 type Props = 
-  | { type: 'resizer'; resizerPage: ResizerPage; compressPreset: null; converterPreset: null; emptyLinesPreset: null }
-  | { type: 'compress'; resizerPage: null; compressPreset: CompressPreset; converterPreset: null; emptyLinesPreset: null }
-  | { type: 'converter'; resizerPage: null; compressPreset: null; converterPreset: ConverterPreset; emptyLinesPreset: null }
-  | { type: 'empty-lines'; resizerPage: null; compressPreset: null; converterPreset: null; emptyLinesPreset: RemoveEmptyLinesPreset };
+  | { type: 'resizer'; resizerPage: ResizerPage; compressPreset: null; converterPreset: null; emptyLinesPreset: null; lineBreaksPreset: null }
+  | { type: 'compress'; resizerPage: null; compressPreset: CompressPreset; converterPreset: null; emptyLinesPreset: null; lineBreaksPreset: null }
+  | { type: 'converter'; resizerPage: null; compressPreset: null; converterPreset: ConverterPreset; emptyLinesPreset: null; lineBreaksPreset: null }
+  | { type: 'empty-lines'; resizerPage: null; compressPreset: null; converterPreset: null; emptyLinesPreset: RemoveEmptyLinesPreset; lineBreaksPreset: null }
+  | { type: 'line-breaks'; resizerPage: null; compressPreset: null; converterPreset: null; emptyLinesPreset: null; lineBreaksPreset: RemoveLineBreaksPreset };
 
 const props = Astro.props as Props;
 
@@ -414,10 +422,87 @@ if (props.type === 'empty-lines' && props.emptyLinesPreset) {
   };
 }
 
+let lineBreaksJsonLdSoftwareApp: any = null;
+let lineBreaksJsonLdFaq: any = null;
+let lineBreaksJsonLdBreadcrumbs: any = null;
+
+if (props.type === 'line-breaks' && props.lineBreaksPreset) {
+  const preset = props.lineBreaksPreset;
+  const canonical = `https://fasttoolverse.com/${preset.slug}/`;
+
+  lineBreaksJsonLdBreadcrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://fasttoolverse.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Text & Formatting",
+        "item": "https://fasttoolverse.com/#text-tools-section"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Remove Line Breaks",
+        "item": "https://fasttoolverse.com/remove-line-breaks/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": preset.name || preset.h1,
+        "item": canonical
+      }
+    ]
+  };
+
+  lineBreaksJsonLdSoftwareApp = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": `${preset.h1} - FastToolVerse`,
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All (Web Browser)",
+    "browserRequirements": "Requires JavaScript. Runs 100% client-side in browser RAM.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "100% in-browser text cleaning with zero server uploads",
+      "Strip line breaks, newlines, and carriage returns instantly",
+      "Replace breaks with space, comma, no space, or custom delimiters",
+      "Preserve paragraph breaks while unwrapping sentences",
+      "Live line, character, and word count metric calculations",
+      "One-click clipboard copy and clean .txt file export"
+    ]
+  };
+
+  lineBreaksJsonLdFaq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": preset.faqs.map((f) => ({
+      "@type": "Question",
+      "name": f.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.answer
+      }
+    }))
+  };
+}
+
 const canonicalUrl = props.type === 'converter'
   ? `https://fasttoolverse.com/${props.converterPreset.slug}/`
   : props.type === 'empty-lines'
     ? `https://fasttoolverse.com/${props.emptyLinesPreset.slug}/`
+    : props.type === 'line-breaks'
+      ? `https://fasttoolverse.com/${props.lineBreaksPreset.slug}/`
     : props.type === 'compress'
       ? `https://fasttoolverse.com/${props.compressPreset.slug}`
       : `https://fasttoolverse.com/${props.resizerPage.slug}`;
@@ -426,6 +511,8 @@ const pageTitle = props.type === 'converter'
   ? props.converterPreset.metaTitle
   : props.type === 'empty-lines'
     ? props.emptyLinesPreset.metaTitle
+    : props.type === 'line-breaks'
+      ? props.lineBreaksPreset.metaTitle
     : props.type === 'compress'
       ? props.compressPreset.metaTitle
       : props.resizerPage.metaTitle;
@@ -434,6 +521,8 @@ const pageDescription = props.type === 'converter'
   ? props.converterPreset.metaDescription
   : props.type === 'empty-lines'
     ? props.emptyLinesPreset.metaDescription
+    : props.type === 'line-breaks'
+      ? props.lineBreaksPreset.metaDescription
     : props.type === 'compress'
       ? props.compressPreset.metaDescription
       : props.resizerPage.metaDescription;
@@ -480,6 +569,23 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
         <script type="application/ld+json" set:html={JSON.stringify(emptyLinesJsonLdBreadcrumbs)} />
         <script type="application/ld+json" set:html={JSON.stringify(emptyLinesJsonLdSoftwareApp)} />
         <script type="application/ld+json" set:html={JSON.stringify(emptyLinesJsonLdFaq)} />
+      </>
+    ) : props.type === 'line-breaks' ? (
+      <>
+        <meta name="keywords" content={`${props.lineBreaksPreset.name}, remove line breaks, line break remover, delete newlines, clean text, client side text tool`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:title" content={props.lineBreaksPreset.metaTitle} />
+        <meta property="og:description" content={props.lineBreaksPreset.metaDescription} />
+        <meta property="og:image" content="https://fasttoolverse.com/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={canonicalUrl} />
+        <meta name="twitter:title" content={props.lineBreaksPreset.metaTitle} />
+        <meta name="twitter:description" content={props.lineBreaksPreset.metaDescription} />
+        <meta name="twitter:image" content="https://fasttoolverse.com/og-image.png" />
+        <script type="application/ld+json" set:html={JSON.stringify(lineBreaksJsonLdBreadcrumbs)} />
+        <script type="application/ld+json" set:html={JSON.stringify(lineBreaksJsonLdSoftwareApp)} />
+        <script type="application/ld+json" set:html={JSON.stringify(lineBreaksJsonLdFaq)} />
       </>
     ) : props.type === 'compress' ? (
       <>
@@ -736,6 +842,8 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
     </div>
   ) : props.type === 'empty-lines' ? (
     <RemoveEmptyLinesPresetView preset={props.emptyLinesPreset} />
+  ) : props.type === 'line-breaks' ? (
+    <RemoveLineBreaksPresetView preset={props.lineBreaksPreset} />
   ) : props.type === 'compress' ? (
     <div class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen">
       <!-- Hero Header Section -->

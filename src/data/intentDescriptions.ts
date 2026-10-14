@@ -262,5 +262,9 @@ export function getPresetIntentDescription(props: PageProps): string {
     return (props as any).emptyLinesPreset.intentCard || '';
   }
 
+  if (props.type === 'line-breaks' && (props as any).lineBreaksPreset) {
+    return (props as any).lineBreaksPreset.intentDescription || '';
+  }
+
   return '';
 }

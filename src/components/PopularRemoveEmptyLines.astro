@@ -12,50 +12,33 @@ const { currentSlug = '' } = Astro.props;
 <section class="border-t border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950/40 py-14 sm:py-18">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-10">
-      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-3">
-        <span>35 Verified Configurations</span>
-      </div>
       <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-        Popular Empty Line Presets & Workflows
+        Popular Empty Line Presets
       </h2>
       <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
-        Direct text cleaning configurations pre-tuned for code editors, word processors, spreadsheets, and data payloads.
+        Direct text cleaning workflows pre-configured for code editors, word processors, and spreadsheets.
       </p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-      {REMOVE_EMPTY_LINES_PRESETS.map((preset: RemoveEmptyLinesPreset) => {
-        const isActive = preset.slug === currentSlug;
-        return (
-          <a
-            href={`/tools/remove-empty-lines/${preset.slug}/`}
-            class={`group p-3.5 sm:p-4 rounded-xl border transition-all duration-200 flex flex-col justify-between ${
-              isActive
-                ? 'border-emerald-500 bg-emerald-500/10 ring-1 ring-emerald-500/40 shadow-sm'
-                : 'border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/60 hover:border-emerald-500/50 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:shadow-xs'
-            }`}
-          >
-            <div>
-              <div class="flex items-start justify-between gap-2">
-                <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors leading-snug">
-                  {preset.h1}
-                </h3>
-                {isActive && (
-                  <span class="shrink-0 text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-500 text-slate-950 font-mono">
-                    Active
-                  </span>
-                )}
-              </div>
-              <p class="text-xs text-slate-500 dark:text-slate-400 font-mono mt-1 truncate">
-                {preset.primaryQuery}
-              </p>
-            </div>
-            <span class="mt-3 text-[11px] sm:text-xs font-semibold text-emerald-600 dark:text-emerald-400 inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-              Clean empty lines &rarr;
-            </span>
-          </a>
-        );
-      })}
+      {REMOVE_EMPTY_LINES_PRESETS.map((preset: RemoveEmptyLinesPreset) => (
+        <a
+          href={`/tools/remove-empty-lines/${preset.slug}/`}
+          class="group p-3.5 sm:p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:border-emerald-500 dark:hover:border-emerald-500 hover:shadow-sm transition-all duration-200 flex flex-col justify-between"
+        >
+          <div>
+            <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors leading-snug">
+              {preset.h1}
+            </h3>
+            <p class="mt-1.5 text-xs text-slate-500 dark:text-slate-400 font-normal line-clamp-2 leading-relaxed">
+              {preset.subtitle}
+            </p>
+          </div>
+          <span class="mt-3 text-xs font-semibold text-emerald-600 dark:text-emerald-400 inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+            Clean lines &rarr;
+          </span>
+        </a>
+      ))}
     </div>
   </div>
 </section>

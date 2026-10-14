@@ -97,57 +97,6 @@ const pageDescription = "Remove empty lines and blank spaces from your text onli
 const pageKeywords = "remove empty lines, blank line stripper, delete empty lines, remove blank lines online, collapse blank lines, clean empty rows, text condenser, strip whitespace lines, client side text tool";
 const ogImage = "https://fasttoolverse.com/og-image.png";
 
-// Programmatic target cards / presets
-const presets = [
-  {
-    id: "preset-strip-all",
-    title: "Strip All Blank Lines",
-    tag: "Compact Text",
-    desc: "Delete every single blank line and whitespace break to create densely packed, single-spaced text.",
-    options: { whitespaceOnly: true, trimEdges: true, collapseBlanks: false },
-    sampleText: "Paragraph one contains primary analysis.\n\n\n\nParagraph two follows several accidental line returns.\n\n\nParagraph three concludes the summary."
-  },
-  {
-    id: "preset-collapse-double",
-    title: "Collapse Double Spacing",
-    tag: "Paragraph Normalizer",
-    desc: "Reduce chaotic multi-line gaps into consistent single blank lines between paragraphs.",
-    options: { whitespaceOnly: true, trimEdges: true, collapseBlanks: true },
-    sampleText: "Chapter 1: The Beginning\n\n\n\n\nIt was a crisp autumn morning in the mountains.\n\n\n\n\nLeaves drifted softly across the cobblestone pathway.\n\n\n\nThe adventure was about to start."
-  },
-  {
-    id: "preset-whitespace-lines",
-    title: "Clean Whitespace Lines",
-    tag: "Hidden Spaces & Tabs",
-    desc: "Detect and remove deceptive blank lines that appear empty but contain invisible spaces or tabs.",
-    options: { whitespaceOnly: true, trimEdges: true, collapseBlanks: false },
-    sampleText: "User Data Record:\n   \nID: 9021\n\t\t\t\nStatus: Active\n     \nRole: Administrator"
-  },
-  {
-    id: "preset-source-code",
-    title: "Clean Raw Source Code",
-    tag: "Development & Scripts",
-    desc: "Strip out unnecessary blank line breaks from minified scripts, SQL queries, or configuration manifests.",
-    options: { whitespaceOnly: true, trimEdges: true, collapseBlanks: false },
-    sampleText: "import express from 'express';\n\n\nconst app = express();\n\n\nconst PORT = process.env.PORT || 3000;\n\n\napp.get('/api', (req, res) => {\n\n  res.json({ status: 'ok' });\n\n});"
-  },
-  {
-    id: "preset-markdown-breaks",
-    title: "Format Markdown Line Breaks",
-    tag: "Documentation & Notes",
-    desc: "Standardize spacing between Markdown headings, blockquotes, and lists by collapsing excessive line breaks.",
-    options: { whitespaceOnly: true, trimEdges: true, collapseBlanks: true },
-    sampleText: "# Documentation\n\n\n\n## Getting Started\n\n\n\nRun the quickstart installer:\n\n\n\n```bash\nnpm install fast-tool\n```\n\n\n\n## Configuration"
-  },
-  {
-    id: "preset-pdf-text",
-    title: "Clean Copy-Pasted PDF Text",
-    tag: "PDFs & OCR Scans",
-    desc: "Fix disjointed text extracted from PDF columns, eBook readers, or OCR scanners with irregular blank line wraps.",
-    options: { whitespaceOnly: true, trimEdges: true, collapseBlanks: false },
-    sampleText: "The study examined fifty participants across\n\n\nthree separate test phases.\n\n\n\nAll results confirmed statistical significance\n\n\nwith p < 0.01 across each trial run."
-  }
-];
 ---
 
 <Layout
@@ -419,8 +368,17 @@ const presets = [
     </div>
   </section>
 
-  <!-- 3-Step Guide Section -->
-  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-16 sm:py-20">
+  <!-- 3. Intent Card -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+    <div class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-5 md:p-6 text-slate-700 dark:text-slate-300 text-sm md:text-base leading-relaxed shadow-sm">
+      <p>
+        Remove empty lines, collapse consecutive blank rows, and strip invisible whitespace characters in seconds. FastToolVerse processes your documents, code files, and data tables entirely in-browser RAM with 100% local privacy and zero server transmission.
+      </p>
+    </div>
+  </section>
+
+  <!-- 4. 3-Step Practical Guide Section -->
+  <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-16 sm:py-20">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-2xl mx-auto mb-12">
@@ -428,15 +386,15 @@ const presets = [
           How to Remove Empty Lines Online in 3 Simple Steps
         </h2>
         <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
-          Clean messy gaps, strip hidden whitespace breaks, and condense paragraphs in seconds.
+          Clean messy gaps, strip hidden whitespace breaks, and format text in seconds.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
         
         <!-- Step 1 -->
-        <div class="p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-purple-600 transition-all duration-150 relative">
-          <div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-purple-100 dark:border-purple-900/50">
+        <div class="p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-emerald-500 transition-all duration-150 relative">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-emerald-100 dark:border-emerald-900/50">
             01
           </div>
           <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
@@ -448,8 +406,8 @@ const presets = [
         </div>
 
         <!-- Step 2 -->
-        <div class="p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-purple-600 transition-all duration-150 relative">
-          <div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-purple-100 dark:border-purple-900/50">
+        <div class="p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-emerald-500 transition-all duration-150 relative">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-emerald-100 dark:border-emerald-900/50">
             02
           </div>
           <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
@@ -461,8 +419,8 @@ const presets = [
         </div>
 
         <!-- Step 3 -->
-        <div class="p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-purple-600 transition-all duration-150 relative">
-          <div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-purple-100 dark:border-purple-900/50">
+        <div class="p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-emerald-500 transition-all duration-150 relative">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-emerald-100 dark:border-emerald-900/50">
             03
           </div>
           <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
@@ -478,47 +436,101 @@ const presets = [
     </div>
   </section>
 
-  <!-- Quick Presets / Programmatic Target Cards Section -->
-  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/40 py-16 sm:py-20">
+  <!-- 5. "Why Choose FastToolVerse": 6 Core Benefit Cards -->
+  <section class="border-t border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950 py-16 sm:py-20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      
       <div class="text-center max-w-2xl mx-auto mb-12">
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Popular Blank Line Removal Presets
+          Why Choose FastToolVerse
         </h2>
         <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
-          Jump straight into pre-configured cleaning modes tailored for articles, code snippets, notes, and PDFs.
+          Built for developer precision, complete data privacy, and instantaneous text processing.
         </p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {presets.map((preset) => (
-          <div class="group relative p-5 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900/70 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150 flex flex-col justify-between">
-            <div>
-              <h3 class="text-base font-semibold text-slate-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors leading-snug mb-2">
-                {preset.title}
-              </h3>
-              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-                {preset.desc}
-              </p>
-            </div>
-            
-            <button
-              type="button"
-              data-preset={preset.id}
-              class="preset-card-btn text-xs font-semibold text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 inline-flex items-center gap-1 mt-auto pt-2 cursor-pointer border-t border-slate-200 dark:border-slate-800/80"
-            >
-              <span>Apply preset & sample</span>
-              <span>&rarr;</span>
-            </button>
+        <!-- Benefit 1 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 border border-emerald-100 dark:border-emerald-900/50">
+            <ToolIcon name="shield-check" class="w-5 h-5" />
           </div>
-        ))}
-      </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            100% Client-Side Privacy
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            All regex checks and text formatting execute strictly inside your local browser memory sandbox. Zero bytes ever travel to any cloud server.
+          </p>
+        </div>
 
+        <!-- Benefit 2 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 border border-emerald-100 dark:border-emerald-900/50">
+            <ToolIcon name="zap" class="w-5 h-5" />
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Instant 0ms RAM Processing
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Single-pass linear array processing operates in microseconds. Eliminates server queues, network delays, and tedious page reloads.
+          </p>
+        </div>
+
+        <!-- Benefit 3 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 border border-emerald-100 dark:border-emerald-900/50">
+            <ToolIcon name="crop" class="w-5 h-5" />
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Zero File & Line Limits
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Clean 50,000+ line server logs, database exports, or novels without encountering paywalls, character limits, or subscription tiers.
+          </p>
+        </div>
+
+        <!-- Benefit 4 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 border border-emerald-100 dark:border-emerald-900/50">
+            <ToolIcon name="search" class="w-5 h-5" />
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Regex Whitespace Detection
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Detects and purges phantom lines containing invisible spaces or tabs that standard zero-length checks in desktop editors fail to catch.
+          </p>
+        </div>
+
+        <!-- Benefit 5 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 border border-emerald-100 dark:border-emerald-900/50">
+            <ToolIcon name="code" class="w-5 h-5" />
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Code Indentation Preservation
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Only evaluates lines with zero printable characters. Non-empty lines retain exact leading spaces and tabs for Python, YAML, and JSON.
+          </p>
+        </div>
+
+        <!-- Benefit 6 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 border border-emerald-100 dark:border-emerald-900/50">
+            <ToolIcon name="globe" class="w-5 h-5" />
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Free Forever &amp; Offline Ready
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            No accounts, passwords, or cookies required. Load the tool once and continue formatting text even with your internet connection disabled.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Popular Presets Interlinking Grid (35 Presets) -->
+  <!-- 6. Popular Presets Interlinking Grid -->
   <PopularRemoveEmptyLines />
 
   <!-- Feature Comparison Table Section -->
@@ -542,12 +554,12 @@ const presets = [
           <div class="col-span-4 p-4 sm:p-5 flex items-center">
             <span>Feature / Capability</span>
           </div>
-          <div class="col-span-4 p-4 sm:p-5 bg-purple-50/60 dark:bg-purple-950/30 border-x border-purple-100 dark:border-purple-900/40 text-purple-700 dark:text-purple-300 flex items-center justify-between">
+          <div class="col-span-4 p-4 sm:p-5 bg-emerald-50/60 dark:bg-emerald-950/30 border-x border-emerald-100 dark:border-emerald-900/40 text-emerald-700 dark:text-emerald-300 flex items-center justify-between">
             <span class="font-bold flex items-center gap-1.5">
               FastToolVerse
-              <span class="hidden sm:inline-block px-2 py-0.5 text-[11px] font-medium bg-purple-600 text-white rounded-full">Recommended</span>
+              <span class="hidden sm:inline-block px-2 py-0.5 text-[11px] font-medium bg-emerald-600 text-white rounded-full">Recommended</span>
             </span>
-            <span class="text-xs text-purple-600 dark:text-purple-400 font-normal hidden md:inline">This Tool</span>
+            <span class="text-xs text-emerald-600 dark:text-emerald-400 font-normal hidden md:inline">This Tool</span>
           </div>
           <div class="col-span-4 p-4 sm:p-5 text-slate-500 dark:text-slate-400 flex items-center">
             <span>Cloud &amp; Server Tools</span>
@@ -560,7 +572,7 @@ const presets = [
             <span class="font-semibold text-sm text-slate-900 dark:text-white">Data Privacy &amp; Security</span>
             <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Where your text is processed</span>
           </div>
-          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-purple-50/30 dark:bg-purple-950/15 border-r sm:border-x border-purple-100 dark:border-purple-900/30 flex items-start gap-2.5">
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-emerald-50/30 dark:bg-emerald-950/15 border-r sm:border-x border-emerald-100 dark:border-emerald-900/30 flex items-start gap-2.5">
             <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             </div>
@@ -586,7 +598,7 @@ const presets = [
             <span class="font-semibold text-sm text-slate-900 dark:text-white">Execution Latency</span>
             <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Speed of line cleaning</span>
           </div>
-          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-purple-50/30 dark:bg-purple-950/15 border-r sm:border-x border-purple-100 dark:border-purple-900/30 flex items-start gap-2.5">
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-emerald-50/30 dark:bg-emerald-950/15 border-r sm:border-x border-emerald-100 dark:border-emerald-900/30 flex items-start gap-2.5">
             <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             </div>
@@ -612,7 +624,7 @@ const presets = [
             <span class="font-semibold text-sm text-slate-900 dark:text-white">Whitespace Line Detection</span>
             <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Detects lines with spaces and tabs</span>
           </div>
-          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-purple-50/30 dark:bg-purple-950/15 border-r sm:border-x border-purple-100 dark:border-purple-900/30 flex items-start gap-2.5">
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-emerald-50/30 dark:bg-emerald-950/15 border-r sm:border-x border-emerald-100 dark:border-emerald-900/30 flex items-start gap-2.5">
             <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             </div>
@@ -638,7 +650,7 @@ const presets = [
             <span class="font-semibold text-sm text-slate-900 dark:text-white">Paragraph Spacing Control</span>
             <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Preserves natural paragraph breaks</span>
           </div>
-          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-purple-50/30 dark:bg-purple-950/15 border-r sm:border-x border-purple-100 dark:border-purple-900/30 flex items-start gap-2.5">
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-emerald-50/30 dark:bg-emerald-950/15 border-r sm:border-x border-emerald-100 dark:border-emerald-900/30 flex items-start gap-2.5">
             <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             </div>
@@ -664,7 +676,7 @@ const presets = [
             <span class="font-semibold text-sm text-slate-900 dark:text-white">Offline Capability</span>
             <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Works without Wi-Fi</span>
           </div>
-          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-purple-50/30 dark:bg-purple-950/15 border-r sm:border-x border-purple-100 dark:border-purple-900/30 flex items-start gap-2.5">
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-emerald-50/30 dark:bg-emerald-950/15 border-r sm:border-x border-emerald-100 dark:border-emerald-900/30 flex items-start gap-2.5">
             <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             </div>
@@ -686,6 +698,85 @@ const presets = [
 
       </div>
 
+    </div>
+  </section>
+
+  <!-- 8. "Your Data & Local Privacy" Trust Card (~150-200 Words) -->
+  <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-900/20 py-12 sm:py-14">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-6 sm:p-8 shadow-sm">
+        <div class="flex items-center gap-3.5 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center border border-emerald-100 dark:border-emerald-900/50 shrink-0">
+            <ToolIcon name="shield-check" class="w-5 h-5" />
+          </div>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Your Data &amp; Local Privacy
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
+              Enterprise-grade client sandbox isolation with zero remote data transmission.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4 mt-6">
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800/80">
+            <div class="flex items-start gap-3">
+              <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-xs shrink-0 mt-0.5">✓</span>
+              <div>
+                <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100 mb-1">
+                  100% Local In-Browser Processing
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Your text is processed strictly inside your device's memory using client-side JavaScript. Zero bytes ever leave your machine, touch a cloud database, or transit across the internet.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800/80">
+            <div class="flex items-start gap-3">
+              <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-xs shrink-0 mt-0.5">✓</span>
+              <div>
+                <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100 mb-1">
+                  Instant Memory Garbage Collection
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Temporary string buffers are immediately deallocated by your browser's V8 engine the instant you clear the workspace, navigate away, or close this browser tab.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800/80">
+            <div class="flex items-start gap-3">
+              <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-xs shrink-0 mt-0.5">✓</span>
+              <div>
+                <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100 mb-1">
+                  Safe for Sensitive Credentials &amp; Code
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Ideal for proprietary software source code, internal company databases, confidential customer lists, private medical transcripts, and legal contracts.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800/80">
+            <div class="flex items-start gap-3">
+              <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-xs shrink-0 mt-0.5">✓</span>
+              <div>
+                <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100 mb-1">
+                  No Telemetry or AI Model Training
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Your content is never tracked, stored in server logs, or utilized to train machine learning models. Complete privacy is guaranteed by architectural design.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -712,15 +803,15 @@ const presets = [
           Anatomy of an "Empty" Line: Why Simple String Checks Fail
         </h2>
         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          A common flaw in naive text clean-up utilities is checking only for zero-length strings (<code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">line.length === 0</code>). In real-world documents, lines that appear completely blank visually often contain invisible non-printing characters:
+          A common flaw in naive text clean-up utilities is checking only for zero-length strings (<code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-emerald-600 dark:text-emerald-400">line.length === 0</code>). In real-world documents, lines that appear completely blank visually often contain invisible non-printing characters:
         </p>
         <ul class="space-y-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 list-disc pl-5">
-          <li><strong>Trailing Indentation Spaces:</strong> Lines containing only spaces (e.g. <code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">"    "</code>) left behind by code editors or word processor indentations.</li>
-          <li><strong>Tab Characters:</strong> Lines consisting of a single tab (<code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">\t</code>) copied from spreadsheet grids or code snippets.</li>
-          <li><strong>Carriage Return Artifacts:</strong> Windows CRLF (<code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">\r\n</code>) vs Unix LF (<code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">\n</code>) line-ending mismatches where an isolated carriage return lingers.</li>
+          <li><strong>Trailing Indentation Spaces:</strong> Lines containing only spaces (e.g. <code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-emerald-600 dark:text-emerald-400">"    "</code>) left behind by code editors or word processor indentations.</li>
+          <li><strong>Tab Characters:</strong> Lines consisting of a single tab (<code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-emerald-600 dark:text-emerald-400">\t</code>) copied from spreadsheet grids or code snippets.</li>
+          <li><strong>Carriage Return Artifacts:</strong> Windows CRLF (<code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-emerald-600 dark:text-emerald-400">\r\n</code>) vs Unix LF (<code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-emerald-600 dark:text-emerald-400">\n</code>) line-ending mismatches where an isolated carriage return lingers.</li>
         </ul>
         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          FastToolVerse uses regex evaluation (<code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">/^\s*$/</code>) to detect both genuine zero-length lines and deceptive whitespace-only lines, ensuring clean, uniform documents every time.
+          FastToolVerse uses regex evaluation (<code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-emerald-600 dark:text-emerald-400">/^\s*$/</code>) to detect both genuine zero-length lines and deceptive whitespace-only lines, ensuring clean, uniform documents every time.
         </p>
       </div>
 
@@ -730,10 +821,10 @@ const presets = [
           High-Performance Linear Array Processing in Browser RAM
         </h2>
         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          FastToolVerse processes text through an optimized single-pass linear algorithm (<code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">O(N)</code>) that scales effortlessly to documents with tens of thousands of lines:
+          FastToolVerse processes text through an optimized single-pass linear algorithm (<code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-emerald-600 dark:text-emerald-400">O(N)</code>) that scales effortlessly to documents with tens of thousands of lines:
         </p>
         
-        <div class="not-prose my-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 font-mono text-xs text-purple-300 overflow-x-auto space-y-2">
+        <div class="not-prose my-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 font-mono text-xs text-emerald-300 overflow-x-auto space-y-2">
           <div><span class="text-slate-500">// High-performance single-pass empty line processor</span></div>
           <div>const lines = text.split(/\r?\n/);</div>
           <div>const result = [];</div>
@@ -792,7 +883,7 @@ const presets = [
       <!-- Semantic FAQ List -->
       <div class="space-y-4">
         {faqs.map((faq) => (
-          <details class="group rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 transition-all duration-150 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 open:shadow-md">
+          <details class="group rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 transition-all duration-150 shadow-sm hover:shadow-md hover:border-emerald-500 dark:hover:border-emerald-500 open:shadow-md">
             <summary class="flex items-center justify-between font-semibold text-sm sm:text-base text-slate-900 dark:text-white cursor-pointer list-none select-none">
               <span>{faq.question}</span>
               <span class="ml-4 flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 group-open:rotate-180 transition-transform duration-200">
@@ -820,44 +911,44 @@ const presets = [
       <div class="flex flex-wrap justify-center gap-3">
         <a
           href="/tools/remove-extra-spaces/"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-emerald-500 dark:hover:border-emerald-500 transition-all duration-150"
         >
-          <ToolIcon name="space" class="w-4 h-4 text-purple-500" />
+          <ToolIcon name="space" class="w-4 h-4 text-emerald-500" />
           <span>Remove Extra Spaces</span>
         </a>
         <a
           href="/tools/remove-duplicate-lines/"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-emerald-500 dark:hover:border-emerald-500 transition-all duration-150"
         >
-          <ToolIcon name="list-filter" class="w-4 h-4 text-purple-500" />
+          <ToolIcon name="list-filter" class="w-4 h-4 text-emerald-500" />
           <span>Remove Duplicate Lines</span>
         </a>
         <a
           href="/tools/text-case-converter/"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-emerald-500 dark:hover:border-emerald-500 transition-all duration-150"
         >
-          <ToolIcon name="case-upper" class="w-4 h-4 text-purple-500" />
+          <ToolIcon name="case-upper" class="w-4 h-4 text-emerald-500" />
           <span>Text Case Converter</span>
         </a>
         <a
           href="/tools/remove-line-breaks/"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-emerald-500 dark:hover:border-emerald-500 transition-all duration-150"
         >
-          <ToolIcon name="wrap-text" class="w-4 h-4 text-purple-500" />
+          <ToolIcon name="wrap-text" class="w-4 h-4 text-emerald-500" />
           <span>Remove Line Breaks</span>
         </a>
         <a
           href="/tools/find-and-replace-text/"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-emerald-500 dark:hover:border-emerald-500 transition-all duration-150"
         >
-          <ToolIcon name="replace" class="w-4 h-4 text-purple-500" />
+          <ToolIcon name="replace" class="w-4 h-4 text-emerald-500" />
           <span>Find &amp; Replace Text</span>
         </a>
         <a
           href="/tools/text-to-slug-converter/"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-emerald-500 dark:hover:border-emerald-500 transition-all duration-150"
         >
-          <ToolIcon name="link-2" class="w-4 h-4 text-purple-500" />
+          <ToolIcon name="link-2" class="w-4 h-4 text-emerald-500" />
           <span>Text to Slug Converter</span>
         </a>
       </div>
@@ -895,36 +986,6 @@ const presets = [
     const statLinesSaved = document.getElementById('stat-lines-saved');
     const statReductionPct = document.getElementById('stat-reduction-pct');
     const statusLinesRemoved = document.getElementById('status-lines-removed');
-
-    const presetButtons = document.querySelectorAll('.preset-card-btn');
-
-    // Preset Data map
-    const presetMap = {
-      'preset-strip-all': {
-        options: { whitespaceOnly: true, trimEdges: true, collapseBlanks: false },
-        sample: 'Paragraph one contains primary analysis.\n\n\n\nParagraph two follows several accidental line returns.\n\n\nParagraph three concludes the summary.'
-      },
-      'preset-collapse-double': {
-        options: { whitespaceOnly: true, trimEdges: true, collapseBlanks: true },
-        sample: 'Chapter 1: The Beginning\n\n\n\n\nIt was a crisp autumn morning in the mountains.\n\n\n\n\nLeaves drifted softly across the cobblestone pathway.\n\n\n\nThe adventure was about to start.'
-      },
-      'preset-whitespace-lines': {
-        options: { whitespaceOnly: true, trimEdges: true, collapseBlanks: false },
-        sample: 'User Data Record:\n   \nID: 9021\n\t\t\t\nStatus: Active\n     \nRole: Administrator'
-      },
-      'preset-source-code': {
-        options: { whitespaceOnly: true, trimEdges: true, collapseBlanks: false },
-        sample: 'import express from \'express\';\n\n\nconst app = express();\n\n\nconst PORT = process.env.PORT || 3000;\n\n\napp.get(\'/api\', (req, res) => {\n\n  res.json({ status: \'ok\' });\n\n});'
-      },
-      'preset-markdown-breaks': {
-        options: { whitespaceOnly: true, trimEdges: true, collapseBlanks: true },
-        sample: '# Documentation\n\n\n\n## Getting Started\n\n\n\nRun the quickstart installer:\n\n\n\n```bash\nnpm install fast-tool\n```\n\n\n\n## Configuration'
-      },
-      'preset-pdf-text': {
-        options: { whitespaceOnly: true, trimEdges: true, collapseBlanks: false },
-        sample: 'The study examined fifty participants across\n\n\nthree separate test phases.\n\n\n\nAll results confirmed statistical significance\n\n\nwith p < 0.01 across each trial run.'
-      }
-    };
 
     function countWords(str) {
       if (!str || !str.trim()) return 0;
@@ -1122,31 +1183,6 @@ const presets = [
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-    });
-
-    // Preset Buttons
-    presetButtons.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        const id = btn.getAttribute('data-preset');
-        const data = presetMap[id];
-        if (!data) return;
-
-        optWhitespaceOnly.checked = data.options.whitespaceOnly;
-        optTrimEdges.checked = data.options.trimEdges;
-        optCollapseBlanks.checked = data.options.collapseBlanks;
-
-        if (data.sample) {
-          inputText.value = data.sample;
-        }
-
-        update();
-
-        // Scroll to editor
-        const studio = document.getElementById('input-text');
-        if (studio) {
-          studio.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      });
     });
 
     // Initial update on page load

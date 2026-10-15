@@ -1,0 +1,1232 @@
+---
+// src/components/RemoveDuplicateLinesPresetView.astro
+import ToolIcon from './ToolIcon.astro';
+import PopularRemoveDuplicateLines from './PopularRemoveDuplicateLines.astro';
+import type { DuplicateLinesPreset } from '../data/duplicateLinesPresets';
+
+interface Props {
+  preset: DuplicateLinesPreset;
+}
+
+const { preset } = Astro.props;
+---
+
+<div class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen">
+  
+  <!-- 2. Hero Section (H1 exact keyword target, Subtitle strictly 20-25 words) -->
+  <section class="relative pt-10 pb-6 sm:pt-14 sm:pb-8 overflow-hidden font-sans">
+    <div class="hero-mesh-bg" aria-hidden="true"></div>
+
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center font-sans">
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" class="mb-5 flex justify-center">
+        <ol class="inline-flex items-center space-x-1.5 md:space-x-2 text-xs font-medium text-slate-500 dark:text-slate-400">
+          <li class="inline-flex items-center">
+            <a href="/" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Home</a>
+          </li>
+          <li>
+            <div class="flex items-center">
+              <svg class="w-3 h-3 text-slate-400 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <a href="/#text-tools-section" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Text &amp; Formatting</a>
+            </div>
+          </li>
+          <li>
+            <div class="flex items-center">
+              <svg class="w-3 h-3 text-slate-400 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <a href="/remove-duplicate-lines/" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Remove Duplicate Lines</a>
+            </div>
+          </li>
+          <li aria-current="page">
+            <div class="flex items-center">
+              <svg class="w-3 h-3 text-slate-400 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="text-slate-900 dark:text-white font-semibold truncate max-w-[200px] sm:max-w-none">{preset.name || preset.h1}</span>
+            </div>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- H1 Title -->
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight font-sans">
+        {preset.h1}
+      </h1>
+
+      <!-- Subtitle (strictly 20-25 words) -->
+      <p class="mt-3 sm:mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed font-sans">
+        {preset.subtitle}
+      </p>
+    </div>
+  </section>
+
+  <!-- 3. Interactive Workspace Studio (Dual editor with glowing pill toggles, line counts, duplicate badge) -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 font-sans">
+    <div class="rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl overflow-hidden transition-colors">
+      
+      <!-- Top Options & Controls Bar -->
+      <div class="p-5 sm:p-6 border-b border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-900/90 space-y-4">
+        
+        <!-- Row 1: Mode Switcher & Action Buttons -->
+        <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4">
+          <div class="flex flex-col sm:flex-row sm:items-center gap-2.5">
+            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider font-sans shrink-0">
+              Extraction Mode:
+            </span>
+            <div class="inline-flex p-1 rounded-xl bg-slate-200/70 dark:bg-slate-950/80 border border-slate-300 dark:border-slate-800 gap-1 overflow-x-auto max-w-full">
+              <button
+                type="button"
+                class={`mode-pill-btn px-3 py-1.5 text-xs rounded-lg font-medium transition-all cursor-pointer whitespace-nowrap ${preset.options.mode === 'unique' ? 'bg-emerald-600 text-white shadow-xs font-semibold' : 'text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-300/50 dark:hover:bg-slate-800/60'}`}
+                data-mode="unique"
+              >
+                Unique Lines
+              </button>
+              <button
+                type="button"
+                class={`mode-pill-btn px-3 py-1.5 text-xs rounded-lg font-medium transition-all cursor-pointer whitespace-nowrap ${preset.options.mode === 'duplicates-only' ? 'bg-emerald-600 text-white shadow-xs font-semibold' : 'text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-300/50 dark:hover:bg-slate-800/60'}`}
+                data-mode="duplicates-only"
+              >
+                Duplicates Only
+              </button>
+              <button
+                type="button"
+                class={`mode-pill-btn px-3 py-1.5 text-xs rounded-lg font-medium transition-all cursor-pointer whitespace-nowrap ${preset.options.mode === 'completely-unique' ? 'bg-emerald-600 text-white shadow-xs font-semibold' : 'text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-300/50 dark:hover:bg-slate-800/60'}`}
+                data-mode="completely-unique"
+              >
+                Completely Unique
+              </button>
+              <button
+                type="button"
+                class={`mode-pill-btn px-3 py-1.5 text-xs rounded-lg font-medium transition-all cursor-pointer whitespace-nowrap ${preset.options.mode === 'count-occurrences' ? 'bg-emerald-600 text-white shadow-xs font-semibold' : 'text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-300/50 dark:hover:bg-slate-800/60'}`}
+                data-mode="count-occurrences"
+              >
+                Count Occurrences
+              </button>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex items-center gap-2.5 shrink-0 self-start xl:self-auto">
+            <button
+              type="button"
+              id="btn-sample"
+              class="px-3.5 py-2 text-xs font-semibold rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer shadow-2xs font-sans"
+            >
+              Load Sample
+            </button>
+            <button
+              type="button"
+              id="btn-dedupe"
+              class="px-5 py-2 text-xs sm:text-sm font-semibold rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/20 active:scale-95 transition-all flex items-center gap-2 cursor-pointer font-sans"
+            >
+              <ToolIcon name="list-filter" class="w-4 h-4 text-white" />
+              <span>Remove Duplicates</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Row 2: Glowing Pill Checkboxes & Sort -->
+        <div class="pt-3 border-t border-slate-200/80 dark:border-slate-800/80 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div class="flex flex-wrap items-center gap-2 sm:gap-2.5">
+            <label class="group inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-950/50 text-slate-700 dark:text-slate-300 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 transition-all cursor-pointer text-xs font-sans select-none has-[:checked]:border-emerald-500/60 has-[:checked]:bg-emerald-50 dark:has-[:checked]:bg-emerald-950/30 has-[:checked]:text-emerald-700 dark:has-[:checked]:text-emerald-300 has-[:checked]:shadow-xs">
+              <input
+                type="checkbox"
+                id="opt-case-sensitive"
+                checked={preset.options.caseSensitive}
+                class="w-3.5 h-3.5 rounded text-emerald-600 focus:ring-emerald-500 dark:bg-slate-800 border-slate-300 dark:border-slate-700 cursor-pointer accent-emerald-600"
+              />
+              <span class="font-medium">Case-sensitive comparison (<span class="font-mono text-[11px]">Aa ≠ aa</span>)</span>
+            </label>
+
+            <label class="group inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-950/50 text-slate-700 dark:text-slate-300 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 transition-all cursor-pointer text-xs font-sans select-none has-[:checked]:border-emerald-500/60 has-[:checked]:bg-emerald-50 dark:has-[:checked]:bg-emerald-950/30 has-[:checked]:text-emerald-700 dark:has-[:checked]:text-emerald-300 has-[:checked]:shadow-xs">
+              <input
+                type="checkbox"
+                id="opt-trim-lines"
+                checked={preset.options.trimLines}
+                class="w-3.5 h-3.5 rounded text-emerald-600 focus:ring-emerald-500 dark:bg-slate-800 border-slate-300 dark:border-slate-700 cursor-pointer accent-emerald-600"
+              />
+              <span class="font-medium">Trim edge whitespace</span>
+            </label>
+
+            <label class="group inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-950/50 text-slate-700 dark:text-slate-300 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 transition-all cursor-pointer text-xs font-sans select-none has-[:checked]:border-emerald-500/60 has-[:checked]:bg-emerald-50 dark:has-[:checked]:bg-emerald-950/30 has-[:checked]:text-emerald-700 dark:has-[:checked]:text-emerald-300 has-[:checked]:shadow-xs">
+              <input
+                type="checkbox"
+                id="opt-empty-lines"
+                checked={preset.options.emptyLines}
+                class="w-3.5 h-3.5 rounded text-emerald-600 focus:ring-emerald-500 dark:bg-slate-800 border-slate-300 dark:border-slate-700 cursor-pointer accent-emerald-600"
+              />
+              <span class="font-medium">Remove empty / blank lines</span>
+            </label>
+
+            <label class="group inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-950/50 text-slate-700 dark:text-slate-300 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 transition-all cursor-pointer text-xs font-sans select-none has-[:checked]:border-emerald-500/60 has-[:checked]:bg-emerald-50 dark:has-[:checked]:bg-emerald-950/30 has-[:checked]:text-emerald-700 dark:has-[:checked]:text-emerald-300 has-[:checked]:shadow-xs">
+              <input
+                type="checkbox"
+                id="opt-ignore-punctuation"
+                checked={preset.options.ignorePunctuation}
+                class="w-3.5 h-3.5 rounded text-emerald-600 focus:ring-emerald-500 dark:bg-slate-800 border-slate-300 dark:border-slate-700 cursor-pointer accent-emerald-600"
+              />
+              <span class="font-medium">Ignore punctuation & symbols</span>
+            </label>
+          </div>
+
+          <div class="flex items-center gap-2 shrink-0">
+            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider font-sans">
+              Sort:
+            </span>
+            <select
+              id="select-sort"
+              class="px-3 py-1.5 text-xs font-medium rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition cursor-pointer font-sans"
+            >
+              <option value="original" selected={preset.options.sort === 'original'}>Original Order (Input Flow)</option>
+              <option value="alpha-asc" selected={preset.options.sort === 'alpha-asc'}>Alphabetical (A → Z)</option>
+              <option value="alpha-desc" selected={preset.options.sort === 'alpha-desc'}>Reverse Alphabetical (Z → A)</option>
+              <option value="length-asc" selected={preset.options.sort === 'length-asc'}>Length (Shortest First)</option>
+              <option value="freq-desc" selected={preset.options.sort === 'freq-desc'}>Frequency (Most Repeated First)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Row 3: Delimiter Joiner -->
+        <div class="pt-3 border-t border-slate-200/80 dark:border-slate-800/80 flex flex-wrap items-center gap-3">
+          <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider font-sans shrink-0">
+            Output Delimiter:
+          </span>
+          <div class="flex flex-wrap items-center gap-3 text-xs sm:text-sm font-sans">
+            <label class="inline-flex items-center gap-1.5 cursor-pointer text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+              <input
+                type="radio"
+                name="delimiter-mode"
+                value="newline"
+                checked={preset.options.delimiter === 'newline'}
+                class="w-4 h-4 text-emerald-600 focus:ring-emerald-500 dark:bg-slate-800 border-slate-300 dark:border-slate-700 cursor-pointer accent-emerald-600"
+              />
+              <span class="font-medium">Newline (<span class="font-mono text-[11px]">\n</span>)</span>
+            </label>
+
+            <label class="inline-flex items-center gap-1.5 cursor-pointer text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+              <input
+                type="radio"
+                name="delimiter-mode"
+                value="comma"
+                checked={preset.options.delimiter === 'comma'}
+                class="w-4 h-4 text-emerald-600 focus:ring-emerald-500 dark:bg-slate-800 border-slate-300 dark:border-slate-700 cursor-pointer accent-emerald-600"
+              />
+              <span class="font-medium">Comma (<span class="font-mono text-[11px]">, </span>) [CSV]</span>
+            </label>
+
+            <label class="inline-flex items-center gap-1.5 cursor-pointer text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+              <input
+                type="radio"
+                name="delimiter-mode"
+                value="semicolon"
+                checked={preset.options.delimiter === 'semicolon'}
+                class="w-4 h-4 text-emerald-600 focus:ring-emerald-500 dark:bg-slate-800 border-slate-300 dark:border-slate-700 cursor-pointer accent-emerald-600"
+              />
+              <span class="font-medium">Semicolon (<span class="font-mono text-[11px] font-semibold">; </span>)</span>
+            </label>
+
+            <div class="inline-flex items-center gap-1.5">
+              <label class="inline-flex items-center gap-1.5 cursor-pointer text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+                <input
+                  type="radio"
+                  name="delimiter-mode"
+                  value="custom"
+                  id="mode-custom-delimiter-radio"
+                  checked={preset.options.delimiter === 'custom'}
+                  class="w-4 h-4 text-emerald-600 focus:ring-emerald-500 dark:bg-slate-800 border-slate-300 dark:border-slate-700 cursor-pointer accent-emerald-600"
+                />
+                <span class="font-medium">Custom:</span>
+              </label>
+              <input
+                type="text"
+                id="input-custom-delimiter"
+                placeholder="e.g. | or \t"
+                value={preset.options.customDelimiter || ""}
+                class="w-24 px-2 py-1 text-xs font-mono rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition"
+              />
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Dual Textarea Studio -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-slate-200 dark:divide-slate-800">
+        
+        <!-- Left: Input Area -->
+        <div class="p-4 sm:p-5 flex flex-col space-y-3 bg-slate-50/40 dark:bg-slate-900/40">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 font-sans">
+              Input Text
+            </span>
+            <div class="flex items-center gap-2 font-sans">
+              <button
+                type="button"
+                id="btn-paste"
+                class="px-2.5 py-1 text-xs font-medium rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
+                title="Paste from clipboard"
+              >
+                <svg class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+                <span>Paste</span>
+              </button>
+              <button
+                type="button"
+                id="btn-clear"
+                class="px-2.5 py-1 text-xs font-medium rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-rose-50 dark:hover:bg-rose-950/40 hover:border-rose-300 dark:hover:border-rose-800 text-slate-700 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
+                title="Clear input text"
+              >
+                <svg class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+                <span>Clear</span>
+              </button>
+            </div>
+          </div>
+
+          <textarea
+            id="input-text"
+            rows="14"
+            placeholder="Paste your text list here, or click 'Load Sample'..."
+            class="w-full p-4 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-950 font-sans text-slate-800 dark:text-slate-200 text-sm leading-relaxed placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition resize-y min-h-[340px]"
+            spellcheck="false"
+          ></textarea>
+
+          <!-- Input Stats Strip -->
+          <div class="pt-2 px-1 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-sans">
+            <div class="flex items-center gap-1.5 sm:gap-2">
+              <span><strong id="stat-input-lines" class="font-semibold text-slate-800 dark:text-slate-200">0</strong> Lines</span>
+              <span class="text-slate-300 dark:text-slate-700">·</span>
+              <span><strong id="stat-input-chars" class="font-semibold text-slate-800 dark:text-slate-200">0</strong> Chars</span>
+              <span class="text-slate-300 dark:text-slate-700">·</span>
+              <span><strong id="stat-input-words" class="font-semibold text-slate-800 dark:text-slate-200">0</strong> Words</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Output Area -->
+        <div class="p-4 sm:p-5 flex flex-col space-y-3 bg-slate-50/40 dark:bg-slate-900/40">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 font-sans">
+                Cleaned Result
+              </span>
+              <span
+                id="status-duplicates-badge"
+                class="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs px-2.5 py-0.5 rounded-full font-medium font-sans"
+              >
+                0 duplicates removed
+              </span>
+            </div>
+
+            <div class="flex items-center gap-2 font-sans">
+              <button
+                type="button"
+                id="btn-copy"
+                class="px-3 py-1 text-xs font-semibold rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
+                title="Copy cleaned result"
+              >
+                <svg id="copy-icon-idle" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+                </svg>
+                <svg id="copy-icon-success" class="w-3.5 h-3.5 hidden text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span id="copy-btn-text">Copy</span>
+              </button>
+
+              <button
+                type="button"
+                id="btn-download"
+                class="px-2.5 py-1 text-xs font-medium rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
+                title="Download as .txt"
+              >
+                <svg class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                <span>Download .txt</span>
+              </button>
+            </div>
+          </div>
+
+          <textarea
+            id="output-text"
+            rows="14"
+            placeholder="Deduplicated results will appear here in real time..."
+            class="w-full p-4 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-950 font-sans text-slate-800 dark:text-slate-200 text-sm leading-relaxed placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition resize-y min-h-[340px]"
+            spellcheck="false"
+          ></textarea>
+
+          <!-- Output Stats Strip -->
+          <div class="pt-2 px-1 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-sans">
+            <div class="flex items-center gap-1.5 sm:gap-2">
+              <span><strong id="stat-output-lines" class="font-semibold text-slate-800 dark:text-slate-200">0</strong> Lines</span>
+              <span class="text-slate-300 dark:text-slate-700">·</span>
+              <span><strong id="stat-output-chars" class="font-semibold text-slate-800 dark:text-slate-200">0</strong> Chars</span>
+              <span class="text-slate-300 dark:text-slate-700">·</span>
+              <span><strong id="stat-output-words" class="font-semibold text-slate-800 dark:text-slate-200">0</strong> Words</span>
+            </div>
+            <div class="text-emerald-600 dark:text-emerald-400 font-medium text-xs flex items-center gap-1">
+              <span>Saved:</span>
+              <span id="stat-reduction-pct">0%</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Bottom Intent Card (Glassmorphism slate-900/60 container, 50-60 words specific intent) -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 font-sans">
+    <div class="max-w-4xl mx-auto p-4 md:p-5 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 text-sm md:text-base leading-relaxed text-center shadow-lg backdrop-blur-sm">
+      <p>{preset.intentCard}</p>
+    </div>
+  </section>
+
+  <!-- 5. 3-Step Guide ("How to ... in 3 Simple Steps") -->
+  <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-16 sm:py-20 font-sans">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          How to Clean {preset.name} in 3 Simple Steps
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          Clean messy lists, purge repeated entries, and format results in seconds.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        <!-- Step 1 -->
+        <div class="p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-emerald-500 transition-all duration-150 relative">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-emerald-100 dark:border-emerald-900/50">
+            01
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Paste Your Text List
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Copy text from your editor, spreadsheet, or log files and paste it into the input workspace with <kbd class="px-1.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">Ctrl+V</kbd> or click <strong>Paste</strong>.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-emerald-500 transition-all duration-150 relative">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-emerald-100 dark:border-emerald-900/50">
+            02
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Configure Deduplication Rules
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Choose your extraction mode (unique, duplicates only, count occurrences), normalize edge whitespace, ignore symbols, or sort alphabetically in real time.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-emerald-500 transition-all duration-150 relative">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-emerald-100 dark:border-emerald-900/50">
+            03
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Format, Copy, or Download
+          </h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Reformat output with instant commas, semicolons, or custom delimiters, then click <strong>Copy</strong> or download as a sanitized <strong>.txt</strong> file with one click.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. 6-Card Features & Capabilities Grid -->
+  <section class="border-t border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950 py-16 sm:py-20 font-sans">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Why Choose FastToolVerse
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          Built for developer precision, complete data privacy, and instantaneous text deduplication.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Feature 1 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 border border-emerald-100 dark:border-emerald-900/50">
+            <ToolIcon name="shield-check" class="w-5 h-5" />
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            100% Client-Side Privacy
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            All hashing and text parsing execute strictly inside your local browser memory sandbox. Zero bytes ever travel to any cloud server.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 border border-emerald-100 dark:border-emerald-900/50">
+            <ToolIcon name="zap" class="w-5 h-5" />
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Instant 0ms RAM Processing
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Linear O(N) Hash Sets execute in microseconds. Eliminates server queues, network delays, and tedious page reloads.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 border border-emerald-100 dark:border-emerald-900/50">
+            <ToolIcon name="crop" class="w-5 h-5" />
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Zero File &amp; Line Limits
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Deduplicate 50,000+ line server logs, database exports, or email lists without encountering paywalls, line caps, or subscription tiers.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 border border-emerald-100 dark:border-emerald-900/50">
+            <ToolIcon name="search" class="w-5 h-5" />
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Case &amp; Whitespace Normalization
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Normalizes accidental trailing spaces, tabs, and mixed capitalization before hashing, preventing false-positive duplicate retention.
+          </p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 border border-emerald-100 dark:border-emerald-900/50">
+            <ToolIcon name="code" class="w-5 h-5" />
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Indentation &amp; Order Retention
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Preserves chronological input flow by default. Retains exact indentation formatting for Python source code, YAML configurations, and JSON.
+          </p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 border border-emerald-100 dark:border-emerald-900/50">
+            <ToolIcon name="globe" class="w-5 h-5" />
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Free Forever &amp; Offline Ready
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            No accounts, passwords, or cookies required. Load the tool once and continue deduplicating text even with your internet connection disabled.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Popular Presets Directory Grid (Cross-linking to all other duplicate line presets) -->
+  <PopularRemoveDuplicateLines currentSlug={preset.slug} />
+
+  <!-- 8. Why Choose FastToolVerse vs Cloud Tools (Comparison Table with emerald badges) -->
+  <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/60 py-16 sm:py-24 font-sans">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Why Choose FastToolVerse vs Generic Cloud Tools
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          Compare our client-side memory architecture against typical server-dependent utilities.
+        </p>
+      </div>
+
+      <!-- Comparison Card / Table -->
+      <div class="overflow-hidden rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+        
+        <!-- Table Header -->
+        <div class="grid grid-cols-12 border-b border-slate-200 dark:border-slate-800 bg-slate-100/70 dark:bg-slate-900/90 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300">
+          <div class="col-span-4 p-4 sm:p-5 flex items-center">
+            <span>Capability / Feature</span>
+          </div>
+          <div class="col-span-4 p-4 sm:p-5 bg-emerald-50/60 dark:bg-emerald-950/30 border-x border-emerald-100 dark:border-emerald-900/40 text-emerald-700 dark:text-emerald-300 flex items-center justify-between">
+            <span class="font-bold flex items-center gap-1.5">
+              FastToolVerse
+              <span class="hidden sm:inline-block px-2 py-0.5 text-[11px] font-medium bg-emerald-600 text-white rounded-full">Recommended</span>
+            </span>
+            <span class="text-xs text-emerald-600 dark:text-emerald-400 font-normal hidden md:inline">This Tool</span>
+          </div>
+          <div class="col-span-4 p-4 sm:p-5 text-slate-500 dark:text-slate-400 flex items-center">
+            <span>Generic Cloud Tools</span>
+          </div>
+        </div>
+
+        <!-- Row 1: Privacy -->
+        <div class="grid grid-cols-12 border-b border-slate-200 dark:border-slate-800/80 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+          <div class="col-span-12 sm:col-span-4 p-4 sm:p-5 flex flex-col justify-center">
+            <span class="font-semibold text-sm text-slate-900 dark:text-white">Data Privacy Architecture</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Where your text is processed</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-emerald-50/30 dark:bg-emerald-950/15 border-r sm:border-x border-emerald-100 dark:border-emerald-900/30 flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">100% In-Browser Memory</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Pure client JavaScript. Zero server uploads, no telemetry logs, confidential data never leaves local RAM.</p>
+            </div>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Remote Cloud Server Transit</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Transmits confidential articles, source code, and customer records to third-party web servers.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Latency -->
+        <div class="grid grid-cols-12 border-b border-slate-200 dark:border-slate-800/80 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+          <div class="col-span-12 sm:col-span-4 p-4 sm:p-5 flex flex-col justify-center">
+            <span class="font-semibold text-sm text-slate-900 dark:text-white">Execution Latency</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Speed of deduplication updates</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-emerald-50/30 dark:bg-emerald-950/15 border-r sm:border-x border-emerald-100 dark:border-emerald-900/30 flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">Instant 0ms O(N) Hash Set Speed</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Deduplicates live as you type or paste without page reloads or waiting for network round-trips.</p>
+            </div>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Server Queue Delay &amp; Ads</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Unnecessary page reloads, advertising interstitials, and network latency on every submission.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3: Capacity -->
+        <div class="grid grid-cols-12 border-b border-slate-200 dark:border-slate-800/80 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+          <div class="col-span-12 sm:col-span-4 p-4 sm:p-5 flex flex-col justify-center">
+            <span class="font-semibold text-sm text-slate-900 dark:text-white">Dataset Capacity</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Maximum lines supported</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-emerald-50/30 dark:bg-emerald-950/15 border-r sm:border-x border-emerald-100 dark:border-emerald-900/30 flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">Zero Server Payload Limits</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Processes up to 50,000+ lines using your machine's hardware memory without arbitrary API payload restrictions.</p>
+            </div>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Strict Request Limits</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Often throttled at 1MB payloads or 5,000 lines with premium subscription paywalls for larger documents.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 4: Rule Flexibility -->
+        <div class="grid grid-cols-12 border-b border-slate-200 dark:border-slate-800/80 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+          <div class="col-span-12 sm:col-span-4 p-4 sm:p-5 flex flex-col justify-center">
+            <span class="font-semibold text-sm text-slate-900 dark:text-white">Rule &amp; Extraction Flexibility</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Granular normalization &amp; filtering</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-emerald-50/30 dark:bg-emerald-950/15 border-r sm:border-x border-emerald-100 dark:border-emerald-900/30 flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">4 Extraction Modes + 5 Sorters + Delimiters</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Extract duplicates only, completely unique lines, occurrence counters, punctuation ignoring, and CSV delimiters.</p>
+            </div>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Basic Single Filter Only</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Rarely offers whitespace trimming, delimiter joiners, or frequency counting, failing on edge discrepancies.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 5: Offline Ready -->
+        <div class="grid grid-cols-12 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
+          <div class="col-span-12 sm:col-span-4 p-4 sm:p-5 flex flex-col justify-center">
+            <span class="font-semibold text-sm text-slate-900 dark:text-white">Offline Capability</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Operates without active internet</span>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-emerald-50/30 dark:bg-emerald-950/15 border-r sm:border-x border-emerald-100 dark:border-emerald-900/30 flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">100% Offline Compatible</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Disconnect Wi-Fi after page load and all deduplication features continue to execute smoothly.</p>
+            </div>
+          </div>
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-full bg-rose-100 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Requires Constant Connection</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Fails completely if network connectivity drops or remote web servers experience downtime.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 9. Technical Architecture & Privacy Matrix (4-card container) -->
+  <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-900/20 py-12 sm:py-14 font-sans">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-6 sm:p-8 shadow-sm">
+        <div class="flex items-center gap-3.5 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center border border-emerald-100 dark:border-emerald-900/50 shrink-0">
+            <ToolIcon name="shield-check" class="w-5 h-5" />
+          </div>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Your Data &amp; Local Privacy
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
+              Enterprise-grade client sandbox isolation with zero remote data transmission.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4 mt-6">
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800/80">
+            <div class="flex items-start gap-3">
+              <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-xs shrink-0 mt-0.5">✓</span>
+              <div>
+                <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100 mb-1">
+                  100% Local In-Browser Processing
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Your text is processed strictly inside your device's memory using client-side JavaScript. Zero bytes ever leave your machine, touch a cloud database, or transit across the internet.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800/80">
+            <div class="flex items-start gap-3">
+              <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-xs shrink-0 mt-0.5">✓</span>
+              <div>
+                <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100 mb-1">
+                  Instant Memory Garbage Collection
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Temporary string buffers are immediately deallocated by your browser's V8 engine the instant you clear the workspace, navigate away, or close this browser tab.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800/80">
+            <div class="flex items-start gap-3">
+              <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-xs shrink-0 mt-0.5">✓</span>
+              <div>
+                <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100 mb-1">
+                  Safe for Sensitive Credentials &amp; Code
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Ideal for proprietary software source code, internal company databases, confidential customer lists, private medical transcripts, and legal contracts.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800/80">
+            <div class="flex items-start gap-3">
+              <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-xs shrink-0 mt-0.5">✓</span>
+              <div>
+                <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100 mb-1">
+                  No Telemetry or AI Model Training
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Unlike many cloud AI and text manipulation APIs, FastToolVerse does not store, log, inspect, analyze, or train machine learning models on any user content.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. In-Depth Technical Editorial Article (800-1200 words, structured with <h2>, <h3>, code snippets, algorithm comparisons, placed strictly before FAQ) -->
+  <section class="border-t border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950 py-16 sm:py-24 font-sans">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="mb-12">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/50 mb-3">
+          <ToolIcon name="code" class="w-3.5 h-3.5" />
+          <span>Technical Field Guide</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          {preset.editorialGuide.heading}
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          In-depth technical methods, keyboard shortcuts, algorithms, and native application workflows.
+        </p>
+      </div>
+
+      <div class="space-y-10">
+        {preset.editorialGuide.sections.map((section, idx) => (
+          <article class="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-900/40 shadow-sm space-y-4">
+            <div class="flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-mono font-bold flex items-center justify-center shrink-0">
+                0{idx + 1}
+              </span>
+              <h3 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+                {section.title}
+              </h3>
+            </div>
+
+            {section.paragraphs.map((p) => (
+              <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
+                {p}
+              </p>
+            ))}
+
+            {section.codeBlock && (
+              <div class="not-prose my-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 font-mono text-xs text-emerald-300 overflow-x-auto whitespace-pre">
+                <code>{section.codeBlock.code}</code>
+              </div>
+            )}
+
+            {section.bullets && section.bullets.length > 0 && (
+              <div class="pt-2 border-t border-slate-200/80 dark:border-slate-800/80">
+                <ul class="space-y-2">
+                  {section.bullets.map((b) => (
+                    <li class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-sans">
+                      <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 font-bold text-[10px] shrink-0 mt-0.5 border border-emerald-200 dark:border-emerald-900/50">✓</span>
+                      <span class="leading-relaxed">{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {section.callout && (
+              <div class="mt-4 p-4 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200/80 dark:border-emerald-900/40 text-xs sm:text-sm text-emerald-950 dark:text-emerald-200 flex items-start gap-3">
+                <ToolIcon name="zap" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                <div>
+                  <strong class="font-semibold text-emerald-900 dark:text-emerald-300">{section.callout.label}:</strong> {section.callout.text}
+                </div>
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 11. FAQ Section (Accordion with dynamic FAQPage JSON-LD Schema) -->
+  <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-16 sm:py-24 font-sans">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+          Frequently Asked Questions
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+          Practical answers for {preset.h1}.
+        </p>
+      </div>
+
+      <!-- Semantic FAQ List -->
+      <div class="space-y-4">
+        {preset.faqs.map((faq) => (
+          <details class="group rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 transition-all duration-150 shadow-sm hover:shadow-md hover:border-emerald-500 open:shadow-md">
+            <summary class="flex items-center justify-between font-semibold text-sm sm:text-base text-slate-900 dark:text-white cursor-pointer list-none select-none">
+              <span>{faq.question}</span>
+              <span class="ml-4 flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 group-open:rotate-180 transition-transform duration-200">
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </span>
+            </summary>
+            <p class="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed pt-2 border-t border-slate-200 dark:border-slate-800/80 font-sans">
+              {faq.answer}
+            </p>
+          </details>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 12. Related Text Tools Explorer (Links to Remove Line Breaks, Remove Empty Lines) -->
+  <section class="border-t border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950 py-12 sm:py-16 font-sans">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-6">
+        Explore Related Text &amp; Formatting Tools
+      </h3>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a
+          href="/remove-line-breaks/"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-emerald-500 transition-all duration-150"
+        >
+          <ToolIcon name="wrap-text" class="w-4 h-4 text-emerald-500" />
+          <span>Remove Line Breaks</span>
+        </a>
+        <a
+          href="/remove-empty-lines/"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-emerald-500 transition-all duration-150"
+        >
+          <ToolIcon name="list-x" class="w-4 h-4 text-emerald-500" />
+          <span>Remove Empty Lines</span>
+        </a>
+        <a
+          href="/remove-extra-spaces/"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-emerald-500 transition-all duration-150"
+        >
+          <ToolIcon name="space" class="w-4 h-4 text-emerald-500" />
+          <span>Remove Extra Spaces</span>
+        </a>
+        <a
+          href="/sort-text-lines/"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-emerald-500 transition-all duration-150"
+        >
+          <ToolIcon name="list-filter" class="w-4 h-4 text-emerald-500" />
+          <span>Sort Text Lines</span>
+        </a>
+        <a
+          href="/tools/find-and-replace-text/"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-emerald-500 transition-all duration-150"
+        >
+          <ToolIcon name="replace" class="w-4 h-4 text-emerald-500" />
+          <span>Find &amp; Replace Text</span>
+        </a>
+        <a
+          href="/remove-duplicate-lines/"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-emerald-500/40 bg-emerald-50/20 dark:bg-emerald-950/30 text-xs font-medium text-emerald-700 dark:text-emerald-300 shadow-sm hover:shadow-md hover:border-emerald-500 transition-all duration-150"
+        >
+          <ToolIcon name="list-filter" class="w-4 h-4 text-emerald-500" />
+          <span>Main Duplicate Line Remover</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Interactive Client-Side Workspace Script -->
+<script is:inline define:vars={{ initialSample: preset.sampleText, defaultOptions: preset.options }}>
+  (function () {
+    const inputText = document.getElementById('input-text');
+    const outputText = document.getElementById('output-text');
+    const optCaseSensitive = document.getElementById('opt-case-sensitive');
+    const optTrimLines = document.getElementById('opt-trim-lines');
+    const optEmptyLines = document.getElementById('opt-empty-lines');
+    const optIgnorePunctuation = document.getElementById('opt-ignore-punctuation');
+    const selectSort = document.getElementById('select-sort');
+    const btnDedupe = document.getElementById('btn-dedupe');
+    const btnSample = document.getElementById('btn-sample');
+    const btnPaste = document.getElementById('btn-paste');
+    const btnClear = document.getElementById('btn-clear');
+    const btnCopy = document.getElementById('btn-copy');
+    const btnDownload = document.getElementById('btn-download');
+
+    const copyBtnText = document.getElementById('copy-btn-text');
+    const copyIconIdle = document.getElementById('copy-icon-idle');
+    const copyIconSuccess = document.getElementById('copy-icon-success');
+
+    const statInputChars = document.getElementById('stat-input-chars');
+    const statInputWords = document.getElementById('stat-input-words');
+    const statInputLines = document.getElementById('stat-input-lines');
+
+    const statOutputChars = document.getElementById('stat-output-chars');
+    const statOutputLines = document.getElementById('stat-output-lines');
+    const statOutputWords = document.getElementById('stat-output-words');
+    const statReductionPct = document.getElementById('stat-reduction-pct');
+    const statusDuplicatesBadge = document.getElementById('status-duplicates-badge');
+
+    const modeButtons = document.querySelectorAll('.mode-pill-btn');
+    const delimiterRadios = document.querySelectorAll('input[name="delimiter-mode"]');
+    const inputCustomDelimiter = document.getElementById('input-custom-delimiter');
+    const modeCustomRadio = document.getElementById('mode-custom-delimiter-radio');
+
+    let currentMode = defaultOptions.mode || 'unique';
+
+    // Extraction Mode pill switching
+    modeButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        modeButtons.forEach((b) => {
+          b.classList.remove('bg-emerald-600', 'text-white', 'shadow-xs', 'font-semibold');
+          b.classList.add('text-slate-700', 'dark:text-slate-300');
+        });
+        btn.classList.remove('text-slate-700', 'dark:text-slate-300');
+        btn.classList.add('bg-emerald-600', 'text-white', 'shadow-xs', 'font-semibold');
+        currentMode = btn.getAttribute('data-mode') || 'unique';
+        processDeduplication();
+      });
+    });
+
+    function getSelectedDelimiter() {
+      let selected = 'newline';
+      delimiterRadios.forEach((r) => {
+        if (r.checked) selected = r.value;
+      });
+      if (selected === 'comma') return ', ';
+      if (selected === 'semicolon') return '; ';
+      if (selected === 'custom') {
+        const val = inputCustomDelimiter ? inputCustomDelimiter.value : '';
+        return val.replace(/\\n/g, '\n').replace(/\\t/g, '\t');
+      }
+      return '\n';
+    }
+
+    if (inputCustomDelimiter) {
+      inputCustomDelimiter.addEventListener('focus', () => {
+        if (modeCustomRadio) modeCustomRadio.checked = true;
+      });
+      inputCustomDelimiter.addEventListener('input', () => {
+        if (modeCustomRadio) modeCustomRadio.checked = true;
+        processDeduplication();
+      });
+    }
+
+    delimiterRadios.forEach((r) => {
+      r.addEventListener('change', processDeduplication);
+    });
+
+    function countWords(str) {
+      if (!str) return 0;
+      return (str.trim().match(/\S+/g) || []).length;
+    }
+
+    function countLines(str) {
+      if (!str) return 0;
+      return str.split(/\r?\n/).length;
+    }
+
+    function processDeduplication() {
+      const rawText = inputText ? inputText.value : '';
+      if (!rawText) {
+        if (outputText) outputText.value = '';
+        updateStats('', '');
+        return;
+      }
+
+      const caseSensitive = optCaseSensitive ? optCaseSensitive.checked : true;
+      const trimLines = optTrimLines ? optTrimLines.checked : true;
+      const removeEmpty = optEmptyLines ? optEmptyLines.checked : true;
+      const ignorePunct = optIgnorePunctuation ? optIgnorePunctuation.checked : false;
+      const sortMode = selectSort ? selectSort.value : 'original';
+      const delimiter = getSelectedDelimiter();
+
+      const rawLines = rawText.split(/\r?\n/);
+      
+      const lineMap = new Map();
+      const firstEncountered = [];
+
+      for (let i = 0; i < rawLines.length; i++) {
+        let line = rawLines[i];
+        if (trimLines) line = line.trim();
+        if (removeEmpty && !line) continue;
+
+        let key = caseSensitive ? line : line.toLowerCase();
+        if (ignorePunct) {
+          key = key.replace(/[^\p{L}\p{N}\s]/gu, '');
+        }
+
+        if (!lineMap.has(key)) {
+          lineMap.set(key, { original: line, count: 1, firstIndex: i });
+          firstEncountered.push(key);
+        } else {
+          lineMap.get(key).count += 1;
+        }
+      }
+
+      let resultLines = [];
+
+      if (currentMode === 'unique') {
+        resultLines = firstEncountered.map((k) => lineMap.get(k).original);
+      } else if (currentMode === 'duplicates-only') {
+        resultLines = firstEncountered
+          .filter((k) => lineMap.get(k).count > 1)
+          .map((k) => lineMap.get(k).original);
+      } else if (currentMode === 'completely-unique') {
+        resultLines = firstEncountered
+          .filter((k) => lineMap.get(k).count === 1)
+          .map((k) => lineMap.get(k).original);
+      } else if (currentMode === 'count-occurrences') {
+        resultLines = firstEncountered.map((k) => {
+          const entry = lineMap.get(k);
+          return `[${entry.count}x] ${entry.original}`;
+        });
+      }
+
+      // Sorting
+      if (sortMode === 'alpha-asc') {
+        resultLines.sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }));
+      } else if (sortMode === 'alpha-desc') {
+        resultLines.sort((a, b) => b.localeCompare(a, undefined, { numeric: true, sensitivity: 'base' }));
+      } else if (sortMode === 'length-asc') {
+        resultLines.sort((a, b) => a.length - b.length || a.localeCompare(b));
+      } else if (sortMode === 'freq-desc') {
+        resultLines.sort((a, b) => {
+          const keyA = caseSensitive ? a : a.toLowerCase();
+          const keyB = caseSensitive ? b : b.toLowerCase();
+          const countA = lineMap.get(keyA) ? lineMap.get(keyA).count : 1;
+          const countB = lineMap.get(keyB) ? lineMap.get(keyB).count : 1;
+          return countB - countA || a.localeCompare(b);
+        });
+      }
+
+      const finalOutput = resultLines.join(delimiter);
+      if (outputText) outputText.value = finalOutput;
+      updateStats(rawText, finalOutput, rawLines.length, resultLines.length);
+    }
+
+    function updateStats(inStr, outStr, inLinesCount, outLinesCount) {
+      const inChars = inStr ? inStr.length : 0;
+      const inWords = countWords(inStr);
+      const inLines = inLinesCount !== undefined ? inLinesCount : (inStr ? countLines(inStr) : 0);
+
+      const outChars = outStr ? outStr.length : 0;
+      const outWords = countWords(outStr);
+      const outLines = outLinesCount !== undefined ? outLinesCount : (outStr ? countLines(outStr) : 0);
+
+      const saved = Math.max(0, inLines - outLines);
+      const pct = inLines > 0 ? Math.round((saved / inLines) * 100) : 0;
+
+      if (statInputLines) statInputLines.textContent = inLines.toLocaleString();
+      if (statInputChars) statInputChars.textContent = inChars.toLocaleString();
+      if (statInputWords) statInputWords.textContent = inWords.toLocaleString();
+
+      if (statOutputLines) statOutputLines.textContent = outLines.toLocaleString();
+      if (statOutputChars) statOutputChars.textContent = outChars.toLocaleString();
+      if (statOutputWords) statOutputWords.textContent = outWords.toLocaleString();
+
+      if (statReductionPct) statReductionPct.textContent = `${pct}% Saved`;
+      if (statusDuplicatesBadge) {
+        statusDuplicatesBadge.textContent = `${saved.toLocaleString()} duplicates removed`;
+      }
+    }
+
+    // Event listeners
+    if (inputText) {
+      inputText.addEventListener('input', processDeduplication);
+    }
+    if (optCaseSensitive) optCaseSensitive.addEventListener('change', processDeduplication);
+    if (optTrimLines) optTrimLines.addEventListener('change', processDeduplication);
+    if (optEmptyLines) optEmptyLines.addEventListener('change', processDeduplication);
+    if (optIgnorePunctuation) optIgnorePunctuation.addEventListener('change', processDeduplication);
+    if (selectSort) selectSort.addEventListener('change', processDeduplication);
+    if (btnDedupe) btnDedupe.addEventListener('click', processDeduplication);
+
+    if (btnSample && inputText) {
+      btnSample.addEventListener('click', () => {
+        inputText.value = initialSample || "";
+        processDeduplication();
+      });
+    }
+
+    if (btnClear && inputText && outputText) {
+      btnClear.addEventListener('click', () => {
+        inputText.value = '';
+        outputText.value = '';
+        updateStats('', '');
+        inputText.focus();
+      });
+    }
+
+    if (btnPaste && inputText) {
+      btnPaste.addEventListener('click', async () => {
+        try {
+          const text = await navigator.clipboard.readText();
+          if (text) {
+            inputText.value = text;
+            processDeduplication();
+          }
+        } catch {
+          inputText.focus();
+        }
+      });
+    }
+
+    if (btnCopy && outputText) {
+      btnCopy.addEventListener('click', async () => {
+        const text = outputText.value;
+        if (!text) return;
+        try {
+          await navigator.clipboard.writeText(text);
+          if (copyIconIdle && copyIconSuccess && copyBtnText) {
+            copyIconIdle.classList.add('hidden');
+            copyIconSuccess.classList.remove('hidden');
+            copyBtnText.textContent = 'Copied!';
+            setTimeout(() => {
+              copyIconIdle.classList.remove('hidden');
+              copyIconSuccess.classList.add('hidden');
+              copyBtnText.textContent = 'Copy';
+            }, 2000);
+          }
+        } catch {
+          outputText.select();
+          document.execCommand('copy');
+        }
+      });
+    }
+
+    if (btnDownload && outputText) {
+      btnDownload.addEventListener('click', () => {
+        const text = outputText.value;
+        if (!text) return;
+        const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'cleaned-unique-lines.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+    }
+
+    // Initial run if preset sample is present
+    if (inputText && initialSample) {
+      inputText.value = initialSample;
+      processDeduplication();
+    }
+  })();
+</script>

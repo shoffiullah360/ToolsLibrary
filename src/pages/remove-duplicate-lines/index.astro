@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import ToolIcon from '../../components/ToolIcon.astro';
 import DuplicateLineRemover from '../../components/tools/DuplicateLineRemover.astro';
+import PopularRemoveDuplicateLines from '../../components/PopularRemoveDuplicateLines.astro';
 
 // FAQ Data for Schema and Accordion
 const faqs = [
@@ -353,6 +354,9 @@ const presets = [
 
     </div>
   </section>
+
+  <!-- Popular Presets Directory Grid -->
+  <PopularRemoveDuplicateLines />
 
   <!-- Feature Comparison Table Section -->
   <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/60 py-16 sm:py-24 font-sans">

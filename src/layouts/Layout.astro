@@ -8,14 +8,29 @@ interface Props {
   description?: string;
   canonicalUrl?: string;
   image?: string;
+  noindex?: boolean;
 }
 
 const {
   title = "FastToolVerse — Free Client-Side Developer & Image Tools",
   description = "Free, fast, and 100% private in-browser developer & image tools. Resize images, clean text, and format code with zero server uploads and zero latency.",
-  canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://fasttoolverse.com").href,
-  image = "/og-image.png"
+  canonicalUrl: propCanonicalUrl,
+  image = "/og-image.png",
+  noindex = false
 } = Astro.props;
+
+// Enforce non-www https://fasttoolverse.com and strict trailing slash for all canonical URLs
+const SITE_ORIGIN = "https://fasttoolverse.com";
+let rawPath = Astro.url.pathname;
+if (propCanonicalUrl) {
+  try {
+    rawPath = new URL(propCanonicalUrl, SITE_ORIGIN).pathname;
+  } catch {
+    rawPath = propCanonicalUrl.replace(/^https?:\/\/[^\/]+/, '');
+  }
+}
+const cleanPath = rawPath.replace(/\/+$/, '');
+const canonicalUrl = cleanPath ? `${SITE_ORIGIN}${cleanPath}/` : `${SITE_ORIGIN}/`;
 
 // Schema.org Structured Data
 const jsonLd = {
@@ -79,7 +94,7 @@ const jsonLd = {
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />

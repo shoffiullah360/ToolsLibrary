@@ -6,7 +6,27 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://fasttoolverse.com',
-  integrations: [sitemap()],
+  trailingSlash: 'always',
+  integrations: [
+    sitemap({
+      filter: (page) => {
+        // Exclude 404 and non-indexable utility endpoints
+        if (page.includes('/404')) return false;
+        return true;
+      },
+      serialize: (item) => {
+        // Standardize site URL to https://fasttoolverse.com (non-www, HTTPS) and force trailing slash
+        let url = item.url
+          .replace(/^http:\/\//, 'https://')
+          .replace(/^https:\/\/(www\.)?fasttoolverse\.com/, 'https://fasttoolverse.com');
+        if (!url.endsWith('/')) {
+          url = `${url}/`;
+        }
+        item.url = url;
+        return item;
+      }
+    })
+  ],
   vite: {
     plugins: [tailwindcss()]
   },
@@ -57,9 +77,7 @@ export default defineConfig({
     '/tools/remove-empty-lines/google-sheets-remove-empty-lines': '/google-sheets-remove-empty-lines/',
     '/tools/remove-empty-lines/remove-empty-lines-csv': '/remove-empty-lines-csv/',
     '/tools/remove-empty-lines/libreoffice-calc-remove-empty-lines': '/libreoffice-calc-remove-empty-lines/',
-    '/tools/remove-empty-lines/remove-empty-lines-in-json': '/remove-empty-lines-json/',
     '/tools/remove-empty-lines/remove-empty-lines-json': '/remove-empty-lines-json/',
-    '/tools/remove-empty-lines/remove-empty-lines-in-xml': '/remove-empty-lines-xml/',
     '/tools/remove-empty-lines/remove-empty-lines-xml': '/remove-empty-lines-xml/',
     '/tools/remove-empty-lines/remove-empty-lines-python-string': '/remove-empty-lines-python-string/',
     '/tools/remove-empty-lines/remove-empty-lines-javascript': '/remove-empty-lines-javascript/',

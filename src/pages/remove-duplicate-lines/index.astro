@@ -114,57 +114,7 @@ const pageDescription = "Remove duplicate lines, purge repetitive text, and filt
 const pageKeywords = "remove duplicate lines, duplicate line remover, text deduplicator, delete duplicate lines, unique line extractor, deduplicate list online, clean duplicate lines, remove duplicate text, csv deduplicate, client side text tool";
 const ogImage = "https://fasttoolverse.com/og-image.png";
 
-// Programmatic target cards / presets
-const presets = [
-  {
-    id: "preset-email-list",
-    title: "Deduplicate Email List",
-    tag: "Mailing Lists & CRM",
-    desc: "Clean duplicate subscriber entries, sanitize customer emails, and prevent double sends with case-insensitive normalization.",
-    options: { caseSensitive: false, trimLines: true, emptyLines: true, sort: 'alpha-asc', mode: 'unique', delimiter: 'newline' },
-    sampleText: "contact@company.com\nMARKETING@COMPANY.COM\ncontact@company.com\nsales@enterprise.net\nmarketing@company.com\n  alex.wong@startup.io  \nalex.wong@startup.io\ninfo@domain.org\nsales@enterprise.net\nsupport@domain.org"
-  },
-  {
-    id: "preset-keywords",
-    title: "Extract Unique Keywords",
-    tag: "SEO & Search Marketing",
-    desc: "Filter out redundant search phrases, long-tail variations, and duplicate PPC tags for clean keyword research.",
-    options: { caseSensitive: false, trimLines: true, emptyLines: true, sort: 'original', mode: 'unique', delimiter: 'newline' },
-    sampleText: "free online text cleaner\nbest duplicate line remover\nfree online text cleaner\nremove duplicate lines online\nFREE ONLINE TEXT CLEANER\ntext deduplication tool\nbest duplicate line remover\nclean duplicate lists"
-  },
-  {
-    id: "preset-case-insensitive",
-    title: "Case-Insensitive Deduplicator",
-    tag: "Case Normalization",
-    desc: "Treat 'Apple', 'apple', and 'APPLE' as identical entries to eliminate case-variance duplication across large records.",
-    options: { caseSensitive: false, trimLines: true, emptyLines: false, sort: 'original', mode: 'unique', delimiter: 'newline' },
-    sampleText: "JavaScript\njavascript\nJAVASCRIPT\nTypeScript\ntypescript\nPython\npython\nPYTHON\nRust\nrust"
-  },
-  {
-    id: "preset-urls",
-    title: "Clean Duplicate URLs",
-    tag: "Web & Sitemap Data",
-    desc: "Prune repetitive sitemap links, crawl lists, backlinks, and canonical paths before indexing or audits.",
-    options: { caseSensitive: true, trimLines: true, emptyLines: true, sort: 'original', mode: 'unique', delimiter: 'newline' },
-    sampleText: "https://fasttoolverse.com/image-resizer\nhttps://fasttoolverse.com/remove-extra-spaces\nhttps://fasttoolverse.com/remove-duplicate-lines\nhttps://fasttoolverse.com/image-resizer\nhttps://fasttoolverse.com/remove-extra-spaces\nhttps://fasttoolverse.com/tools/text-case-converter"
-  },
-  {
-    id: "preset-sort-dedupe",
-    title: "Sort & Deduplicate List",
-    tag: "Alphabetical Sorting",
-    desc: "Remove all repeated records and sort the resulting unique list alphabetically in A-Z order for immediate cataloging.",
-    options: { caseSensitive: false, trimLines: true, emptyLines: true, sort: 'alpha-asc', mode: 'unique', delimiter: 'newline' },
-    sampleText: "Zebra\nBanana\nApple\nOrange\nBanana\nApple\nGrape\nWatermelon\nOrange\nMango"
-  },
-  {
-    id: "preset-csv-column",
-    title: "CSV Column Deduplication",
-    tag: "Spreadsheets & DBs",
-    desc: "Clean pasted single-column spreadsheet values, unique IDs, order numbers, or SKUs exported from Excel or SQL.",
-    options: { caseSensitive: true, trimLines: true, emptyLines: true, sort: 'original', mode: 'unique', delimiter: 'comma' },
-    sampleText: "SKU-8921-XL\nSKU-4412-SM\nSKU-8921-XL\nSKU-1093-MD\nSKU-4412-SM\nSKU-7721-LG\nSKU-1093-MD\nSKU-9901-XL"
-  }
-];
+
 ---
 
 <Layout
@@ -312,46 +262,97 @@ const presets = [
     </div>
   </section>
 
-  <!-- Quick Presets / Programmatic Target Cards Section -->
-  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/40 py-16 sm:py-20 font-sans">
+  <!-- Why Choose FastToolVerse 6-Card Feature Grid Section -->
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-16 sm:py-20 font-sans">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      
       <div class="text-center max-w-2xl mx-auto mb-12">
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Popular List Deduplication Presets
+          Why Choose FastToolVerse
         </h2>
         <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
-          Jump straight into pre-configured cleaning modes tailored for CRM data, SEO keywords, sitemaps, and spreadsheets.
+          Built for developer precision, complete data privacy, and instantaneous text deduplication.
         </p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {presets.map((preset) => (
-          <div class="group relative p-5 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900/70 shadow-sm hover:shadow-md hover:border-emerald-500/60 dark:hover:border-emerald-500/60 transition-all duration-150 flex flex-col justify-between">
-            <div>
-              <div class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/40 mb-3 font-sans">
-                {preset.tag}
-              </div>
-              <h3 class="text-base font-semibold text-slate-900 dark:text-white group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors leading-snug mb-2 font-sans">
-                {preset.title}
-              </h3>
-              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4 font-sans">
-                {preset.desc}
-              </p>
-            </div>
-            
-            <button
-              type="button"
-              data-preset={preset.id}
-              class="preset-card-btn text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 dark:hover:text-emerald-300 inline-flex items-center gap-1 mt-auto pt-2 cursor-pointer border-t border-slate-200 dark:border-slate-800/80 font-sans"
-            >
-              <span>Apply preset & sample</span>
-              <span>&rarr;</span>
-            </button>
+        <!-- Card 1 -->
+        <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 border border-emerald-100 dark:border-emerald-900/50">
+            <ToolIcon name="shield-check" class="w-5 h-5" />
           </div>
-        ))}
-      </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            100% Client-Side Privacy
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            All hashing and text parsing execute strictly inside your local browser memory sandbox. Zero bytes ever travel to any cloud server.
+          </p>
+        </div>
 
+        <!-- Card 2 -->
+        <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 border border-emerald-100 dark:border-emerald-900/50">
+            <ToolIcon name="zap" class="w-5 h-5" />
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Instant 0ms RAM Processing
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Linear O(N) Hash Sets execute in microseconds. Eliminates server queues, network delays, and tedious page reloads.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 border border-emerald-100 dark:border-emerald-900/50">
+            <ToolIcon name="crop" class="w-5 h-5" />
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Zero File &amp; Line Limits
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Deduplicate 50,000+ line server logs, database exports, or email lists without encountering paywalls, line caps, or subscription tiers.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 border border-emerald-100 dark:border-emerald-900/50">
+            <ToolIcon name="search" class="w-5 h-5" />
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Case &amp; Whitespace Normalization
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Normalizes accidental trailing spaces, tabs, and mixed capitalization before hashing, preventing false-positive duplicate retention.
+          </p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 border border-emerald-100 dark:border-emerald-900/50">
+            <ToolIcon name="code" class="w-5 h-5" />
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Indentation &amp; Order Retention
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            Preserves chronological input flow by default. Retains exact indentation formatting for Python source code, YAML configurations, and JSON.
+          </p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 border border-emerald-100 dark:border-emerald-900/50">
+            <ToolIcon name="globe" class="w-5 h-5" />
+          </div>
+          <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
+            Free Forever &amp; Offline Ready
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            No accounts, passwords, or cookies required. Load the tool once and continue deduplicating text even with your internet connection disabled.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 

@@ -35,9 +35,28 @@ function countEditorialWords(guide) {
   return count;
 }
 
-if (DUPLICATE_LINES_PRESETS.length !== 75) {
-  console.error(`ERROR: Expected 75 presets, found ${DUPLICATE_LINES_PRESETS.length}!`);
+const EXPECTED_COUNT = 67;
+if (DUPLICATE_LINES_PRESETS.length !== EXPECTED_COUNT) {
+  console.error(`ERROR: Expected ${EXPECTED_COUNT} presets, found ${DUPLICATE_LINES_PRESETS.length}!`);
   hasError = true;
+}
+
+const PURGED_SLUGS = [
+  'duplicate-line-remover',
+  'duplicate-line-remover-online',
+  'online-duplicate-line-remover',
+  'duplicate-line-remover-tool',
+  'text-duplicate-line-remover',
+  'remove-duplicate-lines',
+  'remove-duplicate-lines-online',
+  'online-remove-duplicate-lines'
+];
+
+for (const purgedSlug of PURGED_SLUGS) {
+  if (DUPLICATE_LINES_PRESETS.some(p => p.slug === purgedSlug)) {
+    console.error(`ERROR: Cannibalizing slug "${purgedSlug}" still present in presets dataset!`);
+    hasError = true;
+  }
 }
 
 const slugSet = new Set();
@@ -90,8 +109,9 @@ DUPLICATE_LINES_PRESETS.forEach((preset, idx) => {
 });
 
 if (!hasError) {
-  console.log(`✓ All 75 presets strictly validated in data:`);
-  console.log(`  - 75 unique slugs`);
+  console.log(`✓ All ${EXPECTED_COUNT} presets strictly validated in data:`);
+  console.log(`  - ${EXPECTED_COUNT} unique slugs`);
+  console.log(`  - 0 cannibalizing slugs`);
   console.log(`  - Meta titles < 70 chars`);
   console.log(`  - Meta descriptions < 155 chars`);
   console.log(`  - Subtitles strictly 20-25 words`);
@@ -116,6 +136,15 @@ if (fs.existsSync(distDir)) {
     buildOutputError = true;
   } else {
     console.log(`✓ Main tool landing page verified at /remove-duplicate-lines/`);
+  }
+
+  // Ensure purged slugs do not exist in dist
+  for (const purgedSlug of PURGED_SLUGS) {
+    const purgedPath = path.join(distDir, 'remove-duplicate-lines', purgedSlug, 'index.html');
+    if (fs.existsSync(purgedPath)) {
+      console.error(`ERROR: Cannibalizing slug output still exists in dist at: ${purgedPath}`);
+      buildOutputError = true;
+    }
   }
 
   let verifiedCount = 0;

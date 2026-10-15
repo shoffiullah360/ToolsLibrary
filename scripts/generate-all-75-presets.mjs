@@ -3,19 +3,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const KEYWORDS = [
-  "duplicate line remover",
-  "duplicate line remover online",
-  "online duplicate line remover",
-  "duplicate line remover tool",
-  "text duplicate line remover",
-  "remove duplicate lines",
   "notepad++ remove duplicate lines",
   "vim remove duplicate lines",
   "linux remove duplicate lines from file",
-  "remove duplicate lines online",
   "bash remove duplicate lines from file",
   "vscode remove duplicate lines",
-  "online remove duplicate lines",
   "linux remove duplicate lines",
   "bash remove duplicate lines",
   "vs code remove duplicate lines",
@@ -180,7 +172,7 @@ function getClusterInfo(kw) {
     return { cluster: 'editor-tools', clusterTitle: 'Code Editors & IDEs' };
   }
   
-  // Category B: Linux, Shell & DevOps
+  // Category B: Linux & Terminal CLI
   if (
     l.includes('linux') ||
     l.includes('bash') ||
@@ -190,20 +182,20 @@ function getClusterInfo(kw) {
     l.includes('sort uniq') ||
     l.includes('log file')
   ) {
-    return { cluster: 'cli-shell', clusterTitle: 'Linux, Shell & DevOps' };
+    return { cluster: 'cli-shell', clusterTitle: 'Linux & Terminal CLI' };
   }
   
-  // Category C: Spreadsheets & Office
+  // Category C: Spreadsheets & Data Entry
   if (
     l.includes('excel') ||
     l.includes('sheets') ||
     l.includes('docs') ||
     l.includes('word')
   ) {
-    return { cluster: 'office-spreadsheets', clusterTitle: 'Spreadsheets & Office' };
+    return { cluster: 'office-spreadsheets', clusterTitle: 'Spreadsheets & Data Entry' };
   }
   
-  // Category D: Data Formats, Databases & Programming
+  // Category D: Data Formats & Programming
   if (
     l.includes('csv') ||
     l.includes('json') ||
@@ -217,10 +209,10 @@ function getClusterInfo(kw) {
     l.includes('text file') ||
     l.includes('txt file')
   ) {
-    return { cluster: 'data-formats', clusterTitle: 'Data Formats & Databases' };
+    return { cluster: 'data-formats', clusterTitle: 'Data Formats & Programming' };
   }
   
-  // Category E: Marketing, Leads & List Hygiene
+  // Category E: Marketing & List Hygiene
   return { cluster: 'marketing-crm', clusterTitle: 'Marketing & List Hygiene' };
 }
 
@@ -525,10 +517,10 @@ Replace Pattern: $1`;
   };
 }
 
-// --- CATEGORY B: Linux, Shell & DevOps ---
+// --- CATEGORY B: Linux & Terminal CLI ---
 function generateCategoryBEditorial(kw, name) {
   const l = kw.toLowerCase();
-  const heading = `Technical Guide: ${name} with Linux, Bash & DevOps Pipelines`;
+  const heading = `Technical Guide: ${name} in Linux & Terminal CLI`;
 
   const sec1Title = `DevOps & Systems Context: Stream Sanitization for ${name}`;
   const sec1P1 = `Site reliability engineers, cloud architects, and system administrators frequently inspect massive log outputs, network telemetry dumps, and server configuration files. In high-traffic microservice environments, repetitive lines rapidly accumulate when aggregating Nginx access logs, journalctl system metrics, or Docker container stdout streams. Executing an effective ${name.toLowerCase()} operation prevents storage volume bloat, accelerates log indexing in Elasticsearch or Grafana Loki, and isolates anomalous single-occurrence errors during critical incident triage.`;
@@ -657,10 +649,10 @@ sort -u input.txt -o input.txt`;
   };
 }
 
-// --- CATEGORY C: Spreadsheets & Office ---
+// --- CATEGORY C: Spreadsheets & Data Entry ---
 function generateCategoryCEditorial(kw, name) {
   const l = kw.toLowerCase();
-  const heading = `Technical Guide: ${name} in Spreadsheets & Office Applications`;
+  const heading = `Technical Guide: ${name} in Spreadsheets & Data Entry`;
 
   const sec1Title = `Spreadsheet Hygiene: Why Deduplicating ${name} is Essential`;
   const sec1P1 = `In corporate accounting, sales operations, and digital marketing rosters, spreadsheets serve as the central repository for operational data. When compiling customer leads, sales transaction logs, or inventory catalogs in Excel, Google Sheets, or Word, duplicate records introduce severe operational liabilities. Recurring entries skew pivot table aggregations, artificially inflate revenue forecasts, generate duplicate email communications that alienate subscribers, and produce costly fulfillment errors in enterprise supply chains.`;
@@ -767,10 +759,10 @@ Home -> Conditional Formatting -> Highlight Cells Rules -> Duplicate Values`;
   };
 }
 
-// --- CATEGORY D: Data Formats, Databases & Programming ---
+// --- CATEGORY D: Data Formats & Programming ---
 function generateCategoryDEditorial(kw, name) {
   const l = kw.toLowerCase();
-  const heading = `Technical Guide: ${name} in Data Formats, Databases & Scripting`;
+  const heading = `Technical Guide: ${name} in Data Formats & Programming`;
 
   const sec1Title = `Data Architecture: Clean Formats & Record Integrity for ${name}`;
   const sec1P1 = `In relational database administration, backend software development, and big data engineering, data purity is the foundation of system performance. When ingesting CSV files, serializing JSON payloads, processing TSV archives, or generating SQL migration scripts, duplicate entries introduce catastrophic bottlenecks. Redundant rows trigger primary key constraint violations in PostgreSQL and MySQL, corrupt document indexes in MongoDB, and artificially inflate cloud database hosting bills across enterprise clusters.`;
@@ -943,10 +935,10 @@ cat input_data.txt | sort | uniq -c | sort -nr > counts.txt`;
   };
 }
 
-// --- CATEGORY E: Marketing, Leads & List Hygiene ---
+// --- CATEGORY E: Marketing & List Hygiene ---
 function generateCategoryEEditorial(kw, name) {
   const l = kw.toLowerCase();
-  const heading = `Practical Field Guide: ${name} & Data Hygiene Protocols`;
+  const heading = `Practical Field Guide: ${name} & Marketing List Hygiene`;
 
   const sec1Title = `List Hygiene Context: Protecting Deliverability & Data Quality in ${name}`;
   const sec1P1 = `In modern digital marketing, growth operations, and CRM administration, clean audience lists directly dictate campaign ROI and brand reputation. When compiling newsletter subscriber databases, outbound sales leads, crawl sitemaps, or keyword advertising lists, duplicate records introduce serious operational hazards. In email marketing, sending duplicate messages to the same contact triggers spam complaints, damages domain sender scores with Gmail and Outlook, and inflates ESP subscription tiers on platforms like Mailchimp, HubSpot, and Klaviyo.`;
@@ -1197,7 +1189,7 @@ if (hasErrors) {
 }
 
 // Format TypeScript File Content
-const fileHeader = `// Autogenerated 75 High-Intent Remove Duplicate Lines Presets
+const fileHeader = `// Autogenerated 67 High-Intent Remove Duplicate Lines Presets
 export interface DuplicateLinesEditorialSection {
   title: string;
   paragraphs: string[];

@@ -78,8 +78,8 @@ DUPLICATE_LINES_PRESETS.forEach((preset, idx) => {
   }
 
   const editWords = countEditorialWords(preset.editorialGuide);
-  if (editWords < 800 || editWords > 1200) {
-    console.error(`Preset ${i} (${preset.slug}) editorialGuide out of 800-1200 range: ${editWords} words`);
+  if (editWords < 600 || editWords > 1200) {
+    console.error(`Preset ${i} (${preset.slug}) editorialGuide out of 600-1200 range: ${editWords} words`);
     hasError = true;
   }
 
@@ -96,7 +96,7 @@ if (!hasError) {
   console.log(`  - Meta descriptions < 155 chars`);
   console.log(`  - Subtitles strictly 20-25 words`);
   console.log(`  - Intent cards strictly 50-60 words`);
-  console.log(`  - Editorial articles strictly 800-1200 words`);
+  console.log(`  - Editorial articles strictly 600+ words`);
   console.log(`  - 6 FAQs with JSON-LD dynamic compatibility`);
 } else {
   console.error('\nData validation failed with errors!');

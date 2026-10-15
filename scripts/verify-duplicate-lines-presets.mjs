@@ -140,24 +140,39 @@ if (fs.existsSync(distDir)) {
 
   // Ensure purged slugs do not exist in dist
   for (const purgedSlug of PURGED_SLUGS) {
-    const purgedPath = path.join(distDir, 'remove-duplicate-lines', purgedSlug, 'index.html');
-    if (fs.existsSync(purgedPath)) {
-      console.error(`ERROR: Cannibalizing slug output still exists in dist at: ${purgedPath}`);
+    if (purgedSlug !== 'remove-duplicate-lines') {
+      const purgedRootPath = path.join(distDir, purgedSlug, 'index.html');
+      if (fs.existsSync(purgedRootPath)) {
+        console.error(`ERROR: Cannibalizing slug output still exists in dist: ${purgedSlug}`);
+        buildOutputError = true;
+      }
+    }
+    const purgedNestedPath = path.join(distDir, 'remove-duplicate-lines', purgedSlug, 'index.html');
+    if (fs.existsSync(purgedNestedPath)) {
+      console.error(`ERROR: Cannibalizing slug output still exists in dist: remove-duplicate-lines/${purgedSlug}`);
       buildOutputError = true;
     }
   }
 
   let verifiedCount = 0;
   for (const preset of DUPLICATE_LINES_PRESETS) {
-    const filePath = path.join(distDir, 'remove-duplicate-lines', preset.slug, 'index.html');
+    // Check that nested route no longer exists
+    const oldNestedPath = path.join(distDir, 'remove-duplicate-lines', preset.slug, 'index.html');
+    if (fs.existsSync(oldNestedPath)) {
+      console.error(`ERROR: Old nested path still exists at: ${oldNestedPath}`);
+      buildOutputError = true;
+    }
+
+    // Check that flat root route exists
+    const filePath = path.join(distDir, preset.slug, 'index.html');
     if (!fs.existsSync(filePath)) {
-      console.error(`ERROR: Missing output file for /remove-duplicate-lines/${preset.slug}/ at`, filePath);
+      console.error(`ERROR: Missing flat output file for /${preset.slug}/ at`, filePath);
       buildOutputError = true;
       continue;
     }
 
     const html = fs.readFileSync(filePath, 'utf8');
-    const expectedCanonical = `https://fasttoolverse.com/remove-duplicate-lines/${preset.slug}/`;
+    const expectedCanonical = `https://fasttoolverse.com/${preset.slug}/`;
     const canonicalMatch = html.includes(`<link rel="canonical" href="${expectedCanonical}"`);
     const hasH1 = html.includes(preset.h1);
     const hasBreadcrumbsSchema = html.includes('"@type":"BreadcrumbList"');
@@ -166,7 +181,7 @@ if (fs.existsSync(distDir)) {
     const hasPopularTools = html.includes('Popular Duplicate Line Remover Presets');
 
     if (!canonicalMatch || !hasH1 || !hasBreadcrumbsSchema || !hasSoftwareAppSchema || !hasFaqSchema || !hasPopularTools) {
-      console.error(`ERROR: HTML Verification failed for /remove-duplicate-lines/${preset.slug}/:`, {
+      console.error(`ERROR: HTML Verification failed for /${preset.slug}/:`, {
         canonicalMatch,
         hasH1,
         hasBreadcrumbsSchema,

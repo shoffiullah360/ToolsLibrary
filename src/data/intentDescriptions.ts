@@ -225,12 +225,13 @@ export const CONVERTER_INTENT_MAP: Record<string, string> = {
 };
 
 interface PageProps {
-  type: 'resizer' | 'compress' | 'converter' | 'empty-lines' | 'line-breaks';
+  type: 'resizer' | 'compress' | 'converter' | 'empty-lines' | 'line-breaks' | 'duplicate-lines';
   resizerPage?: { slug: string; introCopy?: string } | null;
   compressPreset?: { slug: string; introDescription?: string } | null;
   converterPreset?: { slug: string; introCopy?: string; seoContext?: string } | null;
   emptyLinesPreset?: { intentCard?: string; [key: string]: any } | null;
   lineBreaksPreset?: { intentDescription?: string; [key: string]: any } | null;
+  duplicateLinesPreset?: { intentCard?: string; [key: string]: any } | null;
 }
 
 export function getPresetIntentDescription(props: PageProps): string {
@@ -266,6 +267,10 @@ export function getPresetIntentDescription(props: PageProps): string {
 
   if (props.type === 'line-breaks' && props.lineBreaksPreset) {
     return props.lineBreaksPreset.intentDescription || '';
+  }
+
+  if (props.type === 'duplicate-lines' && props.duplicateLinesPreset) {
+    return props.duplicateLinesPreset.intentCard || '';
   }
 
   return '';

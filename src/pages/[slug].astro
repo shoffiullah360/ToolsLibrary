@@ -18,6 +18,8 @@ import RemoveEmptyLinesPresetView from '../components/RemoveEmptyLinesPresetView
 import { REMOVE_EMPTY_LINES_PRESETS, type RemoveEmptyLinesPreset } from '../data/removeEmptyLinesPresets';
 import RemoveLineBreaksPresetView from '../components/RemoveLineBreaksPresetView.astro';
 import { removeLineBreaksPresets, type RemoveLineBreaksPreset } from '../data/removeLineBreaksPresets';
+import RemoveDuplicateLinesPresetView from '../components/RemoveDuplicateLinesPresetView.astro';
+import { DUPLICATE_LINES_PRESETS, type DuplicateLinesPreset } from '../data/duplicateLinesPresets';
 
 interface ResizerPage {
   slug: string;
@@ -55,38 +57,44 @@ const pagesData = rawPagesData as unknown as ResizerPage[];
 export async function getStaticPaths() {
   const resizerPaths = (rawPagesData as unknown as ResizerPage[]).map((page) => ({
     params: { slug: page.slug },
-    props: { type: 'resizer' as const, resizerPage: page, compressPreset: null, converterPreset: null, emptyLinesPreset: null, lineBreaksPreset: null }
+    props: { type: 'resizer' as const, resizerPage: page, compressPreset: null, converterPreset: null, emptyLinesPreset: null, lineBreaksPreset: null, duplicateLinesPreset: null }
   }));
 
   const compressPaths = COMPRESS_PRESETS.map((preset) => ({
     params: { slug: preset.slug },
-    props: { type: 'compress' as const, resizerPage: null, compressPreset: preset, converterPreset: null, emptyLinesPreset: null, lineBreaksPreset: null }
+    props: { type: 'compress' as const, resizerPage: null, compressPreset: preset, converterPreset: null, emptyLinesPreset: null, lineBreaksPreset: null, duplicateLinesPreset: null }
   }));
 
   const converterPaths = CONVERTER_PRESETS.map((preset) => ({
     params: { slug: preset.slug },
-    props: { type: 'converter' as const, resizerPage: null, compressPreset: null, converterPreset: preset, emptyLinesPreset: null, lineBreaksPreset: null }
+    props: { type: 'converter' as const, resizerPage: null, compressPreset: null, converterPreset: preset, emptyLinesPreset: null, lineBreaksPreset: null, duplicateLinesPreset: null }
   }));
 
   const emptyLinesPaths = REMOVE_EMPTY_LINES_PRESETS.map((preset) => ({
     params: { slug: preset.slug },
-    props: { type: 'empty-lines' as const, resizerPage: null, compressPreset: null, converterPreset: null, emptyLinesPreset: preset, lineBreaksPreset: null }
+    props: { type: 'empty-lines' as const, resizerPage: null, compressPreset: null, converterPreset: null, emptyLinesPreset: preset, lineBreaksPreset: null, duplicateLinesPreset: null }
   }));
 
   const lineBreaksPaths = removeLineBreaksPresets.map((preset) => ({
     params: { slug: preset.slug },
-    props: { type: 'line-breaks' as const, resizerPage: null, compressPreset: null, converterPreset: null, emptyLinesPreset: null, lineBreaksPreset: preset }
+    props: { type: 'line-breaks' as const, resizerPage: null, compressPreset: null, converterPreset: null, emptyLinesPreset: null, lineBreaksPreset: preset, duplicateLinesPreset: null }
   }));
 
-  return [...resizerPaths, ...compressPaths, ...converterPaths, ...emptyLinesPaths, ...lineBreaksPaths];
+  const duplicateLinesPaths = DUPLICATE_LINES_PRESETS.map((preset) => ({
+    params: { slug: preset.slug },
+    props: { type: 'duplicate-lines' as const, resizerPage: null, compressPreset: null, converterPreset: null, emptyLinesPreset: null, lineBreaksPreset: null, duplicateLinesPreset: preset }
+  }));
+
+  return [...resizerPaths, ...compressPaths, ...converterPaths, ...emptyLinesPaths, ...lineBreaksPaths, ...duplicateLinesPaths];
 }
 
 type Props = 
-  | { type: 'resizer'; resizerPage: ResizerPage; compressPreset: null; converterPreset: null; emptyLinesPreset: null; lineBreaksPreset: null }
-  | { type: 'compress'; resizerPage: null; compressPreset: CompressPreset; converterPreset: null; emptyLinesPreset: null; lineBreaksPreset: null }
-  | { type: 'converter'; resizerPage: null; compressPreset: null; converterPreset: ConverterPreset; emptyLinesPreset: null; lineBreaksPreset: null }
-  | { type: 'empty-lines'; resizerPage: null; compressPreset: null; converterPreset: null; emptyLinesPreset: RemoveEmptyLinesPreset; lineBreaksPreset: null }
-  | { type: 'line-breaks'; resizerPage: null; compressPreset: null; converterPreset: null; emptyLinesPreset: null; lineBreaksPreset: RemoveLineBreaksPreset };
+  | { type: 'resizer'; resizerPage: ResizerPage; compressPreset: null; converterPreset: null; emptyLinesPreset: null; lineBreaksPreset: null; duplicateLinesPreset: null }
+  | { type: 'compress'; resizerPage: null; compressPreset: CompressPreset; converterPreset: null; emptyLinesPreset: null; lineBreaksPreset: null; duplicateLinesPreset: null }
+  | { type: 'converter'; resizerPage: null; compressPreset: null; converterPreset: ConverterPreset; emptyLinesPreset: null; lineBreaksPreset: null; duplicateLinesPreset: null }
+  | { type: 'empty-lines'; resizerPage: null; compressPreset: null; converterPreset: null; emptyLinesPreset: RemoveEmptyLinesPreset; lineBreaksPreset: null; duplicateLinesPreset: null }
+  | { type: 'line-breaks'; resizerPage: null; compressPreset: null; converterPreset: null; emptyLinesPreset: null; lineBreaksPreset: RemoveLineBreaksPreset; duplicateLinesPreset: null }
+  | { type: 'duplicate-lines'; resizerPage: null; compressPreset: null; converterPreset: null; emptyLinesPreset: null; lineBreaksPreset: null; duplicateLinesPreset: DuplicateLinesPreset };
 
 const props = Astro.props as Props;
 
@@ -497,12 +505,91 @@ if (props.type === 'line-breaks' && props.lineBreaksPreset) {
   };
 }
 
+let duplicateLinesJsonLdSoftwareApp: any = null;
+let duplicateLinesJsonLdFaq: any = null;
+let duplicateLinesJsonLdBreadcrumbs: any = null;
+
+if (props.type === 'duplicate-lines' && props.duplicateLinesPreset) {
+  const preset = props.duplicateLinesPreset;
+  const canonical = `https://fasttoolverse.com/${preset.slug}/`;
+
+  duplicateLinesJsonLdBreadcrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://fasttoolverse.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Text & Formatting",
+        "item": "https://fasttoolverse.com/#text-tools-section"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Remove Duplicate Lines",
+        "item": "https://fasttoolverse.com/remove-duplicate-lines/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": preset.name || preset.h1,
+        "item": canonical
+      }
+    ]
+  };
+
+  duplicateLinesJsonLdSoftwareApp = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": `${preset.name || preset.h1} - FastToolVerse`,
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All (Web Browser)",
+    "browserRequirements": "Requires JavaScript. Runs 100% client-side in browser RAM.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "100% in-browser text deduplication with zero server uploads",
+      "Instant O(1) Hash Set duplicate line removal",
+      "Multi-mode extraction: Unique lines, Duplicates only, Count occurrences",
+      "Case-sensitive and case-insensitive comparison toggles",
+      "Trim edge whitespace and ignore punctuation normalization",
+      "Instant delimiter joiner for CSV commas, semicolons, and custom separators",
+      "Live line, word, character, and duplicate removal counters",
+      "1-click copy to clipboard and .txt file export"
+    ]
+  };
+
+  duplicateLinesJsonLdFaq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": preset.faqs.map((f) => ({
+      "@type": "Question",
+      "name": f.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.answer
+      }
+    }))
+  };
+}
+
 const canonicalUrl = props.type === 'converter'
   ? `https://fasttoolverse.com/${props.converterPreset.slug}/`
   : props.type === 'empty-lines'
     ? `https://fasttoolverse.com/${props.emptyLinesPreset.slug}/`
     : props.type === 'line-breaks'
       ? `https://fasttoolverse.com/${props.lineBreaksPreset.slug}/`
+      : props.type === 'duplicate-lines'
+        ? `https://fasttoolverse.com/${props.duplicateLinesPreset.slug}/`
     : props.type === 'compress'
       ? `https://fasttoolverse.com/${props.compressPreset.slug}`
       : `https://fasttoolverse.com/${props.resizerPage.slug}`;
@@ -513,6 +600,8 @@ const pageTitle = props.type === 'converter'
     ? props.emptyLinesPreset.metaTitle
     : props.type === 'line-breaks'
       ? props.lineBreaksPreset.metaTitle
+      : props.type === 'duplicate-lines'
+        ? props.duplicateLinesPreset.metaTitle
     : props.type === 'compress'
       ? props.compressPreset.metaTitle
       : props.resizerPage.metaTitle;
@@ -523,6 +612,8 @@ const pageDescription = props.type === 'converter'
     ? props.emptyLinesPreset.metaDescription
     : props.type === 'line-breaks'
       ? props.lineBreaksPreset.metaDescription
+      : props.type === 'duplicate-lines'
+        ? props.duplicateLinesPreset.metaDescription
     : props.type === 'compress'
       ? props.compressPreset.metaDescription
       : props.resizerPage.metaDescription;
@@ -586,6 +677,23 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
         <script type="application/ld+json" set:html={JSON.stringify(lineBreaksJsonLdBreadcrumbs)} />
         <script type="application/ld+json" set:html={JSON.stringify(lineBreaksJsonLdSoftwareApp)} />
         <script type="application/ld+json" set:html={JSON.stringify(lineBreaksJsonLdFaq)} />
+      </>
+    ) : props.type === 'duplicate-lines' ? (
+      <>
+        <meta name="keywords" content={`${props.duplicateLinesPreset.primaryQuery}, remove duplicate lines, duplicate line remover, text deduplicator, delete duplicate lines, unique line extractor, clean duplicate lines, client side text tool`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:title" content={props.duplicateLinesPreset.metaTitle} />
+        <meta property="og:description" content={props.duplicateLinesPreset.metaDescription} />
+        <meta property="og:image" content="https://fasttoolverse.com/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={canonicalUrl} />
+        <meta name="twitter:title" content={props.duplicateLinesPreset.metaTitle} />
+        <meta name="twitter:description" content={props.duplicateLinesPreset.metaDescription} />
+        <meta name="twitter:image" content="https://fasttoolverse.com/og-image.png" />
+        <script type="application/ld+json" set:html={JSON.stringify(duplicateLinesJsonLdBreadcrumbs)} />
+        <script type="application/ld+json" set:html={JSON.stringify(duplicateLinesJsonLdSoftwareApp)} />
+        <script type="application/ld+json" set:html={JSON.stringify(duplicateLinesJsonLdFaq)} />
       </>
     ) : props.type === 'compress' ? (
       <>
@@ -844,6 +952,8 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
     <RemoveEmptyLinesPresetView preset={props.emptyLinesPreset} />
   ) : props.type === 'line-breaks' ? (
     <RemoveLineBreaksPresetView preset={props.lineBreaksPreset} />
+  ) : props.type === 'duplicate-lines' ? (
+    <RemoveDuplicateLinesPresetView preset={props.duplicateLinesPreset} />
   ) : props.type === 'compress' ? (
     <div class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen">
       <!-- Hero Header Section -->

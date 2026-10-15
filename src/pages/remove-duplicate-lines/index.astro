@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ToolIcon from '../../components/ToolIcon.astro';
+import DuplicateLineRemover from '../../components/tools/DuplicateLineRemover.astro';
 
 // FAQ Data for Schema and Accordion
 const faqs = [
@@ -22,7 +23,7 @@ const faqs = [
   },
   {
     question: "Can I sort the unique list alphabetically in A-Z order?",
-    answer: "Yes. Simply enable the 'Sort alphabetically (A-Z)' checkbox. FastToolVerse will deduplicate your list first and then perform an in-memory natural alphabetical sort so your catalog, keyword list, or subscriber list is instantly ordered."
+    answer: "Yes. Simply select 'Alphabetical (A → Z)' in the sort selector. FastToolVerse will deduplicate your list and instantly arrange your catalog, keyword list, or subscriber list into natural alphabetical order."
   },
   {
     question: "How does this tool handle large lists with 50,000+ lines?",
@@ -30,7 +31,7 @@ const faqs = [
   },
   {
     question: "How do I deduplicate email addresses or single-column CSV datasets?",
-    answer: "Copy your single column from Microsoft Excel, Google Sheets, or a CSV export and paste it directly into the input box. Enable 'Trim whitespace before comparing' and disable 'Case-sensitive comparison' for emails, then click 'Copy Result' or download the sanitized list as a .txt file."
+    answer: "Copy your single column from Microsoft Excel, Google Sheets, or a CSV export and paste it directly into the input box. Enable 'Trim whitespace before comparing' and disable 'Case-sensitive comparison' for emails, choose your desired delimiter, then click 'Copy Result' or download the sanitized list as a .txt file."
   },
   {
     question: "Does this duplicate remover work offline?",
@@ -54,10 +55,13 @@ const jsonLdSoftwareApp = {
   "featureList": [
     "100% In-browser text deduplication privacy",
     "High-performance O(N) Set-based line deduplication",
+    "Multi-tab extraction modes: Unique, Duplicates-only, Completely Unique, Frequency counter",
     "Case-sensitive and case-insensitive comparison modes",
     "Trim leading and trailing line whitespace before deduplication",
     "Strip empty and blank lines",
-    "Optional alphabetical A-Z list sorting",
+    "Ignore punctuation and symbols normalization",
+    "Flexible sorting: Original, A-Z, Z-A, Length, and Frequency",
+    "Instant 1-click delimiter joiner for CSV commas, semicolons, and custom separators",
     "Live line, word, character, and duplicate removal counters",
     "1-click copy to clipboard and .txt file export"
   ]
@@ -105,7 +109,7 @@ const jsonLdBreadcrumb = {
 
 const canonicalUrl = "https://fasttoolverse.com/remove-duplicate-lines/";
 const pageTitle = "Remove Duplicate Lines Online - Fast Deduplicator";
-const pageDescription = "Remove duplicate lines, repeated entries, and blank rows online with zero server uploads. 100% private client-side deduplication with live line counts.";
+const pageDescription = "Remove duplicate lines, purge repetitive text, and filter unique entries in real time. Fast, secure, and processed completely client-side in your web browser.";
 const pageKeywords = "remove duplicate lines, duplicate line remover, text deduplicator, delete duplicate lines, unique line extractor, deduplicate list online, clean duplicate lines, remove duplicate text, csv deduplicate, client side text tool";
 const ogImage = "https://fasttoolverse.com/og-image.png";
 
@@ -116,7 +120,7 @@ const presets = [
     title: "Deduplicate Email List",
     tag: "Mailing Lists & CRM",
     desc: "Clean duplicate subscriber entries, sanitize customer emails, and prevent double sends with case-insensitive normalization.",
-    options: { caseSensitive: false, trimLines: true, emptyLines: true, sortLines: true },
+    options: { caseSensitive: false, trimLines: true, emptyLines: true, sort: 'alpha-asc', mode: 'unique', delimiter: 'newline' },
     sampleText: "contact@company.com\nMARKETING@COMPANY.COM\ncontact@company.com\nsales@enterprise.net\nmarketing@company.com\n  alex.wong@startup.io  \nalex.wong@startup.io\ninfo@domain.org\nsales@enterprise.net\nsupport@domain.org"
   },
   {
@@ -124,7 +128,7 @@ const presets = [
     title: "Extract Unique Keywords",
     tag: "SEO & Search Marketing",
     desc: "Filter out redundant search phrases, long-tail variations, and duplicate PPC tags for clean keyword research.",
-    options: { caseSensitive: false, trimLines: true, emptyLines: true, sortLines: false },
+    options: { caseSensitive: false, trimLines: true, emptyLines: true, sort: 'original', mode: 'unique', delimiter: 'newline' },
     sampleText: "free online text cleaner\nbest duplicate line remover\nfree online text cleaner\nremove duplicate lines online\nFREE ONLINE TEXT CLEANER\ntext deduplication tool\nbest duplicate line remover\nclean duplicate lists"
   },
   {
@@ -132,7 +136,7 @@ const presets = [
     title: "Case-Insensitive Deduplicator",
     tag: "Case Normalization",
     desc: "Treat 'Apple', 'apple', and 'APPLE' as identical entries to eliminate case-variance duplication across large records.",
-    options: { caseSensitive: false, trimLines: true, emptyLines: false, sortLines: false },
+    options: { caseSensitive: false, trimLines: true, emptyLines: false, sort: 'original', mode: 'unique', delimiter: 'newline' },
     sampleText: "JavaScript\njavascript\nJAVASCRIPT\nTypeScript\ntypescript\nPython\npython\nPYTHON\nRust\nrust"
   },
   {
@@ -140,7 +144,7 @@ const presets = [
     title: "Clean Duplicate URLs",
     tag: "Web & Sitemap Data",
     desc: "Prune repetitive sitemap links, crawl lists, backlinks, and canonical paths before indexing or audits.",
-    options: { caseSensitive: true, trimLines: true, emptyLines: true, sortLines: false },
+    options: { caseSensitive: true, trimLines: true, emptyLines: true, sort: 'original', mode: 'unique', delimiter: 'newline' },
     sampleText: "https://fasttoolverse.com/image-resizer\nhttps://fasttoolverse.com/remove-extra-spaces\nhttps://fasttoolverse.com/remove-duplicate-lines\nhttps://fasttoolverse.com/image-resizer\nhttps://fasttoolverse.com/remove-extra-spaces\nhttps://fasttoolverse.com/tools/text-case-converter"
   },
   {
@@ -148,7 +152,7 @@ const presets = [
     title: "Sort & Deduplicate List",
     tag: "Alphabetical Sorting",
     desc: "Remove all repeated records and sort the resulting unique list alphabetically in A-Z order for immediate cataloging.",
-    options: { caseSensitive: false, trimLines: true, emptyLines: true, sortLines: true },
+    options: { caseSensitive: false, trimLines: true, emptyLines: true, sort: 'alpha-asc', mode: 'unique', delimiter: 'newline' },
     sampleText: "Zebra\nBanana\nApple\nOrange\nBanana\nApple\nGrape\nWatermelon\nOrange\nMango"
   },
   {
@@ -156,7 +160,7 @@ const presets = [
     title: "CSV Column Deduplication",
     tag: "Spreadsheets & DBs",
     desc: "Clean pasted single-column spreadsheet values, unique IDs, order numbers, or SKUs exported from Excel or SQL.",
-    options: { caseSensitive: true, trimLines: true, emptyLines: true, sortLines: false },
+    options: { caseSensitive: true, trimLines: true, emptyLines: true, sort: 'original', mode: 'unique', delimiter: 'comma' },
     sampleText: "SKU-8921-XL\nSKU-4412-SM\nSKU-8921-XL\nSKU-1093-MD\nSKU-4412-SM\nSKU-7721-LG\nSKU-1093-MD\nSKU-9901-XL"
   }
 ];
@@ -196,19 +200,19 @@ const presets = [
   <section class="relative pt-10 pb-6 sm:pt-14 sm:pb-8 overflow-hidden">
     <div class="hero-mesh-bg" aria-hidden="true"></div>
 
-    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center font-sans">
       <!-- Breadcrumbs -->
       <nav aria-label="Breadcrumb" class="mb-5 flex justify-center">
         <ol class="inline-flex items-center space-x-1.5 md:space-x-2 text-xs font-medium text-slate-500 dark:text-slate-400">
           <li class="inline-flex items-center">
-            <a href="/" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
+            <a href="/" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Home</a>
           </li>
           <li>
             <div class="flex items-center">
               <svg class="w-3 h-3 text-slate-400 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
-              <a href="/#text-tools-section" class="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Text & Formatting</a>
+              <a href="/#text-tools-section" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Text & Formatting</a>
             </div>
           </li>
           <li aria-current="page">
@@ -223,221 +227,33 @@ const presets = [
       </nav>
 
       <!-- Hero Title -->
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight font-sans">
         Free Online Duplicate Line Remover & Text Cleaner
       </h1>
 
-      <!-- Subtitle -->
-      <p class="mt-3 sm:mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-        Deduplicate text lists, delete repeated entries, and extract unique lines instantly with zero server uploads.
+      <!-- Subtitle (Exactly 24 words) -->
+      <p class="mt-3 sm:mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed font-sans">
+        Instantly remove duplicate lines, purge repetitive text, and filter unique entries in real time. Fast, secure, and processed completely client-side in your web browser.
       </p>
     </div>
   </section>
 
   <!-- Interactive Studio Container -->
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
-    <div class="rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm overflow-hidden transition-colors">
-      
-      <!-- Top Options & Controls Bar -->
-      <div class="p-5 sm:p-6 border-b border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/70">
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-          
-          <!-- Deduplication Rules (Checkboxes) -->
-          <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
-            <label class="inline-flex items-center gap-2 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
-              <input
-                type="checkbox"
-                id="opt-case-sensitive"
-                checked
-                class="w-4 h-4 rounded border-slate-300 dark:border-slate-700 text-purple-600 focus:ring-purple-500 dark:bg-slate-800 cursor-pointer"
-              />
-              <span>Case-sensitive comparison</span>
-            </label>
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+    <DuplicateLineRemover />
+  </section>
 
-            <label class="inline-flex items-center gap-2 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
-              <input
-                type="checkbox"
-                id="opt-trim-lines"
-                checked
-                class="w-4 h-4 rounded border-slate-300 dark:border-slate-700 text-purple-600 focus:ring-purple-500 dark:bg-slate-800 cursor-pointer"
-              />
-              <span>Trim whitespace before comparing</span>
-            </label>
-
-            <label class="inline-flex items-center gap-2 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
-              <input
-                type="checkbox"
-                id="opt-empty-lines"
-                class="w-4 h-4 rounded border-slate-300 dark:border-slate-700 text-purple-600 focus:ring-purple-500 dark:bg-slate-800 cursor-pointer"
-              />
-              <span>Remove empty/blank lines</span>
-            </label>
-
-            <label class="inline-flex items-center gap-2 cursor-pointer text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
-              <input
-                type="checkbox"
-                id="opt-sort-lines"
-                class="w-4 h-4 rounded border-slate-300 dark:border-slate-700 text-purple-600 focus:ring-purple-500 dark:bg-slate-800 cursor-pointer"
-              />
-              <span>Sort alphabetically (A-Z)</span>
-            </label>
-          </div>
-
-          <!-- Action Buttons -->
-          <div class="flex items-center gap-2.5 shrink-0">
-            <button
-              type="button"
-              id="btn-sample"
-              class="px-3.5 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer shadow-2xs"
-            >
-              Load Sample
-            </button>
-            <button
-              type="button"
-              id="btn-dedupe"
-              class="px-5 py-2 text-xs sm:text-sm font-semibold rounded-lg bg-purple-600 hover:bg-purple-700 text-white shadow-sm transition-all flex items-center gap-2 cursor-pointer"
-            >
-              <ToolIcon name="list-filter" class="w-4 h-4" />
-              <span>Remove Duplicates</span>
-            </button>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Dual Textarea Layout -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-slate-200 dark:divide-slate-800">
-        
-        <!-- Left: Input Area -->
-        <div class="p-5 sm:p-6 flex flex-col space-y-3 bg-white dark:bg-slate-900">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-mono uppercase tracking-wider font-semibold text-slate-500 dark:text-slate-400">
-                Input Text
-              </span>
-              <span id="badge-input-ready" class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
-                Live Typing
-              </span>
-            </div>
-            
-            <div class="flex items-center gap-2">
-              <button
-                type="button"
-                id="btn-paste"
-                class="px-2.5 py-1 text-xs font-medium rounded-md border border-slate-200 dark:border-slate-700/80 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors flex items-center gap-1.5 cursor-pointer"
-                title="Paste from clipboard"
-              >
-                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                </svg>
-                <span>Paste</span>
-              </button>
-              <button
-                type="button"
-                id="btn-clear"
-                class="px-2.5 py-1 text-xs font-medium rounded-md border border-slate-200 dark:border-slate-700/80 hover:bg-rose-50 dark:hover:bg-rose-950/40 text-slate-600 hover:text-rose-600 dark:text-slate-400 dark:hover:text-rose-400 transition-colors cursor-pointer"
-                title="Clear input text"
-              >
-                Clear
-              </button>
-            </div>
-          </div>
-
-          <textarea
-            id="input-text"
-            rows="14"
-            placeholder="Paste or type your list here (emails, keywords, URLs, code lines)... Duplicates will be eliminated instantly in real time."
-            class="w-full p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/60 text-slate-900 dark:text-slate-100 font-mono text-sm leading-relaxed placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-500 transition resize-y min-h-[320px]"
-            spellcheck="false"
-          ></textarea>
-
-          <!-- Input Live Counters -->
-          <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 pt-1 font-mono">
-            <div class="flex items-center gap-3">
-              <span>Lines: <strong id="stat-input-lines" class="text-slate-800 dark:text-slate-200">0</strong></span>
-              <span>Chars: <strong id="stat-input-chars" class="text-slate-800 dark:text-slate-200">0</strong></span>
-              <span>Words: <strong id="stat-input-words" class="text-slate-800 dark:text-slate-200">0</strong></span>
-            </div>
-            <div class="text-[11px] text-slate-400 dark:text-slate-500">
-              Input buffer
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Output Area -->
-        <div class="p-5 sm:p-6 flex flex-col space-y-3 bg-white dark:bg-slate-900">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-mono uppercase tracking-wider font-semibold text-purple-600 dark:text-purple-400">
-                Unique Result
-              </span>
-              <span
-                id="status-duplicates-removed"
-                class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/40"
-              >
-                0 duplicate lines removed
-              </span>
-            </div>
-
-            <div class="flex items-center gap-2">
-              <button
-                type="button"
-                id="btn-copy"
-                class="px-3 py-1 text-xs font-semibold rounded-md bg-purple-600 hover:bg-purple-700 text-white transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
-                title="Copy unique lines to clipboard"
-              >
-                <svg id="copy-icon-idle" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                  <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
-                </svg>
-                <svg id="copy-icon-success" class="w-3.5 h-3.5 hidden text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span id="copy-btn-text">Copy Result</span>
-              </button>
-
-              <button
-                type="button"
-                id="btn-download"
-                class="px-2.5 py-1 text-xs font-medium rounded-md border border-slate-200 dark:border-slate-700/80 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors flex items-center gap-1.5 cursor-pointer"
-                title="Download unique lines as text file"
-              >
-                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-                <span>.txt</span>
-              </button>
-            </div>
-          </div>
-
-          <textarea
-            id="output-text"
-            rows="14"
-            placeholder="Your deduplicated list will appear here automatically..."
-            class="w-full p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/60 text-slate-900 dark:text-slate-100 font-mono text-sm leading-relaxed placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-500 transition resize-y min-h-[320px]"
-            spellcheck="false"
-          ></textarea>
-
-          <!-- Output Live Counters -->
-          <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 pt-1 font-mono">
-            <div class="flex items-center gap-3">
-              <span>Lines: <strong id="stat-output-lines" class="text-slate-800 dark:text-slate-200">0</strong></span>
-              <span>Chars: <strong id="stat-output-chars" class="text-slate-800 dark:text-slate-200">0</strong></span>
-              <span>Duplicates: <strong id="stat-duplicates-saved" class="text-emerald-600 dark:text-emerald-400">0</strong></span>
-            </div>
-            <div id="stat-reduction-pct" class="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
-              0% reduction
-            </div>
-          </div>
-        </div>
-
-      </div>
-
+  <!-- Intent Card / Workspace SEO Description (50-60 Words: 52 words) -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 font-sans">
+    <div class="max-w-4xl mx-auto p-4 md:p-5 rounded-2xl bg-slate-900/60 border border-slate-800 text-slate-300 text-sm md:text-base leading-relaxed text-center shadow-lg backdrop-blur-sm">
+      <p>
+        Duplicate lines often clutter datasets when merging <span class="text-emerald-400 font-medium">contact lists, keyword databases, crawl sitemaps, and spreadsheet exports</span>. This high-performance duplicate line remover purges repetitive rows, isolates unique entries, extracts recurring records, and formats output with <span class="text-emerald-400 font-medium">custom delimiters</span>. All text processing operates locally inside your browser sandbox, ensuring your confidential lists remain <span class="text-emerald-400 font-medium">100% private</span>.
+      </p>
     </div>
   </section>
 
   <!-- 3-Step Guide Section -->
-  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-16 sm:py-20">
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-16 sm:py-20 font-sans">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-2xl mx-auto mb-12">
@@ -452,8 +268,8 @@ const presets = [
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
         
         <!-- Step 1 -->
-        <div class="p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150 relative">
-          <div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-purple-100 dark:border-purple-900/50">
+        <div class="p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-emerald-500/60 dark:hover:border-emerald-500/60 transition-all duration-150 relative">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-emerald-100 dark:border-emerald-900/50">
             01
           </div>
           <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
@@ -465,28 +281,28 @@ const presets = [
         </div>
 
         <!-- Step 2 -->
-        <div class="p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150 relative">
-          <div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-purple-100 dark:border-purple-900/50">
+        <div class="p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-emerald-500/60 dark:hover:border-emerald-500/60 transition-all duration-150 relative">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-emerald-100 dark:border-emerald-900/50">
             02
           </div>
           <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
             Configure Deduplication Rules
           </h3>
           <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Toggle your preferences: case-sensitive comparison, trim edge whitespace, strip empty lines, or sort alphabetically in A-Z order. The list updates in real time.
+            Choose your extraction mode (unique, duplicates only, count occurrences), normalize edge whitespace, ignore symbols, or sort alphabetically in real time.
           </p>
         </div>
 
         <!-- Step 3 -->
-        <div class="p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150 relative">
-          <div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-purple-100 dark:border-purple-900/50">
+        <div class="p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-emerald-500/60 dark:hover:border-emerald-500/60 transition-all duration-150 relative">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-emerald-100 dark:border-emerald-900/50">
             03
           </div>
           <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
-            Copy or Download
+            Format, Copy, or Download
           </h3>
           <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Check the duplicate count badge and live line metrics, then click <strong>Copy Result</strong> to save to your clipboard or download as a clean <strong>.txt</strong> file.
+            Reformat output with instant commas, semicolons, or custom delimiters, then click <strong>Copy Result</strong> or download as a sanitized <strong>.txt</strong> file.
           </p>
         </div>
 
@@ -496,7 +312,7 @@ const presets = [
   </section>
 
   <!-- Quick Presets / Programmatic Target Cards Section -->
-  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/40 py-16 sm:py-20">
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/40 py-16 sm:py-20 font-sans">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-2xl mx-auto mb-12">
@@ -510,12 +326,15 @@ const presets = [
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {presets.map((preset) => (
-          <div class="group relative p-5 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900/70 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150 flex flex-col justify-between">
+          <div class="group relative p-5 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900/70 shadow-sm hover:shadow-md hover:border-emerald-500/60 dark:hover:border-emerald-500/60 transition-all duration-150 flex flex-col justify-between">
             <div>
-              <h3 class="text-base font-semibold text-slate-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors leading-snug mb-2">
+              <div class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/40 mb-3 font-sans">
+                {preset.tag}
+              </div>
+              <h3 class="text-base font-semibold text-slate-900 dark:text-white group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors leading-snug mb-2 font-sans">
                 {preset.title}
               </h3>
-              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+              <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4 font-sans">
                 {preset.desc}
               </p>
             </div>
@@ -523,7 +342,7 @@ const presets = [
             <button
               type="button"
               data-preset={preset.id}
-              class="preset-card-btn text-xs font-semibold text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 inline-flex items-center gap-1 mt-auto pt-2 cursor-pointer border-t border-slate-200 dark:border-slate-800/80"
+              class="preset-card-btn text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 dark:hover:text-emerald-300 inline-flex items-center gap-1 mt-auto pt-2 cursor-pointer border-t border-slate-200 dark:border-slate-800/80 font-sans"
             >
               <span>Apply preset & sample</span>
               <span>&rarr;</span>
@@ -536,7 +355,7 @@ const presets = [
   </section>
 
   <!-- Feature Comparison Table Section -->
-  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/60 py-16 sm:py-24">
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/60 py-16 sm:py-24 font-sans">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
@@ -556,12 +375,12 @@ const presets = [
           <div class="col-span-4 p-4 sm:p-5 flex items-center">
             <span>Feature / Capability</span>
           </div>
-          <div class="col-span-4 p-4 sm:p-5 bg-purple-50/60 dark:bg-purple-950/30 border-x border-purple-100 dark:border-purple-900/40 text-purple-700 dark:text-purple-300 flex items-center justify-between">
+          <div class="col-span-4 p-4 sm:p-5 bg-emerald-50/60 dark:bg-emerald-950/30 border-x border-emerald-100 dark:border-emerald-900/40 text-emerald-700 dark:text-emerald-300 flex items-center justify-between">
             <span class="font-bold flex items-center gap-1.5">
               FastToolVerse
-              <span class="hidden sm:inline-block px-2 py-0.5 text-[11px] font-medium bg-purple-600 text-white rounded-full">Recommended</span>
+              <span class="hidden sm:inline-block px-2 py-0.5 text-[11px] font-medium bg-emerald-600 text-white rounded-full">Recommended</span>
             </span>
-            <span class="text-xs text-purple-600 dark:text-purple-400 font-normal hidden md:inline">This Tool</span>
+            <span class="text-xs text-emerald-600 dark:text-emerald-400 font-normal hidden md:inline">This Tool</span>
           </div>
           <div class="col-span-4 p-4 sm:p-5 text-slate-500 dark:text-slate-400 flex items-center">
             <span>Cloud &amp; Server Tools</span>
@@ -574,7 +393,7 @@ const presets = [
             <span class="font-semibold text-sm text-slate-900 dark:text-white">Data Privacy &amp; Confidentiality</span>
             <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Where your lists are processed</span>
           </div>
-          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-purple-50/30 dark:bg-purple-950/15 border-r sm:border-x border-purple-100 dark:border-purple-900/30 flex items-start gap-2.5">
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-emerald-50/30 dark:bg-emerald-950/15 border-r sm:border-x border-emerald-100 dark:border-emerald-900/30 flex items-start gap-2.5">
             <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             </div>
@@ -600,7 +419,7 @@ const presets = [
             <span class="font-semibold text-sm text-slate-900 dark:text-white">Deduplication Latency</span>
             <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Execution speed on large files</span>
           </div>
-          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-purple-50/30 dark:bg-purple-950/15 border-r sm:border-x border-purple-100 dark:border-purple-900/30 flex items-start gap-2.5">
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-emerald-50/30 dark:bg-emerald-950/15 border-r sm:border-x border-emerald-100 dark:border-emerald-900/30 flex items-start gap-2.5">
             <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             </div>
@@ -626,7 +445,7 @@ const presets = [
             <span class="font-semibold text-sm text-slate-900 dark:text-white">Dataset Capacity</span>
             <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Maximum lines allowed</span>
           </div>
-          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-purple-50/30 dark:bg-purple-950/15 border-r sm:border-x border-purple-100 dark:border-purple-900/30 flex items-start gap-2.5">
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-emerald-50/30 dark:bg-emerald-950/15 border-r sm:border-x border-emerald-100 dark:border-emerald-900/30 flex items-start gap-2.5">
             <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             </div>
@@ -649,16 +468,16 @@ const presets = [
         <!-- Row 4: Rule Flexibility -->
         <div class="grid grid-cols-12 border-b border-slate-200 dark:border-slate-800/80 transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30">
           <div class="col-span-12 sm:col-span-4 p-4 sm:p-5 flex flex-col justify-center">
-            <span class="font-semibold text-sm text-slate-900 dark:text-white">Rule Flexibility</span>
-            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Granular normalization controls</span>
+            <span class="font-semibold text-sm text-slate-900 dark:text-white">Rule & Extraction Flexibility</span>
+            <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Granular normalization & filtering</span>
           </div>
-          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-purple-50/30 dark:bg-purple-950/15 border-r sm:border-x border-purple-100 dark:border-purple-900/30 flex items-start gap-2.5">
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-emerald-50/30 dark:bg-emerald-950/15 border-r sm:border-x border-emerald-100 dark:border-emerald-900/30 flex items-start gap-2.5">
             <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             </div>
             <div>
-              <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">4 Independent Rules + Presets</p>
-              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Combine case sensitivity, whitespace trimming, blank line stripping, and alphabetical sorting with 1 click.</p>
+              <p class="text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-400">4 Extraction Modes + 5 Sorters + Delimiters</p>
+              <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">Extract duplicates only, completely unique lines, occurrence counters, punctuation ignoring, and CSV delimiters.</p>
             </div>
           </div>
           <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 flex items-start gap-2.5">
@@ -667,7 +486,7 @@ const presets = [
             </div>
             <div>
               <p class="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">Basic Single Filter Only</p>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Rarely offers whitespace trimming or case switches, failing on minor trailing space discrepancies.</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Rarely offers whitespace trimming, delimiter joiners, or frequency counting, failing on edge discrepancies.</p>
             </div>
           </div>
         </div>
@@ -678,7 +497,7 @@ const presets = [
             <span class="font-semibold text-sm text-slate-900 dark:text-white">Offline Capability</span>
             <span class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Works without Wi-Fi</span>
           </div>
-          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-purple-50/30 dark:bg-purple-950/15 border-r sm:border-x border-purple-100 dark:border-purple-900/30 flex items-start gap-2.5">
+          <div class="col-span-6 sm:col-span-4 p-4 sm:p-5 bg-emerald-50/30 dark:bg-emerald-950/15 border-r sm:border-x border-emerald-100 dark:border-emerald-900/30 flex items-start gap-2.5">
             <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
               <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
             </div>
@@ -704,7 +523,7 @@ const presets = [
   </section>
 
   <!-- Informational Educational SEO Article -->
-  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-12 prose dark:prose-invert text-slate-300">
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 py-12 prose dark:prose-invert text-slate-300 font-sans">
     <div class="border-t border-slate-200 dark:border-slate-800/80 pt-12 space-y-12">
       
       <!-- H2 1: Complete Privacy -->
@@ -726,29 +545,31 @@ const presets = [
           High-Performance O(N) Hash Set Architecture vs Quadratic Filtering
         </h2>
         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          Naive text deduplication implementations rely on nested loops or <code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">Array.prototype.indexOf()</code> / <code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">Array.prototype.filter()</code>. In algorithmic terms, scanning an entire array for every single element introduces quadratic time complexity—<strong>O(N&sup2;)</strong>. When processing a dataset of 50,000 lines, a quadratic algorithm requires up to 2.5 billion comparison operations, inevitably freezing the browser thread and displaying a "Page Unresponsive" dialog.
+          Naive text deduplication implementations rely on nested loops or <code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-emerald-600 dark:text-emerald-400">Array.prototype.indexOf()</code> / <code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-emerald-600 dark:text-emerald-400">Array.prototype.filter()</code>. In algorithmic terms, scanning an entire array for every single element introduces quadratic time complexity—<strong>O(N&sup2;)</strong>. When processing a dataset of 50,000 lines, a quadratic algorithm requires up to 2.5 billion comparison operations, inevitably freezing the browser thread and displaying a "Page Unresponsive" dialog.
         </p>
         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          FastToolVerse utilizes modern ECMAScript <strong>Hash Sets (<code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">new Set()</code>)</strong>. Hash sets provide near-instantaneous <strong>O(1)</strong> lookup and insertion complexity:
+          FastToolVerse utilizes modern ECMAScript <strong>Hash Sets (<code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-emerald-600 dark:text-emerald-400">new Set()</code> / <code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-emerald-600 dark:text-emerald-400">new Map()</code>)</strong>. Hash sets provide near-instantaneous <strong>O(1)</strong> lookup and insertion complexity:
         </p>
         
-        <div class="not-prose my-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 font-mono text-xs text-purple-300 overflow-x-auto space-y-2">
-          <div><span class="text-slate-500">// High-performance linear O(N) deduplication loop</span></div>
-          <div>const seen = new Set();</div>
+        <div class="not-prose my-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950 font-mono text-xs text-emerald-300 overflow-x-auto space-y-2">
+          <div><span class="text-slate-500">// High-performance linear O(N) deduplication and frequency tracking</span></div>
+          <div>const keyMap = new Map();</div>
           <div>const uniqueLines = [];</div>
           <div class="pt-1">for (let i = 0; i &lt; lines.length; i++) &#123;</div>
           <div class="pl-4">let line = trimWhitespace ? lines[i].trim() : lines[i];</div>
           <div class="pl-4">if (removeEmpty &amp;&amp; !line) continue;</div>
-          <div class="pl-4">const key = caseSensitive ? line : line.toLowerCase();</div>
-          <div class="pl-4">if (!seen.has(key)) &#123;</div>
-          <div class="pl-8">seen.add(key);</div>
-          <div class="pl-8">uniqueLines.push(line); <span class="text-slate-500">// Preserves first occurrence order</span></div>
+          <div class="pl-4">let key = caseSensitive ? line : line.toLowerCase();</div>
+          <div class="pl-4">if (ignorePunctuation) key = key.replace(/[^\p&#123;L&#125;\p&#123;N&#125;\s]/gu, '');</div>
+          <div class="pl-4">if (!keyMap.has(key)) &#123;</div>
+          <div class="pl-8">keyMap.set(key, &#123; original: line, count: 1 &#125;);</div>
+          <div class="pl-4">&#125; else &#123;</div>
+          <div class="pl-8">keyMap.get(key).count++;</div>
           <div class="pl-4">&#125;</div>
           <div>&#125;</div>
         </div>
 
         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          This linear <strong>O(N)</strong> architecture processes datasets containing 50,000+ entries in under 40 milliseconds, ensuring smooth, instantaneous responsiveness as you type, adjust checkboxes, or paste massive datasets.
+          This linear <strong>O(N)</strong> architecture processes datasets containing 50,000+ entries in under 40 milliseconds, ensuring smooth, instantaneous responsiveness as you type, toggle checkboxes, or paste massive datasets.
         </p>
       </div>
 
@@ -758,11 +579,12 @@ const presets = [
           How Whitespace Normalization &amp; Case Sensitivity Prevent False Positives
         </h2>
         <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-          In real-world data, duplicates rarely appear with byte-for-byte identical formatting. Three common hidden variables prevent naive deduplicators from catching duplicates:
+          In real-world data, duplicates rarely appear with byte-for-byte identical formatting. Four common hidden variables prevent naive deduplicators from catching duplicates:
         </p>
         <ul class="space-y-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 list-disc pl-5">
-          <li><strong>Hidden Whitespace &amp; Trailing Tabs:</strong> Copying rows from spreadsheets often attaches an invisible trailing tab (<code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">\t</code>) or trailing space to some rows. Enabling <em>Trim whitespace before comparing</em> normalizes each line before hashing, ensuring phantom spaces don't bypass duplicate detection.</li>
-          <li><strong>Letter Casing Discrepancies:</strong> In CRM lists, email addresses often enter with mixed capitalization (e.g., <code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">User@Domain.com</code> vs <code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">user@domain.com</code>). In case-insensitive mode, the internal comparison key is lowered, eliminating duplicate messages while preserving the clean capitalization of the first appearance.</li>
+          <li><strong>Hidden Whitespace &amp; Trailing Tabs:</strong> Copying rows from spreadsheets often attaches an invisible trailing tab (<code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-emerald-600 dark:text-emerald-400">\t</code>) or trailing space to some rows. Enabling <em>Trim edge whitespace</em> normalizes each line before hashing, ensuring phantom spaces don't bypass duplicate detection.</li>
+          <li><strong>Letter Casing Discrepancies:</strong> In CRM lists, email addresses often enter with mixed capitalization (e.g., <code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-emerald-600 dark:text-emerald-400">User@Domain.com</code> vs <code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-emerald-600 dark:text-emerald-400">user@domain.com</code>). In case-insensitive mode, the internal comparison key is lowered, eliminating duplicate messages while preserving the clean capitalization of the first appearance.</li>
+          <li><strong>Punctuation &amp; Delimiter Variance:</strong> Entries with trailing commas, semicolons, or periods (such as items exported from mismatched databases) can be unified with the <em>Ignore punctuation & symbols</em> toggle.</li>
           <li><strong>Repetitive Blank Rows:</strong> Disjointed documents often separate sections with erratic sequences of blank lines. When <em>Remove empty/blank lines</em> is checked, all empty and whitespace-only lines are purged completely; when unchecked, only the first blank line is kept while repeated blank lines are cleaned.</li>
         </ul>
       </div>
@@ -779,7 +601,7 @@ const presets = [
           <li><strong>SEO &amp; Content Strategy:</strong> Cleaning aggregated keyword exports from Google Search Console, Ahrefs, or Semrush to prevent targeting cannibalization across search campaigns.</li>
           <li><strong>Email Deliverability &amp; CRM:</strong> Deduplicating newsletter subscriber lists before sending email blasts via Mailchimp, Klaviyo, or SendGrid to avoid double messaging and improve sender reputation scores.</li>
           <li><strong>Web Crawling &amp; Sitemap Audits:</strong> Sanitizing lists of extracted URLs, internal redirect chains, and canonical link targets before submitting sitemaps to search engines.</li>
-          <li><strong>Database &amp; Spreadsheet Sanitization:</strong> Cleaning pasted single-column exports of order numbers, customer IDs, and inventory SKUs before executing SQL queries or Excel <code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-purple-600 dark:text-purple-400">VLOOKUP</code> routines.</li>
+          <li><strong>Database &amp; Spreadsheet Sanitization:</strong> Cleaning pasted single-column exports of order numbers, customer IDs, and inventory SKUs before executing SQL queries or Excel <code class="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-emerald-600 dark:text-emerald-400">VLOOKUP</code> routines.</li>
         </ul>
       </div>
 
@@ -787,7 +609,7 @@ const presets = [
   </section>
 
   <!-- FAQ Section (SEO crawlable) -->
-  <section class="py-16 sm:py-24">
+  <section class="py-16 sm:py-24 font-sans">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center mb-12">
@@ -802,7 +624,7 @@ const presets = [
       <!-- Semantic FAQ List -->
       <div class="space-y-4">
         {faqs.map((faq) => (
-          <details class="group rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 transition-all duration-150 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 open:shadow-md">
+          <details class="group rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 transition-all duration-150 shadow-sm hover:shadow-md hover:border-emerald-500/60 dark:hover:border-emerald-500/60 open:shadow-md">
             <summary class="flex items-center justify-between font-semibold text-sm sm:text-base text-slate-900 dark:text-white cursor-pointer list-none select-none">
               <span>{faq.question}</span>
               <span class="ml-4 flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 group-open:rotate-180 transition-transform duration-200">
@@ -822,7 +644,7 @@ const presets = [
   </section>
 
   <!-- Related Tools Row -->
-  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-12 sm:py-16">
+  <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-12 sm:py-16 font-sans">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-6">
         Explore Related Text &amp; Formatting Tools
@@ -830,44 +652,44 @@ const presets = [
       <div class="flex flex-wrap justify-center gap-3">
         <a
           href="/remove-extra-spaces/"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-emerald-500/60 dark:hover:border-emerald-500/60 transition-all duration-150"
         >
-          <ToolIcon name="space" class="w-4 h-4 text-purple-500" />
+          <ToolIcon name="space" class="w-4 h-4 text-emerald-500" />
           <span>Remove Extra Spaces</span>
         </a>
         <a
           href="/tools/text-case-converter/"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-emerald-500/60 dark:hover:border-emerald-500/60 transition-all duration-150"
         >
-          <ToolIcon name="case-upper" class="w-4 h-4 text-purple-500" />
+          <ToolIcon name="case-upper" class="w-4 h-4 text-emerald-500" />
           <span>Text Case Converter</span>
         </a>
         <a
           href="/remove-empty-lines/"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-emerald-500/60 dark:hover:border-emerald-500/60 transition-all duration-150"
         >
-          <ToolIcon name="list-x" class="w-4 h-4 text-purple-500" />
+          <ToolIcon name="list-x" class="w-4 h-4 text-emerald-500" />
           <span>Remove Empty Lines</span>
         </a>
         <a
           href="/remove-line-breaks/"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-emerald-500/60 dark:hover:border-emerald-500/60 transition-all duration-150"
         >
-          <ToolIcon name="wrap-text" class="w-4 h-4 text-purple-500" />
+          <ToolIcon name="wrap-text" class="w-4 h-4 text-emerald-500" />
           <span>Remove Line Breaks</span>
         </a>
         <a
           href="/tools/find-and-replace-text/"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-emerald-500/60 dark:hover:border-emerald-500/60 transition-all duration-150"
         >
-          <ToolIcon name="replace" class="w-4 h-4 text-purple-500" />
+          <ToolIcon name="replace" class="w-4 h-4 text-emerald-500" />
           <span>Find &amp; Replace Text</span>
         </a>
         <a
           href="/tools/text-to-slug-converter/"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-purple-600 dark:hover:border-purple-500 transition-all duration-150"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-emerald-500/60 dark:hover:border-emerald-500/60 transition-all duration-150"
         >
-          <ToolIcon name="link-2" class="w-4 h-4 text-purple-500" />
+          <ToolIcon name="link-2" class="w-4 h-4 text-emerald-500" />
           <span>Text to Slug Converter</span>
         </a>
       </div>
@@ -875,284 +697,3 @@ const presets = [
   </section>
 
 </Layout>
-
-<!-- Client-Side JavaScript Logic -->
-<script is:inline>
-  (function () {
-    const inputText = document.getElementById('input-text');
-    const outputText = document.getElementById('output-text');
-    const optCaseSensitive = document.getElementById('opt-case-sensitive');
-    const optTrimLines = document.getElementById('opt-trim-lines');
-    const optEmptyLines = document.getElementById('opt-empty-lines');
-    const optSortLines = document.getElementById('opt-sort-lines');
-    const btnDedupe = document.getElementById('btn-dedupe');
-    const btnSample = document.getElementById('btn-sample');
-    const btnPaste = document.getElementById('btn-paste');
-    const btnClear = document.getElementById('btn-clear');
-    const btnCopy = document.getElementById('btn-copy');
-    const btnDownload = document.getElementById('btn-download');
-
-    const copyBtnText = document.getElementById('copy-btn-text');
-    const copyIconIdle = document.getElementById('copy-icon-idle');
-    const copyIconSuccess = document.getElementById('copy-icon-success');
-
-    const statInputChars = document.getElementById('stat-input-chars');
-    const statInputWords = document.getElementById('stat-input-words');
-    const statInputLines = document.getElementById('stat-input-lines');
-
-    const statOutputChars = document.getElementById('stat-output-chars');
-    const statOutputLines = document.getElementById('stat-output-lines');
-    const statDuplicatesSaved = document.getElementById('stat-duplicates-saved');
-    const statReductionPct = document.getElementById('stat-reduction-pct');
-    const statusDuplicatesRemoved = document.getElementById('status-duplicates-removed');
-
-    const presetButtons = document.querySelectorAll('.preset-card-btn');
-
-    // Preset Data map
-    const presetMap = {
-      'preset-email-list': {
-        options: { caseSensitive: false, trimLines: true, emptyLines: true, sortLines: true },
-        sample: 'contact@company.com\nMARKETING@COMPANY.COM\ncontact@company.com\nsales@enterprise.net\nmarketing@company.com\n  alex.wong@startup.io  \nalex.wong@startup.io\ninfo@domain.org\nsales@enterprise.net\nsupport@domain.org'
-      },
-      'preset-keywords': {
-        options: { caseSensitive: false, trimLines: true, emptyLines: true, sortLines: false },
-        sample: 'free online text cleaner\nbest duplicate line remover\nfree online text cleaner\nremove duplicate lines online\nFREE ONLINE TEXT CLEANER\ntext deduplication tool\nbest duplicate line remover\nclean duplicate lists'
-      },
-      'preset-case-insensitive': {
-        options: { caseSensitive: false, trimLines: true, emptyLines: false, sortLines: false },
-        sample: 'JavaScript\njavascript\nJAVASCRIPT\nTypeScript\ntypescript\nPython\npython\nPYTHON\nRust\nrust'
-      },
-      'preset-urls': {
-        options: { caseSensitive: true, trimLines: true, emptyLines: true, sortLines: false },
-        sample: 'https://fasttoolverse.com/image-resizer\nhttps://fasttoolverse.com/remove-extra-spaces\nhttps://fasttoolverse.com/remove-duplicate-lines\nhttps://fasttoolverse.com/image-resizer\nhttps://fasttoolverse.com/remove-extra-spaces\nhttps://fasttoolverse.com/tools/text-case-converter'
-      },
-      'preset-sort-dedupe': {
-        options: { caseSensitive: false, trimLines: true, emptyLines: true, sortLines: true },
-        sample: 'Zebra\nBanana\nApple\nOrange\nBanana\nApple\nGrape\nWatermelon\nOrange\nMango'
-      },
-      'preset-csv-column': {
-        options: { caseSensitive: true, trimLines: true, emptyLines: true, sortLines: false },
-        sample: 'SKU-8921-XL\nSKU-4412-SM\nSKU-8921-XL\nSKU-1093-MD\nSKU-4412-SM\nSKU-7721-LG\nSKU-1093-MD\nSKU-9901-XL'
-      }
-    };
-
-    function countWords(str) {
-      if (!str || !str.trim()) return 0;
-      return str.trim().split(/\s+/).length;
-    }
-
-    function countLines(str) {
-      if (!str) return 0;
-      return str.split(/\r?\n/).length;
-    }
-
-    // High-performance Set-based deduplication logic
-    function deduplicate(text) {
-      if (!text) {
-        return {
-          result: '',
-          duplicatesRemoved: 0,
-          originalLines: 0,
-          outputLines: 0
-        };
-      }
-
-      const lines = text.split(/\r?\n/);
-      const isCaseSensitive = optCaseSensitive ? optCaseSensitive.checked : true;
-      const isTrimLines = optTrimLines ? optTrimLines.checked : true;
-      const isRemoveEmpty = optEmptyLines ? optEmptyLines.checked : false;
-      const isSortLines = optSortLines ? optSortLines.checked : false;
-
-      const seen = new Set();
-      const resultLines = [];
-
-      for (let i = 0; i < lines.length; i++) {
-        let line = lines[i];
-
-        if (isTrimLines) {
-          line = line.trim();
-        }
-
-        if (isRemoveEmpty && line === '') {
-          continue;
-        }
-
-        const key = isCaseSensitive ? line : line.toLowerCase();
-
-        if (!seen.has(key)) {
-          seen.add(key);
-          resultLines.push(line);
-        }
-      }
-
-      if (isSortLines) {
-        resultLines.sort(function (a, b) {
-          return a.localeCompare(b, undefined, {
-            numeric: true,
-            sensitivity: isCaseSensitive ? 'case' : 'base'
-          });
-        });
-      }
-
-      const totalRemoved = Math.max(0, lines.length - resultLines.length);
-
-      return {
-        result: resultLines.join('\n'),
-        duplicatesRemoved: totalRemoved,
-        originalLines: lines.length,
-        outputLines: resultLines.length
-      };
-    }
-
-    function update() {
-      const raw = inputText.value || '';
-      const dedupeResult = deduplicate(raw);
-      outputText.value = dedupeResult.result;
-
-      // Input Stats
-      const inChars = raw.length;
-      const inWords = countWords(raw);
-      const inLines = raw ? countLines(raw) : 0;
-
-      statInputChars.textContent = inChars.toLocaleString();
-      statInputWords.textContent = inWords.toLocaleString();
-      statInputLines.textContent = inLines.toLocaleString();
-
-      // Output Stats
-      const outChars = dedupeResult.result.length;
-      const outLines = dedupeResult.result ? dedupeResult.outputLines : 0;
-
-      statOutputChars.textContent = outChars.toLocaleString();
-      statOutputLines.textContent = outLines.toLocaleString();
-
-      const dupesRemoved = dedupeResult.duplicatesRemoved;
-      statDuplicatesSaved.textContent = dupesRemoved.toLocaleString();
-
-      const pct = inLines > 0 ? Math.max(0, Math.round((dupesRemoved / inLines) * 100)) : 0;
-      statReductionPct.textContent = pct + '% reduction';
-
-      statusDuplicatesRemoved.textContent =
-        dupesRemoved.toLocaleString() + ' duplicate ' + (dupesRemoved === 1 ? 'line' : 'lines') + ' removed';
-    }
-
-    // Debounce helper for silky performance with large text
-    let timeoutId;
-    function debouncedUpdate() {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(update, 50);
-    }
-
-    // Event Listeners
-    inputText?.addEventListener('input', debouncedUpdate);
-    optCaseSensitive?.addEventListener('change', update);
-    optTrimLines?.addEventListener('change', update);
-    optEmptyLines?.addEventListener('change', update);
-    optSortLines?.addEventListener('change', update);
-    btnDedupe?.addEventListener('click', update);
-
-    // Sample Text
-    btnSample?.addEventListener('click', function () {
-      inputText.value =
-        'Apple\nBanana\nOrange\nApple\nbanana\nGrape\nOrange\n  Watermelon  \nWatermelon\nMango\nGrape';
-      update();
-    });
-
-    // Clear
-    btnClear?.addEventListener('click', function () {
-      inputText.value = '';
-      outputText.value = '';
-      update();
-      inputText.focus();
-    });
-
-    // Paste from Clipboard
-    btnPaste?.addEventListener('click', async function () {
-      try {
-        if (navigator.clipboard && navigator.clipboard.readText) {
-          const clipText = await navigator.clipboard.readText();
-          if (clipText) {
-            inputText.value = clipText;
-            update();
-          }
-        } else {
-          inputText.focus();
-          inputText.select();
-        }
-      } catch (err) {
-        inputText.focus();
-      }
-    });
-
-    // Copy to Clipboard
-    btnCopy?.addEventListener('click', async function () {
-      const textToCopy = outputText.value;
-      if (!textToCopy) return;
-
-      try {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          await navigator.clipboard.writeText(textToCopy);
-        } else {
-          outputText.select();
-          document.execCommand('copy');
-        }
-
-        copyBtnText.textContent = 'Copied!';
-        copyIconIdle.classList.add('hidden');
-        copyIconSuccess.classList.remove('hidden');
-
-        setTimeout(function () {
-          copyBtnText.textContent = 'Copy Result';
-          copyIconIdle.classList.remove('hidden');
-          copyIconSuccess.classList.add('hidden');
-        }, 2000);
-      } catch (err) {
-        outputText.select();
-      }
-    });
-
-    // Download .txt file
-    btnDownload?.addEventListener('click', function () {
-      const content = outputText.value;
-      if (!content) return;
-
-      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'unique-lines.txt';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    });
-
-    // Preset Buttons
-    presetButtons.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        const id = btn.getAttribute('data-preset');
-        const data = presetMap[id];
-        if (!data) return;
-
-        optCaseSensitive.checked = data.options.caseSensitive;
-        optTrimLines.checked = data.options.trimLines;
-        optEmptyLines.checked = data.options.emptyLines;
-        optSortLines.checked = data.options.sortLines;
-
-        if (data.sample) {
-          inputText.value = data.sample;
-        }
-
-        update();
-
-        // Scroll to editor
-        const studio = document.getElementById('input-text');
-        if (studio) {
-          studio.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      });
-    });
-
-    // Initial update on page load
-    update();
-  })();
-</script>

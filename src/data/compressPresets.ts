@@ -52,27 +52,66 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
     slug: 'compress-image-to-20kb',
     title: 'Compress Image to 20KB',
     metaTitle: 'Compress Image to 20KB Online Free - FastToolVerse',
-    metaDescription: 'Compress images to 20KB online without losing quality. Ideal for passport photos, signatures, and exam application portals with 100% privacy.',
-    badge: '20 KB Target',
+    metaDescription: 'Compress your JPG, PNG, or WebP images strictly under 20KB online with client-side binary search quantization and zero visual quality loss.',
+    badge: 'Strict 20 KB Target',
     targetKb: 20,
     maintainAspectRatio: true,
-    introHeading: 'Ultra-Fast 20KB Compression Engine',
-    introDescription: 'Quickly shrink photos and signatures under 20KB for official applications, state portal submissions, and job forms.',
+    introHeading: 'Strict 20 KB Target',
+    introDescription: 'Compress your JPG, PNG, or WebP images strictly under 20KB online with client-side binary search quantization and zero visual quality loss.',
     steps: [
-      { title: 'Select File', desc: 'Choose your image from device or paste from clipboard.' },
-      { title: '20KB Auto-Configured', desc: 'The preset auto-locks target file size to 20KB.' },
-      { title: 'Preview & Save', desc: 'Compare before/after results and download your 20KB image.' }
-    ],
+      {
+            "title": "Select Source Image",
+            "desc": "Drag and drop single or multiple JPG, PNG, or WebP files from your device into the upload dropzone, or paste directly using Ctrl+V."
+      },
+      {
+            "title": "Dynamic 20KB Convergence",
+            "desc": "Our client-side engine initiates an iterative binary search loop, trimming high-frequency noise and optimizing DCT quantization to fit exactly 20KB."
+      },
+      {
+            "title": "Inspect & Save Output",
+            "desc": "Verify photographic clarity using the split comparison slider and download your byte-exact 20KB image individually or as a bulk ZIP archive."
+      }
+],
     features: [
-      { title: 'Govt Form Compliant', desc: 'Meets strict 20KB thresholds for UPSC, SSC, and state recruitment portals.' },
-      { title: 'No Watermarks', desc: 'Completely free with zero limits, registration, or watermarks.' },
-      { title: 'Batch Processing', desc: 'Compress multiple 20KB images simultaneously.' },
-      { title: 'Private & Secure', desc: 'Zero cloud upload ensures confidential identity photos stay on your device.' }
-    ],
+      {
+            "title": "Algorithmic Binary Search Convergence",
+            "desc": "Executes up to 7 in-memory quantization passes to converge on exactly 18KB–20KB without overshooting or leaving unused byte budget."
+      },
+      {
+            "title": "Discrete Cosine Transform Trimming",
+            "desc": "Selectively discards imperceptible high-frequency frequency coefficients while preserving structural edges, contrast, and facial contours."
+      },
+      {
+            "title": "Adaptive Proportional Downscaling",
+            "desc": "If raw megapixel density is too vast for extreme 20KB compression, the engine proportionally downscales resolution to prevent visual blocking."
+      },
+      {
+            "title": "Zero Cloud Latency Sandbox",
+            "desc": "Instant in-browser processing via HTML5 Canvas. Your confidential files never travel across the internet or touch remote servers."
+      }
+],
     faqs: [
-      { question: 'Why do application forms require images under 20KB?', answer: 'Most government and educational servers enforce 20KB caps to conserve server bandwidth and optimize document databases.' },
-      { question: 'Can I compress JPG to 20KB online free?', answer: 'Yes, our tool supports JPG, PNG, and WebP formats.' }
-    ],
+      {
+            "question": "How does the tool compress an image to exactly 20KB?",
+            "answer": "FastToolVerse uses an automated client-side binary search loop. It tests different DCT quantization levels in local browser memory and dynamically converges on the exact quality level that produces a file size strictly between 18KB and 20KB."
+      },
+      {
+            "question": "Will compressing my photo to 20KB make it blurry?",
+            "answer": "Not necessarily. If resolution is appropriately balanced, our adaptive downscaling and high-contrast quantization preserve facial features and text legibility, keeping photos crisp even at 20KB."
+      },
+      {
+            "question": "What image formats can I compress to 20KB?",
+            "answer": "You can upload JPG, JPEG, PNG, WebP, and AVIF images. The tool outputs a standardized, universally compatible JPG file calibrated strictly under 20KB."
+      },
+      {
+            "question": "Why do government exam and job portals require images under 20KB?",
+            "answer": "Portals handling millions of applicants enforce 20KB file size ceilings to minimize server infrastructure costs, reduce database bandwidth, and ensure instantaneous page loading across rural mobile networks."
+      },
+      {
+            "question": "Are my sensitive identity photos uploaded to any server?",
+            "answer": "No. FastToolVerse executes 100% locally inside your web browser via HTML5 Canvas. Your confidential files never touch external servers or cloud storage."
+      }
+],
     relatedPresetSlugs: ['compress-image-to-10kb', 'compress-image-to-50kb', 'compress-jpg-to-20kb', 'resize-and-compress-signature-to-20kb']
   },
   {
@@ -156,28 +195,67 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
   {
     slug: 'compress-image-to-50kb',
     title: 'Compress Image to 50KB',
-    metaTitle: 'Compress Image to 50KB Online Free (Exact Size Reducer)',
-    metaDescription: 'Compress images to 50KB online without losing quality. Ideal for passport photos, exam portals, and web publishing.',
-    badge: '50 KB Target',
+    metaTitle: 'Compress Image to 50KB Online Free - FastToolVerse',
+    metaDescription: 'Compress digital photos to 50KB online with exact byte-level precision, rich color fidelity, and guaranteed compliance for universal web portals.',
+    badge: 'Universal 50 KB Standard',
     targetKb: 50,
     maintainAspectRatio: true,
-    introHeading: 'Standard 50KB Photo Compressor',
-    introDescription: 'The most popular file size standard for job applications, passports, and digital profile photos.',
+    introHeading: 'Universal 50 KB Standard',
+    introDescription: 'Compress digital photos to 50KB online with exact byte-level precision, rich color fidelity, and guaranteed compliance for universal web portals.',
     steps: [
-      { title: 'Upload Image', desc: 'Drag and drop your image file.' },
-      { title: '50KB Optimization', desc: 'Automatic compression locks size to 50KB.' },
-      { title: 'Download Image', desc: 'Get your portal-ready file.' }
-    ],
+      {
+            "title": "Upload Digital Photo",
+            "desc": "Drag and drop single or multiple JPG, PNG, or WebP images into the dropzone, or browse your local storage or smartphone gallery."
+      },
+      {
+            "title": "Target 50KB Optimization",
+            "desc": "Our browser engine automatically applies the 50KB ceiling, strips unnecessary EXIF metadata, and executes binary search quantization."
+      },
+      {
+            "title": "Instant In-Memory Download",
+            "desc": "Compare before-and-after results using the interactive split slider, then download your optimized 50KB image or all files in a single ZIP."
+      }
+],
     features: [
-      { title: 'Universal Portal Compatibility', desc: 'Guaranteed acceptance across global government systems.' },
-      { title: 'True Split Preview', desc: 'Compare side-by-side sharpness before saving.' },
-      { title: 'EXIF Removal', desc: 'Protects privacy and eliminates metadata bloat.' },
-      { title: 'Lightning Fast', desc: 'Instant WebAssembly-grade execution.' }
-    ],
+      {
+            "title": "Universal 50KB Portal Acceptance",
+            "desc": "Guaranteed compliance with passport authorities, corporate HR portals, and university admissions enforcing strict 50KB ceilings."
+      },
+      {
+            "title": "Balanced High-DPI Clarity",
+            "desc": "Preserves optimal 600 × 600 or 800 × 600 pixel dimensions for retina screen viewing and crisp physical photo printing."
+      },
+      {
+            "title": "Full Metadata Elimination",
+            "desc": "Strips out heavy EXIF tags, GPS geo-location, and camera profiles, reclaiming up to 30KB of overhead for actual image quality."
+      },
+      {
+            "title": "Instant Client-Side Privacy",
+            "desc": "Your photos are processed entirely inside your local device memory heap without cloud uploads, cookies, or third-party tracking."
+      }
+],
     faqs: [
-      { question: 'How do I compress photo to 50KB?', answer: 'Upload your photo here; the 50KB target is automatically applied.' },
-      { question: 'Can I keep dimensions original at 50KB?', answer: 'Yes, resolution is preserved unless reduction is required to fit the 50KB ceiling.' }
-    ],
+      {
+            "question": "How can I compress my photo to 50KB without losing quality?",
+            "answer": "Upload your image to FastToolVerse's 50KB preset. The tool automatically removes bloated EXIF metadata and applies a client-side binary search quantization loop that keeps your photo sharp and high-resolution while locking file size under 50KB."
+      },
+      {
+            "question": "Why do so many exam and passport portals require photos under 50KB?",
+            "answer": "A 50KB limit balances crisp visual resolution (sufficient for 300 DPI physical printing) with minimal database storage, allowing government and university portals to handle millions of applications without server bottlenecks."
+      },
+      {
+            "question": "What pixel dimensions should a 50KB photo have?",
+            "answer": "For standard passport applications, 600 × 600 pixels (or 213 × 213 pixels for Indian PAN cards) provides optimal clarity at 50KB. FastToolVerse preserves your original aspect ratio while scaling to the optimal resolution."
+      },
+      {
+            "question": "What happens if my photo is 50.5 KB instead of 50 KB?",
+            "answer": "Automated government and university upload validators reject files that exceed 50 KB (or 50,000 bytes) by even a single byte. FastToolVerse calibrates output between 42KB and 48KB to prevent rejection."
+      },
+      {
+            "question": "Are my personal photos uploaded or stored on your servers?",
+            "answer": "No. FastToolVerse processes all images 100% locally inside your web browser using client-side JavaScript. Your photos never leave your computer or phone."
+      }
+],
     relatedPresetSlugs: ['compress-image-to-20kb', 'compress-image-to-100kb', 'passport-photo-compressor-to-50kb', 'compress-jpg-to-50kb']
   },
   {
@@ -1196,79 +1274,208 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
   {
     slug: 'compress-photo-for-visa-application',
     title: 'Compress Photo for Visa Application',
-    metaTitle: 'Compress Photo for Visa Application Online Free',
-    metaDescription: 'Compress and format photos for international visa applications (Schengen, UK, Canada, Saudi, Gulf).',
-    badge: 'Visa Application',
+    metaTitle: 'Compress Photo for Visa Application Online Free - FastToolVerse',
+    metaDescription: 'Compress and calibrate your visa application photograph in your web browser with biometric precision, sharp facial features, and zero server uploads.',
+    badge: 'Visa Application Standard',
     targetKb: 100,
+    format: 'jpeg',
+    maxWidth: 600,
+    maxHeight: 600,
     maintainAspectRatio: true,
-    introHeading: 'Global Visa Application Photo Compressor',
-    introDescription: 'Compliant with Schengen, UK, Canadian, and Gulf visa portal upload constraints.',
+    introHeading: 'Visa Application Standard',
+    introDescription: 'Compress and calibrate your visa application photograph in your web browser with biometric precision, sharp facial features, and zero server uploads.',
     steps: [
-      { title: 'Upload Photo', desc: 'Select portrait image.' },
-      { title: 'Apply Visa Limits', desc: 'Keeps file size under 100KB.' },
-      { title: 'Save File', desc: 'Download verified visa image.' }
-    ],
+      {
+            "title": "Select or Drop Portrait",
+            "desc": "Upload your raw passport portrait from your device or camera roll. Supports high-resolution JPG, PNG, and WebP captures up to 25MB with zero quality penalty."
+      },
+      {
+            "title": "Auto-Calibrate Biometrics",
+            "desc": "The tool auto-locks compression under 100KB (or 240KB for US DS-160), normalizes lighting, crops to standard biometric proportions, and flattens background noise."
+      },
+      {
+            "title": "Download Embassy-Ready JPG",
+            "desc": "Inspect facial sharpness and edge clarity using the interactive side-by-side split slider, then download your compliant JPG image ready for immediate portal submission."
+      }
+],
     features: [
-      { title: 'Universal Visa Compliance', desc: 'Approved across multiple embassy systems.' },
-      { title: 'Sharp Facial Outlines', desc: 'Clear eye and ear visibility.' },
-      { title: '100% Secure', desc: 'Identity photos never leave your device.' },
-      { title: 'Free & Fast', desc: 'Instant batch export.' }
-    ],
+      {
+            "title": "Biometric Ratio Preservation",
+            "desc": "Maintains exact 50% to 69% crown-to-chin facial proportions mandated by international consular standards, preventing facial distortion or distortion rejection."
+      },
+      {
+            "title": "Consular Ceiling Enforcement",
+            "desc": "Pre-calibrated to satisfy strict file size ceilings across US DS-160 (240KB), Schengen VFS/TLS (100KB), Canada IRCC, and UK Visas & Immigration portals."
+      },
+      {
+            "title": "Pure White Backdrop Flattening",
+            "desc": "Eliminates background cast, wallpaper gradients, and scanner shadow bleed, producing a clean, solid, compliant consular background."
+      },
+      {
+            "title": "100% In-Memory Privacy Sandbox",
+            "desc": "Your confidential biometric portrait photos are processed exclusively inside your device browser memory. Files never touch a remote cloud server."
+      }
+],
     faqs: [
-      { question: 'Can I use this for Schengen visa photos?', answer: 'Yes, Schengen visa portals accept images under 100KB.' }
-    ],
+      {
+            "question": "What is the exact file size limit for US visa (DS-160) photos?",
+            "answer": "The US Department of State requires DS-160 digital visa photos to be strictly 240 KB or smaller, with a minimum file size of 60 KB. The image dimensions must be square (minimum 600x600 pixels up to 1200x1200 pixels) in 24-bit sRGB JPEG format."
+      },
+      {
+            "question": "Why did the visa portal reject my photo with a 'blurry face' error?",
+            "answer": "Consular automated facial recognition software scans for distinct edge contrast across eyes, nostrils, and lips. When a photo is compressed too aggressively with standard tools, high-frequency details are blurred out. FastToolVerse uses adaptive quantization to preserve facial edge sharpness while trimming file size."
+      },
+      {
+            "question": "What background color is required for international visa applications?",
+            "answer": "Most global visa authorities (including the United States, Canada, Australia, and Schengen states) require a plain white or light off-white background with zero shadows, patterns, or gradients behind the applicant."
+      },
+      {
+            "question": "How do I compress my visa photo to under 100KB for Schengen VFS portal?",
+            "answer": "Upload your image to this preset. The tool automatically applies a 100KB target ceiling and executes a multi-pass binary search loop that reduces file weight while keeping facial proportions and 35x45mm aspect ratios intact."
+      },
+      {
+            "question": "Are my sensitive identity and visa photos uploaded to your server?",
+            "answer": "No. FastToolVerse operates under a strict 100% client-side zero-upload architecture. Your photos are processed exclusively inside your local browser memory heap and are instantly discarded when you close or refresh the tab."
+      }
+],
     relatedPresetSlugs: ['compress-photo-for-us-visa', 'passport-photo-compressor-to-50kb', 'compress-image-to-100kb']
   },
   {
     slug: 'compress-photo-for-pan-card',
     title: 'Compress Photo for PAN Card',
-    metaTitle: 'Compress Photo for PAN Card Online Free (50KB NSDL/UTI)',
-    metaDescription: 'Compress and resize photo for PAN card online. Strictly meets NSDL/UTIITSL under 50KB guidelines with 100% privacy.',
-    badge: 'PAN Card Spec',
+    metaTitle: 'Compress Photo for PAN Card Online Free - FastToolVerse',
+    metaDescription: 'Resize and compress your PAN card photograph strictly under 50KB with calibrated 213x213 pixel dimensions and compliant 200 DPI scan clarity.',
+    badge: 'NSDL & UTIITSL Compliant',
     targetKb: 50,
-    maintainAspectRatio: true,
-    introHeading: 'PAN Card Photo & Signature Compressor',
-    introDescription: 'Pre-calibrated for NSDL and UTIITSL portals requiring photos under 50KB and 200 DPI clarity.',
+    format: 'jpeg',
+    maxWidth: 213,
+    maxHeight: 213,
+    maintainAspectRatio: false,
+    introHeading: 'NSDL & UTIITSL Compliant',
+    introDescription: 'Resize and compress your PAN card photograph strictly under 50KB with calibrated 213x213 pixel dimensions and compliant 200 DPI scan clarity.',
     steps: [
-      { title: 'Upload Photo or Signature', desc: 'Select file.' },
-      { title: 'NSDL 50KB Target', desc: 'Locks file weight under 50KB.' },
-      { title: 'Download', desc: 'Submit directly to PAN portal.' }
-    ],
+      {
+            "title": "Upload Passport Photo",
+            "desc": "Select or drag your original passport-style photograph into the compressor dropzone. Works with JPG, PNG, and WebP captures from scanners, phones, or digital cameras."
+      },
+      {
+            "title": "Apply NSDL 213x213 Calibration",
+            "desc": "The tool automatically crops and scales resolution to exact 213 × 213 pixels, aligns 200 DPI density, and clamps file weight strictly under the 50 KB ceiling."
+      },
+      {
+            "title": "Download Portal-Ready JPG",
+            "desc": "Inspect the resulting image with the split slider to verify facial clarity, then download the compliant JPG file for instantaneous upload to NSDL Protean or UTIITSL."
+      }
+],
     features: [
-      { title: 'NSDL & UTI Compliant', desc: 'Zero rejection guarantee.' },
-      { title: 'High Contrast Output', desc: 'Ensures signature readability.' },
-      { title: 'Safe & Confidential', desc: 'Processed locally in RAM.' },
-      { title: 'Free Forever', desc: 'No registration required.' }
-    ],
+      {
+            "title": "NSDL & UTIITSL 213x213 Dimensions",
+            "desc": "Enforces the exact 213 × 213 pixel square geometry required by official Indian Income Tax Department PAN card issuance portals."
+      },
+      {
+            "title": "Strict Sub-50KB Guarantee",
+            "desc": "Guarantees the final output file never exceeds 49.9 KB, eliminating the notorious \"File size must be less than 50KB\" submission rejection error."
+      },
+      {
+            "title": "200 DPI Scan Density Compliance",
+            "desc": "Configures internal JPEG metadata headers to 200 DPI print density, ensuring crisp physical PAN card lamination and identity verification."
+      },
+      {
+            "title": "Zero Server Storage Privacy",
+            "desc": "Personal identity documents and citizen photos remain 100% on your local computer or phone. No images are ever saved, viewed, or transmitted."
+      }
+],
     faqs: [
-      { question: 'What is the photo size for PAN card application?', answer: 'NSDL requires photo file sizes to be under 50KB in JPG format.' }
-    ],
+      {
+            "question": "What are the exact photo dimensions and size required for PAN card?",
+            "answer": "Both NSDL (Protean) and UTIITSL require applicant photos to measure exactly 213 × 213 pixels in JPG/JPEG format, with a file size strictly less than 50 KB and a scan density of 200 DPI."
+      },
+      {
+            "question": "Why does the NSDL portal reject my photo when it is 50 KB?",
+            "answer": "NSDL enforces a strict ceiling of 50,000 bytes. A file showing as '50 KB' in your operating system might actually be 51,200 bytes (50 KiB), triggering automatic rejection. FastToolVerse compresses photos to roughly 40KB–45KB to guarantee acceptance."
+      },
+      {
+            "question": "How do I make my photo 213x213 pixels without stretching my face?",
+            "answer": "FastToolVerse automatically applies centered smart cropping. It crops the rectangular photo into a balanced square around your face and scales it to exact 213x213 pixels without distorting your natural facial features."
+      },
+      {
+            "question": "Can I use a mobile phone selfie for my PAN card application?",
+            "answer": "Yes, provided the selfie is taken with a plain white background, even lighting on both sides of the face, and looking straight into the camera. Use this tool to crop it to 213x213 pixels and compress it below 50KB."
+      },
+      {
+            "question": "Are my personal photos stored or uploaded to any server?",
+            "answer": "No. FastToolVerse processes all photos 100% inside your local web browser using client-side HTML5 Canvas. Your images never leave your computer or smartphone."
+      }
+],
     relatedPresetSlugs: ['resize-and-compress-signature-to-20kb', 'compress-photo-for-voter-id', 'compress-image-to-50kb']
   },
   {
     slug: 'resize-and-compress-signature-to-20kb',
     title: 'Resize and Compress Signature to 20KB',
-    metaTitle: 'Resize and Compress Signature to 20KB Online Free',
-    metaDescription: 'Compress and resize signature image to 20KB online. Keep signature strokes crisp and white background clean.',
-    badge: 'Signature 20 KB',
+    metaTitle: 'Resize and Compress Signature to 20KB Online Free - FastToolVerse',
+    metaDescription: 'Compress and sharpen your digital signature strictly within the required 10KB to 20KB file size window for official competitive exam portals.',
+    badge: 'Exam Portal Signature Spec',
     targetKb: 20,
+    format: 'jpeg',
+    maxWidth: 300,
+    maxHeight: 120,
     maintainAspectRatio: true,
-    introHeading: 'Online Signature 20KB Compressor',
-    introDescription: 'Specialized high-contrast engine for signatures, thumb impressions, and scanned documents under 20KB.',
+    introHeading: 'Exam Portal Signature Spec',
+    introDescription: 'Compress and sharpen your digital signature strictly within the required 10KB to 20KB file size window for official competitive exam portals.',
     steps: [
-      { title: 'Upload Scanned Signature', desc: 'Select crop of your signature.' },
-      { title: 'Signature Auto-Tuning', desc: 'Enhances ink contrast and clamps size to 20KB.' },
-      { title: 'Download Image', desc: 'Submit with confidence.' }
-    ],
+      {
+            "title": "Upload Scanned Signature",
+            "desc": "Upload a smartphone photo or flatbed scanner crop of your signature written on clean white paper using black or dark blue ink."
+      },
+      {
+            "title": "Auto-Enhance Ink Strokes",
+            "desc": "The tool boosts ink-to-paper contrast, cleans background gray shadows, and executes binary search quantization to hit the exact 10KB–20KB target."
+      },
+      {
+            "title": "Download Portal-Compliant JPG",
+            "desc": "Inspect stroke legibility and pure white background using the split viewer, then download your verified signature ready for immediate portal submission."
+      }
+],
     features: [
-      { title: 'Strokes Never Fade', desc: 'Maintains black ink contrast on white paper.' },
-      { title: 'Govt Form Approved', desc: 'Perfect for UPSC, SSC, banking, and state portals.' },
-      { title: 'Strict 20KB Limit', desc: 'Guaranteed below 20KB.' },
-      { title: 'Zero Cloud Storage', desc: 'Protects personal signature privacy.' }
-    ],
+      {
+            "title": "10KB to 20KB Window Precision",
+            "desc": "Calibrated to land strictly within the mandatory 10KB–20KB boundary required by UPSC, SSC, IBPS, and state recruitment portals."
+      },
+      {
+            "title": "Ink Stroke Contrast Thresholding",
+            "desc": "Separates dark ink pen strokes from paper textures, eliminating gray shadows, mobile camera grain, and uneven desk lighting."
+      },
+      {
+            "title": "Zero Paper Bleed or Blurring",
+            "desc": "Preserves high-frequency cursive flourishes, loops, and dots without turning fine ink lines into fuzzy pixelated smudges."
+      },
+      {
+            "title": "Private In-Browser Processing",
+            "desc": "Your legal handwritten signature is never transmitted across the web or stored on remote servers. 100% client-side memory safety."
+      }
+],
     faqs: [
-      { question: 'How to make signature less than 20kb?', answer: 'Upload your scanned signature here; the tool sets the limit under 20KB automatically while keeping ink strokes sharp.' }
-    ],
+      {
+            "question": "Why do UPSC, SSC, and IBPS require signatures between 10KB and 20KB?",
+            "answer": "Government exam portals host millions of applicant records. Enforcing a strict 10KB to 20KB window ensures databases stay compact and fast while guaranteeing that signatures retain sufficient clarity for identity verification at examination centers."
+      },
+      {
+            "question": "How do I make my signature file size less than 20KB without blurring it?",
+            "answer": "Upload your signature here. Our engine applies high-contrast thresholding that turns the gray paper background into pure white, eliminating background noise so that the entire file size budget is dedicated to keeping the ink strokes crisp."
+      },
+      {
+            "question": "What should I do if my signature is smaller than the 10KB minimum limit?",
+            "answer": "If your signature is under 10KB, government portals will reject it as low quality. FastToolVerse automatically calibrates the output to land comfortably between 14KB and 18KB, safely above the 10KB floor and under the 20KB ceiling."
+      },
+      {
+            "question": "Can I sign in capital letters for government job applications?",
+            "answer": "No. Official exam boards (such as SSC, UPSC, and IBPS) explicitly reject signatures written in capital or block letters. Signatures must be written in running, continuous cursive handwriting."
+      },
+      {
+            "question": "Is it safe to compress my legal signature on FastToolVerse?",
+            "answer": "Yes, 100% safe. FastToolVerse operates entirely inside your local browser memory using client-side JavaScript. Your signature is never uploaded, stored, or transmitted over the internet."
+      }
+],
     relatedPresetSlugs: ['compress-image-to-20kb', 'compress-image-to-10kb', 'compress-photo-for-pan-card']
   },
   {

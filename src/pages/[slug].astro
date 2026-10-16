@@ -14,6 +14,9 @@ import { getPresetIntentDescription } from '../data/intentDescriptions';
 import ConversionPrivacyBrief from '../components/ConversionPrivacyBrief.astro';
 import ConversionEditorial from '../components/ConversionEditorial.astro';
 import { getConverterEditorial } from '../data/converterEditorials';
+import CompressorPrivacyBrief from '../components/CompressorPrivacyBrief.astro';
+import CompressorEditorial from '../components/CompressorEditorial.astro';
+import { getCompressorEditorial } from '../data/compressorEditorials';
 import RemoveEmptyLinesPresetView from '../components/RemoveEmptyLinesPresetView.astro';
 import { REMOVE_EMPTY_LINES_PRESETS, type RemoveEmptyLinesPreset } from '../data/removeEmptyLinesPresets';
 import RemoveLineBreaksPresetView from '../components/RemoveLineBreaksPresetView.astro';
@@ -382,6 +385,8 @@ let compressPageTitle = '';
 let compressPageDescription = '';
 let compressJsonLdSoftwareApp: any = null;
 let compressJsonLdFaq: any = null;
+let compressJsonLdBreadcrumbs: any = null;
+let compressEditorial: any = null;
 let relatedPresetsList: CompressPreset[] = [];
 
 if (props.type === 'compress' && props.compressPreset) {
@@ -389,6 +394,32 @@ if (props.type === 'compress' && props.compressPreset) {
   compressCanonicalUrl = `https://fasttoolverse.com/${preset.slug}/`;
   compressPageTitle = preset.metaTitle;
   compressPageDescription = preset.metaDescription;
+  compressEditorial = getCompressorEditorial(preset.slug);
+
+  compressJsonLdBreadcrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://fasttoolverse.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Image Compressor",
+        "item": "https://fasttoolverse.com/image-compressor/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": preset.title,
+        "item": compressCanonicalUrl
+      }
+    ]
+  };
 
   compressJsonLdSoftwareApp = {
     "@context": "https://schema.org",
@@ -402,13 +433,13 @@ if (props.type === 'compress' && props.compressPreset) {
       "price": "0",
       "priceCurrency": "USD"
     },
-    "featureList": preset.features.map((f) => f.title)
+    "featureList": (compressEditorial?.features || preset.features).map((f: any) => f.title)
   };
 
   compressJsonLdFaq = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": preset.faqs.map((f) => ({
+    "mainEntity": (compressEditorial?.faqs || preset.faqs).map((f: any) => ({
       "@type": "Question",
       "name": f.question,
       "acceptedAnswer": {
@@ -927,6 +958,17 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
       </>
     ) : props.type === 'compress' ? (
       <>
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:title" content={props.compressPreset.metaTitle} />
+        <meta property="og:description" content={props.compressPreset.metaDescription} />
+        <meta property="og:image" content="https://fasttoolverse.com/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={canonicalUrl} />
+        <meta name="twitter:title" content={props.compressPreset.metaTitle} />
+        <meta name="twitter:description" content={props.compressPreset.metaDescription} />
+        <meta name="twitter:image" content="https://fasttoolverse.com/og-image.png" />
+        <script type="application/ld+json" set:html={JSON.stringify(compressJsonLdBreadcrumbs)} />
         <script type="application/ld+json" set:html={JSON.stringify(compressJsonLdSoftwareApp)} />
         <script type="application/ld+json" set:html={JSON.stringify(compressJsonLdFaq)} />
       </>
@@ -1438,11 +1480,11 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
     <RemoveDuplicateLinesPresetView preset={props.duplicateLinesPreset} />
   ) : props.type === 'compress' ? (
     <div class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 min-h-screen">
-      <!-- Hero Header Section -->
+      <!-- 1. HERO HEADER: H1 + Exactly 20-25 Words Unique Intro -->
       <section class="relative pt-8 pb-6 sm:pt-12 sm:pb-8 overflow-hidden">
         <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           
-          <!-- Breadcrumbs: Home > Tools > {preset.badge} -->
+          <!-- Breadcrumbs: Home > Image Compressor > Badge -->
           <nav aria-label="Breadcrumb" class="mb-5 flex justify-center">
             <ol class="inline-flex items-center space-x-1.5 md:space-x-2 text-xs font-medium text-slate-500 dark:text-slate-400">
               <li class="inline-flex items-center">
@@ -1453,7 +1495,7 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
                   <svg class="w-3 h-3 text-slate-400 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                   </svg>
-                  <a href="/image-compressor/" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Tools</a>
+                  <a href="/image-compressor/" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Image Compressor</a>
                 </div>
               </li>
               <li aria-current="page">
@@ -1461,7 +1503,7 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
                   <svg class="w-3 h-3 text-slate-400 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                   </svg>
-                  <span class="text-slate-900 dark:text-white font-semibold truncate max-w-[200px] sm:max-w-none">{props.compressPreset.badge}</span>
+                  <span class="text-slate-900 dark:text-white font-semibold truncate max-w-[200px] sm:max-w-none">{compressEditorial.badge || props.compressPreset.badge}</span>
                 </div>
               </li>
             </ol>
@@ -1475,25 +1517,25 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
             </div>
             <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-900/50 shadow-2xs">
               <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
-              <span>{props.compressPreset.badge}</span>
+              <span>{compressEditorial.badge || props.compressPreset.badge}</span>
             </div>
           </div>
 
-          <!-- Hero H1 Title -->
+          <!-- Section 1: H1 Heading -->
           <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
             {props.compressPreset.title}
           </h1>
 
-          <!-- Meta Description Subtitle -->
+          <!-- Section 1: Exactly 20-25 Words Unique Introduction Paragraph -->
           <p class="mt-3 sm:mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            {props.compressPreset.metaDescription}
+            {compressEditorial.introParagraph}
           </p>
 
           <!-- Highlights Pills -->
           <div class="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">
             <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white border border-slate-300 shadow-sm dark:bg-slate-900/60 dark:border-slate-800">
               <ToolIcon name="zap" class="w-4 h-4 text-blue-500" />
-              <span>{props.compressPreset.introHeading}</span>
+              <span>{compressEditorial.badge}</span>
             </div>
             <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white border border-slate-300 shadow-sm dark:bg-slate-900/60 dark:border-slate-800">
               <ToolIcon name="shield-check" class="w-4 h-4 text-emerald-500" />
@@ -1508,23 +1550,24 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
         </div>
       </section>
 
-      <!-- Pre-Configured Interactive Workspace -->
-      <section id="tool-workspace" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24 scroll-mt-20">
+      <!-- Section 2: Interactive Image Compressor UI Component -->
+      <section id="tool-workspace" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 scroll-mt-20">
         <ImageCompressor
-          targetKb={props.compressPreset.targetKb}
+          targetKb={compressEditorial.targetKb ?? props.compressPreset.targetKb}
           qualityPercent={props.compressPreset.qualityPercent}
-          format={props.compressPreset.format}
-          maxWidth={props.compressPreset.maxWidth}
-          maxHeight={props.compressPreset.maxHeight}
+          format={compressEditorial.format as any ?? props.compressPreset.format}
+          maxWidth={compressEditorial.maxWidth ?? props.compressPreset.maxWidth}
+          maxHeight={compressEditorial.maxHeight ?? props.compressPreset.maxHeight}
           maintainAspectRatio={props.compressPreset.maintainAspectRatio}
         />
 
-        <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5 md:p-6 text-slate-300 text-sm md:text-base leading-relaxed max-w-4xl mx-auto my-6">
-          <p>{intentDescription}</p>
+        <!-- Section 3: 50-60 words Super SEO-Optimized Description (about tool) -->
+        <div class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-5 md:p-6 text-slate-700 dark:text-slate-300 text-sm md:text-base leading-relaxed max-w-4xl mx-auto my-6 shadow-sm">
+          <p>{compressEditorial.toolDescription}</p>
         </div>
       </section>
 
-      <!-- Cross-Link Banner to Image Resizer (Requirement 4.2) -->
+      <!-- Cross-Link Banner to Image Resizer Companion Tool -->
       <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">
         <div class="rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white shadow-xl shadow-blue-500/10 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
           <div class="space-y-1.5">
@@ -1533,10 +1576,10 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
               <span>Companion Tool</span>
             </div>
             <h3 class="text-lg sm:text-xl font-bold tracking-tight text-white">
-              Need to adjust pixel dimensions, crop avatars, or change DPI?
+              Need to adjust physical dimensions, centimeters, millimeters, or 300 DPI?
             </h3>
             <p class="text-xs sm:text-sm text-blue-100 max-w-xl leading-relaxed">
-              Use our companion Image Resizer to set exact centimeters (cm), millimeters (mm), inches, or 300 DPI passport standards.
+              Use our companion Image Resizer to set exact centimeters (cm), millimeters (mm), inches, or passport photo standards.
             </p>
           </div>
           <a
@@ -1549,23 +1592,23 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
         </div>
       </section>
 
-      <!-- How-To 3-Step Guide Section -->
+      <!-- Section 4: "How to Use" Step-by-Step Guide (3 distinct visual cards) -->
       <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-100/60 dark:bg-slate-900/30 py-14 sm:py-16">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center max-w-2xl mx-auto mb-10">
             <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-              How to {props.compressPreset.title} in 3 Simple Steps
+              How to Use {props.compressPreset.title} in 3 Simple Steps
             </h2>
             <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
-              {props.compressPreset.introDescription}
+              Pre-configured, private, and effortless. Run in-browser compression to target limits in seconds.
             </p>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {props.compressPreset.steps.map((step, idx) => (
+            {compressEditorial.steps.map((step: any) => (
               <div class="p-6 rounded-2xl bg-white border border-slate-300 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 dark:bg-slate-900/60 dark:border-slate-800 relative">
                 <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-blue-100 dark:border-blue-900/50">
-                  0{idx + 1}
+                  {step.number}
                 </div>
                 <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
                   {step.title}
@@ -1579,7 +1622,7 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
         </div>
       </section>
 
-      <!-- 4-Card Feature Comparison Grid -->
+      <!-- Section 5: "Why Use Our Image Compressor" (4 feature benefit cards) -->
       <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 py-14 sm:py-16">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-10">
@@ -1588,7 +1631,7 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
               <span>Optimized Compression Specifications</span>
             </div>
             <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-              Why Use FastToolVerse to {props.compressPreset.title}?
+              Why Use Our Image Compressor for {props.compressPreset.title}?
             </h2>
             <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-xl mx-auto">
               Precision client-side binary search quantization guarantees exact byte compliance with zero quality blur.
@@ -1596,10 +1639,10 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            {props.compressPreset.features.map((feature) => (
+            {compressEditorial.features.map((feature: any) => (
               <div class="p-5 rounded-2xl bg-white border border-slate-300 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 dark:bg-slate-900/60 dark:border-slate-800 flex items-start gap-3.5">
                 <div class="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 mt-0.5">
-                  <ToolIcon name="zap" class="w-4 h-4" />
+                  <ToolIcon name={feature.icon || "zap"} class="w-4 h-4" />
                 </div>
                 <div>
                   <h4 class="text-sm font-semibold text-slate-900 dark:text-white">
@@ -1615,19 +1658,115 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
         </div>
       </section>
 
-      <!-- FAQ Accordion Section -->
+      <!-- Section 6: Official Portal / Format Specifications Table -->
+      <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 py-14 sm:py-16">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-10 max-w-2xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+              {compressEditorial.specMatrix.title}
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2">
+              {compressEditorial.specMatrix.subtitle}
+            </p>
+          </div>
+
+          <div class="overflow-x-auto rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="bg-slate-100/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 font-semibold border-b border-slate-200 dark:border-slate-700">
+                <tr>
+                  <th class="p-3.5 sm:p-4">{compressEditorial.specMatrix.columns[0]}</th>
+                  <th class="p-3.5 sm:p-4">{compressEditorial.specMatrix.columns[1]}</th>
+                  <th class="p-3.5 sm:p-4">{compressEditorial.specMatrix.columns[2]}</th>
+                  <th class="p-3.5 sm:p-4">{compressEditorial.specMatrix.columns[3]}</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                {compressEditorial.specMatrix.rows.map((row: any) => (
+                  <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/40 transition-colors">
+                    <td class="p-3.5 sm:p-4 font-semibold text-slate-900 dark:text-white whitespace-nowrap">
+                      {row.param}
+                    </td>
+                    <td class="p-3.5 sm:p-4 text-slate-600 dark:text-slate-300 font-mono text-xs">
+                      {row.requirement}
+                    </td>
+                    <td class="p-3.5 sm:p-4 text-blue-600 dark:text-blue-400 font-mono text-xs font-semibold">
+                      {row.setting}
+                    </td>
+                    <td class="p-3.5 sm:p-4 text-slate-500 dark:text-slate-400 text-xs">
+                      {row.note}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7: "Why FastToolVerse is Better Than..." Detailed Comparison Table -->
+      <section class="border-t border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950 py-14 sm:py-16">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-10 max-w-2xl mx-auto">
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+              {compressEditorial.comparisonTable.title}
+            </h2>
+            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2">
+              {compressEditorial.comparisonTable.subtitle}
+            </p>
+          </div>
+
+          <div class="overflow-x-auto rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="bg-slate-100/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 font-semibold border-b border-slate-200 dark:border-slate-700">
+                <tr>
+                  <th class="p-3.5 sm:p-4">{compressEditorial.comparisonTable.columns[0]}</th>
+                  <th class="p-3.5 sm:p-4 text-blue-600 dark:text-blue-400">{compressEditorial.comparisonTable.columns[1]}</th>
+                  <th class="p-3.5 sm:p-4 text-slate-500 dark:text-slate-400">{compressEditorial.comparisonTable.columns[2]}</th>
+                  <th class="p-3.5 sm:p-4">{compressEditorial.comparisonTable.columns[3]}</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                {compressEditorial.comparisonTable.rows.map((row: any) => (
+                  <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/40 transition-colors">
+                    <td class="p-3.5 sm:p-4 font-semibold text-slate-900 dark:text-white whitespace-nowrap">
+                      {row.feature}
+                    </td>
+                    <td class="p-3.5 sm:p-4 text-blue-600 dark:text-blue-400 text-xs font-semibold">
+                      {row.fastToolVerse}
+                    </td>
+                    <td class="p-3.5 sm:p-4 text-slate-500 dark:text-slate-400 text-xs">
+                      {row.genericTools}
+                    </td>
+                    <td class="p-3.5 sm:p-4 text-slate-700 dark:text-slate-300 text-xs font-medium">
+                      {row.takeaway}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 8: "Engineered for Privacy, Speed, and Color Accuracy" technical breakdown block -->
+      <CompressorPrivacyBrief />
+
+      <!-- Section 9: Comprehensive 900+ words SEO Article naturally embedding keywords without fluff -->
+      <CompressorEditorial editorial={compressEditorial} />
+
+      <!-- Section 10: Intent-Targeted FAQ Accordion (5 Q&As with valid schema.org/FAQPage JSON-LD) -->
       <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 border-t border-slate-200/90 dark:border-slate-800">
         <div class="text-center mb-10">
           <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
             Frequently Asked Questions
           </h2>
           <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2">
-            Common questions about {props.compressPreset.title.toLowerCase()} and official portal submission limits.
+            Technical answers and compliance tips for {props.compressPreset.title.toLowerCase()}.
           </p>
         </div>
 
         <div class="space-y-3.5">
-          {props.compressPreset.faqs.map((faq) => (
+          {compressEditorial.faqs.map((faq: any) => (
             <details class="group rounded-2xl bg-white border border-slate-300 shadow-sm hover:shadow-md hover:border-blue-600 dark:bg-slate-900/60 dark:border-slate-800 overflow-hidden transition-all duration-150">
               <summary class="flex items-center justify-between p-4 sm:p-5 font-semibold text-sm sm:text-base text-slate-900 dark:text-white cursor-pointer select-none bg-slate-100/70 dark:bg-slate-800/60 transition-colors">
                 <span>{faq.question}</span>
@@ -1645,7 +1784,7 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
         </div>
       </section>
 
-      <!-- Related Presets Grid -->
+      <!-- Section 11: Related Compression Presets Cloud -->
       <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 py-14 sm:py-16">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-8">

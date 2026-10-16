@@ -4019,7 +4019,7 @@ export const DUPLICATE_LINES_PRESETS: DuplicateLinesPreset[] = [
       "sort": "original",
       "delimiter": "newline"
     },
-    "sampleText": "https://fasttoolverse.com/image-resizer/\nhttps://fasttoolverse.com/remove-duplicate-lines/\nhttps://fasttoolverse.com/image-resizer/\nhttps://fasttoolverse.com/remove-empty-lines/\nhttps://fasttoolverse.com/remove-duplicate-lines/\nhttps://fasttoolverse.com/tools/text-cleaner/",
+    "sampleText": "https://fasttoolverse.com/image-resizer/\nhttps://fasttoolverse.com/remove-duplicate-lines/\nhttps://fasttoolverse.com/image-resizer/\nhttps://fasttoolverse.com/remove-empty-lines/\nhttps://fasttoolverse.com/remove-duplicate-lines/\nhttps://fasttoolverse.com/remove-extra-spaces/",
     "editorialGuide": {
       "heading": "Practical Field Guide: Remove Duplicate URLs Online & Marketing List Hygiene",
       "sections": [
@@ -4123,7 +4123,7 @@ export const DUPLICATE_LINES_PRESETS: DuplicateLinesPreset[] = [
       "sort": "original",
       "delimiter": "newline"
     },
-    "sampleText": "https://fasttoolverse.com/image-resizer/\nhttps://fasttoolverse.com/remove-duplicate-lines/\nhttps://fasttoolverse.com/image-resizer/\nhttps://fasttoolverse.com/remove-empty-lines/\nhttps://fasttoolverse.com/remove-duplicate-lines/\nhttps://fasttoolverse.com/tools/text-cleaner/",
+    "sampleText": "https://fasttoolverse.com/image-resizer/\nhttps://fasttoolverse.com/remove-duplicate-lines/\nhttps://fasttoolverse.com/image-resizer/\nhttps://fasttoolverse.com/remove-empty-lines/\nhttps://fasttoolverse.com/remove-duplicate-lines/\nhttps://fasttoolverse.com/remove-extra-spaces/",
     "editorialGuide": {
       "heading": "Practical Field Guide: Remove Duplicate Links from Text & Marketing List Hygiene",
       "sections": [
@@ -4539,7 +4539,7 @@ export const DUPLICATE_LINES_PRESETS: DuplicateLinesPreset[] = [
       "sort": "original",
       "delimiter": "newline"
     },
-    "sampleText": "https://fasttoolverse.com/image-resizer/\nhttps://fasttoolverse.com/remove-duplicate-lines/\nhttps://fasttoolverse.com/image-resizer/\nhttps://fasttoolverse.com/remove-empty-lines/\nhttps://fasttoolverse.com/remove-duplicate-lines/\nhttps://fasttoolverse.com/tools/text-cleaner/",
+    "sampleText": "https://fasttoolverse.com/image-resizer/\nhttps://fasttoolverse.com/remove-duplicate-lines/\nhttps://fasttoolverse.com/image-resizer/\nhttps://fasttoolverse.com/remove-empty-lines/\nhttps://fasttoolverse.com/remove-duplicate-lines/\nhttps://fasttoolverse.com/remove-extra-spaces/",
     "editorialGuide": {
       "heading": "Practical Field Guide: Remove Duplicate Domains List & Marketing List Hygiene",
       "sections": [

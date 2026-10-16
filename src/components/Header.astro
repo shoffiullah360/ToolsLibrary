@@ -3,14 +3,14 @@ import { TOOLS, TEXT_TOOLS } from '../data/tools';
 import ToolIcon from './ToolIcon.astro';
 
 const socialSlugMap: Record<string, string> = {
-  'Facebook Specs & Resizer': '/tools/facebook-image-resizer/',
-  'YouTube Specs & Resizer': '/tools/youtube-image-resizer/',
-  'Instagram Specs & Resizer': '/tools/instagram-image-resizer/',
-  'TikTok Specs & Resizer': '/tools/tiktok-image-resizer/',
-  'LinkedIn Specs & Resizer': '/tools/linkedin-image-resizer/',
-  'X (Twitter) Specs & Resizer': '/tools/x-twitter-image-resizer/',
-  'Pinterest Specs & Resizer': '/tools/pinterest-image-resizer/',
-  'WhatsApp Specs & Resizer': '/tools/whatsapp-image-resizer/'
+  'Facebook Specs & Resizer': '/facebook-image-resizer/',
+  'YouTube Specs & Resizer': '/youtube-image-resizer/',
+  'Instagram Specs & Resizer': '/instagram-image-resizer/',
+  'TikTok Specs & Resizer': '/tiktok-image-resizer/',
+  'LinkedIn Specs & Resizer': '/linkedin-image-resizer/',
+  'X (Twitter) Specs & Resizer': '/x-twitter-image-resizer/',
+  'Pinterest Specs & Resizer': '/pinterest-image-resizer/',
+  'WhatsApp Specs & Resizer': '/whatsapp-image-resizer/'
 };
 
 const imageTools = TOOLS.filter((t) => t.category === 'Image Tools').map((t) => ({

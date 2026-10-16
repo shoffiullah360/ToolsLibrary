@@ -3,6 +3,50 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
+// Incomplete / Coming Soon tool slugs to exclude from sitemap
+const COMING_SOON_SLUGS = new Set([
+  'add-prefix-suffix',
+  'add-watermark',
+  'aspect-ratio-calculator',
+  'base64-decoder',
+  'base64-encoder',
+  'color-converter',
+  'color-picker-from-image',
+  'css-minifier',
+  'exif-viewer',
+  'facebook-image-resizer',
+  'find-and-replace-text',
+  'html-formatter',
+  'image-cropper',
+  'image-dimensions-calculator',
+  'image-flipper',
+  'image-optimizer',
+  'image-rotator',
+  'instagram-image-resizer',
+  'js-minifier',
+  'json-formatter',
+  'json-minifier',
+  'json-validator',
+  'jwt-decoder',
+  'linkedin-image-resizer',
+  'passport-size',
+  'passport-size-maker',
+  'pinterest-image-resizer',
+  'regex-tester',
+  'remove-special-characters',
+  'text-case-converter',
+  'text-to-slug-converter',
+  'tiktok-image-resizer',
+  'timestamp-converter',
+  'unix-timestamp-converter',
+  'url-decoder',
+  'url-encoder',
+  'uuid-generator',
+  'whatsapp-image-resizer',
+  'x-twitter-image-resizer',
+  'youtube-image-resizer'
+]);
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://fasttoolverse.com',
@@ -12,6 +56,11 @@ export default defineConfig({
       filter: (page) => {
         // Exclude 404 and non-indexable utility endpoints
         if (page.includes('/404')) return false;
+        // Exclude any legacy /tools/ path
+        if (page.includes('/tools/')) return false;
+        // Exclude all coming soon / placeholder tools
+        const pathSlug = page.replace(/^https?:\/\/[^\/]+/, '').replace(/^\/+/, '').replace(/\/+$/, '');
+        if (COMING_SOON_SLUGS.has(pathSlug)) return false;
         return true;
       },
       serialize: (item) => {
@@ -31,25 +80,66 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   redirects: {
-    '/pinterest-pin-resizer': '/tools/pinterest-image-resizer/',
-    '/twitter-header-resizer': '/tools/x-twitter-image-resizer/',
-    '/whatsap': '/tools/whatsapp-image-resizer/',
-    '/whatsapp-dp-resizer': '/tools/whatsapp-image-resizer/',
-    '/linkedin-banner-resizer': '/tools/linkedin-image-resizer/',
-    '/youtube-banner-resizer': '/tools/youtube-image-resizer/',
-    '/resize-image-for-instagram': '/tools/instagram-image-resizer/',
-    '/facebook-cover-photo-resizer': '/tools/facebook-image-resizer/',
-    '/tiktok-profile-picture-resizer': '/tools/tiktok-image-resizer/',
+    // Social Resizer Aliases to canonical flat root
+    '/pinterest-pin-resizer': '/pinterest-image-resizer/',
+    '/twitter-header-resizer': '/x-twitter-image-resizer/',
+    '/whatsap': '/whatsapp-image-resizer/',
+    '/whatsapp-dp-resizer': '/whatsapp-image-resizer/',
+    '/linkedin-banner-resizer': '/linkedin-image-resizer/',
+    '/youtube-banner-resizer': '/youtube-image-resizer/',
+    '/resize-image-for-instagram': '/instagram-image-resizer/',
+    '/facebook-cover-photo-resizer': '/facebook-image-resizer/',
+    '/tiktok-profile-picture-resizer': '/tiktok-image-resizer/',
 
-    // Main Tools Flattened Root Migrations (301)
+    // All Tools Flattened Root Migrations (301)
     '/tools/image-resizer': '/image-resizer/',
     '/tools/image-compressor': '/image-compressor/',
     '/tools/image-converter': '/image-converter/',
+    '/tools/image-cropper': '/image-cropper/',
+    '/tools/image-rotator': '/image-rotator/',
+    '/tools/image-flipper': '/image-flipper/',
+    '/tools/aspect-ratio-calculator': '/aspect-ratio-calculator/',
+    '/tools/image-dimensions-calculator': '/image-dimensions-calculator/',
+    '/tools/add-watermark': '/add-watermark/',
+    '/tools/passport-size': '/passport-size/',
+    '/tools/passport-size-maker': '/passport-size-maker/',
+    '/tools/image-optimizer': '/image-optimizer/',
+    '/tools/exif-viewer': '/exif-viewer/',
+    '/tools/color-picker-from-image': '/color-picker-from-image/',
+    '/tools/youtube-image-resizer': '/youtube-image-resizer/',
+    '/tools/instagram-image-resizer': '/instagram-image-resizer/',
+    '/tools/facebook-image-resizer': '/facebook-image-resizer/',
+    '/tools/x-twitter-image-resizer': '/x-twitter-image-resizer/',
+    '/tools/linkedin-image-resizer': '/linkedin-image-resizer/',
+    '/tools/pinterest-image-resizer': '/pinterest-image-resizer/',
+    '/tools/tiktok-image-resizer': '/tiktok-image-resizer/',
+    '/tools/whatsapp-image-resizer': '/whatsapp-image-resizer/',
+    '/tools/json-formatter': '/json-formatter/',
+    '/tools/json-validator': '/json-validator/',
+    '/tools/json-minifier': '/json-minifier/',
+    '/tools/base64-encoder': '/base64-encoder/',
+    '/tools/base64-decoder': '/base64-decoder/',
+    '/tools/url-encoder': '/url-encoder/',
+    '/tools/url-decoder': '/url-decoder/',
+    '/tools/uuid-generator': '/uuid-generator/',
+    '/tools/timestamp-converter': '/timestamp-converter/',
+    '/tools/unix-timestamp-converter': '/unix-timestamp-converter/',
+    '/tools/regex-tester': '/regex-tester/',
+    '/tools/jwt-decoder': '/jwt-decoder/',
+    '/tools/html-formatter': '/html-formatter/',
+    '/tools/css-minifier': '/css-minifier/',
+    '/tools/js-minifier': '/js-minifier/',
+    '/tools/color-converter': '/color-converter/',
     '/tools/remove-extra-spaces': '/remove-extra-spaces/',
     '/tools/remove-duplicate-lines': '/remove-duplicate-lines/',
     '/tools/remove-empty-lines': '/remove-empty-lines/',
     '/tools/remove-line-breaks': '/remove-line-breaks/',
     '/tools/sort-text-lines': '/sort-text-lines/',
+    '/tools/text-case-converter': '/text-case-converter/',
+    '/tools/find-and-replace-text': '/find-and-replace-text/',
+    '/tools/add-prefix-suffix': '/add-prefix-suffix/',
+    '/tools/remove-special-characters': '/remove-special-characters/',
+    '/tools/text-to-slug-converter': '/text-to-slug-converter/',
 
     // Remove Empty Lines 301 Migrations
     '/tools/remove-empty-lines/how-to-remove-empty-lines-in-notepad-plus-plus': '/remove-empty-lines-notepad-plus-plus/',

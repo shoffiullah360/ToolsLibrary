@@ -90,7 +90,7 @@ export const TOOLS: Tool[] = [
     tags: ['Visual Handles', 'Aspect Lock', 'Client-Side'],
     keywords: ['crop image', 'cut photo', 'image cropper', 'trim picture', 'aspect crop'],
     icon: 'crop',
-    href: '/tools/image-cropper/'
+    href: '/image-cropper/'
   },
   {
     id: 'image-rotator',
@@ -101,7 +101,7 @@ export const TOOLS: Tool[] = [
     tags: ['Angle Precision', 'Instant Preview', 'Lossless'],
     keywords: ['rotate photo', 'turn image', 'orientation fix', 'rotate 90 degrees'],
     icon: 'rotate-cw',
-    href: '/tools/image-rotator/'
+    href: '/image-rotator/'
   },
   {
     id: 'image-flipper',
@@ -112,7 +112,7 @@ export const TOOLS: Tool[] = [
     tags: ['Mirror Effect', 'Horizontal/Vertical', 'Instant'],
     keywords: ['flip image', 'mirror photo', 'invert picture', 'horizontal flip'],
     icon: 'flip-horizontal',
-    href: '/tools/image-flipper/'
+    href: '/image-flipper/'
   },
 
   // Group: Calculators & Sizing
@@ -126,7 +126,7 @@ export const TOOLS: Tool[] = [
     keywords: ['aspect ratio calculator', '16:9 calculator', 'proportions', 'screen ratio'],
     icon: 'scale',
     badge: 'Fast',
-    href: '/tools/aspect-ratio-calculator/'
+    href: '/aspect-ratio-calculator/'
   },
   {
     id: 'image-dimensions-calculator',
@@ -137,7 +137,7 @@ export const TOOLS: Tool[] = [
     tags: ['Print Prep', 'DPI/PPI', 'Megapixels'],
     keywords: ['dpi calculator', 'print size', 'image resolution', 'pixel to inch converter'],
     icon: 'ruler',
-    href: '/tools/image-dimensions-calculator/'
+    href: '/image-dimensions-calculator/'
   },
   {
     id: 'add-watermark',
@@ -149,7 +149,7 @@ export const TOOLS: Tool[] = [
     keywords: ['watermark image', 'add logo to photo', 'copyright stamp', 'watermark maker'],
     icon: 'shield-check',
     badge: 'Popular',
-    href: '/tools/add-watermark/'
+    href: '/add-watermark/'
   },
   {
     id: 'passport-size',
@@ -161,7 +161,7 @@ export const TOOLS: Tool[] = [
     keywords: ['passport photo', '2x2 inch photo', 'visa photo maker', 'biometric size'],
     icon: 'user-check',
     badge: 'Essential',
-    href: '/tools/passport-size/'
+    href: '/passport-size/'
   },
 
   // Group: Optimization & Utilities
@@ -175,7 +175,7 @@ export const TOOLS: Tool[] = [
     keywords: ['optimize images', 'webp converter', 'avif generator', 'speed up website images'],
     icon: 'zap',
     badge: 'Fast',
-    href: '/tools/image-optimizer/'
+    href: '/image-optimizer/'
   },
   {
     id: 'exif-viewer',
@@ -186,7 +186,7 @@ export const TOOLS: Tool[] = [
     tags: ['Privacy Guard', 'GPS Inspector', 'Metadata Remover'],
     keywords: ['exif viewer', 'remove metadata', 'strip geotag', 'camera details inspector'],
     icon: 'info',
-    href: '/tools/exif-viewer/'
+    href: '/exif-viewer/'
   },
   {
     id: 'color-picker-from-image',
@@ -198,7 +198,7 @@ export const TOOLS: Tool[] = [
     keywords: ['color picker', 'extract palette', 'sample color from image', 'hex from photo'],
     icon: 'pipette',
     badge: 'Popular',
-    href: '/tools/color-picker-from-image/'
+    href: '/color-picker-from-image/'
   },
 
   // Group: Social Media Specs & Resizers
@@ -212,7 +212,7 @@ export const TOOLS: Tool[] = [
     keywords: ['youtube banner size', 'youtube thumbnail resizer', 'channel art', 'youtube specs'],
     icon: 'video',
     badge: 'Popular',
-    href: '/tools/youtube-image-resizer/',
+    href: '/youtube-image-resizer/',
     specs: '2560x1440 Banner · 1280x720 Thumb'
   },
   {
@@ -225,7 +225,7 @@ export const TOOLS: Tool[] = [
     keywords: ['instagram photo resizer', 'square post', 'instagram story size', 'reels cover'],
     icon: 'camera',
     badge: 'Popular',
-    href: '/tools/instagram-image-resizer/',
+    href: '/instagram-image-resizer/',
     specs: '1080x1080 Square · 1080x1920 Story'
   },
   {
@@ -237,7 +237,7 @@ export const TOOLS: Tool[] = [
     tags: ['Cover Safe Area', 'Feed Post', 'Event Banner'],
     keywords: ['facebook cover size', 'fb banner resizer', 'facebook ad dimensions'],
     icon: 'share-2',
-    href: '/tools/facebook-image-resizer/',
+    href: '/facebook-image-resizer/',
     specs: '820x312 Cover · 1200x630 Post'
   },
   {
@@ -249,7 +249,7 @@ export const TOOLS: Tool[] = [
     tags: ['3:1 Header', '16:9 Feed', 'No Compression Blurriness'],
     keywords: ['twitter header size', 'x banner resizer', 'twitter post image spec'],
     icon: 'twitter',
-    href: '/tools/x-twitter-image-resizer/',
+    href: '/x-twitter-image-resizer/',
     specs: '1500x500 Header · 1600x900 Feed'
   },
   {
@@ -261,7 +261,7 @@ export const TOOLS: Tool[] = [
     tags: ['Business Standards', 'Personal Cover', 'Company Page'],
     keywords: ['linkedin banner size', 'linkedin background photo', 'linkedin post dimension'],
     icon: 'briefcase',
-    href: '/tools/linkedin-image-resizer/',
+    href: '/linkedin-image-resizer/',
     specs: '1584x396 Banner · 1200x627 Post'
   },
   {
@@ -273,7 +273,7 @@ export const TOOLS: Tool[] = [
     tags: ['2:3 Ratio', 'Tall Pins', 'High CTR'],
     keywords: ['pinterest pin size', 'pinterest 1000x1500', 'board cover resizer'],
     icon: 'pin',
-    href: '/tools/pinterest-image-resizer/',
+    href: '/pinterest-image-resizer/',
     specs: '1000x1500 Standard · 2:3 Ratio'
   },
   {
@@ -285,7 +285,7 @@ export const TOOLS: Tool[] = [
     tags: ['9:16 Vertical', 'Video Covers', 'Clear Avatar'],
     keywords: ['tiktok thumbnail size', 'tiktok 1080x1920', 'tiktok profile photo'],
     icon: 'play-square',
-    href: '/tools/tiktok-image-resizer/',
+    href: '/tiktok-image-resizer/',
     specs: '200x200 DP Avatar · 800x800 Shop'
   },
   {
@@ -298,7 +298,7 @@ export const TOOLS: Tool[] = [
     keywords: ['whatsapp dp size', 'whatsapp status photo', 'whatsapp sticker 512x512'],
     icon: 'message-circle',
     badge: 'Popular',
-    href: '/tools/whatsapp-image-resizer/',
+    href: '/whatsapp-image-resizer/',
     specs: '500x500 DP · 1080x1920 Status'
   },
 
@@ -316,7 +316,7 @@ export const TOOLS: Tool[] = [
     keywords: ['json formatter', 'prettify json', 'beautify json', 'format json string'],
     icon: 'file-text',
     badge: 'Popular',
-    href: '/tools/json-formatter/'
+    href: '/json-formatter/'
   },
   {
     id: 'json-validator',
@@ -328,7 +328,7 @@ export const TOOLS: Tool[] = [
     keywords: ['json validator', 'validate json syntax', 'check json errors', 'json linter'],
     icon: 'check-circle-2',
     badge: 'Essential',
-    href: '/tools/json-validator/'
+    href: '/json-validator/'
   },
   {
     id: 'json-minifier',
@@ -339,7 +339,7 @@ export const TOOLS: Tool[] = [
     tags: ['Payload Shrink', 'Zero Whitespace', 'Instant'],
     keywords: ['json minifier', 'minify json', 'compress json payload', 'strip json spaces'],
     icon: 'minimize',
-    href: '/tools/json-minifier/'
+    href: '/json-minifier/'
   },
 
   // Group: Encoders & Decoders
@@ -353,7 +353,7 @@ export const TOOLS: Tool[] = [
     keywords: ['base64 encoder', 'convert to base64', 'encode string', 'image to base64'],
     icon: 'binary',
     badge: 'Popular',
-    href: '/tools/base64-encoder/'
+    href: '/base64-encoder/'
   },
   {
     id: 'base64-decoder',
@@ -365,7 +365,7 @@ export const TOOLS: Tool[] = [
     keywords: ['base64 decoder', 'decode base64 string', 'base64 to text', 'base64 to file'],
     icon: 'file-code',
     badge: 'Essential',
-    href: '/tools/base64-decoder/'
+    href: '/base64-decoder/'
   },
   {
     id: 'url-encoder',
@@ -376,7 +376,7 @@ export const TOOLS: Tool[] = [
     tags: ['RFC 3986', 'URI Escape', 'Percent Encoding'],
     keywords: ['url encoder', 'encode uri', 'urlencode', 'percent encode string'],
     icon: 'link',
-    href: '/tools/url-encoder/'
+    href: '/url-encoder/'
   },
   {
     id: 'url-decoder',
@@ -387,7 +387,7 @@ export const TOOLS: Tool[] = [
     tags: ['Query Unescape', 'UTF-8 Safe', 'Clean Strings'],
     keywords: ['url decoder', 'decode uri', 'urldecode', 'unquote url'],
     icon: 'link-2',
-    href: '/tools/url-decoder/'
+    href: '/url-decoder/'
   },
 
   // Group: Generators & Time
@@ -401,7 +401,7 @@ export const TOOLS: Tool[] = [
     keywords: ['uuid generator', 'guid generator', 'random uuid', 'rfc 4122 v4'],
     icon: 'fingerprint',
     badge: 'Popular',
-    href: '/tools/uuid-generator/'
+    href: '/uuid-generator/'
   },
   {
     id: 'timestamp-converter',
@@ -412,7 +412,7 @@ export const TOOLS: Tool[] = [
     tags: ['ISO-8601', 'Timezone Aware', 'UTC & Local'],
     keywords: ['timestamp converter', 'date to timestamp', 'epoch converter', 'iso to unix'],
     icon: 'calendar',
-    href: '/tools/timestamp-converter/'
+    href: '/timestamp-converter/'
   },
   {
     id: 'unix-timestamp-converter',
@@ -424,7 +424,7 @@ export const TOOLS: Tool[] = [
     keywords: ['unix timestamp converter', 'epoch to date', 'parse timestamp', 'current unix time'],
     icon: 'clock',
     badge: 'Fast',
-    href: '/tools/unix-timestamp-converter/'
+    href: '/unix-timestamp-converter/'
   },
 
   // Group: Code & Formatters
@@ -438,7 +438,7 @@ export const TOOLS: Tool[] = [
     keywords: ['regex tester', 'regular expression test', 'regex online', 'regex validator'],
     icon: 'search',
     badge: 'Popular',
-    href: '/tools/regex-tester/'
+    href: '/regex-tester/'
   },
   {
     id: 'jwt-decoder',
@@ -450,7 +450,7 @@ export const TOOLS: Tool[] = [
     keywords: ['jwt decoder', 'decode jwt token', 'parse json web token', 'jwt debugger'],
     icon: 'key',
     badge: 'Essential',
-    href: '/tools/jwt-decoder/'
+    href: '/jwt-decoder/'
   },
   {
     id: 'html-formatter',
@@ -461,7 +461,7 @@ export const TOOLS: Tool[] = [
     tags: ['HTML5 Prettier', 'Clean Indent', 'Tag Nesting'],
     keywords: ['html formatter', 'beautify html', 'indent html code', 'html clean up'],
     icon: 'code-2',
-    href: '/tools/html-formatter/'
+    href: '/html-formatter/'
   },
   {
     id: 'css-minifier',
@@ -472,7 +472,7 @@ export const TOOLS: Tool[] = [
     tags: ['Stylesheet Shrink', 'Faster FCP', 'Clean Output'],
     keywords: ['css minifier', 'minify css', 'compress stylesheet', 'css optimizer'],
     icon: 'file-spreadsheet',
-    href: '/tools/css-minifier/'
+    href: '/css-minifier/'
   },
   {
     id: 'js-minifier',
@@ -483,7 +483,7 @@ export const TOOLS: Tool[] = [
     tags: ['Script Compression', 'Production Ready', 'Instant'],
     keywords: ['js minifier', 'javascript minifier', 'compress js', 'clean javascript'],
     icon: 'terminal',
-    href: '/tools/js-minifier/'
+    href: '/js-minifier/'
   },
 
   // Group: Color Utilities
@@ -497,7 +497,7 @@ export const TOOLS: Tool[] = [
     keywords: ['color converter', 'hex to rgb', 'rgb to hex', 'hex color converter', 'hsl to rgb'],
     icon: 'palette',
     badge: 'Fast',
-    href: '/tools/color-converter/'
+    href: '/color-converter/'
   }
 ];
 
@@ -570,35 +570,35 @@ export const TEXT_TOOLS: TextTool[] = [
   {
     id: 'text-case-converter',
     title: 'Text Case Converter',
-    href: '/tools/text-case-converter/',
+    href: '/text-case-converter/',
     icon: 'case-upper',
     description: 'Convert text to UPPERCASE, lowercase, Title Case, camelCase, and kebab-case.'
   },
   {
     id: 'find-and-replace-text',
     title: 'Find & Replace Text',
-    href: '/tools/find-and-replace-text/',
+    href: '/find-and-replace-text/',
     icon: 'replace',
     description: 'Search and replace words, phrases, or regex patterns across multiline text.'
   },
   {
     id: 'add-prefix-suffix',
     title: 'Add Prefix & Suffix',
-    href: '/tools/add-prefix-suffix/',
+    href: '/add-prefix-suffix/',
     icon: 'list-plus',
     description: 'Prepend prefixes or append suffixes to every line of text instantly.'
   },
   {
     id: 'remove-special-characters',
     title: 'Remove Special Characters',
-    href: '/tools/remove-special-characters/',
+    href: '/remove-special-characters/',
     icon: 'eraser',
     description: 'Strip symbols, punctuation, emojis, or non-ASCII characters cleanly.'
   },
   {
     id: 'text-to-slug-converter',
     title: 'Text to Slug Converter',
-    href: '/tools/text-to-slug-converter/',
+    href: '/text-to-slug-converter/',
     icon: 'link-2',
     description: 'Convert headings and titles into clean, URL-safe SEO slugs.'
   }

@@ -171,38 +171,15 @@ export async function getStaticPaths() {
   // 4. Filter out any already built tools to prevent route collision
   const targetSlugs = Array.from(slugCandidates).filter((slug) => !builtSlugs.has(slug));
 
-  return targetSlugs.map((slug) => {
-    const matchedTool =
-      TOOLS.find((t) => t.id === slug || t.href.replace(/^\/?(tools\/)?/, '').replace(/\/+$/, '') === slug) ||
-      (TEXT_TOOLS.find((t) => t.id === slug || t.href.replace(/^\/?(tools\/)?/, '').replace(/\/+$/, '') === slug) as unknown as Tool | undefined);
-
-    const title = slugToTitle(slug);
-    const category = matchedTool?.category || (slug.includes('image') || slug.includes('photo') ? 'Image Tools' : 'Developer Tools');
-    const description =
-      matchedTool?.description ||
-      `Fast, private, client-side ${title} with zero server uploads and instant hardware-accelerated processing in your web browser.`;
-    const icon = matchedTool?.icon || (category === 'Image Tools' ? 'image' : 'code');
-    const tags = matchedTool?.tags || ['Client-Side', 'Zero Upload', 'Fast Engine'];
-
-    return {
-      params: { tool: slug },
-      props: {
-        toolSlug: slug,
-        toolName: title,
-        category,
-        description,
-        icon,
-        tags
-      }
-    };
-  });
+  // All /tools/* routes are permanently 301 redirected to flat root via astro.config.mjs
+  return [];
 }
 
 const { toolSlug, toolName, category, description, icon, tags } = Astro.props as Props;
 
 const pageTitle = `${toolName} - FastToolVerse Online Utility`;
 const pageDescription = `Use the free, private, client-side ${toolName} on FastToolVerse. Zero server uploads, instant in-browser processing.`;
-const canonicalUrl = `https://fasttoolverse.com/tools/${toolSlug}/`;
+const canonicalUrl = `https://fasttoolverse.com/${toolSlug}/`;
 
 // Schema.org SoftwareApplication structured data
 const jsonLd = {
@@ -257,6 +234,7 @@ const jsonLd = {
   title={pageTitle}
   description={pageDescription}
   canonicalUrl={canonicalUrl}
+  noindex={true}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 

@@ -80,6 +80,15 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   redirects: {
+    // 404 Route 301 Redirects
+    '/batch-image-to-webp': '/image-converter/',
+    '/batch-image-to-webp/': '/image-converter/',
+    '/jpg-to-avif': '/image-converter/',
+    '/jpg-to-avif/': '/image-converter/',
+    '/tools/remove-special-characters': '/remove-special-characters/',
+    '/tools/remove-special-characters/': '/remove-special-characters/',
+    '/api': '/',
+
     // Social Resizer Aliases to canonical flat root
     '/pinterest-pin-resizer': '/pinterest-image-resizer/',
     '/twitter-header-resizer': '/x-twitter-image-resizer/',
@@ -138,7 +147,6 @@ export default defineConfig({
     '/tools/text-case-converter': '/text-case-converter/',
     '/tools/find-and-replace-text': '/find-and-replace-text/',
     '/tools/add-prefix-suffix': '/add-prefix-suffix/',
-    '/tools/remove-special-characters': '/remove-special-characters/',
     '/tools/text-to-slug-converter': '/text-to-slug-converter/',
 
     // Remove Empty Lines 301 Migrations

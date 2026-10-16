@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /dist/
+Disallow: /cdn-cgi/
 
 Sitemap: https://fasttoolverse.com/sitemap-index.xml

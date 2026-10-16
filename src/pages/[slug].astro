@@ -842,7 +842,7 @@ if (props.type === 'pending-tool' && props.pendingTool) {
   };
 }
 
-const intentDescription = getPresetIntentDescription(props);
+const intentDescription = props.type !== 'pending-tool' ? getPresetIntentDescription(props) : '';
 const converterEditorial = props.type === 'converter' && props.converterPreset ? getConverterEditorial(props.converterPreset.slug) : null;
 ---
 

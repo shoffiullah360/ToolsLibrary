@@ -225,13 +225,14 @@ export const CONVERTER_INTENT_MAP: Record<string, string> = {
 };
 
 interface PageProps {
-  type: 'resizer' | 'compress' | 'converter' | 'empty-lines' | 'line-breaks' | 'duplicate-lines';
+  type: 'resizer' | 'compress' | 'converter' | 'empty-lines' | 'line-breaks' | 'duplicate-lines' | 'pending-tool';
   resizerPage?: { slug: string; introCopy?: string } | null;
   compressPreset?: { slug: string; introDescription?: string } | null;
   converterPreset?: { slug: string; introCopy?: string; seoContext?: string } | null;
   emptyLinesPreset?: { intentCard?: string; [key: string]: any } | null;
   lineBreaksPreset?: { intentDescription?: string; [key: string]: any } | null;
   duplicateLinesPreset?: { intentCard?: string; [key: string]: any } | null;
+  pendingTool?: any;
 }
 
 export function getPresetIntentDescription(props: PageProps): string {

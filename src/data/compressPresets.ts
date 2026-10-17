@@ -1566,7 +1566,11 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Free Utility', desc: 'No watermarks.' }
     ],
     faqs: [
-      { question: 'Why are PNG screenshots so large?', answer: 'PNG uses uncompressed bitmap data by default; compression strips redundant color indices.' }
+      { question: 'How can I downscale a 4MB PNG to 200KB while preserving background transparency?', answer: 'Our compression engine indexes color palettes intelligently and strips unneeded metadata while keeping the alpha transparency channel completely intact and crisp.' },
+      { question: 'Will my transparent PNG graphics look blurry on 4K or Retina displays at 200KB?', answer: 'No. A 200KB PNG retains ample pixel density and sharp edge definition, ensuring logos, illustrations, and badges display with pristine clarity on modern high-DPI screens.' },
+      { question: 'Can I compress complex multi-layer PNG infographics to 200KB?', answer: 'Yes. Scale the dimensions to standard display proportions (around 1200x900 pixels) before compressing. This removes surplus pixel weight while keeping typography and data charts sharp and legible.' },
+      { question: 'Can I batch compress multiple PNG assets to 200KB at the same time?', answer: 'Yes. Our batch processing engine allows you to drop multiple PNG files into the queue and compress them all to 200KB simultaneously within your browser.' },
+      { question: 'Are my proprietary branding assets or private design files uploaded to an external server?', answer: 'No. All compression operations run locally inside your browser\'s private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing total confidentiality.' }
     ],
     relatedPresetSlugs: ['compress-png-to-100kb', 'compress-image-to-200kb', 'reduce-png-size-without-losing-quality']
   },
@@ -1593,7 +1597,11 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Side-by-Side Review', desc: 'Inspect fine details in real time.' }
     ],
     faqs: [
-      { question: 'How to reduce PNG size without losing quality?', answer: 'Our tool optimizes color quantization so human eyes cannot see any difference.' }
+      { question: 'How can I reduce PNG size without losing visible quality?', answer: 'By using intelligent palette quantization and stripping non-visual metadata, our tool cuts redundant data while preserving razor-sharp text outlines, vibrant colors, and full alpha transparency.' },
+      { question: 'Will compressing a PNG graphic damage its transparent background?', answer: 'No. Our compression engine specifically protects the alpha transparency channel, ensuring your icons, logos, and badges blend smoothly over any website background or gradient.' },
+      { question: 'Can I compress 24-bit and 32-bit PNG graphics with this tool?', answer: 'Yes. The tool seamlessly handles all standard PNG variants, indexing complex color models into optimized lightweight formats with zero visible degradation.' },
+      { question: 'How much file size reduction can I expect on standard PNG images?', answer: 'Most graphic PNG files, screenshots, and illustrations achieve a 60% to 80% reduction in file size while remaining visually indistinguishable from the original uncompressed source.' },
+      { question: 'Are my proprietary branding files uploaded to any external server?', answer: 'No. All compression operations run locally inside your browser\'s private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing complete confidentiality.' }
     ],
     relatedPresetSlugs: ['compress-png-to-50kb', 'compress-png-to-100kb', 'png-to-webp-compressor']
   },
@@ -1620,7 +1628,11 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Batch Processing', desc: 'Compress up to 15 files at once.' }
     ],
     faqs: [
-      { question: 'Why use WebP instead of JPG?', answer: 'WebP offers 25–35% smaller file sizes at comparable visual quality.' }
+      { question: 'Why is WebP more efficient than legacy JPG and PNG formats?', answer: 'WebP uses advanced predictive encoding algorithms that compress photographic details and transparent boundaries far more efficiently, cutting file size by 25% to 35% compared to JPG at identical visual quality.' },
+      { question: 'Can I compress transparent WebP images without losing transparency?', answer: 'Yes. Our tool fully supports WebP alpha channels, preserving clean, smooth transparent borders while substantially lowering file weight.' },
+      { question: 'Do all modern web browsers support compressed WebP images?', answer: 'Yes. All modern browsers—including Google Chrome, Apple Safari, Mozilla Firefox, and Microsoft Edge—fully support WebP natively across desktop and mobile devices.' },
+      { question: 'Can I batch compress multiple WebP images simultaneously?', answer: 'Yes. Our batch processing engine allows you to drop multiple WebP images into the queue and optimize them all at once in your browser.' },
+      { question: 'Are my WebP images uploaded to any remote server or cloud database?', answer: 'No. All compression operations run locally inside your browser\'s private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing complete confidentiality.' }
     ],
     relatedPresetSlugs: ['webp-image-compressor-to-100kb', 'png-to-webp-compressor', 'jpg-to-webp-compressor']
   },
@@ -1647,7 +1659,11 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Batch ZIP', desc: 'Export multiple images together.' }
     ],
     faqs: [
-      { question: 'How to compress WebP to 100KB?', answer: 'Upload your file; the preset auto-selects WebP format and caps size at 100KB.' }
+      { question: 'Why is 100KB WebP considered the gold standard for website performance?', answer: 'At 100KB, WebP delivers high photographic sharpness and rich color depth while loading virtually instantaneously across mobile networks, boosting Google Core Web Vitals.' },
+      { question: 'How do I compress a heavy WebP photo to 100KB without blurring text or edges?', answer: 'Resize pixel dimensions to standard web proportions (around 800x600 pixels) before compressing. This naturally eliminates millions of surplus pixels, preserving sharp outlines and clean textures.' },
+      { question: 'Can I compress transparent WebP graphics to 100KB without losing transparency?', answer: 'Yes. Our tool optimizes WebP alpha transparency channels, reducing file weight below 100KB while preserving clean transparency and sharp borders.' },
+      { question: 'Is 100KB WebP high enough quality for online store product galleries?', answer: 'Yes. WebP preserves exceptional visual fidelity and smooth color gradients at 100KB, allowing shoppers to view crisp product details without experiencing slow page loads.' },
+      { question: 'Are my commercial WebP assets or private photos uploaded to a cloud server?', answer: 'No. All compression operations run locally inside your browser\'s private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing complete confidentiality.' }
     ],
     relatedPresetSlugs: ['webp-image-compressor-online', 'compress-image-to-100kb', 'compress-image-for-website']
   },

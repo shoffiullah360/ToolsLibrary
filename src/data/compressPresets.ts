@@ -2132,7 +2132,11 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Fast Export', desc: 'Instant single or batch download.' }
     ],
     faqs: [
-      { question: 'What is the file limit for Discord free users?', answer: 'Standard Discord uploads are limited; optimizing images to under 256KB guarantees fast, smooth loading.' }
+      { question: "What is the maximum file size limit for free Discord accounts?", answer: "Standard free Discord accounts have a maximum upload limit of 8MB (or up to 25MB in some server tiers), while Nitro Basic and Nitro tiers allow larger attachments." },
+      { question: "How do I compress a large 4K gameplay capture to fit within Discord's upload limit?", answer: "Scale down native pixel dimensions to standard 1080p (1920x1080 pixels) before compressing. This naturally cuts massive file weight while keeping game graphics razor-sharp." },
+      { question: "Will compressing my Discord profile picture make it look blurry in voice chat?", answer: "No. Our tool optimizes file weight while protecting sharp edge contrast and rich color saturation, ensuring your avatar looks clean both in small voice chat circles and on full profile cards." },
+      { question: "Can I compress animated GIF or transparent PNG stickers for Discord with this tool?", answer: "Yes. Our tool optimizes PNG color palettes and supports modern WebP quantization, reducing file weight while keeping alpha transparency and sharp vector-like outlines intact." },
+      { question: "Are my private Discord community assets and screenshots uploaded to an external server?", answer: "No. All compression operations run locally inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing total confidentiality." }
     ],
     relatedPresetSlugs: ['compress-image-for-discord-emoji', 'compress-image-for-discord-pfp', 'compress-png-to-100kb']
   },
@@ -2160,7 +2164,11 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Batch Queue', desc: 'Compress multiple emojis at once.' }
     ],
     faqs: [
-      { question: 'What is Discord emoji file size limit?', answer: 'Discord emojis must be under 256 KB and ideally 128x128 pixels.' }
+      { question: "What is the maximum file size and resolution for custom Discord emojis?", answer: "Discord requires custom static emojis to be under 256KB in file size, with the recommended upload canvas measuring exactly 128x128 pixels." },
+      { question: "How do I compress a large graphic to 256KB without ruining transparent backgrounds?", answer: "Crop your graphic tightly, scale dimensions to 128x128 pixels, and compress. Our tool optimizes PNG color palettes while preserving full alpha channel transparency." },
+      { question: "Why does my custom emoji look blurry or small inside Discord chat channels?", answer: "If an emoji is not cropped tightly or has too much empty transparent space around it, it will render tiny at Discord's 32x32 inline display size. Cropping tightly fixes this immediately." },
+      { question: "Can I batch compress multiple Discord emojis at the same time?", answer: "Yes. Our batch processing engine allows you to drop an entire emoji pack into the queue and compress them all to 128x128 pixels and under 256KB simultaneously in your browser." },
+      { question: "Are my proprietary server emoji designs or artwork uploaded to an external server?", answer: "No. All compression operations run locally inside your browser's private memory heap using client-side technology. Your graphic files never touch an external cloud server, guaranteeing total confidentiality." }
     ],
     relatedPresetSlugs: ['compress-image-for-discord', 'compress-image-for-discord-pfp', 'compress-png-without-losing-quality']
   },

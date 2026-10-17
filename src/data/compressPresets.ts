@@ -153,7 +153,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'High Contrast Output', desc: 'Keeps small text crisp and legible.' }
     ],
     faqs: [
-      { question: 'How to convert image to 25KB?', answer: 'Upload your file; our algorithm automatically optimizes quantization to 25KB.' }
+      {
+        question: "Why do university admissions portals enforce a 25KB limit instead of a larger size?",
+        answer: "University and college registration platforms process massive surges of simultaneous applicants during short admission windows. A strict 25KB file limit ensures that identity photos load instantaneously on mobile networks and prevents server crashes when millions of admit cards and hall tickets are generated."
+      },
+      {
+        question: "How do I compress my passport picture to 25KB without my face becoming blurry?",
+        answer: "Crop your photo so your face occupies roughly 75% of the frame and resize the pixel dimensions to standard passport proportions (around 300x400 pixels) before compressing. This removes millions of excess pixels beforehand, allowing the compression engine to preserve clear facial details."
+      },
+      {
+        question: "Can I compress black-and-white signatures down to 25KB with this tool?",
+        answer: "Yes. The tool easily handles signatures and handwritten documents. By maintaining high contrast between your black ink strokes and the white background, your signature remains crisp, dark, and completely legible under the 25KB limit."
+      },
+      {
+        question: "Are my educational certificates and ID photos safe from server storage?",
+        answer: "Yes, absolutely. The compression operates strictly inside your browser's private memory heap using client-side technology. Your photos and sensitive identity papers never leave your personal computer or smartphone and are never stored on external cloud servers."
+      },
+      {
+        question: "Will an image compressed to 25KB meet the requirements for official admit cards?",
+        answer: "Yes. Our engine balances file weight while maintaining proper contrast and facial sharpness, ensuring your final image meets the automated visual clarity standards required for printed examination hall tickets and digital identity cards."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-20kb', 'compress-image-to-30kb', 'compress-image-to-50kb']
   },
@@ -179,7 +198,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Clear Metadata', desc: 'Strips heavy EXIF tags to save maximum space.' }
     ],
     faqs: [
-      { question: 'Can I compress 30KB to 50KB?', answer: 'Yes, check our related presets to select your target range.' }
+      {
+        question: "Why do government and recruitment portals commonly set a 30KB ceiling?",
+        answer: "A 30KB file limit provides an ideal balance for high-volume public portals. It keeps server bandwidth consumption low while allowing sufficient image data for automated biometric verification and clear printing on official identity cards."
+      },
+      {
+        question: "How can I reduce a heavy phone photo to 30KB without losing facial sharpness?",
+        answer: "Crop your picture closely around your head and shoulders, then resize the pixel dimensions to standard passport proportions (such as 350x450 pixels) before compressing. This eliminates millions of unnecessary background pixels, allowing the compressor to preserve facial clarity."
+      },
+      {
+        question: "Will my 30KB photo pass automated facial recognition screening?",
+        answer: "Yes. Our compression algorithm preserves essential facial landmarks—such as eyes, nose contours, and lips—ensuring your photo passes both automated document validation and human inspection."
+      },
+      {
+        question: "Can I compress black-ink signatures to under 30KB without gray fuzzy edges?",
+        answer: "Yes. By maintaining clean contrast between dark pen strokes and the white background, the tool produces clean, legible signatures without blurry JPEG compression artifacts."
+      },
+      {
+        question: "Are my personal identity cards and photos uploaded to your web server?",
+        answer: "No. All file processing happens entirely inside your browser's local memory using client-side WebAssembly technology. Your files never touch an external cloud server, guaranteeing total personal privacy."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-20kb', 'compress-image-to-40kb', 'compress-image-to-50kb']
   },

@@ -1815,7 +1815,11 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Fast Export', desc: 'Instant download.' }
     ],
     faqs: [
-      { question: 'How to compress passport photo to 100KB?', answer: 'Upload your photo; the preset clamps size strictly under 100KB.' }
+      { question: "Why is 100KB a preferred upload limit for corporate badges and consular dossiers?", answer: "A 100KB file retains plenty of high-definition photographic resolution for automated facial recognition and clear badge printing, while remaining lightweight enough to prevent server lag." },
+      { question: "How do I compress a large camera photo to 100KB without losing facial sharpness?", answer: "Crop your picture closely around your head and shoulders, resize canvas dimensions to standard passport proportions (around 600x600 or 600x800 pixels), and run compression. This preserves facial sharpness while keeping file weight under 100KB." },
+      { question: "Will a 100KB compressed passport photo print clearly on physical ID cards?", answer: "Yes. A 100KB file retains ample resolution, sharp contrast, and balanced color tones, ensuring your photo prints cleanly on laminated badges and official documents without pixelation." },
+      { question: "Can I compress black-and-white signatures under 100KB without fuzzy edges?", answer: "Yes. The tool maintains clean, dark pen strokes against a solid white background, eliminating blurry compression halos and keeping signatures completely legible." },
+      { question: "Are my sensitive identity documents and passport photos stored on your servers?", answer: "No. The compression runs entirely inside your browser's local memory heap using client-side technology. Your photos and personal files never touch an external cloud server, guaranteeing complete personal privacy." }
     ],
     relatedPresetSlugs: ['passport-photo-compressor-to-50kb', 'compress-photo-for-visa-application', 'compress-image-to-100kb']
   },
@@ -1843,8 +1847,11 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Zero Cost', desc: 'Free alternative to expensive photo studios.' }
     ],
     faqs: [
-      { question: 'What is the required photo size for US visa online?', answer: 'US Visa photos must be square (600x600 pixels) and under 240 KB file size.' },
-      { question: 'Will this photo pass the official US visa photo validator?', answer: 'Yes, it precisely aligns with the official dimension and byte constraints.' }
+      { question: "What are the exact photo dimensions and file limits for the US Visa DS-160 portal?", answer: "The photo must be a square JPEG file with dimensions between 600x600 pixels and 1200x1200 pixels, and the file size must not exceed 240KB." },
+      { question: "Why did the US Visa photo tool reject my compressed photo?", answer: "Rejections typically happen because of incorrect aspect ratios (not an exact 1:1 square), head height not filling 50%-69% of the frame, harsh background shadows, or file weight exceeding 240KB." },
+      { question: "Can I wear eyeglasses or colored contact lenses in my US visa photo?", answer: "No. The US Department of State strictly prohibits eyeglasses, sunglasses, and tinted lenses in visa photos, except in rare medical emergencies supported by a signed doctor's statement." },
+      { question: "How do I compress my smartphone photo to meet the 240KB US visa ceiling?", answer: "Crop your photo to a 600x600 square canvas with a plain white background, then run compression. Our tool calibrates the file to settle around 120KB–180KB for guaranteed approval." },
+      { question: "Is my private visa photograph uploaded to any remote server or third-party database?", answer: "No. All compression operations run locally inside your browser's private memory heap using client-side technology. Your visa photos never touch an external cloud server, guaranteeing total confidentiality." }
     ],
     relatedPresetSlugs: ['passport-photo-compressor-to-50kb', 'compress-photo-for-visa-application', 'compress-image-to-200kb']
   },
@@ -1894,27 +1901,12 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       }
 ],
     faqs: [
-      {
-            "question": "What is the exact file size limit for US visa (DS-160) photos?",
-            "answer": "The US Department of State requires DS-160 digital visa photos to be strictly 240 KB or smaller, with a minimum file size of 60 KB. The image dimensions must be square (minimum 600x600 pixels up to 1200x1200 pixels) in 24-bit sRGB JPEG format."
-      },
-      {
-            "question": "Why did the visa portal reject my photo with a 'blurry face' error?",
-            "answer": "Consular automated facial recognition software scans for distinct edge contrast across eyes, nostrils, and lips. When a photo is compressed too aggressively with standard tools, high-frequency details are blurred out. FastToolVerse uses adaptive quantization to preserve facial edge sharpness while trimming file size."
-      },
-      {
-            "question": "What background color is required for international visa applications?",
-            "answer": "Most global visa authorities (including the United States, Canada, Australia, and Schengen states) require a plain white or light off-white background with zero shadows, patterns, or gradients behind the applicant."
-      },
-      {
-            "question": "How do I compress my visa photo to under 100KB for Schengen VFS portal?",
-            "answer": "Upload your image to this preset. The tool automatically applies a 100KB target ceiling and executes a multi-pass binary search loop that reduces file weight while keeping facial proportions and 35x45mm aspect ratios intact."
-      },
-      {
-            "question": "Are my sensitive identity and visa photos uploaded to your server?",
-            "answer": "No. FastToolVerse operates under a strict 100% client-side zero-upload architecture. Your photos are processed exclusively inside your local browser memory heap and are instantly discarded when you close or refresh the tab."
-      }
-],
+      { question: "What is the most common photo file size limit for international visa applications?", answer: "Most national visa portals (including Schengen, UK, and Canada) enforce photo limits between 50KB and 240KB in standard JPG/JPEG format." },
+      { question: "Can I use the same photo dimensions for both US and Schengen visas?", answer: "No. US visas strictly require a 1:1 square ratio (typically 600x600 pixels or 2x2 inches), whereas Schengen and UK visas require rectangular 35x45 mm dimensions." },
+      { question: "How do I ensure my visa photo passes automated consular validation checks?", answer: "Crop your portrait so your head occupies roughly 70% to 80% of the frame against a plain light background, resize canvas dimensions to the embassy's exact specifications, and compress without altering facial landmarks." },
+      { question: "Can I compress supporting travel documents and scanned bank statements with this tool?", answer: "Yes. Our tool handles supporting document scans, passport biometric pages, and signatures, maintaining high legibility while reducing file weight." },
+      { question: "Are my sensitive travel documents and visa photos uploaded to an external server?", answer: "No. All compression operations run locally inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing total confidentiality." }
+    ],
     relatedPresetSlugs: ['compress-photo-for-us-visa', 'passport-photo-compressor-to-50kb', 'compress-image-to-100kb']
   },
   {
@@ -1963,27 +1955,12 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       }
 ],
     faqs: [
-      {
-            "question": "What are the exact photo dimensions and size required for PAN card?",
-            "answer": "Both NSDL (Protean) and UTIITSL require applicant photos to measure exactly 213 × 213 pixels in JPG/JPEG format, with a file size strictly less than 50 KB and a scan density of 200 DPI."
-      },
-      {
-            "question": "Why does the NSDL portal reject my photo when it is 50 KB?",
-            "answer": "NSDL enforces a strict ceiling of 50,000 bytes. A file showing as '50 KB' in your operating system might actually be 51,200 bytes (50 KiB), triggering automatic rejection. FastToolVerse compresses photos to roughly 40KB–45KB to guarantee acceptance."
-      },
-      {
-            "question": "How do I make my photo 213x213 pixels without stretching my face?",
-            "answer": "FastToolVerse automatically applies centered smart cropping. It crops the rectangular photo into a balanced square around your face and scales it to exact 213x213 pixels without distorting your natural facial features."
-      },
-      {
-            "question": "Can I use a mobile phone selfie for my PAN card application?",
-            "answer": "Yes, provided the selfie is taken with a plain white background, even lighting on both sides of the face, and looking straight into the camera. Use this tool to crop it to 213x213 pixels and compress it below 50KB."
-      },
-      {
-            "question": "Are my personal photos stored or uploaded to any server?",
-            "answer": "No. FastToolVerse processes all photos 100% inside your local web browser using client-side HTML5 Canvas. Your images never leave your computer or smartphone."
-      }
-],
+      { question: "What are the exact photo and signature upload requirements for NSDL and UTIITSL PAN card portals?", answer: "Both photo and signature must be in JPEG format, with file sizes strictly under 50KB. The photo dimensions must be 3.5x2.5 cm (213x213 px at 200 DPI), and signature dimensions must be 2x4.5 cm (400x200 px at 200 DPI)." },
+      { question: "Why did the PAN card portal reject my uploaded photograph?", answer: "Common causes of rejection include file weight exceeding 50KB, incorrect pixel aspect ratios, or low DPI scanning that results in blurry facial features." },
+      { question: "How do I compress my PAN card signature under 50KB without making it blurry?", answer: "Crop tightly around your black ink signature on white paper, scale dimensions to 400x200 pixels at 200 DPI, and compress. Our tool preserves high contrast so the ink strokes stay sharp and dark." },
+      { question: "Can I compress both my PAN card photo and signature at the same time?", answer: "Yes. Our batch processing engine allows you to drop both files into the queue and compress them under 50KB simultaneously in your browser." },
+      { question: "Are my PAN card identity records and signatures uploaded to an external server?", answer: "No. All compression operations run locally inside your browser's private memory heap using client-side technology. Your sensitive financial and identity documents never touch an external cloud server." }
+    ],
     relatedPresetSlugs: ['resize-and-compress-signature-to-20kb', 'compress-photo-for-voter-id', 'compress-image-to-50kb']
   },
   {

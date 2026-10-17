@@ -534,7 +534,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Fast Rendering', desc: 'Canvas-powered hardware acceleration.' }
     ],
     faqs: [
-      { question: 'Is 150KB good for web images?', answer: 'Yes, it provides sharp product zoom while loading fast.' }
+      {
+        question: "Why is 150KB a popular limit for resumes and international visa dossiers?",
+        answer: "A 150KB threshold provides ample photographic resolution for human reviewers and automated scanners while keeping application packets small enough to transmit rapidly via email and web forms."
+      },
+      {
+        question: "How do I compress a large camera photo to 150KB without blurring my facial features?",
+        answer: "Crop unnecessary background scenery so your face fills roughly 75% of the frame, then adjust canvas dimensions to around 800x1000 pixels before compressing. This naturally eliminates millions of unnecessary pixels, keeping facial details sharp."
+      },
+      {
+        question: "Will a 150KB compressed image print clearly on official certificates?",
+        answer: "Yes. A 150KB image contains plenty of resolution and contrast to print clearly on certificates, diplomas, and official verification badges without pixelation or muddy colors."
+      },
+      {
+        question: "Can I compress multi-page PDF documents or scanned signatures down to 150KB?",
+        answer: "Yes. The tool preserves clean contrast between dark pen strokes and the white background, ensuring signatures and certificate stamps stay crisp, dark, and completely legible."
+      },
+      {
+        question: "Are my sensitive identity papers and photos uploaded to external servers?",
+        answer: "No. All compression operations run locally inside your browser's private memory heap using client-side technology. Your photos and personal files never touch an external cloud server."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-100kb', 'compress-image-to-200kb', 'compress-image-to-50kb']
   },
@@ -560,7 +579,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Dual Comparison', desc: 'Side-by-side preview to verify clarity.' }
     ],
     faqs: [
-      { question: 'How to reduce image size to 200KB without losing quality?', answer: 'Upload your image; our smart quantization removes excess metadata and invisible color tones without blurring visual details.' }
+      {
+        question: "Why do job portals and corporate platforms commonly set a 200KB upload limit?",
+        answer: "A 200KB limit provides an ideal balance for candidate evaluation. It keeps total application package sizes small enough to prevent server overloads while preserving clear facial landmarks, sharp typography, and authentic colors."
+      },
+      {
+        question: "How can I reduce a heavy camera photo down to 200KB without visible quality loss?",
+        answer: "Crop excess background scenery so your face fills roughly 75% of the frame, then resize the canvas dimensions to standard portrait proportions (around 900x1200 pixels) before compressing. This removes millions of surplus pixels naturally, keeping facial features crisp."
+      },
+      {
+        question: "Is 200KB sufficient quality for printing certificates and ID cards?",
+        answer: "Yes. A 200KB file retains plenty of resolution, rich color tones, and sharp edge contrast, ensuring your photo prints cleanly on laminated badges and official documents without pixelation."
+      },
+      {
+        question: "Can I compress transparent PNG graphics to under 200KB with this tool?",
+        answer: "Yes. The tool optimizes PNG palettes and supports modern WebP quantization, reducing file weight below 200KB while preserving clean alpha transparency and sharp vector-like borders."
+      },
+      {
+        question: "Are my sensitive identity documents and photos safe from external leaks?",
+        answer: "Yes, absolutely. The compression engine runs completely inside your browser's private memory heap using client-side technology. Your files are never uploaded to any remote server or stored in any cloud database."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-100kb', 'compress-image-to-500kb', 'compress-jpg-to-200kb', 'reduce-picture-size-for-email-attachment']
   },

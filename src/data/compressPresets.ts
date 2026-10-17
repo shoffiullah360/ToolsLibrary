@@ -1258,7 +1258,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Fast Conversion', desc: 'Real-time client-side encoding.' }
     ],
     faqs: [
-      { question: 'How do I convert a photo to 40KB JPG?', answer: 'Upload any image; the tool converts the output to JPG and limits the file size to 40KB.' }
+      {
+        question: "Why do public service exams specifically mandate a 40KB JPG format?",
+        answer: "The 40KB JPG standard provides universal compatibility across legacy databases while preserving sufficient visual sharpness for printed hall tickets and automated facial recognition."
+      },
+      {
+        question: "How do I convert a heavy camera picture into a clean 40KB JPG?",
+        answer: "Crop excess background so your face fills roughly 75% of the frame, scale dimensions to around 350x450 pixels, and compress. The tool converts the file to JPG and calibrates size to stay strictly below 40KB."
+      },
+      {
+        question: "Will converting PNG signatures to 40KB JPG cause blurriness?",
+        answer: "No. Our tool maintains high contrast between dark ink lines and the white background, ensuring your signature remains crisp, dark, and completely legible."
+      },
+      {
+        question: "Can I convert and compress multiple photos to 40KB JPG simultaneously?",
+        answer: "Yes. Our batch processing engine allows you to drop multiple photos into the queue and convert them all to 40KB JPG format in seconds."
+      },
+      {
+        question: "Are my sensitive identity files or photos stored on your servers?",
+        answer: "No. All conversion and compression operations run locally inside your browser's private memory heap using client-side technology. Your personal files never touch an external cloud server."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-40kb', 'compress-jpg-to-20kb', 'compress-jpg-to-50kb']
   },
@@ -1285,7 +1304,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Free & Fast', desc: 'Instant client-side execution.' }
     ],
     faqs: [
-      { question: 'How to compress JPG to 50KB online?', answer: 'Upload your JPG; it is compressed to 50KB immediately.' }
+      {
+        question: "Why do visa applications and passport forms specifically demand a 50KB JPG?",
+        answer: "The 50KB JPG format provides the optimal balance for consular databases, preserving critical facial details for biometric checks while ensuring fast document processing."
+      },
+      {
+        question: "How do I compress a large camera photo to 50KB JPG without losing clarity?",
+        answer: "Crop your portrait closely so your face fills roughly 75% of the frame, resize canvas dimensions to around 350x450 pixels, and compress. This preserves facial sharpness while keeping file weight under 50KB."
+      },
+      {
+        question: "Will a 50KB JPG compressed photo pass automated visa photo validators?",
+        answer: "Yes. Our compression algorithm preserves essential facial landmarks—such as eyes, nose bridge, and lip lines—ensuring your photo passes automated embassy validators."
+      },
+      {
+        question: "Can I compress black-ink JPG signatures under 50KB without fuzzy edges?",
+        answer: "Yes. By maintaining high contrast between dark ink lines and the white paper background, the tool produces clean, crisp signatures without blurry JPEG compression artifacts."
+      },
+      {
+        question: "Are my sensitive identity documents and passport photos stored on your servers?",
+        answer: "No. All compression operations run locally inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing complete privacy."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-50kb', 'compress-jpg-to-20kb', 'compress-jpg-to-100kb']
   },
@@ -1312,7 +1350,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Uncapped Utility', desc: 'No limits on usage.' }
     ],
     faqs: [
-      { question: 'Will compressing JPG to 100KB degrade text?', answer: 'No, text remains crisp and readable.' }
+      {
+        question: "Why is 100KB JPG considered the gold standard for website assets?",
+        answer: "A 100KB JPG provides the perfect balance between high visual fidelity and rapid load times, ensuring fast Core Web Vitals scores and instantaneous mobile rendering."
+      },
+      {
+        question: "How can I downscale a 10MB camera photo to 100KB JPG without blurriness?",
+        answer: "Crop unnecessary background scenery and resize dimensions to around 600x800 pixels before compressing. This naturally eliminates millions of excess pixels, preserving facial sharpness."
+      },
+      {
+        question: "Is 100KB JPG high enough quality for online product listings?",
+        answer: "Yes. Modern compression algorithms retain rich color depth and sharp edge definition at 100KB, allowing website images to look clean and professional on high-resolution screens."
+      },
+      {
+        question: "Will a 100KB JPG print clearly on physical certificates?",
+        answer: "Yes. At 100KB, a properly optimized JPG retains ample resolution, sharp contrast, and balanced color tones for clean physical printing without pixelation."
+      },
+      {
+        question: "Are my JPG photographs uploaded to any cloud storage or database?",
+        answer: "No. The entire compression process takes place locally inside your browser using client-side technology. Your files are never uploaded to our servers and are never shared or stored externally."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-100kb', 'compress-jpg-to-50kb', 'compress-jpg-to-200kb']
   },
@@ -1339,7 +1396,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Batch Ready', desc: 'Process multiple files at once.' }
     ],
     faqs: [
-      { question: 'How to compress JPG under 200KB?', answer: 'Select this preset and upload your file.' }
+      {
+        question: "Why do job portals and corporate platforms commonly set a 200KB upload limit?",
+        answer: "A 200KB limit provides an ideal balance for candidate evaluation. It keeps total application package sizes small enough to prevent server overloads while preserving clear facial landmarks, sharp typography, and authentic colors."
+      },
+      {
+        question: "How can I reduce a heavy camera photo down to 200KB without visible quality loss?",
+        answer: "Crop excess background scenery so your face fills roughly 75% of the frame, then resize the canvas dimensions to standard portrait proportions (around 900x1200 pixels) before compressing. This removes millions of surplus pixels naturally, keeping facial features crisp."
+      },
+      {
+        question: "Is 200KB sufficient quality for printing certificates and ID cards?",
+        answer: "Yes. A 200KB file retains plenty of resolution, rich color tones, and sharp edge contrast, ensuring your photo prints cleanly on laminated badges and official documents without pixelation."
+      },
+      {
+        question: "Can I compress transparent PNG graphics to under 200KB with this tool?",
+        answer: "Yes. The tool optimizes PNG palettes and supports modern WebP quantization, reducing file weight below 200KB while preserving clean alpha transparency and sharp vector-like borders."
+      },
+      {
+        question: "Are my sensitive identity documents and photos safe from external leaks?",
+        answer: "Yes, absolutely. The compression engine runs completely inside your browser's private memory heap using client-side technology. Your files are never uploaded to any remote server or stored in any cloud database."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-200kb', 'compress-jpg-to-100kb', 'compress-jpg-to-500kb']
   },

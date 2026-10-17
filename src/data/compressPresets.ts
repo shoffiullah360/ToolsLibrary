@@ -243,7 +243,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Cross-device Friendly', desc: 'Works on mobile, tablet, and desktop.' }
     ],
     faqs: [
-      { question: 'Is 40KB jpg converter free?', answer: 'Yes, 100% free with unlimited conversions.' }
+      {
+        question: "Why do state entrance exams and college boards require a 40KB file limit?",
+        answer: "Exam portals process hundreds of thousands of applicants within narrow registration deadlines. A 40KB limit prevents server overloads, reduces database storage strain, and guarantees that applicant photos load quickly on low-bandwidth mobile connections."
+      },
+      {
+        question: "How do I compress my passport picture to 40KB without making my face look blurry?",
+        answer: "Crop out excess background around your head and shoulders, then adjust the canvas dimensions to standard passport proportions (around 350x450 pixels) before compressing. This removes excess pixel data naturally, allowing the tool to preserve facial clarity."
+      },
+      {
+        question: "Will a 40KB compressed image print clearly on an exam admit card?",
+        answer: "Yes. A 40KB image contains plenty of resolution and contrast to print clearly on hall tickets, admit cards, and verification sheets without distortion or pixelated artifacts."
+      },
+      {
+        question: "Can I compress digital signatures and certificates under 40KB with this tool?",
+        answer: "Yes. The tool easily handles handwritten signatures and certificates. By maintaining high contrast between dark pen strokes and the white background, your text remains sharp, clear, and completely legible."
+      },
+      {
+        question: "Is it safe to compress private identity cards and certificates here?",
+        answer: "Yes, absolutely. All compression processes run directly inside your browser's private memory heap using client-side technology. Your photos and personal documents never touch an external cloud server."
+      }
     ],
     relatedPresetSlugs: ['40kb-jpg-converter', 'compress-image-to-50kb', 'compress-image-30-to-40-kb']
   },
@@ -291,26 +310,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
 ],
     faqs: [
       {
-            "question": "How can I compress my photo to 50KB without losing quality?",
-            "answer": "Upload your image to FastToolVerse's 50KB preset. The tool automatically removes bloated EXIF metadata and applies a client-side binary search quantization loop that keeps your photo sharp and high-resolution while locking file size under 50KB."
+        question: "Why is 50KB the most common requirement for passport and visa applications?",
+        answer: "A 50KB file size provides the ideal balance for consular and immigration systems. It keeps server storage lightweight while retaining enough facial detail for automated biometric scanning and high-quality printing on physical visas and passports."
       },
       {
-            "question": "Why do so many exam and passport portals require photos under 50KB?",
-            "answer": "A 50KB limit balances crisp visual resolution (sufficient for 300 DPI physical printing) with minimal database storage, allowing government and university portals to handle millions of applications without server bottlenecks."
+        question: "How can I reduce a heavy phone portrait to 50KB without losing facial clarity?",
+        answer: "Crop your portrait so your face fills roughly 70% to 80% of the frame, then resize the canvas to standard passport dimensions (such as 600x600 pixels or 350x450 pixels) before compressing. This eliminates excess background pixels, allowing the compressor to preserve facial sharpness."
       },
       {
-            "question": "What pixel dimensions should a 50KB photo have?",
-            "answer": "For standard passport applications, 600 × 600 pixels (or 213 × 213 pixels for Indian PAN cards) provides optimal clarity at 50KB. FastToolVerse preserves your original aspect ratio while scaling to the optimal resolution."
+        question: "Will an image compressed to 50KB pass automated visa photo validators?",
+        answer: "Yes. Our compression algorithm preserves essential facial landmarks—such as eyes, nose bridge, and facial contours—ensuring your photo passes both automated embassy validators and manual document inspections."
       },
       {
-            "question": "What happens if my photo is 50.5 KB instead of 50 KB?",
-            "answer": "Automated government and university upload validators reject files that exceed 50 KB (or 50,000 bytes) by even a single byte. FastToolVerse calibrates output between 42KB and 48KB to prevent rejection."
+        question: "Can I compress black-ink signatures under 50KB without gray fuzzy edges?",
+        answer: "Yes. By maintaining high contrast between dark ink lines and the white paper background, the tool produces clean, crisp signatures without blurry JPEG compression artifacts."
       },
       {
-            "question": "Are my personal photos uploaded or stored on your servers?",
-            "answer": "No. FastToolVerse processes all images 100% locally inside your web browser using client-side JavaScript. Your photos never leave your computer or phone."
+        question: "Are my sensitive identity documents and passport photos stored on your servers?",
+        answer: "No. The compression runs entirely inside your browser's local memory heap using client-side technology. Your photos and personal files never touch an external cloud server, guaranteeing complete personal privacy."
       }
-],
+    ],
     relatedPresetSlugs: ['compress-image-to-20kb', 'compress-image-to-100kb', 'passport-photo-compressor-to-50kb', 'compress-jpg-to-50kb']
   },
   {

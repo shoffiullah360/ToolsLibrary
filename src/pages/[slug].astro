@@ -17,6 +17,7 @@ import ConversionPrivacyBrief from '../components/ConversionPrivacyBrief.astro';
 import ConversionEditorial from '../components/ConversionEditorial.astro';
 import { getConverterEditorial } from '../data/converterEditorials';
 import CompressorPrivacyBrief from '../components/CompressorPrivacyBrief.astro';
+import CompressorDataPrivacy from '../components/CompressorDataPrivacy.astro';
 import CompressorEditorial from '../components/CompressorEditorial.astro';
 import { getCompressorEditorial } from '../data/compressorEditorials';
 import RemoveEmptyLinesPresetView from '../components/RemoveEmptyLinesPresetView.astro';
@@ -1646,6 +1647,9 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
 
       <!-- 8. ENGINEERED FOR PRIVACY, SPEED, AND COLOR ACCURACY: 3 clean visual feature cards styled identically to converter layout -->
       <CompressorPrivacyBrief />
+
+      <!-- YOUR DATA & LOCAL PRIVACY: Enterprise-grade client sandbox isolation (1:1 clone of converter privacy) -->
+      <CompressorDataPrivacy />
 
       <!-- 9. 800-1200 WORDS SEO EDITORIAL ARTICLE: Clean reading container matching converter article -->
       <CompressorEditorial editorial={compressEditorial} />

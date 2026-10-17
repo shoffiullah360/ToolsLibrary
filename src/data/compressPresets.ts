@@ -2009,27 +2009,12 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       }
 ],
     faqs: [
-      {
-            "question": "Why do UPSC, SSC, and IBPS require signatures between 10KB and 20KB?",
-            "answer": "Government exam portals host millions of applicant records. Enforcing a strict 10KB to 20KB window ensures databases stay compact and fast while guaranteeing that signatures retain sufficient clarity for identity verification at examination centers."
-      },
-      {
-            "question": "How do I make my signature file size less than 20KB without blurring it?",
-            "answer": "Upload your signature here. Our engine applies high-contrast thresholding that turns the gray paper background into pure white, eliminating background noise so that the entire file size budget is dedicated to keeping the ink strokes crisp."
-      },
-      {
-            "question": "What should I do if my signature is smaller than the 10KB minimum limit?",
-            "answer": "If your signature is under 10KB, government portals will reject it as low quality. FastToolVerse automatically calibrates the output to land comfortably between 14KB and 18KB, safely above the 10KB floor and under the 20KB ceiling."
-      },
-      {
-            "question": "Can I sign in capital letters for government job applications?",
-            "answer": "No. Official exam boards (such as SSC, UPSC, and IBPS) explicitly reject signatures written in capital or block letters. Signatures must be written in running, continuous cursive handwriting."
-      },
-      {
-            "question": "Is it safe to compress my legal signature on FastToolVerse?",
-            "answer": "Yes, 100% safe. FastToolVerse operates entirely inside your local browser memory using client-side JavaScript. Your signature is never uploaded, stored, or transmitted over the internet."
-      }
-],
+      { question: "Why do job and exam portals enforce a strict 20KB limit for digital signatures?", answer: "The 20KB limit ensures fast loading across massive applicant databases and guarantees sharp, high-contrast printing on printed hall tickets and official admit cards." },
+      { question: "How do I avoid gray blurry noise around my signature when compressing to 20KB?", answer: "Sign with dark ink on plain white paper, crop tightly around your signature strokes, and scale canvas dimensions to around 300x150 pixels before compressing. Our tool maintains high contrast to prevent blurry artifacts." },
+      { question: "Can I compress transparent PNG signatures under 20KB with this tool?", answer: "Yes. Our tool optimizes PNG color palettes, allowing transparent signatures to stay strictly under 20KB while preserving clean alpha transparency and sharp pen outlines." },
+      { question: "Will my 20KB compressed signature pass automated portal intake verification?", answer: "Yes. The compression algorithm protects line continuity and sharp stroke contrast, ensuring your signature satisfies automated portal validators and human inspection." },
+      { question: "Are my personal signatures or confidential legal documents stored on your servers?", answer: "No. All compression operations run locally inside your browser's private memory heap using client-side technology. Your signatures never touch an external cloud server, guaranteeing complete privacy." }
+    ],
     relatedPresetSlugs: ['compress-image-to-20kb', 'compress-image-to-10kb', 'compress-photo-for-pan-card']
   },
   {
@@ -2054,7 +2039,11 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Free & Fast', desc: 'Instant batch export.' }
     ],
     faqs: [
-      { question: 'What is the photo size for voter card application?', answer: 'Election portals usually mandate JPG photos under 50KB.' }
+      { question: "What is the standard photo file size limit for national voter ID registration?", answer: "Most national and state election portals require applicant photos to be in JPG format, with file size strictly capped between 20KB and 50KB." },
+      { question: "How do I compress a phone selfie for Voter ID without making it blurry?", answer: "Crop your picture closely around your head and shoulders against a light background, scale dimensions to standard passport proportions (around 350x450 pixels), and compress. This keeps facial details sharp while staying under 50KB." },
+      { question: "Will my compressed photo print clearly on the physical Voter ID card?", answer: "Yes. Our tool optimizes file weight while protecting essential facial features—such as eyes, nose bridge, and mouth contours—ensuring your photo prints cleanly on laminated voter cards." },
+      { question: "Can I compress supporting identity proofs and address documents with this tool?", answer: "Yes. Our tool easily handles scanned document proofs, certificates, and utility bills, maintaining high legibility while reducing file weight." },
+      { question: "Are my confidential citizen identity documents stored on your servers?", answer: "No. All compression operations run locally inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing complete privacy." }
     ],
     relatedPresetSlugs: ['compress-photo-for-pan-card', 'passport-photo-compressor-to-50kb', 'compress-image-to-50kb']
   },
@@ -2080,7 +2069,11 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Instant ZIP', desc: 'Download multiple files together.' }
     ],
     faqs: [
-      { question: 'What image size is required for admit cards?', answer: 'Most exam bodies require photos under 50KB and signatures under 20KB.' }
+      { question: "Why do competitive exam boards require photos to be strictly between 20KB and 50KB?", answer: "This range ensures photos retain sufficient biometric sharpness for printed hall tickets and proctor verification, while keeping portal databases lightweight during registration surges." },
+      { question: "How do I compress my smartphone photo for an admit card without blurriness?", answer: "Crop your picture closely around your head and shoulders against a light background, scale dimensions to around 350x450 pixels, and compress. This removes excess pixels beforehand, keeping facial details sharp." },
+      { question: "Will an admit card photo compressed with this tool print clearly on paper?", answer: "Yes. A properly optimized file retains ample resolution, sharp contrast, and balanced color depth, ensuring clean printing on admit cards without pixelated blur." },
+      { question: "Can I compress my signature and thumb impression for the admit card at the same time?", answer: "Yes. Our batch processing engine allows you to drop your photo, signature, and thumb impression into the queue and compress them all simultaneously in your browser." },
+      { question: "Are my sensitive admit card documents and personal photos uploaded to an external server?", answer: "No. All compression operations run locally inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing total confidentiality." }
     ],
     relatedPresetSlugs: ['resize-and-compress-signature-to-20kb', 'passport-photo-compressor-to-50kb', 'compress-image-to-20kb']
   },
@@ -2106,7 +2099,11 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Free & Uncapped', desc: 'No daily limits.' }
     ],
     faqs: [
-      { question: 'Can I change pixels and KB together?', answer: 'Yes, our tool lets you specify width/height in pixels and target file weight in KB simultaneously.' }
+      { question: "How does this tool adjust both pixel dimensions and file size in KB at the same time?", answer: "Our dual-action engine first scales your image to your exact width and height in pixels, and then applies precision quantization to calibrate the file weight strictly under your desired KB limit." },
+      { question: "Will changing pixel dimensions stretch or distort my face?", answer: "No. The tool maintains proportional aspect ratio locks, ensuring your facial features remain completely natural without artificial stretching or squishing." },
+      { question: "Can I convert photos for specific government portals (such as 350x450 pixels and under 20KB)?", answer: "Yes. You can enter any custom combination of pixel dimensions and target KB limits, ensuring guaranteed compliance for any public exam or recruitment portal." },
+      { question: "Can I batch convert multiple photos to the same pixel and KB dimensions simultaneously?", answer: "Yes. Our batch processing engine allows you to drop multiple photos into the queue and apply uniform pixel and KB adjustments to all of them at once in your browser." },
+      { question: "Are my sensitive identity documents and photos uploaded to external servers?", answer: "No. All conversion and compression operations run locally inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing complete confidentiality." }
     ],
     relatedPresetSlugs: ['compress-image-to-50kb', 'compress-image-to-20kb', 'passport-photo-compressor-to-50kb']
   },

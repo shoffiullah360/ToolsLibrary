@@ -1442,7 +1442,11 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Free Unlimited', desc: 'Zero cost forever.' }
     ],
     faqs: [
-      { question: 'Is 500KB good for full-screen photos?', answer: 'Yes, it provides sharp desktop viewing with minimal load delay.' }
+      { question: 'Why is 500KB JPG the preferred standard for e-commerce stores and blogs?', answer: 'A 500KB JPG maintains crisp photographic detail on Retina and 4K displays while loading fast enough to ensure excellent Core Web Vitals scores.' },
+      { question: 'How do I compress a 15MB camera capture to 500KB JPG without muddy colors?', answer: 'Downscale your pixel dimensions to standard web proportions (around 1600x1200 pixels) before compressing. This eliminates excess pixel data naturally, keeping textures and color saturation sharp.' },
+      { question: 'Will an image compressed to 500KB JPG look sharp in printed brochures?', answer: 'Yes. At 500KB, a properly optimized JPG retains ample resolution, sharp contrast, and balanced color depth for clean physical printing on flyers and product sheets.' },
+      { question: 'Can I compress multiple high-resolution JPG photos to 500KB at once?', answer: 'Yes. Our batch compression engine allows you to process an entire gallery of photos down to 500KB JPG simultaneously within your browser.' },
+      { question: 'Are my commercial assets or private photos uploaded to a cloud server?', answer: 'No. All compression operations run locally inside your browser\'s private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing complete confidentiality.' }
     ],
     relatedPresetSlugs: ['compress-image-to-500kb', 'compress-jpg-to-200kb', 'compress-image-to-1mb']
   },
@@ -1469,7 +1473,11 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'No Watermarks', desc: 'Professional output.' }
     ],
     faqs: [
-      { question: 'Will transparent backgrounds turn black?', answer: 'No, our engine strictly preserves transparent alpha channels.' }
+      { question: 'Why is PNG preferred over JPG for official signature uploads under 20KB?', answer: 'PNG prevents the blurry gray halos and pixelated noise that JPG algorithms create around dark pen strokes, ensuring handwritten signatures stay clean and readable.' },
+      { question: 'How do I compress a transparent PNG to 20KB without ruining transparency?', answer: 'Crop unnecessary whitespace around your graphic and resize dimensions to around 200-300 pixels before compressing. Our tool indexes color palettes while preserving alpha channel transparency.' },
+      { question: 'Can I compress black-ink scanned signatures to under 20KB with this tool?', answer: 'Yes. The tool boosts contrast between dark ink lines and the transparent or white background, ensuring signatures remain crisp, solid, and completely legible.' },
+      { question: 'Will my 20KB PNG logo or badge look blurry on high-resolution screens?', answer: 'No. By maintaining sharp vector-like boundaries and clean palette quantization, your icon or signature retains high contrast across modern mobile and desktop screens.' },
+      { question: 'Are my confidential signatures and documents uploaded to an external server?', answer: 'No. All compression operations run locally inside your browser\'s private memory heap using client-side technology. Your signatures and personal files never touch an external cloud server.' }
     ],
     relatedPresetSlugs: ['compress-png-to-50kb', 'compress-image-to-20kb', 'compress-png-without-losing-quality']
   },
@@ -1496,7 +1504,11 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Batch Queue', desc: 'Compress up to 15 PNGs.' }
     ],
     faqs: [
-      { question: 'How to compress PNG to 50KB?', answer: 'Upload your PNG here; the 50KB target is applied automatically.' }
+      { question: 'How does this tool compress PNG files to 50KB while preserving transparency?', answer: 'Our engine uses intelligent palette quantization to reduce color overhead while keeping the alpha transparency channel completely intact and crisp.' },
+      { question: 'Can I compress complex multi-color PNG illustrations down to 50KB?', answer: 'Yes. Downscale your canvas dimensions to realistic display parameters (around 400x400 pixels) before compressing. This removes surplus pixel data while retaining vivid colors and clean lines.' },
+      { question: 'Will an image compressed to 50KB PNG look fuzzy on high-DPI screens?', answer: 'No. By preserving sharp edge contrast and smooth palette transitions, your badges and logos maintain crisp vector-like definition across mobile and desktop displays.' },
+      { question: 'Can I batch compress multiple PNG icons to 50KB at once?', answer: 'Yes. Our batch processing engine allows you to drop an entire folder of PNG assets into the queue and compress them all to 50KB simultaneously in your browser.' },
+      { question: 'Are my proprietary branding assets or private graphics uploaded to an external server?', answer: 'No. All compression operations run locally inside your browser\'s private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing complete confidentiality.' }
     ],
     relatedPresetSlugs: ['compress-png-to-20kb', 'compress-png-to-100kb', 'compress-image-to-50kb']
   },
@@ -1523,7 +1535,11 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'No Limits', desc: 'Uncapped free tool.' }
     ],
     faqs: [
-      { question: 'Is PNG compression lossless?', answer: 'Our tool balances perceptual lossless quantization to fit exact KB targets.' }
+      { question: 'Why is 100KB PNG considered the optimal limit for web illustrations and badges?', answer: 'A 100KB PNG maintains clean alpha transparency and crisp vector-like edges while downloading fast enough to guarantee superior Core Web Vitals scores.' },
+      { question: 'How do I compress a large 3MB PNG graphic to 100KB without blurring text?', answer: 'Resize native pixel dimensions to realistic display parameters (around 800x800 pixels) before compressing. Our tool indexes color palettes while preserving razor-sharp text outlines.' },
+      { question: 'Does compressing a PNG to 100KB remove the transparent background?', answer: 'No. The compression algorithm specifically protects the alpha transparency channel, ensuring your graphic blends seamlessly over any background color or gradient.' },
+      { question: 'Can I compress multiple PNG graphics to 100KB simultaneously?', answer: 'Yes. Our batch processing engine allows you to drop multiple PNG files into the queue and compress them all to 100KB simultaneously in your browser.' },
+      { question: 'Are my proprietary graphic assets uploaded to an external server?', answer: 'No. All compression operations run locally inside your browser\'s private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing total confidentiality.' }
     ],
     relatedPresetSlugs: ['compress-png-to-50kb', 'compress-png-to-200kb', 'compress-image-to-100kb']
   },

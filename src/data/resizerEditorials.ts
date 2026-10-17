@@ -3423,6 +3423,234 @@ const faqsPinterest = [
   {"question": "Are my commercial pin graphics or proprietary photos uploaded to external servers?", "answer": "No. All resizing operations run locally inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing total confidentiality."}
 ];
 
+const articleIndianVisa = `# The Complete Guide to Resizing Photos for Indian e-Visa Applications Online Free
+
+Applying for an Indian e-Visa—whether for tourism, business conferences, medical treatment, or cultural transit—requires navigating strict consular documentation rules. While filling out passport credentials and travel itineraries is straightforward, thousands of international applicants face unexpected delays and application rejections at the final document upload window. The Indian immigration portal enforces rigorous biometric photo parameters: your portrait must be a clean square, equal in width and height, measuring between 350x350 and 1000x1000 pixels, with file weight kept strictly between 10KB and 1MB in JPG format.
+
+Failing to meet Indian visa photo specifications is one of the leading causes of visa processing delays. Modern smartphone cameras capture wide rectangular snapshots packed with megabytes of data. Forcing an uncalibrated portrait into the consular portal often leads to blurry downscaling, dark shadows across facial features, or improper head positioning where the chin or forehead is cropped. Utilizing an advanced **free image resizer** tailored for international visa compliance ensures your portrait maintains distinct facial contours, natural skin complexions, and balanced lighting beneath official consular limits.
+
+### Why Does the Indian e-Visa Portal Enforce Strict Biometric Parameters?
+
+Immigration authorities and border control agencies establish rigorous photographic standards for critical operational reasons:
+
+1. **Automated Facial Recognition Scanning:** International immigration counters use computer-vision algorithms to compare incoming traveler faces against digital passport chips. An image formatted to exact square proportions ensures facial landmarks align with biometric recognition databases.
+2. **Standardized Head-to-Canvas Ratio:** Consular rules strictly require your head—from the crown of your hair to the bottom of your chin—to occupy between 50% and 70% of the entire image height. Proper cropping ensures facial symmetry without distortion.
+3. **Pristine Physical Visa and Border Badge Printing:** Consular officers issue printed visa stickers and verification receipts at entry airports. Pre-formatting ensures your portrait prints cleanly without pixelated blur or dark backgrounds.
+
+Using an **online image resizer free** utility ensures your identity photograph meets Indian consular guidelines on your very first try.
+
+### Practical Steps to Resize Indian Visa Photos Without Quality Compromise
+
+Preparing a clean, consular-compliant visa photo is simple with a structured approach:
+
+* **Frame Your Face and Eye Level Correctly:** Crop your snapshot into an exact 1:1 square. Make sure your full head occupies approximately 50% to 70% of the vertical frame, looking directly into the camera with both eyes open, ears visible, and mouth closed.
+* **Maintain a Plain White or Off-White Background:** Stand against a solid white wall under balanced, shadow-free lighting. Avoid colorful backdrops, patterns, or heavy flash shadows behind your head.
+* **Set Canvas Dimensions to a Compliant Square:** Enter 600x600 pixels (or between 350x350 and 1000x1000 pixels). A dependable **simple image resizer** ensures lines remain clean without jagged edge distortion.
+* **Apply Precision Optimization:** Once properly framed and dimensioned, let our **image resizer online free** engine adjust remaining color depth so the file settles comfortably between 10KB and 1MB in JPG format.
+
+### Choosing Formats: JPG vs. PDF for Visa Portals
+
+Selecting the appropriate format helps keep file weight minimal while preserving visual fidelity:
+
+* **Digital Applicant Photographs:** The Indian e-Visa portal strictly mandates JPG format for the photograph upload. A standard **image resizer online** workflow produces clean, balanced assets that render smoothly.
+* **Supporting Passport Bio Pages:** While photographs require JPG, passport bio page scans require PDF format. An **image resizer free online** tool helps balance photographic contrast before compiling documents.
+
+### Versatile Uses for Creators, Businesses, and Administrators
+
+Targeting compact image sizes is essential across many modern workflows:
+
+* **E-Commerce Store Optimization:** Online store owners regularly employ a dedicated **shopify image resizer** to streamline product photos, lifestyle images, and catalog thumbnails. Faster page loading directly translates into better search engine visibility and higher customer conversion rates.
+* **Social Content and Feeds:** Content creators rely on an **instagram image resizer** to format avatars and feed posts that render crisply across mobile devices without suffering from automated platform compression blur.
+* **High-Volume Document Batching:** School administrators, HR teams, and event coordinators often process dozens of ID photos at once. A capable **bulk image resizer** or **batch image resizer** allows you to format complete folders of student or employee portraits simultaneously. With an intuitive **free online image resizer**, batch tasks finish in seconds right inside your browser.
+* **Platform Accessibility:** Whether working from a desktop computer requiring an **image resizer for windows** or using a mobile browser on the go, our client-side tool delivers consistent speed and reliability.
+
+### Complete Client-Side Security for Travel Documents
+
+When handling personal documents—such as passport snapshots, government ID cards, and official signatures—privacy should always be your top priority. Many web utilities upload confidential files to remote servers where they may sit indefinitely in unknown digital folders.
+
+Our **image resizer free online** solution operates entirely inside your local web browser sandbox. The complete dimension scaling and file reduction process happens strictly within your computer or mobile device memory. Your images never leave your hardware, no data is sent across the internet, and nothing is ever logged or tracked. As soon as you complete your download and close the browser tab, all temporary memory is wiped clean.
+
+With a fast, completely free **online image resizer**, preparing compliant images for your next exam or job application is simple, rapid, and completely secure.`;
+
+const faqsIndianVisa = [
+  {"question": "What are the official photo dimensions for an Indian e-Visa application?", "answer": "The Indian e-Visa portal requires a square 1:1 JPEG photo with dimensions between 350x350 and 1000x1000 pixels (600x600 is recommended) and file size between 10KB and 1MB."},
+  {"question": "What is the head height requirement for Indian visa photos?", "answer": "Your head, from the top of your hair to the bottom of your chin, must measure between 50% and 70% (ideally around 60%) of the total image height."},
+  {"question": "Can I wear glasses or head coverings in my Indian e-Visa photo?", "answer": "Spectacles with tinted lenses or glare are strictly prohibited; religious headwear is allowed only if it does not cover any part of your face from chin to forehead."},
+  {"question": "Can I resize photos for my entire family's visa applications simultaneously?", "answer": "Yes. Our batch processing engine allows you to drop multiple family portraits into the queue and resize them all to compliant dimensions simultaneously in your browser."},
+  {"question": "Are my sensitive passport photos uploaded to external servers during resizing?", "answer": "No. All resizing operations run locally inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing total confidentiality."}
+];
+
+const articlePanCard = `# The Definitive Guide to Resizing Photos and Signatures for PAN Cards Online Free
+
+Submitting an online application for a Permanent Account Number (PAN Card) via official Protean (formerly NSDL e-Gov) or UTIITSL portals is a vital financial step for citizens, business entities, and non-resident professionals. However, thousands of PAN card applicants face repeated upload rejections and stalled verification queues due to strict file specifications. Both NSDL and UTIITSL portals enforce rigid constraints: your applicant photograph must measure exactly 213x213 pixels (or 3.5cm x 2.5cm) under 50KB at 200 DPI, and your signature scan must measure exactly 213x400 or 400x213 pixels under 30KB.
+
+Achieving compliance on PAN card registration portals requires exact dimension and file weight calibration. Smartphone cameras capture rich, multi-megabyte snapshots. If you attempt to reduce those files using crude online tools, you risk blurring delicate signature lines, washing out facial landmarks, or exceeding the rigid 50KB limit. Utilizing an advanced **image resizer free** engine enables you to hit the exact 213x213 pixel threshold effortlessly while preserving vibrant color balance, sharp facial contours, and readable text lines.
+
+### Why Do NSDL and UTIITSL Portals Enforce Exact 213x213 Pixel Dimensions?
+
+Tax authorities and financial identity registries establish rigid photographic parameters for clear operational reasons:
+
+1. **Seamless Physical Card Engraving:** PAN cards feature physical photo and signature prints on laminated plastic. Standardizing photos to 213x213 pixels at 200 DPI ensures crisp reproduction without blurred borders.
+2. **Automated Document Validation:** Digital intake portals use automated edge-detection scanners to confirm that applicant headshots and signatures meet legal verification standards. An **online image resizer free** tool guarantees that your files satisfy these automated checks effortlessly.
+3. **High-Speed Database Throughput:** Millions of citizens apply for financial identification yearly. Standardizing uploads under 50KB preserves database memory and prevents upload timeouts during peak application windows.
+
+Using an **online image resizer free** utility ensures your financial identification documents pass administrative intake on your very first try.
+
+### Practical Steps to Resize PAN Card Photos and Signatures Without Quality Loss
+
+Preparing clean, compliant PAN card assets is straightforward with a structured workflow:
+
+* **Crop Closely to Your Subject:** For your portrait, crop in a 1:1 square frame so your head and upper shoulders occupy roughly 75% to 80% of the canvas against a light background. For your signature, crop tightly along the pen strokes on clean white paper.
+* **Set Canvas Dimensions to Exactly 213x213 Pixels:** For photos, enter 213 pixels for width and 213 pixels for height. For signatures, enter portal-specified dimensions (such as 213x400 or 400x213 pixels). A dependable **simple image resizer** ensures lines remain clean without jagged edge distortion.
+* **Maintain Clean, High-Contrast Lighting:** Capture photographs under balanced, natural lighting. Clean lighting prevents compression algorithms from wasting valuable file weight on dark background shadows and visual noise.
+* **Apply Precision Optimization:** Once properly framed and dimensioned, let our **image resizer online free** engine adjust remaining color depth so your photo settles comfortably under 50KB (and signature under 30KB).
+
+### Choosing Formats: JPG vs. PNG for PAN Portals
+
+Selecting the appropriate format helps keep file weight within the approved window while preserving visual fidelity:
+
+* **Applicant Portraits and Candidate Photos:** Official PAN card portals require JPG format. A standard **image resizer online** workflow produces clean, high-contrast assets that render smoothly.
+* **Scanned Signatures and Endorsements:** For signatures, high-contrast black ink against white paper exported via an **image resizer free online** tool ensures sharp line legibility.
+
+### Versatile Uses for Creators, Businesses, and Administrators
+
+Targeting compact image sizes is essential across many modern workflows:
+
+* **E-Commerce Store Optimization:** Online store owners regularly employ a dedicated **shopify image resizer** to streamline product photos, lifestyle images, and catalog thumbnails. Faster page loading directly translates into better search engine visibility and higher customer conversion rates.
+* **Social Content and Feeds:** Content creators rely on an **instagram image resizer** to format avatars and feed posts that render crisply across mobile devices without suffering from automated platform compression blur.
+* **High-Volume Document Batching:** School administrators, HR teams, and event coordinators often process dozens of ID photos at once. A capable **bulk image resizer** or **batch image resizer** allows you to format complete folders of student or employee portraits simultaneously. With an intuitive **free online image resizer**, batch tasks finish in seconds right inside your browser.
+* **Platform Accessibility:** Whether working from a desktop computer requiring an **image resizer for windows** or using a mobile browser on the go, our client-side tool delivers consistent speed and reliability.
+
+### Complete Client-Side Security for Financial Identity Files
+
+When handling sensitive financial documents—such as tax credentials, signature scans, and identity photos—data privacy should always be your top priority. Many web utilities upload confidential files to remote servers where they may sit indefinitely in unknown digital folders.
+
+Our **image resizer free online** solution operates entirely inside your local web browser sandbox. The complete dimension scaling and file reduction process happens strictly within your computer or mobile device memory. Your images never leave your hardware, no data is sent across the internet, and nothing is ever logged or tracked. As soon as you complete your download and close the browser tab, all temporary memory is wiped clean.
+
+With a fast, completely free **online image resizer**, preparing compliant images for your next exam or job application is simple, rapid, and completely secure.`;
+
+const faqsPanCard = [
+  {"question": "What are the exact photo specifications for NSDL and UTIITSL PAN card portals?", "answer": "The photo must measure exactly 213x213 pixels (3.5cm x 2.5cm) at 200 DPI, in JPEG format, with a file size strictly under 50KB."},
+  {"question": "What are the dimensions and file size limits for a PAN card signature?", "answer": "The signature scan must measure 213x400 pixels (or 400x213 pixels depending on portal orientation) and weigh strictly under 30KB in JPEG format."},
+  {"question": "Why does the PAN card portal reject my photo even though it looks clear?", "answer": "Rejections occur if the image exceeds 50KB, does not match 213x213 pixels exactly, or has a resolution lower than 200 DPI; our tool configures all parameters automatically."},
+  {"question": "Can I resize both my photo and signature for my PAN card application at the same time?", "answer": "Yes. Our batch processing engine allows you to drop both files into the queue and resize them simultaneously in your browser."},
+  {"question": "Are my sensitive signature scans or personal identity photos stored on your servers?", "answer": "No. All resizing operations run locally inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing total confidentiality."}
+];
+
+const articlePassportBD = `# The Practical Guide to Passport Size Photo Dimensions in Bangladesh Online Free
+
+In Bangladesh, preparing standard passport size photographs is a constant requirement for citizens, students, job candidates, and professionals. Whether you are applying for a machine-readable e-Passport, renewing your National Identity Card (NID), registering for university admissions (such as Dhaka University, BUET, or medical college admission tests), or submitting applications through the government recruitment portal (Teletalk / BPSC), having the correct photographic proportions is critical. A photo with irregular dimensions, improper aspect ratios, or incorrect file size will trigger instant automated rejection on government submission portals.
+
+Understanding passport size photo standards in Bangladesh requires distinguishing between physical print dimensions and digital pixel specifications. In Bangladesh, the standard physical passport size photograph measures 40mm wide by 50mm high (4cm x 5cm), while international and visa applications often use 45mm x 55mm (or 35mm x 45mm for Schengen visas). In digital terms, official portals like Teletalk enforce an exact resolution of 300x300 pixels (capped under 100KB) for photos, and 300x80 pixels (under 60KB) for signatures. Utilizing an intuitive **free image resizer** tailored for Bangladesh document guidelines ensures your portrait maintains distinct facial contours, natural contrast, and authentic skin complexions within official boundaries.
+
+### Why Do Bangladesh Government and University Portals Enforce Strict Photo Guidelines?
+
+National registries, examination boards, and public service databases establish rigid photographic standards for clear operational reasons:
+
+1. **Flawless Admit Card and NID Generation:** Recruitment portals like Teletalk and BPSC generate thousands of admit cards for laser printing. Standardizing photos to exact pixel dimensions ensures images print clearly without overlapping candidate names or roll numbers.
+2. **Automated Facial Biometric Scanners:** Digital intake portals use automated edge-detection algorithms to confirm that applicant headshots meet biometric standards. An **online image resizer free** tool guarantees that your picture satisfies these automated intake checks effortlessly.
+3. **Database Performance During Peak Deadlines:** Public university admission windows and government job deadlines attract millions of simultaneous applicants. Keeping uploads under 100KB ensures fast, reliable submissions without server crashes.
+
+Using an **online image resizer free** utility ensures your identity photograph meets Bangladesh government guidelines on your very first try.
+
+### Practical Steps to Format Bangladesh Passport Photos Without Quality Loss
+
+Preparing a clean, compliant passport photo is straightforward with a structured approach:
+
+* **Frame Your Head and Shoulders Correctly:** Crop your snapshot so your face, hairline, and upper shoulders occupy roughly 70% to 75% of the frame against a clean, plain white or light-colored background. Look directly into the camera with a neutral expression.
+* **Choose Target Dimensions:** For physical print output, set dimensions to 40x50 mm (or 45x55 mm). For digital government portals (Teletalk, NID, BPSC), set dimensions to exactly 300x300 pixels. A dependable **simple image resizer** ensures lines remain clean without jagged edge distortion.
+* **Maintain Clean, Balanced Lighting:** Capture photographs under balanced, natural lighting. Clean lighting prevents compression algorithms from wasting valuable file weight on dark background shadows and visual noise.
+* **Apply Precision Optimization:** Once properly framed and dimensioned, let our **image resizer online free** engine adjust remaining color depth so the file stays comfortably under 100KB in JPG format.
+
+### Choosing Formats: JPG vs. PNG for Official Applications
+
+Selecting the appropriate format helps keep file weight within the approved window while preserving visual fidelity:
+
+* **Applicant Portraits and ID Photos:** Government and admission portals in Bangladesh universally require JPG format. A standard **image resizer online** workflow produces clean, high-contrast assets that render smoothly.
+* **Digital Signatures:** When resizing your signature for online job portals, high-contrast black ink against white paper formatted to 300x80 pixels under 60KB ensures sharp line legibility.
+
+### Versatile Uses for Creators, Businesses, and Administrators
+
+Targeting compact image sizes is essential across many modern workflows:
+
+* **E-Commerce Store Optimization:** Online store owners regularly employ a dedicated **shopify image resizer** to streamline product photos, lifestyle images, and catalog thumbnails. Faster page loading directly translates into better search engine visibility and higher customer conversion rates.
+* **Social Content and Feeds:** Content creators rely on an **instagram image resizer** to format avatars and feed posts that render crisply across mobile devices without suffering from automated platform compression blur.
+* **High-Volume Document Batching:** School administrators, HR teams, and event coordinators often process dozens of ID photos at once. A capable **bulk image resizer** or **batch image resizer** allows you to format complete folders of student or employee portraits simultaneously. With an intuitive **free online image resizer**, batch tasks finish in seconds right inside your browser.
+* **Platform Accessibility:** Whether working from a desktop computer requiring an **image resizer for windows** or using a mobile browser on the go, our client-side tool delivers consistent speed and reliability.
+
+### Complete Client-Side Security for Personal Identity Documents
+
+When handling personal documents—such as passport snapshots, government ID cards, and official signatures—privacy should always be your top priority. Many web utilities upload confidential files to remote servers where they may sit indefinitely in unknown digital folders.
+
+Our **image resizer free online** solution operates entirely inside your local web browser sandbox. The complete dimension scaling and file reduction process happens strictly within your computer or mobile device memory. Your images never leave your hardware, no data is sent across the internet, and nothing is ever logged or tracked. As soon as you complete your download and close the browser tab, all temporary memory is wiped clean.
+
+With a fast, completely free **online image resizer**, preparing compliant images for your next exam or job application is simple, rapid, and completely secure.`;
+
+const faqsPassportBD = [
+  {"question": "What is the standard passport size photo dimension in Bangladesh?", "answer": "The physical standard is 40mm wide by 50mm high (4cm x 5cm) or 45mm x 55mm; for digital government portals (Teletalk/NID), the standard is 300x300 pixels under 100KB."},
+  {"question": "What is the signature photo size requirement for Bangladesh government job portals?", "answer": "Government job portals (such as Teletalk) require signature scans to be exactly 300 pixels wide by 80 pixels high, with file size under 60KB."},
+  {"question": "What background color is required for Bangladesh passport photos?", "answer": "Official Bangladesh e-Passport, NID, and admission portals require a solid plain white or off-white background with no shadows."},
+  {"question": "Can I resize both my passport photo and signature simultaneously?", "answer": "Yes. Our batch processing engine allows you to drop both files into the queue and resize them to 300x300 and 300x80 pixels simultaneously in your browser."},
+  {"question": "Are my sensitive identity photos uploaded to external servers during resizing?", "answer": "No. All resizing operations run locally inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing total confidentiality."}
+];
+
+const articleDiscordPFP = `# The Definitive Guide to Resizing Images for Discord Profile Pictures (PFP) Online Free
+
+Your Discord profile picture, commonly called a PFP, is your visual identity across voice channels, gaming communities, developer servers, and direct messages. Whenever you speak in a voice call, type in community channels, or participate in server events, your avatar icon represents your presence. However, Discord displays user avatars inside a circular mask. Uploading a raw, uncropped rectangular screenshot or heavy wallpaper snapshot often results in awkward clipping through your character art, blurry downscaling, or off-center framing.
+
+Achieving a sharp, captivating Discord avatar requires formatting your image into an exact 1:1 square canvas. The recommended upload size for a standard Discord profile picture is 128x128 pixels (or 256x256 to 512x512 pixels for high-DPI rendering). While Discord accepts larger uploads, the platform automatically downsamples files, which can introduce compression fuzziness on mobile devices. Utilizing an advanced **image resizer free** engine enables you to hit the exact square resolution effortlessly while preserving vibrant color balance, sharp contours, and clean transparency.
+
+### Why Does Discord Avatar Formatting Demand Exact Square Proportions?
+
+Voice chat platforms and community servers standardize on circular avatar containers for distinct operational benefits:
+
+1. **Circular Mask Adaptation:** Discord masks all square profile uploads into circular display badges. Formatting your picture to an exact 1:1 square with your subject centered prevents awkward cuts through hairstyles, ears, or custom art borders.
+2. **Pristine Clarity in Voice Channel Overlays:** In active voice channels, speaking members receive a dynamic green ring around their avatar. A crisp 128x128 or 256x256 avatar renders sharply without pixelation.
+3. **Consistent Display Across Server Member Lists:** A properly sized avatar renders cleanly across member sidebars, chat streams, mobile notification trays, and status widgets without visual distortion.
+
+Using an **online image resizer free** utility ensures your gaming avatar or personal icon looks sharp, distinctive, and vibrant on your very first try.
+
+### Practical Steps to Resize Discord PFP Images Without Quality Loss
+
+Achieving high clarity and perfect circular framing is straightforward with a structured workflow:
+
+* **Center Your Subject Inside a 1:1 Square Frame First:** Crop your snapshot into an exact 1:1 square. Make sure your character face or central brand icon occupies approximately 70% to 80% of the canvas, leaving ample padding around the corners so the circular cutout does not clip outer edges.
+* **Choose Optimal Display Proportions:** Modern gaming communities render best when given high-resolution square assets. Scale dimensions to 128x128, 256x256, or 512x512 pixels. A dependable **simple image resizer** ensures lines remain clean without jagged edge distortion.
+* **Ensure Clean, Balanced Lighting:** Select imagery with clean contrast and vibrant color saturation. Avoiding visual clutter helps compression engines preserve rich details.
+* **Apply Precision Optimization:** Once properly framed and dimensioned, let our **image resizer online free** engine adjust remaining color depth. Because the canvas is already realistic, the tool only trims minor excess bytes, keeping your visual features natural, sharp, and authentic.
+
+### Choosing Formats: PNG vs. JPG vs. GIF for Discord PFPs
+
+Selecting the appropriate format helps keep file weight minimal while preserving visual fidelity:
+
+* **Vector Art, Anime, and Transparent Icons:** For digital illustrations, gaming badges, and transparent character art, an **image resizer free online** tool with PNG support keeps borders sharp and clear.
+* **Photographic Portraits and Realistic Art:** For real-world photography and complex gradients, a standard **image resizer online** workflow utilizing JPG produces lightweight assets with smooth gradients and accurate colors.
+
+### Versatile Uses for Creators, Businesses, and Administrators
+
+Targeting compact image sizes is essential across many modern workflows:
+
+* **E-Commerce Store Optimization:** Online store owners regularly employ a dedicated **shopify image resizer** to streamline product photos, lifestyle images, and catalog thumbnails. Faster page loading directly translates into better search engine visibility and higher customer conversion rates.
+* **Social Content and Feeds:** Content creators rely on an **instagram image resizer** to format avatars and feed posts that render crisply across mobile devices without suffering from automated platform compression blur.
+* **High-Volume Document Batching:** School administrators, HR teams, and event coordinators often process dozens of ID photos at once. A capable **bulk image resizer** or **batch image resizer** allows you to format complete folders of student or employee portraits simultaneously. With an intuitive **free online image resizer**, batch tasks finish in seconds right inside your browser.
+* **Platform Accessibility:** Whether working from a desktop computer requiring an **image resizer for windows** or using a mobile browser on the go, our client-side tool delivers consistent speed and reliability.
+
+### Complete Client-Side Security for Digital Art
+
+When handling custom gaming art, private commission drawings, or personal profile photos, data privacy should always be your top priority. Many web utilities upload confidential files to remote servers where they may sit indefinitely in unknown digital folders.
+
+Our **image resizer free online** solution operates entirely inside your local web browser sandbox. The complete dimension scaling and file reduction process happens strictly within your computer or mobile device memory. Your images never leave your hardware, no data is sent across the internet, and nothing is ever logged or tracked. As soon as you complete your download and close the browser tab, all temporary memory is wiped clean.
+
+With a fast, completely free **online image resizer**, preparing compliant images for your next exam or job application is simple, rapid, and completely secure.`;
+
+const faqsDiscordPFP = [
+  {"question": "What is the recommended size for a Discord profile picture (PFP)?", "answer": "The recommended size for a Discord PFP is 128x128 pixels (or 256x256 / 512x512 pixels for high-DPI displays) in a 1:1 square ratio."},
+  {"question": "How can I prevent Discord from cutting off parts of my avatar in the circular frame?", "answer": "Center your character or portrait inside a 1:1 square crop with about 15% breathing room around the edges so the circular mask does not clip your artwork."},
+  {"question": "Why does my Discord PFP look blurry after uploading?", "answer": "Uploading non-square or heavily compressed images causes Discord's mobile client to downscale aggressively; pre-resizing to 256x256 or 512x512 pixels prevents blur."},
+  {"question": "Can I use transparent PNG images as my Discord profile avatar?", "answer": "Yes. Discord fully supports transparent PNG profile pictures, allowing custom shapes and character outlines to blend cleanly into dark and light themes."},
+  {"question": "Are my custom commission drawings or personal photos uploaded to remote servers?", "answer": "No. All resizing operations run locally inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing total confidentiality."}
+];
+
 export const RESIZER_EDITORIALS: Record<string, ResizerEditorial> = {
   'resize-image-to-15kb': {
     slug: 'resize-image-to-15kb',
@@ -4148,27 +4376,37 @@ export const RESIZER_EDITORIALS: Record<string, ResizerEditorial> = {
   'image-resize-for-indian-visa': {
     slug: 'image-resize-for-indian-visa',
     introParagraph: 'Resize photo for Indian e-Visa portals online free. Official 2x2 inch (350x350 to 1000x1000 px) square standard with verified biometric facial compliance.',
-    toolDescription: 'The Indian e-Visa immigration portal strictly mandates a square JPEG portrait where head height fills 50% to 70% of the canvas against a plain white background. Our simple image resizer accurately centers facial contours and sets exact pixel bounds to pass consular scanning. Process travel paperwork securely with 100% on-device data protection.'
+    toolDescription: 'The Indian e-Visa immigration portal strictly mandates a square JPEG portrait where head height fills 50% to 70% of the canvas against a plain white background. Our simple image resizer accurately centers facial contours and sets exact pixel bounds to pass consular scanning. Process travel paperwork securely with 100% on-device data protection.',
+    article: articleIndianVisa,
+    faqs: faqsIndianVisa
   },
   'image-resize-for-pan-card': {
     slug: 'image-resize-for-pan-card',
     introParagraph: 'Resize photo and signature for PAN card online free. Tailored for NSDL and UTIITSL portals requiring exact 213x213 pixel dimensions under 50KB.',
-    toolDescription: 'Avoid PAN card application rejections on Protean (NSDL) and UTIITSL intake forms that mandate photos at 213x213 pixels (3.5x2.5 cm at 200 DPI) under 50KB. This free image resizer standardizes portraits and signature scans into compliant parameters while keeping contrast sharp and legible. Submit official financial documents with complete personal data confidentiality.'
+    toolDescription: 'Avoid PAN card application rejections on Protean (NSDL) and UTIITSL intake forms that mandate photos at 213x213 pixels (3.5x2.5 cm at 200 DPI) under 50KB. This free image resizer standardizes portraits and signature scans into compliant parameters while keeping contrast sharp and legible. Submit official financial documents with complete personal data confidentiality.',
+    article: articlePanCard,
+    faqs: faqsPanCard
   },
   'passport-size-photo-size-in-bd': {
     slug: 'passport-size-photo-size-in-bd',
     introParagraph: 'Resize passport size photo for Bangladesh online free. Official 40mm x 50mm or 45mm x 55mm specifications for e-passports, admissions, and government services.',
-    toolDescription: 'Bangladesh e-Passport, National ID (NID), and government job portals strictly enforce standard passport proportions with clean white backgrounds. FastToolVerse\'s online image resizer effortlessly formats phone snapshots into crisp 40x50 mm (or 300 DPI equivalent) portraits without blurring hairline or eye contours. Prepare compliant identity photos in seconds using private browser processing that never uploads your files.'
+    toolDescription: 'Bangladesh e-Passport, National ID (NID), and government job portals strictly enforce standard passport proportions with clean white backgrounds. FastToolVerse\'s online image resizer effortlessly formats phone snapshots into crisp 40x50 mm (or 300 DPI equivalent) portraits without blurring hairline or eye contours. Prepare compliant identity photos in seconds using private browser processing that never uploads your files.',
+    article: articlePassportBD,
+    faqs: faqsPassportBD
   },
   'image-resizer-for-discord-pfp': {
     slug: 'image-resizer-for-discord-pfp',
     introParagraph: 'Resize images for Discord profile avatars online free. Sharp 128x128 square dimensions optimized to look vibrant and distinct inside circular voice chat badges.',
-    toolDescription: 'Ensure your gaming avatar displays with razor-sharp contrast across Discord servers and channel member lists. Our free online image resizer scales custom fan art, photos, and clan logos into perfect square proportions without fuzzy downscaling noise. Protect your digital art with fast, client-side browser optimization that keeps confidential files secure.'
+    toolDescription: 'Ensure your gaming avatar displays with razor-sharp contrast across Discord servers and channel member lists. Our free online image resizer scales custom fan art, photos, and clan logos into perfect square proportions without fuzzy downscaling noise. Protect your digital art with fast, client-side browser optimization that keeps confidential files secure.',
+    article: articleDiscordPFP,
+    faqs: faqsDiscordPFP
   },
   'image-resizer-for-discord-pfp-online-free': {
     slug: 'image-resizer-for-discord-pfp-online-free',
     introParagraph: 'Resize images for Discord profile avatars online free. Sharp 128x128 square dimensions optimized to look vibrant and distinct inside circular voice chat badges.',
-    toolDescription: 'Ensure your gaming avatar displays with razor-sharp contrast across Discord servers and channel member lists. Our free online image resizer scales custom fan art, photos, and clan logos into perfect square proportions without fuzzy downscaling noise. Protect your digital art with fast, client-side browser optimization that keeps confidential files secure.'
+    toolDescription: 'Ensure your gaming avatar displays with razor-sharp contrast across Discord servers and channel member lists. Our free online image resizer scales custom fan art, photos, and clan logos into perfect square proportions without fuzzy downscaling noise. Protect your digital art with fast, client-side browser optimization that keeps confidential files secure.',
+    article: articleDiscordPFP,
+    faqs: faqsDiscordPFP
   },
   'image-resizer-for-discord-banner': {
     slug: 'image-resizer-for-discord-banner',

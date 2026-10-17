@@ -408,6 +408,51 @@ export const RESIZER_EDITORIALS: Record<string, ResizerEditorial> = {
     slug: 'resize-image-for-facebook-event-cover',
     introParagraph: 'Resize image for Facebook event covers online free. Ensure your event banners display with razor-sharp 16:9 impact on all social calendars.',
     toolDescription: 'Promote webinars, parties, and conferences with perfectly scaled 1200x628 Facebook event banners. This image resizer online tool prevents ugly mobile clipping and compression blur, keeping dates, guest headshots, and typography crystal-clear. Prepare professional event visuals in moments with safe, client-side browser execution that protects your event assets completely.'
+  },
+  'resize-image-for-facebook-story': {
+    slug: 'resize-image-for-facebook-story',
+    introParagraph: 'Resize images for Facebook Stories online free. Full-screen 9:16 vertical crop engineered to prevent auto-cropping blur and black border padding on mobile.',
+    toolDescription: 'Deliver engaging social updates with perfectly formatted 1080x1920 vertical Facebook Stories. Our simple image resizer fits full-length portraits and product teasers into standard 9:16 proportions without pixelation or unwanted background bars. Enjoy swift, private browser-based formatting that keeps your daily creator content crisp and completely safe from server storage.'
+  },
+  'resize-image-for-facebook-banner': {
+    slug: 'resize-image-for-facebook-banner',
+    introParagraph: 'Resize images for Facebook banners online free with high-definition clarity. Perfectly adapted for desktop widescreen layouts and responsive mobile group headers.',
+    toolDescription: 'Facebook group and business page banners require precise aspect ratios to avoid cut-off headlines across different display screens. This free image resizer standardizes wide artwork into recommended header dimensions smoothly, keeping typography, logos, and focal subjects sharp. Create professional brand banners in seconds using 100% private, on-device browser processing.'
+  },
+  'resize-image-for-instagram-post': {
+    slug: 'resize-image-for-instagram-post',
+    introParagraph: 'Resize images for Instagram posts online free without compression artifacts. Effortlessly adapt your photography for classic square, landscape, or 4:5 portrait feeds.',
+    toolDescription: 'Prevent Instagram\'s harsh automated compression from ruining your photos by uploading properly optimized 1080x1080 square or 1080x1350 vertical assets. FastToolVerse\'s online image resizer refines aspect ratios smoothly, keeping colors vibrant and product details razor-sharp across all mobile feeds. Format your lifestyle and creator photography instantly right inside your browser sandbox.'
+  },
+  'resize-image-for-instagram-story': {
+    slug: 'resize-image-for-instagram-story',
+    introParagraph: 'Resize images for Instagram Stories online free. Full-screen 1080x1920 vertical dimensions designed to eliminate blurry compression noise and awkward edge clipping.',
+    toolDescription: 'Creating vibrant 9:16 vertical imagery for Instagram Stories and Highlights is simple with our free online image resizer. It scales high-resolution camera snapshots into clean 1080x1920 dimensions without squishing your subject or blurring text. Keep your community engaged with pristine mobile visuals processed securely on your local device.'
+  },
+  'resize-image-for-instagram-dp': {
+    slug: 'resize-image-for-instagram-dp',
+    introParagraph: 'Resize images for Instagram DP online free with centered precision. Flawless 1:1 circular crop that keeps your face sharp and perfectly framed.',
+    toolDescription: 'Avoid blurry profile pictures and awkward off-center cuts with our specialized image resizer free tool for Instagram profile avatars. It optimizes headshots to high-resolution 320x320 square bounds, ensuring your eyes, hairline, and facial expression remain crisp within the circular avatar frame. Protect your personal photos with 100% private, browser-based execution.'
+  },
+  'resize-image-for-instagram-dp-online-free': {
+    slug: 'resize-image-for-instagram-dp-online-free',
+    introParagraph: 'Resize images for Instagram DP online free with centered precision. Flawless 1:1 circular crop that keeps your face sharp and perfectly framed.',
+    toolDescription: 'Avoid blurry profile pictures and awkward off-center cuts with our specialized image resizer free tool for Instagram profile avatars. It optimizes headshots to high-resolution 320x320 square bounds, ensuring your eyes, hairline, and facial expression remain crisp within the circular avatar frame. Protect your personal photos with 100% private, browser-based execution.'
+  },
+  'image-resizer-for-youtube-banner': {
+    slug: 'image-resizer-for-youtube-banner',
+    introParagraph: 'Resize images for YouTube channel banners online free. Maintain critical safe-zone visibility across television displays, desktop monitors, and mobile smartphone screens.',
+    toolDescription: 'Channel art requires strict 2560x1440 resolution with a central 1546x423 text-safe area to display properly on all devices. This online image resizer free engine formats channel banners accurately, preventing cropped channel titles or pixelated artwork on high-DPI screens. Prepare your YouTube channel branding in seconds with zero latency and complete privacy.'
+  },
+  'image-resizer-for-youtube-thumbnail': {
+    slug: 'image-resizer-for-youtube-thumbnail',
+    introParagraph: 'Resize images for YouTube thumbnails online free. Sharp 1280x720 16:9 canvas under 2MB designed to maximize click-through rates across video feeds.',
+    toolDescription: 'Compelling video thumbnails require standard 16:9 widescreen proportions and lightweight file sizes under 2MB to upload smoothly in YouTube Studio. Our batch image resizer sharpens high-contrast graphics, gaming moments, and text overlays without introducing compression fuzziness. Boost your channel engagement with professional creator thumbnails processed entirely on your device.'
+  },
+  'image-resizer-for-youtube-watermark': {
+    slug: 'image-resizer-for-youtube-watermark',
+    introParagraph: 'Resize image for YouTube video watermarks online free. Clean 150x150 square resolution with crisp transparency under the strict 1MB upload limit.',
+    toolDescription: 'Adding a custom subscribe button or brand watermark to YouTube videos requires an exact 150x150 square format under 1MB. FastToolVerse\'s image resizer online tool optimizes transparent PNG badges and logos smoothly, ensuring high-contrast visibility over dynamic video footage without blurry edges. Keep your channel assets completely confidential.'
   }
 };
 

@@ -233,6 +233,126 @@ export const RESIZER_EDITORIALS: Record<string, ResizerEditorial> = {
     slug: 'resize-image-to-300x100-pixels',
     introParagraph: 'Resize image to 300x100 pixels online with razor-sharp borders. The premier dimension for exam portal signatures, website micro-banners, and navigation logos.',
     toolDescription: 'Achieving exact 300x100 dimensions for portal signatures or website navigation graphics is simple and quick with FastToolVerse. This image resizer online tool prevents aspect ratio distortion while keeping text, logos, and signatures crisp and legible. Process all your graphic assets locally in your browser with zero latency and complete privacy.'
+  },
+  'resize-image-to-300x300': {
+    slug: 'resize-image-to-300x300',
+    introParagraph: 'Resize image to 300x300 pixels online free with perfect symmetry. Ideal for social profile pictures, e-commerce thumbnails, and square user icons.',
+    toolDescription: 'Generating a clean 300x300 square crop for web portals or shop catalogs is effortless with FastToolVerse. Our simple image resizer locks aspect ratios to prevent unnatural facial stretching while sharpening details. Your graphics process entirely inside browser memory, ensuring rapid performance and ironclad data privacy with zero server uploads.'
+  },
+  'resize-image-to-300x300-pixels': {
+    slug: 'resize-image-to-300x300-pixels',
+    introParagraph: 'Resize image to 300x300 pixels online free with perfect symmetry. Ideal for social profile pictures, e-commerce thumbnails, and square user icons.',
+    toolDescription: 'Generating a clean 300x300 square crop for web portals or shop catalogs is effortless with FastToolVerse. Our simple image resizer locks aspect ratios to prevent unnatural facial stretching while sharpening details. Your graphics process entirely inside browser memory, ensuring rapid performance and ironclad data privacy with zero server uploads.'
+  },
+  'resize-image-to-300x300-pixels-online-free': {
+    slug: 'resize-image-to-300x300-pixels-online-free',
+    introParagraph: 'Resize image to 300x300 pixels online free with perfect symmetry. Ideal for social profile pictures, e-commerce thumbnails, and square user icons.',
+    toolDescription: 'Generating a clean 300x300 square crop for web portals or shop catalogs is effortless with FastToolVerse. Our simple image resizer locks aspect ratios to prevent unnatural facial stretching while sharpening details. Your graphics process entirely inside browser memory, ensuring rapid performance and ironclad data privacy with zero server uploads.'
+  },
+  'resize-image-to-350x500': {
+    slug: 'resize-image-to-350x500',
+    introParagraph: 'Resize image to 350x500 pixels online free with crisp portrait definition. Tailored specifically for public service examinations, admit cards, and job forms.',
+    toolDescription: 'Public recruitment boards, civil service tests, and university entrance portals frequently mandate candidate photographs scaled strictly to 350x500 pixels. Our free image resizer calibrates headshot dimensions smoothly without distorting facial proportions or blurring eyes. Create fully compliant passport-style portraits right in your browser with complete client-side security.'
+  },
+  'resize-image-to-350x500-pixels': {
+    slug: 'resize-image-to-350x500-pixels',
+    introParagraph: 'Resize image to 350x500 pixels online free with crisp portrait definition. Tailored specifically for public service examinations, admit cards, and job forms.',
+    toolDescription: 'Public recruitment boards, civil service tests, and university entrance portals frequently mandate candidate photographs scaled strictly to 350x500 pixels. Our free image resizer calibrates headshot dimensions smoothly without distorting facial proportions or blurring eyes. Create fully compliant passport-style portraits right in your browser with complete client-side security.'
+  },
+  'resize-image-to-350x500-pixels-online-free': {
+    slug: 'resize-image-to-350x500-pixels-online-free',
+    introParagraph: 'Resize image to 350x500 pixels online free with crisp portrait definition. Tailored specifically for public service examinations, admit cards, and job forms.',
+    toolDescription: 'Public recruitment boards, civil service tests, and university entrance portals frequently mandate candidate photographs scaled strictly to 350x500 pixels. Our free image resizer calibrates headshot dimensions smoothly without distorting facial proportions or blurring eyes. Create fully compliant passport-style portraits right in your browser with complete client-side security.'
+  },
+  'resize-image-to-400x400': {
+    slug: 'resize-image-to-400x400',
+    introParagraph: 'Resize image to 400x400 pixels online free with high-definition clarity. The universal dimension for online avatar badges, storefronts, and team directories.',
+    toolDescription: 'Achieve sharp 400x400 resolution for corporate directories or social media profile badges without quality degradation. This online image resizer effortlessly adapts native camera snaps to balanced square parameters, maintaining vivid colors and sharp edge definition. Everything executes locally on your device, keeping sensitive staff photos private and secure.'
+  },
+  'resize-image-to-400x400-pixels': {
+    slug: 'resize-image-to-400x400-pixels',
+    introParagraph: 'Resize image to 400x400 pixels online free with high-definition clarity. The universal dimension for online avatar badges, storefronts, and team directories.',
+    toolDescription: 'Achieve sharp 400x400 resolution for corporate directories or social media profile badges without quality degradation. This online image resizer effortlessly adapts native camera snaps to balanced square parameters, maintaining vivid colors and sharp edge definition. Everything executes locally on your device, keeping sensitive staff photos private and secure.'
+  },
+  'resize-image-to-400x400-pixels-online-free': {
+    slug: 'resize-image-to-400x400-pixels-online-free',
+    introParagraph: 'Resize image to 400x400 pixels online free with high-definition clarity. The universal dimension for online avatar badges, storefronts, and team directories.',
+    toolDescription: 'Achieve sharp 400x400 resolution for corporate directories or social media profile badges without quality degradation. This online image resizer effortlessly adapts native camera snaps to balanced square parameters, maintaining vivid colors and sharp edge definition. Everything executes locally on your device, keeping sensitive staff photos private and secure.'
+  },
+  'resize-image-to-400x520': {
+    slug: 'resize-image-to-400x520',
+    introParagraph: 'Resize image to 400x520 pixels online with natural contrast and sharpness. Designed for specialized educational registries, admission badges, and recruitment passes.',
+    toolDescription: 'When educational institutions or licensing authorities specify non-standard 400x520 proportions, generic editors often squish your face. FastToolVerse\'s free online image resizer smoothly fits portraits into this exact dimensional frame while retaining realistic lighting and clear facial contours. Experience instant browser-side conversion with total privacy guaranteed.'
+  },
+  'resize-image-to-400x520-pixels': {
+    slug: 'resize-image-to-400x520-pixels',
+    introParagraph: 'Resize image to 400x520 pixels online with natural contrast and sharpness. Designed for specialized educational registries, admission badges, and recruitment passes.',
+    toolDescription: 'When educational institutions or licensing authorities specify non-standard 400x520 proportions, generic editors often squish your face. FastToolVerse\'s free online image resizer smoothly fits portraits into this exact dimensional frame while retaining realistic lighting and clear facial contours. Experience instant browser-side conversion with total privacy guaranteed.'
+  },
+  'resize-image-to-400x520-pixels-online-free': {
+    slug: 'resize-image-to-400x520-pixels-online-free',
+    introParagraph: 'Resize image to 400x520 pixels online with natural contrast and sharpness. Designed for specialized educational registries, admission badges, and recruitment passes.',
+    toolDescription: 'When educational institutions or licensing authorities specify non-standard 400x520 proportions, generic editors often squish your face. FastToolVerse\'s free online image resizer smoothly fits portraits into this exact dimensional frame while retaining realistic lighting and clear facial contours. Experience instant browser-side conversion with total privacy guaranteed.'
+  },
+  'resize-image-to-500x500': {
+    slug: 'resize-image-to-500x500',
+    introParagraph: 'Resize image to 500x500 pixels online free with razor-sharp fidelity. Perfect for high-DPI marketplace listings, app buttons, and modern social avatars.',
+    toolDescription: 'E-commerce merchants and digital designers require balanced 500x500 square imagery to ensure product previews render crisply across mobile and desktop displays. Our image resizer free engine standardizes large captures without fuzzy compression halos or pixelation. Benefit from fast, client-side batch processing that safeguards proprietary product graphics from third-party servers.'
+  },
+  'resize-image-to-500x500-pixels': {
+    slug: 'resize-image-to-500x500-pixels',
+    introParagraph: 'Resize image to 500x500 pixels online free with razor-sharp fidelity. Perfect for high-DPI marketplace listings, app buttons, and modern social avatars.',
+    toolDescription: 'E-commerce merchants and digital designers require balanced 500x500 square imagery to ensure product previews render crisply across mobile and desktop displays. Our image resizer free engine standardizes large captures without fuzzy compression halos or pixelation. Benefit from fast, client-side batch processing that safeguards proprietary product graphics from third-party servers.'
+  },
+  'resize-image-to-500x500-pixels-online-free': {
+    slug: 'resize-image-to-500x500-pixels-online-free',
+    introParagraph: 'Resize image to 500x500 pixels online free with razor-sharp fidelity. Perfect for high-DPI marketplace listings, app buttons, and modern social avatars.',
+    toolDescription: 'E-commerce merchants and digital designers require balanced 500x500 square imagery to ensure product previews render crisply across mobile and desktop displays. Our image resizer free engine standardizes large captures without fuzzy compression halos or pixelation. Benefit from fast, client-side batch processing that safeguards proprietary product graphics from third-party servers.'
+  },
+  'resize-image-to-512x512': {
+    slug: 'resize-image-to-512x512',
+    introParagraph: 'Resize image to 512x512 pixels online with precision pixel mapping. The industry standard for mobile app icons, game textures, and vector badges.',
+    toolDescription: 'Publishing application icons on digital app stores or game engines requires pixel-perfect 512x512 boundaries. This online image resizer free tool centers and resizes your visual assets smoothly, preserving clean geometric borders and rich color saturation. Enjoy swift, private conversion executed entirely in your browser\'s local sandbox with zero latency.'
+  },
+  'resize-image-to-512x512-pixels': {
+    slug: 'resize-image-to-512x512-pixels',
+    introParagraph: 'Resize image to 512x512 pixels online with precision pixel mapping. The industry standard for mobile app icons, game textures, and vector badges.',
+    toolDescription: 'Publishing application icons on digital app stores or game engines requires pixel-perfect 512x512 boundaries. This online image resizer free tool centers and resizes your visual assets smoothly, preserving clean geometric borders and rich color saturation. Enjoy swift, private conversion executed entirely in your browser\'s local sandbox with zero latency.'
+  },
+  'resize-image-to-512x512-pixels-online-free': {
+    slug: 'resize-image-to-512x512-pixels-online-free',
+    introParagraph: 'Resize image to 512x512 pixels online with precision pixel mapping. The industry standard for mobile app icons, game textures, and vector badges.',
+    toolDescription: 'Publishing application icons on digital app stores or game engines requires pixel-perfect 512x512 boundaries. This online image resizer free tool centers and resizes your visual assets smoothly, preserving clean geometric borders and rich color saturation. Enjoy swift, private conversion executed entirely in your browser\'s local sandbox with zero latency.'
+  },
+  'resize-image-to-600x600': {
+    slug: 'resize-image-to-600x600',
+    introParagraph: 'Resize image to 600x600 pixels online free with verified biometric compliance. The official square benchmark for international passport headshots and consular visas.',
+    toolDescription: 'The 600x600 square ratio is universally enforced by immigration portals like the US State Department (DS-160) and global visa validators. Our batch image resizer adjusts high-resolution smartphone portraits into compliant biometric dimensions while protecting eye reflections and natural skin tones. Avoid portal rejection with secure, in-browser processing that never uploads personal photos.'
+  },
+  'resize-image-to-600x600-pixels': {
+    slug: 'resize-image-to-600x600-pixels',
+    introParagraph: 'Resize image to 600x600 pixels online free with verified biometric compliance. The official square benchmark for international passport headshots and consular visas.',
+    toolDescription: 'The 600x600 square ratio is universally enforced by immigration portals like the US State Department (DS-160) and global visa validators. Our batch image resizer adjusts high-resolution smartphone portraits into compliant biometric dimensions while protecting eye reflections and natural skin tones. Avoid portal rejection with secure, in-browser processing that never uploads personal photos.'
+  },
+  'resize-image-to-600x600-pixels-online-free': {
+    slug: 'resize-image-to-600x600-pixels-online-free',
+    introParagraph: 'Resize image to 600x600 pixels online free with verified biometric compliance. The official square benchmark for international passport headshots and consular visas.',
+    toolDescription: 'The 600x600 square ratio is universally enforced by immigration portals like the US State Department (DS-160) and global visa validators. Our batch image resizer adjusts high-resolution smartphone portraits into compliant biometric dimensions while protecting eye reflections and natural skin tones. Avoid portal rejection with secure, in-browser processing that never uploads personal photos.'
+  },
+  'resize-image-to-600x800': {
+    slug: 'resize-image-to-600x800',
+    introParagraph: 'Resize image to 600x800 pixels online free with high-resolution clarity. The classic 3:4 portrait proportion for model portfolios, resumes, and official documents.',
+    toolDescription: 'Maintaining clean 3:4 aspect ratios at 600x800 resolution ensures student admission dossiers and professional resumes display flawlessly on widescreen monitors. FastToolVerse\'s image resizer online tool crops and scales your images seamlessly without stretching features or dulling contrast. Convert your identity pictures in seconds with complete peace of mind and local privacy.'
+  },
+  'resize-image-to-600x800-pixels': {
+    slug: 'resize-image-to-600x800-pixels',
+    introParagraph: 'Resize image to 600x800 pixels online free with high-resolution clarity. The classic 3:4 portrait proportion for model portfolios, resumes, and official documents.',
+    toolDescription: 'Maintaining clean 3:4 aspect ratios at 600x800 resolution ensures student admission dossiers and professional resumes display flawlessly on widescreen monitors. FastToolVerse\'s image resizer online tool crops and scales your images seamlessly without stretching features or dulling contrast. Convert your identity pictures in seconds with complete peace of mind and local privacy.'
+  },
+  'resize-image-to-600x800-pixels-online-free': {
+    slug: 'resize-image-to-600x800-pixels-online-free',
+    introParagraph: 'Resize image to 600x800 pixels online free with high-resolution clarity. The classic 3:4 portrait proportion for model portfolios, resumes, and official documents.',
+    toolDescription: 'Maintaining clean 3:4 aspect ratios at 600x800 resolution ensures student admission dossiers and professional resumes display flawlessly on widescreen monitors. FastToolVerse\'s image resizer online tool crops and scales your images seamlessly without stretching features or dulling contrast. Convert your identity pictures in seconds with complete peace of mind and local privacy.'
   }
 };
 

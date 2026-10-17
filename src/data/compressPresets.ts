@@ -354,7 +354,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Batch ZIP', desc: 'Bundle multiple files in one archive.' }
     ],
     faqs: [
-      { question: 'How to reduce image size to less than 60KB?', answer: 'The preset caps file size strictly at 60KB or below.' }
+      {
+        question: "Why do municipal and regional recruitment portals require a 60KB file limit?",
+        answer: "A 60KB limit offers an optimal compromise for public administrative servers. It provides enough detail for automated biometric verification and clear printed records, while keeping database storage low to prevent site crashes during massive applicant surges."
+      },
+      {
+        question: "How do I compress a high-resolution phone photo down to 60KB without blurriness?",
+        answer: "Crop your portrait closely so your face fills roughly 75% of the frame, then adjust the canvas dimensions to standard portrait proportions (around 400x500 pixels) before compressing. This removes millions of excess pixels beforehand, allowing the compressor to keep facial details crisp."
+      },
+      {
+        question: "Will a 60KB compressed photo pass official document scrutiny?",
+        answer: "Yes. Our tool optimizes file weight while protecting essential facial features—such as eyes, nose bridge, and mouth contours—ensuring your photo passes both automated portal verification checks and in-person human reviews."
+      },
+      {
+        question: "Can I compress black-and-white signatures under 60KB with high contrast?",
+        answer: "Yes. The tool maintains clean, dark pen strokes against a solid white background, eliminating the blurry gray compression noise commonly seen in substandard image optimizers."
+      },
+      {
+        question: "Is it safe to upload confidential government ID cards and certificates?",
+        answer: "Yes, absolutely. The compression operates strictly inside your browser's private memory heap using client-side WebAssembly technology. Your files never touch an external cloud server, guaranteeing total privacy."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-50kb', 'compress-image-to-70kb', 'compress-image-to-80kb']
   },
@@ -380,7 +399,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'High DPI Quality', desc: 'Suitable for print-ready photos.' }
     ],
     faqs: [
-      { question: 'Will 70KB distort my photo?', answer: 'No, our smart canvas prevents distortion and pixelation.' }
+      {
+        question: "Why do financial and specialized licensing portals require a 70KB file limit?",
+        answer: "A 70KB limit provides an ideal balance for identity verification. It allows sufficient resolution for auditors to examine clear facial landmarks and official stamps, while keeping overall file sizes light enough to prevent server bottlenecks during peak submission periods."
+      },
+      {
+        question: "How do I compress a large camera photo down to 70KB without making it blurry?",
+        answer: "Crop unnecessary background scenery so your face occupies roughly 75% of the frame, then resize the canvas dimensions to standard portrait proportions (around 450x600 pixels) before compressing. This eliminates excess pixel data naturally, allowing the compressor to preserve facial sharpness."
+      },
+      {
+        question: "Will a 70KB compressed image print clearly on physical ID badges?",
+        answer: "Yes. A 70KB file retains ample resolution, sharp edge definition, and natural contrast, ensuring your photo prints cleanly on laminated badges and official paper credentials without pixelation."
+      },
+      {
+        question: "Can I compress certificates and scanned signatures under 70KB with this tool?",
+        answer: "Yes. The tool handles scanned signatures and certificates smoothly. It preserves high contrast between black ink lines and white backgrounds, keeping text crisp, dark, and fully legible."
+      },
+      {
+        question: "Are my personal verification photos and documents safe from server leaks?",
+        answer: "Yes, absolutely. The compression engine runs completely inside your browser's private memory heap using client-side technology. Your files are never uploaded to any remote server or stored in any cloud database."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-50kb', 'compress-image-to-80kb', 'passport-size-photo-compressor-to-100kb']
   },

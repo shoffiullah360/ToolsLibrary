@@ -370,10 +370,15 @@ if (props.type === 'resizer' && props.resizerPage) {
     "url": `https://fasttoolverse.com/${page.slug}/`
   };
 
+  const earlyResizerEditorial = getResizerEditorial(page.slug);
+  const activeFaqs = (earlyResizerEditorial?.faqs && earlyResizerEditorial.faqs.length > 0)
+    ? earlyResizerEditorial.faqs.map((f: any) => ({ q: f.question, a: f.answer }))
+    : page.faqs;
+
   resizerJsonLdFaq = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": page.faqs.map((f) => ({
+    "mainEntity": activeFaqs.map((f) => ({
       "@type": "Question",
       "name": f.q,
       "acceptedAnswer": {
@@ -876,6 +881,81 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
 const resizerEditorial = props.type === 'resizer' && props.resizerPage ? getResizerEditorial(props.resizerPage.slug) : null;
 const resizerIntroParagraph = resizerEditorial?.introParagraph || props.resizerPage?.introParagraph || props.resizerPage?.metaDescription || '';
 const resizerToolDescription = resizerEditorial?.toolDescription || props.resizerPage?.toolDescription || intentDescription;
+const resizerFaqs = (resizerEditorial?.faqs && resizerEditorial.faqs.length > 0)
+  ? resizerEditorial.faqs.map((f: any) => ({ q: f.question, a: f.answer }))
+  : (props.resizerPage?.faqs || []);
+
+function renderMarkdownArticle(md: string): string {
+  if (!md) return '';
+  const lines = md.trim().split('\n');
+  const htmlParts: string[] = [];
+  let inUl = false;
+  let inOl = false;
+
+  function closeLists() {
+    if (inUl) {
+      htmlParts.push('</ul>');
+      inUl = false;
+    }
+    if (inOl) {
+      htmlParts.push('</ol>');
+      inOl = false;
+    }
+  }
+
+  function formatInline(text: string): string {
+    return text
+      .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-slate-900 dark:text-white">$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>');
+  }
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!line) {
+      closeLists();
+      continue;
+    }
+
+    if (line.startsWith('# ')) {
+      closeLists();
+      const headingText = formatInline(line.slice(2).trim());
+      htmlParts.push(`<h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white mt-10 mb-4 first:mt-0">${headingText}</h2>`);
+    } else if (line.startsWith('### ')) {
+      closeLists();
+      const headingText = formatInline(line.slice(4).trim());
+      htmlParts.push(`<h3 class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mt-8 mb-3">${headingText}</h3>`);
+    } else if (line.startsWith('* ')) {
+      if (inOl) {
+        htmlParts.push('</ol>');
+        inOl = false;
+      }
+      if (!inUl) {
+        htmlParts.push('<ul class="space-y-3 my-4 list-disc list-inside text-slate-600 dark:text-slate-300">');
+        inUl = true;
+      }
+      const itemText = formatInline(line.slice(2).trim());
+      htmlParts.push(`<li class="leading-relaxed"><span class="text-slate-600 dark:text-slate-300">${itemText}</span></li>`);
+    } else if (/^\d+\.\s+/.test(line)) {
+      if (inUl) {
+        htmlParts.push('</ul>');
+        inUl = false;
+      }
+      if (!inOl) {
+        htmlParts.push('<ol class="space-y-3 my-4 list-decimal list-inside text-slate-600 dark:text-slate-300">');
+        inOl = true;
+      }
+      const itemText = formatInline(line.replace(/^\d+\.\s+/, '').trim());
+      htmlParts.push(`<li class="leading-relaxed"><span class="text-slate-600 dark:text-slate-300">${itemText}</span></li>`);
+    } else {
+      closeLists();
+      const paraText = formatInline(line);
+      htmlParts.push(`<p class="text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-4">${paraText}</p>`);
+    }
+  }
+
+  closeLists();
+  return htmlParts.join('\n');
+}
 ---
 
 <Layout
@@ -1912,6 +1992,15 @@ const resizerToolDescription = resizerEditorial?.toolDescription || props.resize
         presets={pagesData}
       />
 
+      <!-- Full-Length Markdown Editorial Article (Continuous Flow, No Nested Cards) -->
+      {resizerEditorial?.article && (
+        <section class="border-t border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950 py-14 sm:py-16">
+          <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="space-y-4" set:html={renderMarkdownArticle(resizerEditorial.article)} />
+          </div>
+        </section>
+      )}
+
       <!-- FAQ Accordion Section -->
       <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 border-t border-slate-200/90 dark:border-slate-800">
         <div class="text-center mb-9">
@@ -1924,7 +2013,7 @@ const resizerToolDescription = resizerEditorial?.toolDescription || props.resize
         </div>
 
         <div class="space-y-3.5">
-          {props.resizerPage.faqs.map((item) => (
+          {resizerFaqs.map((item) => (
             <details class="group rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-blue-600 overflow-hidden transition-all duration-150">
               <summary class="flex items-center justify-between p-4 sm:p-5 font-semibold text-sm sm:text-base text-slate-900 dark:text-white cursor-pointer select-none bg-slate-100/70 dark:bg-slate-800/60 transition-colors">
                 <span>{item.q}</span>

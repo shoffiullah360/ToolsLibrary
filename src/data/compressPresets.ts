@@ -714,7 +714,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Free & Uncapped', desc: 'Process as many photos as you need.' }
     ],
     faqs: [
-      { question: 'How to reduce image size below 1 MB free?', answer: 'Upload your file directly here; the 1MB cap is applied automatically.' }
+      {
+        question: "Why is 1MB the standard maximum limit for email attachments and corporate forms?",
+        answer: "A 1MB file size ensures that emails deliver reliably without bouncing due to mailbox storage caps, while providing ample photographic resolution for crisp viewing on laptops, tablets, and high-DPI monitors."
+      },
+      {
+        question: "How do I compress a large 15MB camera snapshot to 1MB without losing sharpness?",
+        answer: "Scale down native pixel dimensions to standard web resolutions (around 2048x1536 pixels) before compressing. This naturally eliminates millions of surplus pixels, preserving crisp edge contrast and natural color vibrancy."
+      },
+      {
+        question: "Will a 1MB compressed image print clearly in physical reports and portfolios?",
+        answer: "Yes. A 1MB file retains ample pixel information and color depth, ensuring your photographs and presentation graphics print cleanly on glossy photo paper and business reports without blurriness."
+      },
+      {
+        question: "Can I compress transparent PNG graphics to under 1MB without ruining transparency?",
+        answer: "Yes. Our tool optimizes PNG palettes and supports modern WebP quantization, cutting file weight below 1MB while preserving clean alpha transparency and sharp vector-like outlines."
+      },
+      {
+        question: "Are my confidential client files or private pictures uploaded to external servers?",
+        answer: "No. All compression operations run locally inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing complete confidentiality."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-500kb', 'compress-image-to-2mb', 'compress-image-to-5mb']
   },
@@ -740,7 +759,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Batch Processing', desc: 'Compress multiple files at once.' }
     ],
     faqs: [
-      { question: 'Why do forms limit uploads to 2MB?', answer: 'To keep web servers responsive and avoid memory timeouts during uploads.' }
+      {
+        question: "Why is 2MB a preferred maximum upload limit for creative and real estate portals?",
+        answer: "A 2MB file size preserves fine architectural textures and rich color nuance across 4K screens while keeping upload and download times fast for mobile visitors."
+      },
+      {
+        question: "How do I compress an unedited 25MB camera photo to 2MB without losing quality?",
+        answer: "Downscale your image resolution to 2K or 4K display dimensions (around 2400x1800 pixels) before compressing. This removes surplus raw pixel data naturally, allowing the compression tool to keep essential visual textures sharp."
+      },
+      {
+        question: "Will an image compressed to 2MB look professional in printed portfolios?",
+        answer: "Yes. A 2MB file retains ample resolution, sharp edge definition, and authentic contrast, ensuring your work prints cleanly on high-quality portfolio paper without pixelation."
+      },
+      {
+        question: "Can I compress transparent PNG graphics to under 2MB with this tool?",
+        answer: "Yes. The tool optimizes PNG palettes and supports modern WebP quantization, reducing file weight below 2MB while preserving clean alpha transparency and sharp vector-like borders."
+      },
+      {
+        question: "Are my uploaded creative assets and photographs safe from server leaks?",
+        answer: "Yes, absolutely. The compression engine runs completely inside your browser's private memory heap using client-side technology. Your files are never uploaded to any remote server or stored in any cloud database."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-1mb', 'compress-image-to-5mb', 'compress-image-to-500kb']
   },

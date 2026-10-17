@@ -1690,7 +1690,11 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Batch Processing', desc: 'Convert multiple files at once.' }
     ],
     faqs: [
-      { question: 'Does WebP support transparent backgrounds?', answer: 'Yes, WebP supports transparent alpha channels just like PNG, but at a fraction of the file size.' }
+      { question: "How much file size do I save by converting PNG to WebP?", answer: "Most transparent graphics, screenshots, and illustrations achieve a 60% to 85% reduction in file size while remaining visually identical to the original PNG." },
+      { question: "Will converting a PNG to WebP ruin its transparent background?", answer: "No. WebP natively supports full alpha channel transparency, ensuring that your logos, drop shadows, and transparent stickers remain pristine on any background." },
+      { question: "Are WebP images supported across all modern web browsers?", answer: "Yes. Google Chrome, Apple Safari, Mozilla Firefox, and Microsoft Edge natively support WebP across both desktop and mobile platforms." },
+      { question: "Can I batch convert an entire folder of PNGs to WebP at once?", answer: "Yes. Our batch processing engine allows you to drop multiple PNG files into the queue and convert them all to WebP simultaneously within your browser." },
+      { question: "Are my proprietary graphics uploaded to an external server during conversion?", answer: "No. All conversion and compression operations run locally inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server." }
     ],
     relatedPresetSlugs: ['webp-image-compressor-online', 'compress-png-without-losing-quality', 'jpg-to-webp-compressor']
   },
@@ -1717,7 +1721,11 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Free Unlimited', desc: 'No subscription needed.' }
     ],
     faqs: [
-      { question: 'Will Google index WebP images?', answer: 'Yes, Google fully supports and recommends WebP images for SEO and web speed.' }
+      { question: "How much smaller is a WebP image compared to a standard JPG?", answer: "At comparable visual quality levels, WebP files are typically 30% to 50% smaller than legacy JPG files, resulting in significantly faster web loading times." },
+      { question: "Will converting my JPG photo to WebP make it look blurry?", answer: "No. WebP preserves sharp edge definitions, natural lighting transitions, and rich color saturation without the blocky artifact noise common in compressed JPEGs." },
+      { question: "Do all modern devices and browsers display WebP photos properly?", answer: "Yes. Every major browser—including Chrome, Safari, Firefox, and Edge—fully supports WebP decoding on desktop and mobile platforms natively." },
+      { question: "Can I convert and compress multiple JPG photos to WebP at once?", answer: "Yes. Our batch processing engine allows you to drop dozens of JPG photos into the queue and convert them all to WebP simultaneously within your browser." },
+      { question: "Are my private photos uploaded to a cloud server during conversion?", answer: "No. All conversion and compression operations run locally inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing total confidentiality." }
     ],
     relatedPresetSlugs: ['webp-image-compressor-online', 'png-to-webp-compressor', 'compress-image-for-website']
   },
@@ -1745,7 +1753,11 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Batch Processing', desc: 'Process photo and signature together.' }
     ],
     faqs: [
-      { question: 'How do I compress passport photo to 20KB?', answer: 'Upload your photo; the 20KB limit is applied automatically without blurring your face.' }
+      { question: "Why do government exam portals enforce a strict 20KB ceiling for passport photos?", answer: "The 20KB limit prevents server overloads during massive applicant surges while retaining adequate photographic resolution for automated biometric checks and printed hall tickets." },
+      { question: "How do I compress my passport picture to 20KB without making my face blurry?", answer: "Crop your picture closely around your head and shoulders, resize canvas dimensions to standard passport proportions (around 350x450 pixels), and compress. This eliminates excess pixels beforehand, keeping facial details sharp." },
+      { question: "Will a 20KB compressed passport photo pass automated biometric face verification?", answer: "Yes. Our tool optimizes file weight while protecting essential facial features—such as eyes, nose bridge, and mouth contours—ensuring your photo passes automated verification checks." },
+      { question: "Can I compress black-and-white signatures under 20KB alongside my photo?", answer: "Yes. The tool maintains clean contrast between dark pen strokes and the white background, ensuring your signature remains crisp, dark, and completely legible." },
+      { question: "Is it safe to compress confidential legal papers and ID photos with this tool?", answer: "Yes, absolutely. The compression engine operates completely in-browser via local client-side memory. Your personal documents and signatures are never uploaded to any remote server." }
     ],
     relatedPresetSlugs: ['compress-image-to-20kb', 'passport-photo-compressor-to-50kb', 'resize-and-compress-signature-to-20kb']
   },
@@ -1773,7 +1785,11 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Crisp Facial Details', desc: 'Maintains clear eyes and background.' }
     ],
     faqs: [
-      { question: 'What is the standard passport photo size in pixels and KB?', answer: 'The global standard is 600x600 pixels and between 20KB to 50KB file size.' }
+      { question: "Why do embassies and visa portals commonly set a 50KB limit for passport photos?", answer: "A 50KB limit preserves high facial clarity for automated biometric matching and official printing while keeping application file sizes small enough to prevent server overloads." },
+      { question: "How do I compress my passport photo to 50KB without losing facial sharpness?", answer: "Crop your portrait closely so your face fills roughly 75% of the frame, resize canvas dimensions to standard passport proportions (around 350x450 pixels or 600x600 pixels), and compress. This preserves facial sharpness while keeping file weight under 50KB." },
+      { question: "Will an image compressed to 50KB pass automated visa photo validation checks?", answer: "Yes. Our compression algorithm preserves essential facial landmarks—such as eyes, nose bridge, and lip lines—ensuring your photo passes both automated embassy validators and manual document inspections." },
+      { question: "Can I compress black-ink signatures under 50KB without gray fuzzy edges?", answer: "Yes. By maintaining high contrast between dark ink lines and the white paper background, the tool produces clean, crisp signatures without blurry JPEG compression artifacts." },
+      { question: "Are my sensitive identity documents and passport photos stored on your servers?", answer: "No. The compression runs entirely inside your browser's local memory heap using client-side technology. Your photos and personal files never touch an external cloud server, guaranteeing complete personal privacy." }
     ],
     relatedPresetSlugs: ['passport-size-photo-compressor-to-20kb', 'compress-photo-for-us-visa', 'passport-size-photo-compressor-to-100kb']
   },

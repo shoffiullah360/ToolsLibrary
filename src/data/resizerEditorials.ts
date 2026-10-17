@@ -453,6 +453,26 @@ export const RESIZER_EDITORIALS: Record<string, ResizerEditorial> = {
     slug: 'image-resizer-for-youtube-watermark',
     introParagraph: 'Resize image for YouTube video watermarks online free. Clean 150x150 square resolution with crisp transparency under the strict 1MB upload limit.',
     toolDescription: 'Adding a custom subscribe button or brand watermark to YouTube videos requires an exact 150x150 square format under 1MB. FastToolVerse\'s image resizer online tool optimizes transparent PNG badges and logos smoothly, ensuring high-contrast visibility over dynamic video footage without blurry edges. Keep your channel assets completely confidential.'
+  },
+  'image-resizer-for-youtube-profile': {
+    slug: 'image-resizer-for-youtube-profile',
+    introParagraph: 'Resize images for YouTube profile pictures online free. Centered 800x800 square resolution optimized to look sharp and clear within circular channel badges.',
+    toolDescription: 'Make a strong first impression with a perfectly centered 800x800 channel avatar that renders crisply across mobile video apps, desktop streams, and comment threads. Our simple image resizer fits portraits, logos, and creator graphics smoothly without awkward cropping. Update your YouTube branding in seconds with 100% private, on-device browser processing.'
+  },
+  'image-resizer-for-tiktok-profile': {
+    slug: 'image-resizer-for-tiktok-profile',
+    introParagraph: 'Resize images for TikTok profile avatars online free. High-contrast 200x200 square dimensions calibrated to pop cleanly within mobile circular avatar frames.',
+    toolDescription: 'Stand out on TikTok with a vibrant, high-definition profile avatar formatted to official 200x200 pixel parameters. FastToolVerse\'s free image resizer prevents blurry downscaling and off-center cuts, keeping your facial features and creator logos sharp. Prepare compliant profile art instantly in your browser sandbox without ever uploading personal photos to external servers.'
+  },
+  'resize-image-for-tiktok-post': {
+    slug: 'resize-image-for-tiktok-post',
+    introParagraph: 'Resize images for TikTok photo posts and carousels online free. Full-screen 1080x1920 vertical format designed to maximize viewer retention and swipe engagement.',
+    toolDescription: 'Creating viral photo slides and story updates on TikTok requires standard 9:16 vertical proportions (1080x1920 px) to prevent black bars and automated compression blur. This online image resizer effortlessly refines multi-image carousel sets, keeping colors punchy and lifestyle details razor-sharp. Optimize your daily social media posts smoothly right inside your local browser.'
+  },
+  'resize-image-for-tiktok-shop': {
+    slug: 'resize-image-for-tiktok-shop',
+    introParagraph: 'Resize images for TikTok Shop product listings online free. Crisp 1:1 square crop under strict file size bounds to boost product conversions.',
+    toolDescription: 'E-commerce merchants on TikTok Shop require clean 600x600 or 800x800 square product photos that pass seller center verification without rejection. Our image resizer free engine standardizes merchandise photography, lifestyle previews, and packaging shots smoothly, ensuring sharp details and fast mobile catalog loading. Protect proprietary business assets with completely private, client-side browser optimization.'
   }
 };
 

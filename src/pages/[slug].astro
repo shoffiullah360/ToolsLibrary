@@ -1476,7 +1476,7 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
       <section class="relative pt-8 pb-6 sm:pt-12 sm:pb-8 overflow-hidden">
         <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           
-          <!-- Breadcrumbs: Home > Image Compressor > Badge -->
+          <!-- Breadcrumbs: Home > Image Compressor > Preset Title -->
           <nav aria-label="Breadcrumb" class="mb-5 flex justify-center">
             <ol class="inline-flex items-center space-x-1.5 md:space-x-2 text-xs font-medium text-slate-500 dark:text-slate-400">
               <li class="inline-flex items-center">
@@ -1495,23 +1495,11 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
                   <svg class="w-3 h-3 text-slate-400 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                   </svg>
-                  <span class="text-slate-900 dark:text-white font-semibold truncate max-w-[200px] sm:max-w-none">{compressEditorial.badge || props.compressPreset.badge}</span>
+                  <span class="text-slate-900 dark:text-white font-semibold truncate max-w-[200px] sm:max-w-none">{props.compressPreset.title}</span>
                 </div>
               </li>
             </ol>
           </nav>
-
-          <!-- In-Browser Privacy Pill & Badge -->
-          <div class="flex flex-wrap items-center justify-center gap-2 mb-4">
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 shadow-2xs">
-              <ToolIcon name="shield-check" class="w-3.5 h-3.5" />
-              <span>100% In-Browser Privacy • Zero Server Uploads</span>
-            </div>
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-900/50 shadow-2xs">
-              <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
-              <span>{compressEditorial.badge || props.compressPreset.badge}</span>
-            </div>
-          </div>
 
           <!-- Section 1: H1 Heading -->
           <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -1519,25 +1507,9 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
           </h1>
 
           <!-- Section 1: Exactly 20-25 Words Unique Introduction Paragraph -->
-          <p class="mt-3 sm:mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          <p class="text-slate-600 dark:text-slate-300 text-center max-w-2xl mx-auto mt-3 mb-8 text-sm md:text-base leading-relaxed">
             {compressEditorial.introParagraph}
           </p>
-
-          <!-- Highlights Pills -->
-          <div class="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300">
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white border border-slate-300 shadow-sm dark:bg-slate-900/60 dark:border-slate-800">
-              <ToolIcon name="zap" class="w-4 h-4 text-blue-500" />
-              <span>{compressEditorial.badge}</span>
-            </div>
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white border border-slate-300 shadow-sm dark:bg-slate-900/60 dark:border-slate-800">
-              <ToolIcon name="shield-check" class="w-4 h-4 text-emerald-500" />
-              <span>Client-Side Sandbox</span>
-            </div>
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white border border-slate-300 shadow-sm dark:bg-slate-900/60 dark:border-slate-800">
-              <ToolIcon name="scale" class="w-4 h-4 text-purple-500" />
-              <span>Batch Queue up to 15 Photos</span>
-            </div>
-          </div>
 
         </div>
       </section>

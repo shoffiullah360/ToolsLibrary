@@ -624,7 +624,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Free Forever', desc: 'Unlimited conversions without watermarks.' }
     ],
     faqs: [
-      { question: 'How do I compress photo under 300KB?', answer: 'Simply select this preset; the file size is capped at 300KB.' }
+      {
+        question: "Why is 300KB a common upload limit for creative portfolios and presentation decks?",
+        answer: "A 300KB limit provides enough photographic detail for high-resolution widescreen monitors while keeping presentation decks and web portfolio galleries fast, responsive, and lightweight."
+      },
+      {
+        question: "How do I compress a multi-megabyte camera photo to 300KB without losing fine textures?",
+        answer: "Downscale your image dimensions to realistic display parameters (around 1200x900 pixels) before running compression. Removing surplus pixel density beforehand allows the compression tool to preserve natural textures and vibrant colors."
+      },
+      {
+        question: "Is 300KB suitable for high-resolution website banners and hero images?",
+        answer: "Yes. Modern compression algorithms maintain sharp edge contrast and smooth color transitions at 300KB, allowing large website headers to load quickly on mobile devices without sacrificing visual punch."
+      },
+      {
+        question: "Can I compress transparent PNG graphics to 300KB without ruining transparency?",
+        answer: "Yes. The tool optimizes PNG palettes and supports modern WebP quantization, cutting file weight below 300KB while preserving crisp transparency and clean graphic edges."
+      },
+      {
+        question: "Are my client design files or personal photos uploaded to an external server?",
+        answer: "No. All compression operations run locally inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing total confidentiality."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-200kb', 'compress-image-to-500kb', 'compress-image-to-100kb']
   },
@@ -650,7 +669,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Multi-format Export', desc: 'Convert to WebP, JPG, or PNG.' }
     ],
     faqs: [
-      { question: 'Can I compress 5MB photo to 500KB?', answer: 'Yes, our algorithm reduces file weight by 90% while keeping visual clarity crisp.' }
+      {
+        question: "Why is 500KB the preferred maximum limit for website hero banners and e-commerce listings?",
+        answer: "A 500KB file provides exceptional photographic fidelity across 4K displays and high-DPI monitors while maintaining fast load times necessary for high Google Core Web Vitals scores."
+      },
+      {
+        question: "How do I compress heavy 15MB camera photos to 500KB without muddy gradients?",
+        answer: "Scale down native pixel dimensions to standard web display resolutions (around 1600x1200 or 1920x1080 pixels) before compressing. This naturally eliminates millions of excess pixels, preserving smooth gradients and crisp outlines."
+      },
+      {
+        question: "Will an image compressed to 500KB look sharp when printed in marketing brochures?",
+        answer: "Yes. At 500KB, a properly optimized image retains sufficient resolution and color information for sharp, vibrant printing on standard brochure layouts and catalog spreads."
+      },
+      {
+        question: "Can I compress high-resolution transparent PNG graphics to 500KB?",
+        answer: "Yes. Our tool optimizes PNG color palettes and supports modern WebP quantization, reducing file weight below 500KB while preserving clean alpha transparency and sharp vector-like outlines."
+      },
+      {
+        question: "Are my commercial graphic assets or private photos uploaded to a cloud server?",
+        answer: "No. All compression operations run locally inside your browser's private memory heap using client-side technology. Your files are never uploaded to any remote server or stored in any cloud database."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-200kb', 'compress-image-to-1mb', 'compress-jpg-to-500kb']
   },

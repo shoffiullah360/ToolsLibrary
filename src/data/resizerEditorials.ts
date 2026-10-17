@@ -73,6 +73,86 @@ export const RESIZER_EDITORIALS: Record<string, ResizerEditorial> = {
     slug: 'resize-image-to-100kb-online-free',
     introParagraph: 'Resize image to 100KB online free with rich color depth. The gold standard for modern website graphics, resume attachments, and high-detail portal uploads.',
     toolDescription: 'A 100KB file provides the ideal compromise between sharp visual fidelity on high-resolution displays and rapid network deliverability. Our image resizer online tool downscales large camera photography, digital artwork, and resumes to fit within 100KB effortlessly. Improve Google Core Web Vitals and pass corporate portal validations using client-side processing that keeps confidential assets safe.'
+  },
+  'resize-image-to-150kb': {
+    slug: 'resize-image-to-150kb',
+    introParagraph: 'Resize and scale images to 150KB online free without blur. Maintain rich photographic colors for professional resumes, university registrations, and visa applications.',
+    toolDescription: 'Meeting rigid 150KB thresholds on international university portals, job application forms, and visa renewal queues is simple with FastToolVerse. Our simple image resizer accurately tunes pixel dimensions while preserving delicate facial outlines and high-contrast text. Everything executes in-browser, guaranteeing rapid download times and total data privacy without sending personal files to remote clouds.'
+  },
+  'resize-image-to-150kb-online-free': {
+    slug: 'resize-image-to-150kb-online-free',
+    introParagraph: 'Resize and scale images to 150KB online free without blur. Maintain rich photographic colors for professional resumes, university registrations, and visa applications.',
+    toolDescription: 'Meeting rigid 150KB thresholds on international university portals, job application forms, and visa renewal queues is simple with FastToolVerse. Our simple image resizer accurately tunes pixel dimensions while preserving delicate facial outlines and high-contrast text. Everything executes in-browser, guaranteeing rapid download times and total data privacy without sending personal files to remote clouds.'
+  },
+  'resize-image-to-200kb': {
+    slug: 'resize-image-to-200kb',
+    introParagraph: 'Resize image to 200KB online with verified clarity. The universal standard for corporate employment dossiers, legal documentation, and academic admissions.',
+    toolDescription: 'Corporate HR portals and government recruitment boards frequently cap applicant portraits and credential uploads strictly at 200KB. Using this online image resizer, you can easily compress large phone snapshots into lightweight, sharp visual files that pass validation instantly. Enjoy crisp prints and immediate portal compliance with 100% private, client-side browser processing.'
+  },
+  'resize-image-to-200kb-online-free': {
+    slug: 'resize-image-to-200kb-online-free',
+    introParagraph: 'Resize image to 200KB online with verified clarity. The universal standard for corporate employment dossiers, legal documentation, and academic admissions.',
+    toolDescription: 'Corporate HR portals and government recruitment boards frequently cap applicant portraits and credential uploads strictly at 200KB. Using this online image resizer, you can easily compress large phone snapshots into lightweight, sharp visual files that pass validation instantly. Enjoy crisp prints and immediate portal compliance with 100% private, client-side browser processing.'
+  },
+  'resize-image-to-250kb': {
+    slug: 'resize-image-to-250kb',
+    introParagraph: 'Resize image to 250KB online free with balanced aspect ratios. Effortlessly optimize presentation graphics, identity portfolios, and educational paperwork.',
+    toolDescription: 'When civil service or licensing boards enforce a 250KB upload limit, maintaining clean text outlines and authentic skin tones is vital. Our free image resizer intelligently rebalances canvas resolution and color density to hit the exact target size. Process your images safely on-device without quality distortion or server storage leaks.'
+  },
+  'resize-image-to-250kb-online-free': {
+    slug: 'resize-image-to-250kb-online-free',
+    introParagraph: 'Resize image to 250KB online free with balanced aspect ratios. Effortlessly optimize presentation graphics, identity portfolios, and educational paperwork.',
+    toolDescription: 'When civil service or licensing boards enforce a 250KB upload limit, maintaining clean text outlines and authentic skin tones is vital. Our free image resizer intelligently rebalances canvas resolution and color density to hit the exact target size. Process your images safely on-device without quality distortion or server storage leaks.'
+  },
+  'resize-image-to-300kb': {
+    slug: 'resize-image-to-300kb',
+    introParagraph: 'Resize image to 300KB online free with razor-sharp detail. Perfect for digital creative portfolios, architectural drafts, and client slide deck attachments.',
+    toolDescription: 'Email attachments and creative submission platforms often establish a 300KB boundary to ensure high visual fidelity across widescreen displays without congesting mailboxes. FastToolVerse\'s image resizer free engine downscales heavy DSLR and mobile captures smoothly while preserving vibrant lighting and fine edge sharpness. Benefit from zero server uploads and instant browser-side processing.'
+  },
+  'resize-image-to-300kb-online-free': {
+    slug: 'resize-image-to-300kb-online-free',
+    introParagraph: 'Resize image to 300KB online free with razor-sharp detail. Perfect for digital creative portfolios, architectural drafts, and client slide deck attachments.',
+    toolDescription: 'Email attachments and creative submission platforms often establish a 300KB boundary to ensure high visual fidelity across widescreen displays without congesting mailboxes. FastToolVerse\'s image resizer free engine downscales heavy DSLR and mobile captures smoothly while preserving vibrant lighting and fine edge sharpness. Benefit from zero server uploads and instant browser-side processing.'
+  },
+  'resize-image-to-400kb': {
+    slug: 'resize-image-to-400kb',
+    introParagraph: 'Resize image to 400KB online with true color precision. Ideal for high-definition website banners, product catalogs, and corporate marketing materials.',
+    toolDescription: 'Maintaining rich visual sharpness while reducing raw camera snapshots to 400KB is effortless with this free online image resizer. It refines native dimensions to fit standard display dimensions without introducing jagged pixelation or muddy contrast. Safeguard your project files with local on-device memory processing that keeps proprietary artwork fully protected.'
+  },
+  'resize-image-to-400kb-online-free': {
+    slug: 'resize-image-to-400kb-online-free',
+    introParagraph: 'Resize image to 400KB online with true color precision. Ideal for high-definition website banners, product catalogs, and corporate marketing materials.',
+    toolDescription: 'Maintaining rich visual sharpness while reducing raw camera snapshots to 400KB is effortless with this free online image resizer. It refines native dimensions to fit standard display dimensions without introducing jagged pixelation or muddy contrast. Safeguard your project files with local on-device memory processing that keeps proprietary artwork fully protected.'
+  },
+  'resize-image-to-450kb': {
+    slug: 'resize-image-to-450kb',
+    introParagraph: 'Resize image to 450KB online with pristine visual depth. Designed for property listings, digital artwork submissions, and editorial media uploads.',
+    toolDescription: 'Real estate databases and media publishing systems often set a 450KB upload limit to balance gallery aesthetics with lightning-fast load times. Our batch image resizer smoothly optimizes high-resolution photography to meet this boundary cleanly. Enjoy vivid colors, legible architectural details, and complete client-side confidentiality on every single upload.'
+  },
+  'resize-image-to-450kb-online-free': {
+    slug: 'resize-image-to-450kb-online-free',
+    introParagraph: 'Resize image to 450KB online with pristine visual depth. Designed for property listings, digital artwork submissions, and editorial media uploads.',
+    toolDescription: 'Real estate databases and media publishing systems often set a 450KB upload limit to balance gallery aesthetics with lightning-fast load times. Our batch image resizer smoothly optimizes high-resolution photography to meet this boundary cleanly. Enjoy vivid colors, legible architectural details, and complete client-side confidentiality on every single upload.'
+  },
+  'resize-image-to-500kb': {
+    slug: 'resize-image-to-500kb',
+    introParagraph: 'Resize image to 500KB online free with ultra-sharp edge contrast. The premier benchmark for e-commerce stores, retina displays, and hero graphics.',
+    toolDescription: 'A 500KB file provides ample resolution to look stunning across 4K monitors and mobile retina screens while keeping web performance blazing fast. Our image resizer online tool downscales giant 15MB mirrorless camera shots into compliant assets without color banding. Boost Google Core Web Vitals and protect user privacy with local, in-browser optimization.'
+  },
+  'resize-image-to-500kb-online-free': {
+    slug: 'resize-image-to-500kb-online-free',
+    introParagraph: 'Resize image to 500KB online free with ultra-sharp edge contrast. The premier benchmark for e-commerce stores, retina displays, and hero graphics.',
+    toolDescription: 'A 500KB file provides ample resolution to look stunning across 4K monitors and mobile retina screens while keeping web performance blazing fast. Our image resizer online tool downscales giant 15MB mirrorless camera shots into compliant assets without color banding. Boost Google Core Web Vitals and protect user privacy with local, in-browser optimization.'
+  },
+  'resize-image-to-512kb': {
+    slug: 'resize-image-to-512kb',
+    introParagraph: 'Resize image to 512KB online with exact half-megabyte precision. Perfectly configured for cloud platforms, technical document databases, and application uploads.',
+    toolDescription: 'Many cloud infrastructure systems and enterprise intake portals enforce an exact half-megabyte (512KB) limit for binary attachments. This online image resizer free tool recalculates pixel density and metadata to land safely beneath the boundary. Preserve essential photo details and document readability through fast, secure, browser-based execution.'
+  },
+  'resize-image-to-512kb-online-free': {
+    slug: 'resize-image-to-512kb-online-free',
+    introParagraph: 'Resize image to 512KB online with exact half-megabyte precision. Perfectly configured for cloud platforms, technical document databases, and application uploads.',
+    toolDescription: 'Many cloud infrastructure systems and enterprise intake portals enforce an exact half-megabyte (512KB) limit for binary attachments. This online image resizer free tool recalculates pixel density and metadata to land safely beneath the boundary. Preserve essential photo details and document readability through fast, secure, browser-based execution.'
   }
 };
 

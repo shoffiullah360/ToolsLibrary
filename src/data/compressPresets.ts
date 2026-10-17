@@ -804,7 +804,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Unlimited Use', desc: 'No daily limits.' }
     ],
     faqs: [
-      { question: 'Can I compress 20MB photos to 5MB?', answer: 'Yes, our engine scales quality smoothly to fit 5MB.' }
+      {
+        question: "Why is 5MB an industry standard upload limit for commercial photography and print submissions?",
+        answer: "A 5MB limit preserves high photographic resolution and color fidelity for 5K displays and large-format printing while keeping file transfers fast and manageable across cloud portals."
+      },
+      {
+        question: "How do I compress a 40MB raw camera snapshot to 5MB without muddying fine details?",
+        answer: "Downscale native resolution to realistic 4K dimensions (around 4000x3000 pixels) before compressing. This eliminates excess pixel data naturally, allowing the compression tool to keep textures and edge sharpness intact."
+      },
+      {
+        question: "Will a 5MB compressed image print cleanly on large posters and brochures?",
+        answer: "Yes. A 5MB file retains ample DPI and rich color depth, ensuring your work prints crisp, vibrant, and razor-sharp on glossy commercial prints and retail marketing banners."
+      },
+      {
+        question: "Can I compress high-resolution transparent PNG illustrations to under 5MB?",
+        answer: "Yes. Our tool optimizes PNG color palettes and supports modern WebP quantization, cutting file weight below 5MB while preserving clean alpha transparency and sharp vector-like outlines."
+      },
+      {
+        question: "Are my proprietary client graphics or private captures uploaded to an external server?",
+        answer: "No. All compression operations run locally inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing total confidentiality."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-2mb', 'compress-image-to-10mb', 'compress-image-to-1mb']
   },
@@ -830,7 +849,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Batch Queue', desc: 'Process multiple large files together.' }
     ],
     faqs: [
-      { question: 'How to reduce image size in MB?', answer: 'Use this preset to quickly bring giant images under 10MB.' }
+      {
+        question: "Why do digital printing and collaboration platforms enforce a 10MB file limit?",
+        answer: "A 10MB limit provides the perfect balance for high-capacity visual assets. It preserves exceptional detail for large-format printing and 8K displays while preventing uploads from stalling or exceeding team storage limits."
+      },
+      {
+        question: "How do I compress heavy 80MB camera files to 10MB without visible quality degradation?",
+        answer: "Downscale your canvas dimensions to realistic ultra-high-definition bounds (around 5000x3500 pixels) before running compression. This eliminates millions of surplus pixels naturally, keeping edge contrast and fine surface textures sharp."
+      },
+      {
+        question: "Is 10MB sufficient quality for trade show backdrops and large banners?",
+        answer: "Yes. A 10MB file retains rich color depth, sharp edge transitions, and high pixel density, ensuring your visual artwork prints cleanly on trade show banners and event backdrops without pixelation."
+      },
+      {
+        question: "Can I compress complex multi-layer PNG files to under 10MB with this tool?",
+        answer: "Yes. Our tool optimizes PNG palettes and supports modern WebP quantization, reducing file weight below 10MB while preserving clean alpha transparency and sharp vector-like borders."
+      },
+      {
+        question: "Are my commercial design files and high-resolution photos safe from external leaks?",
+        answer: "Yes, absolutely. All compression operations run locally inside your browser's private memory heap using client-side technology. Your files are never uploaded to any remote server or stored in any cloud database."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-5mb', 'compress-image-to-2mb']
   },

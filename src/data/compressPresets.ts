@@ -984,7 +984,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Instant ZIP', desc: 'Download multiple files together.' }
     ],
     faqs: [
-      { question: 'How to convert image to 30-40 KB?', answer: 'Simply upload here; the tool sets the limit to 40KB automatically.' }
+      {
+        question: "Why do competitive exam portals reject photos that are smaller than 30KB?",
+        answer: "Portals enforce a 30KB floor to prevent applicants from submitting excessively compressed, blurry snapshots. A photo under 30KB often lacks the biometric resolution needed for automated face verification and clear admit card printing."
+      },
+      {
+        question: "How do I ensure my photo lands consistently between 30KB and 40KB?",
+        answer: "Crop excess background space so your face occupies roughly 75% of the frame, scale canvas dimensions to around 350x450 pixels, and compress. The tool calibrates output to settle around 34KB–37KB, ensuring immediate portal acceptance."
+      },
+      {
+        question: "Will my photo remain clear and sharp when compressed into this 30KB to 40KB window?",
+        answer: "Yes. By resizing the physical dimensions before compressing, the tool only trims redundant data, preserving distinct eye clarity, hair outlines, and natural skin complexions without blur."
+      },
+      {
+        question: "Can I compress black-ink signatures and thumb impressions within this 30KB to 40KB range?",
+        answer: "Yes. The tool maintains sharp contrast between dark ink lines and the white background, ensuring signatures and thumb impressions remain crisp and completely legible."
+      },
+      {
+        question: "Are my sensitive identity documents and photographs safe from server storage?",
+        answer: "Yes, absolutely. All compression processes run directly inside your browser's private memory heap using client-side technology. Your personal files never touch an external cloud server, guaranteeing complete privacy."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-30kb', 'compress-image-to-40kb', '40kb-jpg-converter']
   },
@@ -1010,7 +1029,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Multi-Format', desc: 'Supports JPG, PNG, and WebP.' }
     ],
     faqs: [
-      { question: 'Why choose 50kb to 100kb?', answer: 'It delivers clean visual clarity with minimal bandwidth consumption.' }
+      {
+        question: "Why do professional platforms and websites specify a 50KB to 100KB file range?",
+        answer: "This range provides the ideal balance between visual crispness and rapid network delivery. It ensures images look professional on high-resolution displays without slowing down website page loads or exceeding portal limits."
+      },
+      {
+        question: "How do I ensure my high-resolution camera photo lands between 50KB and 100KB?",
+        answer: "Scale down canvas dimensions to around 600x800 pixels before compressing. This naturally eliminates millions of excess pixels, allowing the engine to calibrate the final file size to settle around 70KB–85KB for guaranteed compliance."
+      },
+      {
+        question: "Is an image in the 50KB to 100KB bracket suitable for printed certificates and badges?",
+        answer: "Yes. Images within this range retain rich color saturation, clear edge definition, and balanced contrast, ensuring clean printing on laminated identity badges and official verification forms."
+      },
+      {
+        question: "Can I compress transparent PNG product images into this 50KB to 100KB window?",
+        answer: "Yes. Our tool optimizes PNG palettes and supports modern WebP quantization, keeping file size under 100KB while preserving clean alpha transparency and sharp outlines."
+      },
+      {
+        question: "Are my sensitive identity papers or personal photos uploaded to external servers?",
+        answer: "No. All compression operations run locally inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing complete confidentiality."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-50kb', 'compress-image-to-100kb', 'compress-image-100kb-to-200kb']
   },

@@ -353,6 +353,61 @@ export const RESIZER_EDITORIALS: Record<string, ResizerEditorial> = {
     slug: 'resize-image-to-600x800-pixels-online-free',
     introParagraph: 'Resize image to 600x800 pixels online free with high-resolution clarity. The classic 3:4 portrait proportion for model portfolios, resumes, and official documents.',
     toolDescription: 'Maintaining clean 3:4 aspect ratios at 600x800 resolution ensures student admission dossiers and professional resumes display flawlessly on widescreen monitors. FastToolVerse\'s image resizer online tool crops and scales your images seamlessly without stretching features or dulling contrast. Convert your identity pictures in seconds with complete peace of mind and local privacy.'
+  },
+  'resize-image-to-630x810': {
+    slug: 'resize-image-to-630x810',
+    introParagraph: 'Resize image to 630x810 pixels online free with balanced resolution. Specifically tuned for specialized civil service applications, admit cards, and registration passes.',
+    toolDescription: 'State examination authorities and regional public intake portals frequently mandate photographs scaled strictly to 630x810 proportions. Our simple image resizer accurately standardizes your portrait to these exact boundaries, keeping your facial features natural and free of distortion. Process all your identity documents safely in-browser with zero latency and complete client-side data privacy.'
+  },
+  'resize-image-to-630x810-pixels': {
+    slug: 'resize-image-to-630x810-pixels',
+    introParagraph: 'Resize image to 630x810 pixels online free with balanced resolution. Specifically tuned for specialized civil service applications, admit cards, and registration passes.',
+    toolDescription: 'State examination authorities and regional public intake portals frequently mandate photographs scaled strictly to 630x810 proportions. Our simple image resizer accurately standardizes your portrait to these exact boundaries, keeping your facial features natural and free of distortion. Process all your identity documents safely in-browser with zero latency and complete client-side data privacy.'
+  },
+  'resize-image-to-630x810-pixels-online-free': {
+    slug: 'resize-image-to-630x810-pixels-online-free',
+    introParagraph: 'Resize image to 630x810 pixels online free with balanced resolution. Specifically tuned for specialized civil service applications, admit cards, and registration passes.',
+    toolDescription: 'State examination authorities and regional public intake portals frequently mandate photographs scaled strictly to 630x810 proportions. Our simple image resizer accurately standardizes your portrait to these exact boundaries, keeping your facial features natural and free of distortion. Process all your identity documents safely in-browser with zero latency and complete client-side data privacy.'
+  },
+  'resize-image-4.5cm-x-3.5cm': {
+    slug: 'resize-image-4.5cm-x-3.5cm',
+    introParagraph: 'Resize image to 4.5cm x 3.5cm online with exact metric standards. The mandatory physical passport and visa dimension across European and Asian embassies.',
+    toolDescription: 'Meeting the standard 35x45 mm (4.5cm x 3.5cm) specification for UK, Schengen, and Asian visa dossiers requires strict physical dimension conversion. This free image resizer calibrates pixel density at 300 DPI to deliver razor-sharp prints that satisfy consular biometric scanners. Avoid appointment delays with fast, secure on-device processing that keeps personal travel documents confidential.'
+  },
+  'resize-image-6cm-x-2cm': {
+    slug: 'resize-image-6cm-x-2cm',
+    introParagraph: 'Resize image to 6cm x 2cm online with high contrast. Specially designed for official document signatures, bank mandates, and department stamps.',
+    toolDescription: 'Government recruitment boards and banking portals routinely enforce a strict 6cm x 2cm dimension box for uploaded candidate signatures. FastToolVerse\'s online image resizer refines your scanned pen strokes, keeping handwriting dark, continuous, and crisp against pure white paper. Ensure instant document approval with private browser-based conversion that never stores your files.'
+  },
+  'passport-size-photo-2x2-inch': {
+    slug: 'passport-size-photo-2x2-inch',
+    introParagraph: 'Convert and resize photos to 2x2 inches online free. The official square biometric benchmark for US visas, passports, and green card lotteries.',
+    toolDescription: 'The 2x2 inch (600x600 px at 300 DPI) square ratio is strictly required by the US Department of State and global consular authorities. Our free online image resizer effortlessly crops and scales your headshots, aligning eye height and facial symmetry to pass automated biometric checks cleanly. Benefit from instant, privacy-focused conversion executed entirely in your browser sandbox.'
+  },
+  'free-2x2-passport-photo-converter-online': {
+    slug: 'free-2x2-passport-photo-converter-online',
+    introParagraph: 'Convert and resize photos to 2x2 inches online free. The official square biometric benchmark for US visas, passports, and green card lotteries.',
+    toolDescription: 'The 2x2 inch (600x600 px at 300 DPI) square ratio is strictly required by the US Department of State and global consular authorities. Our free online image resizer effortlessly crops and scales your headshots, aligning eye height and facial symmetry to pass automated biometric checks cleanly. Benefit from instant, privacy-focused conversion executed entirely in your browser sandbox.'
+  },
+  'resize-image-for-facebook-profile': {
+    slug: 'resize-image-for-facebook-profile',
+    introParagraph: 'Resize images for Facebook profile pictures online free. Perfectly centered 1:1 square crop optimized for crisp display across mobile feeds and desktop profiles.',
+    toolDescription: 'Avoid awkward circular cropping and blurry mobile previews with our dedicated image resizer free tool for Facebook avatars. It centers and resizes your headshot to recommended 720x720 or 1080x1080 resolution, ensuring vivid colors and sharp outlines. Optimize personal or brand profiles in seconds with complete client-side privacy and zero cloud uploads.'
+  },
+  'resize-image-for-facebook-post': {
+    slug: 'resize-image-for-facebook-post',
+    introParagraph: 'Resize images for Facebook posts online free with high-definition clarity. Perfectly adapted for landscape, portrait, and square social feed engagement.',
+    toolDescription: 'Publishing captivating graphics on Facebook requires optimal 1200x630 landscape or 1080x1350 portrait proportions to avoid platform compression blur. FastToolVerse\'s online image resizer free engine formats marketing graphics and photography to render crisply in mobile feeds without awkward auto-cropping. Keep your audience engaged with sharp, professional social media assets processed entirely on your device.'
+  },
+  'resize-image-for-facebook-cover': {
+    slug: 'resize-image-for-facebook-cover',
+    introParagraph: 'Resize images for Facebook cover photos online free. Designed to maintain safe zones across both mobile screens and wide desktop displays without distortion.',
+    toolDescription: 'Creating a clean 820x312 Facebook cover banner requires careful framing so your key text and branding stay visible on mobile devices. Our batch image resizer smoothly fits your visuals into recommended dimensions without blurry pixel stretching. Generate high-impact community or business covers instantly with fast, local in-browser processing that never leaks proprietary graphics.'
+  },
+  'resize-image-for-facebook-event-cover': {
+    slug: 'resize-image-for-facebook-event-cover',
+    introParagraph: 'Resize image for Facebook event covers online free. Ensure your event banners display with razor-sharp 16:9 impact on all social calendars.',
+    toolDescription: 'Promote webinars, parties, and conferences with perfectly scaled 1200x628 Facebook event banners. This image resizer online tool prevents ugly mobile clipping and compression blur, keeping dates, guest headshots, and typography crystal-clear. Prepare professional event visuals in moments with safe, client-side browser execution that protects your event assets completely.'
   }
 };
 

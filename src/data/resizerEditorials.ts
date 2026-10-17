@@ -473,6 +473,96 @@ export const RESIZER_EDITORIALS: Record<string, ResizerEditorial> = {
     slug: 'resize-image-for-tiktok-shop',
     introParagraph: 'Resize images for TikTok Shop product listings online free. Crisp 1:1 square crop under strict file size bounds to boost product conversions.',
     toolDescription: 'E-commerce merchants on TikTok Shop require clean 600x600 or 800x800 square product photos that pass seller center verification without rejection. Our image resizer free engine standardizes merchandise photography, lifestyle previews, and packaging shots smoothly, ensuring sharp details and fast mobile catalog loading. Protect proprietary business assets with completely private, client-side browser optimization.'
+  },
+  'image-resizer-for-linkedin-banner': {
+    slug: 'image-resizer-for-linkedin-banner',
+    introParagraph: 'Resize images for LinkedIn background banners online free. Crisp 1584x396 widescreen format designed to keep professional branding sharp on desktop and mobile profiles.',
+    toolDescription: 'Make your personal brand or corporate profile stand out with a perfectly dimensioned 1584x396 LinkedIn banner. Our simple image resizer maintains safe text zones, preventing profile picture overlap and blurry stretching across device screens. Prepare executive header graphics in seconds using 100% private, on-device browser processing that never stores your business artwork.'
+  },
+  'image-resizer-for-linkedin-profile': {
+    slug: 'image-resizer-for-linkedin-profile',
+    introParagraph: 'Resize images for LinkedIn profile headshots online free. High-definition 400x400 square resolution optimized for professional circular display across recruiter networks.',
+    toolDescription: 'Recruiters evaluate clarity and professionalism first. This free image resizer standardizes executive portraits to recommended 400x400 square dimensions, preserving authentic skin tones, sharp eye reflections, and natural contrast. Crop and scale your corporate headshot right in your browser with zero data retention, ensuring total confidentiality for your personal photos.'
+  },
+  'image-resizer-for-linkedin-post': {
+    slug: 'image-resizer-for-linkedin-post',
+    introParagraph: 'Resize images for LinkedIn feed posts online free. High-contrast landscape and portrait ratios engineered to maximize career post impressions and network engagement.',
+    toolDescription: 'Sharing infographics, certificate milestones, or thought-leadership slides requires optimal 1200x627 landscape or 1080x1350 vertical ratios to prevent feed downscaling blur. FastToolVerse\'s online image resizer formats corporate visuals cleanly without edge distortion. Increase professional engagement with sharp, high-impact visuals processed securely inside your browser\'s private memory heap.'
+  },
+  'resize-image-for-linkedin-post-online-free': {
+    slug: 'resize-image-for-linkedin-post-online-free',
+    introParagraph: 'Resize images for LinkedIn feed posts online free. High-contrast landscape and portrait ratios engineered to maximize career post impressions and network engagement.',
+    toolDescription: 'Sharing infographics, certificate milestones, or thought-leadership slides requires optimal 1200x627 landscape or 1080x1350 vertical ratios to prevent feed downscaling blur. FastToolVerse\'s online image resizer formats corporate visuals cleanly without edge distortion. Increase professional engagement with sharp, high-impact visuals processed securely inside your browser\'s private memory heap.'
+  },
+  'image-resize-for-linkedin-article': {
+    slug: 'image-resize-for-linkedin-article',
+    introParagraph: 'Resize images for LinkedIn newsletter and article covers online free. Precise 1200x644 resolution designed to ensure high click-through rates across publishing feeds.',
+    toolDescription: 'Capture professional readership with a cleanly scaled 1200x644 LinkedIn article header. Our free online image resizer preserves sharp headline typography and vibrant illustrations without compression noise or off-center cropping. Prepare publication-ready article banners instantly with local, in-browser optimization that keeps proprietary draft materials entirely private.'
+  },
+  'resize-image-for-linkedin-article-cover': {
+    slug: 'resize-image-for-linkedin-article-cover',
+    introParagraph: 'Resize images for LinkedIn newsletter and article covers online free. Precise 1200x644 resolution designed to ensure high click-through rates across publishing feeds.',
+    toolDescription: 'Capture professional readership with a cleanly scaled 1200x644 LinkedIn article header. Our free online image resizer preserves sharp headline typography and vibrant illustrations without compression noise or off-center cropping. Prepare publication-ready article banners instantly with local, in-browser optimization that keeps proprietary draft materials entirely private.'
+  },
+  'image-resizer-for-whatsapp-dp': {
+    slug: 'image-resizer-for-whatsapp-dp',
+    introParagraph: 'Resize images for WhatsApp DP online free with centered balance. Flawless 1:1 square crop calibrated to look sharp inside circular chat bubbles.',
+    toolDescription: 'Prevent WhatsApp from auto-compressing and blurring your profile picture by formatting it to a clean 500x500 or 640x640 square beforehand. FastToolVerse\'s image resizer free engine ensures your headshot stays centered and crisp within circular contact circles. Keep your contact photos private with instant, on-device processing that never touches remote cloud servers.'
+  },
+  'whatsapp-status-image-resize': {
+    slug: 'whatsapp-status-image-resize',
+    introParagraph: 'Resize images for WhatsApp Status online free. Full-screen 1080x1920 vertical 9:16 layout designed to prevent pixelated degradation on mobile story updates.',
+    toolDescription: 'WhatsApp Status heavily compresses raw mobile snapshots into blurry stories. This online image resizer free tool scales your photos into optimal 1080x1920 dimensions before posting, retaining vibrant colors and sharp details across contact feeds. Format status photos and event flyers safely inside your local browser sandbox with zero storage leaks.'
+  },
+  'whatsapp-sticker-image-resize': {
+    slug: 'whatsapp-sticker-image-resize',
+    introParagraph: 'Resize images for custom WhatsApp stickers online free. Strict 512x512 square canvas under 100KB with clean transparency support for custom sticker packs.',
+    toolDescription: 'Building personal sticker packs or business reaction icons requires exact 512x512 square proportions and file weights strictly under 100KB. Our batch image resizer smoothly resamples transparent PNG and WebP graphics, ensuring clean edges and vivid cartoon outlines on chat screens. Build compliant custom stickers in seconds with complete personal privacy guaranteed.'
+  },
+  'resize-image-for-pinterest': {
+    slug: 'resize-image-for-pinterest',
+    introParagraph: 'Resize images for Pinterest Pins online free. High-impact 2:3 vertical aspect ratio (1000x1500 px) engineered to drive repins, clicks, and blog traffic.',
+    toolDescription: 'Pinterest algorithms favor vertical 2:3 imagery (1000x1500 pixels) that commands screen real estate on mobile feeds. FastToolVerse\'s image resizer online tool refines product mockups, recipe cards, and DIY infographics into ideal pin dimensions without stretching. Maximize referral traffic with razor-sharp creative assets formatted entirely inside your browser with complete privacy.'
+  },
+  'image-resize-for-indian-visa': {
+    slug: 'image-resize-for-indian-visa',
+    introParagraph: 'Resize photo for Indian e-Visa portals online free. Official 2x2 inch (350x350 to 1000x1000 px) square standard with verified biometric facial compliance.',
+    toolDescription: 'The Indian e-Visa immigration portal strictly mandates a square JPEG portrait where head height fills 50% to 70% of the canvas against a plain white background. Our simple image resizer accurately centers facial contours and sets exact pixel bounds to pass consular scanning. Process travel paperwork securely with 100% on-device data protection.'
+  },
+  'image-resize-for-pan-card': {
+    slug: 'image-resize-for-pan-card',
+    introParagraph: 'Resize photo and signature for PAN card online free. Tailored for NSDL and UTIITSL portals requiring exact 213x213 pixel dimensions under 50KB.',
+    toolDescription: 'Avoid PAN card application rejections on Protean (NSDL) and UTIITSL intake forms that mandate photos at 213x213 pixels (3.5x2.5 cm at 200 DPI) under 50KB. This free image resizer standardizes portraits and signature scans into compliant parameters while keeping contrast sharp and legible. Submit official financial documents with complete personal data confidentiality.'
+  },
+  'passport-size-photo-size-in-bd': {
+    slug: 'passport-size-photo-size-in-bd',
+    introParagraph: 'Resize passport size photo for Bangladesh online free. Official 40mm x 50mm or 45mm x 55mm specifications for e-passports, admissions, and government services.',
+    toolDescription: 'Bangladesh e-Passport, National ID (NID), and government job portals strictly enforce standard passport proportions with clean white backgrounds. FastToolVerse\'s online image resizer effortlessly formats phone snapshots into crisp 40x50 mm (or 300 DPI equivalent) portraits without blurring hairline or eye contours. Prepare compliant identity photos in seconds using private browser processing that never uploads your files.'
+  },
+  'image-resizer-for-discord-pfp': {
+    slug: 'image-resizer-for-discord-pfp',
+    introParagraph: 'Resize images for Discord profile avatars online free. Sharp 128x128 square dimensions optimized to look vibrant and distinct inside circular voice chat badges.',
+    toolDescription: 'Ensure your gaming avatar displays with razor-sharp contrast across Discord servers and channel member lists. Our free online image resizer scales custom fan art, photos, and clan logos into perfect square proportions without fuzzy downscaling noise. Protect your digital art with fast, client-side browser optimization that keeps confidential files secure.'
+  },
+  'image-resizer-for-discord-pfp-online-free': {
+    slug: 'image-resizer-for-discord-pfp-online-free',
+    introParagraph: 'Resize images for Discord profile avatars online free. Sharp 128x128 square dimensions optimized to look vibrant and distinct inside circular voice chat badges.',
+    toolDescription: 'Ensure your gaming avatar displays with razor-sharp contrast across Discord servers and channel member lists. Our free online image resizer scales custom fan art, photos, and clan logos into perfect square proportions without fuzzy downscaling noise. Protect your digital art with fast, client-side browser optimization that keeps confidential files secure.'
+  },
+  'image-resizer-for-discord-banner': {
+    slug: 'image-resizer-for-discord-banner',
+    introParagraph: 'Resize images for Discord server banners online free. Crisp 16:9 widescreen format (960x540 px) under standard upload limits for high-impact community headers.',
+    toolDescription: 'Make your Discord server inviting with a properly formatted 960x540 header banner. This image resizer free tool fits community artwork and server announcements into standard dimensions without awkward pixel stretching or upload errors. Update your guild branding smoothly using 100% private, on-device browser processing with zero server uploads.'
+  },
+  'resize-image-to-discord-emote': {
+    slug: 'resize-image-to-discord-emote',
+    introParagraph: 'Resize images to Discord custom emojis online free. Precision 128x128 square canvas under 256KB with clean alpha transparency for reaction emotes.',
+    toolDescription: 'Discord strictly caps custom static emotes at 128x128 pixels and 256KB in file size. FastToolVerse\'s online image resizer free engine downsizes vector artwork, memes, and community badges while keeping transparent borders razor-sharp and text legible in small chat streams. Create viral reaction emotes instantly with complete client-side data privacy.'
+  },
+  'resize-image-for-discord-sticker': {
+    slug: 'resize-image-for-discord-sticker',
+    introParagraph: 'Resize images for Discord stickers online free. Exact 320x320 square dimensions under 512KB with full transparency support for custom server packs.',
+    toolDescription: 'Uploading custom stickers to your Discord community requires exact 320x320 square resolution and file weights under 512KB. Our batch image resizer optimizes custom illustrations and reaction art smoothly, preventing blurry edges and compression artifacts. Format compliant Discord stickers in seconds using fast, browser-based processing that keeps original designs secure.'
   }
 };
 

@@ -37,7 +37,7 @@ interface Props {
 }
 
 const { presetTitle, currentSlug, presets } = Astro.props;
-const allPresets = (presets || (rawPagesData as unknown as ResizerPage[])).slice(0, 52);
+const allPresets = presets || (rawPagesData as unknown as ResizerPage[]);
 
 function formatBadge(p: ResizerPage): string {
   if (p.badge) return p.badge;

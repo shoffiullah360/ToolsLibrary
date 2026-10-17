@@ -20,6 +20,7 @@ import CompressorPrivacyBrief from '../components/CompressorPrivacyBrief.astro';
 import CompressorDataPrivacy from '../components/CompressorDataPrivacy.astro';
 import CompressorEditorial from '../components/CompressorEditorial.astro';
 import { getCompressorEditorial } from '../data/compressorEditorials';
+import { getResizerEditorial } from '../data/resizerEditorials';
 import RemoveEmptyLinesPresetView from '../components/RemoveEmptyLinesPresetView.astro';
 import { REMOVE_EMPTY_LINES_PRESETS, type RemoveEmptyLinesPreset } from '../data/removeEmptyLinesPresets';
 import RemoveLineBreaksPresetView from '../components/RemoveLineBreaksPresetView.astro';
@@ -38,6 +39,8 @@ interface ResizerPage {
   targetTag?: string;
   category: "filesize" | "dimension" | "social" | "preset";
   introCopy?: string;
+  introParagraph?: string;
+  toolDescription?: string;
   callout?: {
     badge?: string;
     title: string;
@@ -869,6 +872,9 @@ if (props.type === 'pending-tool' && props.pendingTool) {
 
 const intentDescription = props.type !== 'pending-tool' ? getPresetIntentDescription(props) : '';
 const converterEditorial = props.type === 'converter' && props.converterPreset ? getConverterEditorial(props.converterPreset.slug) : null;
+const resizerEditorial = props.type === 'resizer' && props.resizerPage ? getResizerEditorial(props.resizerPage.slug) : null;
+const resizerIntroParagraph = resizerEditorial?.introParagraph || props.resizerPage?.introParagraph || props.resizerPage?.metaDescription || '';
+const resizerToolDescription = resizerEditorial?.toolDescription || props.resizerPage?.toolDescription || intentDescription;
 ---
 
 <Layout
@@ -1754,26 +1760,20 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
             </ol>
           </nav>
 
-          <!-- Badge -->
-          <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 mb-4 shadow-2xs">
-            <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
-            <span>{resizerCurrentBadge}</span>
-          </div>
-
-          <!-- H1 Headline (Verbatim Title Cased Keyword) -->
+          <!-- Section 1: H1 Heading -->
           <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
             {props.resizerPage.h1}
           </h1>
 
-          <!-- Meta Description Subtitle -->
-          <p class="mt-3 sm:mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            {props.resizerPage.metaDescription}
+          <!-- Section 1: Exactly 20-25 Words Unique Introduction Paragraph -->
+          <p class="text-slate-600 dark:text-slate-300 text-center max-w-2xl mx-auto mt-3 mb-8 text-sm md:text-base leading-relaxed">
+            {resizerIntroParagraph}
           </p>
         </div>
       </section>
 
-      <!-- Interactive Studio Container with Pre-configured Tool -->
-      <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+      <!-- Section 2: Interactive Image Resizer UI Component -->
+      <section id="tool-workspace" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 scroll-mt-20">
         <ImageResizer
           preset={props.resizerPage.preset}
           initialWidth={props.resizerPage.preset.width}
@@ -1790,82 +1790,36 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
           lockRatio={props.resizerPage.preset.lockRatio}
         />
 
-        <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5 md:p-6 text-slate-300 text-sm md:text-base leading-relaxed max-w-4xl mx-auto my-6">
-          <p>{intentDescription}</p>
+        <!-- Section 3: 50-60 words Super SEO-Optimized Description (about tool) -->
+        <div class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-5 md:p-6 text-slate-700 dark:text-slate-300 text-sm md:text-base leading-relaxed max-w-4xl mx-auto my-6 shadow-sm">
+          <p>{resizerToolDescription}</p>
         </div>
       </section>
 
-      <!-- Direct Compressor Equivalents Interlink Banner (Requirement 4.1) -->
-      <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-10">
-        <div class="rounded-2xl p-5 border border-blue-200/80 dark:border-blue-900/60 bg-gradient-to-r from-blue-50/70 via-white to-indigo-50/70 dark:from-blue-950/30 dark:via-slate-900 dark:to-indigo-950/30 shadow-xs">
-          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-sm">
-                <ToolIcon name="minimize-2" class="w-5 h-5" />
-              </div>
-              <div>
-                <h4 class="text-sm font-semibold text-slate-900 dark:text-white">
-                  Need direct file size compression without manual cropping?
-                </h4>
-                <p class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
-                  Try our direct in-browser compressor presets:
-                </p>
-              </div>
+      <!-- Cross-Link Banner to Image Compressor Companion Tool -->
+      <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">
+        <div class="rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white shadow-xl shadow-blue-500/10 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
+          <div class="space-y-1.5">
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-white/20 text-white backdrop-blur-xs">
+              <ToolIcon name="minimize-2" class="w-3.5 h-3.5" />
+              <span>Companion Tool</span>
             </div>
-            <div class="flex flex-wrap gap-2">
-              <a href="/compress-image-to-20kb/" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-blue-600 dark:text-blue-400 hover:border-blue-600 dark:hover:border-blue-500 shadow-2xs transition-all duration-150">
-                Compress to 20KB &rarr;
-              </a>
-              <a href="/compress-image-to-50kb/" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-blue-600 dark:text-blue-400 hover:border-blue-600 dark:hover:border-blue-500 shadow-2xs transition-all duration-150">
-                Compress to 50KB &rarr;
-              </a>
-              <a href="/compress-image-to-100kb/" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-blue-600 dark:text-blue-400 hover:border-blue-600 dark:hover:border-blue-500 shadow-2xs transition-all duration-150">
-                Compress to 100KB &rarr;
-              </a>
-            </div>
+            <h3 class="text-lg sm:text-xl font-bold tracking-tight text-white">
+              Need direct file size compression without manual cropping?
+            </h3>
+            <p class="text-xs sm:text-sm text-blue-100 max-w-xl leading-relaxed">
+              Use our companion Image Compressor to hit exact kilobyte targets (KB) with automatic quality optimization.
+            </p>
           </div>
+          <a
+            href="/image-compressor/"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white text-slate-900 hover:bg-blue-50 font-semibold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all active:scale-95 shrink-0"
+          >
+            <span>Open Image Compressor</span>
+            <span aria-hidden="true" class="text-base font-bold leading-none">&rarr;</span>
+          </a>
         </div>
       </section>
-
-      {props.resizerPage.callout && (
-        <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-10">
-          <div class="rounded-2xl p-6 sm:p-7 border border-indigo-200/80 dark:border-indigo-900/60 bg-gradient-to-r from-blue-50/80 via-white to-indigo-50/80 dark:from-slate-900 dark:via-blue-950/20 dark:to-indigo-950/30 shadow-xs">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-5">
-              <div class="space-y-2">
-                {props.resizerPage.callout.badge && (
-                  <span class="inline-block text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
-                    {props.resizerPage.callout.badge}
-                  </span>
-                )}
-                <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
-                  {props.resizerPage.callout.title}
-                </h3>
-                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl" set:html={props.resizerPage.callout.description} />
-              </div>
-              {props.resizerPage.callout.link && (
-                <a
-                  href={props.resizerPage.callout.link.href}
-                  class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs shrink-0 shadow-sm transition"
-                >
-                  <span>{props.resizerPage.callout.link.text}</span>
-                  <span>&rarr;</span>
-                </a>
-              )}
-            </div>
-          </div>
-        </section>
-      )}
-
-      <!-- Explanatory SEO Intro Section -->
-      {props.resizerPage.introCopy && (
-        <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-14">
-          <div class="rounded-2xl p-6 sm:p-8 bg-white/80 dark:bg-slate-900/70 border border-slate-300 dark:border-slate-800 shadow-2xs backdrop-blur-xs">
-            <div class="max-w-4xl mx-auto text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-              <p set:html={props.resizerPage.introCopy} />
-            </div>
-          </div>
-        </section>
-      )}
 
       <!-- Pre-configuration Inline Script for immediate DOM alignment -->
       <script is:inline define:vars={{ preset: props.resizerPage.preset }}>

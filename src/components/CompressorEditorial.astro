@@ -12,54 +12,46 @@ const { article } = editorial;
 ---
 
 <section class="border-t border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950 py-14 sm:py-16">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="space-y-10">
-      
-      {article.sections.map((section, idx) => (
-        <article class="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-900/40 shadow-sm">
-          {idx === 0 ? (
-            <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
-              {section.h2 || article.h2}
-            </h2>
-          ) : (
-            <h3 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-3">
-              {section.h3 || section.h2}
-            </h3>
-          )}
+  <div class="max-w-4xl mx-auto px-4 py-8 text-slate-300 leading-relaxed space-y-6">
+    {article.sections.map((section, idx) => (
+      <div>
+        {idx === 0 ? (
+          <h2 class="text-2xl font-bold text-white mt-10 mb-4 first:mt-0">
+            {section.h2 || article.h2}
+          </h2>
+        ) : section.h2 ? (
+          <h2 class="text-2xl font-bold text-white mt-10 mb-4">
+            {section.h2}
+          </h2>
+        ) : (
+          <h3 class="text-xl font-semibold text-slate-100 mt-6 mb-3">
+            {section.h3 || section.h2}
+          </h3>
+        )}
 
-          {section.paragraphs.map((p) => (
-            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
-              {p}
-            </p>
-          ))}
+        {section.paragraphs.map((p) => (
+          <p class="text-base text-slate-300 leading-7 mb-4">
+            {p}
+          </p>
+        ))}
 
-          {section.checklist && section.checklist.length > 0 && (
-            <div class="border-t border-slate-200 dark:border-slate-800/80 pt-5 mt-2">
-              <h4 class="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">
-                Key Technical Guidelines
-              </h4>
-              <ul class="space-y-2.5">
-                {section.checklist.map((item) => (
-                  <li class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-                    <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 font-bold text-xs shrink-0 mt-0.5 border border-blue-100 dark:border-blue-900/50">✓</span>
-                    <span class="leading-relaxed">{item}</span>
-                  </li>
-                ))}
-              </ul>
+        {section.checklist && section.checklist.length > 0 && (
+          <ul class="list-disc list-inside space-y-2 text-slate-300 my-4">
+            {section.checklist.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        )}
+
+        {section.takeaway && (
+          <div class="p-4 rounded-xl bg-slate-900/40 border border-slate-800/80 text-sm text-slate-300 flex items-start gap-3 my-4">
+            <ToolIcon name="zap" class="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+            <div>
+              <strong class="font-semibold text-white">{section.takeaway.title}:</strong> {section.takeaway.text}
             </div>
-          )}
-
-          {section.takeaway && (
-            <div class="p-4 rounded-xl bg-blue-50/70 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/40 text-xs sm:text-sm text-blue-900 dark:text-blue-200 flex items-start gap-3 mt-4">
-              <ToolIcon name="zap" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
-              <div>
-                <strong class="font-semibold">{section.takeaway.title}:</strong> {section.takeaway.text}
-              </div>
-            </div>
-          )}
-        </article>
-      ))}
-
-    </div>
+          </div>
+        )}
+      </div>
+    ))}
   </div>
 </section>

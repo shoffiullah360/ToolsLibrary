@@ -153,6 +153,86 @@ export const RESIZER_EDITORIALS: Record<string, ResizerEditorial> = {
     slug: 'resize-image-to-512kb-online-free',
     introParagraph: 'Resize image to 512KB online with exact half-megabyte precision. Perfectly configured for cloud platforms, technical document databases, and application uploads.',
     toolDescription: 'Many cloud infrastructure systems and enterprise intake portals enforce an exact half-megabyte (512KB) limit for binary attachments. This online image resizer free tool recalculates pixel density and metadata to land safely beneath the boundary. Preserve essential photo details and document readability through fast, secure, browser-based execution.'
+  },
+  'resize-image-to-600kb': {
+    slug: 'resize-image-to-600kb',
+    introParagraph: 'Resize image to 600KB online with outstanding visual clarity. Optimize high-resolution photography, digital art portfolios, and marketing banners without unwanted color distortion.',
+    toolDescription: 'Digital publishing systems and e-commerce platforms often recommend a 600KB ceiling to retain intricate textures while guaranteeing swift page load speeds. Our simple image resizer accurately downsizes multi-megabyte captures, preserving natural color gradients and sharp typography. Everything runs locally in your web browser, ensuring lightning-fast conversions and complete file privacy.'
+  },
+  'resize-image-to-600kb-online-free': {
+    slug: 'resize-image-to-600kb-online-free',
+    introParagraph: 'Resize image to 600KB online with outstanding visual clarity. Optimize high-resolution photography, digital art portfolios, and marketing banners without unwanted color distortion.',
+    toolDescription: 'Digital publishing systems and e-commerce platforms often recommend a 600KB ceiling to retain intricate textures while guaranteeing swift page load speeds. Our simple image resizer accurately downsizes multi-megabyte captures, preserving natural color gradients and sharp typography. Everything runs locally in your web browser, ensuring lightning-fast conversions and complete file privacy.'
+  },
+  'resize-image-to-2mb': {
+    slug: 'resize-image-to-2mb',
+    introParagraph: 'Resize image to 2MB online free with high-definition sharpness. The standard threshold for client email attachments, freelance submissions, and real estate galleries.',
+    toolDescription: 'When sharing high-resolution photos via email or property portals, staying beneath a 2MB limit prevents rejected messages and slow downloads. Using this free image resizer, you can easily compress heavy camera shots into clear, vibrant imagery that displays beautifully on 4K monitors. Benefit from fast, secure processing that operates entirely on your device.'
+  },
+  'resize-image-to-2mb-online-free': {
+    slug: 'resize-image-to-2mb-online-free',
+    introParagraph: 'Resize image to 2MB online free with high-definition sharpness. The standard threshold for client email attachments, freelance submissions, and real estate galleries.',
+    toolDescription: 'When sharing high-resolution photos via email or property portals, staying beneath a 2MB limit prevents rejected messages and slow downloads. Using this free image resizer, you can easily compress heavy camera shots into clear, vibrant imagery that displays beautifully on 4K monitors. Benefit from fast, secure processing that operates entirely on your device.'
+  },
+  'resize-image-to-5mb': {
+    slug: 'resize-image-to-5mb',
+    introParagraph: 'Resize image to 5mb online free with true professional detail. Perfectly suited for commercial print drafts, architectural blueprints, and agency presentation decks.',
+    toolDescription: 'Creative agencies, print houses, and cloud portfolios often enforce a 5MB boundary to handle expansive graphic projects without crashing review systems. FastToolVerse\'s online image resizer refines gigantic raw camera files to fit comfortably under 5MB while preserving ultra-fine lines and deep shadow contrasts. Enjoy instant, private browser execution with zero server uploads.'
+  },
+  'resize-image-to-5mb-online-free': {
+    slug: 'resize-image-to-5mb-online-free',
+    introParagraph: 'Resize image to 5MB online free with true professional detail. Perfectly suited for commercial print drafts, architectural blueprints, and agency presentation decks.',
+    toolDescription: 'Creative agencies, print houses, and cloud portfolios often enforce a 5MB boundary to handle expansive graphic projects without crashing review systems. FastToolVerse\'s online image resizer refines gigantic raw camera files to fit comfortably under 5MB while preserving ultra-fine lines and deep shadow contrasts. Enjoy instant, private browser execution with zero server uploads.'
+  },
+  'resize-image-20kb-to-50kb': {
+    slug: 'resize-image-20kb-to-50kb',
+    introParagraph: 'Resize image between 20KB and 50KB online free. Designed specifically to satisfy strict double-ended file size boundaries on public recruitment and visa portals.',
+    toolDescription: 'Many government admissions and visa application systems reject files smaller than 20KB or larger than 50KB. Our free online image resizer effortlessly calibrates your portrait to land right in this approved sweet spot. Retain clear facial landmarks, sharp eyes, and balanced contrast without risking upload rejection or exposing confidential identity documents.'
+  },
+  'resize-image-20kb-to-50kb-online-free': {
+    slug: 'resize-image-20kb-to-50kb-online-free',
+    introParagraph: 'Resize image between 20KB and 50KB online free. Designed specifically to satisfy strict double-ended file size boundaries on public recruitment and visa portals.',
+    toolDescription: 'Many government admissions and visa application systems reject files smaller than 20KB or larger than 50KB. Our free online image resizer effortlessly calibrates your portrait to land right in this approved sweet spot. Retain clear facial landmarks, sharp eyes, and balanced contrast without risking upload rejection or exposing confidential identity documents.'
+  },
+  'resize-image-50kb-to-100kb': {
+    slug: 'resize-image-50kb-to-100kb',
+    introParagraph: 'Resize image between 50KB and 100KB online free with balanced compression. Ideal for candidate profiles, online portals, and professional digital verification records.',
+    toolDescription: 'Hitting the balanced 50KB to 100KB range ensures candidate photographs display with crisp definition on high-DPI screens without burdening intake databases. FastToolVerse\'s image resizer free engine tunes canvas parameters smoothly, keeping edges sharp and skin tones authentic. Experience fast, private conversion executed entirely in your browser\'s local memory.'
+  },
+  'resize-image-50kb-to-100kb-online-free': {
+    slug: 'resize-image-50kb-to-100kb-online-free',
+    introParagraph: 'Resize image between 50KB and 100KB online free with balanced compression. Ideal for candidate profiles, online portals, and professional digital verification records.',
+    toolDescription: 'Hitting the balanced 50KB to 100KB range ensures candidate photographs display with crisp definition on high-DPI screens without burdening intake databases. FastToolVerse\'s image resizer free engine tunes canvas parameters smoothly, keeping edges sharp and skin tones authentic. Experience fast, private conversion executed entirely in your browser\'s local memory.'
+  },
+  'resize-image-to-250x250': {
+    slug: 'resize-image-to-250x250',
+    introParagraph: 'Resize image to 250x250 pixels online free with perfect 1:1 square proportions. Tailored for profile avatars, community icons, and e-commerce product thumbnails.',
+    toolDescription: 'Creating clean 250x250 square icons for online marketplaces or social profiles requires exact aspect ratio control without squishing your subject. This online image resizer free tool centers and resizes your visuals into crisp square thumbnails instantly. Maintain sharp vector-like lines and rich colors with on-device processing that protects your original creative files.'
+  },
+  'resize-image-to-250x250-pixels': {
+    slug: 'resize-image-to-250x250-pixels',
+    introParagraph: 'Resize image to 250x250 pixels online free with perfect 1:1 square proportions. Tailored for profile avatars, community icons, and e-commerce product thumbnails.',
+    toolDescription: 'Creating clean 250x250 square icons for online marketplaces or social profiles requires exact aspect ratio control without squishing your subject. This online image resizer free tool centers and resizes your visuals into crisp square thumbnails instantly. Maintain sharp vector-like lines and rich colors with on-device processing that protects your original creative files.'
+  },
+  'resize-image-to-250x250-pixels-online-free': {
+    slug: 'resize-image-to-250x250-pixels-online-free',
+    introParagraph: 'Resize image to 250x250 pixels online free with perfect 1:1 square proportions. Tailored for profile avatars, community icons, and e-commerce product thumbnails.',
+    toolDescription: 'Creating clean 250x250 square icons for online marketplaces or social profiles requires exact aspect ratio control without squishing your subject. This online image resizer free tool centers and resizes your visuals into crisp square thumbnails instantly. Maintain sharp vector-like lines and rich colors with on-device processing that protects your original creative files.'
+  },
+  'resize-image-to-300x80': {
+    slug: 'resize-image-to-300x80',
+    introParagraph: 'Resize image to 300x80 pixels online with sharp contrast. Specially engineered for digital signatures, official rubber stamps, and header web elements.',
+    toolDescription: 'Official recruitment portals and banking platforms often demand black-ink signatures scaled strictly to 300x80 dimensions. Our batch image resizer adjusts width and height smoothly while keeping handwritten pen strokes dark and distinct against pure white paper. Avoid blurry signature rejection with safe, client-side browser conversion that never leaks personal data.'
+  },
+  'resize-image-to-300x100': {
+    slug: 'resize-image-to-300x100',
+    introParagraph: 'Resize image to 300x100 pixels online with razor-sharp borders. The premier dimension for exam portal signatures, website micro-banners, and navigation logos.',
+    toolDescription: 'Achieving exact 300x100 dimensions for portal signatures or website navigation graphics is simple and quick with FastToolVerse. This image resizer online tool prevents aspect ratio distortion while keeping text, logos, and signatures crisp and legible. Process all your graphic assets locally in your browser with zero latency and complete privacy.'
+  },
+  'resize-image-to-300x100-pixels': {
+    slug: 'resize-image-to-300x100-pixels',
+    introParagraph: 'Resize image to 300x100 pixels online with razor-sharp borders. The premier dimension for exam portal signatures, website micro-banners, and navigation logos.',
+    toolDescription: 'Achieving exact 300x100 dimensions for portal signatures or website navigation graphics is simple and quick with FastToolVerse. This image resizer online tool prevents aspect ratio distortion while keeping text, logos, and signatures crisp and legible. Process all your graphic assets locally in your browser with zero latency and complete privacy.'
   }
 };
 

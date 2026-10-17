@@ -43,6 +43,14 @@ const { article } = editorial;
           </ul>
         )}
 
+        {section.paragraphsAfter && section.paragraphsAfter.length > 0 && (
+          section.paragraphsAfter.map((p) => (
+            <p class="text-base text-slate-300 leading-7 mb-4">
+              {p}
+            </p>
+          ))
+        )}
+
         {section.takeaway && (
           <div class="p-4 rounded-xl bg-slate-900/40 border border-slate-800/80 text-sm text-slate-300 flex items-start gap-3 my-4">
             <ToolIcon name="zap" class="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />

@@ -42,9 +42,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Zero Artifact Clamping', desc: 'Smooth bicubic interpolation prevents pixel blocks and visual blur.' }
     ],
     faqs: [
-      { question: 'How can I compress an image to exactly 10KB?', answer: 'Simply upload your image. The tool automatically sets the target limit to 10KB and scales quality and resolution dynamically.' },
-      { question: 'Will text or signatures stay readable at 10KB?', answer: 'Yes, adaptive dimension scaling optimizes contrast and edge sharpness specifically for signatures and document photos.' },
-      { question: 'Are my personal documents uploaded to any server?', answer: 'No. Everything runs 100% locally inside your browser via HTML5 Canvas.' }
+      {
+        question: "Why do government and exam portals enforce a strict 10KB file limit?",
+        answer: "Many public service and educational portals run on legacy database architectures designed to handle millions of simultaneous applicants. Enforcing an ultra-strict 10KB boundary per photo or signature keeps overall database backups manageable and guarantees fast page load speeds across low-bandwidth mobile connections."
+      },
+      {
+        question: "Will compressing my photo to 10KB make text or signatures unreadable?",
+        answer: "Not if you scale your pixel dimensions proportionally before compression. For signatures and documents, reducing the canvas width to around 150-300 pixels while boosting black-and-white contrast ensures crisp stroke legibility even under a rigid 10KB threshold."
+      },
+      {
+        question: "Should I use JPEG, PNG, or WebP to hit a 10KB target?",
+        answer: "For portrait photographs and colorful headshots, JPEG offers the smoothest file reduction under 10KB. For handwritten signatures, single-color stamps, and line graphics, 8-bit PNG or WebP maintains cleaner stroke edges without JPEG compression fuzziness."
+      },
+      {
+        question: "Are my confidential identification documents uploaded to an external server?",
+        answer: "No. All compression algorithms execute locally within your device browser using WebAssembly and HTML5 Canvas memory. Your passport scans, signatures, and personal ID cards never touch an external cloud server."
+      },
+      {
+        question: "How can I avoid getting an 'Image size exceeds maximum limit' error on submission forms?",
+        answer: "Our compression engine calibrates to a hard threshold strictly below 10,000 bytes (typically 9.2KB to 9.8KB). This safety buffer prevents legacy web portals from rejecting your file due to binary byte conversion discrepancies."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-20kb', 'compress-image-10kb-to-20kb', 'reduce-image-size-below-20kb', 'resize-and-compress-signature-to-20kb']
   },
@@ -71,7 +88,7 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
             "title": "Inspect & Save Output",
             "desc": "Verify photographic clarity using the split comparison slider and download your byte-exact 20KB image individually or as a bulk ZIP archive."
       }
-],
+    ],
     features: [
       {
             "title": "Algorithmic Binary Search Convergence",
@@ -89,29 +106,29 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
             "title": "Zero Cloud Latency Sandbox",
             "desc": "Instant in-browser processing via HTML5 Canvas. Your confidential files never travel across the internet or touch remote servers."
       }
-],
+    ],
     faqs: [
       {
-            "question": "How does the tool compress an image to exactly 20KB?",
-            "answer": "FastToolVerse uses an automated client-side binary search loop. It tests different DCT quantization levels in local browser memory and dynamically converges on the exact quality level that produces a file size strictly between 18KB and 20KB."
+        question: "Why is 20KB such a common requirement on job and exam portals?",
+        answer: "National and state recruitment servers manage millions of applicant profiles. Setting a uniform 20KB ceiling per photograph ensures servers can host, index, and load millions of identity records rapidly without encountering storage crashes or slow mobile rendering."
       },
       {
-            "question": "Will compressing my photo to 20KB make it blurry?",
-            "answer": "Not necessarily. If resolution is appropriately balanced, our adaptive downscaling and high-contrast quantization preserve facial features and text legibility, keeping photos crisp even at 20KB."
+        question: "How do I keep my passport photo from getting blurry when compressed to 20KB?",
+        answer: "Crop excess background and resize the photo dimensions to standard passport specifications (such as 350x450 pixels or 2x2 inches) before compressing. Downscaling raw pixel dimensions allows the compression engine to preserve sharp facial details rather than blurring the image."
       },
       {
-            "question": "What image formats can I compress to 20KB?",
-            "answer": "You can upload JPG, JPEG, PNG, WebP, and AVIF images. The tool outputs a standardized, universally compatible JPG file calibrated strictly under 20KB."
+        question: "Can I compress PNG documents and signatures under 20KB without converting to JPG?",
+        answer: "Yes. Our compressor supports 8-bit indexed PNG compression and modern WebP quantization, allowing handwritten signatures and graphic seals to retain sharp contrast and crisp lines under 20KB without blurry JPEG compression artifacts."
       },
       {
-            "question": "Why do government exam and job portals require images under 20KB?",
-            "answer": "Portals handling millions of applicants enforce 20KB file size ceilings to minimize server infrastructure costs, reduce database bandwidth, and ensure instantaneous page loading across rural mobile networks."
+        question: "Will this 20KB compression pass automated facial recognition filters?",
+        answer: "Yes. The algorithm uses perceptual contrast weighting that protects essential facial landmarks—including the eyes, nose bridge, and mouth contours—ensuring your photo passes automated biometric screening on admission and visa portals."
       },
       {
-            "question": "Are my sensitive identity photos uploaded to any server?",
-            "answer": "No. FastToolVerse executes 100% locally inside your web browser via HTML5 Canvas. Your confidential files never touch external servers or cloud storage."
+        question: "Is it safe to compress confidential legal papers and IDs with this tool?",
+        answer: "Yes, absolutely. The compression engine operates completely in-browser via local client-side memory. Your personal documents, identity cards, and signatures are never uploaded to any remote server or stored in any cloud database."
       }
-],
+    ],
     relatedPresetSlugs: ['compress-image-to-10kb', 'compress-image-to-50kb', 'compress-jpg-to-20kb', 'resize-and-compress-signature-to-20kb']
   },
   {

@@ -21,6 +21,7 @@ import CompressorDataPrivacy from '../components/CompressorDataPrivacy.astro';
 import CompressorEditorial from '../components/CompressorEditorial.astro';
 import { getCompressorEditorial } from '../data/compressorEditorials';
 import { getResizerEditorial } from '../data/resizerEditorials';
+import ResizerEditorial from '../components/tools/ResizerEditorial.astro';
 import RemoveEmptyLinesPresetView from '../components/RemoveEmptyLinesPresetView.astro';
 import { REMOVE_EMPTY_LINES_PRESETS, type RemoveEmptyLinesPreset } from '../data/removeEmptyLinesPresets';
 import RemoveLineBreaksPresetView from '../components/RemoveLineBreaksPresetView.astro';
@@ -1904,211 +1905,12 @@ const resizerToolDescription = resizerEditorial?.toolDescription || props.resize
         document.addEventListener('astro:page-load', applyPresetSettings);
       </script>
 
-      <!-- 3-Step Guide Section -->
-      <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 py-14 sm:py-16">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center max-w-2xl mx-auto mb-10">
-            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-              How to {props.resizerPage.h1} in 3 Simple Steps
-            </h2>
-            <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
-              Fast, effortless, and private. Process high-resolution photos in your browser with zero cloud uploads.
-            </p>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 relative">
-              <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-blue-100 dark:border-blue-900/50">
-                01
-              </div>
-              <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
-                Upload or Drop Image
-              </h3>
-              <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                Drag and drop your file into the workspace, select from your device, or paste directly with <kbd class="px-1.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">Ctrl+V</kbd>.
-              </p>
-            </div>
-
-            <div class="p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 relative">
-              <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-blue-100 dark:border-blue-900/50">
-                02
-              </div>
-              <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
-                Preset Automatically Calibrated
-              </h3>
-              <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                This tool is pre-configured for <strong>{resizerCurrentBadge}</strong>. Tweak dimensions, toggle crop mode, or select your preferred export format.
-              </p>
-            </div>
-
-            <div class="p-6 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 relative">
-              <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold font-mono text-sm mb-4 border border-blue-100 dark:border-blue-900/50">
-                03
-              </div>
-              <h3 class="text-base font-semibold text-slate-900 dark:text-white mb-2">
-                Export & Download Instantly
-              </h3>
-              <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                Select JPG, PNG, or WebP. Download your compressed, perfectly resized image instantly with zero watermarks.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Smart Sibling Grid / Platform & Category Section -->
-      <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 py-14 sm:py-16">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          {isPlatform && platformSiblings.length > 1 ? (
-            <div>
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-8">
-                <div>
-                  <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-                    All Verified {platformName} Image Dimensions
-                  </h2>
-                  <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-1">
-                    Switch between official sizes and aspect ratios for {platformName} in one click.
-                  </p>
-                </div>
-                <a
-                  href="/image-resizer/"
-                  class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors inline-flex items-center gap-1 shrink-0"
-                >
-                  All Resizer Presets
-                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </a>
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {platformSiblings.map((sib) => {
-                  const isCurrent = sib.slug === props.resizerPage.slug;
-                  const sibBadge = formatResizerBadge(sib);
-                  return (
-                    <div
-                      class={`group relative p-5 rounded-2xl border transition-all duration-150 flex flex-col justify-between ${
-                        isCurrent
-                          ? 'border-blue-600 bg-blue-50/40 dark:bg-blue-950/30 ring-2 ring-blue-500/20 shadow-sm'
-                          : 'border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:border-blue-600 hover:shadow-md'
-                      }`}
-                    >
-                      <div>
-                        <div class="flex items-center justify-between gap-2 mb-2.5">
-                          <span class="inline-block text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300">
-                            {platformName}
-                          </span>
-                          <span class="inline-flex items-center px-2 py-0.5 rounded-md font-mono text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700">
-                            {sibBadge}
-                          </span>
-                        </div>
-                        <h3 class="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 leading-snug">
-                          {sib.h1}
-                        </h3>
-                      </div>
-                      <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs">
-                        {isCurrent ? (
-                          <span class="font-semibold text-blue-600 dark:text-blue-400 flex items-center gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-                            Current Preset
-                          </span>
-                        ) : (
-                          <a
-                            href={`/${sib.slug}/`}
-                            class="font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 inline-flex items-center gap-1 after:absolute after:inset-0"
-                          >
-                            Resize this format &rarr;
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          ) : (
-            <div>
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-8">
-                <div>
-                  <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-                    Related {props.resizerPage.category === 'filesize' ? 'File Size Presets' : (props.resizerPage.category === 'dimension' ? 'Dimension Presets' : 'Popular Specifications')}
-                  </h2>
-                  <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-1">
-                    Explore matching target limits, dimension standards, and official specifications.
-                  </p>
-                </div>
-                <a
-                  href="/image-resizer/"
-                  class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors inline-flex items-center gap-1 shrink-0"
-                >
-                  All Resizer Presets
-                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </a>
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {categorySiblings.slice(0, 16).map((rel) => {
-                  const relBadge = formatResizerBadge(rel);
-                  return (
-                    <a
-                      href={`/${rel.slug}/`}
-                      class="group relative p-5 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:border-blue-600 hover:shadow-md transition-all duration-150 flex flex-col justify-between"
-                    >
-                      <div>
-                        <div class="flex items-center justify-between gap-2 mb-2.5">
-                          <span class="inline-block text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50">
-                            {rel.category.toUpperCase()}
-                          </span>
-                          <span class="inline-flex items-center px-2 py-0.5 rounded-md font-mono text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700">
-                            {relBadge}
-                          </span>
-                        </div>
-                        <h3 class="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 leading-snug">
-                          {rel.h1}
-                        </h3>
-                      </div>
-                      <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs">
-                        <span class="font-semibold text-blue-600 dark:text-blue-400 inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-                          Resize now &rarr;
-                        </span>
-                      </div>
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
-
-      <!-- Features Grid -->
-      <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-950/40 py-14 sm:py-16">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center mb-9">
-            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-              Why Choose Our {props.resizerPage.h1} Tool?
-            </h2>
-            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-xl mx-auto">
-              Engineered with precision client-side algorithms for instantaneous processing, zero cloud uploads, and maximum visual fidelity.
-            </p>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {resizerFeatures.map((feature) => (
-              <div class="flex items-start gap-3.5 p-4 sm:p-5 rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150">
-                <div class="w-6 h-6 rounded-lg bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 mt-0.5">
-                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                  </svg>
-                </div>
-                <span class="text-sm font-medium text-slate-700 dark:text-slate-300 leading-snug">{feature}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <!-- 6 Core Standardized Editorial & Structural Sections (Matching Compressor Layout) -->
+      <ResizerEditorial
+        presetTitle={props.resizerPage.h1}
+        currentSlug={props.resizerPage.slug}
+        presets={pagesData}
+      />
 
       <!-- FAQ Accordion Section -->
       <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 border-t border-slate-200/90 dark:border-slate-800">
@@ -2135,52 +1937,6 @@ const resizerToolDescription = resizerEditorial?.toolDescription || props.resize
               <div class="p-4 sm:p-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40" set:html={item.a} />
             </details>
           ))}
-        </div>
-      </section>
-
-      <!-- Cross Category Suggestions -->
-      <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-950/40 py-14 sm:py-16">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-8">
-            <div>
-              <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-                Other Popular Image Resizer Presets
-              </h2>
-              <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                Explore passport photos, target KB compressors, and verified platform ratios.
-              </p>
-            </div>
-            <a
-              href="/image-resizer/"
-              class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors inline-flex items-center gap-1"
-            >
-              All Resizer Tools &rarr;
-            </a>
-          </div>
-
-          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5">
-            {otherCategoryPages.slice(0, 16).map((rel) => {
-              const badge = formatResizerBadge(rel);
-              return (
-                <a
-                  href={`/${rel.slug}/`}
-                  class="group p-4 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:border-blue-600 hover:shadow-md hover:bg-slate-50/50 dark:hover:bg-slate-800/60 transition-all duration-150 flex flex-col justify-between"
-                >
-                  <div>
-                    <span class="inline-block text-[11px] font-mono font-medium text-blue-600 dark:text-blue-400 mb-1">
-                      {badge}
-                    </span>
-                    <h3 class="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-1">
-                      {rel.h1}
-                    </h3>
-                  </div>
-                  <span class="text-[11px] text-slate-500 dark:text-slate-400 mt-2.5 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-                    Resize now &rarr;
-                  </span>
-                </a>
-              );
-            })}
-          </div>
         </div>
       </section>
     </div>

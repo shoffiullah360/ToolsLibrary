@@ -444,7 +444,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Zero Fees', desc: 'Forever free utility.' }
     ],
     faqs: [
-      { question: 'Can I convert 50KB to 80KB?', answer: 'Compression reduces file size; to keep maximum quality under 80KB, upload high-res images.' }
+      {
+        question: "Why do job and licensing portals frequently use an 80KB file restriction?",
+        answer: "An 80KB limit provides an ideal compromise between high visual sharpness and fast database performance. It gives reviewers ample detail for biometric and visual inspection, while keeping total server storage low during peak registration surges."
+      },
+      {
+        question: "How do I compress a large camera photo to 80KB without blurring facial details?",
+        answer: "Crop excess background space around your shoulders and head, then scale the canvas dimensions to standard portrait proportions (around 500x600 pixels) before compressing. This eliminates millions of surplus pixels naturally, keeping your facial features crisp."
+      },
+      {
+        question: "Will an 80KB compressed photo print clearly on official ID cards?",
+        answer: "Yes. An 80KB file preserves sharp outlines, natural skin tones, and clear contrast, ensuring your photo prints cleanly on laminated badges, admit cards, and certificates without distortion."
+      },
+      {
+        question: "Can I compress scanned certificates and signatures down to 80KB?",
+        answer: "Yes. The tool maintains high contrast between dark ink lines and white document backgrounds, ensuring signatures and scanned text stay solid, dark, and completely legible."
+      },
+      {
+        question: "Are my sensitive identity documents and photos safe from external leaks?",
+        answer: "Yes, absolutely. The compression operates strictly inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing total privacy."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-50kb', 'compress-image-to-100kb', 'compress-image-to-60kb']
   },
@@ -470,8 +489,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Format Conversion', desc: 'Export easily to JPG, PNG, or WebP.' }
     ],
     faqs: [
-      { question: 'How to reduce image size below 100KB?', answer: 'Select this preset and upload your image; the system automatically outputs below 100KB.' },
-      { question: 'Can I compress multiple images to 100KB?', answer: 'Yes, drop up to 15 images and download all at once.' }
+      {
+        question: "Why is 100KB considered the universal benchmark for web and document uploads?",
+        answer: "A 100KB limit provides the perfect balance between high visual clarity and lightweight data transfer. It loads almost instantaneously across mobile devices, ensures emails deliver reliably, and offers sufficient resolution for clear digital viewing and printing."
+      },
+      {
+        question: "How can I reduce a heavy camera photo down to 100KB without losing sharpness?",
+        answer: "Crop away excess background scenery and downscale canvas dimensions to realistic display proportions (such as 600x800 pixels) before compressing. This removes millions of excess pixels naturally, allowing the compression tool to keep essential details crisp."
+      },
+      {
+        question: "Is 100KB high enough quality for website product images and blogs?",
+        answer: "Yes. Modern compression algorithms retain rich color depth and sharp edge definition at 100KB, allowing website images to load quickly on mobile devices while looking clean and professional on high-resolution screens."
+      },
+      {
+        question: "Can I compress transparent PNG graphics to 100KB without losing transparency?",
+        answer: "Yes. Our tool optimizes PNG palettes and supports modern WebP quantization, reducing file weight to 100KB while preserving clean alpha transparency and sharp vector-like borders."
+      },
+      {
+        question: "Are my personal photographs uploaded to any cloud storage or database?",
+        answer: "No. The entire compression process takes place locally inside your browser using client-side technology. Your files are never uploaded to our servers and are never shared or stored externally."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-50kb', 'compress-image-to-200kb', 'compress-jpg-to-100kb', 'compress-png-to-100kb']
   },

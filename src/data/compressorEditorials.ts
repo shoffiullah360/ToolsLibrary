@@ -284,7 +284,6 @@ export const COMPRESSOR_EDITORIALS: Record<string, CompressorEditorial> = {
     "title": "Compress Image to 20KB",
     "badge": "Strict 20 KB Target",
     "targetKb": 20,
-    "maintainAspectRatio": true,
     "introParagraph": "Compress your JPG, PNG, or WebP images strictly under 20KB online with client-side binary search quantization and zero visual quality loss.",
     "toolDescription": "FastToolVerse's 20KB image compressor utilizes a multi-pass binary search loop that dynamically quantizes Discrete Cosine Transform coefficients right inside your browser memory heap. The system converges on exactly 20KB without requiring trial-and-error slider adjustments, trimming excess file headers and compressing photographic data while preserving vital edge clarity, natural contrast, and legible text.",
     "steps": [
@@ -1155,7 +1154,6 @@ export const COMPRESSOR_EDITORIALS: Record<string, CompressorEditorial> = {
     "title": "Compress Image to 50KB",
     "badge": "Universal 50 KB Standard",
     "targetKb": 50,
-    "maintainAspectRatio": true,
     "introParagraph": "Compress digital photos to 50KB online with exact byte-level precision, rich color fidelity, and guaranteed compliance for universal web portals.",
     "toolDescription": "This 50KB image compressor provides the optimal compromise between crisp visual resolution and strict file size restrictions across passport offices, corporate portals, and university admissions. Operating 100% client-side in HTML5 Canvas, our engine removes bulky EXIF tags, executes adaptive chrominance subsampling, and guarantees output stays under 50KB with zero server latency or privacy exposure.",
     "steps": [

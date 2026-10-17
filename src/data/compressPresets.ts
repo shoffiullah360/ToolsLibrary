@@ -1074,7 +1074,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Fast Export', desc: 'Single file or ZIP.' }
     ],
     faqs: [
-      { question: 'Can I keep high resolution under 200KB?', answer: 'Yes, smart quantization preserves resolution while removing unnecessary binary data.' }
+      {
+        question: "Why do some platforms require images to stay between 100KB and 200KB?",
+        answer: "This range ensures visual assets maintain high graphical clarity on modern displays while preventing server storage strain and slow network transfer speeds."
+      },
+      {
+        question: "How do I ensure an uncompressed camera photo lands between 100KB and 200KB?",
+        answer: "Crop unnecessary margins and resize dimensions to around 900x1200 pixels before compressing. Our tool calibrates output to settle around 140KB–170KB for guaranteed compliance."
+      },
+      {
+        question: "Will an image compressed to 100KB-200KB look sharp when printed on paper?",
+        answer: "Yes. Files within this bracket retain ample resolution, high color fidelity, and clean contrast, ensuring crisp printing on marketing brochures and official documentation."
+      },
+      {
+        question: "Can I compress transparent PNG assets into this bracket without losing alpha transparency?",
+        answer: "Yes. Our tool optimizes PNG color palettes and supports modern WebP quantization, cutting file weight below 200KB while preserving clean alpha transparency and sharp vector-like outlines."
+      },
+      {
+        question: "Are my sensitive documents uploaded to any cloud server?",
+        answer: "No. All compression operations run locally inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing total confidentiality."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-100kb', 'compress-image-to-200kb', 'image-50kb-to-100kb']
   },
@@ -1100,7 +1119,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Free Unlimited', desc: 'Use as many times as needed.' }
     ],
     faqs: [
-      { question: 'Will my file be rejected if it is exactly 20KB?', answer: 'No, our algorithm sets the boundary slightly below 20KB to ensure guaranteed approval.' }
+      {
+        question: "Why do public exam portals demand images below 20KB?",
+        answer: "Portals enforce a 20KB maximum ceiling to ensure fast processing for millions of applicants and prevent server crashes during high-traffic deadlines."
+      },
+      {
+        question: "How do I compress my passport picture below 20KB without blurriness?",
+        answer: "Crop your picture closely around your head and shoulders, then resize canvas dimensions to standard passport proportions (around 300x400 pixels) before compressing. This naturally preserves facial details."
+      },
+      {
+        question: "Will a photo compressed below 20KB pass automated biometric screening?",
+        answer: "Yes. Our tool optimizes file weight while protecting essential facial features—such as eyes, nose bridge, and mouth contours—ensuring your photo passes automated verification checks."
+      },
+      {
+        question: "Can I compress black-and-white signatures below 20KB with high contrast?",
+        answer: "Yes. The tool maintains clean, dark pen strokes against a solid white background, eliminating blurry gray compression noise."
+      },
+      {
+        question: "Is it safe to compress confidential legal papers and IDs with this tool?",
+        answer: "Yes, absolutely. The compression engine operates completely in-browser via local client-side memory. Your personal documents and signatures are never uploaded to any remote server."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-20kb', 'compress-image-to-10kb', 'resize-and-compress-signature-to-20kb']
   },
@@ -1126,7 +1164,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Fast & Free', desc: 'Instant batch export.' }
     ],
     faqs: [
-      { question: 'How to reduce image size below 50KB?', answer: 'Upload your photo here; the 50KB hard cap is applied automatically.' }
+      {
+        question: "Why is keeping image size below 50KB required for visas and passports?",
+        answer: "A sub-50KB limit keeps institutional storage lightweight while preserving enough facial landmark data for automated biometric verification and high-resolution physical printing."
+      },
+      {
+        question: "How can I downscale a smartphone photo below 50KB without losing facial sharpness?",
+        answer: "Crop your picture closely around your head and shoulders, resize canvas dimensions to standard passport proportions (around 350x450 pixels), and compress. This naturally preserves facial details."
+      },
+      {
+        question: "Will a photo optimized below 50KB pass automated embassy validators?",
+        answer: "Yes. Our compression algorithm preserves essential facial landmarks—such as eyes, nose bridge, and lip lines—ensuring your photo passes both automated embassy validators and manual inspections."
+      },
+      {
+        question: "Can I compress black-ink signatures below 50KB without gray fuzzy edges?",
+        answer: "Yes. By maintaining high contrast between dark ink lines and the white paper background, the tool produces clean, crisp signatures without blurry JPEG compression artifacts."
+      },
+      {
+        question: "Are my sensitive identity documents stored on your servers?",
+        answer: "No. All compression operations run locally inside your browser's private memory heap using client-side technology. Your photos and personal files never touch an external cloud server."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-50kb', 'compress-jpg-to-50kb', 'passport-photo-compressor-to-50kb']
   },
@@ -1155,7 +1212,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Batch Processing', desc: 'Convert multiple JPGs at once.' }
     ],
     faqs: [
-      { question: 'Can I compress JPEG to 20KB?', answer: 'Yes, JPEG and JPG use the same encoding and are fully supported.' }
+      {
+        question: "Why do government and exam portals specify JPG format along with a 20KB limit?",
+        answer: "JPG is universally supported across all database software and operating systems, and a 20KB limit prevents server overloads while preserving facial clarity."
+      },
+      {
+        question: "How do I compress a high-resolution JPG to 20KB without blocky pixelation?",
+        answer: "Crop your picture closely around your head and shoulders, resize canvas dimensions to standard passport proportions (around 350x450 pixels), and run compression. This eliminates surplus raw pixel data naturally."
+      },
+      {
+        question: "Will my 20KB JPG photo pass automated facial recognition screening?",
+        answer: "Yes. Our tool optimizes file weight while protecting essential facial features—such as eyes, nose bridge, and mouth contours—ensuring your photo passes automated verification checks."
+      },
+      {
+        question: "Can I compress black-and-white JPG signatures under 20KB?",
+        answer: "Yes. The tool maintains clean contrast between dark pen strokes and the white background, ensuring your signature remains crisp, dark, and completely legible."
+      },
+      {
+        question: "Are my JPG documents and personal photos uploaded to an external server?",
+        answer: "No. All compression operations run locally inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing total confidentiality."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-20kb', '40kb-jpg-converter', 'compress-jpg-to-50kb']
   },

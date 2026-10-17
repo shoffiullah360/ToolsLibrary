@@ -894,7 +894,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'No Watermarks', desc: 'Clean, professional files.' }
     ],
     faqs: [
-      { question: 'What if portal requires photo between 10kb and 20kb?', answer: 'This preset specifically tunes the output file size to sit right in this sweet spot.' }
+      {
+        question: "Why do some exam portals reject photos that are smaller than 10KB?",
+        answer: "Portals enforce a 10KB minimum limit to prevent applicants from submitting excessively compressed, illegible photos. A file under 10KB often lacks the facial detail needed for printed hall tickets and automated facial recognition."
+      },
+      {
+        question: "How do I ensure my compressed photo lands between 10KB and 20KB on the first attempt?",
+        answer: "Crop excess background so your head and shoulders fill 75% of the frame, resize canvas dimensions to standard passport proportions (around 300x400 pixels), and set the compressor. Our tool specifically calibrates the output to settle around 14KB–18KB for guaranteed compliance."
+      },
+      {
+        question: "Can I compress black-ink digital signatures within this 10KB to 20KB range?",
+        answer: "Yes. The tool easily preserves high contrast between black ink pen strokes and pure white paper backgrounds, ensuring your signature remains crisp, dark, and completely legible within the required range."
+      },
+      {
+        question: "Will an image calibrated between 10KB and 20KB print clearly on physical admit cards?",
+        answer: "Yes. Photos within this bracket maintain sharp facial contours, clear eye details, and balanced contrast, ensuring they print cleanly on laminated badges, admit cards, and test documents without pixelated blur."
+      },
+      {
+        question: "Are my sensitive identity papers and photos uploaded to an external server?",
+        answer: "No. All compression operations run locally inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing complete confidentiality."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-10kb', 'compress-image-to-20kb', 'resize-and-compress-signature-to-20kb']
   },
@@ -920,7 +939,26 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
       { title: 'Zero Latency', desc: 'Instant local compression.' }
     ],
     faqs: [
-      { question: 'Why do portals require 20kb to 50kb?', answer: 'To ensure readable resolution while keeping database records compact.' }
+      {
+        question: "Why do visa and civil service portals reject photos smaller than 20KB?",
+        answer: "Portals enforce a 20KB minimum to guarantee that the image has enough clarity and pixel information for automated biometric recognition and clear physical printing on official visa stickers and ID cards."
+      },
+      {
+        question: "How do I ensure my photo falls reliably inside the 20KB to 50KB bracket?",
+        answer: "Crop your picture closely around your head and shoulders, resize canvas dimensions to around 400x500 pixels, and run compression. The tool calibrates the output to settle comfortably around 30KB–40KB, guaranteeing that your upload satisfies both limits."
+      },
+      {
+        question: "Will an image compressed between 20KB and 50KB pass automated visa photo validation?",
+        answer: "Yes. Our compression algorithm preserves critical facial landmarks—such as eyes, nose bridge, and lip lines—ensuring your photo passes both automated embassy validators and manual document inspections."
+      },
+      {
+        question: "Can I compress black-ink signatures and thumb impressions within this 20KB to 50KB range?",
+        answer: "Yes. The tool maintains clean, dark pen strokes against a solid white background, eliminating blurry compression halos and keeping signatures completely legible."
+      },
+      {
+        question: "Are my sensitive identity documents and photographs safe from server storage?",
+        answer: "Yes, absolutely. The compression operates strictly inside your browser's private memory heap using client-side technology. Your files never touch an external cloud server, guaranteeing total privacy."
+      }
     ],
     relatedPresetSlugs: ['compress-image-to-20kb', 'compress-image-to-50kb', 'compress-jpg-to-50kb']
   },

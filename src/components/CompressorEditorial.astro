@@ -15,68 +15,50 @@ const { article } = editorial;
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="space-y-10">
       
-      <!-- Article Header -->
-      <header class="text-left border-b border-slate-200 dark:border-slate-800 pb-8">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900/50 mb-3.5 shadow-2xs">
-          <ToolIcon name="zap" class="w-3.5 h-3.5" />
-          <span>Technical Editorial & Optimization Guide</span>
-        </div>
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
-          {article.h2}
-        </h2>
-        <p class="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-4xl">
-          {article.intro}
-        </p>
-      </header>
+      {article.sections.map((section, idx) => (
+        <article class="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-900/40 shadow-sm">
+          {idx === 0 ? (
+            <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
+              {section.h2 || article.h2}
+            </h2>
+          ) : (
+            <h3 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-3">
+              {section.h3 || section.h2}
+            </h3>
+          )}
 
-      <!-- Structured Editorial Sections -->
-      <div class="space-y-8">
-        {article.sections.map((section, idx) => (
-          <article class="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-900/40 shadow-sm">
-            {section.h2 && (
-              <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
-                {section.h2}
-              </h3>
-            )}
-            {section.h3 && (
-              <h4 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mb-3">
-                {section.h3}
+          {section.paragraphs.map((p) => (
+            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+              {p}
+            </p>
+          ))}
+
+          {section.checklist && section.checklist.length > 0 && (
+            <div class="border-t border-slate-200 dark:border-slate-800/80 pt-5 mt-2">
+              <h4 class="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">
+                Key Technical Guidelines
               </h4>
-            )}
-
-            <div class="space-y-4 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-              {section.paragraphs.map((p) => (
-                <p>{p}</p>
-              ))}
+              <ul class="space-y-2.5">
+                {section.checklist.map((item) => (
+                  <li class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                    <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 font-bold text-xs shrink-0 mt-0.5 border border-blue-100 dark:border-blue-900/50">✓</span>
+                    <span class="leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
+          )}
 
-            {section.checklist && section.checklist.length > 0 && (
-              <div class="mt-6 pt-5 border-t border-slate-200 dark:border-slate-800/80">
-                <h5 class="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">
-                  Technical Checklist & Requirements
-                </h5>
-                <ul class="space-y-2.5">
-                  {section.checklist.map((item) => (
-                    <li class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-                      <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 font-bold text-xs shrink-0 mt-0.5 border border-blue-100 dark:border-blue-900/50">✓</span>
-                      <span class="leading-relaxed">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+          {section.takeaway && (
+            <div class="p-4 rounded-xl bg-blue-50/70 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/40 text-xs sm:text-sm text-blue-900 dark:text-blue-200 flex items-start gap-3 mt-4">
+              <ToolIcon name="zap" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
+              <div>
+                <strong class="font-semibold">{section.takeaway.title}:</strong> {section.takeaway.text}
               </div>
-            )}
-
-            {section.takeaway && (
-              <div class="mt-6 p-4 rounded-xl bg-blue-50/70 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/40 text-xs sm:text-sm text-blue-900 dark:text-blue-200 flex items-start gap-3">
-                <ToolIcon name="shield-check" class="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
-                <div>
-                  <strong class="font-semibold">{section.takeaway.title}:</strong> {section.takeaway.text}
-                </div>
-              </div>
-            )}
-          </article>
-        ))}
-      </div>
+            </div>
+          )}
+        </article>
+      ))}
 
     </div>
   </div>

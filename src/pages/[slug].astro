@@ -1622,7 +1622,7 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
         </div>
       </section>
 
-      <!-- Section 5: "Why Use Our Image Compressor" (4 feature benefit cards) -->
+      <!-- 5. WHY USE OUR COMPRESSOR: Grid of feature highlights -->
       <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 py-14 sm:py-16">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-10">
@@ -1658,53 +1658,81 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
         </div>
       </section>
 
-      <!-- Section 6: Official Portal / Format Specifications Table -->
-      <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 py-14 sm:py-16">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center mb-10 max-w-2xl mx-auto">
+      <!-- 6. POPULAR PRESETS GRID: Popular Image Compression Presets (Moved UP right after Why Use) -->
+      <section class="border-t border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950/40 py-14 sm:py-18">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-10">
             <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-              {compressEditorial.specMatrix.title}
+              Popular Image Compression Presets
             </h2>
-            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2">
-              {compressEditorial.specMatrix.subtitle}
+            <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
+              Direct compression configurations pre-configured for speed, exact byte limits, and local privacy.
             </p>
           </div>
 
-          <div class="overflow-x-auto rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
-            <table class="w-full text-left text-xs sm:text-sm">
-              <thead class="bg-slate-100/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 font-semibold border-b border-slate-200 dark:border-slate-700">
-                <tr>
-                  <th class="p-3.5 sm:p-4">{compressEditorial.specMatrix.columns[0]}</th>
-                  <th class="p-3.5 sm:p-4">{compressEditorial.specMatrix.columns[1]}</th>
-                  <th class="p-3.5 sm:p-4">{compressEditorial.specMatrix.columns[2]}</th>
-                  <th class="p-3.5 sm:p-4">{compressEditorial.specMatrix.columns[3]}</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
-                {compressEditorial.specMatrix.rows.map((row: any) => (
-                  <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/40 transition-colors">
-                    <td class="p-3.5 sm:p-4 font-semibold text-slate-900 dark:text-white whitespace-nowrap">
-                      {row.param}
-                    </td>
-                    <td class="p-3.5 sm:p-4 text-slate-600 dark:text-slate-300 font-mono text-xs">
-                      {row.requirement}
-                    </td>
-                    <td class="p-3.5 sm:p-4 text-blue-600 dark:text-blue-400 font-mono text-xs font-semibold">
-                      {row.setting}
-                    </td>
-                    <td class="p-3.5 sm:p-4 text-slate-500 dark:text-slate-400 text-xs">
-                      {row.note}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            {relatedPresetsList.map((rel) => (
+              <a
+                href={`/${rel.slug}/`}
+                class="group p-3 sm:p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-sm transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <div class="flex items-center justify-between gap-2 mb-2">
+                    <span class="inline-block text-[11px] font-semibold px-2 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50">
+                      {rel.badge}
+                    </span>
+                    {rel.targetKb && (
+                      <span class="inline-flex items-center px-1.5 py-0.5 rounded font-mono text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+                        &le; {rel.targetKb} KB
+                      </span>
+                    )}
+                  </div>
+                  <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug">
+                    {rel.title}
+                  </h3>
+                  <p class="mt-1.5 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">
+                    {rel.introDescription}
+                  </p>
+                </div>
+                <span class="mt-3 text-[11px] sm:text-xs font-semibold text-blue-600 dark:text-blue-400 inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                  Compress image &rarr;
+                </span>
+              </a>
+            ))}
+          </div>
+
+          <!-- Quick Standard Presets Bar -->
+          <div class="mt-8 p-4 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm dark:bg-slate-900/60 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+            <span class="font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+              <ToolIcon name="zap" class="w-3.5 h-3.5 text-blue-500" />
+              Direct Standard Targets:
+            </span>
+            <div class="flex flex-wrap gap-2">
+              <a href="/compress-image-to-20kb/" class="px-2.5 py-1 rounded-lg font-mono font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-blue-600 hover:text-blue-600 transition">
+                20 KB
+              </a>
+              <a href="/compress-image-to-50kb/" class="px-2.5 py-1 rounded-lg font-mono font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-blue-600 hover:text-blue-600 transition">
+                50 KB
+              </a>
+              <a href="/compress-image-to-100kb/" class="px-2.5 py-1 rounded-lg font-mono font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-blue-600 hover:text-blue-600 transition">
+                100 KB
+              </a>
+              <a href="/compress-image-to-200kb/" class="px-2.5 py-1 rounded-lg font-mono font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-blue-600 hover:text-blue-600 transition">
+                200 KB
+              </a>
+              <a href="/compress-image-to-500kb/" class="px-2.5 py-1 rounded-lg font-mono font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-blue-600 hover:text-blue-600 transition">
+                500 KB
+              </a>
+              <a href="/compress-image-to-1mb/" class="px-2.5 py-1 rounded-lg font-mono font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-blue-600 hover:text-blue-600 transition">
+                1 MB
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Section 7: "Why FastToolVerse is Better Than..." Detailed Comparison Table -->
-      <section class="border-t border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950 py-14 sm:py-16">
+      <!-- 7. WHY FASTTOOLVERSE IS BETTER THAN: The full comparison table with checkmarks/crosses styled identically to the converter comparison matrix -->
+      <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 py-14 sm:py-16">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-10 max-w-2xl mx-auto">
             <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -1720,7 +1748,7 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
               <thead class="bg-slate-100/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 font-semibold border-b border-slate-200 dark:border-slate-700">
                 <tr>
                   <th class="p-3.5 sm:p-4">{compressEditorial.comparisonTable.columns[0]}</th>
-                  <th class="p-3.5 sm:p-4 text-blue-600 dark:text-blue-400">{compressEditorial.comparisonTable.columns[1]}</th>
+                  <th class="p-3.5 sm:p-4 text-blue-600 dark:text-blue-400 font-bold">{compressEditorial.comparisonTable.columns[1]}</th>
                   <th class="p-3.5 sm:p-4 text-slate-500 dark:text-slate-400">{compressEditorial.comparisonTable.columns[2]}</th>
                   <th class="p-3.5 sm:p-4">{compressEditorial.comparisonTable.columns[3]}</th>
                 </tr>
@@ -1731,13 +1759,19 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
                     <td class="p-3.5 sm:p-4 font-semibold text-slate-900 dark:text-white whitespace-nowrap">
                       {row.feature}
                     </td>
-                    <td class="p-3.5 sm:p-4 text-blue-600 dark:text-blue-400 text-xs font-semibold">
-                      {row.fastToolVerse}
+                    <td class="p-3.5 sm:p-4 text-slate-700 dark:text-slate-200 text-xs">
+                      <div class="flex items-start gap-2">
+                        <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 font-bold text-[10px] shrink-0 mt-0.5 border border-emerald-200 dark:border-emerald-800">✓</span>
+                        <span class="font-medium">{row.fastToolVerse}</span>
+                      </div>
                     </td>
                     <td class="p-3.5 sm:p-4 text-slate-500 dark:text-slate-400 text-xs">
-                      {row.genericTools}
+                      <div class="flex items-start gap-2">
+                        <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-rose-100 dark:bg-rose-950 text-rose-600 dark:text-rose-400 font-bold text-[10px] shrink-0 mt-0.5 border border-rose-200 dark:border-rose-800">✕</span>
+                        <span>{row.genericTools}</span>
+                      </div>
                     </td>
-                    <td class="p-3.5 sm:p-4 text-slate-700 dark:text-slate-300 text-xs font-medium">
+                    <td class="p-3.5 sm:p-4 text-slate-600 dark:text-slate-300 text-xs font-medium">
                       {row.takeaway}
                     </td>
                   </tr>
@@ -1748,13 +1782,13 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
         </div>
       </section>
 
-      <!-- Section 8: "Engineered for Privacy, Speed, and Color Accuracy" technical breakdown block -->
+      <!-- 8. ENGINEERED FOR PRIVACY, SPEED, AND COLOR ACCURACY: 3 clean visual feature cards styled identically to converter layout -->
       <CompressorPrivacyBrief />
 
-      <!-- Section 9: Comprehensive 900+ words SEO Article naturally embedding keywords without fluff -->
+      <!-- 9. 800-1200 WORDS SEO EDITORIAL ARTICLE: Clean reading container matching converter article -->
       <CompressorEditorial editorial={compressEditorial} />
 
-      <!-- Section 10: Intent-Targeted FAQ Accordion (5 Q&As with valid schema.org/FAQPage JSON-LD) -->
+      <!-- 10. FREQUENTLY ASKED QUESTIONS (FAQ): 5 clean accordion items -->
       <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 border-t border-slate-200/90 dark:border-slate-800">
         <div class="text-center mb-10">
           <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -1770,13 +1804,13 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
             <details class="group rounded-2xl bg-white border border-slate-300 shadow-sm hover:shadow-md hover:border-blue-600 dark:bg-slate-900/60 dark:border-slate-800 overflow-hidden transition-all duration-150">
               <summary class="flex items-center justify-between p-4 sm:p-5 font-semibold text-sm sm:text-base text-slate-900 dark:text-white cursor-pointer select-none bg-slate-100/70 dark:bg-slate-800/60 transition-colors">
                 <span>{faq.question}</span>
-                <span class="ml-4 flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 group-open:rotate-180 transition-transform duration-200 shrink-0">
-                  <svg class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                <span class="ml-4 shrink-0 p-1 rounded-full text-slate-400 group-open:rotate-180 transition-transform duration-200">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                   </svg>
                 </span>
               </summary>
-              <div class="p-4 sm:p-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-200 dark:border-slate-800/80 bg-white dark:bg-slate-900/40">
+              <div class="p-4 sm:p-5 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800">
                 {faq.answer}
               </div>
             </details>
@@ -1784,85 +1818,41 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
         </div>
       </section>
 
-      <!-- Section 11: Related Compression Presets Cloud -->
-      <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 py-14 sm:py-16">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-8">
-            <div>
-              <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-                Related Compression Presets
-              </h2>
-              <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-1">
-                Explore matching file size limits, government form specs, and format converters.
-              </p>
-            </div>
+      <!-- Bottom: Explore Related Image Utilities Row (Matching Converter Exactly) -->
+      <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-950/40 py-12 sm:py-16">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-6">
+            Explore Related Image Utilities
+          </h3>
+          <div class="flex flex-wrap justify-center gap-3">
             <a
-              href="/image-compressor/"
-              class="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors inline-flex items-center gap-1 shrink-0"
+              href="/image-resizer/"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-600 hover:shadow-md transition-all duration-150 shadow-sm"
             >
-              All Compressor Tools &rarr;
+              <ToolIcon name="maximize-2" class="w-4 h-4 text-blue-500" />
+              <span>Image Resizer</span>
             </a>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {relatedPresetsList.map((rel) => (
-              <a
-                href={`/${rel.slug}/`}
-                class="group relative p-5 rounded-2xl bg-white border border-slate-300 shadow-sm hover:shadow-md hover:border-blue-600 dark:bg-slate-900/60 dark:border-slate-800 transition-all duration-150 flex flex-col justify-between"
-              >
-                <div>
-                  <div class="flex items-center justify-between gap-2 mb-2.5">
-                    <span class="inline-block text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50">
-                      {rel.badge}
-                    </span>
-                    {rel.targetKb && (
-                      <span class="inline-flex items-center px-2 py-0.5 rounded-md font-mono text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700">
-                        &le; {rel.targetKb} KB
-                      </span>
-                    )}
-                  </div>
-                  <h3 class="text-sm font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 leading-snug">
-                    {rel.title}
-                  </h3>
-                  <p class="text-xs text-slate-600 dark:text-slate-400 mt-1.5 line-clamp-2 leading-relaxed">
-                    {rel.introDescription}
-                  </p>
-                </div>
-                <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs">
-                  <span class="font-semibold text-blue-600 dark:text-blue-400 inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-                    Compress image &rarr;
-                  </span>
-                </div>
-              </a>
-            ))}
-          </div>
-
-          <!-- Quick Standard Presets Bar -->
-          <div class="mt-8 p-4 rounded-2xl bg-white border border-slate-300 shadow-sm dark:bg-slate-900/60 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs">
-            <span class="font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-              <ToolIcon name="zap" class="w-3.5 h-3.5 text-blue-500" />
-              Direct Standard Targets:
-            </span>
-            <div class="flex flex-wrap gap-2">
-              <a href="/compress-image-to-20kb/" class="px-2.5 py-1 rounded-lg font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-blue-600 transition">
-                20 KB
-              </a>
-              <a href="/compress-image-to-50kb/" class="px-2.5 py-1 rounded-lg font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-blue-600 transition">
-                50 KB
-              </a>
-              <a href="/compress-image-to-100kb/" class="px-2.5 py-1 rounded-lg font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-blue-600 transition">
-                100 KB
-              </a>
-              <a href="/compress-image-to-200kb/" class="px-2.5 py-1 rounded-lg font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-blue-600 transition">
-                200 KB
-              </a>
-              <a href="/compress-image-to-500kb/" class="px-2.5 py-1 rounded-lg font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-blue-600 transition">
-                500 KB
-              </a>
-              <a href="/compress-image-to-1mb/" class="px-2.5 py-1 rounded-lg font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-blue-600 transition">
-                1 MB
-              </a>
-            </div>
+            <a
+              href="/image-converter/"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-600 hover:shadow-md transition-all duration-150 shadow-sm"
+            >
+              <ToolIcon name="repeat" class="w-4 h-4 text-emerald-500" />
+              <span>Image Converter</span>
+            </a>
+            <a
+              href="/image-cropper/"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-600 hover:shadow-md transition-all duration-150 shadow-sm"
+            >
+              <ToolIcon name="crop" class="w-4 h-4 text-purple-500" />
+              <span>Image Cropper</span>
+            </a>
+            <a
+              href="/image-rotator/"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-blue-600 hover:shadow-md transition-all duration-150 shadow-sm"
+            >
+              <ToolIcon name="rotate-cw" class="w-4 h-4 text-cyan-500" />
+              <span>Image Rotator</span>
+            </a>
           </div>
         </div>
       </section>

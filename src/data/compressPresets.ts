@@ -1825,3 +1825,7 @@ export const COMPRESS_PRESETS: CompressPreset[] = [
     relatedPresetSlugs: ['bulk-image-size-reducer-in-kb', 'compress-image-to-20kb', 'batch-image-compressor-online']
   }
 ];
+
+export const IMAGE_COMPRESSOR_PRESETS = COMPRESS_PRESETS;
+export const compressPresets = COMPRESS_PRESETS;
+

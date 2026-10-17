@@ -6,9 +6,10 @@ import ImageConverter from '../components/tools/ImageConverter.astro';
 import WhyUseImageConverter from '../components/WhyUseImageConverter.astro';
 import SupportedImageFormats from '../components/SupportedImageFormats.astro';
 import PopularImageConversionTools from '../components/PopularImageConversionTools.astro';
+import PopularImageCompressionPresets from '../components/PopularImageCompressionPresets.astro';
 import ToolIcon from '../components/ToolIcon.astro';
 import rawPagesData from '../data/resizer-pages.json';
-import { COMPRESS_PRESETS, type CompressPreset } from '../data/compressPresets';
+import { COMPRESS_PRESETS, IMAGE_COMPRESSOR_PRESETS, type CompressPreset } from '../data/compressPresets';
 import { CONVERTER_PRESETS, type ConverterPreset } from '../data/converterPresets';
 import { getPresetIntentDescription } from '../data/intentDescriptions';
 import ConversionPrivacyBrief from '../components/ConversionPrivacyBrief.astro';
@@ -449,17 +450,8 @@ if (props.type === 'compress' && props.compressPreset) {
     }))
   };
 
-  // Find related presets matching relatedPresetSlugs
-  const explicitRelated = COMPRESS_PRESETS.filter((p) =>
-    preset.relatedPresetSlugs.includes(p.slug)
-  );
-
-  // Fill up to 4 if fewer specified
-  const additionalRelated = COMPRESS_PRESETS.filter(
-    (p) => p.slug !== preset.slug && !preset.relatedPresetSlugs.includes(p.slug)
-  ).slice(0, Math.max(0, 4 - explicitRelated.length));
-
-  relatedPresetsList = [...explicitRelated, ...additionalRelated];
+  // Provide all presets for presets section
+  relatedPresetsList = COMPRESS_PRESETS;
 }
 
 // ==========================================
@@ -1659,77 +1651,7 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
       </section>
 
       <!-- 6. POPULAR PRESETS GRID: Popular Image Compression Presets (Moved UP right after Why Use) -->
-      <section class="border-t border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950/40 py-14 sm:py-18">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center max-w-2xl mx-auto mb-10">
-            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-              Popular Image Compression Presets
-            </h2>
-            <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
-              Direct compression configurations pre-configured for speed, exact byte limits, and local privacy.
-            </p>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-            {relatedPresetsList.map((rel) => (
-              <a
-                href={`/${rel.slug}/`}
-                class="group p-3 sm:p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-sm transition-all flex flex-col justify-between"
-              >
-                <div>
-                  <div class="flex items-center justify-between gap-2 mb-2">
-                    <span class="inline-block text-[11px] font-semibold px-2 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50">
-                      {rel.badge}
-                    </span>
-                    {rel.targetKb && (
-                      <span class="inline-flex items-center px-1.5 py-0.5 rounded font-mono text-[11px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
-                        &le; {rel.targetKb} KB
-                      </span>
-                    )}
-                  </div>
-                  <h3 class="text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug">
-                    {rel.title}
-                  </h3>
-                  <p class="mt-1.5 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">
-                    {rel.introDescription}
-                  </p>
-                </div>
-                <span class="mt-3 text-[11px] sm:text-xs font-semibold text-blue-600 dark:text-blue-400 inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-                  Compress image &rarr;
-                </span>
-              </a>
-            ))}
-          </div>
-
-          <!-- Quick Standard Presets Bar -->
-          <div class="mt-8 p-4 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm dark:bg-slate-900/60 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs">
-            <span class="font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-              <ToolIcon name="zap" class="w-3.5 h-3.5 text-blue-500" />
-              Direct Standard Targets:
-            </span>
-            <div class="flex flex-wrap gap-2">
-              <a href="/compress-image-to-20kb/" class="px-2.5 py-1 rounded-lg font-mono font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-blue-600 hover:text-blue-600 transition">
-                20 KB
-              </a>
-              <a href="/compress-image-to-50kb/" class="px-2.5 py-1 rounded-lg font-mono font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-blue-600 hover:text-blue-600 transition">
-                50 KB
-              </a>
-              <a href="/compress-image-to-100kb/" class="px-2.5 py-1 rounded-lg font-mono font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-blue-600 hover:text-blue-600 transition">
-                100 KB
-              </a>
-              <a href="/compress-image-to-200kb/" class="px-2.5 py-1 rounded-lg font-mono font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-blue-600 hover:text-blue-600 transition">
-                200 KB
-              </a>
-              <a href="/compress-image-to-500kb/" class="px-2.5 py-1 rounded-lg font-mono font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-blue-600 hover:text-blue-600 transition">
-                500 KB
-              </a>
-              <a href="/compress-image-to-1mb/" class="px-2.5 py-1 rounded-lg font-mono font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-blue-600 hover:text-blue-600 transition">
-                1 MB
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PopularImageCompressionPresets presets={IMAGE_COMPRESSOR_PRESETS} />
 
       <!-- 7. WHY FASTTOOLVERSE IS BETTER THAN: The full comparison table with checkmarks/crosses styled identically to the converter comparison matrix -->
       <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 py-14 sm:py-16">

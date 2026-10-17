@@ -4,6 +4,7 @@ import ImageResizer from '../components/tools/ImageResizer.astro';
 import ImageCompressor from '../components/tools/ImageCompressor.astro';
 import ImageConverter from '../components/tools/ImageConverter.astro';
 import WhyUseImageConverter from '../components/WhyUseImageConverter.astro';
+import WhyUseImageCompressor from '../components/WhyUseImageCompressor.astro';
 import SupportedImageFormats from '../components/SupportedImageFormats.astro';
 import PopularImageConversionTools from '../components/PopularImageConversionTools.astro';
 import PopularImageCompressionPresets from '../components/PopularImageCompressionPresets.astro';
@@ -1586,41 +1587,8 @@ const converterEditorial = props.type === 'converter' && props.converterPreset ?
         </div>
       </section>
 
-      <!-- 5. WHY USE OUR COMPRESSOR: Grid of feature highlights -->
-      <section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 py-14 sm:py-16">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center mb-10">
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/50 mb-3">
-              <ToolIcon name="shield-check" class="w-3.5 h-3.5" />
-              <span>Optimized Compression Specifications</span>
-            </div>
-            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-              Why Use Our Image Compressor for {props.compressPreset.title}?
-            </h2>
-            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-xl mx-auto">
-              Precision client-side binary search quantization guarantees exact byte compliance with zero quality blur.
-            </p>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            {compressEditorial.features.map((feature: any) => (
-              <div class="p-5 rounded-2xl bg-white border border-slate-300 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 dark:bg-slate-900/60 dark:border-slate-800 flex items-start gap-3.5">
-                <div class="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 mt-0.5">
-                  <ToolIcon name={feature.icon || "zap"} class="w-4 h-4" />
-                </div>
-                <div>
-                  <h4 class="text-sm font-semibold text-slate-900 dark:text-white">
-                    {feature.title}
-                  </h4>
-                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                    {feature.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <!-- 5. WHY USE OUR COMPRESSOR: 6-card 3-column feature grid -->
+      <WhyUseImageCompressor presetTitle={props.compressPreset.title} />
 
       <!-- 6. POPULAR PRESETS GRID: Popular Image Compression Presets (Moved UP right after Why Use) -->
       <PopularImageCompressionPresets presets={IMAGE_COMPRESSOR_PRESETS} />

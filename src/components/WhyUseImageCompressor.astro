@@ -1,0 +1,91 @@
+---
+// src/components/WhyUseImageCompressor.astro
+
+interface Props {
+  presetTitle?: string;
+}
+
+const { presetTitle } = Astro.props;
+const heading = presetTitle ? `Why Use Our Image Compressor for ${presetTitle}?` : "Why Use Our Image Compressor?";
+---
+
+<section class="border-t border-slate-200/90 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 py-14 sm:py-16">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+        {heading}
+      </h2>
+      <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2 max-w-xl mx-auto">
+        Precision client-side binary search quantization guarantees exact byte compliance with zero quality blur.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Card 1: Lightning-Fast Compression -->
+      <div class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-sm hover:border-slate-300 dark:hover:border-slate-700 transition-colors">
+        <div class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60 flex items-center justify-center mb-4 text-slate-700 dark:text-slate-300">
+          <svg class="w-5 h-5 text-blue-500 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <h3 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-white mb-2">Lightning-Fast Compression</h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Photos compress directly inside your web browser using your device CPU and WebAssembly. Because files never travel across the internet to a remote queue, your compression finishes in milliseconds without waiting for upload progress bars.</p>
+      </div>
+
+      <!-- Card 2: Exact Byte Quantization -->
+      <div class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-sm hover:border-slate-300 dark:hover:border-slate-700 transition-colors">
+        <div class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60 flex items-center justify-center mb-4 text-slate-700 dark:text-slate-300">
+          <svg class="w-5 h-5 text-blue-500 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-white mb-2">Exact Byte Quantization</h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Advanced binary search algorithms calibrate output file size strictly under your specified target KB ceiling. Never worry about form rejections or size overshoots when submitting portal documents or uploading web banners.</p>
+      </div>
+
+      <!-- Card 3: 100% In-Browser Privacy -->
+      <div class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-sm hover:border-slate-300 dark:hover:border-slate-700 transition-colors">
+        <div class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60 flex items-center justify-center mb-4 text-slate-700 dark:text-slate-300">
+          <svg class="w-5 h-5 text-emerald-500 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+        </div>
+        <h3 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-white mb-2">100% In-Browser Privacy</h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Your files never touch external servers or third-party cloud storage. All image encoding stays confined to your private local device memory, guaranteeing complete data confidentiality for sensitive IDs and documents.</p>
+      </div>
+
+      <!-- Card 4: Artifact-Free Visual Clarity -->
+      <div class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-sm hover:border-slate-300 dark:hover:border-slate-700 transition-colors">
+        <div class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60 flex items-center justify-center mb-4 text-slate-700 dark:text-slate-300">
+          <svg class="w-5 h-5 text-purple-500 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+          </svg>
+        </div>
+        <h3 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-white mb-2">Artifact-Free Visual Clarity</h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Adaptive perceptual frequency weighting preserves critical edges, facial features, text sharpness, and high-frequency details while intelligently discarding invisible metadata and redundant pixel data.</p>
+      </div>
+
+      <!-- Card 5: High-Throughput Batch Queue -->
+      <div class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-sm hover:border-slate-300 dark:hover:border-slate-700 transition-colors">
+        <div class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60 flex items-center justify-center mb-4 text-slate-700 dark:text-slate-300">
+          <svg class="w-5 h-5 text-indigo-500 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+          </svg>
+        </div>
+        <h3 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-white mb-2">High-Throughput Batch Queue</h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Queue up to 15 images simultaneously to compress entire photo shoots or document bundles in parallel. Save time with uniform optimization rules and download everything in a single organized ZIP archive.</p>
+      </div>
+
+      <!-- Card 6: Universal Format Support -->
+      <div class="bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-sm hover:border-slate-300 dark:hover:border-slate-700 transition-colors">
+        <div class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60 flex items-center justify-center mb-4 text-slate-700 dark:text-slate-300">
+          <svg class="w-5 h-5 text-amber-500 dark:text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <h3 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-white mb-2">Universal Format Support</h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Compress and optimize across all modern and legacy web formats including JPG, PNG, WebP, and AVIF. Retain full alpha transparency on PNGs or downsample to modern next-gen formats seamlessly.</p>
+      </div>
+    </div>
+  </div>
+</section>

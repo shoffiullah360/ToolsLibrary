@@ -1959,24 +1959,24 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
     },
     "faqs": [
       {
-        "question": "Does WebP support transparent backgrounds like PNG?",
-        "answer": "Yes. WebP provides full 8-bit alpha transparency support, allowing transparent logos and graphics to look identical to PNG at a fraction of the file size."
+        "question": "Will converting PNG to WebP keep transparent backgrounds intact?",
+        "answer": "Yes. WebP natively supports alpha transparency, and our converter preserves the complete see-through background of your PNG graphics without adding black or white borders."
       },
       {
-        "question": "How much smaller is WebP compared to PNG?",
-        "answer": "WebP typically reduces file size by 30% to 40% compared to PNG for transparent graphics, and up to 70% for photographic content."
+        "question": "How much file size reduction can I expect when converting PNG to WebP?",
+        "answer": "In most cases, converting a PNG to WebP reduces file size by 50% to 80% while maintaining identical visual clarity and sharpness."
       },
       {
         "question": "Do all modern web browsers support WebP images?",
-        "answer": "Yes. Chrome, Safari, Firefox, Edge, and mobile browsers support WebP, covering more than 98% of global internet users."
+        "answer": "Yes. All modern browsers including Google Chrome, Apple Safari, Mozilla Firefox, and Microsoft Edge provide full native support for WebP images on both desktop and mobile."
       },
       {
-        "question": "Will converting PNG to WebP reduce image sharpness?",
-        "answer": "Our engine applies balanced high-efficiency quantization that preserves sharp typographic edges, icons, and transparent graphic contours."
+        "question": "Can I convert multiple PNG images into WebP at the same time?",
+        "answer": "Yes. Our batch conversion engine allows you to drop multiple PNG files into the tool and convert them all to WebP simultaneously directly inside your browser."
       },
       {
-        "question": "Can I convert multiple PNG files at once?",
-        "answer": "Yes. You can queue up to 15 PNG images simultaneously and download all converted WebP files in a single ZIP package."
+        "question": "Are my proprietary branding files uploaded to external cloud servers?",
+        "answer": "No. All conversion operations execute locally inside your web browser memory using client-side technology. Your files never touch an external server, guaranteeing total privacy."
       }
     ],
     "relatedLinks": [
@@ -2109,24 +2109,24 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
     },
     "faqs": [
       {
-        "question": "How much file size reduction can I expect from JPG to WebP?",
-        "answer": "Converting JPG to WebP typically reduces image file size by 25% to 35% at visually identical quality levels, improving site load times."
+        "question": "How much smaller will my JPG photo be after converting to WebP?",
+        "answer": "Converting a JPG to WebP typically reduces file size by 30% to 50% while maintaining virtually identical visual sharpness and color accuracy."
       },
       {
-        "question": "Will converting JPG to WebP improve my Google PageSpeed score?",
-        "answer": "Yes. Google PageSpeed and Lighthouse explicitly audit websites for next-generation image formats like WebP to pass Core Web Vitals."
+        "question": "Will converting a JPG to WebP cause noticeable quality loss?",
+        "answer": "No. Our converter employs modern predictive compression techniques that preserve fine textures, natural lighting, and sharp edge contrast without noticeable degradation."
       },
       {
-        "question": "Will photographic colors look washed out in WebP?",
-        "answer": "No. WebP preserves sRGB color gamut data and contrast gradients accurately, ensuring photos look natural across all displays."
+        "question": "Can I convert an entire folder of JPG photos to WebP at once?",
+        "answer": "Yes. Our batch conversion system allows you to drop multiple JPG pictures into the tool and convert them all to WebP simultaneously directly inside your browser."
       },
       {
-        "question": "Is conversion performed securely on my device?",
-        "answer": "Yes. All compression and encoding run 100% in your local browser sandbox. Your images are never uploaded to any remote server."
+        "question": "Can I open WebP images on Windows or Mac computers?",
+        "answer": "Yes. Modern operating systems including Windows 10/11 and macOS natively display WebP images, and all modern web browsers support them out of the box."
       },
       {
-        "question": "Can I convert up to 15 photos in a single batch?",
-        "answer": "Yes. You can upload up to 15 JPG files at once and download them individually or as a consolidated ZIP file."
+        "question": "Are my private personal photos uploaded to remote servers during conversion?",
+        "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
       }
     ],
     "relatedLinks": [
@@ -2259,24 +2259,24 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
     },
     "faqs": [
       {
-        "question": "Will the extracted PNG icon have a transparent background?",
-        "answer": "Yes. Modern ICO files store 32-bit ARGB bitmaps. Our converter preserves the full alpha transparency channel in the extracted PNG."
+        "question": "Will converting an ICO file to PNG keep the transparent background?",
+        "answer": "Yes. Our converter fully preserves the alpha channel transparency of your icon, ensuring the extracted PNG graphic retains its clean, see-through background."
       },
       {
-        "question": "Which icon resolution does the converter extract?",
-        "answer": "Our engine extracts the highest resolution bitmap available inside the ICO container, typically 64x64, 128x128, or 256x256 pixels."
+        "question": "Which icon size is extracted when converting an ICO file to PNG?",
+        "answer": "ICO files often contain multiple icon sizes (such as 16x16, 32x32, 48x48, and 256x256); our converter automatically extracts the highest-resolution version available inside the container."
       },
       {
-        "question": "Can I edit the converted PNG in graphic software like Photoshop?",
-        "answer": "Yes. PNG is universally supported by all graphic editors, allowing you to resize, modify, and recolor the icon easily."
+        "question": "Why can I not open ICO files in standard image editing software?",
+        "answer": "ICO is a specialized container format designed for Windows system icons and browser favicons; most photo editors require universal formats like PNG to edit visual layers."
       },
       {
-        "question": "Are my application icons safe from third-party interception?",
-        "answer": "Yes. All parsing and PNG extraction occur entirely in client-side memory. No files are transmitted to external servers."
+        "question": "Can I convert multiple ICO files into PNG at the same time?",
+        "answer": "Yes. You can drag and drop a whole batch of ICO files into the tool to extract and download all your icons as PNGs simultaneously in your browser."
       },
       {
-        "question": "Can I batch convert multiple ICO files at once?",
-        "answer": "Yes. You can queue up to 15 icon files simultaneously and download all converted PNGs in a single ZIP package."
+        "question": "Are my custom application icons uploaded to an external server?",
+        "answer": "No. The entire extraction process takes place locally inside your browser memory. Your proprietary artwork never leaves your device, guaranteeing total privacy."
       }
     ],
     "relatedLinks": [
@@ -2409,24 +2409,24 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
     },
     "faqs": [
       {
-        "question": "What is the best image resolution to convert from PNG to ICO?",
-        "answer": "A square image of 256x256 or 512x512 pixels with a transparent background works best. The converter scales the image into standard icon dimensions."
+        "question": "Will converting a PNG to ICO keep the transparent background intact?",
+        "answer": "Yes. Our converter fully preserves the alpha channel transparency of your PNG logo, ensuring your resulting icon floats cleanly without an unwanted background box."
       },
       {
-        "question": "Will my website favicon have a transparent background?",
-        "answer": "Yes. If your input PNG has transparency, the resulting ICO file retains the transparent background for browser tabs and bookmarks."
+        "question": "Can I use the converted ICO file as a website favicon?",
+        "answer": "Yes. The generated ICO file is fully compliant with web standards and can be named favicon.ico and placed in your website root folder for instant browser recognition."
       },
       {
-        "question": "How do I add the converted ICO file to my website?",
-        "answer": "Place the file in your website root as favicon.ico and include <link rel=\"icon\" href=\"/favicon.ico\"> inside your HTML <head>."
+        "question": "What dimensions are best for creating an icon from a PNG?",
+        "answer": "We recommend uploading a clean, square PNG image of at least 256x256 pixels with bold shapes, ensuring the generated icon looks sharp across both small browser tabs and large desktop shortcuts."
       },
       {
-        "question": "Are my brand logos uploaded to any server during conversion?",
-        "answer": "No. All icon compilation is handled entirely within client-side browser memory. Your brand assets remain strictly on your machine."
+        "question": "Can I convert multiple PNG graphics into ICO files simultaneously?",
+        "answer": "Yes. Our batch conversion engine allows you to drop multiple PNG files into the tool and convert them all to ICO format together directly in your browser."
       },
       {
-        "question": "Can I convert multiple PNG logos into ICO at once?",
-        "answer": "Yes. You can queue up to 15 PNG files at a time and download them individually or as a single ZIP archive."
+        "question": "Are my proprietary branding logos uploaded to external servers?",
+        "answer": "No. All conversion operations execute locally inside your web browser sandbox using your own device hardware. Your files never touch an external cloud server, guaranteeing complete confidentiality."
       }
     ],
     "relatedLinks": [

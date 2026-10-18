@@ -9935,26 +9935,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why convert an SVG file into a PDF document?",
-        "answer": "While SVG is designed for web browsers, commercial printing services, legal archives, and enterprise document workflows require fixed-layout PDF files with standardized page margins, print color profiles, and multi-page pagination."
-      },
-      {
-        "question": "Does the converted PDF maintain vector sharpness when zoomed in?",
-        "answer": "Yes! Vector path definitions, curves, and text outlines are preserved as native PDF vector objects, ensuring infinite sharpness at any zoom level or print scale."
-      },
-      {
-        "question": "Can I combine multiple SVG files into a single PDF document?",
-        "answer": "Yes, you can upload up to 15 SVG files simultaneously and our converter will compile them into an ordered, single multi-page PDF document."
-      },
-      {
-        "question": "Are my confidential designs uploaded to any remote server?",
-        "answer": "No. The entire conversion executes locally inside your web browser using WebAssembly. Your files never leave your device."
-      },
-      {
-        "question": "Can the converted PDF be printed on standard paper sizes?",
-        "answer": "Yes, the converted document is formatted with standard margins compatible with Letter and A4 printers worldwide."
-      }
+          {
+                "question": "Does converting an SVG to PDF preserve vector paths and scalability?",
+                "answer": "Yes. Our converter maintains the mathematical vector paths, curves, and typography of your SVG, ensuring the resulting PDF can be zoomed infinitely and printed at razor-sharp quality."
+          },
+          {
+                "question": "How are transparent backgrounds in SVG handled inside the PDF?",
+                "answer": "Transparent SVG backgrounds are cleanly composited over standard solid white document pages, ensuring your artwork appears natural and ready for immediate printing."
+          },
+          {
+                "question": "Can I combine multiple SVG files into a multi-page PDF document?",
+                "answer": "Yes. You can drop multiple SVG files into the upload queue to assemble them sequentially into a single, organized multi-page PDF document in your browser."
+          },
+          {
+                "question": "What page size is used when converting an SVG to PDF?",
+                "answer": "The converter automatically scales your vector graphic neatly onto standard document boundaries, maintaining original aspect ratios while ensuring clean printable margins."
+          },
+          {
+                "question": "Are my proprietary vector branding files uploaded to external servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {
@@ -10091,26 +10091,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why convert SVG to ICO instead of using SVG directly as a favicon?",
-        "answer": "While modern browsers support SVG favicons, legacy browsers, Windows desktop shortcuts, taskbar shortcuts, and root favicon.ico requests demand standard Microsoft ICO containers bundling multiple resolutions (16x16, 32x32, 48x48)."
-      },
-      {
-        "question": "What resolutions are bundled into the converted ICO file?",
-        "answer": "Our converter generates standard icon resolutions including 16x16 (browser tabs), 32x32 (taskbar and desktop icons), and 48x48 pixels (large explorer icons)."
-      },
-      {
-        "question": "Does the converted ICO file preserve transparent backgrounds?",
-        "answer": "Yes! Alpha transparency from the source SVG is preserved across all generated icon sizes, ensuring clean silhouettes on light and dark operating system themes."
-      },
-      {
-        "question": "Are my brand logos uploaded to any remote server?",
-        "answer": "No. All conversion operations run 100% locally inside your web browser using WebAssembly. Your files remain completely private."
-      },
-      {
-        "question": "Should my source SVG graphic be square before converting?",
-        "answer": "Yes, for the cleanest icon presentation without stretching, a square source SVG graphic (e.g. 1:1 aspect ratio) is recommended."
-      }
+          {
+                "question": "Will converting an SVG to ICO preserve transparent backgrounds?",
+                "answer": "Yes. Our converter fully preserves the alpha channel transparency of your SVG vector, ensuring your resulting icon floats cleanly without an unwanted solid box."
+          },
+          {
+                "question": "Can I use the converted ICO file as a website favicon?",
+                "answer": "Yes. The generated ICO file is fully compliant with web standards and can be placed in your website root directory as favicon.ico for instant recognition across all browsers."
+          },
+          {
+                "question": "Why should I convert my SVG logo to ICO?",
+                "answer": "While modern browsers support SVG favicons, older browsers, bookmark bars, and Windows desktop shortcuts strictly require standard ICO containers."
+          },
+          {
+                "question": "Can I convert multiple SVG graphics to ICO simultaneously?",
+                "answer": "Yes. Our batch conversion engine allows you to drop multiple SVG files into the tool dropzone to convert and download them all as ICO files simultaneously in your browser."
+          },
+          {
+                "question": "Are my proprietary vector branding logos uploaded to external servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {
@@ -10247,26 +10247,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why convert WebP to ICO instead of using WebP as a favicon?",
-        "answer": "While modern browsers support various favicon formats, traditional favicon.ico files located in the root of web servers and Windows desktop shortcuts require the standard ICO container structure containing multiple pixel resolutions (16x16, 32x32, 48x48)."
-      },
-      {
-        "question": "What resolutions are included in the converted ICO file?",
-        "answer": "Our converter generates standard icon resolutions including 16x16 (browser tabs), 32x32 (taskbar and desktop icons), and 48x48 pixels (large explorer icons)."
-      },
-      {
-        "question": "Does the converted ICO file maintain transparency from WebP?",
-        "answer": "Yes! Alpha transparency from the source WebP is preserved across all generated icon sizes, ensuring clean silhouettes on light and dark operating system themes."
-      },
-      {
-        "question": "Are my company logos uploaded to any remote server?",
-        "answer": "No. All conversion operations run 100% locally inside your web browser using WebAssembly. Your files remain completely private."
-      },
-      {
-        "question": "Should my source WebP image be square before converting?",
-        "answer": "Yes, for the cleanest icon presentation without stretching, a square source image (e.g., 256x256 or 512x512 pixels) is recommended."
-      }
+          {
+                "question": "Will converting a WebP file to ICO preserve transparent backgrounds?",
+                "answer": "Yes. Our converter fully decodes the alpha channel transparency in your WebP graphic, ensuring your resulting ICO icon floats cleanly without an unwanted solid box."
+          },
+          {
+                "question": "Can I use the converted ICO file as a website favicon?",
+                "answer": "Yes. The generated ICO file is fully compliant with web standards and can be placed in your website root directory as favicon.ico for instant recognition across all browsers."
+          },
+          {
+                "question": "What dimensions are best for creating an icon from a WebP image?",
+                "answer": "Uploading a square image (such as 256x256 or 512x512 pixels) with bold shapes ensures that downscaled icon layers remain legible and sharp across small browser tabs."
+          },
+          {
+                "question": "Can I convert multiple WebP graphics to ICO simultaneously?",
+                "answer": "Yes. Our batch conversion engine allows you to drop multiple WebP files into the tool dropzone to convert and download them all as ICO files simultaneously in your browser."
+          },
+          {
+                "question": "Are my proprietary branding logos uploaded to external servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {
@@ -10403,26 +10403,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why convert a GIF into a PDF document?",
-        "answer": "GIF files lack fixed print margins and page boundaries. Converting GIF to PDF allows web diagrams, presentation graphics, and frame captures to be printed cleanly or shared in formal office documentation."
-      },
-      {
-        "question": "Can I combine multiple GIF images into a single PDF document?",
-        "answer": "Yes, you can upload up to 15 GIF files simultaneously and our converter will compile them into an ordered, single multi-page PDF document."
-      },
-      {
-        "question": "Will animated GIFs retain their animation inside a PDF?",
-        "answer": "Standard PDF documents are static print-oriented containers. The converter extracts and renders the primary high-resolution frame of the GIF into the PDF document page."
-      },
-      {
-        "question": "Are my sensitive documents uploaded to external servers?",
-        "answer": "No. All PDF generation executes 100% in client memory using WebAssembly. Your files never travel across the internet."
-      },
-      {
-        "question": "Can the converted PDF be printed on standard office paper?",
-        "answer": "Yes, the converted document is formatted with standard margins compatible with Letter and A4 printers worldwide."
-      }
+          {
+                "question": "What happens if I convert an animated GIF to a PDF?",
+                "answer": "The converter extracts the primary high-resolution still frame of the animation and places it cleanly onto a standard printable PDF document page."
+          },
+          {
+                "question": "Can I combine multiple GIF files into a single PDF document?",
+                "answer": "Yes. Our tool allows you to upload multiple GIF images at once and assemble them sequentially into a single, organized multi-page PDF document."
+          },
+          {
+                "question": "How are transparent GIF backgrounds handled inside the PDF?",
+                "answer": "Transparent GIF areas are automatically composited onto a clean, solid white page background, matching standard document paper standards without black box distortions."
+          },
+          {
+                "question": "What page layout and margins are applied inside the PDF?",
+                "answer": "The converter fits your images neatly onto standard document boundaries, preserving the original aspect ratio while ensuring clean margins for printing."
+          },
+          {
+                "question": "Are my uploaded GIF files or graphics sent to external servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {

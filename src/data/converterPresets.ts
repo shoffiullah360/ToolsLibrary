@@ -6191,26 +6191,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why convert Nikon NEF to PNG instead of JPG?",
-        "answer": "PNG utilizes lossless compression, meaning no optical details or color tones are discarded. If you plan to crop, retouch, color-grade, or mask your Nikon captures in design tools like Figma or Photoshop, PNG prevents lossy compression artifacts."
-      },
-      {
-        "question": "Will converting NEF to PNG reduce resolution or megapixel count?",
-        "answer": "No. The full sensor pixel grid (e.g. 24 MP, 45.7 MP) is maintained 1:1 during demosaicing and PNG generation."
-      },
-      {
-        "question": "Are my Nikon RAW files uploaded to an online server?",
-        "answer": "No. All conversion operations run 100% inside your local browser memory using client-side WebAssembly. Your files never touch remote cloud servers."
-      },
-      {
-        "question": "Can I convert multiple Nikon NEF files at once?",
-        "answer": "Yes, you can queue up to 15 NEF captures simultaneously and download the converted PNG images individually or bundled in an organized ZIP archive."
-      },
-      {
-        "question": "How large are PNG files converted from Nikon NEF?",
-        "answer": "Because PNG stores uncompressed truecolor pixel arrays with lossless DEFLATE compression, converted files typically range from 20 MB to 60 MB depending on sensor resolution."
-      }
+{
+                "question": "Does converting a Nikon NEF file to PNG cause quality degradation?",
+                "answer": "No. PNG is a lossless format that reconstructs the full pixel data and tonal range from your Nikon sensor without introducing compression blur or noise."
+          },
+          {
+                "question": "Can I edit transparent backgrounds once my NEF file is converted to PNG?",
+                "answer": "Yes. Converting to PNG provides full alpha channel transparency support, allowing you to easily cut out portraits or isolate subjects in photo editing software."
+          },
+          {
+                "question": "Why is the converted PNG file larger than a JPG?",
+                "answer": "PNG stores uncompressed pixel information and complete color depth to support lossless editing, naturally resulting in a larger file than a compressed JPG."
+          },
+          {
+                "question": "Can I convert multiple Nikon NEF files to PNG simultaneously?",
+                "answer": "Yes. Our batch conversion engine allows you to drop multiple NEF files into the tool and convert them all to PNG simultaneously in your browser."
+          },
+          {
+                "question": "Are my original Nikon raw camera files uploaded to external cloud servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {
@@ -6347,26 +6347,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why can't I open Sony ARW files directly on my phone or tablet?",
-        "answer": "ARW is Sony's proprietary RAW format containing raw sensor readings rather than finished RGB pixels. Mobile operating systems and standard web browsers require camera-specific codecs or RAW converters like this tool to render ARW files as JPG images."
-      },
-      {
-        "question": "Does converting ARW to JPG decrease image resolution?",
-        "answer": "No. The full sensor pixel grid (e.g. 24 MP, 33 MP, 61 MP on the A7R series) is maintained 1:1 during demosaicing and JPEG encoding."
-      },
-      {
-        "question": "Are my private Sony photos uploaded to an external server?",
-        "answer": "No. The entire decoding, tone-mapping, and encoding pipeline runs locally in your web browser via WebAssembly. Your files never leave your device."
-      },
-      {
-        "question": "Which Sony Alpha cameras produce ARW raw files?",
-        "answer": "ARW is used across Sony's mirrorless and DSLR lineup, including the A7 series (A7 III, A7 IV, A7R V, A7S III), A9, A1, A6000 series (A6400, A6700), and ZV-E10."
-      },
-      {
-        "question": "Can I convert multiple Sony ARW files in a single batch?",
-        "answer": "Yes, you can upload up to 15 ARW files in a single queue and download the converted JPG files individually or as a consolidated ZIP package."
-      }
+{
+                "question": "Why will my computer not open Sony ARW raw files?",
+                "answer": "ARW is Sony's proprietary raw sensor format that requires specialized camera codecs or darkroom software; converting to JPG ensures immediate double-click viewing on any device."
+          },
+          {
+                "question": "Will converting Sony ARW to JPG wash out color tones?",
+                "answer": "No. Our converter maps sensor color data into standard sRGB color space with smooth tonal curves, preserving rich contrast, lifelike skin tones, and balanced highlights."
+          },
+          {
+                "question": "How much smaller will my Sony photo file be after converting to JPG?",
+                "answer": "Converting an uncompressed 45MB Sony ARW file to JPG typically reduces file size by 85% to 90%, freeing up significant storage space and speeding up file sharing."
+          },
+          {
+                "question": "Can I convert multiple Sony ARW files at once?",
+                "answer": "Yes. Our batch conversion engine allows you to drop multiple ARW files into the tool and convert them all to JPG simultaneously in your browser."
+          },
+          {
+                "question": "Are my original Sony Alpha raw photos uploaded to external servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {
@@ -6503,26 +6503,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why convert Sony ARW to PNG instead of JPG?",
-        "answer": "PNG utilizes lossless compression, meaning no optical details or color tones are discarded. If you plan to crop, retouch, color-grade, or mask your Sony captures in design tools like Figma or Photoshop, PNG prevents lossy compression artifacts."
-      },
-      {
-        "question": "Will converting ARW to PNG reduce resolution or megapixel count?",
-        "answer": "No. The full sensor pixel grid (e.g. 24 MP, 33 MP, 61 MP) is maintained 1:1 during demosaicing and PNG generation."
-      },
-      {
-        "question": "Are my Sony RAW files uploaded to an online server?",
-        "answer": "No. All conversion operations run 100% inside your local browser memory using client-side WebAssembly. Your files never touch remote cloud servers."
-      },
-      {
-        "question": "Can I convert multiple Sony ARW files at once?",
-        "answer": "Yes, you can queue up to 15 ARW captures simultaneously and download the converted PNG images individually or bundled in an organized ZIP archive."
-      },
-      {
-        "question": "How large are PNG files converted from Sony ARW?",
-        "answer": "Because PNG stores uncompressed truecolor pixel arrays with lossless DEFLATE compression, converted files typically range from 25 MB to 75 MB depending on sensor resolution."
-      }
+{
+                "question": "Does converting Sony ARW to PNG cause any quality degradation?",
+                "answer": "No. PNG is a lossless format that stores every pixel value with mathematical precision, ensuring your Sony raw details remain pristine without compression artifacts."
+          },
+          {
+                "question": "Can I edit transparent backgrounds once my ARW file is converted to PNG?",
+                "answer": "Yes. Converting to PNG provides full alpha transparency support, making it simple to cut out subjects or remove backgrounds in design software like Photoshop or Canva."
+          },
+          {
+                "question": "Why is the resulting PNG file size larger than a JPG?",
+                "answer": "PNG preserves 100% uncompressed pixel data and full color fidelity, which creates larger, higher-quality master files compared to lossy compressed JPGs."
+          },
+          {
+                "question": "Can I convert multiple Sony ARW files to PNG simultaneously?",
+                "answer": "Yes. Our batch conversion system allows you to drop multiple ARW files into the tool and convert them all to PNG simultaneously in your browser."
+          },
+          {
+                "question": "Are my original Sony raw camera files uploaded to external cloud servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {
@@ -6659,26 +6659,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "What is an Adobe DNG file?",
-        "answer": "Digital Negative (DNG) is an open-standard, archival raw image format created by Adobe to unify incompatible camera manufacturer RAW files (like CR2, NEF, ARW). Many modern drones, smartphones (including Apple ProRAW), and cameras save directly in DNG."
-      },
-      {
-        "question": "Can this tool convert iPhone Apple ProRAW photos to JPG?",
-        "answer": "Yes! Apple ProRAW files are saved in 12-bit linear DNG format. Our browser engine parses the ProRAW container and renders standard, shareable JPEG photos instantly."
-      },
-      {
-        "question": "Are my DNG photos uploaded to remote servers?",
-        "answer": "No. The entire decoding, tone-mapping, and encoding pipeline runs locally in your web browser via WebAssembly. Your files never leave your device."
-      },
-      {
-        "question": "Does converting DNG to JPG reduce image resolution?",
-        "answer": "No. The full sensor pixel grid (e.g. 12 MP, 24 MP, 48 MP, or 100 MP) is maintained 1:1 during demosaicing and JPEG encoding."
-      },
-      {
-        "question": "Can I convert multiple DNG files simultaneously?",
-        "answer": "Yes, you can queue up to 15 DNG files in a single batch and download them individually or as a single consolidated ZIP archive."
-      }
+{
+                "question": "What is a DNG file and why do I need to convert it to JPG?",
+                "answer": "DNG is Adobe's open digital camera raw format used by drones, high-end smartphones, and cameras; converting to JPG makes your photos universally viewable and shareable across all everyday devices."
+          },
+          {
+                "question": "Does converting DNG to JPG reduce the dynamic range or color quality?",
+                "answer": "No. Our converter maps sensor color data into standard sRGB color space with smooth tonal curves, preserving rich contrast, lifelike skin tones, and balanced highlights."
+          },
+          {
+                "question": "How much storage space does converting DNG to JPG save?",
+                "answer": "Converting an uncompressed 50MB DNG file to JPG typically reduces file size by 85% to 90%, turning bulky files into lightweight, easy-to-share 4MB to 6MB images."
+          },
+          {
+                "question": "Can I convert Apple ProRAW DNG files to JPG with this tool?",
+                "answer": "Yes. Our converter fully supports Apple ProRAW DNG captures, extracting the primary high-resolution image into a clean, universally viewable JPG."
+          },
+          {
+                "question": "Are my high-resolution DNG files uploaded to external cloud servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {

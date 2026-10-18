@@ -8687,26 +8687,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why convert iPhone HEIC photos to AVIF instead of JPG?",
-        "answer": "While JPG increases file size by 2x to 3x, AVIF matches the extreme compression efficiency and 10-bit color depth of HEIC while providing native rendering across modern web browsers without requiring paid Windows codecs."
-      },
-      {
-        "question": "Is AVIF royalty-free unlike HEIC?",
-        "answer": "Yes! HEIC is burdened by complex MPEG H.265 licensing patent pools, which is why web browsers cannot render it. AVIF is an open, royalty-free standard created by Google, Apple, Mozilla, and Microsoft."
-      },
-      {
-        "question": "Are my personal iPhone photos uploaded to remote servers?",
-        "answer": "No. The entire decoding and AV1 encoding pipeline executes locally inside your web browser via WebAssembly. Your photos never leave your device."
-      },
-      {
-        "question": "Does AVIF preserve the high dynamic range (HDR) of iPhone photos?",
-        "answer": "Yes, AVIF supports up to 10-bit and 12-bit color pipelines, preserving the vibrant highlights and deep shadow contrast captured by modern iPhone cameras."
-      },
-      {
-        "question": "Can I convert multiple iPhone HEIC files simultaneously?",
-        "answer": "Yes, you can queue up to 15 HEIC files in a single batch and download them individually or bundled together in an organized ZIP archive."
-      }
+          {
+                "question": "Why should I convert iPhone HEIC photos to AVIF?",
+                "answer": "AVIF is an open, royalty-free web standard natively supported by all modern browsers, making your iPhone captures instantly viewable online without compatibility issues."
+          },
+          {
+                "question": "Will converting HEIC to AVIF reduce photo clarity or dynamic range?",
+                "answer": "No. AVIF supports wide color gamuts and high dynamic range, preserving the lifelike skin tones, highlights, and fine details captured by your phone sensor."
+          },
+          {
+                "question": "Do modern web browsers support AVIF images natively?",
+                "answer": "Yes. Google Chrome, Apple Safari, Mozilla Firefox, and Microsoft Edge all provide full native support for AVIF on desktop and mobile operating systems."
+          },
+          {
+                "question": "Can I convert multiple iPhone HEIC photos to AVIF simultaneously?",
+                "answer": "Yes. Our batch processing engine allows you to drop multiple HEIC files into the tool dropzone to convert and download them all to AVIF simultaneously in your browser."
+          },
+          {
+                "question": "Are my personal iPhone photos uploaded to external servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {
@@ -8843,26 +8843,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why convert an SVG vector file into a raster AVIF image?",
-        "answer": "While simple SVGs are lightweight, complex SVGs containing thousands of path coordinates, gradients, and blur filters can cause high CPU usage, mobile rendering lag, and slow page loading. Rasterizing to AVIF provides instantaneous rendering with miniscule file size."
-      },
-      {
-        "question": "Does AVIF maintain transparent backgrounds from the SVG?",
-        "answer": "Yes, our converter preserves transparent backgrounds using AVIF's dedicated auxiliary alpha plane, producing crisp cutouts with zero background haloing."
-      },
-      {
-        "question": "Will the converted AVIF look sharp on high-resolution retina screens?",
-        "answer": "Yes! Our engine rasterizes the SVG at full high-DPI resolution, ensuring smooth curves, crisp line art, and sharp typographic contours across modern retina and 4K displays."
-      },
-      {
-        "question": "Are my proprietary vector illustrations uploaded to external servers?",
-        "answer": "No. The entire rasterization and AV1 encoding pipeline executes locally inside your web browser via WebAssembly. Your artwork never leaves your machine."
-      },
-      {
-        "question": "Can I convert multiple SVG files simultaneously?",
-        "answer": "Yes, you can queue up to 15 SVG files at once and download the converted AVIF images individually or bundled together in an organized ZIP archive."
-      }
+          {
+                "question": "Will converting an SVG to AVIF keep the transparent background intact?",
+                "answer": "Yes. AVIF fully supports alpha channel transparency, ensuring that vector icons, logos, and illustrations maintain clean, see-through backgrounds."
+          },
+          {
+                "question": "Why should I convert an SVG to AVIF instead of keeping it as a vector?",
+                "answer": "Extremely complex SVG files with thousands of nodes can cause CPU stutter when rendering on mobile devices; converting to AVIF maintains visual sharpness while rendering instantly."
+          },
+          {
+                "question": "Will my vector lines look blurry or pixelated in AVIF?",
+                "answer": "No. The converter renders vector paths at high pixel density, ensuring that curves, fine typography, and delicate details remain razor-sharp on high-resolution screens."
+          },
+          {
+                "question": "Can I convert multiple SVG files to AVIF simultaneously?",
+                "answer": "Yes. Our batch processing engine allows you to drop multiple SVG files into the tool dropzone to convert and download them all to AVIF simultaneously in your browser."
+          },
+          {
+                "question": "Are my proprietary vector illustrations uploaded to external servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {
@@ -8999,26 +8999,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why convert AVIF to WebP?",
-        "answer": "While AVIF offers superior compression, some older browsers, email clients, social sharing bots, and desktop software (like older Photoshop or Windows viewers) cannot open AVIF files. Converting to WebP provides near-universal compatibility (97%+) while maintaining tiny file sizes."
-      },
-      {
-        "question": "Does WebP preserve transparent backgrounds from AVIF?",
-        "answer": "Yes! WebP has native alpha channel support, ensuring that transparent logos, product cutouts, and icons retain their transparent backgrounds with zero degradation."
-      },
-      {
-        "question": "Will converting AVIF to WebP significantly increase file size?",
-        "answer": "No. WebP is also a modern, high-efficiency image format. The converted WebP file will typically only be 15% to 25% larger than the AVIF file, remaining dramatically smaller than legacy JPEG or PNG."
-      },
-      {
-        "question": "Are my AVIF files uploaded to external servers?",
-        "answer": "No. The entire conversion executes locally inside your web browser using WebAssembly. Your files remain completely private on your device."
-      },
-      {
-        "question": "Can I convert multiple AVIF files simultaneously?",
-        "answer": "Yes, you can queue up to 15 AVIF files at once and download the converted WebP images individually or bundled into a single ZIP archive."
-      }
+          {
+                "question": "Why should I convert an AVIF image to WebP?",
+                "answer": "While AVIF offers excellent compression, WebP provides broader compatibility with older photo editors, legacy web systems, and older operating systems."
+          },
+          {
+                "question": "Will converting AVIF to WebP preserve transparent backgrounds?",
+                "answer": "Yes. WebP natively supports alpha channel transparency, ensuring that logos, stickers, and product cutouts remain perfectly see-through."
+          },
+          {
+                "question": "How does the file size of WebP compare to AVIF?",
+                "answer": "Both formats are highly efficient modern formats; converting AVIF to WebP yields a compact file size that is vastly smaller than traditional JPEG or PNG."
+          },
+          {
+                "question": "Can I convert multiple AVIF files to WebP simultaneously?",
+                "answer": "Yes. Our batch conversion engine allows you to drop multiple AVIF files into the tool dropzone to convert and download them all to WebP simultaneously in your browser."
+          },
+          {
+                "question": "Are my downloaded AVIF images uploaded to external servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {
@@ -9155,26 +9155,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why convert AVIF images to PDF?",
-        "answer": "Many desktop document readers, enterprise portals, and print kiosks cannot open AVIF files directly. Converting AVIF to PDF packages your images into a universal, fixed-layout document that can be viewed and printed on any device worldwide."
-      },
-      {
-        "question": "Can I combine multiple AVIF files into a single PDF document?",
-        "answer": "Yes, you can upload up to 15 AVIF files simultaneously and our converter will compile them into an ordered, single multi-page PDF document."
-      },
-      {
-        "question": "Will converting AVIF to PDF reduce image sharpness or clarity?",
-        "answer": "No. Our engine preserves the full resolution and detail of your AVIF images during the PDF compilation process, ensuring crisp text and sharp photographic detail."
-      },
-      {
-        "question": "Are my private documents uploaded to any remote server?",
-        "answer": "No. The entire conversion executes locally inside your web browser using WebAssembly. Your files never leave your device."
-      },
-      {
-        "question": "Can the converted PDF be printed on standard paper sizes?",
-        "answer": "Yes, the converted document is formatted with standard margins compatible with Letter and A4 printers worldwide."
-      }
+          {
+                "question": "Can I combine multiple AVIF images into a single PDF document?",
+                "answer": "Yes. Our tool allows you to upload multiple AVIF graphics at once and assemble them sequentially into a single, organized multi-page PDF document."
+          },
+          {
+                "question": "How are transparent AVIF backgrounds handled inside the PDF?",
+                "answer": "Transparent AVIF areas are automatically composited onto a clean, solid white page background, matching standard document paper standards without black box distortions."
+          },
+          {
+                "question": "Will small text or fine diagrams in my AVIF file remain sharp inside the PDF?",
+                "answer": "Yes. The converter decodes the full pixel resolution of your AVIF files, ensuring that small text, fine lines, and diagrams stay crisp and readable."
+          },
+          {
+                "question": "What page layout and margins are applied inside the PDF?",
+                "answer": "The converter fits your images neatly onto standard document boundaries, preserving the original aspect ratio while ensuring clean margins for printing."
+          },
+          {
+                "question": "Are my sensitive downloaded documents or graphics sent to external servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {

@@ -920,11 +920,15 @@ function renderMarkdownArticle(md: string): string {
       closeLists();
       const headingText = formatInline(line.slice(2).trim());
       htmlParts.push(`<h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white mt-10 mb-4 first:mt-0">${headingText}</h2>`);
+    } else if (line.startsWith('## ')) {
+      closeLists();
+      const headingText = formatInline(line.slice(3).trim());
+      htmlParts.push(`<h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white mt-10 mb-4 first:mt-0">${headingText}</h2>`);
     } else if (line.startsWith('### ')) {
       closeLists();
       const headingText = formatInline(line.slice(4).trim());
       htmlParts.push(`<h3 class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mt-8 mb-3">${headingText}</h3>`);
-    } else if (line.startsWith('* ')) {
+    } else if (line.startsWith('* ') || line.startsWith('- ')) {
       if (inOl) {
         htmlParts.push('</ol>');
         inOl = false;

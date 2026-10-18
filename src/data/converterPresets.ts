@@ -6815,26 +6815,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why convert Adobe DNG to PNG instead of JPG?",
-        "answer": "PNG utilizes lossless compression, meaning no optical details or color tones are discarded. If you plan to crop, retouch, color-grade, or mask your DNG captures in design tools like Figma or Photoshop, PNG prevents lossy compression artifacts."
-      },
-      {
-        "question": "Will converting DNG to PNG reduce resolution or megapixel count?",
-        "answer": "No. The full sensor pixel grid (e.g. 12 MP, 24 MP, 48 MP) is maintained 1:1 during demosaicing and PNG generation."
-      },
-      {
-        "question": "Are my DNG or ProRAW files uploaded to an online server?",
-        "answer": "No. All conversion operations run 100% inside your local browser memory using client-side WebAssembly. Your files never touch remote cloud servers."
-      },
-      {
-        "question": "Can I convert multiple DNG files at once?",
-        "answer": "Yes, you can queue up to 15 DNG captures simultaneously and download the converted PNG images individually or bundled in an organized ZIP archive."
-      },
-      {
-        "question": "How large are PNG files converted from DNG?",
-        "answer": "Because PNG stores uncompressed truecolor pixel arrays with lossless DEFLATE compression, converted files typically range from 20 MB to 70 MB depending on sensor resolution."
-      }
+{
+                "question": "Does converting DNG to PNG preserve full camera resolution?",
+                "answer": "Yes. Our converter decodes the full dynamic resolution and pixel matrix from your DNG capture, creating a 100% lossless PNG with zero compression blur."
+          },
+          {
+                "question": "Can I convert Apple ProRAW DNG files to transparent PNG cutouts?",
+                "answer": "Yes. Converting to PNG provides full alpha channel transparency support, allowing you to easily cut out portrait subjects or remove backgrounds in design software like Photoshop or Canva."
+          },
+          {
+                "question": "Why is the resulting PNG file size larger than a JPG?",
+                "answer": "PNG preserves 100% uncompressed pixel data and full color fidelity, which creates larger, higher-quality master files compared to lossy compressed JPGs."
+          },
+          {
+                "question": "Can I convert multiple drone or smartphone DNG files simultaneously?",
+                "answer": "Yes. Our batch conversion engine allows you to drop multiple DNG files into the tool and convert them all to PNG simultaneously in your browser."
+          },
+          {
+                "question": "Are my high-resolution DNG files uploaded to external cloud servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {
@@ -6971,26 +6971,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why won't my computer preview Olympus ORF files natively?",
-        "answer": "ORF is Olympus's proprietary RAW format containing un-interpolated sensor voltages rather than finished pixels. Without specialized Olympus camera codecs or raw processing software installed, operating systems cannot render ORF files. Converting to JPG provides immediate compatibility."
-      },
-      {
-        "question": "Does converting ORF to JPG affect optical sharpness or detail?",
-        "answer": "Our converter debayers raw sensor pixels at full 1:1 camera resolution and applies calibrated 90% quality JPEG encoding, keeping fine textures, feathers, architectural details, and facial features crisp."
-      },
-      {
-        "question": "Are my Olympus RAW photos uploaded to an external server?",
-        "answer": "No. The entire decoding, tone-mapping, and encoding pipeline runs locally in your web browser via WebAssembly. Your files never leave your device."
-      },
-      {
-        "question": "Which Olympus and OM System cameras produce ORF raw files?",
-        "answer": "ORF is used across OM System and Olympus bodies, including the OM-1, OM-5, E-M1 series (Mark I/II/III/X), E-M5 series, E-M10 series, and PEN series."
-      },
-      {
-        "question": "Can I batch convert multiple Olympus ORF files?",
-        "answer": "Yes, you can upload up to 15 ORF files in a single conversion queue and download them individually or as a single consolidated ZIP archive."
-      }
+{
+                "question": "Why does my computer show an unreadable file error for Olympus ORF files?",
+                "answer": "ORF is Olympus/OM System's proprietary raw sensor format that requires specialized camera codecs or darkroom software; converting to JPG ensures immediate double-click viewing on any device."
+          },
+          {
+                "question": "Will converting an ORF file to JPG degrade the vibrant Olympus color profile?",
+                "answer": "No. Our converter maps sensor color data into standard sRGB color space with smooth tonal curves, preserving rich contrast, lifelike skin tones, and balanced highlights."
+          },
+          {
+                "question": "How much smaller will my Olympus photo file be after converting to JPG?",
+                "answer": "Converting an uncompressed 25MB ORF file to JPG typically reduces file size by 80% to 90%, freeing up significant storage space and speeding up file sharing."
+          },
+          {
+                "question": "Can I convert multiple Olympus ORF files at once?",
+                "answer": "Yes. Our batch conversion engine allows you to drop multiple ORF files into the tool and convert them all to JPG simultaneously in your browser."
+          },
+          {
+                "question": "Are my original Olympus raw photos uploaded to external cloud servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {
@@ -7127,26 +7127,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why won't my computer preview Panasonic RW2 files natively?",
-        "answer": "RW2 is Panasonic's proprietary RAW format containing un-interpolated sensor voltages rather than finished pixels. Without specialized Panasonic camera codecs or raw processing software installed, operating systems cannot render RW2 files. Converting to JPG provides immediate compatibility."
-      },
-      {
-        "question": "Does converting RW2 to JPG affect optical sharpness or detail?",
-        "answer": "Our converter debayers raw sensor pixels at full 1:1 camera resolution and applies calibrated 90% quality JPEG encoding, keeping fine textures, architectural details, and facial features crisp."
-      },
-      {
-        "question": "Are my Panasonic RAW photos uploaded to an external server?",
-        "answer": "No. The entire decoding, tone-mapping, and encoding pipeline runs locally in your web browser via WebAssembly. Your files never leave your device."
-      },
-      {
-        "question": "Which Panasonic Lumix cameras produce RW2 raw files?",
-        "answer": "RW2 is used across Lumix Micro Four Thirds cameras (GH5, GH6, G9, G85, GX9) and full-frame Lumix S series cameras (S5, S5 II, S1, S1H)."
-      },
-      {
-        "question": "Can I batch convert multiple Panasonic RW2 files?",
-        "answer": "Yes, you can upload up to 15 RW2 files in a single conversion queue and download them individually or as a single consolidated ZIP archive."
-      }
+{
+                "question": "Why will my operating system not display previews for Panasonic RW2 files?",
+                "answer": "RW2 is Panasonic's proprietary raw sensor format that requires dedicated camera codecs or darkroom software; converting to JPG ensures immediate double-click viewing on any device."
+          },
+          {
+                "question": "Does converting Panasonic RW2 to JPG cause noticeable quality degradation?",
+                "answer": "No. Our converter operates at high-precision quantization, preserving fine textures, natural lighting, and sharp edge contrast so the converted JPG looks visually indistinguishable from the source."
+          },
+          {
+                "question": "How much smaller will my Lumix photo file be after converting to JPG?",
+                "answer": "Converting an uncompressed 30MB Panasonic RW2 file to JPG typically reduces file size by 85% to 90%, freeing up significant storage space and speeding up file sharing."
+          },
+          {
+                "question": "Can I convert multiple Panasonic RW2 files simultaneously?",
+                "answer": "Yes. Our batch conversion engine allows you to drop multiple RW2 files into the tool and convert them all to JPG simultaneously in your browser."
+          },
+          {
+                "question": "Are my original Lumix raw photos uploaded to external cloud servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {
@@ -7283,26 +7283,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why won't my computer preview Pentax PEF files natively?",
-        "answer": "PEF is Pentax's proprietary RAW format containing un-interpolated sensor voltages rather than finished pixels. Without specialized Pentax camera codecs or raw processing software installed, operating systems cannot render PEF files. Converting to JPG provides immediate compatibility."
-      },
-      {
-        "question": "Does converting PEF to JPG affect optical sharpness or detail?",
-        "answer": "Our converter debayers raw sensor pixels at full 1:1 camera resolution and applies calibrated 90% quality JPEG encoding, keeping fine textures, landscape foliage, architectural details, and facial features crisp."
-      },
-      {
-        "question": "Are my Pentax RAW photos uploaded to an external server?",
-        "answer": "No. The entire decoding, tone-mapping, and encoding pipeline runs locally in your web browser via WebAssembly. Your files never leave your device."
-      },
-      {
-        "question": "Which Pentax cameras produce PEF raw files?",
-        "answer": "PEF is used across Pentax DSLR bodies including the K-1, K-1 II, K-3 series (Mark I/II/III), K-5, K-70, and KP."
-      },
-      {
-        "question": "Can I batch convert multiple Pentax PEF files?",
-        "answer": "Yes, you can upload up to 15 PEF files in a single conversion queue and download them individually or as a single consolidated ZIP archive."
-      }
+{
+                "question": "Why will my computer not open Pentax PEF raw files directly?",
+                "answer": "PEF is Pentax's proprietary raw sensor format that requires specific camera codecs or photo editing software; converting to JPG ensures immediate double-click viewing on any device."
+          },
+          {
+                "question": "Will converting a Pentax PEF file to JPG wash out its natural color rendition?",
+                "answer": "No. Our converter applies calibrated color curve mapping into standard sRGB space, ensuring rich contrasts, natural skin tones, and balanced highlights."
+          },
+          {
+                "question": "How much smaller will my photo file be after converting PEF to JPG?",
+                "answer": "Converting an uncompressed 35MB Pentax PEF file to JPG typically reduces file size by 85% to 90%, freeing up significant storage space and speeding up file sharing."
+          },
+          {
+                "question": "Can I convert multiple Pentax PEF files simultaneously?",
+                "answer": "Yes. Our batch conversion engine allows you to drop multiple PEF files into the tool and convert them all to JPG simultaneously in your browser."
+          },
+          {
+                "question": "Are my original Pentax raw photos uploaded to external cloud servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {

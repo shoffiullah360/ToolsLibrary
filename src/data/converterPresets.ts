@@ -3159,24 +3159,24 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
     },
     "faqs": [
       {
-        "question": "Will transparent areas in my GIF stay transparent in PNG?",
-        "answer": "Yes. Our converter upgrades binary 1-bit GIF transparency into full 8-bit alpha channel support in the exported PNG."
+        "question": "What happens if I convert an animated GIF to PNG?",
+        "answer": "The converter captures the primary high-resolution still frame of the animation and converts it into a crisp, lossless static PNG image."
       },
       {
-        "question": "Can I edit the converted PNG in graphic software like Photoshop?",
-        "answer": "Yes. PNG is universally compatible with all creative software, making it easy to edit layers, add shadows, and remove backgrounds."
+        "question": "Will converting a GIF to PNG fix the grainy dithering patterns?",
+        "answer": "Converting prevents further compression loss and expands the color container to 24-bit, making it easier to clean up and edit dithering dots in photo editing software."
       },
       {
-        "question": "Does converting GIF to PNG work on animated GIFs?",
-        "answer": "Standard PNG is a static image format. The converter extracts the key initial frame of animated GIFs into a high-fidelity static PNG."
+        "question": "How does PNG improve transparency compared to GIF?",
+        "answer": "GIF only supports binary on-or-off transparency resulting in jagged edges, whereas PNG supports full 8-bit alpha transparency for smooth, perfectly blended drop shadows."
       },
       {
-        "question": "Are my graphics uploaded to an external server?",
-        "answer": "No. All conversion operations take place entirely within client-side memory. Zero files leave your computer."
+        "question": "Can I convert multiple GIF files to PNG at the same time?",
+        "answer": "Yes. Our batch processing engine allows you to drop multiple GIF files into the tool dropzone to convert and download them all to PNG simultaneously in your browser."
       },
       {
-        "question": "How many GIF images can I convert at one time?",
-        "answer": "You can convert up to 15 GIF files simultaneously in a single queue and download them individually or as a single ZIP archive."
+        "question": "Are my private GIF images uploaded to external cloud servers?",
+        "answer": "No. All conversion operations execute locally inside your web browser sandbox using your own device hardware. Your files never touch an external cloud server, guaranteeing total confidentiality."
       }
     ],
     "relatedLinks": [
@@ -3309,24 +3309,24 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
     },
     "faqs": [
       {
-        "question": "How much file size reduction will I get converting GIF to WebP?",
-        "answer": "Converting GIF to WebP typically reduces file size by 50% to 65% due to modern predictive block coding algorithms."
+        "question": "Does converting a GIF to WebP preserve the animation?",
+        "answer": "Yes. WebP natively supports animation, and our converter preserves the complete looping sequence, timing, and frame rate of your animated GIF."
       },
       {
-        "question": "Do all modern web browsers support WebP?",
-        "answer": "Yes. All modern browsers including Chrome, Safari, Edge, and Firefox natively support WebP with fast decoding speeds."
+        "question": "How much smaller will my animated file be in WebP format?",
+        "answer": "Converting an animated GIF to WebP typically reduces the file size by 50% to 75% while simultaneously enhancing color depth and visual clarity."
       },
       {
-        "question": "Does WebP support transparency like GIF?",
-        "answer": "Yes. WebP supports full 8-bit alpha transparency, providing smooth anti-aliased borders without the jagged edges common in GIFs."
+        "question": "Do modern web browsers support animated WebP files?",
+        "answer": "Yes. All modern browsers including Chrome, Safari, Firefox, and Edge fully support animated WebP images on both desktop and mobile devices."
       },
       {
-        "question": "Are my animations uploaded to any remote server?",
-        "answer": "No. Conversion is performed entirely inside your web browser sandbox using client-side JavaScript. No data is transmitted."
+        "question": "Can I convert static GIF images to WebP as well?",
+        "answer": "Yes. Static GIFs convert into lightweight static WebP pictures with full 24-bit color and transparency support."
       },
       {
-        "question": "Can I convert multiple GIF files at once?",
-        "answer": "Yes. You can queue up to 15 GIF files at a time and download all converted WebP files in a single ZIP package."
+        "question": "Are my uploaded GIF files or animations sent to external servers?",
+        "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
       }
     ],
     "relatedLinks": [
@@ -3459,24 +3459,24 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
     },
     "faqs": [
       {
-        "question": "Why convert TIFF to JPG for client sharing?",
-        "answer": "TIFF files are often 20MB to 100MB each and cannot be viewed in standard web browsers. Converting to JPG creates lightweight files ideal for email and online sharing."
+        "question": "How much smaller will my file size be after converting TIFF to JPG?",
+        "answer": "Converting an uncompressed TIFF to JPG typically reduces file size by 85% to 95%, transforming a heavy 80MB scan into an easily manageable 4MB image."
       },
       {
-        "question": "Will converting TIFF to JPG cause severe quality degradation?",
-        "answer": "Our converter encodes at a high 90% quality setting, preserving facial sharpness, fine document text, and accurate color tone curves."
+        "question": "Will converting a high-resolution TIFF scan to JPG make it look blurry?",
+        "answer": "No. Our converter operates at high-precision quantization, preserving fine textures, natural lighting, and sharp edge contrast so the converted JPG looks visually indistinguishable from the source."
       },
       {
-        "question": "Can I convert multi-page TIFF document scans?",
-        "answer": "Yes. Our converter parses TIFF containers and extracts pages into individual high-definition JPEG files."
+        "question": "Why do web browsers and smartphones fail to open TIFF files?",
+        "answer": "TIFF is an archival desktop publishing format that lacks native decoder support in standard mobile operating systems and web browsers; converting to JPG provides universal compatibility."
       },
       {
-        "question": "Are my confidential document scans protected?",
-        "answer": "Yes. All parsing and encoding happen locally in your web browser. No files are uploaded to any external cloud storage."
+        "question": "Can I convert multiple large TIFF scans to JPG simultaneously?",
+        "answer": "Yes. Our batch conversion engine allows you to drop multiple TIFF files into the tool and convert them all to JPG simultaneously directly inside your browser."
       },
       {
-        "question": "How many TIFF files can I convert at one time?",
-        "answer": "You can convert up to 15 TIFF files simultaneously and download all converted JPGs in a single organized ZIP package."
+        "question": "Are my private archival family photos or legal scans uploaded to external servers?",
+        "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
       }
     ],
     "relatedLinks": [
@@ -3609,24 +3609,24 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
     },
     "faqs": [
       {
-        "question": "Does converting TIFF to PNG cause any compression artifacts?",
-        "answer": "No. PNG is mathematically lossless. Converting from TIFF to PNG preserves 100% of the pixel information without compression blur."
+        "question": "Does converting a TIFF to PNG cause any loss in visual quality?",
+        "answer": "No. Both TIFF and PNG are lossless formats; PNG compresses the image data mathematically without discarding any pixel information, guaranteeing 100% visual fidelity."
       },
       {
-        "question": "Will transparency in TIFF files be preserved in PNG?",
-        "answer": "Yes. If your TIFF asset contains an alpha channel, our engine preserves the full transparency layer in the exported PNG."
+        "question": "How much file size reduction can I expect when converting TIFF to PNG?",
+        "answer": "Converting an uncompressed TIFF to PNG typically reduces file size by 50% to 70% while keeping every pixel sharp and pristine."
       },
       {
-        "question": "Why convert TIFF to PNG instead of keeping TIFF?",
-        "answer": "TIFF cannot be displayed in web browsers or easily imported into modern UI tools. PNG provides universal web and software compatibility."
+        "question": "Will converting TIFF to PNG preserve transparent layers?",
+        "answer": "Yes. If your source TIFF contains alpha transparency or transparent masks, our converter seamlessly transfers them into PNG format with full transparency intact."
       },
       {
-        "question": "Are my confidential scans uploaded anywhere?",
-        "answer": "Never. All decompression and PNG encoding execute entirely in local browser RAM. No data touches remote servers."
+        "question": "Can I convert multiple large TIFF files to PNG simultaneously?",
+        "answer": "Yes. Our batch processing engine allows you to drop multiple TIFF files into the tool dropzone to convert and download them all to PNG simultaneously in your browser."
       },
       {
-        "question": "Can I batch convert multiple TIFF files at once?",
-        "answer": "Yes. You can process up to 15 TIFF files at once and download all converted PNGs in a single ZIP package."
+        "question": "Are my high-resolution art scans or confidential documents uploaded to external servers?",
+        "answer": "No. All conversion operations execute locally inside your web browser sandbox using your own device hardware. Your files never touch an external cloud server, guaranteeing total confidentiality."
       }
     ],
     "relatedLinks": [

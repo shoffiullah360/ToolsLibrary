@@ -12431,26 +12431,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why convert a PDF page to WebP?",
-        "answer": "PDF files cannot be displayed as simple inline images in web pages, social media feeds, or blog articles without embedding a heavy PDF reader plugin. Converting to WebP extracts pages as lightweight, fast-loading images."
-      },
-      {
-        "question": "Will text and charts remain readable in the converted WebP image?",
-        "answer": "Yes! Our engine rasterizes PDF pages at high DPI resolution, ensuring sharp typography, crisp charts, and clear table borders."
-      },
-      {
-        "question": "Can I convert multi-page PDF documents?",
-        "answer": "Yes, our converter processes multi-page PDFs and exports each page as a clean, sequentially numbered WebP image, available individually or as a single ZIP package."
-      },
-      {
-        "question": "Are my confidential PDF documents uploaded to external servers?",
-        "answer": "No. All conversion operations run 100% locally inside your web browser using WebAssembly. Your documents remain completely confidential."
-      },
-      {
-        "question": "Can I batch convert multiple PDF files at once?",
-        "answer": "Yes, you can upload up to 15 PDF documents simultaneously and download all converted pages in an organized ZIP bundle."
-      }
+          {
+                "question": "Will small text remain sharp when converting a PDF page to WebP?",
+                "answer": "Yes. Our conversion engine renders the PDF vector typography at high resolution before applying WebP compression, keeping numbers, footnotes, and fine linework crystal-clear."
+          },
+          {
+                "question": "Can I convert specific individual pages from a large PDF document?",
+                "answer": "Yes. You can extract specific individual pages or convert every page of your document into separate optimized WebP image files."
+          },
+          {
+                "question": "How much smaller is a WebP image compared to an extracted PNG or JPG?",
+                "answer": "WebP typically achieves 30% to 50% better compression than traditional JPEG and up to 70% smaller file sizes than uncompressed PNG while preserving sharp text."
+          },
+          {
+                "question": "Do modern web browsers support WebP images?",
+                "answer": "Yes. Google Chrome, Apple Safari, Mozilla Firefox, and Microsoft Edge all provide full native support for WebP on both desktop and mobile devices."
+          },
+          {
+                "question": "Are my confidential PDF documents uploaded to external servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {
@@ -12587,26 +12587,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why convert a PDF into an ICO file?",
-        "answer": "Brand designers frequently provide logos inside PDF style guides. To use these logos as website favicons (favicon.ico) or Windows desktop shortcuts, they must be formatted into multi-resolution ICO containers."
-      },
-      {
-        "question": "What resolutions are bundled into the converted ICO file?",
-        "answer": "Our converter generates standard icon resolutions including 16x16 (browser tabs), 32x32 (taskbars and desktop icons), and 48x48 pixels (large explorer icons)."
-      },
-      {
-        "question": "Which page of the PDF is converted into an icon?",
-        "answer": "Our converter extracts and rasterizes the primary logo page of your PDF document, scaling it to square icon boundaries."
-      },
-      {
-        "question": "Are my confidential brand documents uploaded to remote servers?",
-        "answer": "No. All conversion operations run 100% locally inside your web browser using WebAssembly. Your files remain completely private on your device."
-      },
-      {
-        "question": "Should my PDF logo page be centered or square?",
-        "answer": "For the cleanest icon output without distortion, ensure the logo is centered on the page or cropped to square proportions."
-      }
+          {
+                "question": "Can I convert a logo from a vector PDF into a website favicon?",
+                "answer": "Yes. Our converter renders the logo page from your PDF into a compliant multi-resolution ICO file that can be named favicon.ico and placed in your website root directory."
+          },
+          {
+                "question": "What dimensions are included inside the converted ICO file?",
+                "answer": "The converter packages standard icon dimensions (including 16x16, 32x32, 48x48, and 256x256 pixels) to ensure crisp rendering across browser tabs and Windows desktop shortcuts."
+          },
+          {
+                "question": "How are margins handled when extracting an icon from a full-page PDF?",
+                "answer": "The converter focuses on the primary graphic boundaries, allowing you to crop away empty white page margins so the emblem fills the square icon canvas naturally."
+          },
+          {
+                "question": "Can I convert multiple PDF files to ICO simultaneously?",
+                "answer": "Yes. Our batch conversion engine allows you to drop multiple PDF files into the tool dropzone to convert and download them all as ICO files simultaneously in your browser."
+          },
+          {
+                "question": "Are my proprietary branding proofs uploaded to external servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {
@@ -12743,26 +12743,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "What image formats can I convert to WebP with this tool?",
-        "answer": "This universal tool accepts virtually all common image formats, including JPG, JPEG, PNG, BMP, TIFF, HEIC, GIF, and PDF documents, converting all of them into lightweight WebP format."
-      },
-      {
-        "question": "How much file size reduction can I expect when converting to WebP?",
-        "answer": "Converting from PNG typically yields 30% to 50% savings, while converting from uncompressed BMP or TIFF can reduce file size by 80% to 95%, dramatically boosting web page loading speed."
-      },
-      {
-        "question": "Does WebP preserve transparent backgrounds from PNG and GIF?",
-        "answer": "Yes! WebP has native alpha channel support, ensuring that transparent logos, product cutouts, and icons retain their transparent backgrounds with zero degradation."
-      },
-      {
-        "question": "Are my uploaded photos safe from data leaks?",
-        "answer": "Yes. All conversion runs 100% locally in your web browser using WebAssembly. Your files never touch external servers or cloud storage."
-      },
-      {
-        "question": "Can I convert multiple images of different formats at once?",
-        "answer": "Yes, you can queue up to 15 mixed-format images simultaneously and download the converted WebP images individually or bundled in an organized ZIP archive."
-      }
+          {
+                "question": "What source image formats can I convert to WebP?",
+                "answer": "Our universal tool supports all major image formats including JPG, PNG, GIF, BMP, TIFF, ICO, and HEIC for direct conversion into modern WebP format."
+          },
+          {
+                "question": "Will converting a transparent PNG to WebP keep the background see-through?",
+                "answer": "Yes. WebP natively supports alpha transparency, and our converter preserves the full transparent background of your PNG graphics without adding black or white borders."
+          },
+          {
+                "question": "How much file size reduction can I expect when converting to WebP?",
+                "answer": "Converting legacy images into WebP typically reduces file weights by 30% to 70% while maintaining crisp visual quality."
+          },
+          {
+                "question": "Can I convert multiple mixed-format images to WebP simultaneously?",
+                "answer": "Yes. Our batch conversion engine allows you to drop multiple images of varying formats into the tool and convert them all to WebP simultaneously in your browser."
+          },
+          {
+                "question": "Are my uploaded photos or graphics sent to external servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {
@@ -12899,26 +12899,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why convert images to AVIF instead of WebP or JPG?",
-        "answer": "AVIF offers the highest compression efficiency available today, producing files that are up to 50% smaller than WebP and 70% smaller than JPEG at identical visual quality, making it ideal for maximizing page speed and SEO performance."
-      },
-      {
-        "question": "What formats can I convert to AVIF with this tool?",
-        "answer": "You can convert JPG, JPEG, PNG, WebP, BMP, TIFF, HEIC, GIF, and PDF documents into AVIF format."
-      },
-      {
-        "question": "Does AVIF maintain transparent backgrounds from PNG and WebP?",
-        "answer": "Yes! AVIF fully supports alpha transparency via a dedicated auxiliary alpha plane, ensuring clean transparent cutouts with zero halo artifacts."
-      },
-      {
-        "question": "Are my uploaded photos safe from data leaks?",
-        "answer": "Yes. All conversion runs 100% locally in your web browser using WebAssembly. Your files never touch external servers or cloud storage."
-      },
-      {
-        "question": "Can I convert multiple mixed-format images simultaneously?",
-        "answer": "Yes, you can queue up to 15 mixed-format images at once and download the converted AVIF files individually or bundled in an organized ZIP archive."
-      }
+          {
+                "question": "What source image formats can I convert to AVIF?",
+                "answer": "Our universal converter accepts all major graphic formats including JPG, PNG, WebP, GIF, BMP, TIFF, and HEIC for direct conversion into modern AVIF format."
+          },
+          {
+                "question": "Will converting transparent images to AVIF preserve transparency?",
+                "answer": "Yes. AVIF natively supports full alpha channel transparency, ensuring that PNG or WebP logos and cutouts maintain their see-through backgrounds."
+          },
+          {
+                "question": "How much smaller will my image be in AVIF format?",
+                "answer": "Converting legacy images to AVIF typically reduces file size by 50% to 75% compared to JPG/PNG, and 20% to 30% compared to WebP, while maintaining pristine visual quality."
+          },
+          {
+                "question": "Do modern web browsers support AVIF images?",
+                "answer": "Yes. All modern browsers including Chrome, Safari, Firefox, and Edge natively decode and display AVIF images on both desktop and mobile devices."
+          },
+          {
+                "question": "Are my private personal photos uploaded to remote servers during conversion?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {

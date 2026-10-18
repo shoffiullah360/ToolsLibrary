@@ -608,26 +608,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Will converting PNG images to PDF preserve their sharp text and lines?",
-        "answer": "Yes. Our conversion pipeline preserves full pixel density and sharp edge contrast, ensuring digital artwork, typography, and scanned papers remain crystal-clear inside the PDF."
-      },
-      {
-        "question": "How are transparent PNG backgrounds handled inside the PDF?",
-        "answer": "Transparent PNG areas are automatically composited onto a clean, solid white page background, matching standard document paper standards without black box distortions."
-      },
-      {
-        "question": "Can I combine multiple PNG files into a single PDF document?",
-        "answer": "Yes. You can upload multiple PNG graphics at once to package them sequentially into an organized, multi-page PDF document in a single step."
-      },
-      {
-        "question": "What page size will my resulting PDF use?",
-        "answer": "The converter automatically fits your PNG graphics onto standard digital document boundaries, maintaining original aspect ratios while ensuring clean printable borders."
-      },
-      {
-        "question": "Are my personal certificates or confidential graphics sent to external servers?",
-        "answer": "No. The entire conversion process executes locally inside your web browser memory. Your private records never leave your computer or phone."
-      }
+          {
+                "question": "How are transparent PNG backgrounds handled inside the PDF?",
+                "answer": "Transparent PNG areas are automatically composited onto a clean, solid white page background, matching standard document paper standards without black box distortions."
+          },
+          {
+                "question": "Can I combine multiple PNG graphics into a single PDF document?",
+                "answer": "Yes. Our tool allows you to upload multiple PNG files at once and assemble them sequentially into a single, organized multi-page PDF document."
+          },
+          {
+                "question": "Will converting PNG images to PDF blur fine text or line art?",
+                "answer": "No. The converter preserves full pixel density and sharp edge contrast, ensuring small text, fine linework, and digital illustrations stay crisp and readable."
+          },
+          {
+                "question": "What page layout and margins are applied inside the PDF?",
+                "answer": "The converter fits your images neatly onto standard document boundaries, preserving the original aspect ratio while ensuring clean margins for printing."
+          },
+          {
+                "question": "Are my proprietary branding files or illustrations uploaded to external servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {
@@ -13057,26 +13057,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why convert an image to exact 300x300 pixel dimensions?",
-        "answer": "A 300x300 pixel square canvas is an industry standard for user avatars, contact list icons, app store badges, and e-commerce product thumbnails. Pre-formatting prevents platform auto-cropping from warping or blurring your image."
-      },
-      {
-        "question": "Will my image look stretched or distorted after resizing to 300x300?",
-        "answer": "No. Our converter uses proportional fitting and center-crop modes that lock the aspect ratio of your photo, ensuring people, products, and logos look natural without distortion."
-      },
-      {
-        "question": "What formats can I convert to 300x300 pixels?",
-        "answer": "You can upload JPG, PNG, WebP, BMP, TIFF, HEIC, and GIF images. The tool converts and resamples them all to compliant 300x300 assets."
-      },
-      {
-        "question": "Are my personal profile photos uploaded to external servers?",
-        "answer": "No. All conversion operations run 100% locally inside your web browser using WebAssembly. Your photos remain completely private on your device."
-      },
-      {
-        "question": "Can I convert multiple photos to 300x300 pixels in batch mode?",
-        "answer": "Yes, you can queue up to 15 images at once and download all converted 300x300 assets individually or bundled in an organized ZIP archive."
-      }
+          {
+                "question": "Why is 300x300 pixels widely used for profile pictures and avatars?",
+                "answer": "300x300 pixels provides the perfect balance between crisp visual clarity on high-DPI screens and compact file sizes that load instantly in avatar bubbles and author boxes."
+          },
+          {
+                "question": "Will converting my photo to 300x300 stretch or distort my face?",
+                "answer": "No. Our converter maintains the natural aspect ratio of your image, applying balanced canvas centering or smart cropping to avoid awkward stretching."
+          },
+          {
+                "question": "Which format should I choose for 300x300 images: JPG or PNG?",
+                "answer": "JPG is ideal for real-world photographic headshots and product pictures, while PNG is best for logos, digital illustrations, or graphics with transparent backgrounds."
+          },
+          {
+                "question": "Can I convert multiple photos to 300x300 pixels simultaneously?",
+                "answer": "Yes. Our batch processing engine allows you to drop multiple images into the tool dropzone to format and download them all to 300x300 pixels simultaneously in your browser."
+          },
+          {
+                "question": "Are my private headshots or photos uploaded to external servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {
@@ -13215,26 +13215,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "What does converting an image to HD do?",
-        "answer": "Converting an image to HD scales the pixel resolution up to Full High Definition (1920x1080 pixels) using multi-pass bicubic interpolation, smoothing out pixelated blocks and enhancing edge contrast so the photo looks crisp on modern monitors and TVs."
-      },
-      {
-        "question": "Will upscaling an image to HD look blurry?",
-        "answer": "Our converter employs advanced bicubic smoothing rather than simple nearest-neighbor scaling. This interpolates intermediate colors cleanly, preventing blocky pixelation and maintaining natural contrast."
-      },
-      {
-        "question": "What image formats can I convert to HD?",
-        "answer": "You can convert JPG, JPEG, PNG, WebP, BMP, TIFF, HEIC, and GIF files. The tool resamples all of them to high-definition 1080p assets."
-      },
-      {
-        "question": "Are my personal photos uploaded to remote servers during upscaling?",
-        "answer": "No. All conversion operations run 100% locally inside your web browser using WebAssembly. Your photos remain completely private on your device."
-      },
-      {
-        "question": "Can I convert multiple low-resolution photos to HD simultaneously?",
-        "answer": "Yes, you can queue up to 15 images at once and download the converted HD images individually or bundled in an organized ZIP archive."
-      }
+          {
+                "question": "What resolution does the HD image converter produce?",
+                "answer": "Our HD converter scales and optimizes your images to standard high-definition dimensions (typically 1920x1080 or proportional 2K resolutions) while enhancing sharpness and edge clarity."
+          },
+          {
+                "question": "Will converting an image to HD eliminate blurriness?",
+                "answer": "The converter enhances edge contrast, reconstructs fine details, and reduces digital compression noise, significantly improving visual clarity and crispness on high-resolution screens."
+          },
+          {
+                "question": "Can I convert low-resolution phone screenshots into HD?",
+                "answer": "Yes. The tool upscales screenshots, digital art, and phone captures, smoothing out pixel steps and enhancing text readability for presentations and desktop viewing."
+          },
+          {
+                "question": "Can I convert multiple images to HD simultaneously?",
+                "answer": "Yes. Our batch processing engine allows you to drop multiple images into the tool dropzone to upscale and download them all in high-definition simultaneously in your browser."
+          },
+          {
+                "question": "Are my personal photos uploaded to external servers during HD conversion?",
+                "answer": "Never. All conversion and upscaling operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {

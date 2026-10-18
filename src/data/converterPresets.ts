@@ -4359,24 +4359,24 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
     },
     "faqs": [
       {
-        "question": "Can I combine multiple WebP images into one PDF file?",
-        "answer": "Yes. Simply upload 2 or more WebP files into the workspace and click \"Combine All into 1 PDF\" to merge them into a single sequential document."
+        "question": "Can I combine multiple WebP images into a single PDF document?",
+        "answer": "Yes. Our tool allows you to upload multiple WebP graphics at once and assemble them sequentially into a single, organized multi-page PDF document."
       },
       {
-        "question": "What happens to transparent backgrounds in WebP files?",
-        "answer": "Transparent areas are automatically composited onto a clean white background, matching standard document paper presentation."
+        "question": "How are transparent WebP backgrounds handled inside the PDF?",
+        "answer": "Transparent WebP areas are automatically composited onto a clean, solid white page background, matching standard document paper standards without black box distortions."
       },
       {
-        "question": "Will text and charts in the WebP graphic stay sharp?",
-        "answer": "Yes. The converter embeds decoded raster frames directly into the document structure without lossy downsampling."
+        "question": "Will converting WebP images to PDF blur fine text or charts?",
+        "answer": "No. The converter decodes the full pixel resolution of your WebP assets, ensuring that small text, diagrams, and illustrations remain razor-sharp inside the document."
       },
       {
-        "question": "Are my downloaded web graphics uploaded to any server?",
-        "answer": "No. All conversion operations take place entirely inside your local browser memory. Zero files leave your computer."
+        "question": "What page layout and margins are applied inside the PDF?",
+        "answer": "The converter fits your images neatly onto standard document boundaries, preserving the original aspect ratio while ensuring clean margins for printing."
       },
       {
-        "question": "Can I print the generated PDF on office printers?",
-        "answer": "Yes. The generated PDF uses standard proportional MediaBox geometry compatible with all standard office printers and paper sizes."
+        "question": "Are my downloaded web graphics uploaded to external servers?",
+        "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
       }
     ],
     "relatedLinks": [
@@ -4509,24 +4509,24 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
     },
     "faqs": [
       {
-        "question": "Can I open the exported DOCX file in Microsoft Word and Google Docs?",
-        "answer": "Yes. The generated file conforms to the standard ISO/IEC 29500 OpenXML specification, opening smoothly in Microsoft Word, Google Docs, and LibreOffice."
+        "question": "Can I edit the text from my image after converting to DOCX?",
+        "answer": "Yes. Our tool packages your image content and extracted text directly into a standard Microsoft Word document so you can edit, format, and copy the text easily."
       },
       {
-        "question": "Can I add text and headers around the converted image in Word?",
-        "answer": "Yes. Once opened in your word processor, the image behaves like a standard embedded graphic that you can resize, align, and wrap with text."
+        "question": "Will the layout and tables of my document be preserved?",
+        "answer": "The converter works to preserve paragraph structure, text alignment, and embedded image boundaries so your new document matches the original scan as closely as possible."
+      },
+      {
+        "question": "Can I convert multiple page images into a single Word document?",
+        "answer": "Yes. You can upload multiple image scans simultaneously to compile them into a unified, sequential multi-page DOCX file."
       },
       {
         "question": "What image formats can I convert to DOCX?",
-        "answer": "Our converter supports all common formats including JPG, PNG, WebP, AVIF, BMP, and GIF."
+        "answer": "Our tool accepts all major image formats including JPG, PNG, WebP, TIFF, and HEIC for conversion into Word document format."
       },
       {
-        "question": "Are my private documents uploaded to any remote server?",
-        "answer": "No. Document packaging is executed entirely in client-side memory using browser-native ZIP compression. No files are transmitted remotely."
-      },
-      {
-        "question": "Can I convert multiple images into Word documents?",
-        "answer": "Yes. You can process up to 15 images at a time and download individual DOCX files or a consolidated ZIP package."
+        "question": "Are my confidential legal or financial scans uploaded to external servers?",
+        "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
       }
     ],
     "relatedLinks": [
@@ -4659,24 +4659,24 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
     },
     "faqs": [
       {
-        "question": "Can I mix different image formats like JPG and PNG in the same PDF?",
-        "answer": "Yes. You can upload any combination of JPG, PNG, WebP, and other supported formats. Our engine standardizes them into sequential pages."
+        "question": "Can I combine different image formats (like JPG, PNG, and WebP) into one PDF?",
+        "answer": "Yes. Our universal converter accepts multiple mixed image formats simultaneously and compiles them into a single, cohesive PDF document."
       },
       {
-        "question": "How do I merge all uploaded images into a single PDF document?",
-        "answer": "Upload two or more images into the workspace and click \"Combine All into 1 PDF\" to generate a single unified document file."
+        "question": "Can I rearrange the order of my pictures before creating the PDF?",
+        "answer": "Yes. You can drag and drop your uploaded photos to reorder pages exactly as you want them to appear in your final document."
       },
       {
-        "question": "Will my images be compressed or lose sharpness in the PDF?",
-        "answer": "No. Images are embedded into the PDF structure at their native dimensions, ensuring crisp document text and photographic sharpness."
+        "question": "Will small text and fine print remain readable inside the PDF?",
+        "answer": "Yes. The converter renders your images at full pixel resolution, ensuring small text, numbers, and signatures stay sharp and legible."
       },
       {
-        "question": "Are my personal images uploaded to external servers?",
-        "answer": "Never. All PDF generation executes locally in browser RAM using HTML5 Canvas. Zero data leaves your computer or phone."
+        "question": "What page layout options are available for the resulting PDF?",
+        "answer": "The tool automatically scales and centers each image onto clean standard document dimensions, ensuring balanced margins suitable for printing."
       },
       {
-        "question": "Is there any limit on how many images I can convert?",
-        "answer": "You can convert up to 15 images simultaneously per batch, completely free and with zero watermarks."
+        "question": "Are my private personal documents uploaded to external servers?",
+        "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
       }
     ],
     "relatedLinks": [
@@ -4809,24 +4809,24 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
     },
     "faqs": [
       {
-        "question": "What is a TGA file and why is it used in gaming?",
-        "answer": "TGA (Truevision Targa) is a legacy bitmap format favored in game engines like Unreal Engine and Unity for storing uncompressed textures and sprite alpha masks."
+        "question": "Does converting a TGA file to PNG preserve alpha channel transparency?",
+        "answer": "Yes. Our converter accurately decodes the 32-bit TGA alpha channel, ensuring that transparent textures, cutouts, and drop shadows carry over perfectly into PNG."
       },
       {
-        "question": "Will alpha transparency in TGA files be preserved in PNG?",
-        "answer": "Yes. If your TGA file contains a 32-bit alpha channel, our engine preserves the full transparency layer in the exported PNG."
+        "question": "Will converting TGA to PNG cause any loss in texture sharpness?",
+        "answer": "No. Both TGA and PNG are lossless formats; PNG compresses the texture data mathematically without discarding any pixel information, guaranteeing 100% visual fidelity."
       },
       {
-        "question": "Why convert TGA to PNG for web portfolios?",
-        "answer": "Web browsers cannot display TGA files natively. Converting to PNG allows you to display 3D textures and game assets directly on your website or portfolio."
+        "question": "Why can I not preview TGA files directly in Windows or macOS?",
+        "answer": "TGA is a specialized computer graphics and gaming format that lacks native thumbnail decoders in modern operating systems; converting to PNG ensures instant previewing."
       },
       {
-        "question": "Are my game development assets kept confidential?",
-        "answer": "Yes. All parsing and PNG conversion occur strictly inside local browser memory. No assets are ever uploaded to cloud servers."
+        "question": "Can I convert multiple game texture TGA files to PNG simultaneously?",
+        "answer": "Yes. Our batch processing engine allows you to drop entire folders of TGA files into the tool dropzone to convert and download them all to PNG simultaneously in your browser."
       },
       {
-        "question": "Can I convert multiple TGA textures in bulk?",
-        "answer": "Yes. You can process up to 15 TGA files simultaneously and download all converted PNGs in a single organized ZIP archive."
+        "question": "Are my proprietary 3D textures or game assets uploaded to external servers?",
+        "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never touch an external cloud server, guaranteeing total confidentiality."
       }
     ],
     "relatedLinks": [

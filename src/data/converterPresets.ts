@@ -3759,24 +3759,24 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
     },
     "faqs": [
       {
-        "question": "How do I combine multiple TIFF scans into a single PDF document?",
-        "answer": "Upload two or more TIFF scans to the converter workspace and click \"Combine All into 1 PDF\" to merge them into a single file."
+        "question": "Can I combine multiple heavy TIFF files into a single PDF document?",
+        "answer": "Yes. Our tool allows you to upload multiple TIFF scans at once and assemble them sequentially into a single, organized multi-page PDF document."
       },
       {
-        "question": "Will scanned document text remain sharp in the PDF?",
-        "answer": "Yes. The converter embeds your high-resolution scan rasters directly into PDF page coordinate streams without lossy resampling."
+        "question": "Will small text and fine blueprints remain sharp after conversion to PDF?",
+        "answer": "Yes. The converter preserves high pixel density and contrast, ensuring small text, engineering lines, and official ink stamps remain crisp and legible."
       },
       {
-        "question": "Can I print the generated PDF on office printers?",
-        "answer": "Yes. The output PDF uses standard proportional MediaBox geometry compatible with all standard office printers and paper trays."
+        "question": "Does this tool support multi-page TIFF containers?",
+        "answer": "Yes. If your TIFF file already contains multiple scanned pages, the converter automatically unpacks each frame and formats them sequentially into standard PDF pages."
       },
       {
-        "question": "Are sensitive legal or medical records secure?",
-        "answer": "100% secure. FastToolVerse operates entirely in your local browser sandbox. No documents are transmitted across the internet."
+        "question": "What page layout and margins are applied inside the PDF?",
+        "answer": "The converter fits your high-resolution scans neatly onto standard document boundaries, preserving the original aspect ratio while ensuring clean margins for printing."
       },
       {
-        "question": "Does this tool support multi-page TIFF files?",
-        "answer": "Yes. Multi-page TIFF files are parsed and extracted into sequential PDF pages automatically."
+        "question": "Are my sensitive legal scans or medical records sent to external servers?",
+        "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
       }
     ],
     "relatedLinks": [
@@ -3909,24 +3909,24 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
     },
     "faqs": [
       {
-        "question": "Why convert AVIF to PNG?",
-        "answer": "While AVIF is great for web delivery, many photo editors, CAD tools, and legacy systems cannot open it. PNG provides universal desktop compatibility."
+        "question": "Will converting an AVIF image to PNG preserve transparent backgrounds?",
+        "answer": "Yes. Our conversion engine fully decodes the alpha transparency layer in your AVIF file, ensuring that logos, badges, and cutouts remain perfectly see-through in PNG."
       },
       {
-        "question": "Will transparency in AVIF be preserved in the PNG output?",
-        "answer": "Yes. If your AVIF file contains an alpha channel, our engine preserves the full 8-bit transparency layer in the exported PNG."
+        "question": "Why will my photo editor not open downloaded AVIF images?",
+        "answer": "AVIF is a newer web compression format that many legacy photo editing programs do not support natively; converting to PNG provides universal compatibility across all design software."
       },
       {
         "question": "Does converting AVIF to PNG degrade image sharpness?",
-        "answer": "No. The converter uncompresses the full decoded frame into a mathematically lossless PNG container, preventing any further degradation."
+        "answer": "No. PNG is a lossless container format, meaning our converter reconstructs the exact decoded pixel values from the AVIF source without introducing blur or compression artifacts."
       },
       {
-        "question": "Is my image data kept private during conversion?",
-        "answer": "Yes. All decoding and PNG compression execute locally in your web browser. No files are uploaded to any server."
+        "question": "Can I convert multiple AVIF files into PNG simultaneously?",
+        "answer": "Yes. You can drop a whole batch of AVIF files into the tool dropzone to convert and download them all to PNG simultaneously in your browser."
       },
       {
-        "question": "Can I convert multiple AVIF files at once?",
-        "answer": "Yes. You can queue up to 15 AVIF files simultaneously and download all converted PNGs in a single ZIP package."
+        "question": "Are my downloaded AVIF images uploaded to external cloud servers?",
+        "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
       }
     ],
     "relatedLinks": [
@@ -4059,24 +4059,24 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
     },
     "faqs": [
       {
-        "question": "Why does my computer fail to open downloaded AVIF images?",
-        "answer": "AVIF uses the modern AV1 video codec, which older Windows versions, photo frames, and mobile galleries cannot open without specialized software. Converting to JPG solves this instantly."
+        "question": "Why will my photo viewer not open downloaded AVIF pictures?",
+        "answer": "AVIF is a cutting-edge web format that many operating systems and photo viewer applications do not support natively; converting to JPG ensures immediate double-click viewing on any device."
       },
       {
-        "question": "What happens to transparent areas in AVIF when converting to JPG?",
-        "answer": "Because JPEG does not support transparency, transparent areas are automatically composited onto a clean white background."
+        "question": "Does converting AVIF to JPG reduce visual image quality?",
+        "answer": "No. Our converter operates at high-precision quantization, preserving fine textures, natural lighting, and sharp edge contrast so the converted JPG looks visually identical to the source."
       },
       {
-        "question": "Will converting AVIF to JPG make the photo look blurry?",
-        "answer": "Our converter encodes at a high-grade 90% quality index, preserving crisp photographic details and realistic color gradations."
+        "question": "What happens if my source AVIF image has a transparent background?",
+        "answer": "Because standard JPG format does not support transparency, our converter smoothly composites transparent areas over a solid white matte background to prevent black border artifacts."
       },
       {
-        "question": "Are my downloaded photos uploaded to any external server?",
-        "answer": "No. All conversion operations take place entirely inside your web browser sandbox. No data is transmitted across the internet."
+        "question": "Can I convert multiple AVIF pictures to JPG at the same time?",
+        "answer": "Yes. Our batch conversion system allows you to drop multiple AVIF pictures into the tool and convert them all to JPG simultaneously directly inside your browser."
       },
       {
-        "question": "How many AVIF files can I convert at one time?",
-        "answer": "You can convert up to 15 AVIF files simultaneously in a single queue and download them individually or as a single ZIP archive."
+        "question": "Are my downloaded pictures uploaded to external servers during conversion?",
+        "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
       }
     ],
     "relatedLinks": [
@@ -4209,24 +4209,24 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
     },
     "faqs": [
       {
-        "question": "How do I combine multiple JPG photos into a single multi-page PDF document?",
-        "answer": "Upload two or more JPG images into the workspace dropzone and click \"Combine All into 1 PDF\" to merge them into one sequential file."
+        "question": "Can I combine multiple JPG photos into a single PDF document?",
+        "answer": "Yes. Our tool allows you to upload multiple JPG images at once and compile them sequentially into a single, organized multi-page PDF document."
       },
       {
-        "question": "Will converting JPG photos to PDF degrade their clarity?",
-        "answer": "No. Our PDF engine embeds your images directly into standard PDF 1.4 binary streams without secondary lossy compression, maintaining original sharpness."
+        "question": "Will small text on receipts remain legible after converting JPG to PDF?",
+        "answer": "Yes. Our conversion pipeline preserves full pixel density and sharp edge contrast, ensuring receipt numbers, fine print, and ink signatures remain crisp and readable."
       },
       {
-        "question": "Can I print the converted PDF on standard office printers?",
-        "answer": "Yes. The generated PDF uses standard proportional MediaBox geometry compatible with all desktop PDF readers and standard paper trays."
+        "question": "Can I reorder my photos before generating the PDF document?",
+        "answer": "Yes. You can drag and drop your uploaded images to arrange them in the exact order you want them to appear in your final PDF document."
       },
       {
-        "question": "Is it secure to convert sensitive legal contracts and bank records here?",
-        "answer": "FastToolVerse operates 100% inside your local web browser. Your private documents never leave your computer or phone."
+        "question": "What page size will my resulting PDF use?",
+        "answer": "The converter automatically fits your JPG pictures onto standard digital document boundaries, maintaining original aspect ratios while ensuring clean printable borders."
       },
       {
-        "question": "Is there any watermark, daily conversion limit, or fee?",
-        "answer": "No. FastToolVerse is completely free, does not apply watermarks to your pages, and has no daily conversion limits or registration walls."
+        "question": "Are my personal certificates or confidential photos uploaded to external servers?",
+        "answer": "No. The entire conversion process executes locally inside your web browser memory. Your private records never leave your computer or phone."
       }
     ],
     "relatedLinks": [

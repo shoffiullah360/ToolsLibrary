@@ -5567,26 +5567,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why can't I open Canon CR2 files on mobile devices or standard image viewers?",
-        "answer": "CR2 is Canon's proprietary RAW format containing raw Bayer sensor data rather than finished RGB pixels. Operating systems require specialized camera codecs or desktop raw processors to interpret CR2. Converting to JPG makes photos instantly viewable anywhere."
-      },
-      {
-        "question": "Does converting CR2 to JPG discard photographic dynamic range?",
-        "answer": "CR2 contains 14 bits of sensor latitude. When converting to 8-bit JPG, our engine applies intelligent tone-mapping to map highlight and shadow detail smoothly into the standard sRGB gamut, retaining maximum perceived visual sharpness."
-      },
-      {
-        "question": "Are my high-resolution Canon RAW files uploaded to an online server?",
-        "answer": "No. The entire decoding and JPEG compression process runs client-side in your web browser using WebAssembly. Your photos remain strictly on your local device."
-      },
-      {
-        "question": "Can I convert batches of Canon CR2 camera files at once?",
-        "answer": "Yes, you can upload up to 15 CR2 files in a single batch queue and download them individually or bundled together in an organized ZIP archive."
-      },
-      {
-        "question": "What Canon camera models produce CR2 raw files?",
-        "answer": "CR2 was Canon's standard RAW format for DIGIC II through DIGIC 6 cameras, including legendary models like the EOS 5D Mark II/III, 6D, 7D, 70D, 80D, and Rebel series."
-      }
+{
+                "question": "Why will my computer not open Canon CR2 raw files directly?",
+                "answer": "CR2 is Canon's proprietary raw sensor format that requires specific camera codecs or photo editing suites; converting to JPG ensures immediate double-click viewing on any device."
+          },
+          {
+                "question": "Will converting a CR2 file to JPG wash out Canon's signature color tones?",
+                "answer": "No. Our converter applies calibrated color curve mapping into standard sRGB space, ensuring rich contrasts, natural skin tones, and balanced highlights."
+          },
+          {
+                "question": "How much smaller will my photo file be after converting CR2 to JPG?",
+                "answer": "Converting an uncompressed 30MB Canon CR2 file to JPG typically produces a lightweight 3MB to 5MB file while preserving full visual clarity."
+          },
+          {
+                "question": "Can I convert multiple Canon CR2 files simultaneously?",
+                "answer": "Yes. Our batch conversion engine allows you to drop multiple CR2 files into the tool and convert them all to JPG simultaneously in your browser."
+          },
+          {
+                "question": "Are my original high-resolution Canon photos uploaded to external cloud servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {
@@ -5723,26 +5723,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why convert Canon CR2 to PNG instead of JPG?",
-        "answer": "PNG uses lossless DEFLATE compression, meaning no pixel data is discarded. If you plan to crop, retouch, color-grade, or mask your Canon photos in software like Photoshop or Affinity Photo, PNG preserves pristine edge contrast without JPEG compression ringing."
-      },
-      {
-        "question": "Will converting CR2 to PNG reduce image dimensions or resolution?",
-        "answer": "No. The full sensor pixel dimensions (e.g. 24 MP, 30 MP) are preserved 1:1 during the demosaicing and PNG encoding processes."
-      },
-      {
-        "question": "Are my Canon RAW photos sent to cloud servers for conversion?",
-        "answer": "No. Conversion happens 100% inside your web browser using local WebAssembly processing. Your files remain strictly private on your computer."
-      },
-      {
-        "question": "Does PNG support transparency when converting from CR2?",
-        "answer": "Camera RAW photos are solid, opaque captures. The output PNG is encoded as truecolor 24-bit RGB with no transparency, but is fully ready for alpha layer addition in design tools."
-      },
-      {
-        "question": "How large are PNG files converted from Canon CR2?",
-        "answer": "Because PNG is lossless, converted files are typically 15 MB to 45 MB, depending on sensor megapixel count and visual scene complexity."
-      }
+{
+                "question": "Does converting Canon CR2 to PNG cause any quality degradation?",
+                "answer": "No. PNG is a lossless format that stores every pixel value with mathematical precision, ensuring your Canon raw details remain pristine without compression artifacts."
+          },
+          {
+                "question": "Can I edit transparent backgrounds once my CR2 file is converted to PNG?",
+                "answer": "Yes. Converting to PNG provides full alpha transparency support, making it simple to cut out subjects or remove backgrounds in design software like Photoshop or Canva."
+          },
+          {
+                "question": "Why is the resulting PNG file size larger than a JPG?",
+                "answer": "PNG preserves 100% uncompressed pixel data and full color fidelity, which creates larger, higher-quality master files compared to lossy compressed JPGs."
+          },
+          {
+                "question": "Can I convert multiple Canon CR2 files to PNG simultaneously?",
+                "answer": "Yes. Our batch conversion system allows you to drop multiple CR2 files into the tool and convert them all to PNG simultaneously in your browser."
+          },
+          {
+                "question": "Are my original raw camera files uploaded to external cloud servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {
@@ -5879,26 +5879,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "What is the difference between Canon CR2 and CR3 files?",
-        "answer": "CR2 was Canon's older TIFF-based RAW format used in DSLRs. CR3 is Canon's modern format based on the ISO Base Media File Format (ISOBMFF) container introduced with DIGIC 8 cameras like the EOS R, R5, R6, RP, and M50."
-      },
-      {
-        "question": "Can this converter process Canon C-RAW files?",
-        "answer": "Yes, our client-side decoding pipeline handles both full uncompressed CR3 files and Canon's space-saving C-RAW (Compressed RAW) format with equal precision."
-      },
-      {
-        "question": "Are my Canon EOS R raw photos safe from privacy leaks?",
-        "answer": "Absolutely. All processing runs entirely inside your client browser using compiled WebAssembly. Photos never touch external servers or cloud buckets."
-      },
-      {
-        "question": "Can I convert multiple CR3 files simultaneously?",
-        "answer": "Yes, you can queue up to 15 Canon CR3 captures at once and download the converted JPG files individually or as a single ZIP archive."
-      },
-      {
-        "question": "Will EXIF metadata such as shutter speed and aperture be retained?",
-        "answer": "The converter focuses on decoding raw sensor pixels into maximum-fidelity JPEG imagery, preserving core orientation and visual presentation."
-      }
+{
+                "question": "What is the difference between Canon CR2 and CR3 files?",
+                "answer": "CR3 is Canon's newer raw format based on the ISO Base Media format, offering faster writing speeds and efficient storage compared to the older TIFF-based CR2 format."
+          },
+          {
+                "question": "Why will my operating system not show preview thumbnails for CR3 files?",
+                "answer": "Older versions of Windows and macOS lack native decoders for Canon's newer CR3 format; converting to JPG ensures immediate double-click viewing on any device."
+          },
+          {
+                "question": "Will converting Canon CR3 to JPG reduce visual sharpness?",
+                "answer": "No. Our converter operates at high-precision quantization, preserving fine textures, natural lighting, and sharp edge contrast so the converted JPG looks visually indistinguishable from the source."
+          },
+          {
+                "question": "Can I convert multiple Canon CR3 files simultaneously?",
+                "answer": "Yes. Our batch conversion engine allows you to drop multiple CR3 files into the tool and convert them all to JPG simultaneously in your browser."
+          },
+          {
+                "question": "Are my modern mirrorless raw photos uploaded to external servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {
@@ -6035,26 +6035,26 @@ export const CONVERTER_PRESETS: ConverterPreset[] = [
       ]
     },
     "faqs": [
-      {
-        "question": "Why won't my computer preview Nikon NEF files natively?",
-        "answer": "NEF is Nikon's proprietary RAW format containing un-interpolated sensor voltages rather than finished pixels. Without specialized Nikon camera codecs or raw processing software installed, operating systems cannot render NEF files. Converting to JPG provides immediate compatibility."
-      },
-      {
-        "question": "Does converting NEF to JPG affect optical sharpness or detail?",
-        "answer": "Our converter debayers raw sensor pixels at full 1:1 camera resolution and applies calibrated 90% quality JPEG encoding, keeping fine textures, architectural details, and facial features crisp."
-      },
-      {
-        "question": "Are my Nikon RAW photos uploaded to an external server?",
-        "answer": "No. The entire decoding, tone-mapping, and encoding pipeline runs locally in your web browser via WebAssembly. Your files never leave your device."
-      },
-      {
-        "question": "Can I convert Nikon Z-series mirrorless NEF files?",
-        "answer": "Yes, our converter supports NEF files from both legacy Nikon D-series DSLRs (D850, D750, D5600, etc.) and modern Z-series mirrorless cameras (Z9, Z8, Z7, Z6, Z5, Zfc)."
-      },
-      {
-        "question": "Can I batch convert multiple Nikon NEF files?",
-        "answer": "Yes, you can upload up to 15 NEF files in a single conversion queue and download them individually or as a single consolidated ZIP archive."
-      }
+{
+                "question": "Why can I not open Nikon NEF files on my smartphone or computer?",
+                "answer": "NEF is Nikon's proprietary raw sensor format that requires specialized camera codecs or photo editing software; converting to JPG ensures immediate double-click viewing on any device."
+          },
+          {
+                "question": "Does converting a Nikon NEF file to JPG wash out colors?",
+                "answer": "No. Our converter maps sensor color data into standard sRGB color space with smooth tonal curves, preserving rich Nikon saturation and realistic skin tones."
+          },
+          {
+                "question": "How much storage space does converting NEF to JPG save?",
+                "answer": "Converting an uncompressed 40MB Nikon NEF file to JPG typically reduces file size by 85% to 90%, freeing up significant storage space and speeding up file sharing."
+          },
+          {
+                "question": "Can I convert multiple Nikon NEF files at once?",
+                "answer": "Yes. Our batch conversion engine allows you to drop multiple NEF files into the tool and convert them all to JPG simultaneously in your browser."
+          },
+          {
+                "question": "Are my original Nikon raw photos uploaded to external cloud servers?",
+                "answer": "Never. All conversion operations execute strictly inside your local web browser sandbox using your own device hardware. Your files never leave your computer or phone."
+          }
     ],
     "relatedLinks": [
       {

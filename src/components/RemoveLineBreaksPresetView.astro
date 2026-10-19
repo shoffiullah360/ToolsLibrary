@@ -4,11 +4,36 @@ import ToolIcon from './ToolIcon.astro';
 import PopularRemoveLineBreaks from './PopularRemoveLineBreaks.astro';
 import type { RemoveLineBreaksPreset } from '../data/removeLineBreaksPresets';
 
+interface EditorialSection {
+  title: string;
+  paragraphs: string[];
+  bullets?: string[];
+  callout?: {
+    type?: string;
+    label: string;
+    text: string;
+  };
+}
+
+interface EditorialGuideData {
+  heading?: string;
+  sections?: EditorialSection[];
+  card1Title?: string;
+  card1Content?: string;
+  card2Title?: string;
+  card2Content?: string;
+  card3Title?: string;
+  card3Content?: string;
+  card4Title?: string;
+  card4Content?: string;
+}
+
 interface Props {
   preset: RemoveLineBreaksPreset;
 }
 
 const { preset } = Astro.props;
+const guide = preset.editorialGuide as unknown as EditorialGuideData;
 
 function formatIntentHighlights(text: string) {
   if (!text) return '';
@@ -732,84 +757,92 @@ function formatIntentHighlights(text: string) {
     </div>
   </section>
 
-  <!-- [10] Authoritative Editorial Deep-Dive Guide (4 contextual structured cards) -->
-  <section class="border-t border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950 py-16 sm:py-24">
+  <!-- [10] Authoritative Editorial Deep-Dive Guide (Clean Continuous Typography) -->
+  <section class="border-t border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950 py-14 sm:py-16">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="mb-12">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/50 mb-3">
-          <ToolIcon name="code" class="w-3.5 h-3.5" />
-          <span>Technical Field Guide</span>
+      <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight mb-6">
+        {guide.heading || `Definitive Technical Guide for ${preset.name || preset.h1}`}
+      </h2>
+
+      {guide.sections && guide.sections.length > 0 ? (
+        <div class="space-y-6">
+          {guide.sections.map((section) => (
+            <div>
+              <h3 class="text-xl md:text-2xl font-bold text-slate-100 mt-8 mb-4">
+                {section.title}
+              </h3>
+
+              {section.paragraphs && section.paragraphs.map((p) => (
+                <p class="text-slate-300 leading-relaxed text-base mb-4">
+                  {p}
+                </p>
+              ))}
+
+              {section.bullets && section.bullets.length > 0 && (
+                <ul class="list-disc list-outside pl-6 space-y-2 text-slate-300 mb-4">
+                  {section.bullets.map((b) => (
+                    <li class="leading-relaxed">{b}</li>
+                  ))}
+                </ul>
+              )}
+
+              {section.callout && (
+                <blockquote class="border-l-4 border-emerald-500 pl-4 py-2 italic text-slate-300 my-4">
+                  {section.callout.label && <strong class="font-semibold text-white not-italic mr-1">{section.callout.label}:</strong>}
+                  <span>{section.callout.text}</span>
+                </blockquote>
+              )}
+            </div>
+          ))}
         </div>
-        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Definitive Technical Guide for {preset.name || preset.h1}
-        </h2>
-        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
-          In-depth technical methods, keyboard shortcuts, and native application workflows.
-        </p>
-      </div>
+      ) : (
+        <div class="space-y-6">
+          {guide.card1Title && (
+            <div>
+              <h3 class="text-xl md:text-2xl font-bold text-slate-100 mt-8 mb-4">
+                {guide.card1Title}
+              </h3>
+              <p class="text-slate-300 leading-relaxed text-base mb-4">
+                {guide.card1Content}
+              </p>
+            </div>
+          )}
 
-      <div class="space-y-6">
-        <!-- Card 1 -->
-        <article class="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-900/40 shadow-sm space-y-3">
-          <div class="flex items-center gap-2.5">
-            <span class="w-6 h-6 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-mono font-bold flex items-center justify-center shrink-0">
-              01
-            </span>
-            <h3 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
-              {preset.editorialGuide.card1Title}
-            </h3>
-          </div>
-          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
-            {preset.editorialGuide.card1Content}
-          </p>
-        </article>
+          {guide.card2Title && (
+            <div>
+              <h3 class="text-xl md:text-2xl font-bold text-slate-100 mt-8 mb-4">
+                {guide.card2Title}
+              </h3>
+              <p class="text-slate-300 leading-relaxed text-base mb-4">
+                {guide.card2Content}
+              </p>
+            </div>
+          )}
 
-        <!-- Card 2 -->
-        <article class="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-900/40 shadow-sm space-y-3">
-          <div class="flex items-center gap-2.5">
-            <span class="w-6 h-6 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-mono font-bold flex items-center justify-center shrink-0">
-              02
-            </span>
-            <h3 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
-              {preset.editorialGuide.card2Title}
-            </h3>
-          </div>
-          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
-            {preset.editorialGuide.card2Content}
-          </p>
-        </article>
+          {guide.card3Title && (
+            <div>
+              <h3 class="text-xl md:text-2xl font-bold text-slate-100 mt-8 mb-4">
+                {guide.card3Title}
+              </h3>
+              <p class="text-slate-300 leading-relaxed text-base mb-4">
+                {guide.card3Content}
+              </p>
+            </div>
+          )}
 
-        <!-- Card 3 -->
-        <article class="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-900/40 shadow-sm space-y-3">
-          <div class="flex items-center gap-2.5">
-            <span class="w-6 h-6 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-mono font-bold flex items-center justify-center shrink-0">
-              03
-            </span>
-            <h3 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
-              {preset.editorialGuide.card3Title}
-            </h3>
-          </div>
-          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
-            {preset.editorialGuide.card3Content}
-          </p>
-        </article>
-
-        <!-- Card 4 -->
-        <article class="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-900/40 shadow-sm space-y-3">
-          <div class="flex items-center gap-2.5">
-            <span class="w-6 h-6 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-mono font-bold flex items-center justify-center shrink-0">
-              04
-            </span>
-            <h3 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
-              {preset.editorialGuide.card4Title}
-            </h3>
-          </div>
-          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
-            {preset.editorialGuide.card4Content}
-          </p>
-        </article>
-      </div>
+          {guide.card4Title && (
+            <div>
+              <h3 class="text-xl md:text-2xl font-bold text-slate-100 mt-8 mb-4">
+                {guide.card4Title}
+              </h3>
+              <p class="text-slate-300 leading-relaxed text-base mb-4">
+                {guide.card4Content}
+              </p>
+            </div>
+          )}
+        </div>
+      )}
 
     </div>
   </section>

@@ -4207,37 +4207,37 @@ export const removeLineBreaksPresets: RemoveLineBreaksPreset[] = [
     "category": "Programming Languages & Shell CLI",
     "sampleInput": "Server01.corp\nServer02.corp\nServer03.corp\nServer04.corp",
     "editorialGuide": {
-      "card1Title": "The -join Operator in PowerShell",
-      "card1Content": "`Get-Content` reads files as an array of lines. Joining that array is the fastest solution: `(Get-Content .\\file.txt) -join ' '`. To join with commas: `(Get-Content .\\file.txt) -join ', '`.",
-      "card2Title": "Using the -replace Regex Operator",
-      "card2Content": "If working with a multiline string in memory: `$clean = $rawText -replace '`r?`n', ' '`. In PowerShell, the backtick (`` ` ``) is the escape character for `` `r `` and `` `n ``.",
-      "card3Title": "Writing Back to File with Set-Content",
-      "card3Content": "To save the single-line result: `((Get-Content .\\file.txt) -join ' ') | Set-Content .\\clean.txt`.",
-      "card4Title": "Fast Web-Based Text Flattener",
-      "card4Content": "Clean server lists or configuration lines in FastToolVerse before pasting into PowerShell scripts or terminal sessions."
-    },
+    "card1Title": "Why Line Breaks Disrupt PowerShell Automation and Data Pipelines",
+    "card1Content": "PowerShell is the modern, cross-platform task automation and configuration management framework developed by Microsoft, serving as the central automation engine for Windows, Linux, and cloud environments. Unlike traditional shells that pass raw text streams, PowerShell passes rich .NET objects through its pipelines. However, when ingesting legacy log files, parsing CSV exports, pulling API data via `Invoke-RestMethod`, or managing Active Directory attributes, strings frequently arrive loaded with erratic line breaks.\n\nThese accidental line breaks break string parsing routines, cause CSV output columns to wrap unexpectedly, and split single active directory user attributes across multiple records. Whether you are automating enterprise server migrations, generating financial compliance reports, or preparing data for cloud storage, learning how to cleanly remove line breaks powershell commands provide ensures your automation pipelines execute smoothly without human intervention.",
+    "card2Title": "Understanding How PowerShell Sees CRLF and LF Characters",
+    "card2Content": "To clean text effectively in PowerShell, it helps to understand how the underlying .NET runtime represents line breaks. In Windows PowerShell and PowerShell 7 (Core), line endings are represented by specific control characters: `\\r` (Carriage Return, ASCII 13) and `\\n` (Line Feed, ASCII 10). Within PowerShell strings, these escape sequences are written using backticks: `` `r `` and `` `n ``.\n\nWhen text is ingested from external web sources or legacy mainframe systems, mixed line endings often cause unexpected behavior. For example, using `-replace \"`n\", \" \"` on a Windows text file replaces the line feed but leaves the carriage return behind. In PowerShell, that lingering carriage return can cause string concatenation bugs or corrupt JSON payloads. Knowing how to target universal line endings using .NET methods or regex patterns ensures your PowerShell scripts clean strings completely.",
+    "card3Title": "The Best PowerShell Commands and One-Liners to Clean Line Breaks",
+    "card3Content": "PowerShell provides multiple clean, expressive methods to strip or replace line breaks from strings and text files, depending on whether you prefer native operators or .NET string methods.\n\nThe most popular and reliable PowerShell one-liner uses the regex `-replace` operator: `(Get-Content -Raw file.txt) -replace \"\\r?\\n\", \" \" | Set-Content clean.txt`. Using the `-Raw` flag instructs PowerShell to read the entire file into memory as a single multiline string rather than an array of lines, allowing `-replace \"\\r?\\n\", \" \"` to instantly substitute every newline with a clean single space.\n\nIf you are working with an array of lines returned by standard `Get-Content file.txt`, you can join them effortlessly using the `-join` operator: `(Get-Content file.txt) -join ' '`. To preserve intentional double paragraph breaks while only joining the broken lines inside them, use regex substitution: `(Get-Content -Raw file.txt) -replace '(?<!\r?\n)\r?\n(?!\r?\n)', ' '`. These simple, powerful one-liners turn messy text files into clean, uniform documents in seconds.",
+    "card4Title": "Why an In-Browser Cleaner Is the Fastest Scratchpad for Windows Admins",
+    "card4Content": "While PowerShell one-liners are essential for automated server maintenance, opening a PowerShell console or writing a script just to clean a single copied error message, ticket description, or customer roster is often unnecessary. In daily administrative tasks, an in-browser utility provides a much faster alternative.\n\nOur remove line breaks online tool gives you that exact same regex-grade cleaning power directly in your web browser. You paste your raw multiline text, choose your paragraph and delimiter options, and receive clean, continuous text back in milliseconds. It executes 100% locally in your browser memory, ensuring complete privacy for your sensitive server outputs, scripts, and company data."
+},
     "faqs": [
-      {
-        "question": "What is the PowerShell command to join lines with spaces?",
-        "answer": "(Get-Content .\\file.txt) -join ' '"
-      },
-      {
-        "question": "What is the escape character for newline in PowerShell?",
-        "answer": "PowerShell uses the backtick: `n for newline and `r for carriage return."
-      },
-      {
+    {
+        "question": "What is the best PowerShell command to remove all line breaks from a text file?",
+        "answer": "Run: (Get-Content -Raw input.txt) -replace '\\r?\\n', ' ' | Set-Content output.txt. The -Raw flag reads the file as a single string, allowing seamless replacement."
+    },
+    {
+        "question": "How do I join lines of text with spaces in PowerShell?",
+        "answer": "Use the -join operator: (Get-Content input.txt) -join ' '. This automatically merges an array of lines into a single space-separated string."
+    },
+    {
+        "question": "How do I remove line breaks from a variable in PowerShell?",
+        "answer": "Use the -replace operator: $cleanText = $myString -replace \"`r?`n\", ' '. This replaces both Windows and Unix line breaks with a space."
+    },
+    {
         "question": "How do I replace line breaks with commas in PowerShell?",
-        "answer": "(Get-Content .\\file.txt) -join ', '"
-      },
-      {
-        "question": "How do I remove blank lines in PowerShell?",
-        "answer": "Get-Content .\\file.txt | Where-Object { $_.Trim() -ne '' }"
-      },
-      {
-        "question": "Is FastToolVerse safe for internal enterprise server names?",
-        "answer": "Yes. FastToolVerse runs 100% locally in your browser memory; zero data is transmitted over the internet."
-      }
-    ]
+        "answer": "Run: (Get-Content input.txt) -join ', ' to convert a vertical list into a clean, single-line comma-separated list."
+    },
+    {
+        "question": "Why did Get-Content ignore my -replace command for line breaks?",
+        "answer": "By default, Get-Content splits files into an array of strings, stripping newlines automatically. You must use Get-Content -Raw to preserve line breaks before using -replace."
+    }
+]
   },
   {
     "slug": "remove-line-breaks-regex-pattern",
@@ -5176,6 +5176,147 @@ export const removeLineBreaksPresets: RemoveLineBreaksPreset[] = [
       {
         "question": "How do I convert formula results back into permanent text in Excel?",
         "answer": "Select the formula cells, press Ctrl + C to copy, right-click the target cells, and select Paste Special > Values (or press Ctrl + Shift + V)."
+      }
+    ]
+  },
+  {
+    "slug": "remove-line-breaks-bash",
+    "name": "Remove Line Breaks Bash",
+    "h1": "Remove Line Breaks Bash",
+    "metaTitle": "Remove Line Breaks Bash Online – Free Line Joiner | FastToolVerse",
+    "metaDescription": "Instantly remove line breaks in Bash online. Flatten text files, strip \\r and \\n with tr or awk, and clean terminal pipelines with zero latency.",
+    "heroSubtitle": "Instantly remove line breaks in Bash, eliminate unwanted carriage returns, and join command-line outputs into clean single-line strings with 100% private in-browser processing.",
+    "intentDescription": "Accidental line breaks disrupt Bash shell pipelines, for loops, and script execution. Master native tr, sed, awk, and paste commands, or sanitize text in seconds using our client-side tool. All operations run locally with complete privacy and zero server transmission on every conversion.",
+    "config": {
+      "replaceWith": "space",
+      "preserveParagraphs": false
+    },
+    "category": "Programming Languages & Shell CLI",
+    "sampleInput": "server_node_01\nserver_node_02\nserver_node_03\nserver_node_04",
+    "editorialGuide": {
+      "card1Title": "Why Accidental Line Breaks Disrupt Bash Shell Pipelines and Scripts",
+      "card1Content": "In modern Linux, Unix, and macOS terminal environments, Bash remains the undisputed command-line interface for systems administration, DevOps automation, cloud container management, and continuous delivery pipelines. Bash scripts excel at piping standard output from one process directly into the standard input of another. However, when server logs, environment variable values, CSV extracts, or remote API responses contain unwanted line breaks, shell pipelines can fail catastrophically.\n\nAn unexpected newline can cause a Bash `for` loop to split a single file path across multiple iterations, generate corrupted command arguments, or cause batch database imports to crash midway. Whether you are extracting customer ID lists from remote server clusters, preparing raw text for machine learning models, or cleaning log data on remote staging servers, mastering remove line breaks bash techniques gives you the speed, control, and reliability to clean data streams directly on the command line without opening heavy visual text editors.",
+      "card2Title": "Understanding Linux LF vs Windows CRLF Line Endings in Shells",
+      "card2Content": "To clean line breaks reliably in Bash, it is essential to understand how different operating systems terminate lines. In native Linux and Unix environments, a line break consists of a single Line Feed character (`\\n`, ASCII byte 10). On Windows machines, line breaks are represented by two bytes: a Carriage Return followed by a Line Feed (`\\r\\n`, ASCII bytes 13 and 10).\n\nWhen text files created on Windows machines are processed in Bash, the lingering carriage return character (`\\r`) is frequently preserved. This causes frustrating display errors, such as the cursor returning to the start of the line and overwriting previous output, or scripts throwing mysterious syntax errors. Knowing whether your data stream contains pure `\\n` breaks or mixed `\\r\\n` endings ensures you select the correct Bash stream filters to sanitize your inputs completely.",
+      "card3Title": "The Best Native Bash Commands to Remove and Replace Line Breaks",
+      "card3Content": "Bash provides multiple battle-tested command-line tools to strip or replace line breaks from files and text streams with zero external dependencies.\n\nThe fastest stream-processing command is `tr`: running `tr '\\n' ' ' < input.txt > clean.txt` immediately converts every newline character into a single space across millions of lines in milliseconds. If you want to delete line breaks completely without adding spaces, use `tr -d '\\r\\n' < input.txt > clean.txt`.\n\nFor more advanced stream operations where you want to preserve intentional paragraph breaks while only merging broken sentences, `awk` and `paste` provide elegant one-liners. Using `paste -s -d ' ' input.txt` serializes an entire list into a clean space-separated row, while `awk 'BEGIN{RS=\"\"; FS=\"\\n\"} {gsub(/\\n/, \" \"); print}' file.txt` merges sentences within paragraphs while leaving double empty lines between distinct sections intact. These simple command-line tools turn messy terminal streams into clean, structured data in seconds.",
+      "card4Title": "Why an In-Browser Cleaner Is the Fastest Scratchpad for Daily Work",
+      "card4Content": "While Bash commands like `tr`, `sed`, and `awk` are invaluable for automated deployment scripts and massive log files, launching a terminal or writing a Bash pipeline just to sanitize a single copied error message, JSON token, or customer address is often inconvenient. In daily desktop multitasking, an in-browser utility provides a much smoother experience.\n\nOur remove line breaks online tool provides that exact same command-line precision directly inside your browser window. You paste your raw multiline stream, select your desired delimiter (such as spaces, commas, or semicolons), and receive clean single-line output instantly. It runs 100% locally in your browser memory using client-side JavaScript, guaranteeing that your private server credentials, log outputs, and personal notes remain completely secure."
+    },
+    "faqs": [
+      {
+        "question": "What is the fastest Bash command to remove line breaks from a file?",
+        "answer": "Use tr: tr '\\n' ' ' < input.txt > output.txt. This replaces every newline character with a single space across the entire file."
+      },
+      {
+        "question": "How do I remove both Windows carriage returns and Linux newlines in Bash?",
+        "answer": "Run: tr -d '\\r' < input.txt | tr '\\n' ' ' > output.txt, or use sed: sed -i 's/\\r$//' input.txt followed by line merging."
+      },
+      {
+        "question": "How do I join all lines in a file into a single line with commas in Bash?",
+        "answer": "Use the paste command: paste -s -d, input.txt. This creates a clean comma-separated list on a single line."
+      },
+      {
+        "question": "How do I remove line breaks within paragraphs while keeping blank lines in Bash?",
+        "answer": "Use awk: awk 'BEGIN{RS=\"\"; FS=\"\\n\"} {gsub(/\\n/, \" \"); print $0 \"\\n\"}' input.txt to merge lines within paragraphs."
+      },
+      {
+        "question": "Can I remove line breaks in a Bash variable?",
+        "answer": "Yes, use parameter expansion or echo: echo $var (without quotes) or clean=\"${var//$'\\n'/ }\" to replace newlines with spaces."
+      }
+    ]
+  },
+  {
+    "slug": "remove-line-breaks-sql",
+    "name": "Remove Line Breaks SQL",
+    "h1": "Remove Line Breaks SQL",
+    "metaTitle": "Remove Line Breaks SQL Online – Free Line Joiner | FastToolVerse",
+    "metaDescription": "Instantly remove line breaks in SQL online. Clean CHAR(10) and CHAR(13) carriage returns with REPLACE, protecting query integrity with 100% privacy.",
+    "heroSubtitle": "Instantly remove line breaks in SQL strings, strip CHAR(10) and CHAR(13) control characters, and clean database exports with 100% private in-browser processing.",
+    "intentDescription": "Stray line breaks in database records break CSV exports, fail equality queries, and corrupt ETL ingestion. Master nested REPLACE and REGEXP_REPLACE statements, or format ID lists for IN clauses using our instant web tool. All operations run locally with complete privacy and zero server transmission.",
+    "config": {
+      "replaceWith": "space",
+      "preserveParagraphs": false
+    },
+    "category": "Data Formats, Databases & APIs",
+    "sampleInput": "Product Record A\nColor: Black\nStatus: Active",
+    "editorialGuide": {
+      "card1Title": "Why Stray Line Breaks Cause Severe Bugs in SQL Databases and Queries",
+      "card1Content": "In database management and relational data engineering, SQL (Structured Query Language) is the primary engine driving transactions, analytical reporting, and enterprise data warehouses. Whether administering PostgreSQL, MySQL, Microsoft SQL Server, or Oracle databases, string integrity is vital. However, when user-generated comments, product descriptions, or contact addresses are entered via web forms, they frequently arrive loaded with unintended internal line breaks.\n\nThese hidden line breaks cause serious operational problems. When running analytical queries, string comparisons fail because a text value containing an internal newline will never match an equality condition. More critically, when database tables are exported to CSV files for business reporting or downstream ETL ingestion, cells with embedded carriage returns split into multiple broken rows, crashing automated data pipelines. Learning how to cleanly remove line breaks from SQL strings and database tables protects data integrity and saves hours of query debugging.",
+      "card2Title": "Understanding ASCII 10 (LF) and ASCII 13 (CR) Inside SQL Engines",
+      "card2Content": "To eliminate line breaks effectively in SQL, it is crucial to understand how relational databases store non-printing characters. Across most major SQL database engines, a line break is stored as one or two specific ASCII byte codes: ASCII 10 (`CHAR(10)`), which represents a Line Feed (LF), and ASCII 13 (`CHAR(13)`), which represents a Carriage Return (CR).\n\nDepending on whether the text was entered via a Windows browser (which submits `CRLF`) or a modern mobile operating system (which submits `LF`), a cell may contain `CHAR(10)` alone or a combination of `CHAR(13)` and `CHAR(10)`. Because standard SQL functions like `TRIM()` only remove leading and trailing space characters, they will completely overlook hidden newline characters embedded in the middle of text. Knowing how to target both `CHAR(10)` and `CHAR(13)` ensures your database queries clean text strings completely.",
+      "card3Title": "The Step-by-Step Way to Remove Line Breaks Across Major SQL Databases",
+      "card3Content": "Every major database engine provides built-in string manipulation functions that can remove or replace line breaks across millions of records in a single `UPDATE` or `SELECT` statement.\n\nIn PostgreSQL, MySQL, and Microsoft SQL Server, the universal solution relies on nested `REPLACE()` functions. To replace all line breaks with a single clean space, write: `SELECT REPLACE(REPLACE(column_name, CHAR(13), ' '), CHAR(10), ' ') FROM table_name;` (In MySQL, you can use `CHAR(10 USING ascii)` if character set constraints apply). This nested expression first converts Windows carriage returns to spaces, and then converts Unix line feeds to spaces, preventing words on adjacent lines from colliding.\n\nIn modern PostgreSQL, you can use regular expression replacement: `SELECT REGEXP_REPLACE(column_name, E'[\\r\\n]+', ' ', 'g') FROM table_name;`. In Oracle Database, write: `SELECT REGEXP_REPLACE(column_name, '(\\r|\\n)', ' ') FROM table_name;`. Using these simple SQL statements allows you to clean entire database tables effortlessly without exporting data to external spreadsheet tools.",
+      "card4Title": "Why an In-Browser Cleaner Is the Fastest Scratchpad for Ad-Hoc SQL",
+      "card4Content": "While writing SQL `UPDATE` scripts is necessary for mass database maintenance, launching a database IDE (like DBeaver, pgAdmin, or SSMS) just to sanitize a raw list of customer emails or product IDs for an `IN (...)` clause adds unnecessary friction. In daily data analysis tasks, an in-browser cleaner is much faster.\n\nOur remove line breaks online tool gives you the exact same precision right inside your web browser. You paste your raw multiline list of identifiers, select 'comma' as your replacement delimiter, and instantly receive a clean comma-separated list ready to paste directly into your `WHERE id IN (...)` query clause. Everything executes 100% locally in your browser memory, keeping your proprietary database queries and customer records strictly confidential."
+    },
+    "faqs": [
+      {
+        "question": "What SQL function removes line breaks from a text column?",
+        "answer": "Use nested REPLACE functions: REPLACE(REPLACE(column, CHAR(13), ' '), CHAR(10), ' '). This replaces both Carriage Return and Line Feed with a space."
+      },
+      {
+        "question": "How do I remove line breaks in PostgreSQL using regex?",
+        "answer": "Use REGEXP_REPLACE: REGEXP_REPLACE(column, E'[\\r\\n]+', ' ', 'g'). The 'g' flag replaces all instances of newlines throughout the string."
+      },
+      {
+        "question": "How do I remove line breaks in Microsoft SQL Server (T-SQL)?",
+        "answer": "Run: UPDATE table_name SET column_name = REPLACE(REPLACE(column_name, CHAR(13), ' '), CHAR(10), ' ') to sanitize data across the table."
+      },
+      {
+        "question": "Why did TRIM() fail to remove line breaks in my SQL query?",
+        "answer": "Standard SQL TRIM() only removes standard spacebar characters (ASCII 32). Line breaks use ASCII 10 and 13, which require REPLACE() or REGEXP_REPLACE()."
+      },
+      {
+        "question": "How do I convert a vertical list of IDs into a comma-separated SQL list?",
+        "answer": "Paste your vertical list into our online line remover, select 'comma' as the delimiter, and copy the clean single-line string directly into your IN clause."
+      }
+    ]
+  },
+  {
+    "slug": "remove-line-breaks-javascript",
+    "name": "Remove Line Breaks JavaScript",
+    "h1": "Remove Line Breaks JavaScript",
+    "metaTitle": "Remove Line Breaks JavaScript Online – Free Line Joiner | FastToolVerse",
+    "metaDescription": "Instantly remove line breaks in JavaScript online. Strip \\r and \\n characters using global regex, split-map pipelines, or our free browser tool.",
+    "heroSubtitle": "Instantly remove line breaks in JavaScript, eliminate \\r\\n carriage returns with regex, and format dynamic strings with 100% private in-browser processing.",
+    "intentDescription": "Multiline strings and textarea inputs often arrive polluted with irregular line breaks. Master modern regex patterns, array split-join methods, and Node.js stream utilities, or sanitize text instantly using our browser tool. All operations run locally with complete privacy and zero server transmission on every conversion.",
+    "config": {
+      "replaceWith": "space",
+      "preserveParagraphs": false
+    },
+    "category": "Programming Languages & Shell CLI",
+    "sampleInput": "JavaScript strings often contain\nunwanted line break escape codes\nwhen copied from forms or APIs.\nFlatten them cleanly.",
+    "editorialGuide": {
+      "card1Title": "Why Multiline Strings and Dynamic Inputs Create Headaches in JavaScript",
+      "card1Content": "JavaScript powers the modern interactive web, running full-stack applications across web browsers, Node.js backend servers, and mobile hybrid frameworks. In modern web development, applications constantly ingest dynamic text: user comments submitted via `<textarea>` forms, Markdown documents, API JSON payloads, and copied clipboard snippets. However, whenever text is pasted across applications, it frequently arrives polluted with unwanted line breaks.\n\nThese erratic breaks break responsive web layouts, complicate string tokenization, distort comma-separated arrays, and trigger syntax errors in template literals. Whether you are building an interactive text tool, validating user input before saving to a MongoDB or PostgreSQL database, or formatting data inside a Node.js ETL pipeline, learning how to cleanly remove line breaks javascript workflows provide is an essential full-stack development skill.",
+      "card2Title": "Understanding How JavaScript Handles Newlines Across Engines",
+      "card2Content": "To clean text effectively in JavaScript, it helps to understand how the V8 and SpiderMonkey JavaScript engines represent line endings. In JavaScript strings, line breaks are represented as escape sequences. Unix and modern macOS systems produce a single newline character (`\\n`, ASCII byte 10). Windows systems produce a carriage return followed by a newline (`\\r\\n`, ASCII bytes 13 and 10).\n\nIf you use a basic `.replace('\\n', ' ')` call in JavaScript, two major problems occur: first, by default, JavaScript's `.replace()` without a global regex flag only replaces the very first occurrence of a newline, leaving every subsequent break untouched. Second, on Windows systems, replacing only `\\n` leaves the carriage return (`\\r`) behind as a ghost byte. Using modern regular expressions with the global (`g`) and multiline (`m`) flags guarantees that every break is safely neutralized.",
+      "card3Title": "The Best Modern JavaScript and Node.js Methods for Line Removal",
+      "card3Content": "JavaScript provides multiple concise, performant techniques to remove line breaks from strings, depending on whether you prefer functional array pipelines or single-pass regular expressions.\n\nThe most popular and performant one-liner uses regular expressions: `const cleanText = text.replace(/\\r?\\n|\\r/g, ' ');`. The pattern `\\r?\\n|\\r` matches Windows (`\\r\\n`), Unix (`\\n`), and legacy Mac (`\\r`) line endings, while the global flag (`g`) ensures every occurrence throughout the entire string is replaced with a single space.\n\nIf you want to preserve intentional double paragraph breaks while only joining the broken lines inside them, you can chain array methods: `const cleanText = text.split(/\\r?\\n\\r?\\n/).map(p => p.replace(/\\r?\\n/g, ' ').trim()).join('\\n\\n');`. This splits the text into major paragraphs, flattens each paragraph into a single continuous sentence, and joins the paragraphs back together with clean double newlines. For massive multi-gigabyte log files in Node.js, using the native `readline` module allows you to stream and sanitize lines without exceeding memory limits.",
+      "card4Title": "Why an In-Browser Cleaner Is the Easiest Scratchpad for Testing",
+      "card4Content": "While writing JavaScript utility functions is essential for production web apps, opening a browser DevTools console or setting up a Node.js test script just to sanitize a mock payload, regex string, or API token introduces unnecessary friction. In daily coding and writing tasks, an accessible online utility is far more practical.\n\nOur remove line breaks online tool gives you the exact same JavaScript-powered regex precision right inside your browser tab. You paste your text, choose whether to preserve paragraph structures or replace breaks with custom delimiters, and get clean, formatted text back in milliseconds. Everything executes 100% locally in your browser memory, keeping your private tokens, mock data, and notes completely confidential."
+    },
+    "faqs": [
+      {
+        "question": "What is the best regex to remove all line breaks in JavaScript?",
+        "answer": "Use: text.replace(/\\r?\\n|\\r/g, ' '). This safely matches Windows (\\r\\n), Unix (\\n), and legacy Mac (\\r) line breaks across the entire string."
+      },
+      {
+        "question": "Why did str.replace('\\n', ' ') only remove the first line break in JavaScript?",
+        "answer": "Passing a string to .replace() only replaces the first match. You must use a regular expression with the global flag (g), like /\\n/g, to replace all occurrences."
+      },
+      {
+        "question": "How do I remove line breaks in JavaScript while preserving paragraph breaks?",
+        "answer": "Use: text.split(/\\n{2,}/).map(p => p.replace(/\\n/g, ' ').trim()).join('\\n\\n'). This flattens paragraphs while keeping double line breaks intact."
+      },
+      {
+        "question": "How do I remove line breaks from a string in Node.js without high memory usage?",
+        "answer": "Use the native readline module with fs.createReadStream to process and sanitize files line by line as a stream."
+      },
+      {
+        "question": "Can I replace line breaks with commas in JavaScript?",
+        "answer": "Yes, use: text.replace(/\\r?\\n|\\r/g, ', '). This converts a multiline column into a clean comma-separated list."
       }
     ]
   },

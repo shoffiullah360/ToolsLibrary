@@ -1409,50 +1409,50 @@ export const removeLineBreaksPresets: RemoveLineBreaksPreset[] = [
       }
     ]
   },
-{
+  {
     "slug": "remove-line-breaks-apple-pages",
-    "name": "Remove Line Breaks Apple Pages",
-    "h1": "Remove Line Breaks Apple Pages",
-    "metaTitle": "Remove Line Breaks Apple Pages Online – Free Line Joiner | FastToolVerse",
-    "metaDescription": "Instantly remove line breaks in Apple Pages documents online. Strip hidden line wraps and paragraph breaks with 100% private in-browser processing.",
-    "heroSubtitle": "Instantly remove line breaks in Apple Pages, eliminate soft returns, and unwrap jagged copied text into clean continuous paragraphs with complete privacy and zero client-side latency right now.",
-    "intentDescription": "Pasting text into Apple Pages on Mac often carries over hidden paragraph breaks and soft line wraps that misalign elegant typography templates. Easily remove line breaks in Apple Pages or clean text in your browser before pasting. All operations run locally with complete privacy and zero server transmission on every conversion.",
+    "name": "Remove Line Breaks in Apple Pages",
+    "h1": "Remove Line Breaks in Apple Pages Documents",
+    "metaTitle": "Remove Line Breaks in Apple Pages Online – Free Line Joiner | FastToolVerse",
+    "metaDescription": "Instantly remove line breaks in Apple Pages documents online. Clean up hidden paragraph breaks, fix jagged text, and preserve publication-grade typography.",
+    "heroSubtitle": "Instantly remove line breaks in Apple Pages, eliminate soft returns and rogue paragraph marks, and format clean continuous text with 100% private in-browser processing.",
+    "intentDescription": "Pasting text into Apple Pages on Mac often carries over hidden paragraph marks and soft line breaks that misalign elegant typography templates. Easily clean and format document text in seconds using our client-side browser tool.",
     "config": {
       "replaceWith": "space",
-      "preserveParagraphs": false
+      "preserveParagraphs": true
     },
     "category": "Office & Document Suite",
     "sampleInput": "Apple Pages documents require clean\ntypography and consistent margins.\nRemove accidental line breaks from\nimported web content and citations.",
     "editorialGuide": {
-      "card1Title": "Find and Replace in Apple Pages (Cmd+F)",
-      "card1Content": "In Apple Pages, press Command+F to open the search bar. Click the gear icon on the left of the search bar and select 'Find & Replace'. Click the gear again and select 'Insert' to view special characters like 'Paragraph Break' or 'Line Break'.",
-      "card2Title": "Viewing Invisibility Marks in Pages",
-      "card2Content": "Go to View > Show Invisibles (or press Shift+Command+I). Paragraph marks appear as blue pilcrows (¶) and line breaks appear as soft arrows (↵), helping you target the exact break type.",
-      "card3Title": "Replacing Line Breaks with Spaces in Pages",
-      "card3Content": "Insert a Paragraph Break in the Find box, type a single space in the Replace box, and click 'Replace All' to immediately merge lines into smooth paragraphs.",
-      "card4Title": "Fast Online Cleaner for Mac Users",
-      "card4Content": "FastToolVerse offers an instantaneous, zero-install alternative: paste your text, choose your separator, and paste back into Apple Pages with perfect typography intact."
+      "card1Title": "Why Accidental Line Breaks Ruin Typography in Apple Pages Documents",
+      "card1Content": "Apple Pages is celebrated across the macOS and iPadOS ecosystem for its elegant layout templates, fluid typography engine, and seamless iCloud collaboration. Designers, authors, educators, and macOS professionals rely on Pages to create publication-grade resumes, newsletters, term papers, and corporate reports. However, when gathering content by copying excerpts from scanned PDF archives, online articles, or email threads into Apple Pages, text almost always arrives contaminated with hard, jagged line breaks.\n\nSentences that should wrap smoothly across your document margins cut off abruptly after only a few words. In Apple Pages, these hard line endings disrupt the visual flow of your pages, create awkward uneven gaps on the right margin, and make paragraph justify alignments look distorted. If you adjust font sizes, margins, or page orientation, sentences break unpredictably, leaving fragmented lines that make your manuscript look amateurish. Writers and editors who previously learned how to remove line breaks in word or how to remove line breaks in excel frequently discover that Apple Pages has its own distinct nuances when handling copied text. Learning how to cleanly remove line breaks apple pages documents contain restores tight, publication-ready typography across your entire manuscript in seconds.\n\nWhen you need to remove line breaks from text before finalizing a formal report or publishing an eBook, manual backspacing through dozens of lines is slow and tedious. Just as administrative specialists search for excel remove line breaks techniques or learn how to remove line breaks in google docs during document creation, Pages users need dependable workflows to remove line breaks text formatting defects from draft pages. Eliminating rogue line endings guarantees clean page alignment, consistent line lengths, and flawless visual presentation.",
+      "card2Title": "Understanding How Apple Pages Handles Paragraph Breaks and Soft Returns",
+      "card2Content": "To clean your text quickly in Apple Pages, it helps to understand how the word processor distinguishes between different break types. In Pages, pressing the Return key inserts a standard paragraph break (\\n), which carries your document's paragraph style, spacing before/after, and indentation rules.\n\nPressing Shift and Return creates a soft line break (↵), which drops the cursor to the next line without triggering new paragraph margins. Turning on invisibles (View > Show Invisibles) reveals hidden paragraph marks as small blue pilcrows (¶) and soft line breaks as curved arrows. When text is pasted from external sources that contain hard line breaks at fixed column widths, Pages treats every line ending as an explicit paragraph or break. Understanding these invisibles allows you to clean text without destroying intentional paragraph structure.\n\nSimilar newline challenges appear across different document suites. For example, administrative personnel frequently manage word remove line breaks quirks, troubleshoot excel remove line breaks in cell formula discrepancies, or execute python remove line breaks from string scripts during automated report compilation. In Apple Pages, failing to sanitize hard line endings causes jagged margins that look amateurish. Knowing how to pre-process strings ensures your Rich Text documents look professional across any print or digital format.",
+      "card3Title": "The Step-by-Step Way to Remove Line Breaks in Apple Pages",
+      "card3Content": "Apple Pages provides built-in Find and Replace tools equipped with special character tokens to eliminate unwanted line breaks directly within your document.\n\nPress Command + F to open the Find and Replace bar, and click the gear icon to choose 'Find & Replace'. In Pages, you can insert special break tokens: in the 'Find' field, press Option + Return to enter a line break token, or copy a line break character directly. In the 'Replace' field, tap your spacebar once. Clicking 'Replace All' immediately merges fragmented lines across your selection or document. Just as users rely on notepad++ remove line breaks commands or search for remove line breaks in word to clean up reports, this technique eliminates unwanted breaks while preserving paragraph boundaries.\n\nTo preserve intentional double paragraph breaks while only joining broken lines inside them, use the three-step placeholder approach: first search for double line breaks and replace with a unique temporary marker like ###, next search for single line breaks and replace with a space, and finally search for ### and replace with a fresh paragraph break. In just three quick steps, your manuscript transforms into smooth, unified paragraphs ready for printing or exporting. Those familiar with remove line breaks in excel formula patterns or google docs remove line breaks workflows will appreciate having direct control over whitespace before applying font styles or bold accents in Pages.",
+      "card4Title": "Why an In-Browser Text Cleaner Is the Fastest Daily Shortcut for Mac Users",
+      "card4Content": "While Pages' Find and Replace works well, inserting special characters and running multi-step replacements just to clean a short quote, bibliography excerpt, or client draft can interrupt your writing flow. In daily drafting tasks on macOS, an accessible online utility is far more practical.\n\nOur remove line breaks online tool gives you the exact same precision right inside your browser window. You paste your raw multiline text, choose the option to preserve double line breaks between paragraphs, and click one button. The tool automatically connects broken lines within paragraphs, cleans up extra spaces, and returns smooth text ready to paste directly into Apple Pages. If you have ever used an online tool to remove line breaks in excel, run remove line breaks online routines, or manage remove line breaks google docs tasks, our web tool delivers the same speed and reliability.\n\nIt executes 100% locally in your browser memory using client-side JavaScript, ensuring that your manuscripts, creative writing, and private notes remain completely secure. By keeping this remove line breaks tool bookmarked alongside remove line breaks excel reference sheets, you can format memos in seconds without risking data exposure or dealing with awkward dialog menus on your Mac."
     },
     "faqs": [
       {
-        "question": "What is the shortcut for Find and Replace in Apple Pages?",
-        "answer": "Press Cmd+F, then click the gear icon to toggle the Find & Replace interface."
+        "question": "What is the shortcut to open Find and Replace in Apple Pages?",
+        "answer": "Press Command + F on macOS, then click the gear icon and select 'Find & Replace' to open the replace interface."
       },
       {
-        "question": "How do I insert a line break symbol in Pages Find box?",
-        "answer": "Click the gear icon in the search box, choose 'Insert', and select 'Line Break' or 'Paragraph Break'."
+        "question": "How do I show hidden line break characters in Apple Pages?",
+        "answer": "Go to View > Show Invisibles (or press Shift + Command + I) to display paragraph symbols (¶) and line break arrows (↵)."
       },
       {
-        "question": "How do I see hidden characters in Apple Pages?",
-        "answer": "Choose View > Show Invisibles from the top menu or press Shift+Cmd+I."
+        "question": "How do I insert a line break into the Pages Find field?",
+        "answer": "Press Option + Return inside the Find field to match line break characters in Apple Pages."
       },
       {
-        "question": "Can I remove line breaks in Pages on iPhone or iPad?",
-        "answer": "On iOS Pages, tap the ellipsis (...), tap Find, and replace characters. For faster results, use FastToolVerse in mobile Safari."
+        "question": "How do I remove line breaks in Pages while keeping paragraph breaks?",
+        "answer": "Replace double returns with a placeholder like ###, replace single returns with spaces, and restore ### back to standard paragraph breaks."
       },
       {
-        "question": "Will removing line breaks in Pages disrupt my document footnotes?",
-        "answer": "Select only your main body text before running Replace All to protect footnote markers and headers."
+        "question": "Is it safe to clean unpublished manuscripts using an online tool?",
+        "answer": "Yes, our web tool runs entirely client-side inside your local browser memory; your text is never uploaded to remote servers or stored anywhere."
       }
     ]
   },
@@ -7949,6 +7949,53 @@ export const removeLineBreaksPresets: RemoveLineBreaksPreset[] = [
       {
         "question": "Is it safe to clean sensitive plain-text notes in an online tool?",
         "answer": "Yes, our web tool runs entirely client-side inside your local browser memory; your text is never uploaded to remote servers or stored anywhere."
+      }
+    ]
+  },
+  {
+    "slug": "remove-line-breaks-scrivener",
+    "name": "Remove Line Breaks in Scrivener",
+    "h1": "Remove Line Breaks in Scrivener Projects & Manuscripts",
+    "metaTitle": "Remove Line Breaks in Scrivener Online – Free Manuscript Formatter | FastToolVerse",
+    "metaDescription": "Instantly remove line breaks in Scrivener manuscripts online. Unwrap lines, fix broken text from PDF research, and format clean compile-ready prose.",
+    "heroSubtitle": "Eliminate accidental line breaks from Scrivener scenes, unwrap fragmented lines from PDF research notes, and ensure clean compile output with 100% private in-browser processing.",
+    "intentDescription": "Importing research notes or transcribed audio into Scrivener often fills scenes with jagged line breaks that corrupt eBook and PDF compile formatting. Clean your Scrivener text instantly in your browser with complete client-side security.",
+    "config": {
+      "replaceWith": "space",
+      "preserveParagraphs": true
+    },
+    "category": "Office & Document Suite",
+    "sampleInput": "The detective leaned against the weathered brick wall,\nwatching the fog roll off the harbor docks.\nEvery clue in the cold case file\nseemed to point back to the same abandoned warehouse.",
+    "editorialGuide": {
+      "card1Title": "Why Accidental Line Breaks Disrupt Novelists and Writers in Scrivener",
+      "card1Content": "Scrivener by Literature & Latte is the undisputed gold standard authoring studio for novelists, screenwriters, academic researchers, and non-fiction authors worldwide. Unlike standard word processors, Scrivener provides a full-featured writing studio equipped with a corkboard, outliner, research binder, and dynamic compile engine. However, when importing research materials, interview transcripts, digitized archive excerpts, or draft scenes from external sources, Scrivener text files frequently arrive filled with jagged, hard line breaks.\n\nInstead of flowing naturally across the editor window, sentences terminate abruptly every four or five words. In Scrivener's scrivenings mode or corkboard summaries, these rigid line endings make text visually jarring and difficult to read. More seriously, when you compile your manuscript to EPUB, Kindle MOBI, or print-ready PDF, these hard breaks are preserved literally, causing sentences to break midway across lines on e-readers and printed book pages. Authors who previously researched how to remove line breaks in word or how to remove line breaks in excel face comparable formatting hurdles when organizing multi-chapter projects. Learning how to cleanly remove line breaks scrivener documents contain restores flowing, publication-grade prose across your entire project.\n\nWhen you need to remove line breaks from text before beginning a major structural edit, manual line rejoining is an enormous distraction from creative storytelling. Just as data analysts use excel remove line breaks functions or researchers learn how to remove line breaks in google docs during manuscript preparation, authors need dependable workflows to remove line breaks text formatting defects from their binder scenes. Ensuring that narrative prose flows smoothly preserves creative momentum and prevents compile errors down the road.",
+      "card2Title": "Understanding How Scrivener Handles Document Structure and Paragraphs",
+      "card2Content": "To clean your manuscript effectively in Scrivener, it helps to understand how the software organizes text blocks. In Scrivener, each document in your binder functions as a distinct scene or section. Within the editor, pressing the Return key creates a new paragraph break according to your project's default formatting settings.\n\nPressing Shift and Return creates a soft line break. Turning on invisibles (Format > Options > Show Invisibles) reveals hidden paragraph marks and line breaks. When text is pasted from OCR scans or PDF files, hard carriage returns are embedded at the end of every visual line. If these breaks are left uncleaned, Scrivener's compiler treats every line as a distinct paragraph, inserting unwanted first-line indents or paragraph spacing before every sentence fragment. Sanitizing these breaks ensures your manuscript compiles cleanly.\n\nSimilar whitespace hurdles appear across office productivity tasks. For example, copywriters often apply word remove line breaks techniques, solve excel remove line breaks in cell formula issues when managing character timelines, or write a python remove line breaks from string script to automate bulk content formatting. In Scrivener, maintaining clean paragraph rhythm keeps readers immersed in your narrative world rather than stumbling over fractured typography.",
+      "card3Title": "The Step-by-Step Way to Fix Fragmented Text in Scrivener",
+      "card3Content": "Scrivener provides built-in text manipulation tools and regex Find and Replace to eliminate line breaks from your scenes directly within the application.\n\nIf you have a block of text with broken lines, highlight the text and go to Edit > Text Clean-up > Unwrap Lines. Scrivener's native line unwrapper analyzes the highlighted block, automatically welding broken lines together into smooth sentences while respecting paragraph boundaries. Just as users rely on notepad++ remove line breaks shortcuts or search for remove line breaks in word when refining articles, Scrivener's built-in unwrapper provides instant editorial relief.\n\nIf you need to clean an entire document using Find and Replace (Edit > Find > Find...), check the box for 'Regular expressions'. Search for \\r?\\n and replace with a single space. To preserve intentional double paragraph breaks, replace (\\r?\\n){2,} with a temporary code like ###, replace single newlines with spaces, and then restore ### back to \\n\\n. In just a few clicks, your scene transforms into clean, beautifully structured narrative prose ready for compilation. Those familiar with remove line breaks in excel formula solutions or google docs remove line breaks workflows will appreciate having direct regex power inside their authoring studio.",
+      "card4Title": "Why an In-Browser Line Remover Is the Fastest Shortcut for Authors",
+      "card4Content": "While Scrivener's text clean-up commands are helpful, running multi-step regex replacements across dozens of research snippets, historical quotes, or interview notes can interrupt your creative momentum. In daily drafting and research workflows, an accessible online utility is far more convenient.\n\nOur remove line breaks online tool gives you an instantaneous, zero-effort alternative. You paste your raw multiline text, choose the option to preserve double line breaks between paragraphs, and click one button. The tool automatically connects broken lines within paragraphs, cleans up extra spaces, and returns smooth text ready to paste directly into your Scrivener scenes. If you have ever utilized remove line breaks online tools to fix remove line breaks excel records or streamline remove line breaks google docs workflows, you will find our interface exceptionally fast and reliable.\n\nIt runs 100% locally in your browser memory using client-side JavaScript, ensuring that your proprietary book manuscripts, creative drafts, and research remain completely secure. By keeping this remove line breaks tool bookmarked alongside remove line breaks in excel references, you can refine historical quotes and interview notes in seconds with zero data leakage or complex compilation surprises."
+    },
+    "faqs": [
+      {
+        "question": "Where is the Unwrap Lines feature in Scrivener?",
+        "answer": "Highlight your text and go to Edit > Text Clean-up > Unwrap Lines (or Edit > Transformations > Unwrap Text depending on Scrivener version)."
+      },
+      {
+        "question": "How do I show non-printing characters in Scrivener?",
+        "answer": "Go to Format > Options > Show Invisibles (or View > Text Editing > Show Invisibles) to display paragraph marks and spaces."
+      },
+      {
+        "question": "How do I remove line breaks in Scrivener using regex?",
+        "answer": "Open Find and Replace (Edit > Find > Find...), check 'Regular expressions', enter \\r?\\n in search, enter a space in replace, and click 'Replace All'."
+      },
+      {
+        "question": "Why does Scrivener add indents to every broken line when compiled?",
+        "answer": "If text contains hard line breaks, Scrivener's compile engine treats every single broken line as a separate paragraph, applying first-line indents to each."
+      },
+      {
+        "question": "Is it safe to clean unpublished novel drafts in an online tool?",
+        "answer": "Yes, our web tool runs entirely client-side inside your local browser memory; your manuscript is never uploaded to remote servers or stored anywhere."
       }
     ]
   },

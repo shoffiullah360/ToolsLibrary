@@ -479,96 +479,90 @@ export const REMOVE_EMPTY_LINES_PRESETS: RemoveEmptyLinesPreset[] = [
     },
     "sampleText": "import { useState, useEffect } from 'react';\n\n\nexport function UserProfile({ userId }) {\n  const [user, setUser] = useState(null);\n   \n\n  useEffect(() => {\n    fetchUser(userId).then(setUser);\n  }, [userId]);\n\n\n  if (!user) return <Loading />;\n\n  return <div>{user.name}</div>;\n}",
     "editorialGuide": {
-      "heading": "Developer Guide: Removing Blank Lines and Whitespace Rows in Visual Studio Code",
+      "heading": "The Complete Guide to Cleaning Blank Lines and Whitespace in Visual Studio Code",
       "sections": [
         {
-          "title": "Remove Empty Lines in VS Code Using Regex (^\\s*$\\n)",
+          "title": "Why Blank Lines Pile Up in Your Code and Scripts",
           "paragraphs": [
-            "Visual Studio Code includes a powerful search engine powered by Rust’s ripgrep. It handles multi-line regular expressions seamlessly across active files and entire workspaces without requiring any extensions.",
-            "Press Ctrl+H (or Command+Option+F on Mac) to open the Find and Replace widget in the active editor. Ensure the regular expression toggle is enabled (click the .* icon or press Alt+R). In the Find field, type `^\\s*$\\n` (or `^\\s*\\n`), which matches any line containing zero or more whitespace characters ending at the line break. Leave the Replace field blank and click \"Replace All\" (Ctrl+Alt+Enter).",
-            "This single expression purges every completely empty row as well as rows that only contain accidental indentation spaces or tabs, without disrupting the structural indentation of surrounding code blocks."
+            "Visual Studio Code has quickly become the favorite daily editor for developers, students, and writers. But whether you are writing modern web code, analyzing long system logs, or pasting blocks of data from terminal shells, files easily end up bloated with erratic empty rows. What should be a clean fifty-line script suddenly stretches across two hundred lines with irregular blank gaps.",
+            "Knowing how to remove empty lines in VS Code is an essential skill that immediately improves readability. Extra vertical space forces you to scroll endlessly during debugging, disrupts continuous reading, and makes your project look unkempt during pull requests or code reviews. Clearing those empty spaces transforms messy files into crisp, readable documents in seconds."
           ],
           "bullets": [
-            "Press Ctrl+H (Windows/Linux) or Command+Option+F (macOS).",
-            "Toggle Regex mode on by clicking the .* icon or pressing Alt+R.",
-            "Find input: `^\\s*$\\n` (matches empty lines and whitespace-only lines).",
-            "Replace input: Leave completely empty.",
-            "Press Ctrl+Alt+Enter (or click the Replace All icon) to execute."
+            "Minimize visual clutter so you can focus directly on the logic of your code and notes.",
+            "Keep files neat and concise before committing code to team Git repositories.",
+            "Standardize formatting across files imported from different operating systems and shells."
           ],
           "callout": {
             "type": "tip",
-            "label": "Preserving End-of-File Newline",
-            "text": "If your file ends on an empty line without a trailing newline character, use ^\\s*$\\n? to guarantee the final line is cleaned while maintaining POSIX newline compliance."
+            "label": "Render Whitespace",
+            "text": "In VS Code, open Settings (Ctrl + ,) and search for 'render whitespace'. Setting it to 'all' or 'boundary' reveals hidden spaces and tabs on empty lines instantly."
           }
         },
         {
-          "title": "Shortcut to Remove Empty Lines in Visual Studio Code & Visual Studio 2022",
+          "title": "Using VS Code Built-In Search and Replace with Regular Expressions",
           "paragraphs": [
-            "Software developers moving between VS Code and full Visual Studio 2022 need quick, muscle-memory shortcuts to delete blank lines. In VS Code, the fastest sequence is: press Ctrl+H, press Alt+R to enable regex, enter `^\\s*$\\n`, and press Ctrl+Alt+Enter.",
-            "In Visual Studio 2022, the corresponding sequence is: press Ctrl+H, press Alt+E to toggle regular expressions, enter `^\\s*$\\n`, and press Alt+A to Replace All. You can also press Ctrl+K, Ctrl+E to run Code Cleanup in Visual Studio 2022.",
-            "Furthermore, in VS Code, pressing Shift+Alt+F (or Shift+Option+F on Mac) executes Format Document, automatically collapsing surplus blank lines according to your Prettier or ESLint rules."
+            "VS Code features a lightning-fast search engine powered by regular expressions. You do not need to install extra extensions to sweep away unwanted blank lines.",
+            "Press Ctrl + H on Windows (or Cmd + Option + F on Mac) to reveal the Replace widget in the top right. Click the 'Use Regular Expression' button (or press Alt + R). In the 'Find' box, type `^\\s*(?:\\r?\\n)` (or simply `^\\n` for strictly blank lines). Leave the 'Replace' box completely empty, and click the 'Replace All' button (Ctrl + Alt + Enter).",
+            "Just like that, every single empty row—including lines that secretly contain spacebars or tabs—disappears instantly. If you instead want to leave a single empty line between functions while collapsing triple or quadruple gaps, you can search for `(\\r?\\n){3,}` and replace with `\\n\\n`."
           ],
           "bullets": [
-            "VS Code regex shortcut: Ctrl+H > Alt+R > type `^\\s*$\\n` > Ctrl+Alt+Enter.",
-            "Visual Studio 2022 shortcut: Ctrl+H > Alt+E > type `^\\s*$\\n` > Alt+A.",
-            "Visual Studio Code Cleanup hotkey: Ctrl+K, Ctrl+E.",
-            "Format Document shortcut in VS Code: Shift+Alt+F (Shift+Option+F on macOS)."
+            "Press Ctrl + H, enable Regex (Alt + R), find `^\\s*(?:\\r?\\n)`, and replace with nothing to clear all blank rows.",
+            "Collapse excessive clusters of three or more breaks into two breaks using `(\\r?\\n){3,}` to `\\n\\n`.",
+            "Enable 'Preserve Case' and test with 'Find Next' first if you want visual confirmation before running Replace All."
           ]
         },
         {
-          "title": "Method 2: Command Palette and Built-In Code Formatting",
+          "title": "Native Commands and Automatic Formatting on Save",
           "paragraphs": [
-            "If you prefer not to write regex queries manually, VS Code’s built-in formatting engine can be configured to manage blank lines automatically on save. Languages like JavaScript, TypeScript, Python, and Go support formatters (such as Prettier, Black, or gofmt) that standardize blank line counts.",
-            "To format an active document immediately, press Shift+Alt+F (or Shift+Option+F on Mac). In your settings.json, you can configure \"editor.formatOnSave\": true alongside language-specific rules to collapse multiple consecutive blank lines down to a single blank line whenever you save.",
-            "Additionally, enabling \"files.trimTrailingWhitespace\": true strips hidden space characters at the end of every line, preventing invisible whitespace from causing git diff noise across team branches."
+            "Beyond manual regex replacement, VS Code includes helpful native commands and automated settings that keep your files tidy in the background.",
+            "Open the Command Palette (Ctrl + Shift + P or Cmd + Shift + P) and search for 'Trim Trailing Whitespace'. Running this command strips spaces at the ends of lines, preparing your document for clean line deletions. You can also configure VS Code to do this automatically by adding `\"files.trimTrailingWhitespace\": true` in your `settings.json` file.",
+            "Developers working across diverse environments often encounter patterns from other systems: whether adapting scripts where teammates used python remove empty lines scripts, cleaning logs with bash remove empty lines from file pipelines, or managing files using vim remove empty lines commands, mastering VS Code's native options keeps your local workflow fluid and responsive."
           ],
           "bullets": [
-            "Press Shift+Alt+F to format the active document instantly.",
-            "Install popular formatters like Prettier or Black via the Extensions marketplace.",
-            "Configure \"files.trimTrailingWhitespace\": true in settings.json to remove trailing spaces.",
-            "Add \"files.trimFinalNewlines\": true to keep files clean at EOF."
-          ]
+            "Run 'Trim Trailing Whitespace' from the Command Palette to strip hidden space characters.",
+            "Enable 'Format On Save' in Settings so code linters automatically clean unnecessary vertical gaps.",
+            "Combine editor commands with simple keyboard shortcuts for effortless daily maintenance."
+          ],
+          "callout": {
+            "type": "note",
+            "label": "Multi-Cursor Trick",
+            "text": "You can also hold Alt + Shift and drag your mouse down a column of empty lines to select them simultaneously, then press Delete to erase them manually."
+          }
         },
         {
-          "title": "Why Browser Processing is Ideal for Snippets and Sensitive Payloads",
+          "title": "When an In-Browser Cleaner Is the Quickest Shortcut",
           "paragraphs": [
-            "While VS Code is ideal for repository development, engineers frequently handle ad-hoc text tasks: sanitizing API response payloads, cleaning SQL dump fragments, or formatting log streams from remote servers where VS Code is not open or available.",
-            "FastToolVerse provides an instant browser-based workspace. Paste any code snippet, script, or log file to strip empty rows with microsecond latency. Because the tool runs 100% client-side in browser RAM, sensitive API keys, database credentials, and internal customer records are never exposed to remote endpoints.",
-            "There is no need to create scratch files on your local disk or clutter your workspace folder with temporary text dumps just to run a quick regex replacement."
+            "While VS Code is fantastic when working on your main workstation, you might often need to sanitize a quick text snippet, JSON payload, or SQL query on a browser tab without switching windows or launching an entire IDE workspace.",
+            "Using our clean tool to remove empty lines online gives you the fastest path forward. Paste your messy block of text, click once to strip all blank lines, and copy the sanitized result right back into your workflow. It runs 100% locally inside your browser, protecting private tokens and credentials with zero server uploads."
           ],
           "bullets": [
-            "Instant sandbox execution with zero extension overhead or editor setup.",
-            "Safe for proprietary codebases, API payloads, and database dumps.",
-            "Preserves leading code indentation for Python, YAML, and JSON structures.",
-            "Real-time metrics display line reduction counts and percentage savings."
+            "Zero IDE startup lag—clean snippets in your browser in less than a second.",
+            "One-click smart filters to strip empty rows, collapse double breaks, and trim edges.",
+            "Private client-side processing: your code and text never leave your machine."
           ]
         }
       ]
     },
     "faqs": [
       {
-        "question": "What is the shortcut to remove empty lines in Visual Studio 2022?",
-        "answer": "Press Ctrl+H to open Find and Replace, press Alt+E to toggle regular expressions, enter \"^\\s*$\\n\" (or \"^\\s*\\n\") into Find, leave Replace empty, and press Alt+A to Replace All. To format automatically, press Ctrl+K, Ctrl+E."
+        "question": "What is the fastest way to remove empty lines in VS Code?",
+        "answer": "Press Ctrl + H (Cmd + Option + F on Mac), enable Regular Expression (Alt + R), enter ^\\s*(?:\\r?\\n) in the Find box, leave Replace empty, and press Ctrl + Alt + Enter (Replace All)."
       },
       {
-        "question": "Can I delete blank lines in VS Code without altering code indentation?",
-        "answer": "Open Find and Replace (Ctrl+H), enable regex (Alt+R), search for \"^\\s*$\\n\", and leave Replace empty. This expression only matches lines that are completely blank or contain only spaces/tabs, leaving non-empty code indentation perfectly intact."
+        "question": "How do I remove lines that contain only spaces in VS Code?",
+        "answer": "Using the regex ^\\s*(?:\\r?\\n) targets both completely empty lines and lines containing invisible spaces or tabs, removing them completely."
       },
       {
-        "question": "What is the exact regex to delete empty lines in VS Code?",
-        "answer": "Press Ctrl+H, toggle regex mode (Alt+R), enter \"^\\s*$\\n\" into Find, leave Replace empty, and press Ctrl+Alt+Enter to replace all."
+        "question": "Can I set VS Code to automatically remove trailing blank lines when I save?",
+        "answer": "Yes, open Settings (Ctrl + ,), search for 'Trim Final Newlines', and enable the checkbox for files.trimFinalNewlines."
       },
       {
-        "question": "Can I remove empty lines in VS Code without regex?",
-        "answer": "You can install extensions like \"Delete Blank Lines\" from the marketplace, or configure a code formatter like Prettier and run Shift+Alt+F (Format Document)."
+        "question": "Why does regex line removal sometimes pull the next line upwards?",
+        "answer": "When a line break is deleted without replacement, the text underneath moves up into its place. This is the intended behavior when collapsing empty rows."
       },
       {
-        "question": "Can I collapse multiple blank lines to a single blank line in VS Code?",
-        "answer": "With regex enabled, search for \"\\n\\n\\n+\" and replace with \"\\n\\n\". This condenses three or more newlines into a standard double newline break."
-      },
-      {
-        "question": "Will cleaning empty lines ruin Python indentation?",
-        "answer": "No. Both the VS Code regex \"^\\s*$\\n\" and FastToolVerse evaluate only lines that contain no content. Non-empty lines retain their leading indentation spaces perfectly."
+        "question": "Can I undo a bulk line replacement in VS Code?",
+        "answer": "Yes, pressing Ctrl + Z (or Cmd + Z on Mac) immediately restores all original lines exactly as they were before the replacement."
       }
     ]
   },
@@ -590,95 +584,90 @@ export const REMOVE_EMPTY_LINES_PRESETS: RemoveEmptyLinesPreset[] = [
     },
     "sampleText": "SKU\tItem Name\tCategory\tPrice\nPRD-01\tWireless Mouse\tElectronics\t29.99\n\nPRD-02\tMechanical Keyboard\tElectronics\t89.99\n\n\nPRD-03\tUSB-C Cable\tAccessories\t12.50\n   \nPRD-04\tLaptop Stand\tAccessories\t45.00\n\n",
     "editorialGuide": {
-      "heading": "Complete Tutorial: Deleting Blank Rows and Empty Lines in Google Sheets",
+      "heading": "The Practical, Easy Guide to Removing Blank Rows and Empty Lines in Google Sheets",
       "sections": [
         {
-          "title": "Remove Empty Rows Between Data in Google Sheets",
+          "title": "Why Empty Rows Disrupt Spreadsheets and Collaborative Sheets",
           "paragraphs": [
-            "The most reliable way to delete empty rows directly inside Google Sheets without shifting unrelated data columns is using Google Sheets’ built-in filter tool. This isolates empty rows visually so you can delete them in a single batch.",
-            "Highlight your entire dataset, including column headers. Click the Filter icon in the toolbar (or Data > Create a filter). Click the green filter inverted triangle on a mandatory column header. In the dropdown, click \"Clear\", scroll down to check only \"(Blanks)\", and click OK. Select the filtered blank row numbers, right-click, choose \"Delete selected rows\", and re-enable all items in the filter.",
-            "This workflow ensures that only complete blank lines are removed while preserving records that have data in adjacent columns, avoiding common accidental deletions caused by sorting unsorted ranges."
+            "Google Sheets has become the heart of collaborative project tracking, financial summaries, and team planning. But when team members copy and paste data from external databases, web forms, or chat feeds, spreadsheets quickly fill up with distracting empty rows.",
+            "Empty rows in Google Sheets are not just an eyesore: they interfere with critical spreadsheet functions. Built-in sorting routines can stop short, keyboard navigation (Ctrl + Down Arrow) gets interrupted constantly, and formulas like COUNTA or AVERAGE can produce incorrect outputs. Learning how to remove empty lines in Google Sheets ensures your calculations remain dependable and your team reports look clean and authoritative."
           ],
           "bullets": [
-            "Select your data range and click Data > Create a filter.",
-            "Click the filter icon on a column that should never be blank.",
-            "Click \"Clear\", check only \"(Blanks)\", and click OK.",
-            "Highlight the displayed blank row indices, right-click, and select \"Delete selected rows\".",
-            "Turn the filter off to reveal your consolidated dataset."
+            "Maintain uninterrupted keyboard navigation across multi-thousand row datasets.",
+            "Ensure charts, pivot tables, and lookup formulas calculate all records accurately.",
+            "Present polished, professional shared sheets to clients and team leads."
           ],
           "callout": {
-            "type": "warning",
-            "label": "Caution in Shared Spreadsheets",
-            "text": "If teammates are editing the sheet simultaneously, creating a standard filter alters the view for everyone. Use Data > Filter views > Create new filter view instead to work without disrupting colleagues."
+            "type": "tip",
+            "label": "Duplicate Tab First",
+            "text": "Before deleting rows in a shared spreadsheet, right-click the sheet tab at the bottom and select 'Duplicate'. Having a quick backup gives you total confidence while cleaning."
           }
         },
         {
-          "title": "Method 2: Formula-Based Dynamic Extraction (Non-Destructive)",
+          "title": "Fast Built-In Methods: Sheet Filters and Sorting Tricks",
           "paragraphs": [
-            "If you need to keep raw input data untouched while creating a clean, synchronized table free of blank rows, Google Sheets’ powerful formula functions provide the ideal solution.",
-            "In a new tab or adjacent column, use the FILTER function: `=FILTER(A2:D, LEN(A2:A)>0)`. This instantly extracts all rows where column A has content. Alternatively, the QUERY function `=QUERY(A2:D, \"select * where A is not null\", 1)` creates a sanitized table with automatic header retention.",
-            "Because these formulas create live spill ranges, any updates made to the original raw data will reflect in the clean table without manual intervention."
+            "Google Sheets provides simple native features to isolate and delete empty rows without needing custom scripts or formulas.",
+            "The fastest visual method is using Create a Filter: highlight your entire data range, click Data in the top menu, and select 'Create a filter' (or click the funnel icon on the toolbar). Click the filter icon on your primary data column, click 'Clear' to uncheck all values, and scroll down to check only '(Blanks)'. Google Sheets instantly isolates only the empty rows. Select the row numbers on the left, right-click, choose 'Delete selected rows', and turn the filter off. All your blank gaps disappear.",
+            "Alternatively, if your data does not need to stay in strict chronological order, simply sorting your main column (Data > Sort sheet by Column A) immediately pushes all empty rows to the very bottom of the worksheet, pulling all active rows together."
           ],
           "bullets": [
-            "FILTER function: =FILTER(A2:D, LEN(A2:A)>0) dynamically excludes blank rows.",
-            "QUERY function: =QUERY(A2:D, \"select * where A is not null\", 1) is ideal for complex criteria.",
-            "Preserves original data intact for auditing and historical records.",
-            "Updates automatically whenever new entries are added or modified."
+            "Use Data > Create a filter > Filter by Blanks to safely select and delete empty rows.",
+            "Use Data > Sort range to instantly push blank rows to the bottom of the sheet.",
+            "Select empty rows using Ctrl-click for quick manual deletions on smaller tables."
           ]
         },
         {
-          "title": "Remove Empty Lines in Google Docs Documents",
+          "title": "Dynamic Formula Cleanups with FILTER and QUERY",
           "paragraphs": [
-            "Working across the Google Workspace ecosystem often involves transferring messy content between Google Docs and Google Sheets. If you are preparing tabular text or report sections for export, manipulating rows manually inside Google Sheets or Google Docs can trigger unwanted recalculations, broken cell references (#REF!), or collaborative lockups.",
-            "FastToolVerse offers an effortless clipboard workflow. Copy your rows from Google Sheets or text from Google Docs (Ctrl+C), paste into FastToolVerse, and watch empty lines and phantom whitespace rows disappear instantly. Our engine preserves tab characters between columns so you can paste clean rows back into Google Sheets or Docs with perfect grid alignment.",
-            "This cross-suite approach is especially powerful when consolidating tabular data pasted from messy PDF tables, web pages, or email threads that contain inconsistent spacing."
+            "If you want to keep your raw data sheet untouched while generating a clean, gap-free summary on a second tab, Google Sheets offers powerful dynamic formulas.",
+            "On a new sheet, simply type `=FILTER(Sheet1!A2:D, Sheet1!A2:A<>\")` into cell A1. This formula inspects column A on the source sheet and instantly pulls over every row that contains content, automatically bypassing every single blank line. Any new rows added to the source sheet will automatically appear in your clean tab without manual effort.",
+            "Whether you are adapting datasets prepared with python remove empty lines scripts, cleaning CSV exports from powershell remove empty lines pipelines, or structuring lists formatted with regex remove empty lines tools, formula-driven cleaning keeps your workflows automated and reliable."
           ],
           "bullets": [
-            "Preserves tab delimiters (\\t) between spreadsheet columns flawlessly.",
-            "Removes accidental empty rows and whitespace-only breaks in 0ms.",
-            "No risk of triggering #REF! formula errors in complex workbooks.",
-            "Zero server data transmission keeps sensitive financial records 100% private."
-          ]
-        },
-        {
-          "title": "Troubleshooting Phantom Empty Lines in Google Sheets",
-          "paragraphs": [
-            "A common issue in Google Sheets occurs when rows look blank but the filter fails to identify them as \"(Blanks)\". This typically happens when cells contain empty strings generated by formulas (e.g. `IF(condition, value, \"\")`) or hidden non-breaking space characters from web copy-pastes.",
-            "To resolve this inside Google Sheets, highlight the range, navigate to Data > Data cleanup > Trim whitespace. If phantom rows persist, copying the range into FastToolVerse eliminates whitespace-only lines automatically using regex detection (`^\\s*$`).",
-            "Running data through our client-side cleaner removes leading and trailing spaces that cause VLOOKUP, INDEX/MATCH, and XLOOKUP matching failures."
+            "Formula approach: `=FILTER(Range, KeyColumn<>\")` creates an instant clean replica without altering raw records.",
+            "Use `=QUERY(A2:D, \"select * where A is not null\")` for advanced multi-condition extractions.",
+            "Formulas update automatically whenever new data is added or edited in the source sheet."
           ],
           "callout": {
             "type": "note",
-            "label": "Data Cleanup Tip",
-            "text": "FastToolVerse’s \"Remove whitespace-only lines\" checkbox catches non-breaking spaces, trailing tabs, and blank strings that Google Sheets native filters often miss."
+            "label": "Spacebar Blanks",
+            "text": "If a cell appears empty but contains spacebar taps, the FILTER function might treat it as text. Use `=FILTER(A2:D, TRIM(Sheet1!A2:A)<>\")` to filter out whitespace cells as well."
           }
+        },
+        {
+          "title": "Why an In-Browser Cleaner Is the Fastest Pre-Paste Solution",
+          "paragraphs": [
+            "Often, the easiest way to avoid empty rows in Google Sheets is to clean your data before pasting it into the sheet. Pasting unformatted lists directly into a column often creates messy multi-line cells and accidental gaps that require tedious cleanup.",
+            "Using our dedicated tool to remove empty lines online allows you to paste your raw roster, address list, or SKU collection, strip out all blank lines in a single click, and paste a perfectly contiguous column into Google Sheets. It saves time, prevents sheet lag, and operates completely privately inside your web browser."
+          ],
+          "bullets": [
+            "Prevents spreadsheet lag when cleaning long lists with tens of thousands of items.",
+            "Eliminates accidental double line breaks inside cells that distort row heights.",
+            "100% private client-side processing keeps your spreadsheets and business lists secure."
+          ]
         }
       ]
     },
     "faqs": [
       {
-        "question": "What is the shortcut to remove empty rows in Google Sheets?",
-        "answer": "While Google Sheets lacks a single dedicated shortcut key, you can quickly create a filter with Alt+D then F (or Ctrl+Shift+\\), filter by Blanks, press Shift+Space to select the blank row range, and press Ctrl+Alt+Minus to delete them instantly."
+        "question": "What is the easiest way to delete blank rows in Google Sheets?",
+        "answer": "Select your table headers, click Data > Create a filter, click the filter icon on your main column, check only '(Blanks)', highlight the visible row numbers on the left, right-click and choose 'Delete selected rows', then remove the filter."
       },
       {
-        "question": "Can I get rid of extra lines in Google Docs without manual backspace?",
-        "answer": "In Google Docs, press Ctrl+H (Cmd+H on Mac), enable \"Match using regular expressions\", enter \\n\\n+ into Find and \\n into Replace, then click Replace all. Alternatively, paste your document text into FastToolVerse to collapse all empty lines in one click."
+        "question": "How do I remove blank rows using a formula in Google Sheets?",
+        "answer": "Type =FILTER(A2:D, A2:A<>'') on a new sheet to dynamically display all rows where column A is not empty, leaving source data untouched."
       },
       {
-        "question": "Can I quickly delete empty rows in Google Sheets?",
-        "answer": "Create a filter (Data > Create a filter), click the filter icon on a primary column, filter only for \"(Blanks)\", select the displayed row numbers, right-click, choose \"Delete selected rows\", and clear the filter."
+        "question": "Why did my filter show blank rows that actually had invisible text?",
+        "answer": "Cells that contain spacebar taps or formulas returning empty quotes ('') look empty. Using the formula =FILTER(A2:D, TRIM(A2:A)<>'') cleans both empty and whitespace cells."
       },
       {
-        "question": "Why does Google Sheets say \"No blanks found\" when rows appear empty?",
-        "answer": "Cells often contain formula empty strings (\"\"), space characters, or tabs. Use Data > Data cleanup > Trim whitespace, or paste your data into FastToolVerse to remove whitespace lines."
+        "question": "How do I remove empty lines inside a single Google Sheets cell?",
+        "answer": "Press Ctrl + H to open Find and Replace. In 'Find', press Ctrl + Enter to insert a newline, in 'Replace with' enter a space or leave empty, and click 'Replace all'."
       },
       {
-        "question": "Can I remove blank rows in Google Sheets using a formula?",
-        "answer": "Use \"=FILTER(A2:D, A2:A<>\"\")\" or \"=QUERY(A2:D, \"select * where A is not null\", 1)\". Both functions dynamically generate clean data tables without modifying raw source rows."
-      },
-      {
-        "question": "Will copying data between Google Sheets and FastToolVerse mess up columns?",
-        "answer": "No. Google Sheets copies data with tab characters between cells. FastToolVerse preserves all tab characters while deleting empty row returns, keeping column alignment intact."
+        "question": "Does deleting blank rows in Google Sheets break references in other formulas?",
+        "answer": "If formulas explicitly reference those specific row coordinates, you might see #REF! errors. Using the dynamic FILTER formula method prevents reference breakage."
       }
     ]
   },
@@ -700,100 +689,90 @@ export const REMOVE_EMPTY_LINES_PRESETS: RemoveEmptyLinesPreset[] = [
     },
     "sampleText": "\" Vim Configuration File\nset number\nset relativenumber\n\n\n\" Indentation Settings\nset tabstop=4\nset shiftwidth=4\nset expandtab\n   \n\n\" Key Mappings\nlet mapleader = \"\\<Space>\"\nnnoremap <leader>w :w<CR>\n\n\n\" End of Config",
     "editorialGuide": {
-      "heading": "Terminal Reference: Deleting Empty Lines and Whitespace Rows in Vim & Neovim",
+      "heading": "The Definitive Guide to Removing Blank Lines and Whitespace in Vim and Neovim",
       "sections": [
         {
-          "title": "Command 1: The Classic :g/^$/d Ex Command (Strict Zero-Length Lines)",
+          "title": "The Power and Precision of Line Manipulation in Vim",
           "paragraphs": [
-            "In Vim and Neovim, the global command (:g) evaluates an ex regular expression against every line in the buffer and executes an action (such as delete, d) on every matching row. This is the fastest native terminal method for removing blank rows.",
-            "In Normal mode, type `:g/^$/d` and press Enter. The caret (^) asserts the start of the line, the dollar sign ($) asserts the end of the line, and `d` instructs Vim to delete the line. Within milliseconds, Vim scans the active buffer and deletes every line that contains zero characters.",
-            "Because the delete operation executes as a single atomic ex command, all deletions are grouped together in Vim’s undo history. If you accidentally delete intended code breaks, pressing u restores the buffer instantly."
+            "Vim and Neovim remain legendary among sysadmins, engineers, and power writers for their unmatched speed and keyboard-driven efficiency. When editing configuration files, inspecting multi-gigabyte server logs, or authoring markdown documentation in terminal sessions, unwanted blank lines frequently interrupt your reading and code structure.",
+            "In Vim, every movement is intentional. Empty lines force unnecessary keystrokes, make jumping between paragraphs with `{` and `}` erratic, and waste valuable terminal screen space. Learning how to remove empty lines in vim turns a cumbersome manual cleanup into a single, elegant ex command executed in a fraction of a second."
           ],
           "bullets": [
-            "Ensure you are in Normal mode by pressing Esc.",
-            "Type :g/^$/d and press Enter.",
-            "Deletes every strictly empty line across the entire active buffer.",
-            "Press u immediately if you need to undo the operation."
+            "Restore fluid paragraph navigation using native Vim motion keys like { and }.",
+            "Streamline server configurations, crontab files, and scripts directly inside terminal sessions.",
+            "Execute surgical deletions across hundreds of thousands of lines without leaving normal mode."
           ],
           "callout": {
             "type": "tip",
-            "label": "Vim Ex Command Breakdown",
-            "text": ":g stands for global execution, /^$/ matches lines where start and end meet with zero characters between, and d triggers the delete ex command."
+            "label": "Previewing Invisible Marks",
+            "text": "In normal mode, type `:set list` and press Enter. Vim will display line endings as `$` and tabs as `^I`, revealing whether empty lines contain hidden space characters."
           }
         },
         {
-          "title": "Command 2: Catching Whitespace-Only Lines with :g/^\\s*$/d",
+          "title": "The Essential Ex Commands to Delete Blank Lines in Vim",
           "paragraphs": [
-            "A classic frustration for Vim users is running `:g/^$/d` and discovering that several lines that appeared blank remain in the file. This happens because those lines contain trailing spaces or tab characters left behind by code auto-indentation.",
-            "To delete lines that are either empty or contain only whitespace (spaces and tabs), use `:g/^\\s*$/d`. Here, `\\s*` matches zero or more whitespace characters between the line anchors. Alternatively, the inverted command `:v/\\S/d` (which deletes any line that does not contain a non-whitespace character) produces the exact same result.",
-            "This command is crucial when cleaning source code files like Python scripts or Makefile manifests, where trailing invisible tabs or spaces can trigger indentation compilation errors."
+            "Vim provides the `:global` (or `:g`) command, one of the most powerful text-manipulation engines ever designed. To delete all completely empty lines throughout your active buffer, simply press Escape to enter normal mode, type `:g/^$/d`, and press Enter.",
+            "Here is how this concise command works: `:g` tells Vim to scan the entire buffer globally, `/^$/` matches lines where the beginning of the line (`^`) is immediately followed by the end of the line (`$`) with zero characters in between, and `d` instructs Vim to delete every matched line. In less than a blink, every empty row is purged.",
+            "If your lines contain invisible spaces or tabs, the previous pattern will skip them. To delete both pure empty lines and lines containing whitespace, use `:g/^\\s*$/d`. The `\\s*` matches zero or more whitespace characters, ensuring that ghost lines are cleanly stripped from your file."
           ],
           "bullets": [
-            ":g/^\\s*$/d deletes both empty lines and lines containing spaces or tabs.",
-            ":v/\\S/d operates as an inverted match, deleting lines lacking non-whitespace.",
-            "Works seamlessly across Vim, Neovim, Vi, and terminal SSH sessions.",
-            "Scales effortlessly to buffers with hundreds of thousands of lines."
+            "Delete strictly empty lines: Type `:g/^$/d` and press Enter.",
+            "Delete whitespace-only lines and empty lines: Type `:g/^\\s*$/d` and press Enter.",
+            "Delete consecutive blank lines to leave a single gap: Type `:%s/\\n\\{3,\\}/\\r\\r/g`."
           ]
         },
         {
-          "title": "Collapsing Consecutive Blank Lines to a Single Line in Vim",
+          "title": "Comparing Vim Line Removal with Shell and Scripting Tools",
           "paragraphs": [
-            "If your goal is not to eliminate all blank lines, but rather to collapse excessive double or triple blank lines down to a single clean paragraph separator, substitute ex commands provide the solution.",
-            "Run the substitution command `:%s/\\n\\n\\+/\\r\\r/g`. In Vim regex, `\\n` matches newlines in search patterns, while `\\r` inserts newlines in replacement strings. The `\\+` quantifier matches two or more consecutive newlines and condenses them into exactly two newlines (creating a clean single blank line between paragraphs).",
-            "This substitution preserves natural paragraph rhythm in prose documents, Markdown files, and documentation drafts while stripping out accidental multi-line gaps."
+            "Vim users frequently work side-by-side with Linux shell pipelines and automated scripting utilities. Understanding how Vim's syntax relates to other tools builds confidence across diverse environments.",
+            "For instance, when processing files in terminal scripts without opening an editor, administrators frequently turn to sed remove empty lines commands like `sed -i '/^$/d' file.txt` or filter streams using grep remove empty lines pipelines like `grep -v '^$' file.txt`. Similarly, developers working on data pipelines might use python remove empty lines scripts or powershell remove empty lines one-liners.",
+            "Vim's `:g/^$/d` syntax uses the exact same foundational regular expression principles, making it intuitive and familiar whether you are editing locally in Vim or scripting on a remote cloud server."
           ],
           "bullets": [
-            ":%s/\\n\\n\\+/\\r\\r/g collapses multi-line gaps into a single blank line.",
-            "Remember that \\r must be used in the replacement field in Vim (not \\n).",
-            "Add the e flag (:%s/\\n\\n\\+/\\r\\r/ge) to suppress error messages if no matches exist.",
-            "Ideal for cleaning Markdown files, prose drafts, and config files."
-          ]
-        },
-        {
-          "title": "The FastToolVerse Browser Alternative for Web & Non-Terminal Work",
-          "paragraphs": [
-            "While Vim is peerless in terminal environments, developers often work outside the terminal: reviewing GitHub pull requests, drafting Jira tickets, sanitizing API payloads, or collaborating in web-based text editors where Vim is unavailable.",
-            "FastToolVerse provides an instant browser-based utility that performs the exact equivalent of `:g/^\\s*$/d` or `:%s/\\n\\n\\+/\\r\\r/g` with a single click. Operating purely in browser RAM with 0ms execution latency, it processes text safely without sending proprietary code across the web.",
-            "The tool requires no complex command syntax or configuration files, making it the perfect quick-access utility for non-terminal workflows and team collaboration."
-          ],
-          "bullets": [
-            "Instant 0ms cleaning with zero command memorization required.",
-            "Visual toggle to strip all blanks or collapse to single paragraph breaks.",
-            "Safe client-side memory execution ensures credentials and code remain private.",
-            "One-click clipboard copy and clean .txt file export."
+            "Vim ex command `:g/^$/d` directly mirrors `sed -i '/^$/d'` in command-line scripting.",
+            "Use `:v/\\S/d` as an elegant alternative that deletes any line that does not contain a non-whitespace character.",
+            "Apply deletions to specific visual selections by highlighting lines in visual mode (`V`) and typing `:d`."
           ],
           "callout": {
             "type": "note",
-            "label": "Terminal vs Web",
-            "text": "FastToolVerse is the ideal web companion for developers who love Vim’s speed but need a zero-friction tool when working in browsers or non-developer environments."
+            "label": "Instant Undo",
+            "text": "If you execute a global line deletion by mistake, simply press `u` in normal mode to immediately undo the entire operation and restore all deleted lines."
           }
+        },
+        {
+          "title": "Why an In-Browser Tool Is the Ideal Companion for Quick Text Tasks",
+          "paragraphs": [
+            "While Vim's ex commands are lightning-fast when working inside a terminal, you might often find yourself writing notes or drafting text on a mobile phone, a shared desktop, or inside a browser window where opening a terminal is inconvenient.",
+            "In those moments, our dedicated tool to remove empty lines online gives you the same regex-grade precision without requiring terminal access. Simply paste your text, click once to strip empty and whitespace rows, and copy the clean output back into your clipboard. It processes everything locally in browser memory with zero security risk."
+          ],
+          "bullets": [
+            "Instant text sanitization without opening terminal sessions or memorizing ex commands.",
+            "Intelligently cleans whitespace-only lines, collapses duplicate breaks, and trims edges.",
+            "100% private and client-side: your text, code, and logs never leave your device."
+          ]
         }
       ]
     },
     "faqs": [
       {
         "question": "What is the command to remove empty lines in Vim?",
-        "answer": "In Normal mode, type \":g/^$/d\" and press Enter. This executes a global delete on all lines with zero characters."
+        "answer": "In normal mode, type :g/^$/d and press Enter. This tells Vim to globally find every line with no characters and delete it."
       },
       {
-        "question": "Can I delete lines containing only spaces or tabs in Vim?",
-        "answer": "Use the command \":g/^\\s*$/d\" or \":v/\\S/d\". The \"\\s*\" token captures spaces and tabs, ensuring phantom blank lines are deleted."
+        "question": "How do I delete lines containing only spaces or tabs in Vim?",
+        "answer": "In normal mode, type :g/^\\s*$/d and press Enter. The \\s* pattern matches spaces and tabs, deleting lines that look empty."
       },
       {
-        "question": "Can I collapse multiple blank lines into one in Vim?",
-        "answer": "Run \":%s/\\n\\n\\+/\\r\\r/g\". In Vim substitution, \"\\n\" matches in the pattern, while \"\\r\" creates a carriage return in the replacement string."
+        "question": "How do I collapse multiple blank lines into one in Vim?",
+        "answer": "Run the substitution command :%s/\\n\\{3,\\}/\\r\\r/g to reduce clusters of three or more line breaks into a clean double break."
       },
       {
-        "question": "Can I undo a delete lines command in Vim?",
-        "answer": "Press \"u\" in Normal mode. Vim treats the entire global \":g\" command as a single undoable action, instantly restoring all deleted lines."
+        "question": "How do I undo a global line deletion in Vim?",
+        "answer": "Simply press the 'u' key in normal mode immediately after running the command, and Vim will restore all deleted lines."
       },
       {
-        "question": "Can I remove empty lines in a specific line range in Vim?",
-        "answer": "Yes! Prefix the command with line numbers, e.g., \":10,50g/^$/d\" will only evaluate and delete empty lines between lines 10 and 50."
-      },
-      {
-        "question": "Is FastToolVerse safe for private dotfiles and source code?",
-        "answer": "Yes, 100%. FastToolVerse executes entirely in your local browser sandbox using client-side JavaScript. No text is ever uploaded or stored remotely."
+        "question": "Can I remove empty lines from only a highlighted section in Vim?",
+        "answer": "Yes, highlight the lines using visual mode (V), then type :g/^$/d (Vim will automatically prepend '<,'> to the command line) and press Enter."
       }
     ]
   },
@@ -815,96 +794,90 @@ export const REMOVE_EMPTY_LINES_PRESETS: RemoveEmptyLinesPreset[] = [
     },
     "sampleText": "// Notepad++ Project Script\nfunction initializeEngine() {\n  console.log(\"Loading module...\");\n\n\n  loadConfiguration();\n   \n\n  connectDatabase();\n\n\n  console.log(\"Ready.\");\n}",
     "editorialGuide": {
-      "heading": "Notepad++ Line Cleaning Guide: Native Operations vs Browser Sanitization",
+      "heading": "The Practical, Step-by-Step Guide to Removing Empty Lines in Notepad++",
       "sections": [
         {
-          "title": "Shortcut to Remove Empty Lines in Notepad++",
+          "title": "Why Blank Lines Clutter Your Text Files and Break Formatting",
           "paragraphs": [
-            "Notepad++ has long been the preferred text editor for Windows systems administrators, software engineers, and data analysts. While many users manually scroll through documents deleting blank rows, Notepad++ features high-speed built-in keyboard navigation to execute line purges in seconds.",
-            "To quickly invoke line operations using keyboard shortcuts, press Alt+E to open the Edit menu, then press L for Line Operations, and press E to trigger \"Remove Empty Lines\". If your document contains lines with invisible spaces or tabs, use the shortcut sequence Alt+E > L > B to choose \"Remove Empty Lines (Containing Blank characters)\".",
-            "For developers who perform this operation daily, Notepad++ allows you to bind a custom direct shortcut key (such as Ctrl+Shift+Alt+E) via Settings > Shortcut Mapper > Menu Commands. This eliminates menu traversal entirely and runs synchronously across the active text buffer."
+            "Notepad++ is the trusted daily text editor for millions of users thanks to its lightweight speed, tabbed interface, and reliable editing features. However, when working with scraped text, exported SQL queries, or paragraphs copied from web articles, files frequently arrive with dozens of unnecessary blank lines.",
+            "These empty rows create unnecessary vertical scrolling, break data structures when preparing CSV or JSON feeds, and make reading lengthy documents cumbersome. Knowing how to remove empty lines in notepad++ allows you to clean up massive text files in seconds, keeping your focus on reading and writing rather than tedious manual formatting."
           ],
           "bullets": [
-            "Fast menu shortcut: Alt+E, then L, then E for Remove Empty Lines.",
-            "Catch whitespace rows: Alt+E, then L, then B for Remove Empty Lines (Containing Blank characters).",
-            "Assign a custom hotkey like Ctrl+Shift+Alt+E via Settings > Shortcut Mapper > Menu Commands.",
-            "Line operations execute across the entire active file buffer in one synchronous pass."
+            "Clean up lengthy logs, notes, and scraped articles with a single menu click.",
+            "Prevent data import errors when formatting lists for databases and spreadsheets.",
+            "Restore clean, consistent paragraph flow across your documents without manual backspacing."
           ],
           "callout": {
             "type": "tip",
-            "label": "Shortcut Configuration",
-            "text": "You can assign custom shortcut keys like Ctrl+Shift+Alt+E to Line Operations via Settings > Shortcut Mapper > Menu Commands in Notepad++."
+            "label": "Visualizing Hidden Spaces",
+            "text": "Click the pilcrow (¶) icon on the Notepad++ toolbar to show hidden symbols. This reveals whether empty rows are completely blank or contain lingering spacebar or tab characters."
           }
         },
         {
-          "title": "Remove Empty Lines in Notepad++ Using Extended Search",
+          "title": "Native Notepad++ Menu Commands for Instant Line Removal",
           "paragraphs": [
-            "In addition to standard Line Operations, Notepad++ provides an \"Extended\" search mode (`\\n`, `\\r`, `\\t`, `\\0`, `\\x...`) within the Find and Replace dialog (Ctrl+H). This is particularly useful when you need to condense multiple line breaks without writing full regular expressions.",
-            "Press Ctrl+H to launch Replace. Under Search Mode, select the \"Extended (\\n, \\r, \\t, \\0, \\x...)\" radio button. In the \"Find what\" input, type `\\r\\n\\r\\n` (representing two consecutive Windows CRLF line endings). In the \"Replace with\" input, type `\\r\\n`. Click \"Replace All\" repeatedly until zero replacements occur.",
-            "If you are working with Unix or Linux files that utilize LF (`\\n`) rather than CRLF, simply search for `\\n\\n` and replace with `\\n`. Extended mode offers precise escape-character control without the risk of catastrophic regex backtracking on massive 100MB server log dumps."
+            "Notepad++ includes dedicated built-in operations designed specifically to strip blank lines without needing complex formulas or third-party add-ons.",
+            "To clean your document, open your file in Notepad++, navigate to the top menu, and click Edit > Line Operations. Here, you have two primary options: selecting 'Remove Empty Lines' will delete every line that contains zero characters. If your file still has blank gaps because lines contain invisible spaces, choose 'Remove Empty Lines (Containing Blank characters)' instead.",
+            "This secondary command scans through the entire document and cleans both true blank lines and whitespace-only lines, collapsing your text into a neat, continuous block instantly."
           ],
           "bullets": [
-            "Press Ctrl+H and select \"Extended\" search mode.",
-            "For Windows CRLF: Find `\\r\\n\\r\\n` and Replace with `\\r\\n`.",
-            "For Linux/Unix LF: Find `\\n\\n` and Replace with `\\n`.",
-            "Click Replace All repeatedly until zero matches remain."
+            "Edit > Line Operations > Remove Empty Lines: The fastest command for purely blank lines.",
+            "Edit > Line Operations > Remove Empty Lines (Containing Blank characters): Wipes out lines containing hidden spaces.",
+            "Edit > Blank Operations > Trim Trailing Space: A helpful preparatory step to clean ends of lines."
           ]
         },
         {
-          "title": "Clean Text Blank Lines in Notepad++ (Handling Whitespace-Only Lines)",
+          "title": "Using Regular Expression Search When You Need Custom Control",
           "paragraphs": [
-            "A common frustration among Notepad++ users is finding that \"Remove Empty Lines\" fails to remove visually blank rows. This happens because the standard operation strictly checks for lines with a character count of zero. If a line holds even a single space or tab character, Notepad++ considers it populated and leaves it untouched.",
-            "To resolve this, always use Edit > Line Operations > \"Remove Empty Lines (Containing Blank characters)\". This secondary operation evaluates both strict empty rows and whitespace-padded lines, condensing the file down to populated content.",
-            "For power users handling complex code files, you can also use Regular Expression mode (Ctrl+H) with the pattern `^[ \\t]*\\R`. Leaving \"Replace with\" blank and clicking Replace All purges every empty and whitespace-only line across the file."
+            "For documents where you want to keep single empty lines between paragraphs while eliminating large clusters of blank gaps, using the Find & Replace dialogue with regular expressions gives you full creative control.",
+            "Press Ctrl + H to open the Replace window, select 'Regular expression' in the search mode options at the bottom, and type `^\\r?\\n` in the 'Find what' box. Leave 'Replace with' empty and click 'Replace All'. To catch lines with spaces as well, search for `^[ \\t]*\\r?\\n`.",
+            "This regex approach is versatile and mirrors similar workflows across other popular tools: whether you are using sublime remove empty lines shortcuts on another computer, applying sed remove empty lines commands on Linux servers, or using bash remove empty lines pipelines, the core principles remain identical."
           ],
           "bullets": [
-            "Edit > Line Operations > Remove Empty Lines deletes zero-length lines.",
-            "Edit > Line Operations > Remove Empty Lines (Containing Blank characters) removes space-padded rows.",
-            "Regex mode pattern: `^[ \\t]*\\R` matches lines with spaces, tabs, or zero characters.",
-            "Leave Replace with empty and click Replace All to strip whitespace rows."
-          ]
+            "Press Ctrl + H, enable Regular expression, find `^\\r?\\n`, and replace with nothing.",
+            "Use `^[ \\t]*\\r?\\n` to catch lines with invisible space or tab characters.",
+            "Use `(\\r?\\n){2,}` to `\\r\\n` to collapse multiple consecutive blank lines into one."
+          ],
+          "callout": {
+            "type": "note",
+            "label": "Safe Editing",
+            "text": "If you ever make an accidental replacement, press Ctrl + Z immediately to undo the operation and restore your text to its previous state."
+          }
         },
         {
-          "title": "Why Use FastToolVerse Instead of Desktop Software?",
+          "title": "Why an In-Browser Cleaner Is the Most Convenient Daily Solution",
           "paragraphs": [
-            "While Notepad++ is remarkably lightweight on Windows, it is unavailable on macOS and Linux without running complex compatibility layers like Wine. Furthermore, corporate IT policies frequently block downloading executable installers onto enterprise laptops.",
-            "FastToolVerse eliminates these barriers by running directly in your modern web browser. Built on client-side Web technologies, it handles tens of thousands of lines with zero lag. You can paste text directly from any application, strip empty rows instantly, and copy clean results with a single click.",
-            "Because our engine operates strictly within your browser sandbox, your proprietary source code, customer records, and internal system logs are never transmitted to any third-party server.",
-            "You also gain immediate visual feedback through our real-time metric counters, allowing you to verify character and line count reductions before pasting results back into production files."
+            "While Notepad++ is fantastic on your main Windows desktop, you might frequently need to clean text while working on a phone, a Chromebook, a Mac, or a restricted work computer where installing software is prohibited.",
+            "In those scenarios, using our dedicated tool to remove empty lines online gives you the fastest and simplest path forward. Paste your text directly into the web tool, click once to strip all blank lines, and copy the polished text back to your clipboard. It processes everything locally in your browser memory, keeping your documents fast, secure, and private."
           ],
           "bullets": [
-            "Universal cross-platform compatibility across Windows, Mac, Linux, and Chromebooks.",
-            "Zero software downloads, installations, or administrator privileges needed.",
-            "Complete local RAM processing ensures enterprise confidentiality.",
-            "Instant real-time statistical readouts for lines, characters, and words."
+            "Works instantly on any device and operating system without installing desktop software.",
+            "One-click options to remove whitespace lines, collapse double enters, and trim margins.",
+            "100% private client-side execution ensures your sensitive text is never sent to remote servers."
           ]
         }
       ]
     },
     "faqs": [
       {
-        "question": "What is the exact shortcut to remove empty lines in Notepad++?",
-        "answer": "Press Alt+E, then press L, then press E for \"Remove Empty Lines\", or press Alt+E > L > B for \"Remove Empty Lines (Containing Blank characters)\". You can also assign a direct custom hotkey like Ctrl+Shift+Alt+E via Settings > Shortcut Mapper > Menu Commands."
+        "question": "What is the fastest way to remove empty lines in Notepad++?",
+        "answer": "Go to Edit > Line Operations and click 'Remove Empty Lines (Containing Blank characters)'. This removes both pure empty lines and lines containing hidden spaces in one second."
       },
       {
-        "question": "Can I delete blank lines in Notepad++ that contain hidden spaces or tabs?",
-        "answer": "Navigate to Edit > Line Operations > \"Remove Empty Lines (Containing Blank characters)\". Alternatively, press Ctrl+H, select Regular expression mode, enter \"^[ \\t]*\\R\" into Find what, leave Replace with empty, and click Replace All."
+        "question": "Why did some blank lines stay behind after I ran 'Remove Empty Lines'?",
+        "answer": "Standard 'Remove Empty Lines' only deletes lines with zero characters. If a line contains invisible spaces or tabs, use 'Remove Empty Lines (Containing Blank characters)' instead."
       },
       {
-        "question": "Can I remove empty lines in Notepad++ using Extended Search?",
-        "answer": "Press Ctrl+H, choose \"Extended\" search mode, type \"\\r\\n\\r\\n\" into Find what, type \"\\r\\n\" into Replace with, and click Replace All repeatedly until zero matches remain."
+        "question": "How do I replace multiple blank lines with just one blank line in Notepad++?",
+        "answer": "Press Ctrl + H, select 'Regular expression', type (\\r?\\n){2,} in Find what, type \\r\\n in Replace with, and click Replace All."
       },
       {
-        "question": "Is there a way to run Notepad++ line operations on Mac or Linux?",
-        "answer": "Notepad++ is native to Windows. On Mac or Linux, use FastToolVerse directly in your web browser for identical, instant line cleaning with zero setup."
+        "question": "Does removing empty lines change my Unix (LF) or Windows (CRLF) line endings?",
+        "answer": "No, Notepad++ preserves your active document's line-ending format, which is displayed on the right side of the bottom status bar."
       },
       {
-        "question": "Does FastToolVerse support large log files like Notepad++ does?",
-        "answer": "Yes. FastToolVerse’s linear array algorithm processes files with tens of thousands of lines in milliseconds inside your browser memory."
-      },
-      {
-        "question": "Is my data safe when cleaning text on FastToolVerse?",
-        "answer": "Absolutely. All processing occurs 100% locally in your browser RAM. No text is ever uploaded to a server or stored in any database."
+        "question": "Can I undo a bulk line removal in Notepad++ if I make a mistake?",
+        "answer": "Yes, pressing Ctrl + Z immediately after running the command restores all original lines exactly as they were."
       }
     ]
   },

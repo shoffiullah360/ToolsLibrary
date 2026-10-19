@@ -5650,6 +5650,194 @@ export const removeLineBreaksPresets: RemoveLineBreaksPreset[] = [
     ]
   },
   {
+    "slug": "remove-line-breaks-kotlin",
+    "name": "Remove Line Breaks Kotlin",
+    "h1": "Remove Line Breaks Kotlin",
+    "metaTitle": "Remove Line Breaks Kotlin Online – Free Line Joiner | FastToolVerse",
+    "metaDescription": "Instantly remove line breaks in Kotlin online. Clean \\R, \\r\\n, and \\n characters across Android and backend KMP with 100% privacy.",
+    "heroSubtitle": "Instantly remove line breaks in Kotlin, eliminate platform newlines with lines(), and format multiline strings with 100% private in-browser processing.",
+    "intentDescription": "Unexpected line breaks in Android Jetpack Compose distort layouts, push buttons off-screen, and corrupt SQLite databases. Master Kotlin's lines() and joinToString pipelines, Regex \\R, or sanitize text in seconds using our client-side tool. All operations run locally with complete privacy and zero server transmission on every conversion.",
+    "config": {
+      "replaceWith": "space",
+      "preserveParagraphs": false
+    },
+    "category": "Programming Languages & Shell CLI",
+    "sampleInput": "val text = \"Jetpack Compose\\n\" +\n           \"Card Subtitle\\n\" +\n           \"Action Button text\"",
+    "editorialGuide": {
+      "card1Title": "Why Accidental Line Breaks Disrupt Modern Kotlin and Android Apps",
+      "card1Content": "Kotlin has rapidly grown into the premier language for modern Android development, cross-platform mobile apps with Kotlin Multiplatform (KMP), and reactive backend microservices on Spring Boot and Ktor. In modern mobile and cloud applications, strings are constantly passed between user interfaces, REST endpoints, JSON serializers, and local SQLite databases. However, raw user input entered via Android text fields, clipboard pastes from external websites, or scanned document OCRs frequently arrive riddled with unwanted line breaks.\n\nThese accidental breaks cause immediate visual and technical problems. In Jetpack Compose or Android XML views, an unexpected newline in a TextView or dynamic card title stretches layouts unnaturally, pushes essential action buttons off-screen, and causes text to truncate prematurely. In database queries, stray carriage returns create corrupted rows and break search indexing. Whether you are building an Android mobile client, sanitizing user comments, or logging structured data, learning how to cleanly remove line breaks kotlin applications process ensures your UI and data pipelines remain seamless and robust.",
+      "card2Title": "Understanding How Kotlin and the JVM Represent Universal Line Endings",
+      "card2Content": "To clean strings reliably in Kotlin, it helps to understand how the language and JVM interact with operating system line endings. Line breaks are non-printing control characters. Unix, Linux, and modern Android/macOS systems use a single Line Feed (`\\n`, ASCII byte 10). Windows systems use two characters: a Carriage Return followed by a Line Feed (`\\r\\n`, ASCII bytes 13 and 10).\n\nIf you use a simple `text.replace(\"\\n\", \" \")` call in Kotlin, Windows-formatted text will retain the `\\r` character. In Android text rendering or backend logging, that lingering carriage return can cause strange display bugs or overwrite previous text in console logs. Kotlin provides expressive standard library extensions—such as `lines()` and regex patterns—that effortlessly normalize all newline variations regardless of client or server origin.",
+      "card3Title": "The Best Modern Kotlin Techniques to Clean and Join Strings",
+      "card3Content": "Kotlin provides multiple concise, idiomatic standard library functions to remove line breaks from strings, depending on whether you prefer functional collections or regular expressions.\n\nThe most idiomatic Kotlin approach uses `lines()`: `val cleanText = rawText.lines().filter { it.isNotBlank() }.joinToString(\" \") { it.trim() }`. The `lines()` extension automatically splits the string around universal line boundaries (handling `\\r\\n`, `\\n`, and `\\r`), filters out blank lines, trims excess whitespace from each line, and joins the words with clean single spaces.\n\nIf you prefer regular expressions, Kotlin's `Regex` class offers a fast, declarative alternative: `val cleanText = rawText.replace(Regex(\"\\\\R\"), \" \")`. The `\\R` escape matches any Unicode line break sequence cleanly across all platforms. To preserve intentional double paragraph breaks while only joining the broken lines inside them, you can use: `rawText.replace(Regex(\"(?<!\\\\R)\\\\R(?!\\\\R)\"), \" \")`.",
+      "card4Title": "Why an In-Browser Cleaner Is the Fastest Scratchpad for Android Devs",
+      "card4Content": "While writing Kotlin extension functions inside Android Studio or IntelliJ IDEA is standard for production code, opening an IDE or compiling a Gradle project just to clean a single copied JSON payload, localization string, or layout text introduces unnecessary friction. In daily development tasks, an accessible online utility is far more practical.\n\nOur remove line breaks online tool gives you the exact same universal line-cleaning precision directly inside your browser window. You paste your raw multiline text, select your desired delimiter (such as spaces, commas, or semicolons), and receive clean single-line output instantly. It runs 100% locally in your browser memory using client-side JavaScript, guaranteeing that your proprietary code snippets, API tokens, and private notes remain completely secure."
+    },
+    "faqs": [
+      {
+        "question": "What is the most idiomatic Kotlin way to remove line breaks from a string?",
+        "answer": "Use lines and joinToString: rawText.lines().filter { it.isNotBlank() }.joinToString(\" \") { it.trim() }. This automatically handles all platform newlines cleanly."
+      },
+      {
+        "question": "How do I remove line breaks in Kotlin using regular expressions?",
+        "answer": "Use: rawText.replace(Regex(\"\\\\R\"), \" \"). The \\\\R pattern matches Windows (\\r\\n), Unix (\\n), and legacy Mac (\\r) line breaks."
+      },
+      {
+        "question": "Why did rawText.replace(\"\\n\", \" \") leave weird characters in Kotlin?",
+        "answer": "Windows text uses \\r\\n. Replacing only \\n leaves \\r behind. Using \\\\R in a Regex or using .lines() handles both characters properly."
+      },
+      {
+        "question": "How do I remove line breaks while preserving paragraph breaks in Kotlin?",
+        "answer": "Use regex lookarounds: rawText.replace(Regex(\"(?<!\\\\R)\\\\R(?!\\\\R)\"), \" \") to target single breaks while preserving double line breaks."
+      },
+      {
+        "question": "Can I replace line breaks with commas in Kotlin?",
+        "answer": "Yes, use: rawText.lines().filter { it.isNotBlank() }.joinToString(\", \") { it.trim() } to convert a vertical list into a comma-separated string."
+      }
+    ]
+  },
+  {
+    "slug": "remove-line-breaks-rust",
+    "name": "Remove Line Breaks Rust",
+    "h1": "Remove Line Breaks Rust",
+    "metaTitle": "Remove Line Breaks Rust Online – Free Line Joiner | FastToolVerse",
+    "metaDescription": "Instantly remove line breaks in Rust online. Clean newline characters using split_whitespace, lines(), retain, or our free browser text cleaner.",
+    "heroSubtitle": "Instantly remove line breaks in Rust, eliminate \\r and \\n characters in-place, and normalize strings with 100% private in-browser processing.",
+    "intentDescription": "Unexpected carriage returns in Rust applications complicate tokenization, trigger heap allocations, and break CSV parsers. Master allocation-friendly split_whitespace(), lines(), in-place retain(), or sanitize text in seconds using our client-side tool. All operations run locally with complete privacy and zero server transmission on every conversion.",
+    "config": {
+      "replaceWith": "space",
+      "preserveParagraphs": false
+    },
+    "category": "Programming Languages & Shell CLI",
+    "sampleInput": "fn main() {\n    let s = \"Line 1\\r\\nLine 2\\nLine 3\";\n    println!(\"{}\", s);\n}",
+    "editorialGuide": {
+      "card1Title": "Why Unwanted Line Breaks Cause Problems in High-Performance Rust Code",
+      "card1Content": "In modern systems engineering, cloud infrastructure, networking protocols, and WebAssembly applications, Rust is celebrated for memory safety without garbage collection, concurrency without data races, and zero-cost abstractions. When building high-throughput data processing pipelines, parsing network payloads, or ingesting raw file buffers, Rust applications frequently read text streams from disk or network sockets. However, incoming text frequently arrives contaminated with unintended line breaks.\n\nIn high-performance Rust applications, unwanted carriage returns and newlines complicate string parsing, distort tokenization in custom lexical analyzers, cause CSV parsers to split records unexpectedly, and trigger memory reallocations. Whether you are building an automated logging engine, parsing raw configuration scripts, or sanitizing incoming network payloads, learning how to cleanly remove line breaks rust programs process ensures your string manipulation routines remain robust, predictable, and memory-safe.",
+      "card2Title": "Understanding How Rust Handles String Slices, CRLF, and UTF-8 Buffers",
+      "card2Content": "To clean strings efficiently in Rust, it helps to understand how the language represents character buffers in memory. A standard Rust `String` is an owned, heap-allocated buffer of valid UTF-8 bytes, while `&str` represents a borrowed slice of a string. On Windows operating systems, line breaks consist of two bytes: a Carriage Return (`'\\r'`, ASCII 13) and a Line Feed (`'\\n'`, ASCII 10). On Linux and Unix systems, line breaks consist solely of a Line Feed (`'\\n'`).\n\nWhen reading files using standard Rust iterators like `lines()`, the standard library automatically handles both `\\n` and `\\r\\n`, stripping the line ending from each yielded slice. However, if your code works with raw byte vectors (`Vec<u8>`) or performs manual string replacements, failing to account for `\\r` on Windows files can cause trailing carriage returns to remain in memory, creating subtle formatting bugs or breaking exact equality checks.",
+      "card3Title": "The Best Idiomatic Rust Methods to Strip and Replace Line Breaks",
+      "card3Content": "Rust provides multiple clean, high-performance approaches in the standard library to remove line breaks without unnecessary heap allocations.\n\nThe most idiomatic and allocation-friendly approach uses `split_whitespace()`: `let clean_text: String = raw_text.split_whitespace().collect::<Vec<&str>>().join(\" \");`. The `split_whitespace()` iterator splits the string slice across all ASCII and Unicode whitespace characters (including `\\n`, `\\r`, and tabs), ignores empty runs, and rejoins the words with clean single spaces.\n\nIf you prefer to strictly target line endings while preserving intentional horizontal spacing (such as code indentation), use `lines()`: `let clean_text: String = raw_text.lines().map(|s| s.trim()).filter(|s| !s.is_empty()).collect::<Vec<&str>>().join(\" \");`. For regex-driven pattern matching across complex multi-paragraph text, the `regex` crate provides full regular expression power with compiled regex engines.",
+      "card4Title": "Why an In-Browser Cleaner Is the Fastest Scratchpad for Rustaceans",
+      "card4Content": "While writing optimized Rust algorithms with `cargo test` is essential for production software, compiling a Rust binary or setting up a test harness just to clean a single copied JSON payload, TOML config, or raw mock string introduces unnecessary friction. In daily development tasks, an accessible online utility is far more practical.\n\nOur remove line breaks online tool gives you the exact same universal line-cleaning precision directly inside your browser window. You paste your raw multiline text, select your desired delimiter (such as spaces, commas, or semicolons), and receive clean single-line output instantly. It runs 100% locally in your browser memory using client-side JavaScript, guaranteeing that your proprietary code snippets, configs, and private notes remain completely secure."
+    },
+    "faqs": [
+      {
+        "question": "What is the most idiomatic Rust way to remove line breaks from a string?",
+        "answer": "Use split_whitespace: raw_text.split_whitespace().collect::<Vec<&str>>().join(\" \"). This cleanly collapses all newlines and whitespace into single spaces."
+      },
+      {
+        "question": "How do I remove line breaks using the lines() iterator in Rust?",
+        "answer": "Use: raw_text.lines().map(|s| s.trim()).filter(|s| !s.is_empty()).collect::<Vec<&str>>().join(\" \"). This handles both \\r\\n and \\n."
+      },
+      {
+        "question": "Why did raw_text.replace(\"\\n\", \" \") leave weird characters in Rust?",
+        "answer": "Windows line breaks contain \\r before \\n. Replacing only \\n leaves \\r behind. Using split_whitespace() or .lines() automatically cleans both."
+      },
+      {
+        "question": "How do I remove line breaks in-place on a mutable String in Rust?",
+        "answer": "Use retain: text.retain(|c| c != '\\r' && c != '\\n'). This deletes all line breaks in-place without additional heap allocations."
+      },
+      {
+        "question": "Can I replace line breaks with commas in Rust?",
+        "answer": "Yes, use: raw_text.lines().map(|s| s.trim()).filter(|s| !s.is_empty()).collect::<Vec<&str>>().join(\", \") to create a comma-separated string."
+      }
+    ]
+  },
+  {
+    "slug": "remove-line-breaks-perl",
+    "name": "Remove Line Breaks Perl",
+    "h1": "Remove Line Breaks Perl",
+    "metaTitle": "Remove Line Breaks Perl Online – Free Line Joiner | FastToolVerse",
+    "metaDescription": "Instantly remove line breaks in Perl online. Clean \\r and \\n characters using regex one-liners, s///g substitution, or our free browser tool.",
+    "heroSubtitle": "Instantly remove line breaks in Perl, eliminate unwanted carriage returns with regex, and clean multiline strings with 100% private in-browser processing.",
+    "intentDescription": "Accidental line breaks disrupt Perl stream filters, regex boundary anchors, and CSV record parsing. Master classic perl -pe one-liners, regex substitutions (s/\\r?\\n/ /g), or sanitize text in seconds using our client-side tool. All operations run locally with complete privacy and zero server transmission on every conversion.",
+    "config": {
+      "replaceWith": "space",
+      "preserveParagraphs": false
+    },
+    "category": "Programming Languages & Shell CLI",
+    "sampleInput": "my $log_entry = \"2026-10-19 [ERROR]\\nServer connection timeout\\nRetry attempt 1\";",
+    "editorialGuide": {
+      "card1Title": "Why Perl Remains the Master of Stream and Line Manipulation",
+      "card1Content": "For decades, Perl has been celebrated as the Swiss Army chainsaw of text processing, UNIX systems administration, automated log parsing, and bioinformatics pipeline management. Built from the ground up for regular expressions and stream filtering, Perl excels at transforming messy, unstructured data files into clean, delimited formats. However, when ingesting transaction logs, processing user emails, or parsing CSV feeds, strings frequently arrive loaded with unintended line breaks.\n\nThese erratic breaks disrupt record separators, break regex boundary anchors like `$` and `^`, cause CSV columns to wrap unexpectedly, and split single database entries across multiple rows. Whether you are running an automated cron job, writing a one-line command filter on a remote Linux server, or cleaning raw sequencing data, mastering remove line breaks perl scripts process gives you the speed, control, and reliability to normalize files directly on the command line without opening heavy visual editors.",
+      "card2Title": "Understanding How Perl Handles $/ (Input Record Separator) and Chomp",
+      "card2Content": "To clean text effectively in Perl, it helps to understand how Perl structures lines and buffers. By default, Perl uses the special variable `$/` (the input record separator) to define line boundaries, which defaults to a newline character (`\\n`). The native `chomp()` function is famous for stripping this trailing newline from strings.\n\nHowever, `chomp` only removes the trailing newline character at the very end of a string; it does not touch line breaks embedded in the middle of sentences or multiline paragraphs. Furthermore, when Windows-formatted files (`\\r\\n`) are processed on a Linux server without normalizing line endings, `chomp` removes the `\\n` but leaves the carriage return (`\\r`) behind. Using Perl's legendary regular expression substitution syntax (`s///`) ensures that all internal and platform-specific line breaks are thoroughly cleaned.",
+      "card3Title": "The Best Native Perl One-Liners and Scripting Techniques",
+      "card3Content": "Perl provides the most concise and powerful command-line one-liners in computing history to strip or replace line breaks from files without writing multi-line scripts.\n\nThe classic Perl one-liner to replace all line breaks with spaces across a file is: `perl -pe 's/\\r?\\n/ /g' input.txt > clean.txt`. If you want to delete line breaks entirely without adding spaces, use: `perl -pe 's/\\r?\\n//g' input.txt > clean.txt`.\n\nInside a Perl script, combining regex substitution with whitespace normalization is effortless: `$text =~ s/\\s+/ /g; $text =~ s/^\\s+|\\s+$//g;`. This two-line sequence replaces all line breaks, tabs, and duplicate spaces with a single space and trims the ends. To preserve intentional double paragraph breaks while only joining the broken lines inside them, set Perl to paragraph mode by undefining `$/` or setting `$/ = \"\"`, and substitute single newlines within each paragraph.",
+      "card4Title": "Why an In-Browser Cleaner Is the Fastest Scratchpad for Perl Devs",
+      "card4Content": "While running Perl one-liners from the terminal is unmatched for processing massive server files, launching a terminal or writing a Perl script just to clean a single copied error message, JSON payload, or email snippet is often unnecessary. In daily desktop tasks, an in-browser utility provides a much smoother alternative.\n\nOur remove line breaks online tool gives you that exact same regex-grade cleaning power right inside your web browser. You paste your raw multiline text, choose your paragraph and delimiter options, and receive clean, continuous text back in milliseconds. It executes 100% locally in your browser memory, ensuring complete privacy for your sensitive server outputs, scripts, and company data."
+    },
+    "faqs": [
+      {
+        "question": "What is the best Perl one-liner to remove line breaks from a file?",
+        "answer": "Run: perl -pe 's/\\r?\\n/ /g' input.txt > output.txt. This replaces all Windows and Unix line breaks with a single space."
+      },
+      {
+        "question": "Why did chomp() fail to remove line breaks inside my Perl string?",
+        "answer": "chomp() only removes the single trailing newline at the very end of a string. To remove internal line breaks, use regex substitution: $text =~ s/\\r?\\n/ /g."
+      },
+      {
+        "question": "How do I remove line breaks and extra spaces in Perl?",
+        "answer": "Use: $text =~ s/\\s+/ /g; $text =~ s/^\\s+|\\s+$//g;. This collapses all newlines, tabs, and spaces into single spaces and trims the edges."
+      },
+      {
+        "question": "How do I remove line breaks while preserving paragraph breaks in Perl?",
+        "answer": "Set $/ = \"\" (paragraph mode), then replace single newlines: $text =~ s/(?<!\\n)\\n(?!\\n)/ /g."
+      },
+      {
+        "question": "Can I replace line breaks with commas in Perl?",
+        "answer": "Yes, use: $text =~ s/\\r?\\n+/, /g to convert a vertical list into a clean comma-separated list."
+      }
+    ]
+  },
+  {
+    "slug": "remove-line-breaks-scala",
+    "name": "Remove Line Breaks Scala",
+    "h1": "Remove Line Breaks Scala",
+    "metaTitle": "Remove Line Breaks Scala Online – Free Line Joiner | FastToolVerse",
+    "metaDescription": "Instantly remove line breaks in Scala online. Clean \\R, \\r\\n, and \\n characters across Spark data frames and Akka streams with 100% privacy.",
+    "heroSubtitle": "Instantly remove line breaks in Scala, eliminate \\R universal line endings, and format multiline strings with 100% private in-browser processing.",
+    "intentDescription": "Unwanted line breaks inside Spark data frames skew partitioning, break CSV ingestion, and crash executor tasks. Master linesIterator and mkString combinators, Spark SQL regexp_replace, or sanitize text in seconds using our client-side tool. All operations run locally with complete privacy and zero server transmission on every conversion.",
+    "config": {
+      "replaceWith": "space",
+      "preserveParagraphs": false
+    },
+    "category": "Programming Languages & Shell CLI",
+    "sampleInput": "val payload = \"Record ID 9401\\nDescription: Sensor data\\nStatus: Active\"",
+    "editorialGuide": {
+      "card1Title": "Why Accidental Line Breaks Disrupt Scala and Spark Big-Data Pipelines",
+      "card1Content": "In modern distributed computing and high-throughput backend services, Scala is celebrated for seamlessly blending object-oriented and functional programming paradigms, powering high-performance microservices with Akka and massive big-data analytics with Apache Spark. In data engineering workflows, Scala applications continuously ingest millions of raw records: customer reviews, streaming Kafka events, JSON documents, and CSV exports. However, incoming text frequently arrives contaminated with unwanted line breaks.\n\nIn distributed Spark jobs, an unescaped line break inside a CSV or JSON record causes executor tasks to fail, creates malformed data frame partitions, and skews aggregation metrics. In backend microservices, hidden carriage returns disrupt text tokenization and corrupt database inserts. Whether you are building an automated Spark ETL pipeline, sanitizing user inputs in Play Framework, or processing text in Akka Streams, learning how to cleanly remove line breaks scala applications process ensures your data engineering pipelines execute smoothly without partition skew or crashes.",
+      "card2Title": "Understanding How Scala Interacts with JVM Line Endings and Strings",
+      "card2Content": "To clean strings reliably in Scala, it helps to understand how the language and underlying JVM represent character sequences. In Scala, a `String` is backed by standard Java `java.lang.String`. Line endings depend on the originating system: Windows uses Carriage Return and Line Feed (`\\r\\n`), while Unix, Linux, and macOS use a single Line Feed (`\\n`).\n\nIf you use a simple `.replace(\"\\n\", \" \")` call in Scala, Windows-formatted text will retain the `\\r` character. In Spark partitions or terminal outputs, that lingering carriage return can cause line overwrites or break string comparisons. Scala provides rich collection combinators and universal regex patterns—such as `\\R`—that effortlessly catch and clean all newline variations regardless of platform origin.",
+      "card3Title": "The Best Modern Scala Techniques to Clean and Join Multiline Strings",
+      "card3Content": "Scala provides multiple expressive functional approaches to remove line breaks from strings without mutable state or complex loops.\n\nThe most idiomatic Scala approach uses `linesIterator`: `val cleanText = rawText.linesIterator.map(_.trim).filter(_.nonEmpty).mkString(\" \")`. The `linesIterator` method lazily splits the string around universal line breaks (handling `\\r\\n`, `\\n`, and `\\r`), trims excess whitespace from each line, filters out empty lines, and joins the words with clean single spaces using `mkString`.\n\nIf you prefer regular expressions, Scala's string interpolation and regex matching offer concise power: `val cleanText = rawText.replaceAll(\"\\\\R\", \" \")`. The `\\R` pattern matches any Unicode line break sequence cleanly across all platforms. In Apache Spark data frames, you can apply this across an entire column using standard Spark SQL functions: `import org.apache.spark.sql.functions._; df.withColumn(\"clean_text\", regexp_replace(col(\"raw_text\"), \"[\\\\r\\\\n]+\", \" \"))`.",
+      "card4Title": "Why an In-Browser Cleaner Is the Fastest Scratchpad for Scala Devs",
+      "card4Content": "While writing Scala pipelines inside sbt or running Spark notebooks like Databricks is essential for production data engineering, starting an sbt console or compiling a project just to clean a single copied JSON payload, SQL query, or mock string adds unnecessary friction. In daily development tasks, an accessible online utility is far more practical.\n\nOur remove line breaks online tool gives you the exact same universal line-cleaning precision directly inside your browser window. You paste your raw multiline text, select your desired delimiter (such as spaces, commas, or semicolons), and receive clean single-line output instantly. It runs 100% locally in your browser memory using client-side JavaScript, guaranteeing that your proprietary code snippets, API tokens, and private notes remain completely secure."
+    },
+    "faqs": [
+      {
+        "question": "What is the most idiomatic Scala way to remove line breaks from a string?",
+        "answer": "Use linesIterator and mkString: rawText.linesIterator.map(_.trim).filter(_.nonEmpty).mkString(\" \"). This handles all platform newlines cleanly."
+      },
+      {
+        "question": "How do I remove line breaks in Apache Spark using Scala?",
+        "answer": "Use Spark SQL functions: df.withColumn(\"clean\", regexp_replace(col(\"text\"), \"[\\\\r\\\\n]+\", \" \")). This cleans line breaks at scale across your cluster."
+      },
+      {
+        "question": "How do I remove line breaks in Scala using regular expressions?",
+        "answer": "Use: rawText.replaceAll(\"\\\\R\", \" \"). The \\\\R pattern matches Windows (\\r\\n), Unix (\\n), and legacy Mac (\\r) line breaks."
+      },
+      {
+        "question": "Why did rawText.replace(\"\\n\", \" \") leave weird characters in Scala?",
+        "answer": "Windows text uses \\r\\n. Replacing only \\n leaves \\r behind. Using \\\\R or linesIterator cleanly handles both characters."
+      },
+      {
+        "question": "Can I replace line breaks with commas in Scala?",
+        "answer": "Yes, use: rawText.linesIterator.map(_.trim).filter(_.nonEmpty).mkString(\", \") to convert a vertical list into a comma-separated string."
+      }
+    ]
+  },
+  {
     "slug": "convert-line-endings-to-unix",
     "name": "Convert Line Endings to Unix",
     "h1": "Convert Line Endings to Unix",

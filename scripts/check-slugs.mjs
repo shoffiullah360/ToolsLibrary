@@ -5,7 +5,7 @@ let match;
 let index = 0;
 while ((match = regex.exec(content)) !== null) {
   index++;
-  if (index >= 24 && index <= 35) {
+  if (index >= 33 && index <= 40) {
     console.log(index, match[1]);
   }
 }

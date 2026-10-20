@@ -1,7 +1,54 @@
 // Generated presets data for Remove Empty Lines pSEO
-import type { TextPreset } from './textPresets';
 
-export const REMOVE_EMPTY_LINES_PRESETS: TextPreset[] = [
+export interface RemoveEmptyLinesOptions {
+  whitespaceOnly: boolean;
+  collapseBlanks: boolean;
+  trimEdges: boolean;
+}
+
+export interface RemoveEmptyLinesEditorialCallout {
+  type: string;
+  label: string;
+  text: string;
+}
+
+export interface RemoveEmptyLinesEditorialSection {
+  title: string;
+  paragraphs: string[];
+  bullets?: string[];
+  callout?: RemoveEmptyLinesEditorialCallout;
+}
+
+export interface RemoveEmptyLinesEditorialGuide {
+  heading: string;
+  sections: RemoveEmptyLinesEditorialSection[];
+}
+
+export interface RemoveEmptyLinesFaq {
+  question: string;
+  answer: string;
+}
+
+export interface RemoveEmptyLinesPreset {
+  slug: string;
+  cluster: string;
+  clusterTitle: string;
+  primaryQuery: string;
+  name: string;
+  h1: string;
+  metaTitle: string;
+  metaDescription: string;
+  subtitle: string;
+  intentCard: string;
+  options: RemoveEmptyLinesOptions;
+  sampleText: string;
+  editorialGuide: RemoveEmptyLinesEditorialGuide;
+  faqs: RemoveEmptyLinesFaq[];
+}
+
+export type TextPreset = RemoveEmptyLinesPreset;
+
+export const REMOVE_EMPTY_LINES_PRESETS: RemoveEmptyLinesPreset[] = [
   {
     "slug": "remove-empty-lines-notepad-plus-plus",
     "cluster": "editor-tools",

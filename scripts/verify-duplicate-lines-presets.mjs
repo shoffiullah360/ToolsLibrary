@@ -35,7 +35,7 @@ function countEditorialWords(guide) {
   return count;
 }
 
-const EXPECTED_COUNT = 67;
+const EXPECTED_COUNT = 40;
 if (DUPLICATE_LINES_PRESETS.length !== EXPECTED_COUNT) {
   console.error(`ERROR: Expected ${EXPECTED_COUNT} presets, found ${DUPLICATE_LINES_PRESETS.length}!`);
   hasError = true;

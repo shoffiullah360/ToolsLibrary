@@ -7,6 +7,55 @@ interface Props {
 }
 
 const { currentSlug = '' } = Astro.props;
+
+// Approved curated list of 40 high-value slugs
+const APPROVED_40_SLUGS = new Set([
+  "remove-line-breaks-in-excel",
+  "how-to-remove-line-breaks-in-excel",
+  "excel-remove-line-breaks-in-cell",
+  "remove-line-breaks-in-excel-formula",
+  "remove-line-breaks-excel-mac",
+  "remove-line-breaks-google-sheets",
+  "remove-line-breaks-airtable",
+  "remove-line-breaks-csv",
+  "remove-line-breaks-libreoffice-calc",
+  "how-to-remove-line-breaks-in-word",
+  "remove-line-breaks-in-word",
+  "word-remove-line-breaks",
+  "remove-line-breaks-google-docs",
+  "how-to-remove-line-breaks-in-google-docs",
+  "remove-line-breaks-apple-pages",
+  "remove-line-breaks-scrivener",
+  "remove-line-breaks-pdf",
+  "remove-line-breaks-from-pdf-text",
+  "python-remove-line-breaks-from-string",
+  "remove-line-breaks-javascript",
+  "remove-line-breaks-typescript",
+  "remove-line-breaks-php",
+  "remove-line-breaks-java",
+  "remove-line-breaks-csharp",
+  "remove-line-breaks-sql",
+  "remove-line-breaks-mysql",
+  "remove-line-breaks-postgresql",
+  "remove-line-breaks-sqlite",
+  "remove-line-breaks-json",
+  "remove-line-breaks-xml",
+  "remove-line-breaks-yaml",
+  "remove-line-breaks-markdown",
+  "remove-line-breaks-html",
+  "remove-line-breaks-latex",
+  "notepad-plus-plus-remove-line-breaks",
+  "remove-line-breaks-vs-code",
+  "remove-line-breaks-sublime-text",
+  "remove-line-breaks-vim",
+  "regex-remove-line-breaks",
+  "remove-line-breaks-notion"
+]);
+
+// Filter and guarantee strictly only the 40 approved presets are rendered
+const displayPresets: RemoveLineBreaksPreset[] = removeLineBreaksPresets.filter(
+  (preset: RemoveLineBreaksPreset) => APPROVED_40_SLUGS.has(preset.slug)
+);
 ---
 
 <section class="border-t border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950/40 py-14 sm:py-18">
@@ -21,7 +70,7 @@ const { currentSlug = '' } = Astro.props;
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-      {removeLineBreaksPresets.map((preset: RemoveLineBreaksPreset) => {
+      {displayPresets.map((preset: RemoveLineBreaksPreset) => {
         const isCurrent = preset.slug === currentSlug;
         return (
           <a

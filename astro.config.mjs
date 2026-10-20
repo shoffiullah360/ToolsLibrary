@@ -81,6 +81,10 @@ export default defineConfig({
   },
   redirects: {
     // 404 Route 301 Redirects
+    '/bulk-image-resizer': '/image-resizer/',
+    '/bulk-image-resizer/': '/image-resizer/',
+    '/passport-size-photo-resizer': '/passport-size-photo-2x2-inch/',
+    '/passport-size-photo-resizer/': '/passport-size-photo-2x2-inch/',
     '/batch-image-to-webp': '/image-converter/',
     '/batch-image-to-webp/': '/image-converter/',
     '/jpg-to-avif': '/image-converter/',

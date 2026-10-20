@@ -44,15 +44,19 @@
 /tools/remove-empty-lines/:slug /:slug/ 301
 
 # Existing Tool Redirects
-/pinterest-pin-resizer /tools/pinterest-image-resizer/ 301
-/twitter-header-resizer /tools/x-twitter-image-resizer/ 301
-/whatsap /tools/whatsapp-image-resizer/ 301
-/whatsapp-dp-resizer /tools/whatsapp-image-resizer/ 301
-/linkedin-banner-resizer /tools/linkedin-image-resizer/ 301
-/youtube-banner-resizer /tools/youtube-image-resizer/ 301
-/resize-image-for-instagram /tools/instagram-image-resizer/ 301
-/facebook-cover-photo-resizer /tools/facebook-image-resizer/ 301
-/tiktok-profile-picture-resizer /tools/tiktok-image-resizer/ 301
+/pinterest-pin-resizer /pinterest-image-resizer/ 301
+/twitter-header-resizer /x-twitter-image-resizer/ 301
+/whatsap /whatsapp-image-resizer/ 301
+/whatsapp-dp-resizer /whatsapp-image-resizer/ 301
+/linkedin-banner-resizer /linkedin-image-resizer/ 301
+/youtube-banner-resizer /youtube-image-resizer/ 301
+/resize-image-for-instagram /instagram-image-resizer/ 301
+/facebook-cover-photo-resizer /facebook-image-resizer/ 301
+/tiktok-profile-picture-resizer /tiktok-image-resizer/ 301
+/bulk-image-resizer /image-resizer/ 301
+/bulk-image-resizer/ /image-resizer/ 301
+/passport-size-photo-resizer /passport-size-photo-2x2-inch/ 301
+/passport-size-photo-resizer/ /passport-size-photo-2x2-inch/ 301
 
 # ==============================================================================
 # Pruned Remove Line Breaks Presets (Forced 301! Permanent Redirects to Tool)

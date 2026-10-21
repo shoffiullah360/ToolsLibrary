@@ -1516,10 +1516,10 @@ export const DUPLICATE_LINES_PRESETS: DuplicateLinesPreset[] = [
     "primaryQuery": "vim remove duplicate lines",
     "name": "Vim Remove Duplicate Lines",
     "h1": "Vim Remove Duplicate Lines",
-    "metaTitle": "Vim Remove Duplicate Lines Online – Free Tool | FastToolVerse",
-    "metaDescription": "Remove duplicate lines in vim remove duplicate lines online. Fast client-side deduplication, custom delimiters, zero uploads, and 100% privacy.",
-    "subtitle": "Instantly clean vim remove duplicate lines by removing duplicate lines and filtering unique items in real time with 100% private in-browser processing.",
-    "intentCard": "Removing duplicate records from vim remove duplicate lines is vital when maintaining clean databases, marketing campaigns, server logs, and document lists. This dedicated client-side utility purges repetitive lines, identifies unique entries, and formats output with custom delimiters. All string evaluation occurs locally inside your browser memory sandbox, guaranteeing your proprietary data remains 100% private and secure.",
+    "metaTitle": "Vim Remove Duplicate Lines – Clean Buffers with :sort u | FastToolVerse",
+    "metaDescription": "Learn how to remove duplicate lines in Vim and Neovim easily. Master :sort u, preserve line order with buffers, fix hidden spaces, and use online tools.",
+    "subtitle": "Clean terminal buffers, master vim remove duplicate lines, and eliminate repeats with 100% private in-browser text and list deduplication.",
+    "intentCard": "Need to clean up repetitive lines in Vim or Neovim? Discover how the intuitive ':sort u' command strips duplicates in milliseconds, explore easy ways to preserve original chronological order, and resolve invisible newline discrepancies without terminal frustration.",
     "options": {
       "mode": "unique",
       "caseSensitive": true,
@@ -1529,87 +1529,101 @@ export const DUPLICATE_LINES_PRESETS: DuplicateLinesPreset[] = [
       "sort": "original",
       "delimiter": "newline"
     },
-    "sampleText": "Apple\nBanana\nOrange\nApple\nMango\nBanana\nGrape\nOrange\nPineapple",
+    "sampleText": "192.168.1.10\n10.0.0.15\n172.16.0.4\n192.168.1.10\n10.0.0.22\n10.0.0.15\n192.168.1.10",
     "editorialGuide": {
-      "heading": "Technical Guide: Vim Remove Duplicate Lines in Code Editors & IDEs",
+      "heading": "Keyboard Efficiency: How to Clean Duplicate Lines in Vim and Neovim Without Frustration",
       "sections": [
         {
-          "title": "Developer Context: Why Clean Lists & Deduplication Matter in Vim Remove Duplicate Lines",
+          "title": "The Enduring Charm of Vim for Everyday Terminal Editing",
           "paragraphs": [
-            "When engineering software, managing infrastructure configuration manifests, or inspecting stack traces, duplicate entries frequently infiltrate developer buffers. Programmers working with vim remove duplicate lines often encounter duplicated lines after merging Git feature branches, concatenating raw API query dumps, or copying database result grids into active workspace tabs. If unaddressed, redundant rows in code or configuration files lead to syntax redundancy, unexpected override behavior in YAML/JSON structures, and bloated source repositories that slow down continuous integration builds.",
-            "Executing a targeted vim remove duplicate lines routine inside your coding environment resolves visual noise and restores strict file hygiene. Rather than scanning thousands of lines manually, understanding how to apply vim remove duplicate lines workflows directly allows engineers to isolate unique code statements, environment keys, and dependency lists in seconds. Whether refactoring CSS selector rules, consolidating Docker container variables, or cleaning up SQL seed scripts, establishing a reliable line deduplication workflow is an essential competency for daily development efficiency."
+            "For more than three decades, Vim—and its modern sibling Neovim—has remained one of the most respected and widely used text editors on the planet. Whether you are SSH'd into a remote cloud server in another hemisphere, managing local configuration files on a Unix laptop, or quickly organizing personal notes inside a terminal multiplexer, Vim opens instantly with zero graphical overhead.",
+            "Writers, systems engineers, network administrators, and developers love Vim because it keeps their fingers glued to the home row of the keyboard. There is no need to reach for a mouse, navigate cluttered multi-window menus, or wait for heavy graphical interface frameworks to load. When you need to edit a file, Vim gets straight to work.",
+            "However, working directly in terminal environments often means dealing with raw data dumps, concatenated server access logs, copied firewall rules, and messy lists. It is remarkably common to find dozens or even thousands of repeated lines scattered across your buffer. Learning the simplest ways to execute vim remove duplicate lines allows you to clean up your terminal buffers in seconds without getting bogged down in complex script syntax."
           ],
           "bullets": [
-            "Cleans merged Git branches, SQL script dumps, and environment variable files in seconds.",
-            "Avoids editor extension bloat, background thread locks, and out-of-memory crashes on large files.",
-            "Preserves precise code structure with customizable whitespace trimming and sorting options."
+            "Launches instantaneously inside any terminal environment with near-zero memory footprint.",
+            "Allows complete document manipulation through efficient, mouse-free keyboard commands.",
+            "Frequently encounters duplicated rows when reviewing server logs, lists, and configuration manifests."
           ]
         },
         {
-          "title": "Native Editor Shortcuts & Regex Methods for Vim Remove Duplicate Lines",
+          "title": "The Simple Sorting and Cleansing Habit: Mastering :sort u",
           "paragraphs": [
-            "Modern development environments provide native commands, menu operations, and regular expression engines to clean repetitive rows locally. Here are the exact commands and shortcuts calibrated for your workspace:"
+            "If you ask experienced terminal users how they clean duplicate lines, the overwhelming majority will share a single, wonderfully memorable command: ':sort u'.",
+            "Understanding how this command works demystifies Vim's command-line mode. In Vim, typing a colon (:) puts the editor into Command-Line mode, where you can issue instructions to the active buffer. The word 'sort' tells Vim to evaluate the lines in your document and arrange them in alphabetical order. The single letter 'u' stands for 'unique.'",
+            "When you press Enter on ':sort u', Vim performs two high-speed operations simultaneously: it sorts your lines from A to Z, and it strips out every single consecutive duplicate row in the exact same pass. Because identical lines are brought together during the sort, Vim identifies repeats in milliseconds, leaving you with a spotless, alphabetized list. If you are working with case-insensitive data where 'Server' and 'server' should be treated as identical, you can simply append the letter 'i' by typing ':sort ui'."
           ],
           "codeBlock": {
             "language": "vim",
-            "code": "\" Method 1: Sort and deduplicate in Vim Command Mode\n:sort u\n\n\" Method 2: Case-insensitive unique sort\n:sort ui\n\n\" Method 3: Keep original chronological order using Awk filter\n:%!awk '!seen[$0]++'\n\n\" Method 4: Visual range deduplication (select lines with Shift+V then type):\n:'<,'>sort u"
+            "code": "\" Vim 1-Second Deduplication Command:\n:sort u\n\n\" For case-insensitive deduplication:\n:sort ui\n\n\" To deduplicate only selected visual lines:\n\" 1. Press Shift + V, select your lines\n\" 2. Type: :sort u and press Enter"
           },
           "callout": {
             "type": "tip",
-            "label": "Editor Tip",
-            "text": "Typing ':sort u' alters original line sequence. To keep first occurrences chronologically intact inside Vim, always pipe through ':%!awk'."
+            "label": "Vim Command Tip",
+            "text": "You don't have to clean the whole document at once. Highlight a specific paragraph using visual line mode (Shift + V), then type ':sort u' to clean only that selected block."
           }
         },
         {
-          "title": "Browser Sandbox Advantage: Eliminating Editor Freezes & Memory Leaks",
+          "title": "What to Do When Original Line Order Matters",
           "paragraphs": [
-            "While native desktop editors are indispensable for daily authoring, applying complex regex lookahead patterns on large text buffers frequently strains internal syntax lexers. Editors like VS Code and IntelliJ run background indexing engines, linting processes, and Language Server Protocols (LSP) that parse every document modification. Executing nested regular expression searches across 20,000 to 100,000 lines can trigger catastrophic backtracking, causing the editor process to freeze and prompting \"Window is not responding\" dialogs.",
-            "FastToolVerse eliminates IDE thread contention by offloading the entire deduplication workload to an isolated client-side browser memory sandbox. Built on ECMAScript Hash Sets with constant-time O(1) key lookups, our engine processes 50,000+ line documents in under 40 milliseconds without allocating heavy language AST trees. You gain instantaneous, zero-latency processing without installing marketplace extensions, configuring regex flags, or risking editor instability."
+            "While ':sort u' is remarkably fast, it has one distinct characteristic that isn't always ideal: it permanently reorganizes your lines into alphabetical order. If your file represents a chronological incident response log, a priority-ranked checklist, or a sequence of terminal execution steps, sorting alphabetically scrambles your original narrative.",
+            "When you need to remove duplicate lines while keeping the original chronological sequence intact—retaining the first appearance of each item and deleting subsequent repeats—you have several practical options.",
+            "Terminal power users often pipe their active Vim buffer through an external stream filter by typing ':%!awk \\'!seen[$0]++\\''. This tells Vim to send the buffer text through Awk's hash set filter, which quietly suppresses repeats while preserving line order. However, if typing cryptic terminal filter strings feels awkward or difficult to memorize, there is an even friendlier alternative.",
+            "You can simply copy your text out of Vim (using visual selection or standard terminal clipboard copying), paste it into a dedicated remove duplicate lines online tool like FastToolVerse, and let the browser clean it. FastToolVerse preserves original line order by default using client-side hash tables. Once the duplicates disappear, you simply copy the clean text and paste it right back into your Vim window. The entire round trip takes only a few seconds and requires zero memorization of terminal pipe syntax."
           ],
           "bullets": [
-            "Zero Plugin Setup: No marketplace downloads, package permissions, or corporate security audits required.",
-            "Instant Microsecond Lookups: O(1) hash tables process multi-megabyte text payloads without freezing editor tabs.",
-            "100% Private Sandbox: Client credentials, private API keys, and internal source code never leave your device RAM."
+            "Alphabetical sorting scrambles chronological timelines, event records, and priority lists.",
+            "Using ':%!awk' allows order preservation in the terminal, but requires memorizing exact filter syntax.",
+            "Copy-pasting into FastToolVerse provides instant, zero-stress deduplication that keeps your order intact."
           ]
         },
         {
-          "title": "Edge Cases in Source Code: Whitespace, Indentation & Encodings",
+          "title": "Spotting Hidden Spaces and Mixed Line Endings in Vim",
           "paragraphs": [
-            "Source code and technical files present unique edge cases where automated deduplicators can inadvertently break program logic if not carefully tuned:"
+            "Every Vim user has experienced the frustration of running ':sort u', only to discover two lines that appear completely identical stubbornly sitting side by side in the buffer. In nearly every instance, invisible whitespace characters or newline formatting differences are the hidden culprits.",
+            "Because text editors evaluate lines character by character, a line with an invisible space at the end ('gateway_ip ') has a completely different byte structure than a line without one ('gateway_ip'). To human eyes, they look identical; to Vim, they are distinct.",
+            "To reveal these hidden gremlins in Vim, enter normal mode and type ':set list'. Vim will immediately display invisible characters: spaces will appear as visible dots, tabs will display as '^I', and line terminators will show as '$'. If you notice trailing spaces, you can clean them across the entire file by typing ':%s/\\s\\+$//e'. Furthermore, if a file was created on Windows, it might contain hidden carriage return characters ('^M' or '\\r'). Running ':set ff=unix' standardizes line endings to clean Linux format, ensuring identical lines match seamlessly."
+          ],
+          "callout": {
+            "type": "note",
+            "label": "Whitespace Hygiene",
+            "text": "Running ':set list' in Vim pulls back the curtain on hidden trailing spaces and Windows return symbols, making it easy to see why lines failed to deduplicate."
+          }
+        },
+        {
+          "title": "Comparing Everyday Text Tools Across Environments",
+          "paragraphs": [
+            "Modern computing involves moving between multiple operating systems and editing platforms. System administrators working in terminal sessions frequently run linux remove duplicate lines from file commands or execute bash remove duplicate lines scripts to process system telemetry. In cloud deployments, engineers regularly write remove duplicate lines bash routines, run remove duplicate lines from file linux commands, or employ sed remove duplicate lines to sanitize container outputs. On servers with large log archives, administrators depend on linux remove duplicate lines and bash remove duplicate lines from file pipelines.",
+            "Meanwhile, desktop professionals often turn to notepad++ remove duplicate lines for Windows text processing, utilize vscode remove duplicate lines or vs code remove duplicate lines features for codebases, or apply regex remove duplicate lines patterns across projects. In office management, teams rely on excel remove duplicate lines buttons or practice how to remove duplicate lines in excel for client lists. Vim fits perfectly into this toolkit as a fast, dependable terminal editor that keeps you productive anywhere. Whether using ':sort u' in Vim or checking lists with an online remove duplicate lines tool, you have total control over your plain text."
           ],
           "bullets": [
-            "Indentation Sensitivity: In Python, YAML, and Haml, leading tabs or spaces define semantic code scope. Enabling 'Trim edge whitespace' will normalize indentation, so keep it unchecked if block hierarchy must be preserved.",
-            "CRLF vs LF Line Endings: Windows development environments use CRLF (\\r\\n) while Unix, Linux, and macOS use LF (\\n). Inconsistent newline terminators between pasted snippets can cause identical code lines to evaluate as distinct hashes unless parsed with universal newline splitting.",
-            "Code Comments vs Statement Duplication: Identical comment headers (e.g. '// TODO: Review' or '/* separator */') may be intentionally repeated across classes. Using 'Duplicates Only' extraction allows you to audit recurring annotations before deletion.",
-            "Blank Lines Between Methods: Purging empty lines cleans compact scripts, but may disrupt visual readability between function declarations. Toggle 'Strip blank lines' based on whether method spacing is desired."
+            "Connects terminal-based server administration with visual desktop editing workflows.",
+            "Provides a lightweight alternative to graphical IDEs when editing remote configuration files.",
+            "Pairs naturally with FastToolVerse for private, in-browser list cleaning with zero setup."
           ]
         }
       ]
     },
     "faqs": [
       {
-        "question": "How do I remove duplicate lines in Vim Remove Duplicate Lines online?",
-        "answer": "Paste or type your text list into the Input Text editor. FastToolVerse automatically evaluates every row using high-speed O(1) hash sets in real time. Duplicate lines are stripped instantly while preserving the original appearance order. You can toggle case sensitivity, whitespace trimming, or alphabetical sorting, then click Copy or download as a .txt file."
+        "question": "What does the command `:sort u` do in Vim, and why is it the most popular way to remove duplicate lines?",
+        "answer": "The ':sort u' command sorts all lines in your active Vim buffer alphabetically and automatically eliminates all duplicate entries in a single pass. The 'u' flag stands for 'unique', making it the fastest and most memorable way to clean lists in Vim."
       },
       {
-        "question": "Does this Vim Remove Duplicate Lines tool upload my data or files to any server?",
-        "answer": "No. All text parsing, regex matching, and deduplication execute 100% locally inside your web browser's RAM memory sandbox. Zero bytes ever travel across the internet, ensuring your confidential customer lists, credentials, server logs, and code remain completely private."
+        "question": "How can I remove duplicate lines in Vim without changing the original order of my text?",
+        "answer": "To preserve your original list order directly inside Vim, pipe your buffer through Awk by typing ':%!awk \\'!seen[$0]++\\''. Alternatively, copy your text, paste it into FastToolVerse in your browser where input order is preserved by default, and paste the clean output back into Vim."
       },
       {
-        "question": "What is the difference between case-sensitive and case-insensitive deduplication?",
-        "answer": "When 'Case-sensitive comparison' is enabled, entries with differing letter cases (e.g. 'Apple' and 'apple') are treated as distinct unique items. When disabled, both entries are recognized as duplicates, and the tool keeps only the first encountered casing while eliminating subsequent variants."
+        "question": "Why does Vim fail to remove lines that appear to have the exact same text?",
+        "answer": "Vim performs strict byte-for-byte comparisons. If one line contains an invisible trailing space, a tab character, or Windows CRLF line endings, Vim considers it different from a line without them. Typing ':%s/\\s\\+$//e' trims trailing whitespace so identical lines match."
       },
       {
-        "question": "How does whitespace trimming prevent hidden duplicate lines?",
-        "answer": "Accidental trailing spaces or tab characters from copy-pasting spreadsheet cells often cause visually identical lines to have different character lengths. Enabling 'Trim edge whitespace' normalizes leading and trailing spacing before comparing hash keys, ensuring phantom spaces don't bypass duplicate detection."
+        "question": "Can I remove duplicate lines from only a highlighted section of text in Vim rather than the whole file?",
+        "answer": "Yes. Switch to visual line mode by pressing Shift + V, use your arrow keys or 'j/k' to highlight the desired lines, and type ':sort u'. Vim will automatically scope the operation to the selected range (displayed as :'<,'>sort u) and deduplicate only those rows."
       },
       {
-        "question": "Can I extract duplicate lines only or count how many times each line repeats?",
-        "answer": "Yes. Click the 'Extraction Mode' pills above the editor. Choose 'Duplicates Only' to isolate only recurring entries, 'Completely Unique' to filter lines that appear exactly once, or 'Count Occurrences' to generate a frequency count histogram showing exact repetition metrics."
-      },
-      {
-        "question": "Can this tool handle massive datasets containing 50,000+ lines?",
-        "answer": "Yes. Because FastToolVerse utilizes native ECMAScript Hash Sets with O(1) constant-time lookups (achieving linear O(N) overall performance), it can deduplicate datasets containing 50,000+ lines in tens of milliseconds without crashing or freezing your browser tab."
+        "question": "How does Vim compare to modern graphical editors when handling files with tens of thousands of duplicate rows?",
+        "answer": "Because Vim runs directly in C without graphical rendering overhead or language parsing models, commands like ':sort u' process files with tens of thousands of lines in a fraction of a second, far outperforming memory-heavy graphical editors."
       }
     ]
   },
@@ -1620,10 +1634,10 @@ export const DUPLICATE_LINES_PRESETS: DuplicateLinesPreset[] = [
     "primaryQuery": "remove duplicate lines in intellij",
     "name": "Remove Duplicate Lines in IntelliJ",
     "h1": "Remove Duplicate Lines in IntelliJ",
-    "metaTitle": "Remove Duplicate Lines in IntelliJ – FastToolVerse",
-    "metaDescription": "Remove duplicate lines in remove duplicate lines in intellij online. Fast client-side deduplication, custom delimiters, zero uploads, and 100% privacy.",
-    "subtitle": "Instantly clean remove duplicate lines in intellij by removing duplicate lines and filtering unique items in real time with 100% private in-browser processing.",
-    "intentCard": "Removing duplicate records from remove duplicate lines in intellij is vital when maintaining clean databases, marketing campaigns, server logs, and document lists. This dedicated client-side utility purges repetitive lines, identifies unique entries, and formats output with custom delimiters. All string evaluation occurs locally inside your browser memory sandbox, guaranteeing your proprietary data remains 100% private and secure.",
+    "metaTitle": "Remove Duplicate Lines in IntelliJ IDEA – Clean Lists & Plugins | FastToolVerse",
+    "metaDescription": "Learn how to remove duplicate lines in IntelliJ IDEA smoothly. Master Search Everywhere sorting, the String Manipulation plugin, and fast online tools.",
+    "subtitle": "Clean project notes, remove duplicate lines in IntelliJ, and organize property files with 100% private in-browser text and list deduplication.",
+    "intentCard": "Need to clean up repetitive lines in IntelliJ IDEA or JetBrains IDEs? Discover how to sort lines with built-in commands, explore the popular String Manipulation plugin for one-click deduplication, and sanitize property files without risking code integrity.",
     "options": {
       "mode": "unique",
       "caseSensitive": true,
@@ -1633,87 +1647,100 @@ export const DUPLICATE_LINES_PRESETS: DuplicateLinesPreset[] = [
       "sort": "original",
       "delimiter": "newline"
     },
-    "sampleText": "Apple\nBanana\nOrange\nApple\nMango\nBanana\nGrape\nOrange\nPineapple",
+    "sampleText": "app.locale=en-US\napp.theme=dark\napp.timeout=30\napp.locale=en-US\napp.debug=false\napp.theme=dark\napp.max_connections=100",
     "editorialGuide": {
-      "heading": "Technical Guide: Remove Duplicate Lines in IntelliJ in Code Editors & IDEs",
+      "heading": "Seamless Workspace Management: How to Remove Duplicate Lines in IntelliJ IDEA",
       "sections": [
         {
-          "title": "Developer Context: Why Clean Lists & Deduplication Matter in Remove Duplicate Lines in IntelliJ",
+          "title": "The Modern Developer and Writer Environment in IntelliJ IDEA",
           "paragraphs": [
-            "When engineering software, managing infrastructure configuration manifests, or inspecting stack traces, duplicate entries frequently infiltrate developer buffers. Programmers working with remove duplicate lines in intellij often encounter duplicated lines after merging Git feature branches, concatenating raw API query dumps, or copying database result grids into active workspace tabs. If unaddressed, redundant rows in code or configuration files lead to syntax redundancy, unexpected override behavior in YAML/JSON structures, and bloated source repositories that slow down continuous integration builds.",
-            "Executing a targeted remove duplicate lines in intellij routine inside your coding environment resolves visual noise and restores strict file hygiene. Rather than scanning thousands of lines manually, understanding how to apply remove duplicate lines in intellij workflows directly allows engineers to isolate unique code statements, environment keys, and dependency lists in seconds. Whether refactoring CSS selector rules, consolidating Docker container variables, or cleaning up SQL seed scripts, establishing a reliable line deduplication workflow is an essential competency for daily development efficiency."
+            "JetBrains IntelliJ IDEA is celebrated across the technology industry as one of the most intelligent and comprehensive integrated development environments ever created. While originally designed for Java and Kotlin engineering, IntelliJ IDEA—along with sister IDEs like PyCharm, WebStorm, and PhpStorm—has evolved into a versatile daily workspace for managing documentation, translation directories, localization bundles, and large application property catalogs.",
+            "Inside IntelliJ, engineers and technical writers appreciate the rich context awareness, sophisticated static analysis, and deep project navigation. Whether you are refactoring enterprise services or reorganizing a massive dictionary of UI strings, IntelliJ provides a dependable cockpit.",
+            "However, large software projects frequently accumulate repetitive data. Merging Git pull requests, exporting database query results into scratch files, updating application environment properties, and generating API mock payloads often leave files cluttered with duplicate rows. In application property files and environment manifests, duplicated configuration keys can cause silent runtime overrides, where the second key unknowingly cancels out the first. Knowing how to remove duplicate lines in intellij without disrupting project structure helps you maintain clean, readable, and error-free repositories."
           ],
           "bullets": [
-            "Cleans merged Git branches, SQL script dumps, and environment variable files in seconds.",
-            "Avoids editor extension bloat, background thread locks, and out-of-memory crashes on large files.",
-            "Preserves precise code structure with customizable whitespace trimming and sorting options."
+            "The premier IDE for enterprise application development, documentation, and property files.",
+            "Offers deep static analysis, integrated Git merging, and customizable workspace scratch buffers.",
+            "Frequently accumulates duplicate lines when synchronizing branches, database exports, and locale keys."
           ]
         },
         {
-          "title": "Native Editor Shortcuts & Regex Methods for Remove Duplicate Lines in IntelliJ",
+          "title": "Built-in Text Manipulation and Sorting in IntelliJ",
           "paragraphs": [
-            "Modern development environments provide native commands, menu operations, and regular expression engines to clean repetitive rows locally. Here are the exact commands and shortcuts calibrated for your workspace:"
+            "Many professionals prefer to start with IntelliJ's built-in tools before turning to marketplace add-ons. While IntelliJ does not include an out-of-the-box button labeled 'Delete Duplicate Lines,' its native 'Search Everywhere' engine provides an immediate sorting tool that makes duplicate cleanup straightforward.",
+            "To clean a block of text using native IntelliJ actions, highlight the relevant rows or press Ctrl + A (Cmd + A on macOS) to select the whole document. Next, press the Shift key twice in rapid succession to open the 'Search Everywhere' dialog window. In the search box, type 'Sort Lines' and hit Enter.",
+            "IntelliJ instantly rearranges the selected lines into alphabetical order. This built-in sorting brings identical lines directly next to each other in adjacent rows. Once grouped, identical entries become immediately noticeable. You can then quickly scan through the rows and remove duplicates manually, or use IntelliJ's powerful multi-cursor selection (Alt + J on Windows, Ctrl + G on macOS) to select all matching entries across the document and delete them in unison."
           ],
           "codeBlock": {
-            "language": "markdown",
-            "code": "// IntelliJ IDEA & JetBrains IDEs Workflow\n1. Select lines or document (Ctrl+A / Cmd+A)\n2. Press Shift twice (Search Everywhere) and type \"Sort Lines\"\n3. For dedicated uniqueness, install the \"String Manipulation\" plugin:\n   - Press Alt+M -> \"Filter / Remove...\" -> \"Remove Duplicates\"\n4. Alternatively, use Regex Replace:\n   Find:    ^([^\\r\\n]+)\\r?\\n(?=[\\s\\S]*^\\1$)\n   Replace: (empty)"
+            "language": "text",
+            "code": "Native IntelliJ Line Sorting Steps:\n1. Select your text block (Ctrl + A or highlight lines)\n2. Double-tap Shift (Search Everywhere)\n3. Type: 'Sort Lines' and press Enter\n4. Identical rows are clustered side-by-side for instant review!"
           },
           "callout": {
             "type": "tip",
-            "label": "Editor Tip",
-            "text": "JetBrains IDEs provide strong multi-cursor support (Alt+J), but regex lookaheads on large files can trigger high memory warning dialogues."
+            "label": "Multi-Selection Shortcut",
+            "text": "Highlight a repeated phrase in IntelliJ and press Alt + J (Ctrl + G on Mac) repeatedly to add multiple carets to each occurrence for synchronized editing."
           }
         },
         {
-          "title": "Browser Sandbox Advantage: Eliminating Editor Freezes & Memory Leaks",
+          "title": "Friendly Marketplace Plugins for Instant One-Click Deduplication",
           "paragraphs": [
-            "While native desktop editors are indispensable for daily authoring, applying complex regex lookahead patterns on large text buffers frequently strains internal syntax lexers. Editors like VS Code and IntelliJ run background indexing engines, linting processes, and Language Server Protocols (LSP) that parse every document modification. Executing nested regular expression searches across 20,000 to 100,000 lines can trigger catastrophic backtracking, causing the editor process to freeze and prompting \"Window is not responding\" dialogs.",
-            "FastToolVerse eliminates IDE thread contention by offloading the entire deduplication workload to an isolated client-side browser memory sandbox. Built on ECMAScript Hash Sets with constant-time O(1) key lookups, our engine processes 50,000+ line documents in under 40 milliseconds without allocating heavy language AST trees. You gain instantaneous, zero-latency processing without installing marketplace extensions, configuring regex flags, or risking editor instability."
+            "If you regularly clean large plain text files, CSV exports, or localization dictionaries, manual pruning after sorting can feel repetitive. Fortunately, the JetBrains Marketplace offers exceptional free community plugins that integrate true one-click deduplication directly into the editor interface.",
+            "The undisputed gold standard for text editing in IntelliJ is the 'String Manipulation' plugin by Vojtech Krasa. With over ten million downloads, this plugin adds comprehensive text transformation actions directly to the context menu. You can install it in seconds by navigating to File -> Settings -> Plugins (or Preferences -> Plugins on macOS) and searching for 'String Manipulation.'",
+            "Once installed, simply highlight your text, right-click, hover over 'String Manipulation,' navigate to 'Filter / Remove...', and select 'Remove Duplicates.' The plugin instantly evaluates every highlighted row, preserves the very first appearance, and erases all subsequent repeats in a fraction of a second. You can also trigger it using the customizable shortcut Alt + M, giving you instant keyboard access without opening dialog boxes. In addition to simple removal, the plugin offers advanced options to trim whitespace margins, perform case-insensitive evaluations, and display dropped row metrics, giving you complete confidence that only redundant records are discarded."
           ],
           "bullets": [
-            "Zero Plugin Setup: No marketplace downloads, package permissions, or corporate security audits required.",
-            "Instant Microsecond Lookups: O(1) hash tables process multi-megabyte text payloads without freezing editor tabs.",
-            "100% Private Sandbox: Client credentials, private API keys, and internal source code never leave your device RAM."
+            "The 'String Manipulation' plugin is the most popular, trusted text cleaner on JetBrains Marketplace.",
+            "Adds intuitive right-click context menu options to remove duplicate lines with a single click.",
+            "Preserves original document order while removing subsequent repeats across highlighted lines."
           ]
         },
         {
-          "title": "Edge Cases in Source Code: Whitespace, Indentation & Encodings",
+          "title": "Keeping External Notes and Client Exports Tidy Without Plugin Bloat",
           "paragraphs": [
-            "Source code and technical files present unique edge cases where automated deduplicators can inadvertently break program logic if not carefully tuned:"
+            "While IDE extensions are wonderful for daily coding, many engineers prefer not to clutter their core development environment with extra plugins, particularly when handling quick one-off text files, customer contact lists, or meeting notes.",
+            "Furthermore, running heavy regular expression replacements on massive scratch files inside an active IDE can occasionally trigger background syntax indexing and high memory consumption warnings. When you need to sanitize a raw dataset quickly without affecting your IDE workspace, using a dedicated in-browser cleaner like FastToolVerse is an elegant alternative.",
+            "You simply copy the text from IntelliJ, paste it into FastToolVerse in your web browser, and let the tool's O(1) memory engine strip all duplicates in milliseconds. Because FastToolVerse operates entirely in your client-side browser memory, confidential API keys, proprietary database queries, and private project variables never leave your computer. Once clean, you can paste the sanitized list straight back into IntelliJ."
+          ],
+          "callout": {
+            "type": "note",
+            "label": "Zero IDE Overhead",
+            "text": "Offloading text deduplication to FastToolVerse keeps your IDE light, fast, and free of background plugin overhead while ensuring 100% data confidentiality."
+          }
+        },
+        {
+          "title": "Connecting Everyday Tech Tools Across Development Workflows",
+          "paragraphs": [
+            "Modern software development is a collaborative discipline spanning visual desktop tools and remote command lines. DevOps engineers deploying backend services frequently execute linux remove duplicate lines from file commands or run bash remove duplicate lines scripts to clean container outputs. System administrators managing server clusters regularly run remove duplicate lines bash routines, execute remove duplicate lines from file linux commands, or rely on sed remove duplicate lines to process log archives where they must remove duplicate lines linux without graphical tools.",
+            "Meanwhile, colleagues managing desktop editors often look into notepad++ remove duplicate lines for Windows text processing, utilize vscode remove duplicate lines or vs code remove duplicate lines features, or apply regex remove duplicate lines patterns across codebases. In corporate offices, managers rely on excel remove duplicate lines buttons or practice how to remove duplicate lines in excel when analyzing quarterly performance. IntelliJ IDEA bridges these varied technical worlds, providing a sophisticated environment that pairs effortlessly with browser-based deduplication to keep your projects clean, organized, and production-ready."
           ],
           "bullets": [
-            "Indentation Sensitivity: In Python, YAML, and Haml, leading tabs or spaces define semantic code scope. Enabling 'Trim edge whitespace' will normalize indentation, so keep it unchecked if block hierarchy must be preserved.",
-            "CRLF vs LF Line Endings: Windows development environments use CRLF (\\r\\n) while Unix, Linux, and macOS use LF (\\n). Inconsistent newline terminators between pasted snippets can cause identical code lines to evaluate as distinct hashes unless parsed with universal newline splitting.",
-            "Code Comments vs Statement Duplication: Identical comment headers (e.g. '// TODO: Review' or '/* separator */') may be intentionally repeated across classes. Using 'Duplicates Only' extraction allows you to audit recurring annotations before deletion.",
-            "Blank Lines Between Methods: Purging empty lines cleans compact scripts, but may disrupt visual readability between function declarations. Toggle 'Strip blank lines' based on whether method spacing is desired."
+            "Provides a visual, modern hub that connects desktop editing with command-line workflows.",
+            "Supports developers moving between JetBrains IDEs, terminal scripts, and spreadsheets.",
+            "Pairs with FastToolVerse for private, in-browser list cleaning with zero complex configuration."
           ]
         }
       ]
     },
     "faqs": [
       {
-        "question": "How do I remove duplicate lines in Remove Duplicate Lines in IntelliJ online?",
-        "answer": "Paste or type your text list into the Input Text editor. FastToolVerse automatically evaluates every row using high-speed O(1) hash sets in real time. Duplicate lines are stripped instantly while preserving the original appearance order. You can toggle case sensitivity, whitespace trimming, or alphabetical sorting, then click Copy or download as a .txt file."
+        "question": "Does IntelliJ IDEA have a native built-in menu action to remove duplicate lines directly out of the box?",
+        "answer": "No. IntelliJ IDEA includes a native 'Sort Lines' command that groups identical lines together alphabetically, but it does not have a native one-click menu command to automatically delete duplicate lines without an extension."
       },
       {
-        "question": "Does this Remove Duplicate Lines in IntelliJ tool upload my data or files to any server?",
-        "answer": "No. All text parsing, regex matching, and deduplication execute 100% locally inside your web browser's RAM memory sandbox. Zero bytes ever travel across the internet, ensuring your confidential customer lists, credentials, server logs, and code remain completely private."
+        "question": "What is the recommended plugin for adding instant text deduplication to the IntelliJ right-click menu?",
+        "answer": "The 'String Manipulation' plugin by Vojtech Krasa is the most popular and recommended plugin. Once installed, it provides a 'Filter / Remove... -> Remove Duplicates' option in the right-click context menu and via the Alt + M shortcut."
       },
       {
-        "question": "What is the difference between case-sensitive and case-insensitive deduplication?",
-        "answer": "When 'Case-sensitive comparison' is enabled, entries with differing letter cases (e.g. 'Apple' and 'apple') are treated as distinct unique items. When disabled, both entries are recognized as duplicates, and the tool keeps only the first encountered casing while eliminating subsequent variants."
+        "question": "How can I sort lines alphabetically in IntelliJ before checking for duplicate entries?",
+        "answer": "Highlight the text you want to organize, press the Shift key twice to open 'Search Everywhere', type 'Sort Lines', and press Enter. IntelliJ will instantly arrange the selected rows into alphabetical order."
       },
       {
-        "question": "How does whitespace trimming prevent hidden duplicate lines?",
-        "answer": "Accidental trailing spaces or tab characters from copy-pasting spreadsheet cells often cause visually identical lines to have different character lengths. Enabling 'Trim edge whitespace' normalizes leading and trailing spacing before comparing hash keys, ensuring phantom spaces don't bypass duplicate detection."
+        "question": "Will removing duplicate lines in IntelliJ IDEA disrupt my file's indentation or spacing structure?",
+        "answer": "By default, identical lines must have the exact same indentation to be recognized as duplicates. If you use FastToolVerse or plugins with whitespace trimming enabled, edge spaces are normalized, so keep whitespace trimming off if code indentation must be preserved."
       },
       {
-        "question": "Can I extract duplicate lines only or count how many times each line repeats?",
-        "answer": "Yes. Click the 'Extraction Mode' pills above the editor. Choose 'Duplicates Only' to isolate only recurring entries, 'Completely Unique' to filter lines that appear exactly once, or 'Count Occurrences' to generate a frequency count histogram showing exact repetition metrics."
-      },
-      {
-        "question": "Can this tool handle massive datasets containing 50,000+ lines?",
-        "answer": "Yes. Because FastToolVerse utilizes native ECMAScript Hash Sets with O(1) constant-time lookups (achieving linear O(N) overall performance), it can deduplicate datasets containing 50,000+ lines in tens of milliseconds without crashing or freezing your browser tab."
+        "question": "How can I clean duplicate lines from project translation or property files without altering the keys?",
+        "answer": "If you have duplicate property keys with conflicting values, sorting your lines first clusters the keys together so you can review which value is correct before deleting. Alternatively, use FastToolVerse to remove exact duplicate lines in seconds."
       }
     ]
   },
@@ -1724,10 +1751,10 @@ export const DUPLICATE_LINES_PRESETS: DuplicateLinesPreset[] = [
     "primaryQuery": "remove duplicate lines regex notepad++",
     "name": "Remove Duplicate Lines Regex Notepad++",
     "h1": "Remove Duplicate Lines Regex Notepad++",
-    "metaTitle": "Remove Duplicate Lines Regex Notepad++ – FastToolVerse",
-    "metaDescription": "Remove duplicate lines in remove duplicate lines regex notepad++ online. Client-side deduplication, custom delimiters, and 100% privacy.",
-    "subtitle": "Instantly clean remove duplicate lines regex notepad++ by removing duplicate lines and filtering unique items in real time with 100% private in-browser processing.",
-    "intentCard": "Removing duplicate records from remove duplicate lines regex notepad++ is vital when maintaining clean databases, marketing campaigns, server logs, and document lists. This dedicated client-side utility purges repetitive lines, identifies unique entries, and formats output with custom delimiters. All string evaluation occurs locally inside your browser memory sandbox, guaranteeing your proprietary data remains 100% private and secure.",
+    "metaTitle": "Remove Duplicate Lines Regex in Notepad++ – Step-by-Step Guide | FastToolVerse",
+    "metaDescription": "Master Notepad++ regex remove duplicate lines with ease. Learn Find & Replace patterns, backreferences, sorting tricks, and fast online tools.",
+    "subtitle": "Clean large text files, master regex remove duplicate lines in Notepad++, and strip repeats with 100% private in-browser list deduplication.",
+    "intentCard": "Want to remove duplicate lines using regular expressions in Notepad++? Discover how smart search patterns match identical rows, why sorting lines first prevents application lag, and how to demystify regex syntax into simple, practical steps.",
     "options": {
       "mode": "unique",
       "caseSensitive": true,
@@ -1737,87 +1764,102 @@ export const DUPLICATE_LINES_PRESETS: DuplicateLinesPreset[] = [
       "sort": "original",
       "delimiter": "newline"
     },
-    "sampleText": "Apple\nBanana\nOrange\nApple\nMango\nBanana\nGrape\nOrange\nPineapple",
+    "sampleText": "alpha.example.com\nbeta.example.com\nalpha.example.com\ngamma.example.com\nbeta.example.com\ndelta.example.com\nalpha.example.com",
     "editorialGuide": {
-      "heading": "Technical Guide: Remove Duplicate Lines Regex Notepad++ in Code Editors & IDEs",
+      "heading": "The Pattern Matching Companion: Using Smart Search to Remove Duplicate Lines in Notepad++",
       "sections": [
         {
-          "title": "Developer Context: Why Clean Lists & Deduplication Matter in Remove Duplicate Lines Regex Notepad++",
+          "title": "Taking the Mystery Out of Smart Search in Notepad++",
           "paragraphs": [
-            "When engineering software, managing infrastructure configuration manifests, or inspecting stack traces, duplicate entries frequently infiltrate developer buffers. Programmers working with remove duplicate lines regex notepad++ often encounter duplicated lines after merging Git feature branches, concatenating raw API query dumps, or copying database result grids into active workspace tabs. If unaddressed, redundant rows in code or configuration files lead to syntax redundancy, unexpected override behavior in YAML/JSON structures, and bloated source repositories that slow down continuous integration builds.",
-            "Executing a targeted remove duplicate lines regex notepad++ routine inside your coding environment resolves visual noise and restores strict file hygiene. Rather than scanning thousands of lines manually, understanding how to apply remove duplicate lines regex notepad++ workflows directly allows engineers to isolate unique code statements, environment keys, and dependency lists in seconds. Whether refactoring CSS selector rules, consolidating Docker container variables, or cleaning up SQL seed scripts, establishing a reliable line deduplication workflow is an essential competency for daily development efficiency."
+            "For anyone who regularly works with text files on Windows, Notepad++ is like a trusty Swiss Army knife. It opens instantly, handles multi-megabyte server logs with ease, and provides dozens of built-in text manipulation utilities. Yet, one of its most powerful capabilities remains intimidating to many everyday users: the regular expression engine.",
+            "Often abbreviated as 'regex,' smart search patterns allow you to look for text based on dynamic rules and recurring structures rather than static words. Instead of searching for a specific name like 'Alice,' a smart search pattern can look for 'any line that is followed immediately by an identical copy of itself.'",
+            "When working with messy customer lists, database seed files, or server event reports, knowing how to apply notepad++ remove duplicate lines patterns gives you extraordinary control over your documents. Once you understand the basic concepts behind pattern matching, regex stops feeling like confusing computer code and becomes a friendly, indispensable companion for everyday text cleaning."
           ],
           "bullets": [
-            "Cleans merged Git branches, SQL script dumps, and environment variable files in seconds.",
-            "Avoids editor extension bloat, background thread locks, and out-of-memory crashes on large files.",
-            "Preserves precise code structure with customizable whitespace trimming and sorting options."
+            "Transforms Notepad++ into a high-precision text sanitation and pattern cleanup powerhouse.",
+            "Searches for dynamic repeating structures rather than being limited to static keywords.",
+            "Cleans complex text files and removes recurring entries across thousands of lines in seconds."
           ]
         },
         {
-          "title": "Native Editor Shortcuts & Regex Methods for Remove Duplicate Lines Regex Notepad++",
+          "title": "The Easiest Step-by-Step Regex Search Routine in Notepad++",
           "paragraphs": [
-            "Modern development environments provide native commands, menu operations, and regular expression engines to clean repetitive rows locally. Here are the exact commands and shortcuts calibrated for your workspace:"
+            "Removing duplicate lines in Notepad++ using regular expressions is straightforward when you break it down into clear, manageable steps.",
+            "First, open your document in Notepad++ and bring up the Find and Replace window by pressing Ctrl + H. Look at the bottom-left corner of the dialog under 'Search Mode' and select the 'Regular expression' radio button. Also, ensure that the '. matches newline' checkbox is unchecked, so the search evaluates your text line by line.",
+            "In the 'Find what' field, enter the pattern: '^(.*?)\\r?\\n(?=^[\\s\\S]*?^\\1$)'. Or, if your document has already been sorted so duplicates sit adjacent to each other, you can use the much faster pattern: '^(.+)\\r?\\n(?:\\1\\r?\\n)+'. In the 'Replace with' field, enter: '\\1\\r\\n'.",
+            "Let's break down what these symbols actually mean in plain, friendly terms. The caret (^) simply marks the beginning of a line. The parentheses around '.*' capture the entire content of that line into memory as a numbered group. The '\\r?\\n' matches the invisible newline return at the end of the line. Finally, '\\1' represents a backreference—it tells Notepad++: 'look for another line that matches the exact text you just captured in group 1.' Replacing that match with '\\1\\r\\n' deletes the repeats while preserving a single clean copy."
           ],
           "codeBlock": {
-            "language": "regex",
-            "code": "// Method 1: Native Menu Workflow in Notepad++\n// 1. Select all lines (Ctrl+A)\n// 2. Click: Edit -> Line Operations -> Sort Lines Lexicographically Ascending\n// 3. Click: Edit -> Line Operations -> Remove Consecutive Duplicate Lines\n\n// Method 2: Order-Preserving Regular Expression Search & Replace\nFind What:    ^(.*?)$\\s+?^(?=([\\s\\S]*?)^\\1$)\nReplace With: (leave completely empty)\nSearch Mode:  Regular expression (check \"Wrap around\" and \". matches newline\")"
+            "language": "text",
+            "code": "Notepad++ Regex Duplicate Removal Steps:\n1. Open Find & Replace: Ctrl + H\n2. Set Search Mode to 'Regular expression' (Uncheck '. matches newline')\n3. Find what:    ^(.+)\\r?\\n(?:\\1\\r?\\n)+\n4. Replace with: \\1\\r\\n\n5. Click 'Replace All' -> Consecutive duplicates vanish instantly!"
           },
           "callout": {
             "type": "tip",
-            "label": "Editor Tip",
-            "text": "In Notepad++, the TextFX plugin (TextFX -> TextFX Tools -> Sort lines, only UNIQUE) also deletes duplicates in a single click if installed."
+            "label": "Regex Tip",
+            "text": "Always click 'Find Next' a few times before clicking 'Replace All' to visually verify that your search pattern is highlighting exactly what you intend to clean."
           }
         },
         {
-          "title": "Browser Sandbox Advantage: Eliminating Editor Freezes & Memory Leaks",
+          "title": "Why Sorting First Makes Pattern Matching 100x Faster",
           "paragraphs": [
-            "While native desktop editors are indispensable for daily authoring, applying complex regex lookahead patterns on large text buffers frequently strains internal syntax lexers. Editors like VS Code and IntelliJ run background indexing engines, linting processes, and Language Server Protocols (LSP) that parse every document modification. Executing nested regular expression searches across 20,000 to 100,000 lines can trigger catastrophic backtracking, causing the editor process to freeze and prompting \"Window is not responding\" dialogs.",
-            "FastToolVerse eliminates IDE thread contention by offloading the entire deduplication workload to an isolated client-side browser memory sandbox. Built on ECMAScript Hash Sets with constant-time O(1) key lookups, our engine processes 50,000+ line documents in under 40 milliseconds without allocating heavy language AST trees. You gain instantaneous, zero-latency processing without installing marketplace extensions, configuring regex flags, or risking editor instability."
+            "One of the most important secrets to successful text deduplication in Notepad++ is sorting your document before running a regular expression search.",
+            "When lines are unsorted, Notepad++ has to scan forward through the entire rest of the file for every single line to see if a match exists anywhere downstream. On a file with 50,000 lines, this global lookahead search requires billions of character comparisons, which can cause Notepad++ to freeze temporarily or show a 'Not Responding' message.",
+            "However, if you sort your document first (by navigating to Edit -> Line Operations -> Sort Lines Lexicographically Ascending), identical lines are gathered together into adjacent rows. When duplicates sit next to each other, the regex engine only needs to check the line immediately below, executing in milliseconds with zero editor lag. Sorting first turns a potentially sluggish operation into a smooth, instantaneous cleanup."
           ],
           "bullets": [
-            "Zero Plugin Setup: No marketplace downloads, package permissions, or corporate security audits required.",
-            "Instant Microsecond Lookups: O(1) hash tables process multi-megabyte text payloads without freezing editor tabs.",
-            "100% Private Sandbox: Client credentials, private API keys, and internal source code never leave your device RAM."
+            "Unsorted regex lookaheads on giant documents can cause editor freezes and CPU spikes.",
+            "Sorting lines first (Edit -> Line Operations) clusters identical rows into adjacent pairs.",
+            "Allows the regex engine to clear duplicates in a single, lightning-fast linear pass."
           ]
         },
         {
-          "title": "Edge Cases in Source Code: Whitespace, Indentation & Encodings",
+          "title": "Handling Accidental Spaces and Mixed Casing",
           "paragraphs": [
-            "Source code and technical files present unique edge cases where automated deduplicators can inadvertently break program logic if not carefully tuned:"
+            "Have you ever run a regular expression in Notepad++, only to find two lines that look completely identical stubbornly remaining in your document? In almost every case, invisible whitespace characters or letter casing differences are the culprit.",
+            "Because regular expression engines are mathematically precise, a line ending with an invisible space ('CustomerName ') does not match a line without one ('CustomerName'). To the regex engine, they are entirely different strings.",
+            "Fortunately, Notepad++ makes fixing whitespace easy. Before running your regex search, click 'Edit' -> 'Blank Operations' -> 'Trim Trailing Space.' This immediately removes invisible spaces and tabs from the ends of all lines. If you also want to ignore capitalization differences (treating 'Email' and 'email' as duplicates), ensure the 'Match case' checkbox in the Find and Replace dialog is unchecked.",
+            "It is also wise to test your regular expression on a small sample of your text before executing 'Replace All' across an entire hundred-thousand-line file. If you ever feel uncertain about regular expression syntax or worry about accidentally deleting important rows, you can always test your data in a secure, private browser environment. Highlighting your text and pasting it into a dedicated remove duplicate lines online tool gives you instant visual confirmation of dropped rows and frequencies with zero risk to your master file."
+          ],
+          "callout": {
+            "type": "note",
+            "label": "Whitespace Hygiene",
+            "text": "Selecting Edit -> Blank Operations -> Trim Trailing Space ensures invisible margin spaces never prevent your regex patterns from finding duplicates."
+          }
+        },
+        {
+          "title": "Broad Tech Connections: From Desktop Regex to Modern Web Sandboxes",
+          "paragraphs": [
+            "Regular expressions are a shared language uniting developers and administrators across all computing environments. On remote Linux servers, engineers routinely execute linux remove duplicate lines from file commands, run bash remove duplicate lines from file scripts, or write remove duplicate lines bash routines to sanitize server logs. DevOps professionals regularly use sed remove duplicate lines pipelines or execute remove duplicate lines from file linux commands in terminal sessions.",
+            "In modern code editors, developers frequently rely on vscode remove duplicate lines or vs code remove duplicate lines extensions, or use vim remove duplicate lines commands with buffer substitution. In corporate accounting, analysts rely on excel remove duplicate lines buttons or practice how to remove duplicate lines in excel for client workbooks. Mastering regex remove duplicate lines inside Notepad++ gives you that exact same surgical precision on Windows. And when you want instant results without typing regex syntax, passing your list through an online remove duplicate lines tool like FastToolVerse provides a fast, private, and effortless alternative."
           ],
           "bullets": [
-            "Indentation Sensitivity: In Python, YAML, and Haml, leading tabs or spaces define semantic code scope. Enabling 'Trim edge whitespace' will normalize indentation, so keep it unchecked if block hierarchy must be preserved.",
-            "CRLF vs LF Line Endings: Windows development environments use CRLF (\\r\\n) while Unix, Linux, and macOS use LF (\\n). Inconsistent newline terminators between pasted snippets can cause identical code lines to evaluate as distinct hashes unless parsed with universal newline splitting.",
-            "Code Comments vs Statement Duplication: Identical comment headers (e.g. '// TODO: Review' or '/* separator */') may be intentionally repeated across classes. Using 'Duplicates Only' extraction allows you to audit recurring annotations before deletion.",
-            "Blank Lines Between Methods: Purging empty lines cleans compact scripts, but may disrupt visual readability between function declarations. Toggle 'Strip blank lines' based on whether method spacing is desired."
+            "Bridges the gap between Windows desktop editing and Linux terminal regular expressions.",
+            "Gives you surgical precision to match and remove complex repeating text structures.",
+            "Pairs seamlessly with FastToolVerse when you prefer instant, zero-regex browser cleaning."
           ]
         }
       ]
     },
     "faqs": [
       {
-        "question": "How do I remove duplicate lines in Remove Duplicate Lines Regex Notepad++ online?",
-        "answer": "Paste or type your text list into the Input Text editor. FastToolVerse automatically evaluates every row using high-speed O(1) hash sets in real time. Duplicate lines are stripped instantly while preserving the original appearance order. You can toggle case sensitivity, whitespace trimming, or alphabetical sorting, then click Copy or download as a .txt file."
+        "question": "What does the \"Regular expression\" checkbox do in the Notepad++ Find and Replace dialog?",
+        "answer": "The 'Regular expression' checkbox tells Notepad++ to interpret your search text as dynamic pattern matching rules (using wildcards, capturing groups, and backreferences) rather than searching for exact literal characters."
       },
       {
-        "question": "Does this Remove Duplicate Lines Regex Notepad++ tool upload my data or files to any server?",
-        "answer": "No. All text parsing, regex matching, and deduplication execute 100% locally inside your web browser's RAM memory sandbox. Zero bytes ever travel across the internet, ensuring your confidential customer lists, credentials, server logs, and code remain completely private."
+        "question": "Why is it easier to remove duplicate lines using patterns after sorting the document first?",
+        "answer": "Sorting groups identical lines together in adjacent rows. This allows the regex engine to compare adjacent lines in a single fast pass, avoiding computationally heavy global lookaheads that can freeze the editor on large files."
       },
       {
-        "question": "What is the difference between case-sensitive and case-insensitive deduplication?",
-        "answer": "When 'Case-sensitive comparison' is enabled, entries with differing letter cases (e.g. 'Apple' and 'apple') are treated as distinct unique items. When disabled, both entries are recognized as duplicates, and the tool keeps only the first encountered casing while eliminating subsequent variants."
+        "question": "What should I put in the \"Replace with\" box so that only one unique copy of the line remains?",
+        "answer": "When using the pattern '^(.+)\\r?\\n(?:\\1\\r?\\n)+', put '\\1\\r\\n' in the 'Replace with' box. The '\\1' represents the first captured copy of the line, keeping that single occurrence and removing all subsequent repeats."
       },
       {
-        "question": "How does whitespace trimming prevent hidden duplicate lines?",
-        "answer": "Accidental trailing spaces or tab characters from copy-pasting spreadsheet cells often cause visually identical lines to have different character lengths. Enabling 'Trim edge whitespace' normalizes leading and trailing spacing before comparing hash keys, ensuring phantom spaces don't bypass duplicate detection."
+        "question": "Why does my search pattern not match two lines that look identical to the naked eye?",
+        "answer": "Regular expressions match characters strictly. If one line contains an invisible trailing space, tab character, or different capitalization, the regex will evaluate them as distinct. Trimming trailing spaces via Edit -> Blank Operations fixes this."
       },
       {
-        "question": "Can I extract duplicate lines only or count how many times each line repeats?",
-        "answer": "Yes. Click the 'Extraction Mode' pills above the editor. Choose 'Duplicates Only' to isolate only recurring entries, 'Completely Unique' to filter lines that appear exactly once, or 'Count Occurrences' to generate a frequency count histogram showing exact repetition metrics."
-      },
-      {
-        "question": "Can this tool handle massive datasets containing 50,000+ lines?",
-        "answer": "Yes. Because FastToolVerse utilizes native ECMAScript Hash Sets with O(1) constant-time lookups (achieving linear O(N) overall performance), it can deduplicate datasets containing 50,000+ lines in tens of milliseconds without crashing or freezing your browser tab."
+        "question": "Can I test my pattern by finding matches first before clicking \"Replace All\" to ensure I don't delete the wrong text?",
+        "answer": "Yes. You can click 'Find Next' repeatedly in the Find and Replace dialog. Notepad++ will highlight each matching duplicate group so you can visually confirm your pattern is working properly before clicking 'Replace All'."
       }
     ]
   },

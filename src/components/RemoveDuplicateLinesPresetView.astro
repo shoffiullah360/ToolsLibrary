@@ -790,37 +790,28 @@ const { preset } = Astro.props;
     </div>
   </section>
 
-  <!-- 10. In-Depth Technical Editorial Article (800-1200 words, structured with <h2>, <h3>, code snippets, algorithm comparisons, placed strictly before FAQ) -->
-  <section class="border-t border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950 py-16 sm:py-24 font-sans">
+  <!-- 10. Deep Authoritative Practical Editorial Guide (Clean flowing paragraphs, no box-box shape) -->
+  <section class="border-t border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-950 py-14 sm:py-20 font-sans">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="mb-12">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-900/50 mb-3">
-          <ToolIcon name="code" class="w-3.5 h-3.5" />
-          <span>Technical Field Guide</span>
-        </div>
-        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+      <div class="mb-10">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-white mb-3">
           {preset.editorialGuide.heading}
         </h2>
-        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-400">
-          In-depth technical methods, keyboard shortcuts, algorithms, and native application workflows.
+        <p class="text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+          Comprehensive practical walkthroughs, native application workflows, and proven data hygiene methods.
         </p>
       </div>
 
       <div class="space-y-10">
-        {preset.editorialGuide.sections.map((section, idx) => (
-          <article class="p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-900/40 shadow-sm space-y-4">
-            <div class="flex items-center gap-2.5">
-              <span class="w-6 h-6 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-mono font-bold flex items-center justify-center shrink-0">
-                0{idx + 1}
-              </span>
-              <h3 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
-                {section.title}
-              </h3>
-            </div>
+        {preset.editorialGuide.sections.map((section) => (
+          <div class="space-y-4">
+            <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mt-8 mb-3">
+              {section.title}
+            </h3>
 
             {section.paragraphs.map((p) => (
-              <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
+              <p class="text-base text-slate-600 dark:text-slate-300 leading-relaxed font-sans mb-4">
                 {p}
               </p>
             ))}
@@ -832,27 +823,22 @@ const { preset } = Astro.props;
             )}
 
             {section.bullets && section.bullets.length > 0 && (
-              <div class="pt-2 border-t border-slate-200/80 dark:border-slate-800/80">
-                <ul class="space-y-2">
-                  {section.bullets.map((b) => (
-                    <li class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-sans">
-                      <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 font-bold text-[10px] shrink-0 mt-0.5 border border-emerald-200 dark:border-emerald-900/50">✓</span>
-                      <span class="leading-relaxed">{b}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <ul class="list-disc list-outside pl-6 space-y-2 text-base text-slate-600 dark:text-slate-300 font-sans my-4">
+                {section.bullets.map((b) => (
+                  <li class="leading-relaxed">
+                    {b}
+                  </li>
+                ))}
+              </ul>
             )}
 
             {section.callout && (
-              <div class="mt-4 p-4 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200/80 dark:border-emerald-900/40 text-xs sm:text-sm text-emerald-950 dark:text-emerald-200 flex items-start gap-3">
-                <ToolIcon name="zap" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                <div>
-                  <strong class="font-semibold text-emerald-900 dark:text-emerald-300">{section.callout.label}:</strong> {section.callout.text}
-                </div>
-              </div>
+              <blockquote class="border-l-4 border-emerald-500 pl-4 py-2 italic text-slate-600 dark:text-slate-300 my-4 text-sm sm:text-base">
+                <strong class="font-semibold text-slate-900 dark:text-white not-italic mr-1">{section.callout.label}:</strong>
+                <span>{section.callout.text}</span>
+              </blockquote>
             )}
-          </article>
+          </div>
         ))}
       </div>
 

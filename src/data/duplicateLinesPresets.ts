@@ -1164,10 +1164,10 @@ export const DUPLICATE_LINES_PRESETS: DuplicateLinesPreset[] = [
     "primaryQuery": "remove duplicate lines in notepad",
     "name": "Remove Duplicate Lines in Notepad",
     "h1": "Remove Duplicate Lines in Notepad",
-    "metaTitle": "Remove Duplicate Lines in Notepad Online – Free Tool | FastToolVerse",
-    "metaDescription": "Remove duplicate lines in remove duplicate lines in notepad online. Fast client-side deduplication, custom delimiters, zero uploads, and 100% privacy.",
-    "subtitle": "Instantly clean remove duplicate lines in notepad by removing duplicate lines and filtering unique items in real time with 100% private in-browser processing.",
-    "intentCard": "Removing duplicate records from remove duplicate lines in notepad is vital when maintaining clean databases, marketing campaigns, server logs, and document lists. This dedicated client-side utility purges repetitive lines, identifies unique entries, and formats output with custom delimiters. All string evaluation occurs locally inside your browser memory sandbox, guaranteeing your proprietary data remains 100% private and secure.",
+    "metaTitle": "Remove Duplicate Lines in Notepad – Quick Practical Guide | FastToolVerse",
+    "metaDescription": "Learn how to remove duplicate lines in default Windows Notepad. Discover Find & Replace tricks, checklist cleanup methods, and fast online tools.",
+    "subtitle": "Clean quick notes, remove duplicate lines in Notepad, and organize checklists with 100% private in-browser text and list deduplication.",
+    "intentCard": "Need to clean up repetitive notes in standard Windows Notepad? Discover why default Notepad keeps things ultra-simple, how to use Find and Replace for quick fixes, and how a fast in-browser cleaner eliminates repeats without retyping.",
     "options": {
       "mode": "unique",
       "caseSensitive": true,
@@ -1177,87 +1177,101 @@ export const DUPLICATE_LINES_PRESETS: DuplicateLinesPreset[] = [
       "sort": "original",
       "delimiter": "newline"
     },
-    "sampleText": "Apple\nBanana\nOrange\nApple\nMango\nBanana\nGrape\nOrange\nPineapple",
+    "sampleText": "Meeting notes - Monday\nReview project roadmap\nCall vendor regarding delivery\nReview project roadmap\nFollow up with design team\nMeeting notes - Monday\nPrepare weekly summary slide\nReview project roadmap",
     "editorialGuide": {
-      "heading": "Technical Guide: Remove Duplicate Lines in Notepad in Code Editors & IDEs",
+      "heading": "Simple Windows Note Taking: How to Remove Duplicate Lines in Default Notepad",
       "sections": [
         {
-          "title": "Developer Context: Why Clean Lists & Deduplication Matter in Remove Duplicate Lines in Notepad",
+          "title": "The Ubiquitous Default Notepad: Our Favorite Scratchpad",
           "paragraphs": [
-            "When engineering software, managing infrastructure configuration manifests, or inspecting stack traces, duplicate entries frequently infiltrate developer buffers. Programmers working with remove duplicate lines in notepad often encounter duplicated lines after merging Git feature branches, concatenating raw API query dumps, or copying database result grids into active workspace tabs. If unaddressed, redundant rows in code or configuration files lead to syntax redundancy, unexpected override behavior in YAML/JSON structures, and bloated source repositories that slow down continuous integration builds.",
-            "Executing a targeted remove duplicate lines in notepad routine inside your coding environment resolves visual noise and restores strict file hygiene. Rather than scanning thousands of lines manually, understanding how to apply remove duplicate lines in notepad workflows directly allows engineers to isolate unique code statements, environment keys, and dependency lists in seconds. Whether refactoring CSS selector rules, consolidating Docker container variables, or cleaning up SQL seed scripts, establishing a reliable line deduplication workflow is an essential competency for daily development efficiency."
+            "For decades, the simple Windows Notepad application has served as the universal digital scratchpad for computer users worldwide. Whenever you need to jot down a quick phone number, draft a quick reminder, or hold a block of copied text while transferring it between programs, Notepad is always just a keystroke away.",
+            "Because Notepad launches in less than a second and uses almost zero system memory, it remains the ultimate low-friction tool for everyday computer tasks. Office workers use it to compile daily to-do lists, students use it to collect research citations, and customer support representatives paste incoming inquiries into blank Notepad windows to review them in plain text.",
+            "However, because Notepad is constantly used as an open staging area for copy-pasted information, text files tend to get messy very quickly. When you repeatedly paste meeting agenda items, merge task lists from different emails, or accumulate brainstormed ideas over the course of a busy work week, identical lines quietly multiply across your document. Knowing how to remove duplicate lines in notepad without frustrating manual retyping transforms a cluttered scratchpad into a crisp, dependable reference sheet."
           ],
           "bullets": [
-            "Cleans merged Git branches, SQL script dumps, and environment variable files in seconds.",
-            "Avoids editor extension bloat, background thread locks, and out-of-memory crashes on large files.",
-            "Preserves precise code structure with customizable whitespace trimming and sorting options."
+            "Acts as the instant, universal digital scratchpad for notes, brainstorms, and drafts.",
+            "Launches instantaneously on every Windows computer with zero setup or configuration.",
+            "Frequently accumulates duplicate lines when pasting items from multiple emails and documents."
           ]
         },
         {
-          "title": "Native Editor Shortcuts & Regex Methods for Remove Duplicate Lines in Notepad",
+          "title": "The Reality of Basic Plain Text Editors",
           "paragraphs": [
-            "Modern development environments provide native commands, menu operations, and regular expression engines to clean repetitive rows locally. Here are the exact commands and shortcuts calibrated for your workspace:"
+            "When users realize their Notepad document is full of repeated bullet points or duplicate contact numbers, their first instinct is usually to look through the top menu bar for an automatic deduplication button. After scanning File, Edit, and View, many feel confused when they cannot find an option called 'Remove Duplicates.'",
+            "It helps to understand why the default Windows Notepad does not include this feature. Microsoft deliberately designed Notepad as a minimalist, bare-bones plain text utility rather than a full-fledged word processor or code development environment. Its primary mission is to display raw ASCII and UTF-8 characters without altering your text or adding background formatting overhead.",
+            "Because Notepad treats your text as a simple, continuous character stream rather than a structured database or spreadsheet grid, it does not include line sorting algorithms or automated row filters. Handling repetitive lists therefore calls for a smart, lightweight approach."
+          ],
+          "bullets": [
+            "Deliberately designed as a minimalist text viewer without complex data-processing tools.",
+            "Treats text as a continuous stream of characters rather than isolated spreadsheet rows.",
+            "Requires lightweight workarounds to identify and strip recurring lines cleanly."
+          ]
+        },
+        {
+          "title": "Practical Ways to Handle Duplicate Lines in Notepad",
+          "paragraphs": [
+            "Even though default Notepad lacks a dedicated deduplication button, you can still clean up your notes quickly using two dependable techniques: native Find and Replace for small files, and the browser sandbox method for longer checklists.",
+            "If you are reviewing a short note with just a few dozen lines, Notepad's built-in Find and Replace dialog (accessed by pressing Ctrl + H) is surprisingly handy. If you notice a specific recurring phrase—such as a repeated disclaimer, a duplicated email signature, or an identical task title like 'Review project roadmap'—you can paste that phrase into the 'Find what' field, leave the 'Replace with' field blank (or enter a single replacement), and click 'Replace All.' This instantly eliminates repeated phrases across your active draft.",
+            "However, when your document contains multiple different duplicate lines scattered throughout the file, searching for each one manually becomes tedious. This is where the smooth browser cleanup technique shines. You simply press Ctrl + A to select your entire Notepad file, press Ctrl + C to copy it, and paste it into a trusted remove duplicate lines online tool like FastToolVerse.",
+            "Inside your browser, FastToolVerse evaluates every line in your list in milliseconds using private client-side hash tables. It instantly strips away repeated entries while keeping the original order of your thoughts completely intact. Once the duplicates disappear, you simply click 'Copy' and paste the clean list straight back into your Notepad window. The entire round trip takes less than five seconds and requires zero technical installation."
           ],
           "codeBlock": {
-            "language": "regex",
-            "code": "// Method 1: Native Menu Workflow in Notepad++\n// 1. Select all lines (Ctrl+A)\n// 2. Click: Edit -> Line Operations -> Sort Lines Lexicographically Ascending\n// 3. Click: Edit -> Line Operations -> Remove Consecutive Duplicate Lines\n\n// Method 2: Order-Preserving Regular Expression Search & Replace\nFind What:    ^(.*?)$\\s+?^(?=([\\s\\S]*?)^\\1$)\nReplace With: (leave completely empty)\nSearch Mode:  Regular expression (check \"Wrap around\" and \". matches newline\")"
+            "language": "text",
+            "code": "The 5-Second Notepad Cleanup Method:\n1. In Notepad: Press Ctrl + A, then Ctrl + C (Copy your entire note)\n2. In Browser: Paste into FastToolVerse (Duplicates vanish instantly!)\n3. Click 'Copy Output'\n4. Back in Notepad: Press Ctrl + A, then Ctrl + V (Paste the spotless list)"
           },
           "callout": {
             "type": "tip",
-            "label": "Editor Tip",
-            "text": "In Notepad++, the TextFX plugin (TextFX -> TextFX Tools -> Sort lines, only UNIQUE) also deletes duplicates in a single click if installed."
+            "label": "Productivity Tip",
+            "text": "Using the browser copy-paste technique keeps your original line sequence intact, meaning your priority checklists and chronological meeting minutes never get scrambled."
           }
         },
         {
-          "title": "Browser Sandbox Advantage: Eliminating Editor Freezes & Memory Leaks",
+          "title": "When Simple Text Files Grow Too Large",
           "paragraphs": [
-            "While native desktop editors are indispensable for daily authoring, applying complex regex lookahead patterns on large text buffers frequently strains internal syntax lexers. Editors like VS Code and IntelliJ run background indexing engines, linting processes, and Language Server Protocols (LSP) that parse every document modification. Executing nested regular expression searches across 20,000 to 100,000 lines can trigger catastrophic backtracking, causing the editor process to freeze and prompting \"Window is not responding\" dialogs.",
-            "FastToolVerse eliminates IDE thread contention by offloading the entire deduplication workload to an isolated client-side browser memory sandbox. Built on ECMAScript Hash Sets with constant-time O(1) key lookups, our engine processes 50,000+ line documents in under 40 milliseconds without allocating heavy language AST trees. You gain instantaneous, zero-latency processing without installing marketplace extensions, configuring regex flags, or risking editor instability."
+            "It is remarkably easy for a simple Notepad file to expand into a massive directory over time. What begins as a quick list of customer phone numbers, server hostnames, or inventory part numbers can easily stretch into hundreds or thousands of lines over weeks of copy-pasting.",
+            "As plain text documents grow in length, managing them manually inside default Notepad becomes difficult. Scrolling through thousands of lines to spot identical entries causes severe eye fatigue, and human review inevitably misses subtle duplicates. Furthermore, hidden differences—such as an accidental space at the end of a line or an extra tab character—make lines that look identical behave differently when imported into other software.",
+            "Adopting a dependable text deduplication routine protects you from these headaches. By running long text files through an automated cleaner, you eliminate duplicate lines, strip accidental trailing spaces, and normalize blank lines in one effortless pass. Keeping your text files clean ensures that when you finally import them into spreadsheets or share them with colleagues, your data is accurate and professional."
           ],
           "bullets": [
-            "Zero Plugin Setup: No marketplace downloads, package permissions, or corporate security audits required.",
-            "Instant Microsecond Lookups: O(1) hash tables process multi-megabyte text payloads without freezing editor tabs.",
-            "100% Private Sandbox: Client credentials, private API keys, and internal source code never leave your device RAM."
+            "Large text documents quickly cause eye strain and human error during manual reviews.",
+            "Hidden trailing spaces and invisible tabs create accidental discrepancies between lines.",
+            "Automated cleaning saves hours of tedious scrolling while ensuring 100% accuracy."
           ]
         },
         {
-          "title": "Edge Cases in Source Code: Whitespace, Indentation & Encodings",
+          "title": "Connecting to Everyday Productivity Tools",
           "paragraphs": [
-            "Source code and technical files present unique edge cases where automated deduplicators can inadvertently break program logic if not carefully tuned:"
+            "Understanding how different editors handle repetitive text helps you choose the best tool for every task. Programmers and developers working with complex source code often turn to advanced editors, using vscode remove duplicate lines extensions or vs code remove duplicate lines features to tidy up configuration files. In high-volume server administration, technicians rely on notepad++ remove duplicate lines operations or execute linux remove duplicate lines from file commands on remote terminals. Similarly, engineers working with shell automation regularly run remove duplicate lines bash routines, execute bash remove duplicate lines scripts, or use sed remove duplicate lines to process log streams on remote servers where they must remove duplicate lines linux or apply regex remove duplicate lines patterns.",
+            "Meanwhile, data analysts working in finance frequently practice how to remove duplicate lines in excel or apply excel remove duplicate lines buttons across financial models. But for everyday office tasks, meeting preparation, and personal note taking, you don't need complicated command lines or heavy software installations. By pairing standard Windows Notepad with an instant, private online remove duplicate lines tool, you get the best of both worlds: the lightning-quick simplicity of Notepad combined with the effortless power of modern text cleaning."
           ],
-          "bullets": [
-            "Indentation Sensitivity: In Python, YAML, and Haml, leading tabs or spaces define semantic code scope. Enabling 'Trim edge whitespace' will normalize indentation, so keep it unchecked if block hierarchy must be preserved.",
-            "CRLF vs LF Line Endings: Windows development environments use CRLF (\\r\\n) while Unix, Linux, and macOS use LF (\\n). Inconsistent newline terminators between pasted snippets can cause identical code lines to evaluate as distinct hashes unless parsed with universal newline splitting.",
-            "Code Comments vs Statement Duplication: Identical comment headers (e.g. '// TODO: Review' or '/* separator */') may be intentionally repeated across classes. Using 'Duplicates Only' extraction allows you to audit recurring annotations before deletion.",
-            "Blank Lines Between Methods: Purging empty lines cleans compact scripts, but may disrupt visual readability between function declarations. Toggle 'Strip blank lines' based on whether method spacing is desired."
-          ]
+          "callout": {
+            "type": "note",
+            "label": "Summary Takeaway",
+            "text": "You don't need heavy software to keep your notes organized. A simple copy-paste into FastToolVerse keeps your everyday Notepad drafts crisp, clean, and completely duplicate-free."
+          }
         }
       ]
     },
     "faqs": [
       {
-        "question": "How do I remove duplicate lines in Remove Duplicate Lines in Notepad online?",
-        "answer": "Paste or type your text list into the Input Text editor. FastToolVerse automatically evaluates every row using high-speed O(1) hash sets in real time. Duplicate lines are stripped instantly while preserving the original appearance order. You can toggle case sensitivity, whitespace trimming, or alphabetical sorting, then click Copy or download as a .txt file."
+        "question": "Does standard Windows Notepad have an automatic button to remove duplicate lines?",
+        "answer": "No. Standard Windows Notepad is intentionally designed as a minimalist plain text editor and does not contain a built-in feature or menu option to automatically detect and delete duplicate lines."
       },
       {
-        "question": "Does this Remove Duplicate Lines in Notepad tool upload my data or files to any server?",
-        "answer": "No. All text parsing, regex matching, and deduplication execute 100% locally inside your web browser's RAM memory sandbox. Zero bytes ever travel across the internet, ensuring your confidential customer lists, credentials, server logs, and code remain completely private."
+        "question": "What is the fastest way to clean up a duplicated list of items in Notepad without retyping them?",
+        "answer": "The fastest method is to copy your text in Notepad (Ctrl + A, then Ctrl + C), paste it into FastToolVerse in your web browser where duplicates are removed instantly, click 'Copy Output', and paste the clean list back into Notepad (Ctrl + V)."
       },
       {
-        "question": "What is the difference between case-sensitive and case-insensitive deduplication?",
-        "answer": "When 'Case-sensitive comparison' is enabled, entries with differing letter cases (e.g. 'Apple' and 'apple') are treated as distinct unique items. When disabled, both entries are recognized as duplicates, and the tool keeps only the first encountered casing while eliminating subsequent variants."
+        "question": "Will pasting text into an online text cleaner change the font or plain text nature of my Notepad file?",
+        "answer": "Not at all. FastToolVerse processes clean, unformatted plain text. When you copy the sanitized result and paste it back into Notepad, your text remains 100% plain text and perfectly matches your existing Notepad font and settings."
       },
       {
-        "question": "How does whitespace trimming prevent hidden duplicate lines?",
-        "answer": "Accidental trailing spaces or tab characters from copy-pasting spreadsheet cells often cause visually identical lines to have different character lengths. Enabling 'Trim edge whitespace' normalizes leading and trailing spacing before comparing hash keys, ensuring phantom spaces don't bypass duplicate detection."
+        "question": "How do hidden spaces at the end of a line in Notepad prevent duplicates from being recognized?",
+        "answer": "Text comparison tools evaluate lines character by character. If one line has a trailing space at the end while another does not, computer algorithms treat them as two distinct lines. Enabling 'Trim edge whitespace' in FastToolVerse strips these hidden spaces so duplicates match properly."
       },
       {
-        "question": "Can I extract duplicate lines only or count how many times each line repeats?",
-        "answer": "Yes. Click the 'Extraction Mode' pills above the editor. Choose 'Duplicates Only' to isolate only recurring entries, 'Completely Unique' to filter lines that appear exactly once, or 'Count Occurrences' to generate a frequency count histogram showing exact repetition metrics."
-      },
-      {
-        "question": "Can this tool handle massive datasets containing 50,000+ lines?",
-        "answer": "Yes. Because FastToolVerse utilizes native ECMAScript Hash Sets with O(1) constant-time lookups (achieving linear O(N) overall performance), it can deduplicate datasets containing 50,000+ lines in tens of milliseconds without crashing or freezing your browser tab."
+        "question": "Can I use Notepad's Find and Replace feature to search for and delete identical lines?",
+        "answer": "Yes, for known phrases. You can press Ctrl + H, enter the specific repeated sentence or phrase in the 'Find what' box, leave 'Replace with' blank, and click 'Replace All'. However, this only removes that single specific phrase rather than automatically finding all unknown duplicates."
       }
     ]
   },
@@ -1266,12 +1280,12 @@ export const DUPLICATE_LINES_PRESETS: DuplicateLinesPreset[] = [
     "cluster": "editor-tools",
     "clusterTitle": "Code Editors & IDEs",
     "primaryQuery": "vs code remove duplicate lines",
-    "name": "Vs Code Remove Duplicate Lines",
-    "h1": "Vs Code Remove Duplicate Lines",
-    "metaTitle": "Vs Code Remove Duplicate Lines Online – Free Tool | FastToolVerse",
-    "metaDescription": "Remove duplicate lines in vs code remove duplicate lines online. Fast client-side deduplication, custom delimiters, zero uploads, and 100% privacy.",
-    "subtitle": "Instantly clean vs code remove duplicate lines by removing duplicate lines and filtering unique items in real time with 100% private in-browser processing.",
-    "intentCard": "Removing duplicate records from vs code remove duplicate lines is vital when maintaining clean databases, marketing campaigns, server logs, and document lists. This dedicated client-side utility purges repetitive lines, identifies unique entries, and formats output with custom delimiters. All string evaluation occurs locally inside your browser memory sandbox, guaranteeing your proprietary data remains 100% private and secure.",
+    "name": "VS Code Remove Duplicate Lines",
+    "h1": "VS Code Remove Duplicate Lines",
+    "metaTitle": "VS Code Remove Duplicate Lines – Quick Guide & Extensions | FastToolVerse",
+    "metaDescription": "Learn how to remove duplicate lines in VS Code smoothly. Master Command Palette sorting, popular deduplication extensions, and instant online tools.",
+    "subtitle": "Clean code and documentation, remove duplicate lines in VS Code, and streamline lists with 100% private in-browser text and list deduplication.",
+    "intentCard": "Need to remove duplicate lines in Visual Studio Code? Discover how to use the built-in Command Palette for alphabetical sorting, explore top community extensions for one-click deduplication, and use fast browser tools when you want zero plugin clutter.",
     "options": {
       "mode": "unique",
       "caseSensitive": true,
@@ -1281,87 +1295,100 @@ export const DUPLICATE_LINES_PRESETS: DuplicateLinesPreset[] = [
       "sort": "original",
       "delimiter": "newline"
     },
-    "sampleText": "Apple\nBanana\nOrange\nApple\nMango\nBanana\nGrape\nOrange\nPineapple",
+    "sampleText": "import React from 'react';\nimport { useState } from 'react';\nimport styles from './App.module.css';\nimport { useState } from 'react';\nimport { useEffect } from 'react';\nimport styles from './App.module.css';\nimport { useMemo } from 'react';",
     "editorialGuide": {
-      "heading": "Technical Guide: Vs Code Remove Duplicate Lines in Code Editors & IDEs",
+      "heading": "The Modern Editor's Companion: How to Remove Duplicate Lines in VS Code Smoothly",
       "sections": [
         {
-          "title": "Developer Context: Why Clean Lists & Deduplication Matter in Vs Code Remove Duplicate Lines",
+          "title": "The Power of Modern Text Editing in Visual Studio Code",
           "paragraphs": [
-            "When engineering software, managing infrastructure configuration manifests, or inspecting stack traces, duplicate entries frequently infiltrate developer buffers. Programmers working with vs code remove duplicate lines often encounter duplicated lines after merging Git feature branches, concatenating raw API query dumps, or copying database result grids into active workspace tabs. If unaddressed, redundant rows in code or configuration files lead to syntax redundancy, unexpected override behavior in YAML/JSON structures, and bloated source repositories that slow down continuous integration builds.",
-            "Executing a targeted vs code remove duplicate lines routine inside your coding environment resolves visual noise and restores strict file hygiene. Rather than scanning thousands of lines manually, understanding how to apply vs code remove duplicate lines workflows directly allows engineers to isolate unique code statements, environment keys, and dependency lists in seconds. Whether refactoring CSS selector rules, consolidating Docker container variables, or cleaning up SQL seed scripts, establishing a reliable line deduplication workflow is an essential competency for daily development efficiency."
+            "Over the past decade, Visual Studio Code has grown from a humble code editor into the most popular development and writing environment in the world. Software engineers, technical writers, data scientists, academic researchers, and digital creators open VS Code every day to manage diverse projects ranging from web applications and Python scripts to Markdown documentation books and complex configuration files.",
+            "One of the biggest reasons for VS Code's widespread adoption is its exceptional balance of speed, versatility, and visual polish. Its intelligent user interface, customizable workspace, and integrated terminal provide an unmatched productivity ecosystem. Whether you are managing an inventory export in plain text or drafting technical documentation outlines, VS Code makes navigating thousands of lines of text feel remarkably smooth.",
+            "Yet, despite its immense power, working with structured lists frequently results in redundant lines. Merging code branches, importing data tables, compiling dependency packages, and collating research notes inevitably create repeated entries. Learning how to vs code remove duplicate lines efficiently saves hours of manual inspection and keeps your repositories spotless and bug-free."
           ],
           "bullets": [
-            "Cleans merged Git branches, SQL script dumps, and environment variable files in seconds.",
-            "Avoids editor extension bloat, background thread locks, and out-of-memory crashes on large files.",
-            "Preserves precise code structure with customizable whitespace trimming and sorting options."
+            "The world's leading editor for source code, Markdown documentation, and structured plain text.",
+            "Offers a highly extensible environment with thousands of productivity-enhancing extensions.",
+            "Frequently encounters duplicate entries when merging branches, datasets, or import headers."
           ]
         },
         {
-          "title": "Native Editor Shortcuts & Regex Methods for Vs Code Remove Duplicate Lines",
+          "title": "Built-in Sorting and Deduping Workflows in VS Code",
           "paragraphs": [
-            "Modern development environments provide native commands, menu operations, and regular expression engines to clean repetitive rows locally. Here are the exact commands and shortcuts calibrated for your workspace:"
+            "Many professionals are curious about what Visual Studio Code can accomplish right out of the box without installing any third-party add-ons. While VS Code does not possess a single default hotkey called 'Delete Duplicate Lines,' its native Command Palette provides powerful line-manipulation tools that get you halfway there.",
+            "To use VS Code's built-in sorting capabilities, highlight the block of text you wish to organize, or press Ctrl + A (Cmd + A on macOS) to select the entire file. Next, open the Command Palette by pressing Ctrl + Shift + P (or Cmd + Shift + P on macOS). In the search bar that appears at the top of your window, type 'Sort Lines' and select 'Sort Lines Ascending' or 'Sort Lines Descending.'",
+            "VS Code will instantly rearrange your highlighted lines into alphabetical order. This built-in sorting operation brings identical lines together into adjacent rows, making duplicates visually obvious. If your list is relatively short, you can quickly scan down the sorted rows and backspace out the redundant lines. Furthermore, if you use multi-cursor editing (Alt + Click or Ctrl + D), you can highlight multiple duplicate rows simultaneously and delete them in a single keystroke."
           ],
           "codeBlock": {
-            "language": "markdown",
-            "code": "// Method 1: VS Code Native Command Palette\n1. Open Command Palette (Ctrl+Shift+P / Cmd+Shift+P)\n2. Run: \"Sort Lines Ascending\"\n3. To delete duplicates without extensions, open Find and Replace (Ctrl+H):\n   Find:    ^(.*)(\\r?\\n\\1)+$\n   Replace: $1\n   Enable:  Use Regular Expression (Alt+R)\n\n// Method 2: Popular VS Code Extensions\nInstall \"Sort lines\" or \"Filter Lines\" from the VS Code Marketplace:\n- Execute \"Sort Lines (Unique)\" to alphabetize and eliminate repeats simultaneously."
+            "language": "text",
+            "code": "Native VS Code Sorting Steps:\n1. Select your text block (Ctrl + A or highlight lines)\n2. Open Command Palette: Ctrl + Shift + P (Cmd + Shift + P on Mac)\n3. Type: 'Sort Lines Ascending' and press Enter\n4. Identical lines are grouped side-by-side for effortless review!"
           },
           "callout": {
             "type": "tip",
-            "label": "Editor Tip",
-            "text": "For massive logs (>100,000 lines), VS Code's regex engine can throttle extension host processes; in those cases, browser memory sandboxing offers zero latency."
+            "label": "Multi-Cursor Pro Tip",
+            "text": "In VS Code, select a duplicate word and press Ctrl + D (Cmd + D on Mac) repeatedly to select every matching instance across your file for synchronized multi-line editing."
           }
         },
         {
-          "title": "Browser Sandbox Advantage: Eliminating Editor Freezes & Memory Leaks",
+          "title": "Exploring Friendly Extensions for One-Click Deduping",
           "paragraphs": [
-            "While native desktop editors are indispensable for daily authoring, applying complex regex lookahead patterns on large text buffers frequently strains internal syntax lexers. Editors like VS Code and IntelliJ run background indexing engines, linting processes, and Language Server Protocols (LSP) that parse every document modification. Executing nested regular expression searches across 20,000 to 100,000 lines can trigger catastrophic backtracking, causing the editor process to freeze and prompting \"Window is not responding\" dialogs.",
-            "FastToolVerse eliminates IDE thread contention by offloading the entire deduplication workload to an isolated client-side browser memory sandbox. Built on ECMAScript Hash Sets with constant-time O(1) key lookups, our engine processes 50,000+ line documents in under 40 milliseconds without allocating heavy language AST trees. You gain instantaneous, zero-latency processing without installing marketplace extensions, configuring regex flags, or risking editor instability."
+            "If you regularly clean long lists, server dumps, or database exports inside VS Code, relying on manual inspection after sorting can become time-consuming. Fortunately, the Visual Studio Code Marketplace features wonderful community-built extensions that add true one-click deduplication to your editor.",
+            "One of the most popular and highly recommended extensions is 'Sort lines' by Daniel Imms, as well as dedicated tools like 'Remove Duplicates.' Once installed from the Extensions view (Ctrl + Shift + X), these utilities register new commands inside your Command Palette.",
+            "With these extensions active, you can simply highlight your lines, open the Command Palette, and select 'Sort lines (unique)' or 'Remove Duplicate Lines.' In a fraction of a second, the extension scans your highlighted block, removes every recurring entry, and condenses your list down to pure unique items. Furthermore, many extensions allow you to preview dropped records in an output channel before permanently modifying your file, giving you complete reassurance that vital code comments and variable declarations remain intact. Some extensions also allow you to configure custom keyboard shortcuts, giving you instant one-touch deduplication right from your keyboard."
           ],
           "bullets": [
-            "Zero Plugin Setup: No marketplace downloads, package permissions, or corporate security audits required.",
-            "Instant Microsecond Lookups: O(1) hash tables process multi-megabyte text payloads without freezing editor tabs.",
-            "100% Private Sandbox: Client credentials, private API keys, and internal source code never leave your device RAM."
+            "Community extensions add native-feeling 'Remove Duplicate Lines' commands to the Command Palette.",
+            "Allows you to remove duplicates while sorting, or preserve original order depending on the plugin.",
+            "Can be bound to personalized keybindings (such as Ctrl + Alt + D) for ultra-fast workflow execution."
           ]
         },
         {
-          "title": "Edge Cases in Source Code: Whitespace, Indentation & Encodings",
+          "title": "The Seamless External Cleanup Alternative: Zero Plugin Clutter",
           "paragraphs": [
-            "Source code and technical files present unique edge cases where automated deduplicators can inadvertently break program logic if not carefully tuned:"
+            "While VS Code extensions are convenient, many developers and systems engineers deliberately prefer to keep their editor lean and lightweight. Installing dozens of third-party plugins can gradually slow down editor launch times, consume background memory, and introduce potential security risks in corporate environments.",
+            "When you want to remove duplicate lines online without installing extra extensions or modifying your VS Code settings, using a dedicated browser utility like FastToolVerse is the ideal solution. You simply select your text block in VS Code, press Ctrl + C, paste it into FastToolVerse in your browser, and watch as duplicates disappear instantly.",
+            "FastToolVerse runs completely inside your client-side browser memory sandbox, guaranteeing that proprietary company code, API keys, and sensitive project notes never leave your computer. You can toggle case sensitivity, strip trailing whitespace margins, and even sort alphabetically if desired. Once cleaned, a quick copy-paste puts your spotless lines right back into your VS Code editor."
+          ],
+          "callout": {
+            "type": "note",
+            "label": "Zero Overhead Advantage",
+            "text": "Using FastToolVerse as a companion text cleaner gives you enterprise-grade deduplication without adding background plugin overhead or slowing down your VS Code startup time."
+          }
+        },
+        {
+          "title": "Natural Comparisons with Other Technical Workflows",
+          "paragraphs": [
+            "Text cleaning and deduplication are universal requirements across the entire software industry. System administrators managing remote Linux machines often prefer command-line tools, executing linux remove duplicate lines commands or running bash remove duplicate lines from file scripts directly inside bash terminals. Backend engineers routinely use sed remove duplicate lines pipelines, execute remove duplicate lines from file linux commands, or run remove duplicate lines bash routines to sanitize server logs.",
+            "Similarly, text editing veterans frequently rely on vim remove duplicate lines commands with regex substitutions, while Windows power users often look into notepad++ remove duplicate lines operations. In business offices, administrative teams depend on excel remove duplicate lines buttons or practice how to remove duplicate lines in excel when handling spreadsheets. Visual Studio Code bridges the gap between these environments, offering a rich, visual interface that pairs seamlessly with browser-based deduplication to keep your development projects, documentation, and lists clean and organized."
           ],
           "bullets": [
-            "Indentation Sensitivity: In Python, YAML, and Haml, leading tabs or spaces define semantic code scope. Enabling 'Trim edge whitespace' will normalize indentation, so keep it unchecked if block hierarchy must be preserved.",
-            "CRLF vs LF Line Endings: Windows development environments use CRLF (\\r\\n) while Unix, Linux, and macOS use LF (\\n). Inconsistent newline terminators between pasted snippets can cause identical code lines to evaluate as distinct hashes unless parsed with universal newline splitting.",
-            "Code Comments vs Statement Duplication: Identical comment headers (e.g. '// TODO: Review' or '/* separator */') may be intentionally repeated across classes. Using 'Duplicates Only' extraction allows you to audit recurring annotations before deletion.",
-            "Blank Lines Between Methods: Purging empty lines cleans compact scripts, but may disrupt visual readability between function declarations. Toggle 'Strip blank lines' based on whether method spacing is desired."
+            "Bridges the gap between command-line server tools and visual desktop editors.",
+            "Accommodates developers migrating from terminal utilities and traditional text editors.",
+            "Pairs effortlessly with FastToolVerse for private, instantaneous list deduplication."
           ]
         }
       ]
     },
     "faqs": [
       {
-        "question": "How do I remove duplicate lines in Vs Code Remove Duplicate Lines online?",
-        "answer": "Paste or type your text list into the Input Text editor. FastToolVerse automatically evaluates every row using high-speed O(1) hash sets in real time. Duplicate lines are stripped instantly while preserving the original appearance order. You can toggle case sensitivity, whitespace trimming, or alphabetical sorting, then click Copy or download as a .txt file."
+        "question": "Does VS Code have a native built-in command to delete duplicate lines without installing extensions?",
+        "answer": "By default, VS Code has built-in commands to 'Sort Lines Ascending' and 'Sort Lines Descending' which group identical lines together, but it does not have a native one-click command to automatically delete duplicate lines without an extension or external tool."
       },
       {
-        "question": "Does this Vs Code Remove Duplicate Lines tool upload my data or files to any server?",
-        "answer": "No. All text parsing, regex matching, and deduplication execute 100% locally inside your web browser's RAM memory sandbox. Zero bytes ever travel across the internet, ensuring your confidential customer lists, credentials, server logs, and code remain completely private."
+        "question": "What happens if I use \"Sort Lines Ascending\" in VS Code before checking for duplicates?",
+        "answer": "Using 'Sort Lines Ascending' reorganizes your selected text into alphabetical order. This clusters all identical lines directly next to one another in consecutive rows, making it easy to identify duplicates visually or remove them with multi-cursor editing."
       },
       {
-        "question": "What is the difference between case-sensitive and case-insensitive deduplication?",
-        "answer": "When 'Case-sensitive comparison' is enabled, entries with differing letter cases (e.g. 'Apple' and 'apple') are treated as distinct unique items. When disabled, both entries are recognized as duplicates, and the tool keeps only the first encountered casing while eliminating subsequent variants."
+        "question": "How can I remove duplicate lines in VS Code without changing the original chronological order of my list?",
+        "answer": "To preserve your original list order, copy your text from VS Code and paste it into FastToolVerse in your browser. FastToolVerse retains the initial sequence of your items by default while stripping subsequent repeats, allowing you to paste the clean list straight back into VS Code."
       },
       {
-        "question": "How does whitespace trimming prevent hidden duplicate lines?",
-        "answer": "Accidental trailing spaces or tab characters from copy-pasting spreadsheet cells often cause visually identical lines to have different character lengths. Enabling 'Trim edge whitespace' normalizes leading and trailing spacing before comparing hash keys, ensuring phantom spaces don't bypass duplicate detection."
+        "question": "Will removing duplicate lines in VS Code affect my indentation or spaces?",
+        "answer": "It depends on whether you have whitespace trimming enabled. By default, identical lines must have the exact same indentation to be recognized as duplicates. If you want lines with different indentation to be treated as identical, toggle 'Trim edge whitespace' in FastToolVerse."
       },
       {
-        "question": "Can I extract duplicate lines only or count how many times each line repeats?",
-        "answer": "Yes. Click the 'Extraction Mode' pills above the editor. Choose 'Duplicates Only' to isolate only recurring entries, 'Completely Unique' to filter lines that appear exactly once, or 'Count Occurrences' to generate a frequency count histogram showing exact repetition metrics."
-      },
-      {
-        "question": "Can this tool handle massive datasets containing 50,000+ lines?",
-        "answer": "Yes. Because FastToolVerse utilizes native ECMAScript Hash Sets with O(1) constant-time lookups (achieving linear O(N) overall performance), it can deduplicate datasets containing 50,000+ lines in tens of milliseconds without crashing or freezing your browser tab."
+        "question": "Which popular VS Code extension is recommended for cleaning duplicate text lines with a single shortcut?",
+        "answer": "The 'Sort lines' extension by Daniel Imms is widely recommended. It adds commands such as 'Sort lines (unique)' directly to the Command Palette, allowing you to remove duplicate lines in one click and assign custom keyboard shortcuts."
       }
     ]
   },
@@ -1372,10 +1399,10 @@ export const DUPLICATE_LINES_PRESETS: DuplicateLinesPreset[] = [
     "primaryQuery": "remove duplicate lines in sublime text",
     "name": "Remove Duplicate Lines in Sublime Text",
     "h1": "Remove Duplicate Lines in Sublime Text",
-    "metaTitle": "Remove Duplicate Lines in Sublime Text – FastToolVerse",
-    "metaDescription": "Remove duplicate lines in remove duplicate lines in sublime text online. Client-side deduplication, custom delimiters, and 100% privacy.",
-    "subtitle": "Instantly clean remove duplicate lines in sublime text by removing duplicate lines and filtering unique items in real time with 100% private in-browser processing.",
-    "intentCard": "Removing duplicate records from remove duplicate lines in sublime text is vital when maintaining clean databases, marketing campaigns, server logs, and document lists. This dedicated client-side utility purges repetitive lines, identifies unique entries, and formats output with custom delimiters. All string evaluation occurs locally inside your browser memory sandbox, guaranteeing your proprietary data remains 100% private and secure.",
+    "metaTitle": "Remove Duplicate Lines in Sublime Text – Permute Lines Guide | FastToolVerse",
+    "metaDescription": "Learn how to remove duplicate lines in Sublime Text effortlessly. Master Edit -> Permute Lines -> Unique, sorting options, and fast online tools.",
+    "subtitle": "Clean large files, remove duplicate lines in Sublime Text, and organize lists with 100% private in-browser text and list deduplication.",
+    "intentCard": "Looking to remove duplicate lines in Sublime Text? Discover how Sublime's built-in 'Permute Lines: Unique' tool strips repeats in a single click, preserves original list order, and handles massive plain text documents without editor lag.",
     "options": {
       "mode": "unique",
       "caseSensitive": true,
@@ -1385,87 +1412,100 @@ export const DUPLICATE_LINES_PRESETS: DuplicateLinesPreset[] = [
       "sort": "original",
       "delimiter": "newline"
     },
-    "sampleText": "Apple\nBanana\nOrange\nApple\nMango\nBanana\nGrape\nOrange\nPineapple",
+    "sampleText": "HTTP/1.1 200 OK\nHost: api.example.com\nUser-Agent: Mozilla/5.0\nHTTP/1.1 200 OK\nAccept: application/json\nHost: api.example.com\nConnection: keep-alive\nHTTP/1.1 200 OK",
     "editorialGuide": {
-      "heading": "Technical Guide: Remove Duplicate Lines in Sublime Text in Code Editors & IDEs",
+      "heading": "Lightweight Speed: How to Remove Duplicate Lines in Sublime Text Effortlessly",
       "sections": [
         {
-          "title": "Developer Context: Why Clean Lists & Deduplication Matter in Remove Duplicate Lines in Sublime Text",
+          "title": "The Magic of Sublime Text: Unrivaled Speed and Simplicity",
           "paragraphs": [
-            "When engineering software, managing infrastructure configuration manifests, or inspecting stack traces, duplicate entries frequently infiltrate developer buffers. Programmers working with remove duplicate lines in sublime text often encounter duplicated lines after merging Git feature branches, concatenating raw API query dumps, or copying database result grids into active workspace tabs. If unaddressed, redundant rows in code or configuration files lead to syntax redundancy, unexpected override behavior in YAML/JSON structures, and bloated source repositories that slow down continuous integration builds.",
-            "Executing a targeted remove duplicate lines in sublime text routine inside your coding environment resolves visual noise and restores strict file hygiene. Rather than scanning thousands of lines manually, understanding how to apply remove duplicate lines in sublime text workflows directly allows engineers to isolate unique code statements, environment keys, and dependency lists in seconds. Whether refactoring CSS selector rules, consolidating Docker container variables, or cleaning up SQL seed scripts, establishing a reliable line deduplication workflow is an essential competency for daily development efficiency."
+            "In an era where modern code editors often consume gigabytes of computer memory, Sublime Text continues to hold a special place in the hearts of developers, system administrators, and writers. Built from the ground up in custom C++ and Python, Sublime Text is celebrated worldwide for its blazing-fast performance, instant responsiveness, and whisper-quiet operation.",
+            "Whether you are opening a multi-gigabyte server log that chokes conventional word processors, sorting thousands of CSS declarations, or quickly jotting down project ideas in a distraction-free window, Sublime Text never stutters. Its minimalist user interface, iconic minimap navigation, multi-cursor selections, and powerful keyboard shortcuts make text editing feel effortless and fluid.",
+            "However, working with massive plain text files, database dumps, and exported customer lists inevitably produces thousands of repetitive lines. Whether dealing with repeated API requests, duplicate email addresses, or recurring inventory records, learning how to remove duplicate lines in sublime text allows you to sanitize large text documents in seconds using native built-in menu tools."
           ],
           "bullets": [
-            "Cleans merged Git branches, SQL script dumps, and environment variable files in seconds.",
-            "Avoids editor extension bloat, background thread locks, and out-of-memory crashes on large files.",
-            "Preserves precise code structure with customizable whitespace trimming and sorting options."
+            "Renowned for lightning-fast launch times, zero UI lag, and minimal RAM consumption.",
+            "Opens massive multi-gigabyte plain text files and server logs without application freezing.",
+            "Features built-in native line manipulation commands directly accessible from the top menu."
           ]
         },
         {
-          "title": "Native Editor Shortcuts & Regex Methods for Remove Duplicate Lines in Sublime Text",
+          "title": "The Simple Built-in Permute Lines Tool in Sublime Text",
           "paragraphs": [
-            "Modern development environments provide native commands, menu operations, and regular expression engines to clean repetitive rows locally. Here are the exact commands and shortcuts calibrated for your workspace:"
+            "Unlike many contemporary editors that require you to install external plugins or write complex regex scripts just to clear repeated rows, Sublime Text includes a brilliant native deduplication feature built directly into its core interface: the Permute Lines menu.",
+            "To remove duplicate lines in Sublime Text, simply highlight the lines you want to clean, or press Ctrl + A (Cmd + A on macOS) to select the entire document. Next, look at the top menu bar, click on 'Edit,' hover your mouse cursor over 'Permute Lines,' and select 'Unique.'",
+            "The moment you click 'Unique,' Sublime Text scans your selection, identifies all duplicate rows, retains the very first occurrence of each line, and quietly deletes every subsequent repeat. The operation happens instantly, even on text files containing tens of thousands of lines. Because Sublime Text executes this permuting logic directly in memory without writing temporary buffer files to disk, you can comfortably clean hundreds of thousands of lines in the blink of an eye without experiencing system freezes. Best of all, Sublime's 'Permute Lines: Unique' command does not require you to sort your file first, meaning your original chronological order remains completely intact."
           ],
           "codeBlock": {
-            "language": "markdown",
-            "code": "// Sublime Text 3/4 Native Menu Commands\n1. Select the target text block or press Ctrl+A (Cmd+A on macOS)\n2. Press F9 to sort lines alphabetically\n3. Navigate to top menu: Edit -> Permute Lines -> Unique\n4. Sublime Text will immediately drop all duplicate rows in-place."
+            "language": "text",
+            "code": "Sublime Text Native Deduplication Steps:\n1. Select your text block (Ctrl + A or drag to highlight)\n2. Navigate to: Edit -> Permute Lines -> Unique\n3. Result: All duplicate lines are stripped instantly while preserving original order!"
           },
           "callout": {
             "type": "tip",
-            "label": "Editor Tip",
-            "text": "Edit -> Permute Lines -> Unique does not require prior sorting in Sublime Text; it retains original line sequence while dropping later duplicates."
+            "label": "Menu Pro Tip",
+            "text": "You can also access this command directly from the Command Palette! Press Ctrl + Shift + P (Cmd + Shift + P on Mac), type 'Permute Lines: Unique', and press Enter."
           }
         },
         {
-          "title": "Browser Sandbox Advantage: Eliminating Editor Freezes & Memory Leaks",
+          "title": "Sorting While Cleaning: Alphabetical vs. Original Order",
           "paragraphs": [
-            "While native desktop editors are indispensable for daily authoring, applying complex regex lookahead patterns on large text buffers frequently strains internal syntax lexers. Editors like VS Code and IntelliJ run background indexing engines, linting processes, and Language Server Protocols (LSP) that parse every document modification. Executing nested regular expression searches across 20,000 to 100,000 lines can trigger catastrophic backtracking, causing the editor process to freeze and prompting \"Window is not responding\" dialogs.",
-            "FastToolVerse eliminates IDE thread contention by offloading the entire deduplication workload to an isolated client-side browser memory sandbox. Built on ECMAScript Hash Sets with constant-time O(1) key lookups, our engine processes 50,000+ line documents in under 40 milliseconds without allocating heavy language AST trees. You gain instantaneous, zero-latency processing without installing marketplace extensions, configuring regex flags, or risking editor instability."
+            "Depending on the nature of your project, you might want your clean list to remain in its original chronological sequence, or you might prefer to have it neatly sorted in alphabetical order.",
+            "Sublime Text makes both workflows seamless. If you want to keep your original list order, simply run 'Edit -> Permute Lines -> Unique' as described above. The editor preserves the first appearance of every entry and discards later occurrences.",
+            "If you want an alphabetized directory—such as an alphabetical index of customer names, glossary terms, or domain names—you can sort your lines in a single keystroke before or after deduping. Simply press the F5 key (or select Edit -> Sort Lines) to sort your text alphabetically. You can also press Ctrl + F5 (Cmd + F5 on Mac) to perform a case-sensitive alphabetical sort. Combining sorting with unique permuting gives you complete control over your document's organization."
           ],
           "bullets": [
-            "Zero Plugin Setup: No marketplace downloads, package permissions, or corporate security audits required.",
-            "Instant Microsecond Lookups: O(1) hash tables process multi-megabyte text payloads without freezing editor tabs.",
-            "100% Private Sandbox: Client credentials, private API keys, and internal source code never leave your device RAM."
+            "'Permute Lines: Unique' preserves your initial list sequence by default without sorting.",
+            "Press F5 (or Edit -> Sort Lines) to organize your lines alphabetically in a single click.",
+            "Use Ctrl + F5 (Cmd + F5 on Mac) for strict case-sensitive alphabetical sorting."
           ]
         },
         {
-          "title": "Edge Cases in Source Code: Whitespace, Indentation & Encodings",
+          "title": "Handling Special Text, Invisible Whitespace, and Casing",
           "paragraphs": [
-            "Source code and technical files present unique edge cases where automated deduplicators can inadvertently break program logic if not carefully tuned:"
+            "Occasionally, users running the 'Permute Lines: Unique' command in Sublime Text notice that two lines that appear visually identical remain in their file. In virtually every situation, this is caused by hidden trailing whitespace or case differences.",
+            "Because Sublime Text evaluates lines character-for-character, a line ending with an invisible space character ('DatabaseServer ') has a different byte representation than a line without one ('DatabaseServer'). To prevent trailing spaces from breaking your duplicate checks, you can tell Sublime Text to strip margin spaces by navigating to 'View -> Show Console' or using the Find and Replace dialog (Ctrl + H) with regular expression mode enabled to trim trailing margins.",
+            "Alternatively, if you want an instant visual environment that automatically handles whitespace trimming, case-insensitive comparisons, and line formatting without manual regular expressions, copying your text into a dedicated remove duplicate lines online tool like FastToolVerse is a wonderful shortcut. FastToolVerse lets you toggle 'Trim edge whitespace' and case sensitivity with simple checkboxes, giving you 100% clean results in seconds."
+          ],
+          "callout": {
+            "type": "note",
+            "label": "Whitespace Insight",
+            "text": "Invisible spaces and tabs at the ends of lines are the number one reason duplicate cleaners overlook matches. Trimming edge whitespace ensures 100% duplicate detection accuracy."
+          }
+        },
+        {
+          "title": "Connecting to Everyday Productivity Tools Across Platforms",
+          "paragraphs": [
+            "Every text editor has its unique strengths, and knowing when to use each tool is the hallmark of an effective computer user. Developers operating on remote cloud infrastructure frequently rely on vim remove duplicate lines commands or execute linux remove duplicate lines from file routines in terminal consoles. Systems administrators managing automated deployments write bash remove duplicate lines or remove duplicate lines bash scripts, or utilize sed remove duplicate lines to process log streams when they must remove duplicate lines linux on server files.",
+            "When developers need complex pattern substitution, they often apply regex remove duplicate lines formulas or rely on online remove duplicate lines utilities for instant browser validation. Meanwhile, desktop professionals often practice vscode remove duplicate lines workflows or turn to notepad++ remove duplicate lines for Windows text processing, while business analysts rely on excel remove duplicate lines buttons or learn how to remove duplicate lines in excel for accounting workbooks. Sublime Text stands tall among these tools as the quintessential lightweight desktop champion. With its built-in 'Permute Lines: Unique' tool and companion browser utilities like FastToolVerse, cleaning messy plain text files is always fast, private, and effortless."
           ],
           "bullets": [
-            "Indentation Sensitivity: In Python, YAML, and Haml, leading tabs or spaces define semantic code scope. Enabling 'Trim edge whitespace' will normalize indentation, so keep it unchecked if block hierarchy must be preserved.",
-            "CRLF vs LF Line Endings: Windows development environments use CRLF (\\r\\n) while Unix, Linux, and macOS use LF (\\n). Inconsistent newline terminators between pasted snippets can cause identical code lines to evaluate as distinct hashes unless parsed with universal newline splitting.",
-            "Code Comments vs Statement Duplication: Identical comment headers (e.g. '// TODO: Review' or '/* separator */') may be intentionally repeated across classes. Using 'Duplicates Only' extraction allows you to audit recurring annotations before deletion.",
-            "Blank Lines Between Methods: Purging empty lines cleans compact scripts, but may disrupt visual readability between function declarations. Toggle 'Strip blank lines' based on whether method spacing is desired."
+            "Sublime Text provides native desktop speed without requiring heavy memory overhead.",
+            "Permute Lines: Unique provides immediate, one-click deduplication right out of the box.",
+            "FastToolVerse offers the perfect browser companion for advanced whitespace and casing options."
           ]
         }
       ]
     },
     "faqs": [
       {
-        "question": "How do I remove duplicate lines in Remove Duplicate Lines in Sublime Text online?",
-        "answer": "Paste or type your text list into the Input Text editor. FastToolVerse automatically evaluates every row using high-speed O(1) hash sets in real time. Duplicate lines are stripped instantly while preserving the original appearance order. You can toggle case sensitivity, whitespace trimming, or alphabetical sorting, then click Copy or download as a .txt file."
+        "question": "What does the \"Permute Lines: Unique\" command do in Sublime Text?",
+        "answer": "The 'Permute Lines: Unique' command in Sublime Text scans your highlighted text, retains the very first occurrence of each unique line, and permanently removes all subsequent duplicate lines across the selection in a single instant step."
       },
       {
-        "question": "Does this Remove Duplicate Lines in Sublime Text tool upload my data or files to any server?",
-        "answer": "No. All text parsing, regex matching, and deduplication execute 100% locally inside your web browser's RAM memory sandbox. Zero bytes ever travel across the internet, ensuring your confidential customer lists, credentials, server logs, and code remain completely private."
+        "question": "Does Sublime Text change the original order of my list when I remove duplicate lines?",
+        "answer": "No. Unlike tools that force you to sort your lines first, Sublime Text's 'Permute Lines: Unique' feature preserves the original chronological order of your text, keeping the first instance of each line exactly where it appeared."
       },
       {
-        "question": "What is the difference between case-sensitive and case-insensitive deduplication?",
-        "answer": "When 'Case-sensitive comparison' is enabled, entries with differing letter cases (e.g. 'Apple' and 'apple') are treated as distinct unique items. When disabled, both entries are recognized as duplicates, and the tool keeps only the first encountered casing while eliminating subsequent variants."
+        "question": "Can I use a keyboard shortcut to quickly remove duplicate lines in Sublime Text?",
+        "answer": "While there is no default hotkey assigned to it, you can open the Command Palette with Ctrl + Shift + P (Cmd + Shift + P on Mac), type 'Unique', and hit Enter. You can also define a custom keybinding in your User Key Bindings file for the 'permute_lines' command with the 'unique' argument."
       },
       {
-        "question": "How does whitespace trimming prevent hidden duplicate lines?",
-        "answer": "Accidental trailing spaces or tab characters from copy-pasting spreadsheet cells often cause visually identical lines to have different character lengths. Enabling 'Trim edge whitespace' normalizes leading and trailing spacing before comparing hash keys, ensuring phantom spaces don't bypass duplicate detection."
+        "question": "Why does Sublime Text keep two lines that appear to have the exact same wording?",
+        "answer": "Sublime Text performs strict character-by-character comparisons. If one line has a hidden trailing space at the end ('Item ') or has different capitalization ('item' vs 'Item'), Sublime Text treats them as two distinct lines. Trimming trailing spaces ensures they match."
       },
       {
-        "question": "Can I extract duplicate lines only or count how many times each line repeats?",
-        "answer": "Yes. Click the 'Extraction Mode' pills above the editor. Choose 'Duplicates Only' to isolate only recurring entries, 'Completely Unique' to filter lines that appear exactly once, or 'Count Occurrences' to generate a frequency count histogram showing exact repetition metrics."
-      },
-      {
-        "question": "Can this tool handle massive datasets containing 50,000+ lines?",
-        "answer": "Yes. Because FastToolVerse utilizes native ECMAScript Hash Sets with O(1) constant-time lookups (achieving linear O(N) overall performance), it can deduplicate datasets containing 50,000+ lines in tens of milliseconds without crashing or freezing your browser tab."
+        "question": "Can Sublime Text clean duplicate lines across a giant text file with hundreds of thousands of rows without crashing?",
+        "answer": "Yes. Because Sublime Text is written in high-performance C++, its 'Permute Lines: Unique' command executes in seconds even on giant text files containing hundreds of thousands of lines without UI lag or application crashes."
       }
     ]
   },

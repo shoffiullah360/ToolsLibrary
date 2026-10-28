@@ -8,26 +8,15 @@ const { class: className = '' } = Astro.props;
 const imageTools = [
   { name: 'Image Resizer', href: '/image-resizer/' },
   { name: 'Image Compressor', href: '/image-compressor/' },
-  { name: 'Image Cropper', href: '/image-cropper/' },
   { name: 'Image Converter', href: '/image-converter/' },
-  { name: 'Image Optimizer', href: '/image-optimizer/' },
 ];
 
 const textTools = [
-  { name: 'Remove Empty Lines', href: '/remove-empty-lines/' },
   { name: 'Remove Extra Spaces', href: '/remove-extra-spaces/' },
   { name: 'Remove Duplicate Lines', href: '/remove-duplicate-lines/' },
+  { name: 'Remove Empty Lines', href: '/remove-empty-lines/' },
   { name: 'Remove Line Breaks', href: '/remove-line-breaks/' },
   { name: 'Sort Text Lines', href: '/sort-text-lines/' },
-  { name: 'Text Case Converter', href: '/text-case-converter/' },
-];
-
-const devTools = [
-  { name: 'JSON Formatter', href: '/json-formatter/' },
-  { name: 'Base64 Encoder', href: '/base64-encoder/' },
-  { name: 'JWT Decoder', href: '/jwt-decoder/' },
-  { name: 'HTML Formatter', href: '/html-formatter/' },
-  { name: 'CSS Minifier', href: '/css-minifier/' },
 ];
 
 const company = [
@@ -35,18 +24,16 @@ const company = [
   { name: 'Contact', href: '/contact/' },
   { name: 'Privacy Policy', href: '/privacy-policy/' },
   { name: 'Terms of Service', href: '/terms/' },
-  { name: 'FAQ', href: '/#faq-section' },
-  { name: 'Sitemap', href: '/sitemap-index.xml' },
 ];
 ---
 
 <footer class={`w-full border-t border-slate-200 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/60 transition-colors duration-200 ${className}`}>
   <!-- Main Footer Content -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 sm:gap-8 lg:gap-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
       
-      <!-- Brand Section (Left / Full width on small screens) -->
-      <div class="col-span-2 sm:col-span-3 md:col-span-1 space-y-4 mb-2 sm:mb-0">
+      <!-- Brand Section -->
+      <div class="space-y-4">
         <a href="/" class="flex items-center gap-2.5 group">
           <div class="w-8 h-8 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 flex items-center justify-center font-mono font-bold text-sm shadow-xs group-hover:scale-105 transition-transform">
             <img src="/logo-icon.svg" alt="FastToolVerse Logo" class="w-5 h-5 object-contain" />
@@ -57,7 +44,7 @@ const company = [
         </a>
         
         <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-          Free online client-side image, text, and developer tools. Fast, secure, and private with zero server uploads.
+          Free online client-side image and text manipulation tools. Fast, secure, and private with zero server uploads.
         </p>
 
         <!-- Privacy Status Badge -->
@@ -108,26 +95,7 @@ const company = [
         </ul>
       </div>
 
-      <!-- Column 3: Developer Tools -->
-      <div>
-        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-4">
-          Developer Tools
-        </h3>
-        <ul class="space-y-2.5 text-sm">
-          {devTools.map((tool) => (
-            <li>
-              <a
-                href={tool.href}
-                class="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors block"
-              >
-                {tool.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Column 4: Company & Legal -->
+      <!-- Column 3: Company & Legal -->
       <div>
         <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-4">
           Company & Legal

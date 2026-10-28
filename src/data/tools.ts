@@ -1,7 +1,7 @@
 export interface Tool {
   id: string;
   title: string;
-  category: 'Image Tools' | 'Developer Tools';
+  category: 'Image Tools' | 'Text Tools';
   group: string;
   description: string;
   tags: string[];
@@ -13,8 +13,8 @@ export interface Tool {
 }
 
 export interface CategoryInfo {
-  id: 'image-tools' | 'developer-tools';
-  name: 'Image Tools' | 'Developer Tools';
+  id: 'image-tools' | 'text-tools';
+  name: 'Image Tools' | 'Text Tools';
   eyebrow: string;
   description: string;
   icon: string;
@@ -26,25 +26,24 @@ export const CATEGORIES: CategoryInfo[] = [
     id: 'image-tools',
     name: 'Image Tools',
     eyebrow: 'BROWSER-BASED IMAGE SUITE',
-    description: 'Lossless compression, instant canvas transformations, and verified social media dimension presets with 100% client-side privacy.',
+    description: 'Lossless compression, instant canvas resizing, and universal format conversion with 100% client-side privacy.',
     icon: 'image',
-    groups: ['Core Editing', 'Calculators & Sizing', 'Optimization & Utilities', 'Social Media Specs & Resizers']
+    groups: ['Core Editing']
   },
   {
-    id: 'developer-tools',
-    name: 'Developer Tools',
-    eyebrow: 'DEVELOPER PRODUCTIVITY UTILITIES',
-    description: 'High-speed JSON formatters, cryptographic encoders, token decoders, and syntax minifiers running with zero server latency.',
-    icon: 'code',
-    groups: ['JSON Utilities', 'Encoders & Decoders', 'Generators & Time', 'Code & Formatters', 'Color Utilities']
+    id: 'text-tools',
+    name: 'Text Tools',
+    eyebrow: 'TEXT CLEANING & FORMATTING',
+    description: 'High-speed text whitespace cleaners, duplicate line removers, blank line strippers, and list sorters.',
+    icon: 'type',
+    groups: ['Text Utilities']
   }
 ];
 
 export const TOOLS: Tool[] = [
   // ==========================================
-  // CATEGORY 1: IMAGE TOOLS (21 tools)
+  // CATEGORY 1: IMAGE TOOLS (3 tools)
   // ==========================================
-  // Group: Core Editing
   {
     id: 'image-resizer',
     title: 'Image Resizer',
@@ -81,423 +80,69 @@ export const TOOLS: Tool[] = [
     badge: 'Popular',
     href: '/image-converter/'
   },
-  {
-    id: 'image-cropper',
-    title: 'Image Cropper',
-    category: 'Image Tools',
-    group: 'Core Editing',
-    description: 'Crop images with precision visual handles and standardized aspect ratios (16:9, 4:3, 1:1, or custom).',
-    tags: ['Visual Handles', 'Aspect Lock', 'Client-Side'],
-    keywords: ['crop image', 'cut photo', 'image cropper', 'trim picture', 'aspect crop'],
-    icon: 'crop',
-    href: '/image-cropper/'
-  },
-  {
-    id: 'image-rotator',
-    title: 'Image Rotator',
-    category: 'Image Tools',
-    group: 'Core Editing',
-    description: 'Rotate images 90°, 180°, 270°, or fine-tune angles with instant hardware-accelerated preview.',
-    tags: ['Angle Precision', 'Instant Preview', 'Lossless'],
-    keywords: ['rotate photo', 'turn image', 'orientation fix', 'rotate 90 degrees'],
-    icon: 'rotate-cw',
-    href: '/image-rotator/'
-  },
-  {
-    id: 'image-flipper',
-    title: 'Image Flipper',
-    category: 'Image Tools',
-    group: 'Core Editing',
-    description: 'Mirror photos horizontally or vertically with a single click using in-browser canvas rendering.',
-    tags: ['Mirror Effect', 'Horizontal/Vertical', 'Instant'],
-    keywords: ['flip image', 'mirror photo', 'invert picture', 'horizontal flip'],
-    icon: 'flip-horizontal',
-    href: '/image-flipper/'
-  },
-
-  // Group: Calculators & Sizing
-  {
-    id: 'aspect-ratio-calculator',
-    title: 'Aspect Ratio Calculator',
-    category: 'Image Tools',
-    group: 'Calculators & Sizing',
-    description: 'Calculate proportionate width and height dimensions, aspect ratios, and responsive scale ratios.',
-    tags: ['Design Helper', 'Responsive math', 'Precision'],
-    keywords: ['aspect ratio calculator', '16:9 calculator', 'proportions', 'screen ratio'],
-    icon: 'scale',
-    badge: 'Fast',
-    href: '/aspect-ratio-calculator/'
-  },
-  {
-    id: 'image-dimensions-calculator',
-    title: 'Image Dimensions Calculator',
-    category: 'Image Tools',
-    group: 'Calculators & Sizing',
-    description: 'Calculate print physical dimensions in inches or cm based on DPI/PPI and pixel resolution.',
-    tags: ['Print Prep', 'DPI/PPI', 'Megapixels'],
-    keywords: ['dpi calculator', 'print size', 'image resolution', 'pixel to inch converter'],
-    icon: 'ruler',
-    href: '/image-dimensions-calculator/'
-  },
-  {
-    id: 'add-watermark',
-    title: 'Add Watermark',
-    category: 'Image Tools',
-    group: 'Calculators & Sizing',
-    description: 'Apply copyright text or transparent PNG logo watermarks with custom opacity, tile mode, and position.',
-    tags: ['Copyright Protection', 'Text & Logo', 'Batch Ready'],
-    keywords: ['watermark image', 'add logo to photo', 'copyright stamp', 'watermark maker'],
-    icon: 'shield-check',
-    badge: 'Popular',
-    href: '/add-watermark/'
-  },
-  {
-    id: 'passport-size',
-    title: 'Passport Size Maker',
-    category: 'Image Tools',
-    group: 'Calculators & Sizing',
-    description: 'Generate standard 2x2 inch and 35x45mm international biometric passport photos ready to print on 4x6 paper.',
-    tags: ['Biometric Standards', 'Print Layout', 'Official Spec'],
-    keywords: ['passport photo', '2x2 inch photo', 'visa photo maker', 'biometric size'],
-    icon: 'user-check',
-    badge: 'Essential',
-    href: '/passport-size/'
-  },
-
-  // Group: Optimization & Utilities
-  {
-    id: 'image-optimizer',
-    title: 'Image Optimizer',
-    category: 'Image Tools',
-    group: 'Optimization & Utilities',
-    description: 'Convert legacy image assets to next-gen WebP and AVIF formats for lightning-fast web performance.',
-    tags: ['Next-Gen WebP', 'Core Web Vitals', 'High Performance'],
-    keywords: ['optimize images', 'webp converter', 'avif generator', 'speed up website images'],
-    icon: 'zap',
-    badge: 'Fast',
-    href: '/image-optimizer/'
-  },
-  {
-    id: 'exif-viewer',
-    title: 'Exif Viewer & Stripper',
-    category: 'Image Tools',
-    group: 'Optimization & Utilities',
-    description: 'View embedded camera metadata, exposure specs, and GPS coordinates, or strip EXIF data for privacy.',
-    tags: ['Privacy Guard', 'GPS Inspector', 'Metadata Remover'],
-    keywords: ['exif viewer', 'remove metadata', 'strip geotag', 'camera details inspector'],
-    icon: 'info',
-    href: '/exif-viewer/'
-  },
-  {
-    id: 'color-picker-from-image',
-    title: 'Color Picker from Image',
-    category: 'Image Tools',
-    group: 'Optimization & Utilities',
-    description: 'Sample precise pixel colors with magnifying loupe and auto-extract dominant harmonic palettes.',
-    tags: ['HEX/RGB/HSL', 'Palette Extraction', 'Eyedropper'],
-    keywords: ['color picker', 'extract palette', 'sample color from image', 'hex from photo'],
-    icon: 'pipette',
-    badge: 'Popular',
-    href: '/color-picker-from-image/'
-  },
-
-  // Group: Social Media Specs & Resizers
-  {
-    id: 'youtube-image-resizer',
-    title: 'YouTube Specs & Resizer',
-    category: 'Image Tools',
-    group: 'Social Media Specs & Resizers',
-    description: 'Preset resizer for YouTube Banners (2560x1440), Video Thumbnails (1280x720), and Channel Icons (800x800).',
-    tags: ['16:9 Thumbnail', 'Banner Safe Zones', '2025 Spec'],
-    keywords: ['youtube banner size', 'youtube thumbnail resizer', 'channel art', 'youtube specs'],
-    icon: 'video',
-    badge: 'Popular',
-    href: '/youtube-image-resizer/',
-    specs: '2560x1440 Banner · 1280x720 Thumb'
-  },
-  {
-    id: 'instagram-image-resizer',
-    title: 'Instagram Specs & Resizer',
-    category: 'Image Tools',
-    group: 'Social Media Specs & Resizers',
-    description: 'Fit photos perfectly to Instagram Square (1080x1080), Portrait (1080x1350), Stories & Reels (1080x1920).',
-    tags: ['No Crop Border', 'Story & Reel', '1080x1350'],
-    keywords: ['instagram photo resizer', 'square post', 'instagram story size', 'reels cover'],
-    icon: 'camera',
-    badge: 'Popular',
-    href: '/instagram-image-resizer/',
-    specs: '1080x1080 Square · 1080x1920 Story'
-  },
-  {
-    id: 'facebook-image-resizer',
-    title: 'Facebook Specs & Resizer',
-    category: 'Image Tools',
-    group: 'Social Media Specs & Resizers',
-    description: 'Scale photos for Facebook Cover (820x312), Link Posts (1200x630), and Event Headers (1920x1005).',
-    tags: ['Cover Safe Area', 'Feed Post', 'Event Banner'],
-    keywords: ['facebook cover size', 'fb banner resizer', 'facebook ad dimensions'],
-    icon: 'share-2',
-    href: '/facebook-image-resizer/',
-    specs: '820x312 Cover · 1200x630 Post'
-  },
-  {
-    id: 'x-twitter-image-resizer',
-    title: 'X (Twitter) Specs & Resizer',
-    category: 'Image Tools',
-    group: 'Social Media Specs & Resizers',
-    description: 'Format images for X Header Banner (1500x500), In-Stream Photos (1600x900), and Avatar (400x400).',
-    tags: ['3:1 Header', '16:9 Feed', 'No Compression Blurriness'],
-    keywords: ['twitter header size', 'x banner resizer', 'twitter post image spec'],
-    icon: 'twitter',
-    href: '/x-twitter-image-resizer/',
-    specs: '1500x500 Header · 1600x900 Feed'
-  },
-  {
-    id: 'linkedin-image-resizer',
-    title: 'LinkedIn Specs & Resizer',
-    category: 'Image Tools',
-    group: 'Social Media Specs & Resizers',
-    description: 'Format professional Company Banners (1128x191), Profile Covers (1584x396), and Post Images (1200x627).',
-    tags: ['Business Standards', 'Personal Cover', 'Company Page'],
-    keywords: ['linkedin banner size', 'linkedin background photo', 'linkedin post dimension'],
-    icon: 'briefcase',
-    href: '/linkedin-image-resizer/',
-    specs: '1584x396 Banner · 1200x627 Post'
-  },
-  {
-    id: 'pinterest-image-resizer',
-    title: 'Pinterest Specs & Resizer',
-    category: 'Image Tools',
-    group: 'Social Media Specs & Resizers',
-    description: 'Optimize high-converting Pinterest Standard Pins (1000x1500) with 2:3 ratio and Board Covers (600x600).',
-    tags: ['2:3 Ratio', 'Tall Pins', 'High CTR'],
-    keywords: ['pinterest pin size', 'pinterest 1000x1500', 'board cover resizer'],
-    icon: 'pin',
-    href: '/pinterest-image-resizer/',
-    specs: '1000x1500 Standard · 2:3 Ratio'
-  },
-  {
-    id: 'tiktok-image-resizer',
-    title: 'TikTok Specs & Resizer',
-    category: 'Image Tools',
-    group: 'Social Media Specs & Resizers',
-    description: 'Resize for 9:16 vertical video thumbnails (1080x1920) and high-resolution profile avatars (200x200).',
-    tags: ['9:16 Vertical', 'Video Covers', 'Clear Avatar'],
-    keywords: ['tiktok thumbnail size', 'tiktok 1080x1920', 'tiktok profile photo'],
-    icon: 'play-square',
-    href: '/tiktok-image-resizer/',
-    specs: '200x200 DP Avatar · 800x800 Shop'
-  },
-  {
-    id: 'whatsapp-image-resizer',
-    title: 'WhatsApp Specs & Resizer',
-    category: 'Image Tools',
-    group: 'Social Media Specs & Resizers',
-    description: 'Create crisp WhatsApp DP Profile Pictures (500x500), Status Stories (1080x1920), and Sticker Canvases (512x512).',
-    tags: ['Circular DP', 'Status Story', 'Sticker Canvas'],
-    keywords: ['whatsapp dp size', 'whatsapp status photo', 'whatsapp sticker 512x512'],
-    icon: 'message-circle',
-    badge: 'Popular',
-    href: '/whatsapp-image-resizer/',
-    specs: '500x500 DP · 1080x1920 Status'
-  },
 
   // ==========================================
-  // CATEGORY 2: DEVELOPER TOOLS (16 tools)
+  // CATEGORY 2: TEXT TOOLS (5 tools)
   // ==========================================
-  // Group: JSON Utilities
   {
-    id: 'json-formatter',
-    title: 'JSON Formatter',
-    category: 'Developer Tools',
-    group: 'JSON Utilities',
-    description: 'Prettify and indent messy JSON strings with customizable 2/4 spaces or tabs, syntax highlighting, and copy.',
-    tags: ['Prettifier', '2/4 Tab Indent', 'Error Free'],
-    keywords: ['json formatter', 'prettify json', 'beautify json', 'format json string'],
-    icon: 'file-text',
-    badge: 'Popular',
-    href: '/json-formatter/'
-  },
-  {
-    id: 'json-validator',
-    title: 'JSON Validator',
-    category: 'Developer Tools',
-    group: 'JSON Utilities',
-    description: 'Validate JSON syntax compliance, highlight line-by-line parsing errors, and inspect structural schemas.',
-    tags: ['Error Pointer', 'Schema Check', 'RFC 8259'],
-    keywords: ['json validator', 'validate json syntax', 'check json errors', 'json linter'],
-    icon: 'check-circle-2',
+    id: 'remove-extra-spaces',
+    title: 'Remove Extra Spaces',
+    category: 'Text Tools',
+    group: 'Text Utilities',
+    description: 'Clean multiple spaces, leading and trailing whitespace, tabs, and unneeded blank spaces instantly.',
+    tags: ['Client-Side', 'Fast Regex', 'Zero Upload'],
+    keywords: ['remove extra spaces', 'clean whitespace', 'trim spaces', 'remove multiple spaces'],
+    icon: 'space',
     badge: 'Essential',
-    href: '/json-validator/'
+    href: '/remove-extra-spaces/'
   },
   {
-    id: 'json-minifier',
-    title: 'JSON Minifier',
-    category: 'Developer Tools',
-    group: 'JSON Utilities',
-    description: 'Strip unnecessary spaces, newlines, and comments to compress JSON payloads for API payloads and bandwidth savings.',
-    tags: ['Payload Shrink', 'Zero Whitespace', 'Instant'],
-    keywords: ['json minifier', 'minify json', 'compress json payload', 'strip json spaces'],
-    icon: 'minimize',
-    href: '/json-minifier/'
-  },
-
-  // Group: Encoders & Decoders
-  {
-    id: 'base64-encoder',
-    title: 'Base64 Encoder',
-    category: 'Developer Tools',
-    group: 'Encoders & Decoders',
-    description: 'Encode plain text, ASCII strings, or binary image files into standard RFC 4648 Base64 strings.',
-    tags: ['RFC 4648', 'Text & Files', 'Data URIs'],
-    keywords: ['base64 encoder', 'convert to base64', 'encode string', 'image to base64'],
-    icon: 'binary',
+    id: 'remove-duplicate-lines',
+    title: 'Remove Duplicate Lines',
+    category: 'Text Tools',
+    group: 'Text Utilities',
+    description: 'Deduplicate text lines while preserving your original line order with instant Set-based hashing.',
+    tags: ['Deduplication', 'List Cleaner', 'Zero Upload'],
+    keywords: ['remove duplicate lines', 'deduplicate list', 'unique lines', 'remove duplicates online'],
+    icon: 'list-filter',
     badge: 'Popular',
-    href: '/base64-encoder/'
+    href: '/remove-duplicate-lines/'
   },
   {
-    id: 'base64-decoder',
-    title: 'Base64 Decoder',
-    category: 'Developer Tools',
-    group: 'Encoders & Decoders',
-    description: 'Decode Base64 payloads back to UTF-8 plaintext or reconstruct and download original binary files.',
-    tags: ['UTF-8 Output', 'Binary Recovery', 'Safe Decode'],
-    keywords: ['base64 decoder', 'decode base64 string', 'base64 to text', 'base64 to file'],
-    icon: 'file-code',
+    id: 'remove-empty-lines',
+    title: 'Remove Empty Lines',
+    category: 'Text Tools',
+    group: 'Text Utilities',
+    description: 'Strip out blank lines and lines containing only space characters with zero server uploads.',
+    tags: ['Strip Blanks', 'Fast', 'Zero Upload'],
+    keywords: ['remove empty lines', 'delete blank lines', 'strip empty rows', 'remove blank lines online'],
+    icon: 'list-x',
+    badge: 'Popular',
+    href: '/remove-empty-lines/'
+  },
+  {
+    id: 'remove-line-breaks',
+    title: 'Remove Line Breaks',
+    category: 'Text Tools',
+    group: 'Text Utilities',
+    description: 'Merge lines into paragraphs or join lines with custom delimiters like commas, spaces, or semicolons.',
+    tags: ['Paragraph Merge', 'Delimiter Join', 'Zero Upload'],
+    keywords: ['remove line breaks', 'join lines', 'merge lines into one', 'remove enter online'],
+    icon: 'wrap-text',
     badge: 'Essential',
-    href: '/base64-decoder/'
+    href: '/remove-line-breaks/'
   },
   {
-    id: 'url-encoder',
-    title: 'URL Encoder',
-    category: 'Developer Tools',
-    group: 'Encoders & Decoders',
-    description: 'Encode strings into RFC 3986 percent-encoded format for safe transmission in query parameters and URIs.',
-    tags: ['RFC 3986', 'URI Escape', 'Percent Encoding'],
-    keywords: ['url encoder', 'encode uri', 'urlencode', 'percent encode string'],
-    icon: 'link',
-    href: '/url-encoder/'
-  },
-  {
-    id: 'url-decoder',
-    title: 'URL Decoder',
-    category: 'Developer Tools',
-    group: 'Encoders & Decoders',
-    description: 'Decode percent-encoded URI strings and complex query parameter payloads back to human-readable text.',
-    tags: ['Query Unescape', 'UTF-8 Safe', 'Clean Strings'],
-    keywords: ['url decoder', 'decode uri', 'urldecode', 'unquote url'],
-    icon: 'link-2',
-    href: '/url-decoder/'
-  },
-
-  // Group: Generators & Time
-  {
-    id: 'uuid-generator',
-    title: 'UUID Generator',
-    category: 'Developer Tools',
-    group: 'Generators & Time',
-    description: 'Generate cryptographic RFC 4122 Version 4 and Version 7 UUIDs individually or in bulk with one-click copy.',
-    tags: ['v4 & v7 UUIDs', 'Crypto Random', 'Bulk Batch'],
-    keywords: ['uuid generator', 'guid generator', 'random uuid', 'rfc 4122 v4'],
-    icon: 'fingerprint',
-    badge: 'Popular',
-    href: '/uuid-generator/'
-  },
-  {
-    id: 'timestamp-converter',
-    title: 'Timestamp Converter',
-    category: 'Developer Tools',
-    group: 'Generators & Time',
-    description: 'Convert human-readable calendar dates, ISO-8601 strings, and RFC 2822 timestamps into Unix epoch seconds and ms.',
-    tags: ['ISO-8601', 'Timezone Aware', 'UTC & Local'],
-    keywords: ['timestamp converter', 'date to timestamp', 'epoch converter', 'iso to unix'],
-    icon: 'calendar',
-    href: '/timestamp-converter/'
-  },
-  {
-    id: 'unix-timestamp-converter',
-    title: 'Unix Timestamp Converter',
-    category: 'Developer Tools',
-    group: 'Generators & Time',
-    description: 'Parse raw Unix epoch timestamps (seconds or milliseconds) into local time, UTC, and relative duration strings.',
-    tags: ['Seconds & MS', 'Relative Time', 'Epoch Clock'],
-    keywords: ['unix timestamp converter', 'epoch to date', 'parse timestamp', 'current unix time'],
-    icon: 'clock',
+    id: 'sort-text-lines',
+    title: 'Sort Text Lines',
+    category: 'Text Tools',
+    group: 'Text Utilities',
+    description: 'Sort lines alphabetically (A-Z or Z-A), numerically, by length, or randomly shuffle lists.',
+    tags: ['A-Z Sorting', 'Numeric Sort', 'Zero Upload'],
+    keywords: ['sort text lines', 'alphabetize list', 'sort lines online', 'order lines'],
+    icon: 'arrow-up-down',
     badge: 'Fast',
-    href: '/unix-timestamp-converter/'
-  },
-
-  // Group: Code & Formatters
-  {
-    id: 'regex-tester',
-    title: 'Regex Tester',
-    category: 'Developer Tools',
-    group: 'Code & Formatters',
-    description: 'Test JavaScript/PCRE regular expressions in real-time with highlighted captures, match indices, and flag toggles.',
-    tags: ['Live Matcher', 'Group Captures', 'Flag Controls'],
-    keywords: ['regex tester', 'regular expression test', 'regex online', 'regex validator'],
-    icon: 'search',
-    badge: 'Popular',
-    href: '/regex-tester/'
-  },
-  {
-    id: 'jwt-decoder',
-    title: 'JWT Decoder',
-    category: 'Developer Tools',
-    group: 'Code & Formatters',
-    description: 'Inspect JSON Web Token headers, payloads, and claims without sending private secrets to any remote server.',
-    tags: ['100% Client-Side', 'Expiry Inspector', 'JSON Claims'],
-    keywords: ['jwt decoder', 'decode jwt token', 'parse json web token', 'jwt debugger'],
-    icon: 'key',
-    badge: 'Essential',
-    href: '/jwt-decoder/'
-  },
-  {
-    id: 'html-formatter',
-    title: 'HTML Formatter',
-    category: 'Developer Tools',
-    group: 'Code & Formatters',
-    description: 'Format, indent, and organize raw HTML5 code with clean tag nesting, attribute formatting, and tag validation.',
-    tags: ['HTML5 Prettier', 'Clean Indent', 'Tag Nesting'],
-    keywords: ['html formatter', 'beautify html', 'indent html code', 'html clean up'],
-    icon: 'code-2',
-    href: '/html-formatter/'
-  },
-  {
-    id: 'css-minifier',
-    title: 'CSS Minifier',
-    category: 'Developer Tools',
-    group: 'Code & Formatters',
-    description: 'Minify CSS stylesheets by stripping unnecessary comments, whitespace, and consolidating redundant declarations.',
-    tags: ['Stylesheet Shrink', 'Faster FCP', 'Clean Output'],
-    keywords: ['css minifier', 'minify css', 'compress stylesheet', 'css optimizer'],
-    icon: 'file-spreadsheet',
-    href: '/css-minifier/'
-  },
-  {
-    id: 'js-minifier',
-    title: 'JS Minifier',
-    category: 'Developer Tools',
-    group: 'Code & Formatters',
-    description: 'Quickly minify client JavaScript snippets, stripping comments and space tokens for lean production loading.',
-    tags: ['Script Compression', 'Production Ready', 'Instant'],
-    keywords: ['js minifier', 'javascript minifier', 'compress js', 'clean javascript'],
-    icon: 'terminal',
-    href: '/js-minifier/'
-  },
-
-  // Group: Color Utilities
-  {
-    id: 'color-converter',
-    title: 'Color Converter (HEX ⇄ RGB)',
-    category: 'Developer Tools',
-    group: 'Color Utilities',
-    description: 'Two-way color conversion between HEX, RGB, RGBA, HSL, and CMYK with copyable CSS code snippets.',
-    tags: ['HEX to RGB', 'RGB to HEX', 'HSL & CSS Codes'],
-    keywords: ['color converter', 'hex to rgb', 'rgb to hex', 'hex color converter', 'hsl to rgb'],
-    icon: 'palette',
-    badge: 'Fast',
-    href: '/color-converter/'
+    href: '/sort-text-lines/'
   }
 ];
 
@@ -505,7 +150,7 @@ export function getAllTools(): Tool[] {
   return TOOLS;
 }
 
-export function getToolsByCategory(category: 'Image Tools' | 'Developer Tools'): Tool[] {
+export function getToolsByCategory(category: 'Image Tools' | 'Text Tools'): Tool[] {
   return TOOLS.filter(t => t.category === category);
 }
 
@@ -513,14 +158,14 @@ export function getFeaturedTools(): Tool[] {
   return TOOLS.filter(t => t.badge === 'Popular' || t.badge === 'Essential');
 }
 
-export function getToolsByGroup(category: 'Image Tools' | 'Developer Tools', group: string): Tool[] {
+export function getToolsByGroup(category: 'Image Tools' | 'Text Tools', group: string): Tool[] {
   return TOOLS.filter(t => t.category === category && t.group === group);
 }
 
 export const QUICK_FILTERS = [
-  { id: 'all', label: 'All Tools', count: 37 },
-  { id: 'image-tools', label: 'Image Tools', count: 21 },
-  { id: 'developer-tools', label: 'Developer Tools', count: 16 }
+  { id: 'all', label: 'All Tools', count: 8 },
+  { id: 'image-tools', label: 'Image Tools', count: 3 },
+  { id: 'text-tools', label: 'Text Tools', count: 5 }
 ];
 
 export interface TextTool {
@@ -566,41 +211,5 @@ export const TEXT_TOOLS: TextTool[] = [
     href: '/sort-text-lines/',
     icon: 'arrow-up-down',
     description: 'Sort lines alphabetically (A-Z or Z-A), numerically, or by string length.'
-  },
-  {
-    id: 'text-case-converter',
-    title: 'Text Case Converter',
-    href: '/text-case-converter/',
-    icon: 'case-upper',
-    description: 'Convert text to UPPERCASE, lowercase, Title Case, camelCase, and kebab-case.'
-  },
-  {
-    id: 'find-and-replace-text',
-    title: 'Find & Replace Text',
-    href: '/find-and-replace-text/',
-    icon: 'replace',
-    description: 'Search and replace words, phrases, or regex patterns across multiline text.'
-  },
-  {
-    id: 'add-prefix-suffix',
-    title: 'Add Prefix & Suffix',
-    href: '/add-prefix-suffix/',
-    icon: 'list-plus',
-    description: 'Prepend prefixes or append suffixes to every line of text instantly.'
-  },
-  {
-    id: 'remove-special-characters',
-    title: 'Remove Special Characters',
-    href: '/remove-special-characters/',
-    icon: 'eraser',
-    description: 'Strip symbols, punctuation, emojis, or non-ASCII characters cleanly.'
-  },
-  {
-    id: 'text-to-slug-converter',
-    title: 'Text to Slug Converter',
-    href: '/text-to-slug-converter/',
-    icon: 'link-2',
-    description: 'Convert headings and titles into clean, URL-safe SEO slugs.'
   }
 ];
-

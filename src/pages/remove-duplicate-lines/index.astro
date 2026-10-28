@@ -2,7 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import ToolIcon from '../../components/ToolIcon.astro';
 import DuplicateLineRemover from '../../components/tools/DuplicateLineRemover.astro';
-import PopularRemoveDuplicateLines from '../../components/PopularRemoveDuplicateLines.astro';
 
 // FAQ Data for Schema and Accordion
 const faqs = [
@@ -356,8 +355,6 @@ const ogImage = "https://fasttoolverse.com/og-image.png";
     </div>
   </section>
 
-  <!-- Popular Presets Directory Grid -->
-  <PopularRemoveDuplicateLines />
 
   <!-- Feature Comparison Table Section -->
   <section class="border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/60 py-16 sm:py-24 font-sans">
@@ -693,13 +690,6 @@ Replace: (leave empty)</code></pre>
           <span>Remove Extra Spaces</span>
         </a>
         <a
-          href="/text-case-converter/"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-emerald-500/60 dark:hover:border-emerald-500/60 transition-all duration-150"
-        >
-          <ToolIcon name="case-upper" class="w-4 h-4 text-emerald-500" />
-          <span>Text Case Converter</span>
-        </a>
-        <a
           href="/remove-empty-lines/"
           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-emerald-500/60 dark:hover:border-emerald-500/60 transition-all duration-150"
         >
@@ -714,18 +704,11 @@ Replace: (leave empty)</code></pre>
           <span>Remove Line Breaks</span>
         </a>
         <a
-          href="/find-and-replace-text/"
+          href="/sort-text-lines/"
           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-emerald-500/60 dark:hover:border-emerald-500/60 transition-all duration-150"
         >
-          <ToolIcon name="replace" class="w-4 h-4 text-emerald-500" />
-          <span>Find &amp; Replace Text</span>
-        </a>
-        <a
-          href="/text-to-slug-converter/"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-emerald-500/60 dark:hover:border-emerald-500/60 transition-all duration-150"
-        >
-          <ToolIcon name="link-2" class="w-4 h-4 text-emerald-500" />
-          <span>Text to Slug Converter</span>
+          <ToolIcon name="arrow-up-down" class="w-4 h-4 text-emerald-500" />
+          <span>Sort Text Lines</span>
         </a>
       </div>
     </div>

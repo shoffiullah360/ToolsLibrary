@@ -318,7 +318,7 @@ export const removeLineBreaksPresets: RemoveLineBreaksPreset[] = [
     "name": "Excel Remove Line Breaks in Cell",
     "h1": "Excel Remove Line Breaks in Cell",
     "metaTitle": "Excel Remove Line Breaks in Cell Online – Free Line Joiner | FastToolVerse",
-    "metaDescription": "Instantly remove line breaks in Excel cells online. Strip CHAR(10) and Alt+Enter returns, join rows, and clean spreadsheet tables with 100% privacy.",
+    "metaDescription": "Clean in-cell Alt+Enter line breaks in Excel worksheets. Strip CHAR(10) returns, join multiline cells into single-line strings, and format tables with 100% privacy.",
     "heroSubtitle": "Instantly remove in-cell line breaks in Excel spreadsheets, strip CHAR(10) returns, and normalize multi-line data into clean continuous text with 100% private in-browser processing.",
     "intentDescription": "When processing hundreds of thousands of cells across multiple sheets, manual Find & Replace or dragging formulas is inefficient. A simple Excel VBA macro can clean all selected cells in seconds by stripping Chr(10) and Chr(13) in-place. Copy our verified VBA scripts below. All operations run locally with complete privacy and zero server transmission on every conversion.",
     "config": {

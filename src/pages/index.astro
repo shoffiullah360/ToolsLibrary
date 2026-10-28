@@ -5,12 +5,12 @@ import ToolIcon from '../components/ToolIcon.astro';
 import { TOOLS, CATEGORIES, QUICK_FILTERS } from '../data/tools';
 
 const imageTools = TOOLS.filter((t) => t.category === 'Image Tools');
-const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
+const textTools = TOOLS.filter((t) => t.category === 'Text Tools');
 ---
 
 <Layout
-  title="FastToolVerse — 37 Free Client-Side Developer & Image Tools"
-  description="Free, fast, and 100% private in-browser developer & image tools. Resize images, clean text, and format code with zero server uploads and zero latency."
+  title="FastToolVerse — 8 Free Client-Side Image & Text Tools"
+  description="Free, fast, and 100% private in-browser image and text tools. Resize, compress, and convert images, clean and sort text lines with zero server uploads and zero latency."
 >
   <!-- Hero Section -->
   <section class="relative pt-16 pb-20 md:pt-24 md:pb-28 overflow-hidden">
@@ -21,7 +21,7 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
       
       <!-- Main Headline with Vercel tracking -->
       <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.08] max-w-4xl mx-auto">
-        Every Developer & Image Tool You Need.
+        Every Image & Text Tool You Need.
         <span class="block mt-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-300 dark:to-purple-400 bg-clip-text text-transparent">
           Zero Latency. 100% Private.
         </span>
@@ -29,7 +29,7 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
 
       <!-- Subtitle -->
       <p class="mt-5 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-        Crop, compress, convert, format JSON, decode tokens, and scale social media assets directly on your CPU. Your files and data never touch our servers.
+        Resize, compress, convert images, remove duplicate lines, strip empty rows, and sort text directly on your CPU. Your files and data never touch our servers.
       </p>
 
       <!-- Instant Live Search Bar -->
@@ -41,7 +41,7 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
           <input
             type="text"
             id="main-search-input"
-            placeholder="Search all 37 tools (e.g. 'compress', 'json', 'youtube', 'base64', 'crop')..."
+            placeholder="Search all 8 tools (e.g. 'resizer', 'compressor', 'converter', 'spaces', 'duplicate')..."
             class="w-full bg-transparent px-3.5 py-2.5 text-sm sm:text-base text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none"
             autocomplete="off"
             spellcheck="false"
@@ -101,7 +101,7 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
     </div>
     <h3 class="text-lg font-semibold text-slate-900 dark:text-white">No tools match your query</h3>
     <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
-      We couldn't find any tool matching "<span id="no-results-query" class="font-medium text-slate-800 dark:text-slate-200"></span>". Try searching for "image", "json", "converter", or reset filters.
+      We couldn't find any tool matching "<span id="no-results-query" class="font-medium text-slate-800 dark:text-slate-200"></span>". Try searching for "resizer", "compressor", "duplicate", or reset filters.
     </p>
     <button
       type="button"
@@ -131,17 +131,17 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
       </div>
     </section>
 
-    <!-- CATEGORY 2: DEVELOPER TOOLS SECTION -->
-    <section id="dev-tools-section" class="category-block space-y-8" data-category-section="developer-tools">
+    <!-- CATEGORY 2: TEXT TOOLS SECTION -->
+    <section id="text-tools-section" class="category-block space-y-8" data-category-section="text-tools">
       <div class="pb-4 border-b border-slate-200/90 dark:border-slate-800">
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Developer Tools ({devTools.length})
+          Text Tools ({textTools.length})
         </h2>
       </div>
 
-      <!-- Developer Tools Grid -->
-      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4" data-category-grid="developer-tools">
-        {devTools.map((tool) => (
+      <!-- Text Tools Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4" data-category-grid="text-tools">
+        {textTools.map((tool) => (
           <ToolCard tool={tool} />
         ))}
       </div>
@@ -155,10 +155,10 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
       
       <div class="text-center max-w-3xl mx-auto mb-14">
         <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Why Developers Choose FastToolVerse
+          Why Users Choose FastToolVerse
         </h2>
         <p class="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-400">
-          Traditional utility websites upload your private photos and sensitive JSON payloads to external cloud servers. We rewrote every single tool to execute entirely inside your web browser.
+          Traditional utility websites upload your private photos and sensitive text documents to external cloud servers. We rewrote every single tool to execute entirely inside your web browser.
         </p>
       </div>
 
@@ -173,7 +173,7 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
             Client-Side Image Suite
           </h3>
           <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Harnessing HTML5 Canvas, OffscreenCanvas, and WebAssembly to compress JPEGs, convert PNGs to WebP, and crop passport photos instantly without uploading megabytes over the internet.
+            Harnessing HTML5 Canvas, OffscreenCanvas, and WebAssembly to compress JPEGs, convert PNGs to WebP, and resize images instantly without uploading megabytes over the internet.
           </p>
           <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-400 font-mono pt-2 border-t border-slate-100 dark:border-slate-700/60">
             <li class="flex items-center gap-2">
@@ -183,55 +183,55 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
               <span class="text-emerald-500">✓</span> Exif metadata stripping
             </li>
             <li class="flex items-center gap-2">
-              <span class="text-emerald-500">✓</span> Multi-image batch export
+              <span class="text-emerald-500">✓</span> Multi-format WebP/PNG/JPG conversion
             </li>
           </ul>
         </div>
 
-        <!-- Pillar 2: Developer Utility Hub -->
+        <!-- Pillar 2: Text Cleaning & Manipulation -->
         <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-300 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 space-y-4">
           <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
-            <ToolIcon name="code" class="w-6 h-6" />
+            <ToolIcon name="type" class="w-6 h-6" />
           </div>
           <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
-            Developer Utility Hub
+            Text Cleaning & Sorting
           </h3>
           <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Format, inspect, and validate your code strings in sub-milliseconds. Inspect JWT payloads and decode sensitive Base64 credentials with complete confidence that nothing is logged.
+            Clean, format, and organize text in sub-milliseconds. Deduplicate rows, strip empty whitespace, remove unwanted line breaks, and sort lists with absolute privacy.
           </p>
           <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-400 font-mono pt-2 border-t border-slate-100 dark:border-slate-700/60">
             <li class="flex items-center gap-2">
-              <span class="text-emerald-500">✓</span> Zero server log risk for tokens
+              <span class="text-emerald-500">✓</span> High-speed string deduplication
             </li>
             <li class="flex items-center gap-2">
-              <span class="text-emerald-500">✓</span> RFC 4122 v4 & v7 UUID generation
+              <span class="text-emerald-500">✓</span> Natural, alphabetical & reverse sorting
             </li>
             <li class="flex items-center gap-2">
-              <span class="text-emerald-500">✓</span> Real-time PCRE regex evaluation
+              <span class="text-emerald-500">✓</span> Comprehensive whitespace stripping
             </li>
           </ul>
         </div>
 
-        <!-- Pillar 3: Social Media Precision Specs -->
+        <!-- Pillar 3: 100% Client-Side Privacy -->
         <div class="p-6 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-300 dark:border-slate-700 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-150 space-y-4">
           <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center">
-            <ToolIcon name="camera" class="w-6 h-6" />
+            <ToolIcon name="shield" class="w-6 h-6" />
           </div>
           <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
-            Social Media Precision Resizer
+            Zero Server Uploads
           </h3>
           <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Pre-configured safe-zone canvases for YouTube Banners, Instagram Reels, LinkedIn Covers, TikTok avatars, and X headers. Avoid awkward cropping and blurry compression artifacts.
+            Your files and documents never leave your device. All calculations occur inside the secure sandbox of your browser, making it completely compliant for sensitive work.
           </p>
           <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-400 font-mono pt-2 border-t border-slate-100 dark:border-slate-700/60">
             <li class="flex items-center gap-2">
-              <span class="text-emerald-500">✓</span> YouTube 2560x1440 & 1280x720 specs
+              <span class="text-emerald-500">✓</span> Works offline after load
             </li>
             <li class="flex items-center gap-2">
-              <span class="text-emerald-500">✓</span> Instagram 1080x1350 & 9:16 Reels
+              <span class="text-emerald-500">✓</span> Zero server storage or telemetry
             </li>
             <li class="flex items-center gap-2">
-              <span class="text-emerald-500">✓</span> WhatsApp 500x500 DP & Sticker
+              <span class="text-emerald-500">✓</span> Instant client-side execution
             </li>
           </ul>
         </div>
@@ -277,21 +277,21 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
 
           <details class="group rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-800/80 shadow-sm hover:shadow-md hover:border-blue-600 overflow-hidden transition-all duration-150">
             <summary class="flex items-center justify-between p-4 sm:p-5 font-semibold text-sm sm:text-base text-slate-900 dark:text-white cursor-pointer list-none select-none bg-slate-100/70 dark:bg-slate-800/60 transition-colors">
-              <span>How are social media aspect ratios and resolutions kept accurate?</span>
+              <span>How do the browser-based text tools handle large files?</span>
               <span class="ml-4 flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform duration-200 shrink-0 text-xs">&darr;</span>
             </summary>
             <div class="p-4 sm:p-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-200 dark:border-slate-700/60 bg-white dark:bg-slate-900/40">
-              Our social media tools are updated against the latest developer specifications from YouTube, Meta (Instagram, Facebook, WhatsApp), X (Twitter), ByteDance (TikTok), Pinterest, and LinkedIn to ensure accurate safe-zones and prevent mobile cropping.
+              Our text tools process lists and text lines using streaming algorithms and native JavaScript string primitives directly in memory. You can deduplicate, clean, or sort tens of thousands of lines in milliseconds without sending sensitive data over the network.
             </div>
           </details>
 
           <details class="group rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-800/80 shadow-sm hover:shadow-md hover:border-blue-600 overflow-hidden transition-all duration-150">
             <summary class="flex items-center justify-between p-4 sm:p-5 font-semibold text-sm sm:text-base text-slate-900 dark:text-white cursor-pointer list-none select-none bg-slate-100/70 dark:bg-slate-800/60 transition-colors">
-              <span>Is the JWT Decoder safe for production tokens?</span>
+              <span>Are these tools free to use for commercial projects?</span>
               <span class="ml-4 flex items-center justify-center w-6 h-6 rounded-full bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400 group-open:rotate-180 transition-transform duration-200 shrink-0 text-xs">&darr;</span>
             </summary>
             <div class="p-4 sm:p-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-200 dark:border-slate-700/60 bg-white dark:bg-slate-900/40">
-              Yes. Unlike public web debuggers that send token strings over HTTP POST requests, our JWT Decoder parses the Base64URL header and payload directly in client-side JavaScript, never exposing your API tokens or user claims.
+              Yes, all 8 tools on FastToolVerse are completely free and unrestricted for both personal and commercial use. There are no watermarks, account sign-ups, or subscriptions required.
             </div>
           </details>
         </div>
@@ -330,8 +330,8 @@ const devTools = TOOLS.filter((t) => t.category === 'Developer Tools');
       let matchesCategory = true;
       if (currentCategoryFilter === 'image-tools') {
         matchesCategory = category === 'image tools';
-      } else if (currentCategoryFilter === 'developer-tools') {
-        matchesCategory = category === 'developer tools';
+      } else if (currentCategoryFilter === 'text-tools') {
+        matchesCategory = category === 'text tools';
       }
 
       // Check Search Query match

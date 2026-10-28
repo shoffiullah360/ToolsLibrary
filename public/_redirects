@@ -1,779 +1,1403 @@
-# Cloudflare Pages 301 Permanent Redirects
-# Remove Empty Lines pSEO Route Migration (Old -> Root)
-
-# 1. Renamed Old Slugs to New Punchy Slugs
-/tools/remove-empty-lines/how-to-remove-empty-lines-in-notepad-plus-plus/ /remove-empty-lines-notepad-plus-plus/ 301
-/tools/remove-empty-lines/how-to-remove-empty-lines-in-notepad-plus-plus /remove-empty-lines-notepad-plus-plus/ 301
-/tools/remove-empty-lines/how-to-remove-empty-lines-in-excel/ /remove-empty-lines-excel/ 301
-/tools/remove-empty-lines/how-to-remove-empty-lines-in-excel /remove-empty-lines-excel/ 301
-/tools/remove-empty-lines/how-to-remove-empty-lines-in-word/ /remove-empty-lines-word/ 301
-/tools/remove-empty-lines/how-to-remove-empty-lines-in-word /remove-empty-lines-word/ 301
-/tools/remove-empty-lines/how-to-remove-empty-lines-in-google-docs/ /remove-empty-lines-google-docs/ 301
-/tools/remove-empty-lines/how-to-remove-empty-lines-in-google-docs /remove-empty-lines-google-docs/ 301
-/tools/remove-empty-lines/how-to-remove-empty-lines-in-vscode/ /remove-empty-lines-vscode/ 301
-/tools/remove-empty-lines/how-to-remove-empty-lines-in-vscode /remove-empty-lines-vscode/ 301
-/tools/remove-empty-lines/how-to-remove-empty-lines-in-google-sheets/ /remove-empty-lines-google-sheets/ 301
-/tools/remove-empty-lines/how-to-remove-empty-lines-in-google-sheets /remove-empty-lines-google-sheets/ 301
-/tools/remove-empty-lines/how-to-remove-empty-lines-in-vim/ /remove-empty-lines-vim/ 301
-/tools/remove-empty-lines/how-to-remove-empty-lines-in-vim /remove-empty-lines-vim/ 301
-/tools/remove-empty-lines/remove-empty-lines-in-json/ /remove-empty-lines-json/ 301
-/tools/remove-empty-lines/remove-empty-lines-in-json /remove-empty-lines-json/ 301
-/tools/remove-empty-lines/remove-empty-lines-in-xml/ /remove-empty-lines-xml/ 301
-/tools/remove-empty-lines/remove-empty-lines-in-xml /remove-empty-lines-xml/ 301
-
-# 2. Main Tools Flattened Root Migrations (301 Permanent Redirects)
-/tools/image-resizer/* /image-resizer/:splat 301
-/tools/image-resizer /image-resizer/ 301
-/tools/image-compressor/* /image-compressor/:splat 301
-/tools/image-compressor /image-compressor/ 301
-/tools/image-converter/* /image-converter/:splat 301
-/tools/image-converter /image-converter/ 301
-/tools/remove-extra-spaces/* /remove-extra-spaces/:splat 301
-/tools/remove-extra-spaces /remove-extra-spaces/ 301
-/tools/remove-duplicate-lines/* /remove-duplicate-lines/:splat 301
-/tools/remove-duplicate-lines /remove-duplicate-lines/ 301
-/tools/remove-empty-lines /remove-empty-lines/ 301
-/tools/remove-empty-lines/ /remove-empty-lines/ 301
-/tools/remove-line-breaks/* /remove-line-breaks/:splat 301
-/tools/remove-line-breaks /remove-line-breaks/ 301
-/tools/sort-text-lines/* /sort-text-lines/:splat 301
-/tools/sort-text-lines /sort-text-lines/ 301
-
-# 3. General Fallback for remove-empty-lines presets
-/tools/remove-empty-lines/:slug/ /:slug/ 301
-/tools/remove-empty-lines/:slug /:slug/ 301
-
-# Existing Tool Redirects
-/pinterest-pin-resizer /pinterest-image-resizer/ 301
-/twitter-header-resizer /x-twitter-image-resizer/ 301
-/whatsap /whatsapp-image-resizer/ 301
-/whatsapp-dp-resizer /whatsapp-image-resizer/ 301
-/linkedin-banner-resizer /linkedin-image-resizer/ 301
-/youtube-banner-resizer /youtube-image-resizer/ 301
-/resize-image-for-instagram /instagram-image-resizer/ 301
-/facebook-cover-photo-resizer /facebook-image-resizer/ 301
-/tiktok-profile-picture-resizer /tiktok-image-resizer/ 301
-/bulk-image-resizer /image-resizer/ 301
-/bulk-image-resizer/ /image-resizer/ 301
-/passport-size-photo-resizer /passport-size-photo-2x2-inch/ 301
-/passport-size-photo-resizer/ /passport-size-photo-2x2-inch/ 301
-
 # ==============================================================================
-# Pruned Remove Line Breaks Presets (Forced 301! Permanent Redirects to Tool)
+# FastToolVerse - Redirects & HTTP 410 (Gone) Configurations
 # ==============================================================================
-/remove-line-breaks-in-word-mac/                                                        /remove-line-breaks/  301!
-/remove-line-breaks-in-word-mac                                                         /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-word-mac/                               /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-word-mac                                /remove-line-breaks/  301!
-/remove-line-breaks-in-word-2016/                                                       /remove-line-breaks/  301!
-/remove-line-breaks-in-word-2016                                                        /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-word-2016/                              /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-word-2016                               /remove-line-breaks/  301!
-/remove-all-line-breaks-word-2007/                                                      /remove-line-breaks/  301!
-/remove-all-line-breaks-word-2007                                                       /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-all-line-breaks-word-2007/                             /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-all-line-breaks-word-2007                              /remove-line-breaks/  301!
-/remove-paragraph-breaks-in-word/                                                       /remove-line-breaks/  301!
-/remove-paragraph-breaks-in-word                                                        /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-paragraph-breaks-in-word/                              /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-paragraph-breaks-in-word                               /remove-line-breaks/  301!
-/remove-manual-line-breaks-in-word/                                                     /remove-line-breaks/  301!
-/remove-manual-line-breaks-in-word                                                      /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-manual-line-breaks-in-word/                            /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-manual-line-breaks-in-word                             /remove-line-breaks/  301!
-/remove-spaces-and-line-breaks-word/                                                    /remove-line-breaks/  301!
-/remove-spaces-and-line-breaks-word                                                     /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-spaces-and-line-breaks-word/                           /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-spaces-and-line-breaks-word                            /remove-line-breaks/  301!
-/remove-line-breaks-in-excel-cell/                                                      /excel-remove-line-breaks-in-cell/  301!
-/remove-line-breaks-in-excel-cell                                                       /excel-remove-line-breaks-in-cell/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-excel-cell/                             /excel-remove-line-breaks-in-cell/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-excel-cell                              /excel-remove-line-breaks-in-cell/  301!
-/remove-line-breaks-in-excel-mac/                                                       /remove-line-breaks-excel-mac/  301!
-/remove-line-breaks-in-excel-mac                                                        /remove-line-breaks-excel-mac/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-excel-mac/                              /remove-line-breaks-excel-mac/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-excel-mac                               /remove-line-breaks-excel-mac/  301!
-/remove-line-breaks-in-airtable/                                                        /remove-line-breaks-airtable/  301!
-/remove-line-breaks-in-airtable                                                         /remove-line-breaks-airtable/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-airtable/                               /remove-line-breaks-airtable/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-airtable                                /remove-line-breaks-airtable/  301!
-/remove-line-breaks-in-apple-pages/                                                     /remove-line-breaks-apple-pages/  301!
-/remove-line-breaks-in-apple-pages                                                      /remove-line-breaks-apple-pages/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-apple-pages/                            /remove-line-breaks-apple-pages/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-apple-pages                             /remove-line-breaks-apple-pages/  301!
-/remove-line-breaks-in-scrivener/                                                       /remove-line-breaks-scrivener/  301!
-/remove-line-breaks-in-scrivener                                                        /remove-line-breaks-scrivener/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-scrivener/                               /remove-line-breaks-scrivener/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-scrivener                                /remove-line-breaks-scrivener/  301!
-/remove-line-breaks-c/                                                                  /remove-line-breaks-csharp/  301!
-/remove-line-breaks-c                                                                   /remove-line-breaks-csharp/  301!
-/tools/remove-line-breaks/remove-line-breaks-c/                                         /remove-line-breaks-csharp/  301!
-/tools/remove-line-breaks/remove-line-breaks-c                                          /remove-line-breaks-csharp/  301!
-/remove-line-breaks-in-mysql/                                                           /remove-line-breaks-mysql/  301!
-/remove-line-breaks-in-mysql                                                            /remove-line-breaks-mysql/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-mysql/                                   /remove-line-breaks-mysql/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-mysql                                    /remove-line-breaks-mysql/  301!
-/remove-line-breaks-in-postgresql/                                                      /remove-line-breaks-postgresql/  301!
-/remove-line-breaks-in-postgresql                                                       /remove-line-breaks-postgresql/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-postgresql/                              /remove-line-breaks-postgresql/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-postgresql                               /remove-line-breaks-postgresql/  301!
-/remove-line-breaks-in-sqlite/                                                          /remove-line-breaks-sqlite/  301!
-/remove-line-breaks-in-sqlite                                                           /remove-line-breaks-sqlite/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-sqlite/                                  /remove-line-breaks-sqlite/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-sqlite                                   /remove-line-breaks-sqlite/  301!
-/notepad-remove-line-breaks/                                                            /notepad-plus-plus-remove-line-breaks/  301!
-/notepad-remove-line-breaks                                                             /notepad-plus-plus-remove-line-breaks/  301!
-/tools/remove-line-breaks/notepad-remove-line-breaks/                                   /notepad-plus-plus-remove-line-breaks/  301!
-/tools/remove-line-breaks/notepad-remove-line-breaks                                    /notepad-plus-plus-remove-line-breaks/  301!
-/remove-line-breaks-in-vs-code/                                                         /remove-line-breaks-vs-code/  301!
-/remove-line-breaks-in-vs-code                                                          /remove-line-breaks-vs-code/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-vs-code/                                 /remove-line-breaks-vs-code/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-vs-code                                  /remove-line-breaks-vs-code/  301!
-/remove-line-breaks-in-sublime-text/                                                    /remove-line-breaks-sublime-text/  301!
-/remove-line-breaks-in-sublime-text                                                     /remove-line-breaks-sublime-text/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-sublime-text/                           /remove-line-breaks-sublime-text/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-sublime-text                            /remove-line-breaks-sublime-text/  301!
-/remove-line-breaks-in-vim/                                                             /remove-line-breaks-vim/  301!
-/remove-line-breaks-in-vim                                                              /remove-line-breaks-vim/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-vim/                                    /remove-line-breaks-vim/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-vim                                     /remove-line-breaks-vim/  301!
-/remove-line-breaks-in-notion/                                                          /remove-line-breaks-notion/  301!
-/remove-line-breaks-in-notion                                                           /remove-line-breaks-notion/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-notion/                                  /remove-line-breaks-notion/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-notion                                   /remove-line-breaks-notion/  301!
-/remove-line-breaks-in-excel-2016/                                                      /remove-line-breaks/  301!
-/remove-line-breaks-in-excel-2016                                                       /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-excel-2016/                             /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-excel-2016                              /remove-line-breaks/  301!
-/excel-vba-remove-line-breaks-in-cell/                                                  /remove-line-breaks/  301!
-/excel-vba-remove-line-breaks-in-cell                                                   /remove-line-breaks/  301!
-/tools/remove-line-breaks/excel-vba-remove-line-breaks-in-cell/                         /remove-line-breaks/  301!
-/tools/remove-line-breaks/excel-vba-remove-line-breaks-in-cell                          /remove-line-breaks/  301!
-/remove-line-breaks-text-formatting/                                                    /remove-line-breaks/  301!
-/remove-line-breaks-text-formatting                                                     /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-text-formatting/                           /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-text-formatting                            /remove-line-breaks/  301!
-/remove-line-breaks-from-text/                                                          /remove-line-breaks/  301!
-/remove-line-breaks-from-text                                                           /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-from-text/                                 /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-from-text                                  /remove-line-breaks/  301!
-/remove-line-breaks-excel/                                                              /remove-line-breaks/  301!
-/remove-line-breaks-excel                                                               /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-excel/                                     /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-excel                                      /remove-line-breaks/  301!
-/remove-line-breaks-online-tool/                                                        /remove-line-breaks/  301!
-/remove-line-breaks-online-tool                                                         /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-online-tool/                               /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-online-tool                                /remove-line-breaks/  301!
-/remove-line-breaks-tool/                                                               /remove-line-breaks/  301!
-/remove-line-breaks-tool                                                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-tool/                                      /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-tool                                       /remove-line-breaks/  301!
-/remove-line-breaks-excel-2010/                                                         /remove-line-breaks/  301!
-/remove-line-breaks-excel-2010                                                          /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-excel-2010/                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-excel-2010                                 /remove-line-breaks/  301!
-/remove-line-breaks-in-google-docs/                                                     /remove-line-breaks/  301!
-/remove-line-breaks-in-google-docs                                                      /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-google-docs/                            /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-google-docs                             /remove-line-breaks/  301!
-/google-docs-remove-line-breaks/                                                        /remove-line-breaks/  301!
-/google-docs-remove-line-breaks                                                         /remove-line-breaks/  301!
-/tools/remove-line-breaks/google-docs-remove-line-breaks/                               /remove-line-breaks/  301!
-/tools/remove-line-breaks/google-docs-remove-line-breaks                                /remove-line-breaks/  301!
-/remove-line-breaks-google-sheets-cell/                                                 /remove-line-breaks/  301!
-/remove-line-breaks-google-sheets-cell                                                  /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-google-sheets-cell/                        /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-google-sheets-cell                         /remove-line-breaks/  301!
-/remove-line-breaks-outlook-email/                                                      /remove-line-breaks/  301!
-/remove-line-breaks-outlook-email                                                       /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-outlook-email/                             /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-outlook-email                              /remove-line-breaks/  301!
-/remove-line-breaks-powerpoint/                                                         /remove-line-breaks/  301!
-/remove-line-breaks-powerpoint                                                          /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-powerpoint/                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-powerpoint                                 /remove-line-breaks/  301!
-/remove-unwanted-line-breaks-when-copying-from-pdf/                                     /remove-line-breaks/  301!
-/remove-unwanted-line-breaks-when-copying-from-pdf                                      /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-unwanted-line-breaks-when-copying-from-pdf/            /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-unwanted-line-breaks-when-copying-from-pdf             /remove-line-breaks/  301!
-/remove-line-breaks-from-copied-text/                                                   /remove-line-breaks/  301!
-/remove-line-breaks-from-copied-text                                                    /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-from-copied-text/                          /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-from-copied-text                           /remove-line-breaks/  301!
-/pdf-line-break-character-remover/                                                      /remove-line-breaks/  301!
-/pdf-line-break-character-remover                                                       /remove-line-breaks/  301!
-/tools/remove-line-breaks/pdf-line-break-character-remover/                             /remove-line-breaks/  301!
-/tools/remove-line-breaks/pdf-line-break-character-remover                              /remove-line-breaks/  301!
-/auto-remove-line-breaks-pasted-text/                                                   /remove-line-breaks/  301!
-/auto-remove-line-breaks-pasted-text                                                    /remove-line-breaks/  301!
-/tools/remove-line-breaks/auto-remove-line-breaks-pasted-text/                          /remove-line-breaks/  301!
-/tools/remove-line-breaks/auto-remove-line-breaks-pasted-text                           /remove-line-breaks/  301!
-/remove-enter-from-text/                                                                /remove-line-breaks/  301!
-/remove-enter-from-text                                                                 /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-enter-from-text/                                       /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-enter-from-text                                        /remove-line-breaks/  301!
-/delete-all-enters-from-text/                                                           /remove-line-breaks/  301!
-/delete-all-enters-from-text                                                            /remove-line-breaks/  301!
-/tools/remove-line-breaks/delete-all-enters-from-text/                                  /remove-line-breaks/  301!
-/tools/remove-line-breaks/delete-all-enters-from-text                                   /remove-line-breaks/  301!
-/remove-returns-and-spaces/                                                             /remove-line-breaks/  301!
-/remove-returns-and-spaces                                                              /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-returns-and-spaces/                                    /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-returns-and-spaces                                     /remove-line-breaks/  301!
-/remove-carriage-returns-from-text-file/                                                /remove-line-breaks/  301!
-/remove-carriage-returns-from-text-file                                                 /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-carriage-returns-from-text-file/                       /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-carriage-returns-from-text-file                        /remove-line-breaks/  301!
-/remove-end-of-line-breaks/                                                             /remove-line-breaks/  301!
-/remove-end-of-line-breaks                                                              /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-end-of-line-breaks/                                    /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-end-of-line-breaks                                     /remove-line-breaks/  301!
-/replace-line-breaks-with-commas/                                                       /remove-line-breaks/  301!
-/replace-line-breaks-with-commas                                                        /remove-line-breaks/  301!
-/tools/remove-line-breaks/replace-line-breaks-with-commas/                              /remove-line-breaks/  301!
-/tools/remove-line-breaks/replace-line-breaks-with-commas                               /remove-line-breaks/  301!
-/replace-line-breaks-with-spaces/                                                       /remove-line-breaks/  301!
-/replace-line-breaks-with-spaces                                                        /remove-line-breaks/  301!
-/tools/remove-line-breaks/replace-line-breaks-with-spaces/                              /remove-line-breaks/  301!
-/tools/remove-line-breaks/replace-line-breaks-with-spaces                               /remove-line-breaks/  301!
-/replace-line-break-with-semicolon/                                                     /remove-line-breaks/  301!
-/replace-line-break-with-semicolon                                                      /remove-line-breaks/  301!
-/tools/remove-line-breaks/replace-line-break-with-semicolon/                            /remove-line-breaks/  301!
-/tools/remove-line-breaks/replace-line-break-with-semicolon                             /remove-line-breaks/  301!
-/replace-line-breaks-with-comma-excel/                                                  /remove-line-breaks/  301!
-/replace-line-breaks-with-comma-excel                                                   /remove-line-breaks/  301!
-/tools/remove-line-breaks/replace-line-breaks-with-comma-excel/                         /remove-line-breaks/  301!
-/tools/remove-line-breaks/replace-line-breaks-with-comma-excel                          /remove-line-breaks/  301!
-/replace-line-breaks-with-space-word/                                                   /remove-line-breaks/  301!
-/replace-line-breaks-with-space-word                                                    /remove-line-breaks/  301!
-/tools/remove-line-breaks/replace-line-breaks-with-space-word/                          /remove-line-breaks/  301!
-/tools/remove-line-breaks/replace-line-breaks-with-space-word                           /remove-line-breaks/  301!
-/replace-line-breaks-with-comma-notepad-plus-plus/                                      /remove-line-breaks/  301!
-/replace-line-breaks-with-comma-notepad-plus-plus                                       /remove-line-breaks/  301!
-/tools/remove-line-breaks/replace-line-breaks-with-comma-notepad-plus-plus/             /remove-line-breaks/  301!
-/tools/remove-line-breaks/replace-line-breaks-with-comma-notepad-plus-plus              /remove-line-breaks/  301!
-/combine-multiple-lines-into-one/                                                       /remove-line-breaks/  301!
-/combine-multiple-lines-into-one                                                        /remove-line-breaks/  301!
-/tools/remove-line-breaks/combine-multiple-lines-into-one/                              /remove-line-breaks/  301!
-/tools/remove-line-breaks/combine-multiple-lines-into-one                               /remove-line-breaks/  301!
-/combine-multiple-rows-into-one-cell-separated-by-comma/                                /remove-line-breaks/  301!
-/combine-multiple-rows-into-one-cell-separated-by-comma                                 /remove-line-breaks/  301!
-/tools/remove-line-breaks/combine-multiple-rows-into-one-cell-separated-by-comma/       /remove-line-breaks/  301!
-/tools/remove-line-breaks/combine-multiple-rows-into-one-cell-separated-by-comma        /remove-line-breaks/  301!
-/combine-multiple-rows-into-one-excel/                                                  /remove-line-breaks/  301!
-/combine-multiple-rows-into-one-excel                                                   /remove-line-breaks/  301!
-/tools/remove-line-breaks/combine-multiple-rows-into-one-excel/                         /remove-line-breaks/  301!
-/tools/remove-line-breaks/combine-multiple-rows-into-one-excel                          /remove-line-breaks/  301!
-/combine-multiple-rows-into-one-sql/                                                    /remove-line-breaks/  301!
-/combine-multiple-rows-into-one-sql                                                     /remove-line-breaks/  301!
-/tools/remove-line-breaks/combine-multiple-rows-into-one-sql/                           /remove-line-breaks/  301!
-/tools/remove-line-breaks/combine-multiple-rows-into-one-sql                            /remove-line-breaks/  301!
-/align-text-in-one-line-online/                                                         /remove-line-breaks/  301!
-/align-text-in-one-line-online                                                          /remove-line-breaks/  301!
-/tools/remove-line-breaks/align-text-in-one-line-online/                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/align-text-in-one-line-online                                 /remove-line-breaks/  301!
-/one-line-online-converter/                                                             /remove-line-breaks/  301!
-/one-line-online-converter                                                              /remove-line-breaks/  301!
-/tools/remove-line-breaks/one-line-online-converter/                                    /remove-line-breaks/  301!
-/tools/remove-line-breaks/one-line-online-converter                                     /remove-line-breaks/  301!
-/convert-line-breaks-to-n/                                                              /remove-line-breaks/  301!
-/convert-line-breaks-to-n                                                               /remove-line-breaks/  301!
-/tools/remove-line-breaks/convert-line-breaks-to-n/                                     /remove-line-breaks/  301!
-/tools/remove-line-breaks/convert-line-breaks-to-n                                      /remove-line-breaks/  301!
-/remove-line-breaks-and-keep-paragraphs/                                                /remove-line-breaks/  301!
-/remove-line-breaks-and-keep-paragraphs                                                 /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-and-keep-paragraphs/                       /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-and-keep-paragraphs                        /remove-line-breaks/  301!
-/remove-spaces-and-line-breaks/                                                         /remove-line-breaks/  301!
-/remove-spaces-and-line-breaks                                                          /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-spaces-and-line-breaks/                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-spaces-and-line-breaks                                 /remove-line-breaks/  301!
-/remove-spaces-and-new-lines/                                                           /remove-line-breaks/  301!
-/remove-spaces-and-new-lines                                                            /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-spaces-and-new-lines/                                  /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-spaces-and-new-lines                                   /remove-line-breaks/  301!
-/remove-extra-line-breaks/                                                              /remove-line-breaks/  301!
-/remove-extra-line-breaks                                                               /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-extra-line-breaks/                                     /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-extra-line-breaks                                      /remove-line-breaks/  301!
-/remove-trailing-line-breaks/                                                           /remove-line-breaks/  301!
-/remove-trailing-line-breaks                                                            /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-trailing-line-breaks/                                  /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-trailing-line-breaks                                   /remove-line-breaks/  301!
-/remove-line-breaks-notepad-plus-plus/                                                  /remove-line-breaks/  301!
-/remove-line-breaks-notepad-plus-plus                                                   /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-notepad-plus-plus/                         /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-notepad-plus-plus                          /remove-line-breaks/  301!
-/remove-enter-in-notepad/                                                               /remove-line-breaks/  301!
-/remove-enter-in-notepad                                                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-enter-in-notepad/                                      /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-enter-in-notepad                                       /remove-line-breaks/  301!
-/windows-notepad-remove-line-breaks/                                                    /remove-line-breaks/  301!
-/windows-notepad-remove-line-breaks                                                     /remove-line-breaks/  301!
-/tools/remove-line-breaks/windows-notepad-remove-line-breaks/                           /remove-line-breaks/  301!
-/tools/remove-line-breaks/windows-notepad-remove-line-breaks                            /remove-line-breaks/  301!
-/wordpad-remove-line-breaks/                                                            /remove-line-breaks/  301!
-/wordpad-remove-line-breaks                                                             /remove-line-breaks/  301!
-/tools/remove-line-breaks/wordpad-remove-line-breaks/                                   /remove-line-breaks/  301!
-/tools/remove-line-breaks/wordpad-remove-line-breaks                                    /remove-line-breaks/  301!
-/textedit-remove-all-line-breaks-mac/                                                   /remove-line-breaks/  301!
-/textedit-remove-all-line-breaks-mac                                                    /remove-line-breaks/  301!
-/tools/remove-line-breaks/textedit-remove-all-line-breaks-mac/                          /remove-line-breaks/  301!
-/tools/remove-line-breaks/textedit-remove-all-line-breaks-mac                           /remove-line-breaks/  301!
-/remove-line-breaks-textwrangler/                                                       /remove-line-breaks/  301!
-/remove-line-breaks-textwrangler                                                        /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-textwrangler/                              /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-textwrangler                               /remove-line-breaks/  301!
-/dreamweaver-remove-line-breaks/                                                        /remove-line-breaks/  301!
-/dreamweaver-remove-line-breaks                                                         /remove-line-breaks/  301!
-/tools/remove-line-breaks/dreamweaver-remove-line-breaks/                               /remove-line-breaks/  301!
-/tools/remove-line-breaks/dreamweaver-remove-line-breaks                                /remove-line-breaks/  301!
-/collapse-lines-in-vscode/                                                              /remove-line-breaks/  301!
-/collapse-lines-in-vscode                                                               /remove-line-breaks/  301!
-/tools/remove-line-breaks/collapse-lines-in-vscode/                                     /remove-line-breaks/  301!
-/tools/remove-line-breaks/collapse-lines-in-vscode                                      /remove-line-breaks/  301!
-/collapse-all-lines-in-vscode/                                                          /remove-line-breaks/  301!
-/collapse-all-lines-in-vscode                                                           /remove-line-breaks/  301!
-/tools/remove-line-breaks/collapse-all-lines-in-vscode/                                 /remove-line-breaks/  301!
-/tools/remove-line-breaks/collapse-all-lines-in-vscode                                  /remove-line-breaks/  301!
-/collapse-lines-in-notepad-plus-plus/                                                   /remove-line-breaks/  301!
-/collapse-lines-in-notepad-plus-plus                                                    /remove-line-breaks/  301!
-/tools/remove-line-breaks/collapse-lines-in-notepad-plus-plus/                          /remove-line-breaks/  301!
-/tools/remove-line-breaks/collapse-lines-in-notepad-plus-plus                           /remove-line-breaks/  301!
-/collapse-lines-in-vim/                                                                 /remove-line-breaks/  301!
-/collapse-lines-in-vim                                                                  /remove-line-breaks/  301!
-/tools/remove-line-breaks/collapse-lines-in-vim/                                        /remove-line-breaks/  301!
-/tools/remove-line-breaks/collapse-lines-in-vim                                         /remove-line-breaks/  301!
-/remove-line-breaks-intellij/                                                           /remove-line-breaks/  301!
-/remove-line-breaks-intellij                                                            /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-intellij/                                  /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-intellij                                   /remove-line-breaks/  301!
-/remove-line-breaks-visual-studio/                                                      /remove-line-breaks/  301!
-/remove-line-breaks-visual-studio                                                       /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-visual-studio/                             /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-visual-studio                              /remove-line-breaks/  301!
-/remove-line-breaks-in-atom-editor/                                                     /remove-line-breaks/  301!
-/remove-line-breaks-in-atom-editor                                                      /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-atom-editor/                            /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-atom-editor                             /remove-line-breaks/  301!
-/remove-line-breaks-in-eclipse/                                                         /remove-line-breaks/  301!
-/remove-line-breaks-in-eclipse                                                          /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-eclipse/                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-eclipse                                 /remove-line-breaks/  301!
-/remove-line-breaks-android-studio/                                                     /remove-line-breaks/  301!
-/remove-line-breaks-android-studio                                                      /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-android-studio/                            /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-android-studio                             /remove-line-breaks/  301!
-/remove-line-breaks-xcode/                                                              /remove-line-breaks/  301!
-/remove-line-breaks-xcode                                                               /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-xcode/                                     /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-xcode                                      /remove-line-breaks/  301!
-/remove-new-line-from-string-python/                                                    /remove-line-breaks/  301!
-/remove-new-line-from-string-python                                                     /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-new-line-from-string-python/                           /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-new-line-from-string-python                            /remove-line-breaks/  301!
-/javascript-remove-line-breaks/                                                         /remove-line-breaks/  301!
-/javascript-remove-line-breaks                                                          /remove-line-breaks/  301!
-/tools/remove-line-breaks/javascript-remove-line-breaks/                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/javascript-remove-line-breaks                                 /remove-line-breaks/  301!
-/remove-line-breaks-in-c-sharp/                                                         /remove-line-breaks/  301!
-/remove-line-breaks-in-c-sharp                                                          /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-c-sharp/                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-c-sharp                                 /remove-line-breaks/  301!
-/remove-line-breaks-java-string/                                                        /remove-line-breaks/  301!
-/remove-line-breaks-java-string                                                         /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-java-string/                               /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-java-string                                /remove-line-breaks/  301!
-/remove-line-breaks-golang-string/                                                      /remove-line-breaks/  301!
-/remove-line-breaks-golang-string                                                       /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-golang-string/                             /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-golang-string                              /remove-line-breaks/  301!
-/remove-line-breaks-ruby-string/                                                        /remove-line-breaks/  301!
-/remove-line-breaks-ruby-string                                                         /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-ruby-string/                               /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-ruby-string                                /remove-line-breaks/  301!
-/remove-line-breaks-in-bash/                                                            /remove-line-breaks/  301!
-/remove-line-breaks-in-bash                                                             /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-bash/                                   /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-bash                                    /remove-line-breaks/  301!
-/remove-line-breaks-linux-sed/                                                          /remove-line-breaks/  301!
-/remove-line-breaks-linux-sed                                                           /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-linux-sed/                                 /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-linux-sed                                  /remove-line-breaks/  301!
-/remove-line-breaks-linux-awk/                                                          /remove-line-breaks/  301!
-/remove-line-breaks-linux-awk                                                           /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-linux-awk/                                 /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-linux-awk                                  /remove-line-breaks/  301!
-/remove-line-breaks-powershell/                                                         /remove-line-breaks/  301!
-/remove-line-breaks-powershell                                                          /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-powershell/                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-powershell                                 /remove-line-breaks/  301!
-/remove-line-breaks-regex-pattern/                                                      /remove-line-breaks/  301!
-/remove-line-breaks-regex-pattern                                                       /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-regex-pattern/                             /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-regex-pattern                              /remove-line-breaks/  301!
-/remove-line-breaks-from-json-string/                                                   /remove-line-breaks/  301!
-/remove-line-breaks-from-json-string                                                    /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-from-json-string/                          /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-from-json-string                           /remove-line-breaks/  301!
-/remove-line-breaks-json-payload/                                                       /remove-line-breaks/  301!
-/remove-line-breaks-json-payload                                                        /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-json-payload/                              /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-json-payload                               /remove-line-breaks/  301!
-/remove-line-breaks-csv-file/                                                           /remove-line-breaks/  301!
-/remove-line-breaks-csv-file                                                            /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-csv-file/                                  /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-csv-file                                   /remove-line-breaks/  301!
-/remove-line-breaks-from-html/                                                          /remove-line-breaks/  301!
-/remove-line-breaks-from-html                                                           /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-from-html/                                 /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-from-html                                  /remove-line-breaks/  301!
-/remove-line-breaks-xml-string/                                                         /remove-line-breaks/  301!
-/remove-line-breaks-xml-string                                                          /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-xml-string/                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-xml-string                                 /remove-line-breaks/  301!
-/remove-line-breaks-yaml-file/                                                          /remove-line-breaks/  301!
-/remove-line-breaks-yaml-file                                                           /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-yaml-file/                                 /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-yaml-file                                  /remove-line-breaks/  301!
-/remove-line-breaks-sql-query/                                                          /remove-line-breaks/  301!
-/remove-line-breaks-sql-query                                                           /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-sql-query/                                 /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-sql-query                                  /remove-line-breaks/  301!
-/remove-line-breaks-sql-server/                                                         /remove-line-breaks/  301!
-/remove-line-breaks-sql-server                                                          /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-sql-server/                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-sql-server                                 /remove-line-breaks/  301!
-/remove-line-breaks-oracle-sql/                                                         /remove-line-breaks/  301!
-/remove-line-breaks-oracle-sql                                                          /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-oracle-sql/                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-oracle-sql                                 /remove-line-breaks/  301!
-/remove-line-breaks-dbeaver/                                                            /remove-line-breaks/  301!
-/remove-line-breaks-dbeaver                                                             /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-dbeaver/                                   /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-dbeaver                                    /remove-line-breaks/  301!
-/remove-line-breaks-from-base64/                                                        /remove-line-breaks/  301!
-/remove-line-breaks-from-base64                                                         /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-from-base64/                               /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-from-base64                                /remove-line-breaks/  301!
-/remove-line-breaks-from-text-file/                                                     /remove-line-breaks/  301!
-/remove-line-breaks-from-text-file                                                      /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-from-text-file/                            /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-from-text-file                             /remove-line-breaks/  301!
-/remove-line-breaks-plain-text/                                                         /remove-line-breaks/  301!
-/remove-line-breaks-plain-text                                                          /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-plain-text/                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-plain-text                                 /remove-line-breaks/  301!
-/excel-remove-line-breaks/                                                              /remove-line-breaks/  301!
-/excel-remove-line-breaks                                                               /remove-line-breaks/  301!
-/tools/remove-line-breaks/excel-remove-line-breaks/                                     /remove-line-breaks/  301!
-/tools/remove-line-breaks/excel-remove-line-breaks                                      /remove-line-breaks/  301!
-/how-to-remove-line-breaks-in-excel-formula/                                            /remove-line-breaks/  301!
-/how-to-remove-line-breaks-in-excel-formula                                             /remove-line-breaks/  301!
-/tools/remove-line-breaks/how-to-remove-line-breaks-in-excel-formula/                   /remove-line-breaks/  301!
-/tools/remove-line-breaks/how-to-remove-line-breaks-in-excel-formula                    /remove-line-breaks/  301!
-/how-to-remove-line-breaks-in-notepad-plus-plus/                                        /remove-line-breaks/  301!
-/how-to-remove-line-breaks-in-notepad-plus-plus                                         /remove-line-breaks/  301!
-/tools/remove-line-breaks/how-to-remove-line-breaks-in-notepad-plus-plus/               /remove-line-breaks/  301!
-/tools/remove-line-breaks/how-to-remove-line-breaks-in-notepad-plus-plus                /remove-line-breaks/  301!
-/remove-line-breaks-in-notepad-plus-plus/                                               /remove-line-breaks/  301!
-/remove-line-breaks-in-notepad-plus-plus                                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-notepad-plus-plus/                      /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-in-notepad-plus-plus                       /remove-line-breaks/  301!
-/remove-line-breaks-linux/                                                              /remove-line-breaks/  301!
-/remove-line-breaks-linux                                                               /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-linux/                                     /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-linux                                      /remove-line-breaks/  301!
-/excel-formula-remove-line-breaks/                                                      /remove-line-breaks/  301!
-/excel-formula-remove-line-breaks                                                       /remove-line-breaks/  301!
-/tools/remove-line-breaks/excel-formula-remove-line-breaks/                             /remove-line-breaks/  301!
-/tools/remove-line-breaks/excel-formula-remove-line-breaks                              /remove-line-breaks/  301!
-/remove-line-breaks-bash/                                                               /remove-line-breaks/  301!
-/remove-line-breaks-bash                                                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-bash/                                      /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-bash                                       /remove-line-breaks/  301!
-/remove-line-breaks-cpp/                                                                /remove-line-breaks/  301!
-/remove-line-breaks-cpp                                                                 /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-cpp/                                       /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-cpp                                        /remove-line-breaks/  301!
-/remove-line-breaks-r/                                                                  /remove-line-breaks/  301!
-/remove-line-breaks-r                                                                   /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-r/                                         /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-r                                          /remove-line-breaks/  301!
-/remove-line-breaks-ruby/                                                               /remove-line-breaks/  301!
-/remove-line-breaks-ruby                                                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-ruby/                                      /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-ruby                                       /remove-line-breaks/  301!
-/remove-line-breaks-swift/                                                              /remove-line-breaks/  301!
-/remove-line-breaks-swift                                                               /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-swift/                                     /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-swift                                      /remove-line-breaks/  301!
-/remove-line-breaks-go/                                                                 /remove-line-breaks/  301!
-/remove-line-breaks-go                                                                  /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-go/                                        /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-go                                         /remove-line-breaks/  301!
-/remove-line-breaks-kotlin/                                                             /remove-line-breaks/  301!
-/remove-line-breaks-kotlin                                                              /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-kotlin/                                    /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-kotlin                                     /remove-line-breaks/  301!
-/remove-line-breaks-rust/                                                               /remove-line-breaks/  301!
-/remove-line-breaks-rust                                                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-rust/                                      /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-rust                                       /remove-line-breaks/  301!
-/remove-line-breaks-perl/                                                               /remove-line-breaks/  301!
-/remove-line-breaks-perl                                                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-perl/                                      /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-perl                                       /remove-line-breaks/  301!
-/remove-line-breaks-scala/                                                              /remove-line-breaks/  301!
-/remove-line-breaks-scala                                                               /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-scala/                                     /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-scala                                      /remove-line-breaks/  301!
-/remove-line-breaks-sed/                                                                /remove-line-breaks/  301!
-/remove-line-breaks-sed                                                                 /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-sed/                                       /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-sed                                        /remove-line-breaks/  301!
-/remove-line-breaks-awk/                                                                /remove-line-breaks/  301!
-/remove-line-breaks-awk                                                                 /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-awk/                                       /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-awk                                        /remove-line-breaks/  301!
-/remove-line-breaks-tr/                                                                 /remove-line-breaks/  301!
-/remove-line-breaks-tr                                                                  /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-tr/                                        /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-tr                                         /remove-line-breaks/  301!
-/remove-line-breaks-grep/                                                               /remove-line-breaks/  301!
-/remove-line-breaks-grep                                                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-grep/                                      /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-grep                                       /remove-line-breaks/  301!
-/remove-line-breaks-curl/                                                               /remove-line-breaks/  301!
-/remove-line-breaks-curl                                                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-curl/                                      /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-curl                                       /remove-line-breaks/  301!
-/remove-line-breaks-docker/                                                             /remove-line-breaks/  301!
-/remove-line-breaks-docker                                                              /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-docker/                                    /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-docker                                     /remove-line-breaks/  301!
-/remove-line-breaks-postman/                                                            /remove-line-breaks/  301!
-/remove-line-breaks-postman                                                             /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-postman/                                   /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-postman                                    /remove-line-breaks/  301!
-/remove-line-breaks-git/                                                                /remove-line-breaks/  301!
-/remove-line-breaks-git                                                                 /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-git/                                       /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-git                                        /remove-line-breaks/  301!
-/remove-line-breaks-oracle/                                                             /remove-line-breaks/  301!
-/remove-line-breaks-oracle                                                              /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-oracle/                                    /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-oracle                                     /remove-line-breaks/  301!
-/remove-line-breaks-slack/                                                              /remove-line-breaks/  301!
-/remove-line-breaks-slack                                                               /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-slack/                                     /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-slack                                      /remove-line-breaks/  301!
-/remove-line-breaks-discord/                                                            /remove-line-breaks/  301!
-/remove-line-breaks-discord                                                             /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-discord/                                   /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-discord                                    /remove-line-breaks/  301!
-/remove-line-breaks-obsidian/                                                           /remove-line-breaks/  301!
-/remove-line-breaks-obsidian                                                            /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-obsidian/                                  /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-obsidian                                   /remove-line-breaks/  301!
-/remove-line-breaks-zsh/                                                                /remove-line-breaks/  301!
-/remove-line-breaks-zsh                                                                 /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-zsh/                                       /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-zsh                                        /remove-line-breaks/  301!
-/remove-line-breaks-fish/                                                               /remove-line-breaks/  301!
-/remove-line-breaks-fish                                                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-fish/                                      /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-fish                                       /remove-line-breaks/  301!
-/remove-line-breaks-nano/                                                               /remove-line-breaks/  301!
-/remove-line-breaks-nano                                                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-nano/                                      /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-nano                                       /remove-line-breaks/  301!
-/remove-line-breaks-emacs/                                                              /remove-line-breaks/  301!
-/remove-line-breaks-emacs                                                               /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-emacs/                                     /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-emacs                                      /remove-line-breaks/  301!
-/remove-line-breaks-kubernetes/                                                         /remove-line-breaks/  301!
-/remove-line-breaks-kubernetes                                                          /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-kubernetes/                                /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-kubernetes                                 /remove-line-breaks/  301!
-/remove-line-breaks-terraform/                                                          /remove-line-breaks/  301!
-/remove-line-breaks-terraform                                                           /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-terraform/                                 /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-terraform                                  /remove-line-breaks/  301!
-/remove-line-breaks-ansible/                                                            /remove-line-breaks/  301!
-/remove-line-breaks-ansible                                                             /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-ansible/                                   /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-ansible                                    /remove-line-breaks/  301!
-/remove-line-breaks-jenkins/                                                            /remove-line-breaks/  301!
-/remove-line-breaks-jenkins                                                             /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-jenkins/                                   /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-jenkins                                    /remove-line-breaks/  301!
-/remove-line-breaks-email/                                                              /remove-line-breaks/  301!
-/remove-line-breaks-email                                                               /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-email/                                     /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-email                                      /remove-line-breaks/  301!
-/remove-line-breaks-gmail/                                                              /remove-line-breaks/  301!
-/remove-line-breaks-gmail                                                               /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-gmail/                                     /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-gmail                                      /remove-line-breaks/  301!
-/remove-line-breaks-outlook/                                                            /remove-line-breaks/  301!
-/remove-line-breaks-outlook                                                             /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-outlook/                                   /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-outlook                                    /remove-line-breaks/  301!
-/remove-line-breaks-linkedin/                                                           /remove-line-breaks/  301!
-/remove-line-breaks-linkedin                                                            /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-linkedin/                                  /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-linkedin                                   /remove-line-breaks/  301!
-/remove-line-breaks-twitter-x/                                                          /remove-line-breaks/  301!
-/remove-line-breaks-twitter-x                                                           /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-twitter-x/                                 /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-twitter-x                                  /remove-line-breaks/  301!
-/remove-line-breaks-whatsapp/                                                           /remove-line-breaks/  301!
-/remove-line-breaks-whatsapp                                                            /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-whatsapp/                                  /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-whatsapp                                   /remove-line-breaks/  301!
-/remove-line-breaks-wordpad/                                                            /remove-line-breaks/  301!
-/remove-line-breaks-wordpad                                                             /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-wordpad/                                   /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-wordpad                                    /remove-line-breaks/  301!
-/remove-line-breaks-windows-notepad/                                                    /remove-line-breaks/  301!
-/remove-line-breaks-windows-notepad                                                     /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-windows-notepad/                           /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-windows-notepad                            /remove-line-breaks/  301!
-/convert-line-endings-to-unix/                                                          /remove-line-breaks/  301!
-/convert-line-endings-to-unix                                                           /remove-line-breaks/  301!
-/tools/remove-line-breaks/convert-line-endings-to-unix/                                 /remove-line-breaks/  301!
-/tools/remove-line-breaks/convert-line-endings-to-unix                                  /remove-line-breaks/  301!
-/remove-crlf-carriage-returns/                                                          /remove-line-breaks/  301!
-/remove-crlf-carriage-returns                                                           /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-crlf-carriage-returns/                                 /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-crlf-carriage-returns                                  /remove-line-breaks/  301!
-/remove-spaces-between-lines/                                                           /remove-line-breaks/  301!
-/remove-spaces-between-lines                                                            /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-spaces-between-lines/                                  /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-spaces-between-lines                                   /remove-line-breaks/  301!
-/clean-line-breaks-instagram/                                                           /remove-line-breaks/  301!
-/clean-line-breaks-instagram                                                            /remove-line-breaks/  301!
-/tools/remove-line-breaks/clean-line-breaks-instagram/                                  /remove-line-breaks/  301!
-/tools/remove-line-breaks/clean-line-breaks-instagram                                   /remove-line-breaks/  301!
-/remove-line-breaks-whatsapp-message/                                                   /remove-line-breaks/  301!
-/remove-line-breaks-whatsapp-message                                                    /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-whatsapp-message/                          /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-whatsapp-message                           /remove-line-breaks/  301!
-/remove-line-breaks-linkedin-post/                                                      /remove-line-breaks/  301!
-/remove-line-breaks-linkedin-post                                                       /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-linkedin-post/                             /remove-line-breaks/  301!
-/tools/remove-line-breaks/remove-line-breaks-linkedin-post                              /remove-line-breaks/  301!
 
-# ==============================================================================
-# Pruned Remove Duplicate Lines Presets (Forced 301! Permanent Redirects to Tool)
-# ==============================================================================
-/linux-remove-duplicate-lines-from-file/                                                /remove-duplicate-lines/  301!
-/linux-remove-duplicate-lines-from-file                                                 /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/linux-remove-duplicate-lines-from-file/                   /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/linux-remove-duplicate-lines-from-file                    /remove-duplicate-lines/  301!
-/bash-remove-duplicate-lines-from-file/                                                 /remove-duplicate-lines/  301!
-/bash-remove-duplicate-lines-from-file                                                  /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/bash-remove-duplicate-lines-from-file/                    /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/bash-remove-duplicate-lines-from-file                     /remove-duplicate-lines/  301!
-/vscode-remove-duplicate-lines/                                                         /remove-duplicate-lines/  301!
-/vscode-remove-duplicate-lines                                                          /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/vscode-remove-duplicate-lines/                            /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/vscode-remove-duplicate-lines                             /remove-duplicate-lines/  301!
-/linux-remove-duplicate-lines/                                                          /remove-duplicate-lines/  301!
-/linux-remove-duplicate-lines                                                           /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/linux-remove-duplicate-lines/                             /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/linux-remove-duplicate-lines                              /remove-duplicate-lines/  301!
-/bash-remove-duplicate-lines/                                                           /remove-duplicate-lines/  301!
-/bash-remove-duplicate-lines                                                            /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/bash-remove-duplicate-lines/                              /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/bash-remove-duplicate-lines                               /remove-duplicate-lines/  301!
-/sed-remove-duplicate-lines/                                                            /remove-duplicate-lines/  301!
-/sed-remove-duplicate-lines                                                             /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/sed-remove-duplicate-lines/                               /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/sed-remove-duplicate-lines                                /remove-duplicate-lines/  301!
-/remove-duplicate-lines-from-file-linux/                                                /remove-duplicate-lines/  301!
-/remove-duplicate-lines-from-file-linux                                                 /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-from-file-linux/                   /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-from-file-linux                    /remove-duplicate-lines/  301!
-/excel-remove-duplicate-lines/                                                          /remove-duplicate-lines/  301!
-/excel-remove-duplicate-lines                                                           /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/excel-remove-duplicate-lines/                             /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/excel-remove-duplicate-lines                              /remove-duplicate-lines/  301!
-/remove-duplicate-lines-bash/                                                           /remove-duplicate-lines/  301!
-/remove-duplicate-lines-bash                                                            /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-bash/                              /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-bash                               /remove-duplicate-lines/  301!
-/remove-duplicate-lines-linux/                                                          /remove-duplicate-lines/  301!
-/remove-duplicate-lines-linux                                                           /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-linux/                             /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-linux                              /remove-duplicate-lines/  301!
-/remove-duplicate-lines-in-dbeaver/                                                     /remove-duplicate-lines/  301!
-/remove-duplicate-lines-in-dbeaver                                                      /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-in-dbeaver/                        /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-in-dbeaver                         /remove-duplicate-lines/  301!
-/remove-duplicate-lines-in-mac-textedit/                                                /remove-duplicate-lines/  301!
-/remove-duplicate-lines-in-mac-textedit                                                 /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-in-mac-textedit/                   /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-in-mac-textedit                    /remove-duplicate-lines/  301!
-/remove-duplicate-lines-from-txt-file/                                                  /remove-duplicate-lines/  301!
-/remove-duplicate-lines-from-txt-file                                                   /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-from-txt-file/                     /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-from-txt-file                      /remove-duplicate-lines/  301!
-/remove-duplicate-lines-in-csv-file/                                                    /remove-duplicate-lines/  301!
-/remove-duplicate-lines-in-csv-file                                                     /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-in-csv-file/                       /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-in-csv-file                        /remove-duplicate-lines/  301!
-/remove-duplicate-lines-from-tsv-file/                                                  /remove-duplicate-lines/  301!
-/remove-duplicate-lines-from-tsv-file                                                   /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-from-tsv-file/                     /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-from-tsv-file                      /remove-duplicate-lines/  301!
-/remove-duplicate-domains-list/                                                         /remove-duplicate-lines/  301!
-/remove-duplicate-domains-list                                                          /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-domains-list/                            /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-domains-list                             /remove-duplicate-lines/  301!
-/remove-duplicate-names-from-list/                                                      /remove-duplicate-lines/  301!
-/remove-duplicate-names-from-list                                                       /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-names-from-list/                         /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-names-from-list                          /remove-duplicate-lines/  301!
-/remove-duplicate-ids-from-list/                                                        /remove-duplicate-lines/  301!
-/remove-duplicate-ids-from-list                                                         /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-ids-from-list/                           /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-ids-from-list                            /remove-duplicate-lines/  301!
-/remove-duplicate-strings-online/                                                       /remove-duplicate-lines/  301!
-/remove-duplicate-strings-online                                                        /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-strings-online/                          /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-strings-online                           /remove-duplicate-lines/  301!
-/remove-duplicate-user-ids/                                                             /remove-duplicate-lines/  301!
-/remove-duplicate-user-ids                                                              /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-user-ids/                                /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-user-ids                                 /remove-duplicate-lines/  301!
-/remove-duplicate-lines-linux-sort-uniq/                                                /remove-duplicate-lines/  301!
-/remove-duplicate-lines-linux-sort-uniq                                                 /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-linux-sort-uniq/                   /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-linux-sort-uniq                    /remove-duplicate-lines/  301!
-/remove-duplicate-lines-awk/                                                            /remove-duplicate-lines/  301!
-/remove-duplicate-lines-awk                                                             /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-awk/                               /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-awk                                /remove-duplicate-lines/  301!
-/remove-duplicate-lines-powershell/                                                     /remove-duplicate-lines/  301!
-/remove-duplicate-lines-powershell                                                      /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-powershell/                        /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-powershell                         /remove-duplicate-lines/  301!
-/show-duplicate-lines-online/                                                           /remove-duplicate-lines/  301!
-/show-duplicate-lines-online                                                            /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/show-duplicate-lines-online/                              /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/show-duplicate-lines-online                               /remove-duplicate-lines/  301!
-/count-duplicate-lines-in-text/                                                         /remove-duplicate-lines/  301!
-/count-duplicate-lines-in-text                                                          /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/count-duplicate-lines-in-text/                            /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/count-duplicate-lines-in-text                             /remove-duplicate-lines/  301!
-/remove-duplicate-lines-case-sensitive/                                                 /remove-duplicate-lines/  301!
-/remove-duplicate-lines-case-sensitive                                                  /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-case-sensitive/                    /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-case-sensitive                     /remove-duplicate-lines/  301!
-/remove-duplicate-lines-and-join-with-commas/                                           /remove-duplicate-lines/  301!
-/remove-duplicate-lines-and-join-with-commas                                            /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-and-join-with-commas/              /remove-duplicate-lines/  301!
-/tools/remove-duplicate-lines/remove-duplicate-lines-and-join-with-commas               /remove-duplicate-lines/  301!
+# 1. Active Tools 301 Aliases to Canonical Whitelist URLs
+/bulk-image-resizer/        /image-resizer/         301
+/bulk-image-resizer         /image-resizer/         301
+/batch-image-to-webp/       /image-converter/       301
+/batch-image-to-webp        /image-converter/       301
+/jpg-to-avif/               /image-converter/       301
+/jpg-to-avif                /image-converter/       301
+/api/                       /                       301
+/api                        /                       301
+
+# Legacy /tools/ paths to Canonical Root URLs
+/tools/image-resizer/       /image-resizer/         301
+/tools/image-resizer        /image-resizer/         301
+/tools/image-compressor/    /image-compressor/      301
+/tools/image-compressor     /image-compressor/      301
+/tools/image-converter/     /image-converter/       301
+/tools/image-converter      /image-converter/       301
+/tools/remove-extra-spaces/ /remove-extra-spaces/   301
+/tools/remove-extra-spaces  /remove-extra-spaces/   301
+/tools/remove-duplicate-lines/ /remove-duplicate-lines/ 301
+/tools/remove-duplicate-lines  /remove-duplicate-lines/ 301
+/tools/remove-empty-lines/  /remove-empty-lines/    301
+/tools/remove-empty-lines   /remove-empty-lines/    301
+/tools/remove-line-breaks/  /remove-line-breaks/    301
+/tools/remove-line-breaks   /remove-line-breaks/    301
+/tools/sort-text-lines/     /sort-text-lines/       301
+/tools/sort-text-lines      /sort-text-lines/       301
+
+# 2. Tool Sub-Route Wildcard 410 (Gone) Rules
+# (Preserves the base canonical URLs, but returns 410 for all thin variation subpaths)
+/image-resizer/*            410
+/image-compressor/*         410
+/image-converter/*          410
+/remove-extra-spaces/*      410
+/remove-duplicate-lines/*   410
+/remove-empty-lines/*       410
+/remove-line-breaks/*       410
+/sort-text-lines/*          410
+/tools/*                    410
+/tools                      410
+
+# 3. Individual Deleted pSEO Variation Routes (HTTP 410 Gone)
+# (Instructs Google Search Console to drop these deleted thin pages immediately)
+/40kb-jpg-converter/                                        410
+/40kb-jpg-converter                                         410
+/add-prefix-suffix/                                         410
+/add-prefix-suffix                                          410
+/add-watermark/                                             410
+/add-watermark                                              410
+/admit-card-photo-compressor-online/                        410
+/admit-card-photo-compressor-online                         410
+/align-text-in-one-line-online/                             410
+/align-text-in-one-line-online                              410
+/api/                                                       410
+/api                                                        410
+/aspect-ratio-calculator/                                   410
+/aspect-ratio-calculator                                    410
+/auto-remove-line-breaks-pasted-text/                       410
+/auto-remove-line-breaks-pasted-text                        410
+/base64-decoder/                                            410
+/base64-decoder                                             410
+/base64-encoder/                                            410
+/base64-encoder                                             410
+/bash-remove-duplicate-lines/                               410
+/bash-remove-duplicate-lines                                410
+/bash-remove-duplicate-lines-from-file/                     410
+/bash-remove-duplicate-lines-from-file                      410
+/batch-image-compressor-online/                             410
+/batch-image-compressor-online                              410
+/batch-image-to-webp/                                       410
+/batch-image-to-webp                                        410
+/bulk-image-compressor-to-100kb/                            410
+/bulk-image-compressor-to-100kb                             410
+/bulk-image-compressor-to-20kb/                             410
+/bulk-image-compressor-to-20kb                              410
+/bulk-image-resizer/                                        410
+/bulk-image-resizer                                         410
+/bulk-image-size-reducer-in-kb/                             410
+/bulk-image-size-reducer-in-kb                              410
+/clean-line-breaks-instagram/                               410
+/clean-line-breaks-instagram                                410
+/collapse-all-lines-in-vscode/                              410
+/collapse-all-lines-in-vscode                               410
+/collapse-lines-in-notepad-plus-plus/                       410
+/collapse-lines-in-notepad-plus-plus                        410
+/collapse-lines-in-vim/                                     410
+/collapse-lines-in-vim                                      410
+/collapse-lines-in-vscode/                                  410
+/collapse-lines-in-vscode                                   410
+/collapse-multiple-blank-lines-to-one/                      410
+/collapse-multiple-blank-lines-to-one                       410
+/color-converter/                                           410
+/color-converter                                            410
+/color-picker-from-image/                                   410
+/color-picker-from-image                                    410
+/combine-multiple-lines-into-one/                           410
+/combine-multiple-lines-into-one                            410
+/combine-multiple-rows-into-one-cell-separated-by-comma/    410
+/combine-multiple-rows-into-one-cell-separated-by-comma     410
+/combine-multiple-rows-into-one-excel/                      410
+/combine-multiple-rows-into-one-excel                       410
+/combine-multiple-rows-into-one-sql/                        410
+/combine-multiple-rows-into-one-sql                         410
+/compress-image-100kb-to-200kb/                             410
+/compress-image-100kb-to-200kb                              410
+/compress-image-10kb-to-20kb/                               410
+/compress-image-10kb-to-20kb                                410
+/compress-image-20kb-to-50kb/                               410
+/compress-image-20kb-to-50kb                                410
+/compress-image-30-to-40-kb/                                410
+/compress-image-30-to-40-kb                                 410
+/compress-image-for-discord/                                410
+/compress-image-for-discord                                 410
+/compress-image-for-discord-emoji/                          410
+/compress-image-for-discord-emoji                           410
+/compress-image-for-discord-pfp/                            410
+/compress-image-for-discord-pfp                             410
+/compress-image-for-website/                                410
+/compress-image-for-website                                 410
+/compress-image-for-whatsapp-dp/                            410
+/compress-image-for-whatsapp-dp                             410
+/compress-image-to-100kb/                                   410
+/compress-image-to-100kb                                    410
+/compress-image-to-10kb/                                    410
+/compress-image-to-10kb                                     410
+/compress-image-to-10mb/                                    410
+/compress-image-to-10mb                                     410
+/compress-image-to-150kb/                                   410
+/compress-image-to-150kb                                    410
+/compress-image-to-1mb/                                     410
+/compress-image-to-1mb                                      410
+/compress-image-to-200kb/                                   410
+/compress-image-to-200kb                                    410
+/compress-image-to-20kb/                                    410
+/compress-image-to-20kb                                     410
+/compress-image-to-25kb/                                    410
+/compress-image-to-25kb                                     410
+/compress-image-to-2mb/                                     410
+/compress-image-to-2mb                                      410
+/compress-image-to-300kb/                                   410
+/compress-image-to-300kb                                    410
+/compress-image-to-30kb/                                    410
+/compress-image-to-30kb                                     410
+/compress-image-to-40kb/                                    410
+/compress-image-to-40kb                                     410
+/compress-image-to-500kb/                                   410
+/compress-image-to-500kb                                    410
+/compress-image-to-50kb/                                    410
+/compress-image-to-50kb                                     410
+/compress-image-to-5mb/                                     410
+/compress-image-to-5mb                                      410
+/compress-image-to-60kb/                                    410
+/compress-image-to-60kb                                     410
+/compress-image-to-70kb/                                    410
+/compress-image-to-70kb                                     410
+/compress-image-to-80kb/                                    410
+/compress-image-to-80kb                                     410
+/compress-jpg-to-100kb/                                     410
+/compress-jpg-to-100kb                                      410
+/compress-jpg-to-200kb/                                     410
+/compress-jpg-to-200kb                                      410
+/compress-jpg-to-20kb/                                      410
+/compress-jpg-to-20kb                                       410
+/compress-jpg-to-500kb/                                     410
+/compress-jpg-to-500kb                                      410
+/compress-jpg-to-50kb/                                      410
+/compress-jpg-to-50kb                                       410
+/compress-photo-for-pan-card/                               410
+/compress-photo-for-pan-card                                410
+/compress-photo-for-us-visa/                                410
+/compress-photo-for-us-visa                                 410
+/compress-photo-for-visa-application/                       410
+/compress-photo-for-visa-application                        410
+/compress-photo-for-voter-id/                               410
+/compress-photo-for-voter-id                                410
+/compress-png-to-100kb/                                     410
+/compress-png-to-100kb                                      410
+/compress-png-to-200kb/                                     410
+/compress-png-to-200kb                                      410
+/compress-png-to-20kb/                                      410
+/compress-png-to-20kb                                       410
+/compress-png-to-50kb/                                      410
+/compress-png-to-50kb                                       410
+/convert-line-breaks-to-n/                                  410
+/convert-line-breaks-to-n                                   410
+/convert-line-endings-to-unix/                              410
+/convert-line-endings-to-unix                               410
+/count-duplicate-lines-in-text/                             410
+/count-duplicate-lines-in-text                              410
+/css-minifier/                                              410
+/css-minifier                                               410
+/delete-all-enters-from-text/                               410
+/delete-all-enters-from-text                                410
+/dreamweaver-remove-line-breaks/                            410
+/dreamweaver-remove-line-breaks                             410
+/eclipse-remove-empty-lines/                                410
+/eclipse-remove-empty-lines                                 410
+/excel-formula-remove-line-breaks/                          410
+/excel-formula-remove-line-breaks                           410
+/excel-remove-duplicate-lines/                              410
+/excel-remove-duplicate-lines                               410
+/excel-remove-empty-lines/                                  410
+/excel-remove-empty-lines                                   410
+/excel-remove-line-breaks/                                  410
+/excel-remove-line-breaks                                   410
+/excel-remove-line-breaks-in-cell/                          410
+/excel-remove-line-breaks-in-cell                           410
+/excel-vba-remove-line-breaks-in-cell/                      410
+/excel-vba-remove-line-breaks-in-cell                       410
+/exif-viewer/                                               410
+/exif-viewer                                                410
+/extract-duplicate-lines-only/                              410
+/extract-duplicate-lines-only                               410
+/facebook-cover-photo-resizer/                              410
+/facebook-cover-photo-resizer                               410
+/facebook-image-resizer/                                    410
+/facebook-image-resizer                                     410
+/filter-unique-lines-online/                                410
+/filter-unique-lines-online                                 410
+/find-and-replace-text/                                     410
+/find-and-replace-text                                      410
+/find-duplicate-lines-in-text/                              410
+/find-duplicate-lines-in-text                               410
+/google-docs-remove-empty-lines/                            410
+/google-docs-remove-empty-lines                             410
+/google-docs-remove-line-breaks/                            410
+/google-docs-remove-line-breaks                             410
+/google-sheets-remove-empty-lines/                          410
+/google-sheets-remove-empty-lines                           410
+/how-to-remove-duplicate-lines-in-excel/                    410
+/how-to-remove-duplicate-lines-in-excel                     410
+/how-to-remove-line-breaks-in-excel/                        410
+/how-to-remove-line-breaks-in-excel                         410
+/how-to-remove-line-breaks-in-excel-formula/                410
+/how-to-remove-line-breaks-in-excel-formula                 410
+/how-to-remove-line-breaks-in-google-docs/                  410
+/how-to-remove-line-breaks-in-google-docs                   410
+/how-to-remove-line-breaks-in-notepad-plus-plus/            410
+/how-to-remove-line-breaks-in-notepad-plus-plus             410
+/how-to-remove-line-breaks-in-word/                         410
+/how-to-remove-line-breaks-in-word                          410
+/html-formatter/                                            410
+/html-formatter                                             410
+/image-50kb-to-100kb/                                       410
+/image-50kb-to-100kb                                        410
+/image-cropper/                                             410
+/image-cropper                                              410
+/image-dimensions-calculator/                               410
+/image-dimensions-calculator                                410
+/image-flipper/                                             410
+/image-flipper                                              410
+/image-optimizer/                                           410
+/image-optimizer                                            410
+/image-resize-for-indian-visa/                              410
+/image-resize-for-indian-visa                               410
+/image-resize-for-linkedin-article/                         410
+/image-resize-for-linkedin-article                          410
+/image-resize-for-pan-card/                                 410
+/image-resize-for-pan-card                                  410
+/image-resizer-for-discord-banner/                          410
+/image-resizer-for-discord-banner                           410
+/image-resizer-for-discord-pfp/                             410
+/image-resizer-for-discord-pfp                              410
+/image-resizer-for-linkedin-banner/                         410
+/image-resizer-for-linkedin-banner                          410
+/image-resizer-for-linkedin-post/                           410
+/image-resizer-for-linkedin-post                            410
+/image-resizer-for-linkedin-profile/                        410
+/image-resizer-for-linkedin-profile                         410
+/image-resizer-for-tiktok-profile/                          410
+/image-resizer-for-tiktok-profile                           410
+/image-resizer-for-whatsapp-dp/                             410
+/image-resizer-for-whatsapp-dp                              410
+/image-resizer-for-youtube-banner/                          410
+/image-resizer-for-youtube-banner                           410
+/image-resizer-for-youtube-profile/                         410
+/image-resizer-for-youtube-profile                          410
+/image-resizer-for-youtube-thumbnail/                       410
+/image-resizer-for-youtube-thumbnail                        410
+/image-resizer-for-youtube-watermark/                       410
+/image-resizer-for-youtube-watermark                        410
+/image-rotator/                                             410
+/image-rotator                                              410
+/instagram-image-resizer/                                   410
+/instagram-image-resizer                                    410
+/intellij-remove-empty-lines/                               410
+/intellij-remove-empty-lines                                410
+/javascript-remove-duplicate-lines-from-string/             410
+/javascript-remove-duplicate-lines-from-string              410
+/javascript-remove-line-breaks/                             410
+/javascript-remove-line-breaks                              410
+/jpg-to-avif/                                               410
+/jpg-to-avif                                                410
+/jpg-to-webp-compressor/                                    410
+/jpg-to-webp-compressor                                     410
+/js-minifier/                                               410
+/js-minifier                                                410
+/json-formatter/                                            410
+/json-formatter                                             410
+/json-minifier/                                             410
+/json-minifier                                              410
+/json-validator/                                            410
+/json-validator                                             410
+/jwt-decoder/                                               410
+/jwt-decoder                                                410
+/libreoffice-calc-remove-empty-lines/                       410
+/libreoffice-calc-remove-empty-lines                        410
+/linkedin-banner-resizer/                                   410
+/linkedin-banner-resizer                                    410
+/linkedin-image-resizer/                                    410
+/linkedin-image-resizer                                     410
+/linux-remove-duplicate-lines/                              410
+/linux-remove-duplicate-lines                               410
+/linux-remove-duplicate-lines-from-file/                    410
+/linux-remove-duplicate-lines-from-file                     410
+/notepad-plus-plus-remove-all-empty-lines/                  410
+/notepad-plus-plus-remove-all-empty-lines                   410
+/notepad-plus-plus-remove-duplicate-lines/                  410
+/notepad-plus-plus-remove-duplicate-lines                   410
+/notepad-plus-plus-remove-empty-lines/                      410
+/notepad-plus-plus-remove-empty-lines                       410
+/notepad-plus-plus-remove-line-breaks/                      410
+/notepad-plus-plus-remove-line-breaks                       410
+/notepad-remove-line-breaks/                                410
+/notepad-remove-line-breaks                                 410
+/one-line-online-converter/                                 410
+/one-line-online-converter                                  410
+/passport-photo-compressor-to-50kb/                         410
+/passport-photo-compressor-to-50kb                          410
+/passport-size/                                             410
+/passport-size                                              410
+/passport-size-maker/                                       410
+/passport-size-maker                                        410
+/passport-size-photo-2x2-inch/                              410
+/passport-size-photo-2x2-inch                               410
+/passport-size-photo-compressor-to-100kb/                   410
+/passport-size-photo-compressor-to-100kb                    410
+/passport-size-photo-compressor-to-20kb/                    410
+/passport-size-photo-compressor-to-20kb                     410
+/passport-size-photo-resizer/                               410
+/passport-size-photo-resizer                                410
+/passport-size-photo-size-in-bd/                            410
+/passport-size-photo-size-in-bd                             410
+/pdf-line-break-character-remover/                          410
+/pdf-line-break-character-remover                           410
+/photo-size-converter-in-kb-and-pixels/                     410
+/photo-size-converter-in-kb-and-pixels                      410
+/pinterest-image-resizer/                                   410
+/pinterest-image-resizer                                    410
+/pinterest-pin-resizer/                                     410
+/pinterest-pin-resizer                                      410
+/png-to-webp-compressor/                                    410
+/png-to-webp-compressor                                     410
+/python-remove-duplicate-lines-from-text/                   410
+/python-remove-duplicate-lines-from-text                    410
+/python-remove-line-breaks-from-string/                     410
+/python-remove-line-breaks-from-string                      410
+/reduce-image-size-below-20kb/                              410
+/reduce-image-size-below-20kb                               410
+/reduce-image-size-below-50kb/                              410
+/reduce-image-size-below-50kb                               410
+/reduce-picture-size-for-email-attachment/                  410
+/reduce-picture-size-for-email-attachment                   410
+/reduce-png-size-without-losing-quality/                    410
+/reduce-png-size-without-losing-quality                     410
+/regex-remove-duplicate-lines/                              410
+/regex-remove-duplicate-lines                               410
+/regex-remove-empty-lines/                                  410
+/regex-remove-empty-lines                                   410
+/regex-remove-line-breaks/                                  410
+/regex-remove-line-breaks                                   410
+/regex-tester/                                              410
+/regex-tester                                               410
+/remove-all-line-breaks-word-2007/                          410
+/remove-all-line-breaks-word-2007                           410
+/remove-carriage-returns-from-text-file/                    410
+/remove-carriage-returns-from-text-file                     410
+/remove-crlf-carriage-returns/                              410
+/remove-crlf-carriage-returns                               410
+/remove-duplicate-domains-list/                             410
+/remove-duplicate-domains-list                              410
+/remove-duplicate-email-addresses-from-list/                410
+/remove-duplicate-email-addresses-from-list                 410
+/remove-duplicate-emails-online/                            410
+/remove-duplicate-emails-online                             410
+/remove-duplicate-ids-from-list/                            410
+/remove-duplicate-ids-from-list                             410
+/remove-duplicate-ip-addresses/                             410
+/remove-duplicate-ip-addresses                              410
+/remove-duplicate-keywords-online/                          410
+/remove-duplicate-keywords-online                           410
+/remove-duplicate-lines-and-join-with-commas/               410
+/remove-duplicate-lines-and-join-with-commas                410
+/remove-duplicate-lines-and-sort-alphabetically/            410
+/remove-duplicate-lines-and-sort-alphabetically             410
+/remove-duplicate-lines-awk/                                410
+/remove-duplicate-lines-awk                                 410
+/remove-duplicate-lines-bash/                               410
+/remove-duplicate-lines-bash                                410
+/remove-duplicate-lines-case-sensitive/                     410
+/remove-duplicate-lines-case-sensitive                      410
+/remove-duplicate-lines-from-csv/                           410
+/remove-duplicate-lines-from-csv                            410
+/remove-duplicate-lines-from-file-linux/                    410
+/remove-duplicate-lines-from-file-linux                     410
+/remove-duplicate-lines-from-json/                          410
+/remove-duplicate-lines-from-json                           410
+/remove-duplicate-lines-from-log-file/                      410
+/remove-duplicate-lines-from-log-file                       410
+/remove-duplicate-lines-from-markdown/                      410
+/remove-duplicate-lines-from-markdown                       410
+/remove-duplicate-lines-from-sql-dump/                      410
+/remove-duplicate-lines-from-sql-dump                       410
+/remove-duplicate-lines-from-text-file/                     410
+/remove-duplicate-lines-from-text-file                      410
+/remove-duplicate-lines-from-tsv-file/                      410
+/remove-duplicate-lines-from-tsv-file                       410
+/remove-duplicate-lines-from-txt-file/                      410
+/remove-duplicate-lines-from-txt-file                       410
+/remove-duplicate-lines-in-csv-file/                        410
+/remove-duplicate-lines-in-csv-file                         410
+/remove-duplicate-lines-in-dbeaver/                         410
+/remove-duplicate-lines-in-dbeaver                          410
+/remove-duplicate-lines-in-excel/                           410
+/remove-duplicate-lines-in-excel                            410
+/remove-duplicate-lines-in-excel-cell/                      410
+/remove-duplicate-lines-in-excel-cell                       410
+/remove-duplicate-lines-in-google-docs/                     410
+/remove-duplicate-lines-in-google-docs                      410
+/remove-duplicate-lines-in-google-sheets/                   410
+/remove-duplicate-lines-in-google-sheets                    410
+/remove-duplicate-lines-in-intellij/                        410
+/remove-duplicate-lines-in-intellij                         410
+/remove-duplicate-lines-in-mac-textedit/                    410
+/remove-duplicate-lines-in-mac-textedit                     410
+/remove-duplicate-lines-in-notepad/                         410
+/remove-duplicate-lines-in-notepad                          410
+/remove-duplicate-lines-in-sublime-text/                    410
+/remove-duplicate-lines-in-sublime-text                     410
+/remove-duplicate-lines-in-word/                            410
+/remove-duplicate-lines-in-word                             410
+/remove-duplicate-lines-java/                               410
+/remove-duplicate-lines-java                                410
+/remove-duplicate-lines-keep-first-occurrence/              410
+/remove-duplicate-lines-keep-first-occurrence               410
+/remove-duplicate-lines-linux/                              410
+/remove-duplicate-lines-linux                               410
+/remove-duplicate-lines-linux-sort-uniq/                    410
+/remove-duplicate-lines-linux-sort-uniq                     410
+/remove-duplicate-lines-php/                                410
+/remove-duplicate-lines-php                                 410
+/remove-duplicate-lines-powershell/                         410
+/remove-duplicate-lines-powershell                          410
+/remove-duplicate-lines-python-list/                        410
+/remove-duplicate-lines-python-list                         410
+/remove-duplicate-lines-regex-notepad-plus-plus/            410
+/remove-duplicate-lines-regex-notepad-plus-plus             410
+/remove-duplicate-lines-sql-query/                          410
+/remove-duplicate-lines-sql-query                           410
+/remove-duplicate-links-from-text/                          410
+/remove-duplicate-links-from-text                           410
+/remove-duplicate-names-from-list/                          410
+/remove-duplicate-names-from-list                           410
+/remove-duplicate-phone-numbers-list/                       410
+/remove-duplicate-phone-numbers-list                        410
+/remove-duplicate-rows-from-csv-online/                     410
+/remove-duplicate-rows-from-csv-online                      410
+/remove-duplicate-rows-in-excel-online/                     410
+/remove-duplicate-rows-in-excel-online                      410
+/remove-duplicate-strings-online/                           410
+/remove-duplicate-strings-online                            410
+/remove-duplicate-urls-online/                              410
+/remove-duplicate-urls-online                               410
+/remove-duplicate-user-ids/                                 410
+/remove-duplicate-user-ids                                  410
+/remove-empty-lines-csv/                                    410
+/remove-empty-lines-csv                                     410
+/remove-empty-lines-excel/                                  410
+/remove-empty-lines-excel                                   410
+/remove-empty-lines-from-text-file/                         410
+/remove-empty-lines-from-text-file                          410
+/remove-empty-lines-google-docs/                            410
+/remove-empty-lines-google-docs                             410
+/remove-empty-lines-google-sheets/                          410
+/remove-empty-lines-google-sheets                           410
+/remove-empty-lines-javascript/                             410
+/remove-empty-lines-javascript                              410
+/remove-empty-lines-json/                                   410
+/remove-empty-lines-json                                    410
+/remove-empty-lines-notepad-plus-plus/                      410
+/remove-empty-lines-notepad-plus-plus                       410
+/remove-empty-lines-online-tool/                            410
+/remove-empty-lines-online-tool                             410
+/remove-empty-lines-python-string/                          410
+/remove-empty-lines-python-string                           410
+/remove-empty-lines-sql-query/                              410
+/remove-empty-lines-sql-query                               410
+/remove-empty-lines-vim/                                    410
+/remove-empty-lines-vim                                     410
+/remove-empty-lines-vscode/                                 410
+/remove-empty-lines-vscode                                  410
+/remove-empty-lines-word/                                   410
+/remove-empty-lines-word                                    410
+/remove-empty-lines-xml/                                    410
+/remove-empty-lines-xml                                     410
+/remove-end-of-line-breaks/                                 410
+/remove-end-of-line-breaks                                  410
+/remove-enter-from-text/                                    410
+/remove-enter-from-text                                     410
+/remove-enter-in-notepad/                                   410
+/remove-enter-in-notepad                                    410
+/remove-extra-line-breaks/                                  410
+/remove-extra-line-breaks                                   410
+/remove-leading-trailing-empty-lines/                       410
+/remove-leading-trailing-empty-lines                        410
+/remove-line-breaks-airtable/                               410
+/remove-line-breaks-airtable                                410
+/remove-line-breaks-and-keep-paragraphs/                    410
+/remove-line-breaks-and-keep-paragraphs                     410
+/remove-line-breaks-android-studio/                         410
+/remove-line-breaks-android-studio                          410
+/remove-line-breaks-ansible/                                410
+/remove-line-breaks-ansible                                 410
+/remove-line-breaks-apple-pages/                            410
+/remove-line-breaks-apple-pages                             410
+/remove-line-breaks-awk/                                    410
+/remove-line-breaks-awk                                     410
+/remove-line-breaks-bash/                                   410
+/remove-line-breaks-bash                                    410
+/remove-line-breaks-c/                                      410
+/remove-line-breaks-c                                       410
+/remove-line-breaks-cpp/                                    410
+/remove-line-breaks-cpp                                     410
+/remove-line-breaks-csharp/                                 410
+/remove-line-breaks-csharp                                  410
+/remove-line-breaks-csv/                                    410
+/remove-line-breaks-csv                                     410
+/remove-line-breaks-csv-file/                               410
+/remove-line-breaks-csv-file                                410
+/remove-line-breaks-curl/                                   410
+/remove-line-breaks-curl                                    410
+/remove-line-breaks-dbeaver/                                410
+/remove-line-breaks-dbeaver                                 410
+/remove-line-breaks-discord/                                410
+/remove-line-breaks-discord                                 410
+/remove-line-breaks-docker/                                 410
+/remove-line-breaks-docker                                  410
+/remove-line-breaks-emacs/                                  410
+/remove-line-breaks-emacs                                   410
+/remove-line-breaks-email/                                  410
+/remove-line-breaks-email                                   410
+/remove-line-breaks-excel/                                  410
+/remove-line-breaks-excel                                   410
+/remove-line-breaks-excel-2010/                             410
+/remove-line-breaks-excel-2010                              410
+/remove-line-breaks-excel-mac/                              410
+/remove-line-breaks-excel-mac                               410
+/remove-line-breaks-fish/                                   410
+/remove-line-breaks-fish                                    410
+/remove-line-breaks-from-base64/                            410
+/remove-line-breaks-from-base64                             410
+/remove-line-breaks-from-copied-text/                       410
+/remove-line-breaks-from-copied-text                        410
+/remove-line-breaks-from-html/                              410
+/remove-line-breaks-from-html                               410
+/remove-line-breaks-from-json-string/                       410
+/remove-line-breaks-from-json-string                        410
+/remove-line-breaks-from-pdf-text/                          410
+/remove-line-breaks-from-pdf-text                           410
+/remove-line-breaks-from-text/                              410
+/remove-line-breaks-from-text                               410
+/remove-line-breaks-from-text-file/                         410
+/remove-line-breaks-from-text-file                          410
+/remove-line-breaks-git/                                    410
+/remove-line-breaks-git                                     410
+/remove-line-breaks-gmail/                                  410
+/remove-line-breaks-gmail                                   410
+/remove-line-breaks-go/                                     410
+/remove-line-breaks-go                                      410
+/remove-line-breaks-golang-string/                          410
+/remove-line-breaks-golang-string                           410
+/remove-line-breaks-google-docs/                            410
+/remove-line-breaks-google-docs                             410
+/remove-line-breaks-google-sheets/                          410
+/remove-line-breaks-google-sheets                           410
+/remove-line-breaks-google-sheets-cell/                     410
+/remove-line-breaks-google-sheets-cell                      410
+/remove-line-breaks-grep/                                   410
+/remove-line-breaks-grep                                    410
+/remove-line-breaks-html/                                   410
+/remove-line-breaks-html                                    410
+/remove-line-breaks-in-airtable/                            410
+/remove-line-breaks-in-airtable                             410
+/remove-line-breaks-in-apple-pages/                         410
+/remove-line-breaks-in-apple-pages                          410
+/remove-line-breaks-in-atom-editor/                         410
+/remove-line-breaks-in-atom-editor                          410
+/remove-line-breaks-in-bash/                                410
+/remove-line-breaks-in-bash                                 410
+/remove-line-breaks-in-c-sharp/                             410
+/remove-line-breaks-in-c-sharp                              410
+/remove-line-breaks-in-eclipse/                             410
+/remove-line-breaks-in-eclipse                              410
+/remove-line-breaks-in-excel/                               410
+/remove-line-breaks-in-excel                                410
+/remove-line-breaks-in-excel-2016/                          410
+/remove-line-breaks-in-excel-2016                           410
+/remove-line-breaks-in-excel-cell/                          410
+/remove-line-breaks-in-excel-cell                           410
+/remove-line-breaks-in-excel-formula/                       410
+/remove-line-breaks-in-excel-formula                        410
+/remove-line-breaks-in-excel-mac/                           410
+/remove-line-breaks-in-excel-mac                            410
+/remove-line-breaks-in-google-docs/                         410
+/remove-line-breaks-in-google-docs                          410
+/remove-line-breaks-in-mysql/                               410
+/remove-line-breaks-in-mysql                                410
+/remove-line-breaks-in-notepad-plus-plus/                   410
+/remove-line-breaks-in-notepad-plus-plus                    410
+/remove-line-breaks-in-notion/                              410
+/remove-line-breaks-in-notion                               410
+/remove-line-breaks-in-postgresql/                          410
+/remove-line-breaks-in-postgresql                           410
+/remove-line-breaks-in-scrivener/                           410
+/remove-line-breaks-in-scrivener                            410
+/remove-line-breaks-in-sqlite/                              410
+/remove-line-breaks-in-sqlite                               410
+/remove-line-breaks-in-sublime-text/                        410
+/remove-line-breaks-in-sublime-text                         410
+/remove-line-breaks-in-vim/                                 410
+/remove-line-breaks-in-vim                                  410
+/remove-line-breaks-in-vs-code/                             410
+/remove-line-breaks-in-vs-code                              410
+/remove-line-breaks-in-word/                                410
+/remove-line-breaks-in-word                                 410
+/remove-line-breaks-in-word-2016/                           410
+/remove-line-breaks-in-word-2016                            410
+/remove-line-breaks-in-word-mac/                            410
+/remove-line-breaks-in-word-mac                             410
+/remove-line-breaks-intellij/                               410
+/remove-line-breaks-intellij                                410
+/remove-line-breaks-java/                                   410
+/remove-line-breaks-java                                    410
+/remove-line-breaks-java-string/                            410
+/remove-line-breaks-java-string                             410
+/remove-line-breaks-javascript/                             410
+/remove-line-breaks-javascript                              410
+/remove-line-breaks-jenkins/                                410
+/remove-line-breaks-jenkins                                 410
+/remove-line-breaks-json/                                   410
+/remove-line-breaks-json                                    410
+/remove-line-breaks-json-payload/                           410
+/remove-line-breaks-json-payload                            410
+/remove-line-breaks-kotlin/                                 410
+/remove-line-breaks-kotlin                                  410
+/remove-line-breaks-kubernetes/                             410
+/remove-line-breaks-kubernetes                              410
+/remove-line-breaks-latex/                                  410
+/remove-line-breaks-latex                                   410
+/remove-line-breaks-libreoffice-calc/                       410
+/remove-line-breaks-libreoffice-calc                        410
+/remove-line-breaks-linkedin/                               410
+/remove-line-breaks-linkedin                                410
+/remove-line-breaks-linkedin-post/                          410
+/remove-line-breaks-linkedin-post                           410
+/remove-line-breaks-linux/                                  410
+/remove-line-breaks-linux                                   410
+/remove-line-breaks-linux-awk/                              410
+/remove-line-breaks-linux-awk                               410
+/remove-line-breaks-linux-sed/                              410
+/remove-line-breaks-linux-sed                               410
+/remove-line-breaks-markdown/                               410
+/remove-line-breaks-markdown                                410
+/remove-line-breaks-mysql/                                  410
+/remove-line-breaks-mysql                                   410
+/remove-line-breaks-nano/                                   410
+/remove-line-breaks-nano                                    410
+/remove-line-breaks-notepad-plus-plus/                      410
+/remove-line-breaks-notepad-plus-plus                       410
+/remove-line-breaks-notion/                                 410
+/remove-line-breaks-notion                                  410
+/remove-line-breaks-obsidian/                               410
+/remove-line-breaks-obsidian                                410
+/remove-line-breaks-online-tool/                            410
+/remove-line-breaks-online-tool                             410
+/remove-line-breaks-oracle/                                 410
+/remove-line-breaks-oracle                                  410
+/remove-line-breaks-oracle-sql/                             410
+/remove-line-breaks-oracle-sql                              410
+/remove-line-breaks-outlook/                                410
+/remove-line-breaks-outlook                                 410
+/remove-line-breaks-outlook-email/                          410
+/remove-line-breaks-outlook-email                           410
+/remove-line-breaks-pdf/                                    410
+/remove-line-breaks-pdf                                     410
+/remove-line-breaks-perl/                                   410
+/remove-line-breaks-perl                                    410
+/remove-line-breaks-php/                                    410
+/remove-line-breaks-php                                     410
+/remove-line-breaks-plain-text/                             410
+/remove-line-breaks-plain-text                              410
+/remove-line-breaks-postgresql/                             410
+/remove-line-breaks-postgresql                              410
+/remove-line-breaks-postman/                                410
+/remove-line-breaks-postman                                 410
+/remove-line-breaks-powerpoint/                             410
+/remove-line-breaks-powerpoint                              410
+/remove-line-breaks-powershell/                             410
+/remove-line-breaks-powershell                              410
+/remove-line-breaks-r/                                      410
+/remove-line-breaks-r                                       410
+/remove-line-breaks-regex-pattern/                          410
+/remove-line-breaks-regex-pattern                           410
+/remove-line-breaks-ruby/                                   410
+/remove-line-breaks-ruby                                    410
+/remove-line-breaks-ruby-string/                            410
+/remove-line-breaks-ruby-string                             410
+/remove-line-breaks-rust/                                   410
+/remove-line-breaks-rust                                    410
+/remove-line-breaks-scala/                                  410
+/remove-line-breaks-scala                                   410
+/remove-line-breaks-scrivener/                              410
+/remove-line-breaks-scrivener                               410
+/remove-line-breaks-sed/                                    410
+/remove-line-breaks-sed                                     410
+/remove-line-breaks-slack/                                  410
+/remove-line-breaks-slack                                   410
+/remove-line-breaks-sql/                                    410
+/remove-line-breaks-sql                                     410
+/remove-line-breaks-sql-query/                              410
+/remove-line-breaks-sql-query                               410
+/remove-line-breaks-sql-server/                             410
+/remove-line-breaks-sql-server                              410
+/remove-line-breaks-sqlite/                                 410
+/remove-line-breaks-sqlite                                  410
+/remove-line-breaks-sublime-text/                           410
+/remove-line-breaks-sublime-text                            410
+/remove-line-breaks-swift/                                  410
+/remove-line-breaks-swift                                   410
+/remove-line-breaks-terraform/                              410
+/remove-line-breaks-terraform                               410
+/remove-line-breaks-text-formatting/                        410
+/remove-line-breaks-text-formatting                         410
+/remove-line-breaks-textwrangler/                           410
+/remove-line-breaks-textwrangler                            410
+/remove-line-breaks-tool/                                   410
+/remove-line-breaks-tool                                    410
+/remove-line-breaks-tr/                                     410
+/remove-line-breaks-tr                                      410
+/remove-line-breaks-twitter-x/                              410
+/remove-line-breaks-twitter-x                               410
+/remove-line-breaks-typescript/                             410
+/remove-line-breaks-typescript                              410
+/remove-line-breaks-vim/                                    410
+/remove-line-breaks-vim                                     410
+/remove-line-breaks-visual-studio/                          410
+/remove-line-breaks-visual-studio                           410
+/remove-line-breaks-vs-code/                                410
+/remove-line-breaks-vs-code                                 410
+/remove-line-breaks-whatsapp/                               410
+/remove-line-breaks-whatsapp                                410
+/remove-line-breaks-whatsapp-message/                       410
+/remove-line-breaks-whatsapp-message                        410
+/remove-line-breaks-windows-notepad/                        410
+/remove-line-breaks-windows-notepad                         410
+/remove-line-breaks-wordpad/                                410
+/remove-line-breaks-wordpad                                 410
+/remove-line-breaks-xcode/                                  410
+/remove-line-breaks-xcode                                   410
+/remove-line-breaks-xml/                                    410
+/remove-line-breaks-xml                                     410
+/remove-line-breaks-xml-string/                             410
+/remove-line-breaks-xml-string                              410
+/remove-line-breaks-yaml/                                   410
+/remove-line-breaks-yaml                                    410
+/remove-line-breaks-yaml-file/                              410
+/remove-line-breaks-yaml-file                               410
+/remove-line-breaks-zsh/                                    410
+/remove-line-breaks-zsh                                     410
+/remove-manual-line-breaks-in-word/                         410
+/remove-manual-line-breaks-in-word                          410
+/remove-new-line-from-string-python/                        410
+/remove-new-line-from-string-python                         410
+/remove-paragraph-breaks-in-word/                           410
+/remove-paragraph-breaks-in-word                            410
+/remove-returns-and-spaces/                                 410
+/remove-returns-and-spaces                                  410
+/remove-spaces-and-line-breaks/                             410
+/remove-spaces-and-line-breaks                              410
+/remove-spaces-and-line-breaks-word/                        410
+/remove-spaces-and-line-breaks-word                         410
+/remove-spaces-and-new-lines/                               410
+/remove-spaces-and-new-lines                                410
+/remove-spaces-between-lines/                               410
+/remove-spaces-between-lines                                410
+/remove-special-characters/                                 410
+/remove-special-characters                                  410
+/remove-trailing-line-breaks/                               410
+/remove-trailing-line-breaks                                410
+/remove-unwanted-line-breaks-when-copying-from-pdf/         410
+/remove-unwanted-line-breaks-when-copying-from-pdf          410
+/remove-whitespace-only-lines/                              410
+/remove-whitespace-only-lines                               410
+/replace-line-break-with-semicolon/                         410
+/replace-line-break-with-semicolon                          410
+/replace-line-breaks-with-comma-excel/                      410
+/replace-line-breaks-with-comma-excel                       410
+/replace-line-breaks-with-comma-notepad-plus-plus/          410
+/replace-line-breaks-with-comma-notepad-plus-plus           410
+/replace-line-breaks-with-commas/                           410
+/replace-line-breaks-with-commas                            410
+/replace-line-breaks-with-space-word/                       410
+/replace-line-breaks-with-space-word                        410
+/replace-line-breaks-with-spaces/                           410
+/replace-line-breaks-with-spaces                            410
+/resize-and-compress-signature-to-20kb/                     410
+/resize-and-compress-signature-to-20kb                      410
+/resize-image-20kb-to-50kb/                                 410
+/resize-image-20kb-to-50kb                                  410
+/resize-image-25kb/                                         410
+/resize-image-25kb                                          410
+/resize-image-4.5cm-x-3.5cm/                                410
+/resize-image-4.5cm-x-3.5cm                                 410
+/resize-image-50kb-to-100kb/                                410
+/resize-image-50kb-to-100kb                                 410
+/resize-image-6cm-x-2cm/                                    410
+/resize-image-6cm-x-2cm                                     410
+/resize-image-for-discord-sticker/                          410
+/resize-image-for-discord-sticker                           410
+/resize-image-for-facebook-banner/                          410
+/resize-image-for-facebook-banner                           410
+/resize-image-for-facebook-cover/                           410
+/resize-image-for-facebook-cover                            410
+/resize-image-for-facebook-event-cover/                     410
+/resize-image-for-facebook-event-cover                      410
+/resize-image-for-facebook-post/                            410
+/resize-image-for-facebook-post                             410
+/resize-image-for-facebook-profile/                         410
+/resize-image-for-facebook-profile                          410
+/resize-image-for-facebook-story/                           410
+/resize-image-for-facebook-story                            410
+/resize-image-for-instagram/                                410
+/resize-image-for-instagram                                 410
+/resize-image-for-instagram-dp/                             410
+/resize-image-for-instagram-dp                              410
+/resize-image-for-instagram-post/                           410
+/resize-image-for-instagram-post                            410
+/resize-image-for-instagram-story/                          410
+/resize-image-for-instagram-story                           410
+/resize-image-for-pinterest/                                410
+/resize-image-for-pinterest                                 410
+/resize-image-for-tiktok-post/                              410
+/resize-image-for-tiktok-post                               410
+/resize-image-for-tiktok-shop/                              410
+/resize-image-for-tiktok-shop                               410
+/resize-image-to-100kb/                                     410
+/resize-image-to-100kb                                      410
+/resize-image-to-150kb/                                     410
+/resize-image-to-150kb                                      410
+/resize-image-to-15kb/                                      410
+/resize-image-to-15kb                                       410
+/resize-image-to-200kb/                                     410
+/resize-image-to-200kb                                      410
+/resize-image-to-20kb/                                      410
+/resize-image-to-20kb                                       410
+/resize-image-to-250kb/                                     410
+/resize-image-to-250kb                                      410
+/resize-image-to-250x250/                                   410
+/resize-image-to-250x250                                    410
+/resize-image-to-2mb/                                       410
+/resize-image-to-2mb                                        410
+/resize-image-to-300kb/                                     410
+/resize-image-to-300kb                                      410
+/resize-image-to-300x100/                                   410
+/resize-image-to-300x100                                    410
+/resize-image-to-300x300/                                   410
+/resize-image-to-300x300                                    410
+/resize-image-to-300x80/                                    410
+/resize-image-to-300x80                                     410
+/resize-image-to-350x500/                                   410
+/resize-image-to-350x500                                    410
+/resize-image-to-400kb/                                     410
+/resize-image-to-400kb                                      410
+/resize-image-to-400x400/                                   410
+/resize-image-to-400x400                                    410
+/resize-image-to-400x520/                                   410
+/resize-image-to-400x520                                    410
+/resize-image-to-40kb/                                      410
+/resize-image-to-40kb                                       410
+/resize-image-to-450kb/                                     410
+/resize-image-to-450kb                                      410
+/resize-image-to-45kb/                                      410
+/resize-image-to-45kb                                       410
+/resize-image-to-500kb/                                     410
+/resize-image-to-500kb                                      410
+/resize-image-to-500x500/                                   410
+/resize-image-to-500x500                                    410
+/resize-image-to-50kb/                                      410
+/resize-image-to-50kb                                       410
+/resize-image-to-512kb/                                     410
+/resize-image-to-512kb                                      410
+/resize-image-to-512x512/                                   410
+/resize-image-to-512x512                                    410
+/resize-image-to-5mb/                                       410
+/resize-image-to-5mb                                        410
+/resize-image-to-600kb/                                     410
+/resize-image-to-600kb                                      410
+/resize-image-to-600x600/                                   410
+/resize-image-to-600x600                                    410
+/resize-image-to-600x800/                                   410
+/resize-image-to-600x800                                    410
+/resize-image-to-60kb/                                      410
+/resize-image-to-60kb                                       410
+/resize-image-to-630x810/                                   410
+/resize-image-to-630x810                                    410
+/resize-image-to-discord-emote/                             410
+/resize-image-to-discord-emote                              410
+/sed-remove-duplicate-lines/                                410
+/sed-remove-duplicate-lines                                 410
+/show-duplicate-lines-online/                               410
+/show-duplicate-lines-online                                410
+/sublime-text-remove-empty-lines/                           410
+/sublime-text-remove-empty-lines                            410
+/text-case-converter/                                       410
+/text-case-converter                                        410
+/text-to-slug-converter/                                    410
+/text-to-slug-converter                                     410
+/textedit-remove-all-line-breaks-mac/                       410
+/textedit-remove-all-line-breaks-mac                        410
+/tiktok-image-resizer/                                      410
+/tiktok-image-resizer                                       410
+/tiktok-profile-picture-resizer/                            410
+/tiktok-profile-picture-resizer                             410
+/timestamp-converter/                                       410
+/timestamp-converter                                        410
+/tools/image-compressor/                                    410
+/tools/image-compressor                                     410
+/tools/image-compressor/*/                                  410
+/tools/image-compressor/*                                   410
+/tools/image-converter/                                     410
+/tools/image-converter                                      410
+/tools/image-converter/*/                                   410
+/tools/image-converter/*                                    410
+/tools/image-resizer/                                       410
+/tools/image-resizer                                        410
+/tools/image-resizer/*/                                     410
+/tools/image-resizer/*                                      410
+/tools/remove-duplicate-lines/                              410
+/tools/remove-duplicate-lines                               410
+/tools/remove-duplicate-lines/*/                            410
+/tools/remove-duplicate-lines/*                             410
+/tools/remove-duplicate-lines/bash-remove-duplicate-lines/  410
+/tools/remove-duplicate-lines/bash-remove-duplicate-lines   410
+/tools/remove-duplicate-lines/bash-remove-duplicate-lines-from-file/410
+/tools/remove-duplicate-lines/bash-remove-duplicate-lines-from-file410
+/tools/remove-duplicate-lines/count-duplicate-lines-in-text/410
+/tools/remove-duplicate-lines/count-duplicate-lines-in-text 410
+/tools/remove-duplicate-lines/excel-remove-duplicate-lines/ 410
+/tools/remove-duplicate-lines/excel-remove-duplicate-lines  410
+/tools/remove-duplicate-lines/linux-remove-duplicate-lines/ 410
+/tools/remove-duplicate-lines/linux-remove-duplicate-lines  410
+/tools/remove-duplicate-lines/linux-remove-duplicate-lines-from-file/410
+/tools/remove-duplicate-lines/linux-remove-duplicate-lines-from-file410
+/tools/remove-duplicate-lines/remove-duplicate-domains-list/410
+/tools/remove-duplicate-lines/remove-duplicate-domains-list 410
+/tools/remove-duplicate-lines/remove-duplicate-ids-from-list/410
+/tools/remove-duplicate-lines/remove-duplicate-ids-from-list410
+/tools/remove-duplicate-lines/remove-duplicate-lines-and-join-with-commas/410
+/tools/remove-duplicate-lines/remove-duplicate-lines-and-join-with-commas410
+/tools/remove-duplicate-lines/remove-duplicate-lines-awk/   410
+/tools/remove-duplicate-lines/remove-duplicate-lines-awk    410
+/tools/remove-duplicate-lines/remove-duplicate-lines-bash/  410
+/tools/remove-duplicate-lines/remove-duplicate-lines-bash   410
+/tools/remove-duplicate-lines/remove-duplicate-lines-case-sensitive/410
+/tools/remove-duplicate-lines/remove-duplicate-lines-case-sensitive410
+/tools/remove-duplicate-lines/remove-duplicate-lines-from-file-linux/410
+/tools/remove-duplicate-lines/remove-duplicate-lines-from-file-linux410
+/tools/remove-duplicate-lines/remove-duplicate-lines-from-tsv-file/410
+/tools/remove-duplicate-lines/remove-duplicate-lines-from-tsv-file410
+/tools/remove-duplicate-lines/remove-duplicate-lines-from-txt-file/410
+/tools/remove-duplicate-lines/remove-duplicate-lines-from-txt-file410
+/tools/remove-duplicate-lines/remove-duplicate-lines-in-csv-file/410
+/tools/remove-duplicate-lines/remove-duplicate-lines-in-csv-file410
+/tools/remove-duplicate-lines/remove-duplicate-lines-in-dbeaver/410
+/tools/remove-duplicate-lines/remove-duplicate-lines-in-dbeaver410
+/tools/remove-duplicate-lines/remove-duplicate-lines-in-mac-textedit/410
+/tools/remove-duplicate-lines/remove-duplicate-lines-in-mac-textedit410
+/tools/remove-duplicate-lines/remove-duplicate-lines-linux/ 410
+/tools/remove-duplicate-lines/remove-duplicate-lines-linux  410
+/tools/remove-duplicate-lines/remove-duplicate-lines-linux-sort-uniq/410
+/tools/remove-duplicate-lines/remove-duplicate-lines-linux-sort-uniq410
+/tools/remove-duplicate-lines/remove-duplicate-lines-powershell/410
+/tools/remove-duplicate-lines/remove-duplicate-lines-powershell410
+/tools/remove-duplicate-lines/remove-duplicate-names-from-list/410
+/tools/remove-duplicate-lines/remove-duplicate-names-from-list410
+/tools/remove-duplicate-lines/remove-duplicate-strings-online/410
+/tools/remove-duplicate-lines/remove-duplicate-strings-online410
+/tools/remove-duplicate-lines/remove-duplicate-user-ids/    410
+/tools/remove-duplicate-lines/remove-duplicate-user-ids     410
+/tools/remove-duplicate-lines/sed-remove-duplicate-lines/   410
+/tools/remove-duplicate-lines/sed-remove-duplicate-lines    410
+/tools/remove-duplicate-lines/show-duplicate-lines-online/  410
+/tools/remove-duplicate-lines/show-duplicate-lines-online   410
+/tools/remove-duplicate-lines/vscode-remove-duplicate-lines/410
+/tools/remove-duplicate-lines/vscode-remove-duplicate-lines 410
+/tools/remove-empty-lines/                                  410
+/tools/remove-empty-lines                                   410
+/tools/remove-empty-lines/:slug/                            410
+/tools/remove-empty-lines/:slug                             410
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-excel/410
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-excel410
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-google-docs/410
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-google-docs410
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-google-sheets/410
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-google-sheets410
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-notepad-plus-plus/410
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-notepad-plus-plus410
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-vim/ 410
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-vim  410
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-vscode/410
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-vscode410
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-word/410
+/tools/remove-empty-lines/how-to-remove-empty-lines-in-word 410
+/tools/remove-empty-lines/remove-empty-lines-in-json/       410
+/tools/remove-empty-lines/remove-empty-lines-in-json        410
+/tools/remove-empty-lines/remove-empty-lines-in-xml/        410
+/tools/remove-empty-lines/remove-empty-lines-in-xml         410
+/tools/remove-extra-spaces/                                 410
+/tools/remove-extra-spaces                                  410
+/tools/remove-extra-spaces/*/                               410
+/tools/remove-extra-spaces/*                                410
+/tools/remove-line-breaks/                                  410
+/tools/remove-line-breaks                                   410
+/tools/remove-line-breaks/*/                                410
+/tools/remove-line-breaks/*                                 410
+/tools/remove-line-breaks/align-text-in-one-line-online/    410
+/tools/remove-line-breaks/align-text-in-one-line-online     410
+/tools/remove-line-breaks/auto-remove-line-breaks-pasted-text/410
+/tools/remove-line-breaks/auto-remove-line-breaks-pasted-text410
+/tools/remove-line-breaks/clean-line-breaks-instagram/      410
+/tools/remove-line-breaks/clean-line-breaks-instagram       410
+/tools/remove-line-breaks/collapse-all-lines-in-vscode/     410
+/tools/remove-line-breaks/collapse-all-lines-in-vscode      410
+/tools/remove-line-breaks/collapse-lines-in-notepad-plus-plus/410
+/tools/remove-line-breaks/collapse-lines-in-notepad-plus-plus410
+/tools/remove-line-breaks/collapse-lines-in-vim/            410
+/tools/remove-line-breaks/collapse-lines-in-vim             410
+/tools/remove-line-breaks/collapse-lines-in-vscode/         410
+/tools/remove-line-breaks/collapse-lines-in-vscode          410
+/tools/remove-line-breaks/combine-multiple-lines-into-one/  410
+/tools/remove-line-breaks/combine-multiple-lines-into-one   410
+/tools/remove-line-breaks/combine-multiple-rows-into-one-cell-separated-by-comma/410
+/tools/remove-line-breaks/combine-multiple-rows-into-one-cell-separated-by-comma410
+/tools/remove-line-breaks/combine-multiple-rows-into-one-excel/410
+/tools/remove-line-breaks/combine-multiple-rows-into-one-excel410
+/tools/remove-line-breaks/combine-multiple-rows-into-one-sql/410
+/tools/remove-line-breaks/combine-multiple-rows-into-one-sql410
+/tools/remove-line-breaks/convert-line-breaks-to-n/         410
+/tools/remove-line-breaks/convert-line-breaks-to-n          410
+/tools/remove-line-breaks/convert-line-endings-to-unix/     410
+/tools/remove-line-breaks/convert-line-endings-to-unix      410
+/tools/remove-line-breaks/delete-all-enters-from-text/      410
+/tools/remove-line-breaks/delete-all-enters-from-text       410
+/tools/remove-line-breaks/dreamweaver-remove-line-breaks/   410
+/tools/remove-line-breaks/dreamweaver-remove-line-breaks    410
+/tools/remove-line-breaks/excel-formula-remove-line-breaks/ 410
+/tools/remove-line-breaks/excel-formula-remove-line-breaks  410
+/tools/remove-line-breaks/excel-remove-line-breaks/         410
+/tools/remove-line-breaks/excel-remove-line-breaks          410
+/tools/remove-line-breaks/excel-vba-remove-line-breaks-in-cell/410
+/tools/remove-line-breaks/excel-vba-remove-line-breaks-in-cell410
+/tools/remove-line-breaks/google-docs-remove-line-breaks/   410
+/tools/remove-line-breaks/google-docs-remove-line-breaks    410
+/tools/remove-line-breaks/how-to-remove-line-breaks-in-excel-formula/410
+/tools/remove-line-breaks/how-to-remove-line-breaks-in-excel-formula410
+/tools/remove-line-breaks/how-to-remove-line-breaks-in-notepad-plus-plus/410
+/tools/remove-line-breaks/how-to-remove-line-breaks-in-notepad-plus-plus410
+/tools/remove-line-breaks/javascript-remove-line-breaks/    410
+/tools/remove-line-breaks/javascript-remove-line-breaks     410
+/tools/remove-line-breaks/notepad-remove-line-breaks/       410
+/tools/remove-line-breaks/notepad-remove-line-breaks        410
+/tools/remove-line-breaks/one-line-online-converter/        410
+/tools/remove-line-breaks/one-line-online-converter         410
+/tools/remove-line-breaks/pdf-line-break-character-remover/ 410
+/tools/remove-line-breaks/pdf-line-break-character-remover  410
+/tools/remove-line-breaks/remove-all-line-breaks-word-2007/ 410
+/tools/remove-line-breaks/remove-all-line-breaks-word-2007  410
+/tools/remove-line-breaks/remove-carriage-returns-from-text-file/410
+/tools/remove-line-breaks/remove-carriage-returns-from-text-file410
+/tools/remove-line-breaks/remove-crlf-carriage-returns/     410
+/tools/remove-line-breaks/remove-crlf-carriage-returns      410
+/tools/remove-line-breaks/remove-end-of-line-breaks/        410
+/tools/remove-line-breaks/remove-end-of-line-breaks         410
+/tools/remove-line-breaks/remove-enter-from-text/           410
+/tools/remove-line-breaks/remove-enter-from-text            410
+/tools/remove-line-breaks/remove-enter-in-notepad/          410
+/tools/remove-line-breaks/remove-enter-in-notepad           410
+/tools/remove-line-breaks/remove-extra-line-breaks/         410
+/tools/remove-line-breaks/remove-extra-line-breaks          410
+/tools/remove-line-breaks/remove-line-breaks-and-keep-paragraphs/410
+/tools/remove-line-breaks/remove-line-breaks-and-keep-paragraphs410
+/tools/remove-line-breaks/remove-line-breaks-android-studio/410
+/tools/remove-line-breaks/remove-line-breaks-android-studio 410
+/tools/remove-line-breaks/remove-line-breaks-ansible/       410
+/tools/remove-line-breaks/remove-line-breaks-ansible        410
+/tools/remove-line-breaks/remove-line-breaks-awk/           410
+/tools/remove-line-breaks/remove-line-breaks-awk            410
+/tools/remove-line-breaks/remove-line-breaks-bash/          410
+/tools/remove-line-breaks/remove-line-breaks-bash           410
+/tools/remove-line-breaks/remove-line-breaks-c/             410
+/tools/remove-line-breaks/remove-line-breaks-c              410
+/tools/remove-line-breaks/remove-line-breaks-cpp/           410
+/tools/remove-line-breaks/remove-line-breaks-cpp            410
+/tools/remove-line-breaks/remove-line-breaks-csv-file/      410
+/tools/remove-line-breaks/remove-line-breaks-csv-file       410
+/tools/remove-line-breaks/remove-line-breaks-curl/          410
+/tools/remove-line-breaks/remove-line-breaks-curl           410
+/tools/remove-line-breaks/remove-line-breaks-dbeaver/       410
+/tools/remove-line-breaks/remove-line-breaks-dbeaver        410
+/tools/remove-line-breaks/remove-line-breaks-discord/       410
+/tools/remove-line-breaks/remove-line-breaks-discord        410
+/tools/remove-line-breaks/remove-line-breaks-docker/        410
+/tools/remove-line-breaks/remove-line-breaks-docker         410
+/tools/remove-line-breaks/remove-line-breaks-emacs/         410
+/tools/remove-line-breaks/remove-line-breaks-emacs          410
+/tools/remove-line-breaks/remove-line-breaks-email/         410
+/tools/remove-line-breaks/remove-line-breaks-email          410
+/tools/remove-line-breaks/remove-line-breaks-excel/         410
+/tools/remove-line-breaks/remove-line-breaks-excel          410
+/tools/remove-line-breaks/remove-line-breaks-excel-2010/    410
+/tools/remove-line-breaks/remove-line-breaks-excel-2010     410
+/tools/remove-line-breaks/remove-line-breaks-fish/          410
+/tools/remove-line-breaks/remove-line-breaks-fish           410
+/tools/remove-line-breaks/remove-line-breaks-from-base64/   410
+/tools/remove-line-breaks/remove-line-breaks-from-base64    410
+/tools/remove-line-breaks/remove-line-breaks-from-copied-text/410
+/tools/remove-line-breaks/remove-line-breaks-from-copied-text410
+/tools/remove-line-breaks/remove-line-breaks-from-html/     410
+/tools/remove-line-breaks/remove-line-breaks-from-html      410
+/tools/remove-line-breaks/remove-line-breaks-from-json-string/410
+/tools/remove-line-breaks/remove-line-breaks-from-json-string410
+/tools/remove-line-breaks/remove-line-breaks-from-text/     410
+/tools/remove-line-breaks/remove-line-breaks-from-text      410
+/tools/remove-line-breaks/remove-line-breaks-from-text-file/410
+/tools/remove-line-breaks/remove-line-breaks-from-text-file 410
+/tools/remove-line-breaks/remove-line-breaks-git/           410
+/tools/remove-line-breaks/remove-line-breaks-git            410
+/tools/remove-line-breaks/remove-line-breaks-gmail/         410
+/tools/remove-line-breaks/remove-line-breaks-gmail          410
+/tools/remove-line-breaks/remove-line-breaks-go/            410
+/tools/remove-line-breaks/remove-line-breaks-go             410
+/tools/remove-line-breaks/remove-line-breaks-golang-string/ 410
+/tools/remove-line-breaks/remove-line-breaks-golang-string  410
+/tools/remove-line-breaks/remove-line-breaks-google-sheets-cell/410
+/tools/remove-line-breaks/remove-line-breaks-google-sheets-cell410
+/tools/remove-line-breaks/remove-line-breaks-grep/          410
+/tools/remove-line-breaks/remove-line-breaks-grep           410
+/tools/remove-line-breaks/remove-line-breaks-in-airtable/   410
+/tools/remove-line-breaks/remove-line-breaks-in-airtable    410
+/tools/remove-line-breaks/remove-line-breaks-in-apple-pages/410
+/tools/remove-line-breaks/remove-line-breaks-in-apple-pages 410
+/tools/remove-line-breaks/remove-line-breaks-in-atom-editor/410
+/tools/remove-line-breaks/remove-line-breaks-in-atom-editor 410
+/tools/remove-line-breaks/remove-line-breaks-in-bash/       410
+/tools/remove-line-breaks/remove-line-breaks-in-bash        410
+/tools/remove-line-breaks/remove-line-breaks-in-c-sharp/    410
+/tools/remove-line-breaks/remove-line-breaks-in-c-sharp     410
+/tools/remove-line-breaks/remove-line-breaks-in-eclipse/    410
+/tools/remove-line-breaks/remove-line-breaks-in-eclipse     410
+/tools/remove-line-breaks/remove-line-breaks-in-excel-2016/ 410
+/tools/remove-line-breaks/remove-line-breaks-in-excel-2016  410
+/tools/remove-line-breaks/remove-line-breaks-in-excel-cell/ 410
+/tools/remove-line-breaks/remove-line-breaks-in-excel-cell  410
+/tools/remove-line-breaks/remove-line-breaks-in-excel-mac/  410
+/tools/remove-line-breaks/remove-line-breaks-in-excel-mac   410
+/tools/remove-line-breaks/remove-line-breaks-in-google-docs/410
+/tools/remove-line-breaks/remove-line-breaks-in-google-docs 410
+/tools/remove-line-breaks/remove-line-breaks-in-mysql/      410
+/tools/remove-line-breaks/remove-line-breaks-in-mysql       410
+/tools/remove-line-breaks/remove-line-breaks-in-notepad-plus-plus/410
+/tools/remove-line-breaks/remove-line-breaks-in-notepad-plus-plus410
+/tools/remove-line-breaks/remove-line-breaks-in-notion/     410
+/tools/remove-line-breaks/remove-line-breaks-in-notion      410
+/tools/remove-line-breaks/remove-line-breaks-in-postgresql/ 410
+/tools/remove-line-breaks/remove-line-breaks-in-postgresql  410
+/tools/remove-line-breaks/remove-line-breaks-in-scrivener/  410
+/tools/remove-line-breaks/remove-line-breaks-in-scrivener   410
+/tools/remove-line-breaks/remove-line-breaks-in-sqlite/     410
+/tools/remove-line-breaks/remove-line-breaks-in-sqlite      410
+/tools/remove-line-breaks/remove-line-breaks-in-sublime-text/410
+/tools/remove-line-breaks/remove-line-breaks-in-sublime-text410
+/tools/remove-line-breaks/remove-line-breaks-in-vim/        410
+/tools/remove-line-breaks/remove-line-breaks-in-vim         410
+/tools/remove-line-breaks/remove-line-breaks-in-vs-code/    410
+/tools/remove-line-breaks/remove-line-breaks-in-vs-code     410
+/tools/remove-line-breaks/remove-line-breaks-in-word-2016/  410
+/tools/remove-line-breaks/remove-line-breaks-in-word-2016   410
+/tools/remove-line-breaks/remove-line-breaks-in-word-mac/   410
+/tools/remove-line-breaks/remove-line-breaks-in-word-mac    410
+/tools/remove-line-breaks/remove-line-breaks-intellij/      410
+/tools/remove-line-breaks/remove-line-breaks-intellij       410
+/tools/remove-line-breaks/remove-line-breaks-java-string/   410
+/tools/remove-line-breaks/remove-line-breaks-java-string    410
+/tools/remove-line-breaks/remove-line-breaks-jenkins/       410
+/tools/remove-line-breaks/remove-line-breaks-jenkins        410
+/tools/remove-line-breaks/remove-line-breaks-json-payload/  410
+/tools/remove-line-breaks/remove-line-breaks-json-payload   410
+/tools/remove-line-breaks/remove-line-breaks-kotlin/        410
+/tools/remove-line-breaks/remove-line-breaks-kotlin         410
+/tools/remove-line-breaks/remove-line-breaks-kubernetes/    410
+/tools/remove-line-breaks/remove-line-breaks-kubernetes     410
+/tools/remove-line-breaks/remove-line-breaks-linkedin/      410
+/tools/remove-line-breaks/remove-line-breaks-linkedin       410
+/tools/remove-line-breaks/remove-line-breaks-linkedin-post/ 410
+/tools/remove-line-breaks/remove-line-breaks-linkedin-post  410
+/tools/remove-line-breaks/remove-line-breaks-linux/         410
+/tools/remove-line-breaks/remove-line-breaks-linux          410
+/tools/remove-line-breaks/remove-line-breaks-linux-awk/     410
+/tools/remove-line-breaks/remove-line-breaks-linux-awk      410
+/tools/remove-line-breaks/remove-line-breaks-linux-sed/     410
+/tools/remove-line-breaks/remove-line-breaks-linux-sed      410
+/tools/remove-line-breaks/remove-line-breaks-nano/          410
+/tools/remove-line-breaks/remove-line-breaks-nano           410
+/tools/remove-line-breaks/remove-line-breaks-notepad-plus-plus/410
+/tools/remove-line-breaks/remove-line-breaks-notepad-plus-plus410
+/tools/remove-line-breaks/remove-line-breaks-obsidian/      410
+/tools/remove-line-breaks/remove-line-breaks-obsidian       410
+/tools/remove-line-breaks/remove-line-breaks-online-tool/   410
+/tools/remove-line-breaks/remove-line-breaks-online-tool    410
+/tools/remove-line-breaks/remove-line-breaks-oracle/        410
+/tools/remove-line-breaks/remove-line-breaks-oracle         410
+/tools/remove-line-breaks/remove-line-breaks-oracle-sql/    410
+/tools/remove-line-breaks/remove-line-breaks-oracle-sql     410
+/tools/remove-line-breaks/remove-line-breaks-outlook/       410
+/tools/remove-line-breaks/remove-line-breaks-outlook        410
+/tools/remove-line-breaks/remove-line-breaks-outlook-email/ 410
+/tools/remove-line-breaks/remove-line-breaks-outlook-email  410
+/tools/remove-line-breaks/remove-line-breaks-perl/          410
+/tools/remove-line-breaks/remove-line-breaks-perl           410
+/tools/remove-line-breaks/remove-line-breaks-plain-text/    410
+/tools/remove-line-breaks/remove-line-breaks-plain-text     410
+/tools/remove-line-breaks/remove-line-breaks-postman/       410
+/tools/remove-line-breaks/remove-line-breaks-postman        410
+/tools/remove-line-breaks/remove-line-breaks-powerpoint/    410
+/tools/remove-line-breaks/remove-line-breaks-powerpoint     410
+/tools/remove-line-breaks/remove-line-breaks-powershell/    410
+/tools/remove-line-breaks/remove-line-breaks-powershell     410
+/tools/remove-line-breaks/remove-line-breaks-r/             410
+/tools/remove-line-breaks/remove-line-breaks-r              410
+/tools/remove-line-breaks/remove-line-breaks-regex-pattern/ 410
+/tools/remove-line-breaks/remove-line-breaks-regex-pattern  410
+/tools/remove-line-breaks/remove-line-breaks-ruby/          410
+/tools/remove-line-breaks/remove-line-breaks-ruby           410
+/tools/remove-line-breaks/remove-line-breaks-ruby-string/   410
+/tools/remove-line-breaks/remove-line-breaks-ruby-string    410
+/tools/remove-line-breaks/remove-line-breaks-rust/          410
+/tools/remove-line-breaks/remove-line-breaks-rust           410
+/tools/remove-line-breaks/remove-line-breaks-scala/         410
+/tools/remove-line-breaks/remove-line-breaks-scala          410
+/tools/remove-line-breaks/remove-line-breaks-sed/           410
+/tools/remove-line-breaks/remove-line-breaks-sed            410
+/tools/remove-line-breaks/remove-line-breaks-slack/         410
+/tools/remove-line-breaks/remove-line-breaks-slack          410
+/tools/remove-line-breaks/remove-line-breaks-sql-query/     410
+/tools/remove-line-breaks/remove-line-breaks-sql-query      410
+/tools/remove-line-breaks/remove-line-breaks-sql-server/    410
+/tools/remove-line-breaks/remove-line-breaks-sql-server     410
+/tools/remove-line-breaks/remove-line-breaks-swift/         410
+/tools/remove-line-breaks/remove-line-breaks-swift          410
+/tools/remove-line-breaks/remove-line-breaks-terraform/     410
+/tools/remove-line-breaks/remove-line-breaks-terraform      410
+/tools/remove-line-breaks/remove-line-breaks-text-formatting/410
+/tools/remove-line-breaks/remove-line-breaks-text-formatting410
+/tools/remove-line-breaks/remove-line-breaks-textwrangler/  410
+/tools/remove-line-breaks/remove-line-breaks-textwrangler   410
+/tools/remove-line-breaks/remove-line-breaks-tool/          410
+/tools/remove-line-breaks/remove-line-breaks-tool           410
+/tools/remove-line-breaks/remove-line-breaks-tr/            410
+/tools/remove-line-breaks/remove-line-breaks-tr             410
+/tools/remove-line-breaks/remove-line-breaks-twitter-x/     410
+/tools/remove-line-breaks/remove-line-breaks-twitter-x      410
+/tools/remove-line-breaks/remove-line-breaks-visual-studio/ 410
+/tools/remove-line-breaks/remove-line-breaks-visual-studio  410
+/tools/remove-line-breaks/remove-line-breaks-whatsapp/      410
+/tools/remove-line-breaks/remove-line-breaks-whatsapp       410
+/tools/remove-line-breaks/remove-line-breaks-whatsapp-message/410
+/tools/remove-line-breaks/remove-line-breaks-whatsapp-message410
+/tools/remove-line-breaks/remove-line-breaks-windows-notepad/410
+/tools/remove-line-breaks/remove-line-breaks-windows-notepad410
+/tools/remove-line-breaks/remove-line-breaks-wordpad/       410
+/tools/remove-line-breaks/remove-line-breaks-wordpad        410
+/tools/remove-line-breaks/remove-line-breaks-xcode/         410
+/tools/remove-line-breaks/remove-line-breaks-xcode          410
+/tools/remove-line-breaks/remove-line-breaks-xml-string/    410
+/tools/remove-line-breaks/remove-line-breaks-xml-string     410
+/tools/remove-line-breaks/remove-line-breaks-yaml-file/     410
+/tools/remove-line-breaks/remove-line-breaks-yaml-file      410
+/tools/remove-line-breaks/remove-line-breaks-zsh/           410
+/tools/remove-line-breaks/remove-line-breaks-zsh            410
+/tools/remove-line-breaks/remove-manual-line-breaks-in-word/410
+/tools/remove-line-breaks/remove-manual-line-breaks-in-word 410
+/tools/remove-line-breaks/remove-new-line-from-string-python/410
+/tools/remove-line-breaks/remove-new-line-from-string-python410
+/tools/remove-line-breaks/remove-paragraph-breaks-in-word/  410
+/tools/remove-line-breaks/remove-paragraph-breaks-in-word   410
+/tools/remove-line-breaks/remove-returns-and-spaces/        410
+/tools/remove-line-breaks/remove-returns-and-spaces         410
+/tools/remove-line-breaks/remove-spaces-and-line-breaks/    410
+/tools/remove-line-breaks/remove-spaces-and-line-breaks     410
+/tools/remove-line-breaks/remove-spaces-and-line-breaks-word/410
+/tools/remove-line-breaks/remove-spaces-and-line-breaks-word410
+/tools/remove-line-breaks/remove-spaces-and-new-lines/      410
+/tools/remove-line-breaks/remove-spaces-and-new-lines       410
+/tools/remove-line-breaks/remove-spaces-between-lines/      410
+/tools/remove-line-breaks/remove-spaces-between-lines       410
+/tools/remove-line-breaks/remove-trailing-line-breaks/      410
+/tools/remove-line-breaks/remove-trailing-line-breaks       410
+/tools/remove-line-breaks/remove-unwanted-line-breaks-when-copying-from-pdf/410
+/tools/remove-line-breaks/remove-unwanted-line-breaks-when-copying-from-pdf410
+/tools/remove-line-breaks/replace-line-break-with-semicolon/410
+/tools/remove-line-breaks/replace-line-break-with-semicolon 410
+/tools/remove-line-breaks/replace-line-breaks-with-comma-excel/410
+/tools/remove-line-breaks/replace-line-breaks-with-comma-excel410
+/tools/remove-line-breaks/replace-line-breaks-with-comma-notepad-plus-plus/410
+/tools/remove-line-breaks/replace-line-breaks-with-comma-notepad-plus-plus410
+/tools/remove-line-breaks/replace-line-breaks-with-commas/  410
+/tools/remove-line-breaks/replace-line-breaks-with-commas   410
+/tools/remove-line-breaks/replace-line-breaks-with-space-word/410
+/tools/remove-line-breaks/replace-line-breaks-with-space-word410
+/tools/remove-line-breaks/replace-line-breaks-with-spaces/  410
+/tools/remove-line-breaks/replace-line-breaks-with-spaces   410
+/tools/remove-line-breaks/textedit-remove-all-line-breaks-mac/410
+/tools/remove-line-breaks/textedit-remove-all-line-breaks-mac410
+/tools/remove-line-breaks/windows-notepad-remove-line-breaks/410
+/tools/remove-line-breaks/windows-notepad-remove-line-breaks410
+/tools/remove-line-breaks/wordpad-remove-line-breaks/       410
+/tools/remove-line-breaks/wordpad-remove-line-breaks        410
+/tools/remove-special-characters/                           410
+/tools/remove-special-characters                            410
+/tools/sort-text-lines/                                     410
+/tools/sort-text-lines                                      410
+/tools/sort-text-lines/*/                                   410
+/tools/sort-text-lines/*                                    410
+/twitter-header-resizer/                                    410
+/twitter-header-resizer                                     410
+/ultraedit-remove-empty-lines/                              410
+/ultraedit-remove-empty-lines                               410
+/unix-timestamp-converter/                                  410
+/unix-timestamp-converter                                   410
+/url-decoder/                                               410
+/url-decoder                                                410
+/url-encoder/                                               410
+/url-encoder                                                410
+/uuid-generator/                                            410
+/uuid-generator                                             410
+/vim-remove-duplicate-lines/                                410
+/vim-remove-duplicate-lines                                 410
+/vim-remove-empty-lines/                                    410
+/vim-remove-empty-lines                                     410
+/visual-studio-remove-empty-lines/                          410
+/visual-studio-remove-empty-lines                           410
+/vs-code-remove-duplicate-lines/                            410
+/vs-code-remove-duplicate-lines                             410
+/vscode-remove-duplicate-lines/                             410
+/vscode-remove-duplicate-lines                              410
+/vscode-remove-empty-lines/                                 410
+/vscode-remove-empty-lines                                  410
+/webp-image-compressor-online/                              410
+/webp-image-compressor-online                               410
+/webp-image-compressor-to-100kb/                            410
+/webp-image-compressor-to-100kb                             410
+/webstorm-remove-empty-lines/                               410
+/webstorm-remove-empty-lines                                410
+/whatsap/                                                   410
+/whatsap                                                    410
+/whatsapp-dp-resizer/                                       410
+/whatsapp-dp-resizer                                        410
+/whatsapp-image-resizer/                                    410
+/whatsapp-image-resizer                                     410
+/whatsapp-status-image-resize/                              410
+/whatsapp-status-image-resize                               410
+/whatsapp-sticker-image-resize/                             410
+/whatsapp-sticker-image-resize                              410
+/windows-notepad-remove-empty-lines/                        410
+/windows-notepad-remove-empty-lines                         410
+/windows-notepad-remove-line-breaks/                        410
+/windows-notepad-remove-line-breaks                         410
+/word-document-remove-empty-lines/                          410
+/word-document-remove-empty-lines                           410
+/word-remove-line-breaks/                                   410
+/word-remove-line-breaks                                    410
+/wordpad-remove-line-breaks/                                410
+/wordpad-remove-line-breaks                                 410
+/x-twitter-image-resizer/                                   410
+/x-twitter-image-resizer                                    410
+/youtube-banner-resizer/                                    410
+/youtube-banner-resizer                                     410
+/youtube-image-resizer/                                     410
+/youtube-image-resizer                                      410
